@@ -189,5 +189,71 @@
 				}
 			}
 		}
+	},
+	"dependencies": {
+		"pages": {
+			"view/home/index.html": {
+				"resources": [
+					"images/123.png",
+					"images/small.png",
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/home/index.css"
+				],
+				"refer": [
+					"view/registration/index.html",
+					"view/message/index.html",
+					"view/transfuse/index.html",
+					"view/video/index.html"
+				],
+				"priority": 0
+			},
+			"view/message/index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/transfuse/index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/video/index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/registration/index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"view/takeOut/index.html",
+				"js/mui.js",
+				"view/dropIn/index.html",
+				"css/mui.css"
+			]
+		}
 	}
 }
