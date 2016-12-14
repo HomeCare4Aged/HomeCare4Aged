@@ -1,0 +1,57 @@
+body{
+	background-color: #262626;
+}
+
+h2{
+	color: #FFFFFF;
+}
+
+.container{
+	margin-top: 100px;
+	text-align: center;
+}
+
+form{
+	width: 80%;
+	margin: 0 auto;
+}
+
+button{
+	margin-top: 20px;
+	width:400px;
+	height: 50px;
+	vertical-align: middle;
+}
+.form-control{
+	height: 50px;
+	margin: 0;
+	padding: 0 20px;
+	background: #fff;
+	font-size: 16px;
+	font-weight: 300;
+	line-height: 30px;
+
+}
+#zyn-login{
+	padding-top: 50px;
+	margin:0 auto;
+	height:350px;
+	width:500px;
+	background-color: #D84C29;
+}
+
+.col-sm-5{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.col-sm-7{
+	padding-right: 0px;
+}
+#zyn-div-val-img a{
+	color:#fff;
+	vertical-align: bottom;
+}
+#zyn-div-val-img img{
+	vertical-align: bottom;
+}
+
