@@ -1,6 +1,3 @@
 Application/Runtime
 bin/
-composer.lock
-composer.phar
-phpunit.xml
-vendor
+
