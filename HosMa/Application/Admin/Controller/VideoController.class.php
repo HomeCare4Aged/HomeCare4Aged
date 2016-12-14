@@ -1,6 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
+import("XXKit.ImageUploader");
 import('XXKit.Constants'); 
 class VideoController extends Controller {
     public function index(){
@@ -40,6 +41,25 @@ class VideoController extends Controller {
     	}
     	
     }
+    public function ajaxUploadImage(){
+    $upload = new \Think\Upload();// 实例化上传类
+    $upload->maxSize   =     3145728 ;// 设置附件上传大小
+    $upload->exts      =     array('mov', 'mp4', 'avi', 'rmvb');// 设置附件上传类型
+    $upload->rootPath  =     './UploadAudios/'; // 设置附件上传根目录
+    $upload->savePath  =     ''; // 设置附件上传（子）目录
+    // 上传文件 
+    $info   =   $upload->upload();
+    if(!$info) {// 上传错误提示错误信息
+        // $this->error($upload->getError());
+        return ajaxReturn(\UPLOAD_FAILURE,'视频上传失败');
+    }else{// 上传成功
+        // $this->success('上传成功！');
+        $info = $upload->rootPath.$info['file']['savepath'].$info['file']['savename'];
+        $fullAudioPath = SITE_HOST.ltrim($info,'./');
+        // cDebug($fullAudioPath);
+        return ajaxReturn(\SUCCESS,'视频上传成功',$fullAudioPath);
+    }
+}
 
 
 }

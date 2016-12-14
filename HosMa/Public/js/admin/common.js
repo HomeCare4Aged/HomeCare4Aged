@@ -122,18 +122,18 @@ $(document).ready(function(){
 //	});
 	//上传封面图
 	$('#xx-input-uploader').uploadify({
+		'fileSize' : '222121212',
 		'swf':SCOPE.ajax_upload_swf,
 		'uploader':SCOPE.ajax_upload_url,
-		'buttonText':'上传图片',
-		'fileTypeExts':'*.gif;*.png;*.jpg',
-		'fileTypeDecs':'Image File',
-		'fileObjNmae':'file',
+		'buttonText':'上传视频',
+		'fileTypeExts':'*.RWVB;*.AVI;*.MP4;*.MOV',
+		'fileObjName':'file',
 		'onUploadSuccess':function(file,data,response){
 			if(response){
 				var res = JSON.parse(data);
-				$('#xx-img-show-thumb').attr('src',res.data.thumb_path).show();
-				$('#xx-input-image-path').attr('value',res.data.image_path);
-				$('#xx-input-thumb-path').attr('value',res.data.thumb_path);
+				$('#xx-img-show-thumb').attr('src',res.data).show();
+				$('#xx-input-video_url').attr('value',res.data);
+				// $('#xx-input-thumb-path').attr('value',res.data.thumb_path);
 			}
 		},
 	});

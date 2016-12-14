@@ -7,6 +7,7 @@ class AVideoInfoModel extends Model{
 	protected $_validate = array(
 	array('community_hospitals_id','require','单位名不能为空！'),
 	array('video_title','require','标题不能为空！'),
+	array('video_url','require','视频不能为空！'),
 	array('video_introduction','require','简介不能为空！'),
 	
 	);

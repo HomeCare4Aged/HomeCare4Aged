@@ -44,13 +44,14 @@
 				<div class="form-group">
 					<label for="xx-input-image" class="control-label col-sm-3">选择视频:</label>
 					<div class="col-sm-5">
-						<input type="file" id="xx-input-image"/>
+						<input type="file" id="xx-input-uploader"/>
 						<!--展示缩略图-->
 						<video src="" alt="" id="xx-img-show-thumb"  width="150px" style="display: none;"/>
 						<!--封面图字段-->
-						<input type="hidden" name="image_path" id="xx-input-image-path"/>
-						<!--缩略图字段-->
-						<input type="hidden" name="thumb_path" id="xx-input-thumb-path"/>
+						<input type="hidden" name="video_url" id="xx-input-video_url"/>
+					</div>
+					<div class="col-sm-4">
+						<p class="xx-p-validate-result" attr-validate="video_url"></p>
 					</div>
 				</div>
 				<div class="form-group">
@@ -81,9 +82,9 @@
 <script>
 	var SCOPE = {
 		'add_url':'__URL__/add',
-		'success_jump_url':'__URL__/index',
-		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',//图片地址
-		'ajax_upload_url':'__URL__/ajaxUploadImage',//图片上传控制器地址
+		'success_jump_curl':'__URL__/index',
+		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',//视频地址
+		'ajax_upload_url':'__URL__/ajaxUploadImage',//视频上传控制器地址
 	}
 </script>
 		
