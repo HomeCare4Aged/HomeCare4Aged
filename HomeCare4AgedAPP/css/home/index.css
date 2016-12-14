@@ -36,13 +36,10 @@ div{
 #g-btn{
 	position:relative;
 	background: -webkit-linear-gradient(top, #EC971F, #FFFF00);
- 	border-color: #000000;
- 	border-width:2px 2px;
- 	border-radius:10px;	
- 	/*border-left-width: 0.5px;
- 	border-right-width: 0.5px;*/
- 	
-	
+	border-color: black;
+	border-width: 2px;
+	border-radius: 10px;
+
 }
 #g-btn:active{
 	background: yellow;
