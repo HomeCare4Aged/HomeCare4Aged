@@ -56,6 +56,9 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
+		                    <a href="../Hospital/index.html">医院信息</a>
+		                </li>
+		                <li>
 		                    <a href="../Department/index.html">科室信息</a>
 		                </li>
 		                <li>
