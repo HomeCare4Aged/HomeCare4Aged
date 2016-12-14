@@ -28,6 +28,16 @@
 							</div>
 						</div>
 						<div class="form-group">
+							<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
+							<div class="col-sm-5">
+								<input id="xx-input-hospital-office-id" class="form-control" type="text" 
+								name="hospital_office_id" placeholder="请输入科室编号" />
+							</div>
+							<div class="col-sm-4">
+								<p class="xx-p-validate-result" attr-validate="hospital_office_id"></p>
+							</div>
+						</div>
+						<div class="form-group">
 							<label for="xx-input-hospital-doctor-introduction" class="control-label col-sm-3">医生简介：</label>
 							<div class="col-sm-5">
 								<textarea class="js-editor" id="xx-textarea-hospital-doctor-introduction" name="hospital_doctor_introduction" cols="50" rows="5" placeholder="请输入内容"></textarea>
@@ -49,23 +59,13 @@
 						<div class="form-group">
 							<label for="xx-input-image" class="control-label col-sm-3">医生照片：</label>
 							<div class="col-sm-5">
-								<input id="xx-input-uploader" type="file" />
+								<input id="xx-input-img-uploader" type="file" />
 								<!-- 展示缩略图 -->
 								<img src="" alt="" id="xx-img-show-thumb" width="150px" style="display: none;"/>
 								<!-- 封面图字段 -->
 								<input type="hidden" name="image_path" id="xx-input-image-path"/>
 								<!-- 缩略图图字段 -->
 								<input type="hidden" name="thumb_path" id="xx-input-thumb-path"/>
-							</div>
-						</div>
-						<div class="form-group">
-							<label for="xx-input-doctor-registration-number" class="control-label col-sm-3">号池数量：</label>
-							<div class="col-sm-5">
-								<input id="xx-input-doctor-registration-number" class="form-control" type="text" 
-								name="doctor_registration_number" placeholder="请输入号池数量" />
-							</div>
-							<div class="col-sm-4">
-								<p class="xx-p-validate-result" attr-validate="doctor_registration_number"></p>
 							</div>
 						</div>
 						<div class="form-group">
