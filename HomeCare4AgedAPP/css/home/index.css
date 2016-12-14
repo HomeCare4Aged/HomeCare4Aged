@@ -39,15 +39,9 @@ div{
 	border-color: black;
 	border-width: 2px;
 	border-radius: 10px;
-
-	
-	
-
-	
 }
 #g-btn:active{
 	background: yellow;
-	/*background: -webkit-linear-gradient(bottom, #EC971F, #FFFF00);*/
 }
 
 .center{
