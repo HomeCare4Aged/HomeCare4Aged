@@ -1,0 +1,56 @@
+.mui-row{
+	background: black;
+}
+div{
+	position:relative;
+}
+#span-date{
+	position:absolute;
+    top:20%;
+    left:3%;
+	color: white;
+	font-size:200%;
+}
+#img-F{
+	position:absolute;
+    top:40px;
+    left:150px;
+	width:20px;
+	height:20px;
+	overflow:hidden;
+}
+#span-F{
+	position:absolute;
+    top:40%;
+    left:3%;
+	color: white;
+	font-size:120%;
+}
+#span-address{
+	position:absolute;
+    top:60%;
+    left:3%;
+	color: white;
+	font-size:120%;
+}
+#g-btn{
+	position:relative;
+	background: -webkit-linear-gradient(top, #EC971F, #FFFF00);
+
+	
+}
+#g-btn:active{
+	background: yellow;
+	/*background: -webkit-linear-gradient(bottom, #EC971F, #FFFF00);*/
+}
+
+.center{
+	text-align: center;
+}
+
+#g-span{
+	position:relative;
+    top: 20%;
+	color: white;
+	font-size:250%;
+}
