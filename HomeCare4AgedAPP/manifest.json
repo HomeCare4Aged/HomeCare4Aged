@@ -232,7 +232,8 @@
 				"resources": [
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"m.mp4"
 				],
 				"refer": [],
 				"priority": 0

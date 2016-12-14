@@ -1,47 +1,52 @@
 {
-	"view/home/index.html": {
-		"resources": [
-			"images/123.png",
-			"images/small.png",
-			"js/mui.min.js",
-			"js/jquery.1.11.1.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/home/index.css"
-		],
-		"refer": [
-			"view/registration/index.html",
-			"view/message/index.html",
-			"view/transfuse/index.html",
-			"view/video/index.html"
-		]
-	},
-	"view/message/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"view/transfuse/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"view/video/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"view/registration/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	}
+  "view/home/index.html": {
+    "resources": [
+      "images/123.png",
+      "images/small.png",
+      "js/mui.min.js",
+      "js/jquery.1.11.1.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/home/index.css"
+    ],
+    "refer": [
+      "view/registration/index.html",
+      "view/message/index.html",
+      "view/transfuse/index.html",
+      "view/video/index.html"
+    ]
+  },
+  "view/message/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "view/transfuse/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "view/video/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "m.mp4"
+    ],
+    "refer": []
+  },
+  "view/registration/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
 }
