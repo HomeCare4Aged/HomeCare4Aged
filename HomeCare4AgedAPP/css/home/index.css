@@ -39,13 +39,14 @@ div{
 	border-color: black;
 	border-width: 2px;
 	border-radius: 10px;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6ccef8f4f3bdd3f24e0acd7cd2f4e6606227b364
 }
 #g-btn:active{
 	background: yellow;
-	/*background: -webkit-linear-gradient(bottom, #EC971F, #FFFF00);*/
 }
-
 .center{
 	text-align: center;
 }
