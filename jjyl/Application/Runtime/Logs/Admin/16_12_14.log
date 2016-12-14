@@ -1,0 +1,44 @@
+[ 2016-12-14T14:40:11+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
+
+[ 2016-12-14T14:40:42+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-12-14T14:43:25+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
+
+[ 2016-12-14T14:48:06+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
+
+[ 2016-12-14T14:49:47+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
+
+[ 2016-12-14T14:54:28+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
+
+[ 2016-12-14T15:02:37+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-12-14T15:02:48+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T15:36:34+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-14T15:36:48+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-12-14T15:46:14+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
+ERR: 1146:Table 'homecare.menu' doesn't exist
+ [ SQL语句 ] : SHOW COLUMNS FROM `menu`
+

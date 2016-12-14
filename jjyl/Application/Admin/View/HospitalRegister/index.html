@@ -1,0 +1,86 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<i class="fa fa-fw fa-table"></i>
+						<a href="__ACTION__">医院后台</a>
+					</ol>
+				</div>
+			</div>
+                  <!--
+                  	作者：925440019@qq.com
+                  	时间：2016-11-23
+                  	描述：row 面包屑导航
+                  -->
+            <div class="row zyn-div-search">
+            	<div class="col-md-4 col-md-offset-1">
+	            	<form action="__ACTION__" method="get" class="form-horizontal">
+	            		<div class="input-group">
+	            			<span class='input-group-addon'>搜索</span>
+	            	
+	            				<input type="text" name="" id="" value="" placeholder="请输入医院名" style="line-height: 27px;width: 248px;"/>
+	            	
+	            			<div class="input-group-btn">
+		            			<button type="submit" class="btn btn-primary">
+		            				<span class='glyphicon glyphicon-search'></span>
+		            			</button>
+	            			</div>
+	            		</div>
+	            		
+	            	</form>
+	            </div>
+            </div>
+            <div class="row">
+            	<div class="col-md-9 col-md-offset-1">
+            		<div class="table-responsive">
+            			<form id="zyn-form-list">
+            				<table class="table table-bordered table-hover zyn-table-list">
+            					<thead>
+            						<tr>
+            							<td>医院名称</td>
+            							<td>账号</td>
+            							<td>密码</td>
+            							
+            						</tr>
+            					</thead>
+            					<tbody>
+            						<volist name='hai' id='vo' >
+	            						<tr>
+	            							<td>{$vo.community_hospitals_name}</td>
+	            							<td>{$vo.hospital_account_num}</td>
+											<td>{$vo.hospital_account_password}</td>
+	            						</tr>
+	            					</volist>
+            					</tbody>
+            				</table>
+            			</form>
+            			<nav>
+							<ul class="pagination">
+								{$pageRes}
+							</ul>
+						</nav>
+            		</div>
+            	</div>
+            </div>
+			<div class="row">
+				<button type="button" class="btn btn-group btn-primary" id="zyn-btn-add">注册医院后台</button>
+				<!--<button type="button" class="btn btn-group btn-primary" id="zyn-btn-list_order">排序</button>-->
+			</div>
+		</div>
+	</div>
+</div>		
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'edit_url':'__URL__/edit',
+		'set_status_url':'__URL__/setStatus',
+		'list_order_url':'__URL__/listOrder',
+		'success_refresh_url':'__ACTION__',
+	};
+</script>	
+<include file="Index/footer"/>
