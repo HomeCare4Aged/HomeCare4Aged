@@ -5,6 +5,7 @@ import("XXKit.ImageUploader");
 import('XXKit.Constants'); 
 class VideoController extends Controller {
     public function index(){
+
     	$cond['status']=array('neq',-1);
     	$video = D('AVideoInfo')->where($cond)->select();
     	if($video === false){
