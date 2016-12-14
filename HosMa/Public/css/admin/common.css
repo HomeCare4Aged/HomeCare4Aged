@@ -1,0 +1,13 @@
+/*菜单管理搜索控件*/
+.xx-div-search{
+	margin-bottom: 20px;
+}
+
+/*列表页操作按钮*/
+.xx-span-operation{
+	color: #428BCA;
+}
+.xx-span-operation:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}

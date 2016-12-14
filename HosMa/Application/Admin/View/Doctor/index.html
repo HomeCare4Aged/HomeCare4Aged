@@ -1,0 +1,71 @@
+<include file="Index/header" />
+<div id="wrapper">
+	<include file="Index/nav" />
+	<div id="page-wrapper">
+		<div class="container">
+			<h3>医生信息</h3>
+			<h4>怎么办</h4>
+			<div class="row">
+				<form class="form-horizontal" id="">
+				<div class="form-group">
+					<label id="" class="control-label col-sm-3">在班医生信息：</label>
+					<div class="col-sm-3">
+						<input type="text" class="form-control" id="" placeholder="请录入"/>
+					</div>
+					<div class="col-sm-2">
+						<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
+					</div>
+				</div>
+				</form>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="xx-form-list" class="">
+							<table class="table table-bordered table-hover" id="xx-table-list">
+								<thead>
+									<tr>
+										<td>医生ID</td>
+										<td>所属医院</td>
+										<td>所属科室</td>
+										<td>医生姓名</td>
+										<td>性别</td>
+										<td>职称</td>
+										<td>简介</td>
+										<td>联系方式</td>
+										<td>照片</td>
+										<td>号池数量</td>
+										<td>挂号收费</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="doctors" id="vo">
+										<tr>
+											<td>{$vo.hospital_doctor_id}</td>
+											<td>{$vo.community_hospitals_id}</td>
+											<td>{$vo.hospital_office_id}</td>
+											<td>{$vo.hospital_doctor_name}</td>
+											<td>{$vo.hospital_doctor_identity}</td>
+											<td>{$vo.hospital_doctor_introduction}</td>
+											<td>{$vo.hospital_doctor_phone}</td>
+											<td>{$vo.hospital_doctor_picture}</td>
+											<td>{$vo.doctor_registration_number}</td>
+											<td>{$vo.registration_predict_money}</td>
+											<td>{$vo.hospital_doctor_sex}</td>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</div>
+</div>
+	<script>
+		var SCOPE = {
+			'add_url':'__URL__/add'
+		};
+	</script>
+		
+<include file="Index/footer" />
