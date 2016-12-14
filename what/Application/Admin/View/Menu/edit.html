@@ -1,0 +1,111 @@
+<include file="Index/header" />
+<!--wrapper整个大背景色-->
+<div id="wrapper">
+	<include file="Index/nav" />
+	<!--pagee-wrapper固定在中间的区域-->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			新增菜单
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<!--小图标-->
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">菜单管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i> 编辑菜单
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!--.row面包屑导航-->
+			<div class="row">
+				<div class="col-sm-10">
+					<form id="zh-form-add" class="form-horizontal">
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-menu-name" class="control-label col-sm-3">菜单名：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-menu-name" class="form-control " type="text" name="menu_name" placeholder="请输入菜单名" value="{$menu.menu_name}" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="menu_name"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-menu-module" class="control-label col-sm-3">模块名：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-menu-module" class="form-control " type="text" name="menu_module" placeholder="请输入模块名" value="{$menu.menu_module}" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="menu_module"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-menu-controller" class="control-label col-sm-3">控制器名：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-menu-controller" class="form-control " type="text" name="menu_controller" placeholder="请输入控制器名" value="{$menu.menu_controller}" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="menu_controller"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-menu-action" class="control-label col-sm-3">操作名：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-menu-action" class="form-control " type="text" name="menu_action" placeholder="请输入操作名" value="{$menu.menu_action}" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="menu_action"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-4 control-label">菜单类型：</label>
+							<div class="col-sm-5">
+								<!--后端用1前端用0-->
+
+								<!--<input type="radio" name="type" value="1" checked/>后台菜单-->
+								<!--checked把它使用if标签替换 即<if condition="$menu.type eq 1">checked</if>-->
+								<input type="radio" name="type" value="1" <if condition="$menu.type eq 1">checked</if>/>后台菜单
+								<input type="radio" name="type" value="0" <if condition="$menu.type eq 0">checked</if>/>前端导航
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-4 control-label">状态：</label>
+							<div class="col-sm-5">
+								<!--后端用1前端用0-->
+								<input type="radio" name="status" value="1" <if condition="$menu.status eq 1">checked</if>/>开启
+								<input type="radio" name="status" value="0" <if condition="$menu.status eq 0">checked</if>/>关闭
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-lg-offset-5">
+								<button type="button" id="zh-button-add-submit" class="btn btn-primary">更新</button>
+							</div>
+						</div>
+						<input type="hidden" value="{$menu.menu_id}" name="id" />
+					</form>
+				</div>
+			</div>
+			<!--.row表单-->
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url': '__URL__/add',
+		//				'success_jump_url':'__MODULE__/Index/index',
+		//可以简化成下面
+		'success_jump_url': '__URL__/index',
+	};
+</script>
+<include file="Index/footer" />

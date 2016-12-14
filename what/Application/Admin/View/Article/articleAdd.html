@@ -1,0 +1,122 @@
+<include file="Index/header" />
+<!--wrapper整个大背景色-->
+<div id="wrapper">
+	<include file="Index/nav" />
+	<!--pagee-wrapper固定在中间的区域-->
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<!--小图标-->
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">文章管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i> 添加文章
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!--.row面包屑导航-->
+			<div class="row">
+				<div class="col-sm-10">
+					<form id="zh-form-article-add" class="form-horizontal">
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-title" class="control-label col-sm-3">标题：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-title" class="form-control " type="text" name="title" placeholder="请输入标题" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="title"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-small-title" class="control-label col-sm-3">副标题：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-small-title" class="form-control " type="text" name="small_title" placeholder="请输入副标题" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="small_title"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="zh-input-image" class="control-label col-sm-3">封面图：</label>
+							<div class="col-sm-5">
+								<input type="file" id="zh-input-uploader" />
+								<!--展示缩略图-->
+								<img src="" alt="" id="zh-img-show-thumb" width="150px" style="display: none;" />
+								<!--封面图的字段-->
+								<input type="hidden" name="image_path" id="zh-input-image-path" />
+								<!--缩略图字段-->
+								<input type="hidden" name="thumb_path" id="zh-input-thumb-path" />
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="zh-textarea-content" class="control-label col-sm-3">内容：</label>
+							<div class="col-sm-5">
+								<textarea class="js-editor" id="zh-texteare-content" name="content" rows="20"></textarea>
+							</div>
+							<!--<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="content"></p>
+							</div>-->
+						</div>
+
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-keywords" class="control-label col-sm-3">关键词：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-keywords" class="form-control " type="text" name="keywords" placeholder="请输入关键词" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="keywords"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<!--form-group表单组-->
+							<label for="zh-input-description" class="control-label col-sm-3">描述：</label>
+							<!--menu-name属性值必须与数据库的字段一致-->
+							<div class="col-sm-5">
+								<input id="zh-input-description" class="form-control " type="text" name="description" placeholder="请输入描述" />
+							</div>
+							<div class="col-sm-4">
+								<p class="zh-p-validate-result" attr-validate="description"></p>
+							</div>
+						</div>
+						<div class="form-group">
+							<label for="" class="col-sm-4 control-label">状态：</label>
+							<div class="col-sm-5">
+								<!--后端用1前端用0-->
+								<input type="radio" name="status" value="1" checked/>开启
+								<input type="radio" name="status" value="0" />关闭
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 col-lg-offset-5">
+								<button type="button" id="zh-button-article-add-submit" class="btn btn-primary">提交</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--.row表单-->
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url': '__ACTION__',
+		//				'success_jump_url':'__MODULE__/Index/index',
+		//可以简化成下面
+		'success_jump_url': '__URL__/index',
+		'ajax_upload_swf': '__JS__/vendor/uploadify/uploadify.swf',
+		'ajax_upload_url': '__URL__/ajaxUploadImage',
+	};
+</script>
+<include file="Index/footer" />

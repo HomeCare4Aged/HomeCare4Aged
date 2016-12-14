@@ -1,0 +1,40 @@
+body{
+	background-color: #262626;
+}
+/*h3{
+	color: #FFFFFF;
+}
+.container{
+	margin-top: 100px;
+	text-align: center;
+}
+form{
+	width: 50%;
+	 margin: 0 auto;//0是上下 auto左右
+}
+button{
+	margin-top: 10px;
+}*/
+#zh-div-login-panel{
+	margin-top: 100px;
+	text-align: center;
+}
+#zh-div-login-panel h3{
+	color: #FFFFFF;
+	margin-top: 20px;
+}
+#zh-div-val-input{
+	padding: 0 0;
+}
+#zh-div-val-img{
+	padding: 0 0;
+}
+#zh-div-val-img img{
+	width: 100px;
+	height: 35px;
+	vertical-align: bottom;
+}
+#zh-div-val-img a{
+	color: #FFFFFF;
+	vertical-align: bottom;
+}

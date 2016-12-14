@@ -1,0 +1,724 @@
+[ 2016-12-12T08:53:44+08:00 ] 127.0.0.1 /what/admin.php/Login/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.031200s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.031200s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-12T08:53:44+08:00 ] 127.0.0.1 /what/admin.php/Login/veriyfyImg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-12T08:54:05+08:00 ] 127.0.0.1 /what/admin.php/Login/veriyfyImg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T08:54:11+08:00 ] 127.0.0.1 /what/admin.php/Login/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-12T08:54:15+08:00 ] 127.0.0.1 /what/admin.php/Login/veriyfyImg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-12T08:54:22+08:00 ] 127.0.0.1 /what/admin.php/Login/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_admin_info` [ RunTime:0.0828s ]
+SQL: SELECT * FROM `w_admin_info` WHERE `admin_name` = 'jay' LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-12T08:54:24+08:00 ] 127.0.0.1 /what/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0630s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0330s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','35','36')  [ RunTime:0.0020s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.148008s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.148008s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003001s ]
+
+[ 2016-12-12T08:54:26+08:00 ] 127.0.0.1 /what/admin.php/Menu/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: p C:\wamp\www\what\Application\Admin\Controller\MenuController.class.php 第 36 行.
+NOTIC: [8] Undefined index: pageSize C:\wamp\www\what\Application\Admin\Controller\MenuController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_menu` WHERE `status` <> -1 ORDER BY list_oder desc, menu_id desc  [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `w_menu` WHERE `status` <> -1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 3 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','35','36')  [ RunTime:0.0000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2016-12-12T08:54:28+08:00 ] 127.0.0.1 /what/admin.php/Article/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 3 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','35','36')  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.056602s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.056602s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2016-12-12T08:54:29+08:00 ] 127.0.0.1 /what/admin.php/Image/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+ERR: 无法加载控制器:Image
+
+[ 2016-12-12T08:54:39+08:00 ] 127.0.0.1 /what/admin.php/Login/loginOut
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T08:54:39+08:00 ] 127.0.0.1 /what/admin.php/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.008000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.008000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-12-12T08:54:39+08:00 ] 127.0.0.1 /what/admin.php/Login/veriyfyImg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T08:54:54+08:00 ] 127.0.0.1 /what/admin.php/Login/check
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_admin_info` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_admin_info` WHERE `admin_name` = 'zhan' LIMIT 1   [ RunTime:0.0010s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T08:54:55+08:00 ] 127.0.0.1 /what/admin.php/Index/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.037003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.037003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T08:54:58+08:00 ] 127.0.0.1 /what/admin.php/Menu/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined index: p C:\wamp\www\what\Application\Admin\Controller\MenuController.class.php 第 36 行.
+NOTIC: [8] Undefined index: pageSize C:\wamp\www\what\Application\Admin\Controller\MenuController.class.php 第 37 行.
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_menu` WHERE `status` <> -1 ORDER BY list_oder desc, menu_id desc  [ RunTime:0.0000s ]
+SQL: SELECT COUNT(*) AS tp_count FROM `w_menu` WHERE `status` <> -1 LIMIT 1   [ RunTime:0.0000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T08:55:01+08:00 ] 127.0.0.1 /what/admin.php/Setting/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: 无法加载控制器:Setting
+
+[ 2016-12-12T08:55:12+08:00 ] 127.0.0.1 /what/admin.php/Role/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `status` <> -1  [ RunTime:0.0010s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\b35d77029c5f30642b30c7a996208f53.php 第 154 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.025002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T08:55:18+08:00 ] 127.0.0.1 /what/admin.php/Article/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T09:09:47+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T09:09:47+08:00 ] 127.0.0.1 /what/admin.php/Article/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.047003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.047003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T09:09:49+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\what\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:38:24+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\what\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:38:34+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\what\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:39:26+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\what\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T12:44:01+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0020s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0020s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\what\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:44:26+08:00 ] 127.0.0.1 /what/admin.php/Article/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:46:14+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.041003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.041003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:46:15+08:00 ] 127.0.0.1 /what/admin.php/Article/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.061004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.061004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:46:17+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0030s ]
+SQL: SHOW COLUMNS FROM `w_article` [ RunTime:0.0030s ]
+NOTIC: [8] Undefined index: validate C:\wamp\www\what\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:46:18+08:00 ] 127.0.0.1 /what/admin.php/Article/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0040s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.058004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.059004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-12T12:49:10+08:00 ] 127.0.0.1 /what/admin.php/Article/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T12:49:11+08:00 ] 127.0.0.1 /what/admin.php/Article/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0000s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.045002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2016-12-12T12:49:29+08:00 ] 127.0.0.1 /what/admin.php/Article/articleAdd
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0020s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T12:49:29+08:00 ] 127.0.0.1 /what/admin.php/Article/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `w_role` [ RunTime:0.0030s ]
+SQL: SELECT * FROM `w_role` WHERE `role_id` = 1 LIMIT 1   [ RunTime:0.0010s ]
+SQL: SHOW COLUMNS FROM `w_menu` [ RunTime:0.0050s ]
+SQL: SELECT * FROM `w_menu` WHERE `menu_id` IN ('32','34','35','33','37','36')  [ RunTime:0.0010s ]
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 115 行.
+NOTIC: [8] Undefined variable: type C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 116 行.
+NOTIC: [8] Undefined variable: articleResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 166 行.
+NOTIC: [8] Undefined variable: pageResult C:\wamp\www\what\Application\Runtime\Cache\Admin\7a4184ffe8f804b12b2e7f8851dd8f7d.php 第 204 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.073004s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.073004s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T16:33:25+08:00 ] 127.0.0.1 /what/admin.php/Login/loginOut
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-12-12T16:33:25+08:00 ] 127.0.0.1 /what/admin.php/Login/index.html
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.009000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.011000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-12T16:33:25+08:00 ] 127.0.0.1 /what/admin.php/Login/veriyfyImg
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+

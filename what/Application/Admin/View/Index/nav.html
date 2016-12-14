@@ -1,0 +1,75 @@
+<!--<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>-->
+<?php
+	$nav_admin = session(C('ADMIN_SESSION'));
+	//拿用户的角色id到角色表中查出这个角色
+	$nav_role = D('Role')->find($nav_admin['admin_role_id']);
+	$nav_role_menu_ids = $nav_role['role_menu_ids'];
+	$nav_menus = D('Menu')->select($nav_role_menu_ids);
+	//查询菜单
+	//$menus = D('Menu')->select('33,34');
+	//dump($nav_admin);exit;
+	//拿到角色id
+	//$admin['admin_role_id']
+	//$condition = array(
+	//	'type' =>1,
+	//	'status' =>array('neq',-1),
+	//);
+	//模板变量不能重复
+	//$nav_menus = D('Menu')->getMenus($condition);
+	//构造一个模板变量,设置首页控制器
+	$index = 'index';
+?>
+<!--后台管理系统的导航栏-->
+<!--navbar导航栏横过来，navbar-inverse,变黑，navbar-fixed-top固定在顶端-->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="navbar-header">
+		<a href="#" class="navbar-brand">WebChina后台管理系统</a>
+	</div>
+	<ul class="nav navbar-right top-left">
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+				<!--fa快速加载-->
+				<i class="fa fa-fw fa-user"></i>zhanyong<i class="caret"></i>
+			</a>
+			<ul class="dropdown-menu">
+				<li>
+					<a href="#"><i class="fa fa-fw fa-user"></i>个人中心</a>
+				</li>
+				<!--divider叫横线-->
+				<li class="divider"></li>
+				<li>
+					<!--<a href="127.0.0.1/what/admin.php/Login/loginOut">注销</a>-->
+					<a href="__MODULE__/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+	<!--side-nav出现在左边-->
+	<ul class="nav navbar-nav side-nav">
+		<!--<li class="active">-->
+		<li {$index|getMenuActiveStatus}>
+			<!--<li>-->
+			<a href="__MODULE__/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
+		</li>
+		<!--<li>
+			<a href="__MODULE__/Menu/index"><i class="fa fa-fw fa-table"></i>菜单管理</a>
+		</li>-->
+		<volist name="nav_menus" id="vo">
+			<!--使用模板显示高亮-->
+			<li {$vo.menu_controller|getMenuActiveStatus}>
+				<!--<li>-->
+				<a href="__MODULE__/{$vo.menu_controller}/{$vo.menu_action}">
+					<i class="fa fa-fw fa-cog"></i> {$vo.menu_name}
+				</a>
+			</li>
+		</volist>
+	</ul>
+</nav>
