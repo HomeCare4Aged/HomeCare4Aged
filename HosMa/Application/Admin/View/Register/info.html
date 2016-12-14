@@ -16,7 +16,48 @@
 					</div>
 				</div>
 				</form>
-			</div>
+			</div> <!--挂号信息显示-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="xx-form-list" class="">
+							<table class="table table-bordered table-hover" id="xx-table-list">
+								<thead>
+									<tr>
+										<td>医生ID</td>
+										<td>医生姓名</td>
+										<td>医生内码</td>
+										<td>挂号人内码</td>
+										<td>预约时间</td>
+										<td>挂号时间</td>
+										<td>医院内码</td>
+										<td>输液人内码</td>
+										<td>输液时间</td>
+										<td>预计结束时间</td>
+										<td>输液方式</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="doctors" id="vo">
+										<tr>
+											<td>{$vo.hospital_doctor_id}</td>
+											<td>{$vo.community_hospitals_id}</td>
+											<td>{$vo.hospital_office_id}</td>
+											<td>{$vo.hospital_doctor_name}</td>
+											<td>{$vo.hospital_doctor_identity}</td>
+											<td>{$vo.hospital_doctor_introduction}</td>
+											<td>{$vo.hospital_doctor_phone}</td>
+											<td>{$vo.hospital_doctor_picture}</td>
+											<td>{$vo.doctor_registration_number}</td>
+											<td>{$vo.registration_predict_money}</td>
+											<td>{$vo.hospital_doctor_sex}</td>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>	
+			</div><!--挂号信息显示结束-->
 		</div>
 	</div>
 </div>

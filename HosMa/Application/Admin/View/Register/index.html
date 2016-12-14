@@ -4,7 +4,7 @@
 	<div id="page-wrapper">
 		<div class="container">
 			<h3>号池信息录入</h3>
-			<div class="row">
+			<!--<div class="row">
 				<form class="form-horizontal" id="">
 				<div class="form-group">
 					<label id="" class="control-label col-sm-3">在班医生信息：</label>
@@ -15,6 +15,116 @@
 						<button class="btn btn-primary">录入</button>
 					</div>
 				</div>
+				</form>
+			</div>--><!--row.结束-->
+			<div class="row">
+				<form id="xx-form-add" class="form-horizontal">
+					<div class="form-group">
+						<label for="xx-input-hospital-doctor-name" class="control-label col-sm-3">医生姓名：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-doctor-name" class="form-control" type="text" 
+							name="hospital_doctor_name" placeholder="请输入医生姓名" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="hospital_doctor_name"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-doctor-number" class="control-label col-sm-3">医生内码：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-doctor-number" class="form-control" type="text" 
+							name="hospital_doctor_id" placeholder="请输入医生内码" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="hospital_doctor_id"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-registerPerson-name" class="control-label col-sm-3">挂号人内码：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-registerPerson-name" class="form-control" type="text" 
+							name="community_user_id" placeholder="请输入挂号人内码" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="community_user_id"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-doctor-name" class="control-label col-sm-3">预约时间：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-appointment-time" class="form-control" type="text" 
+							name="user_appointment_time" placeholder="请输入预约时间" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="user_appointment_time"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-registerPerson-time" class="control-label col-sm-3">挂号时间：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-registerPerson-time" class="form-control" type="text" 
+							name="user_registration_date" placeholder="请输入挂号时间" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="user_registration_date"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-inside-number" class="control-label col-sm-3">医院内码：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-inside-number" class="form-control" type="text" 
+							name="hospital_doctor_id" placeholder="请输入医院内码" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="hospital_doctor_id"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-infusionPerson-number" class="control-label col-sm-3">输液人内码：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-infusionPerson-number" class="form-control" type="text" 
+							name="community_user_id" placeholder="请输入输液人内码" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="community_user_id"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-infusion-time" class="control-label col-sm-3">输液时间：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-infusion-time" class="form-control" type="text" 
+							name="user_transfusion_date" placeholder="请输入输液时间" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="user_transfusion_date"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-expected-end-time" class="control-label col-sm-3">预计结束时间：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-expected-end-time" class="form-control" type="text" 
+							name="predict_finished_time" placeholder="请输入预计结束时间" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="predict_finished_time"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="xx-input-hospital-infusion-mode" class="control-label col-sm-3">输液方式(坐/躺)：</label>
+						<div class="col-sm-5">
+							<input id="xx-input-hospital-infusion-mode" class="form-control" type="text" 
+							name="user_transfusion_type" placeholder="请输入输液方式(坐/躺)" />
+						</div>
+						<div class="col-sm-4">
+							<p class="xx-p-validate-result" attr-validate="user_transfusion_type"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-sm-2 col-lg-offset-4">
+							<button class="btn btn-primary">录入</button>
+						</div>
+					</div>
+					
 				</form>
 			</div>
 		</div>
