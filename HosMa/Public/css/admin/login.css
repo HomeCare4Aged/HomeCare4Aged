@@ -1,0 +1,27 @@
+body{
+	background-color: #F8F8F8;
+}
+#xx-div-login-panel{
+	margin-top: 150px;
+	text-align: center;
+}
+#xx-div-login-panel h3{
+	margin-bottom: 20px;
+}
+#xx-div-val-input{
+	padding: 0 0;
+}
+
+#xx-div-val-img{
+	padding: 0 0;
+}
+#xx-div-val-img img{
+	width: 100px;
+	height: 35px;
+	vertical-align: bottom;
+}
+
+#xx-div-val-img a{
+	color: #FFFFFF;
+	vertical-align: bottom;
+}
