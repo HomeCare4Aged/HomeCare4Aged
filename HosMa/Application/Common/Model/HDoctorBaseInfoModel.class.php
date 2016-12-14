@@ -5,7 +5,7 @@ use Think\Model;
 class HDoctorBaseInfoModel extends Model{
 	//设置表单验证规则
 	protected $_validate = array(
-		array('hospital_doctor_name','require','标题不能为空'),
+		array('community_hospitals_name','require','标题不能为空'),
 		array('hospital_doctor_identity','require','内容不能为空'),
 		array('hospital_doctor_introduction','require','关键词不能为空'),
 		array('hospital_doctor_phone','require','描述不能为空'),
