@@ -36,6 +36,12 @@ div{
 #g-btn{
 	position:relative;
 	background: -webkit-linear-gradient(top, #EC971F, #FFFF00);
+	border-color: black;
+	border-width: 2px;
+	border-radius: 10px;
+
+	
+	
 
 	
 }
