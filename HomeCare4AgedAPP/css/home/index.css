@@ -4,6 +4,12 @@
 div{
 	position:relative;
 }
+#g-top-img{
+	margin-top: 2px;
+	margin-bottom: 0;
+	margin-left: 2px;
+	margin-right: 2px;
+}
 #span-date{
 	position:absolute;
     top:20%;

@@ -21,32 +21,49 @@
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
+<<<<<<< HEAD
     ],
     "refer": []
+=======
+    ]
+>>>>>>> 7f30ed053214d3ec1c38c2c89de79836c94fff24
   },
   "view/transfuse/index.html": {
     "resources": [
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
+<<<<<<< HEAD
     ],
     "refer": []
+=======
+    ]
+>>>>>>> 7f30ed053214d3ec1c38c2c89de79836c94fff24
   },
   "view/video/index.html": {
     "resources": [
       "js/mui.min.js",
       "fonts/mui.ttf",
+<<<<<<< HEAD
       "css/mui.min.css",
       "m.mp4"
     ],
     "refer": []
+=======
+      "css/mui.min.css"
+    ]
+>>>>>>> 7f30ed053214d3ec1c38c2c89de79836c94fff24
   },
   "view/registration/index.html": {
     "resources": [
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
+<<<<<<< HEAD
     ],
     "refer": []
+=======
+    ]
+>>>>>>> 7f30ed053214d3ec1c38c2c89de79836c94fff24
   }
 }
