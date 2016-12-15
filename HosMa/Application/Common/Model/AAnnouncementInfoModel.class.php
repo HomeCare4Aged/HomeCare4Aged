@@ -27,7 +27,13 @@ class AAnnouncementInfoModel extends Model{
 		//如果新增成功，会返回新增记录的主键值
 		return $this->add($data);
 	}
-	
+	public function findMenuById($id){
+		if($id === null){
+			throw_exception('菜单ID不合法');
+		}  
+		$cond['announcement_id'] = intval($id);
+		return $this->where($cond)->find(); 
+	}
 	
 	
 }
