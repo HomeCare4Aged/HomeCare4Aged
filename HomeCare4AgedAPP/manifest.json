@@ -238,7 +238,8 @@
 					"view/message/index.html",
 					"view/transfuse/index.html",
 					"view/video/index.html",
-					"view/dropIn/index.html"
+					"view/dropIn/index.html",
+					"view/registration/doctorInfo.html"
 				],
 				"priority": 0
 			},
@@ -281,6 +282,18 @@
 			},
 			"view/dropIn/index.html": {
 				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/registration/doctorInfo.html": {
+				"resources": [
+					"css/refistration/doctorInfo.css",
+					"css/common/common.css",
+					"images/small.png",
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"

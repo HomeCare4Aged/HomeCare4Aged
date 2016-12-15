@@ -18,7 +18,8 @@
 			"view/registration/index.html",
 			"view/transfuse/index.html",
 			"view/video/index.html",
-			"view/dropIn/index.html"
+			"view/dropIn/index.html",
+			"view/registration/doctorInfo.html"
 		],
 		"resources": [
 			"images/123.png",
@@ -40,6 +41,16 @@
 	},
 	"view/dropIn/index.html": {
 		"resources": [
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		]
+	},
+	"view/registration/doctorInfo.html": {
+		"resources": [
+			"css/refistration/doctorInfo.css",
+			"css/common/common.css",
+			"images/small.png",
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css"
