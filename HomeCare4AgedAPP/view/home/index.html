@@ -10,9 +10,6 @@
 	</head>
 	
 	<body>
-		<div class="mui-scroll-wrapper">
-			<div class="mui-scroll">
-				<div class="mui-content">
 					<div class="mui-row">
 						<img src="../../images/123.png" class="mui-icon-image" id="g-top-img" />
 						<span id="span-date"></span>
@@ -85,19 +82,12 @@
 							</button>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init()
 		</script>
 		<script type="text/javascript">
-			mui('.mui-scroll-wrapper').scroll({
-				deceleration: 0.0005, //flick 减速系数，系数越大，滚动速度越慢，滚动距离越小，默认值0.0006
-			});
-			mui('.mui-scroll-wrapper').scroll().scrollTo(0, 0, 100); //100毫秒滚动到顶
 
 			$('.mui-icon-image').css('width', document.documentElement.clientWidth);
 			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 4);
