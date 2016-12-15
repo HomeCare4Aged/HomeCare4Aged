@@ -39,36 +39,42 @@ $(document).ready(function(){
 			},
 		});
 	});
-//	
-//	//点击编辑按钮的事件
-//	$('#xx-table-list #xx-span-edit').click(function(){
-//		var id = $(this).attr('attr-id');
-//		location.href = SCOPE.edit_url+'?id='+id;
-//	});
-//	
-//	//点击删除按钮事件
-//	$('#xx-table-list #xx-span-delete').click(function(){
-//		var id = $(this).attr('attr-id');
-//		var url = SCOPE.set_status_url;
-//		var postData = {};
-//		postData['id'] = id;
+	
+	//点击编辑按钮的事件
+	$('.xx-table-list #xx-span-edit').click(function(){
+		var id = $(this).attr('attr-id');
+		location.href = SCOPE.edit_url+'?id='+id;
+	});
+	
+	//点击删除按钮事件
+	$('.xx-table-list #xx-span-delete').click(function(){
+		var id = $(this).attr('attr-id');
+		var url = SCOPE.delete_status_url;
+		var postData = {};
+		postData['id'] = id;
 //		postData['status'] = -1;
-//		Dialog.confirm('是否确认删除数据？',function(){
-//			$.ajax({
-//				type:"post",
-//				url:url,
-//				async:true,
-//				data:postData,
-//				dataType:'json',
-//				success:function(result){
-//					if(result.status == SUCESS){
-//						return Dialog.success(result.msg,'');
-//					}
-//					return Dialog.error(result.msg);
-//				}
-//			});
-//		});
-//	});
+		Dialog.confirm('是否确认删除数据？',function(){
+			$.ajax({
+				type:"post",
+				url:url,
+				async:true,
+				data:postData,
+				dataType:'json',
+				success:function(result){
+					if(result.status == SUCCESS){
+						return Dialog.success(result.msg,SCOPE.success_refresh_url);
+					}
+					return Dialog.error(result.msg);
+				}
+			});
+		});
+	});
+	
+	//点击播放按钮
+	$('.xx-table-list #xx-span-circle').click(function(){
+		location.href = SCOPE.circle_url;
+	});
+	
 //	
 //	//点击排序按钮的事件
 //	$('#xx-btn-listorder').click(function(){
