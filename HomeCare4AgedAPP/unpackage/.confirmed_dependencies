@@ -19,6 +19,15 @@
 			"view/transfuse/index.html",
 			"view/video/index.html",
 			"view/dropIn/index.html"
+		],
+		"resources": [
+			"images/123.png",
+			"images/small.png",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/home/index.css"
 		]
 	},
 	"view/video/index.html": {
