@@ -1,3 +1,6 @@
+body{
+	background: black;
+}
 .mui-row{
 	background: black;
 }
@@ -41,7 +44,6 @@ div{
 }
 #g-btn{
 	position:relative;
-	background: -webkit-linear-gradient(top, #EC971F, #FFFF00);
 	border-color: black;
 	border-width: 2px;
 	border-radius: 10px;
@@ -52,11 +54,12 @@ div{
 }
 .center{
 	text-align: center;
+	margin-top: 60%;
 }
 
 #g-span{
 	position:relative;
-    top: 20%;
+    
 	color: white;
 	font-size:250%;
 }

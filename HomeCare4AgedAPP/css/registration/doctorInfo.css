@@ -1,0 +1,29 @@
+.zz-div-headImg{
+	float: left;
+}
+.zz-div-doctName{
+	float: left;
+	margin-left: 20px;
+}
+.zz-div-line{
+	border-bottom: 2px solid #cccdce;
+	padding-bottom: 20px;
+}
+.zz-h4-text{
+	margin-top: 15px;
+}
+.zz-textarea-info{
+	background-color: white;
+	border: none;
+	font-size: 20px;
+}
+html body{
+	background-color: white;
+}
+div{
+	background-color: white;
+}
+.mui-content{
+	background-color: white;
+}
+
