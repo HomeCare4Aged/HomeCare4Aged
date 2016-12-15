@@ -112,16 +112,16 @@
 						<table class="table table-bordered table-hover">
 							<thead>
 								<tr>
-									<td>医院名称</td>
-									<td>医院地址</td>
+									<td>商户名称</td>
+									<td>商户地址</td>
 									<td>联系方式</td>
 								</tr>
 							</thead>
 							<tbody>
-								<?php if(is_array($communityhospitalsinfos)): $i = 0; $__LIST__ = $communityhospitalsinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-									    <td><?php echo ($vo["community_hospitals_name"]); ?></td>
-										<td><?php echo ($vo["community_hospitals_address"]); ?></td>
-										<td><?php echo ($vo["principal_contact_phone"]); ?></td>
+								<?php if(is_array($storeshopinfos)): $i = 0; $__LIST__ = $storeshopinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+									    <td><?php echo ($vo["store_shop_name"]); ?></td>
+										<td><?php echo ($vo["store_shop_address"]); ?></td>
+										<td><?php echo ($vo["store_contact_user_phone"]); ?></td>
 									</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 							</tbody>
 						</table>

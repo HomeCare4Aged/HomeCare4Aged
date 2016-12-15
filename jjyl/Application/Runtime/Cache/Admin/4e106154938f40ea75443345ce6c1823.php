@@ -25,6 +25,7 @@
 	<body>
 	
 
+
 <div id="wrapper">
 	
 <!--后台管理系统的导航栏-->
@@ -90,52 +91,61 @@
 
 				
 	<div id="page-wrapper">
-		<!--面包屑导航.row-->
+		<div class="container-fluid">
+			<!--面包屑导航.row-->
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li>
-							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Index/index">医院列表</a>
+							<i class="fa fa-fw fa-university"></i>
+							<a href="/jjyl/admin.php/Examine/index">商户审核</a>
 						</li>
-						<li>
+						<li class="active">
 							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Index/shop">商户列表</a>
+							商户审核列表
 						</li>
 					</ol>
 				</div>
 			</div>
-		<div class="row">
-		    <div class="col-sm-12">
-		    	<div class="table-responsive">
-					<form id="zh-form-list">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<td>医院名称</td>
-									<td>医院地址</td>
-									<td>联系方式</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php if(is_array($communityhospitalsinfos)): $i = 0; $__LIST__ = $communityhospitalsinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-									    <td><?php echo ($vo["community_hospitals_name"]); ?></td>
-										<td><?php echo ($vo["community_hospitals_address"]); ?></td>
-										<td><?php echo ($vo["principal_contact_phone"]); ?></td>
-									</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-							</tbody>
-						</table>
-					</form>
-					<nav>
-						<ul class="pagination">
-							<?php echo ($pageRes); ?>
-						</ul>
-					</nav>
+			<!--表单.row-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zh-form-list">
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr>
+										<td>店铺名称</td>
+										<td>发布人</td>
+										<td>审核状态</td>
+										<td>审核人</td>
+										<td>审核</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>菜单</td>
+										<td>admin</td>
+										<td>menu</td>
+										<td>
+										    <span class="glyphicon glyphicon-trash" id="zh-span-delete" attr-id=""></span>审核
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
 				</div>
-		    </div>
+			</div>
 		</div>
 	</div>
 </div>
+<script>
+	var SCOPE = {
+		'add_url':'/jjyl/admin.php/Examine/add',
+	};
+</script>
     <script type="text/javascript" src="/jjyl/public/js/constants.js" ></script>
     <script type="text/javascript" src="/jjyl/public/js/admin/common.js" ></script>
 	</body>

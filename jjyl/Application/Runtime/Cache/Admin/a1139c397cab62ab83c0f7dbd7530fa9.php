@@ -25,6 +25,7 @@
 	<body>
 	
 
+		
 <div id="wrapper">
 	
 <!--后台管理系统的导航栏-->
@@ -90,52 +91,100 @@
 
 				
 	<div id="page-wrapper">
-		<!--面包屑导航.row-->
+		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li>
-							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Index/index">医院列表</a>
+							<i class="fa fa-fw fa-film"></i>
+							<a href="/jjyl/admin.php/Video/index">视频管理</a>
 						</li>
-						<li>
-							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Index/shop">商户列表</a>
+						<li class="active">
+							<i class="fa fa-fw fa-table"></i>视频列表
 						</li>
 					</ol>
 				</div>
+			</div><!--面包屑导航-->
+			<div class="row">
+				<form action="/jjyl/admin.php/Video/index" method="get" class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">类型</span>
+						<select class="form-control" name="video_type_id">
+							<option value="-723">全部列表</option>
+							<option value="0" <?php if($type == 0): ?>selected<?php endif; ?>>宣传</option>
+							<option value="1"<?php if($type == 1): ?>selected<?php endif; ?>>内科</option>
+							<option value="2"<?php if($type == 2): ?>selected<?php endif; ?>>外科</option>
+						</select>
+						<div class="input-group-btn">
+						    <button type="submit" class="btn btn-primary">
+							    <span class="glyphicon glyphicon-search"></span>
+						    </button>
+					    </div>
+					</div>
+				</form>
+			</div><!--搜索-->
+			<div class="row">
+				<button type="button" class="btn btn-primary" id="zyn-btn-add">
+					<i class="fa fa-fw fa-plus"></i>
+					添加
+				</button>
 			</div>
-		<div class="row">
-		    <div class="col-sm-12">
-		    	<div class="table-responsive">
-					<form id="zh-form-list">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<td>医院名称</td>
-									<td>医院地址</td>
-									<td>联系方式</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php if(is_array($communityhospitalsinfos)): $i = 0; $__LIST__ = $communityhospitalsinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-									    <td><?php echo ($vo["community_hospitals_name"]); ?></td>
-										<td><?php echo ($vo["community_hospitals_address"]); ?></td>
-										<td><?php echo ($vo["principal_contact_phone"]); ?></td>
-									</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-							</tbody>
-						</table>
-					</form>
-					<nav>
-						<ul class="pagination">
-							<?php echo ($pageRes); ?>
-						</ul>
-					</nav>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list">
+								<thead>
+									<tr>
+										<td>视频内码</td>
+										<td>视频发布单位</td>
+										<td>视频标题</td>
+										<td>视频简介</td>
+										<td>视频类别</td>
+										<td colspan="3">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if(is_array($articles)): $i = 0; $__LIST__ = $articles;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>　　<tr>
+										    <td><?php echo ($vo["video_id"]); ?></td>
+										　　<td><?php echo ($vo["community_hospitals_id"]); ?></td>
+										　　<td><?php echo ($vo["video_title"]); ?></td>
+										　　<td><?php echo ($vo["video_introduction"]); ?></td>
+										　　<td><?php echo ($vo["video_type_id"]); ?></td>
+										    　<td>
+										    	<span class="zh-span-operation" id="zh-span-show" attr-id="<?php echo ($vo["community_hospitals_id"]); ?>">预览</span>
+										    </td>
+										　　<td>
+										    	<span class="zh-span-operation" id="zyn-span-edit" attr-id="<?php echo ($vo["community_hospitals_id"]); ?>">编辑</span>
+										    </td>
+										    <td>
+										    	<span class="zh-span-operation" id="zyn-span-trash" attr-id="<?php echo ($vo["community_hospitals_id"]); ?>">删除</span>
+										    </td>
+									　　</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+								</tbody>
+							</table>
+						</form>
+						<!--分页控件-->
+						<nav>
+							<ul class="pagination">
+								<?php echo ($pageRes); ?>
+							</ul>
+						</nav>
+					</div>
 				</div>
-		    </div>
+			</div>
 		</div>
 	</div>
 </div>
+<script>
+	var SCOPE = {
+		'add_url':'/jjyl/admin.php/Video/add',
+		'edit_url':'/jjyl/admin.php/Video/edit',
+		'set_status_url':'/jjyl/admin.php/Video/setStatus',
+		'list_order_url':'/jjyl/admin.php/Video/listOrder',
+		'success_refresh_url':'/jjyl/admin.php/Video/index',
+	};
+</script>
     <script type="text/javascript" src="/jjyl/public/js/constants.js" ></script>
     <script type="text/javascript" src="/jjyl/public/js/admin/common.js" ></script>
 	</body>

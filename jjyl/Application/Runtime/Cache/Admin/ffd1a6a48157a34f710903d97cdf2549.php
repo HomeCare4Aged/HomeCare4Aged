@@ -99,12 +99,13 @@
 					<ol class="breadcrumb">
 						<li>
 							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Announcement/index">公告管理</a>
+							<a href="/jjyl/admin.php/HospitalRegister/index">返回</a>
 						</li>
 						<li class="active">
-							<i class="fa fa-fw fa-edit"></i>
-							添加公告
+							<i class="fa fa-fw fa-table"></i>
+							注册医院后台
 						</li>
+						
 					</ol>
 				</div>
 			</div>
@@ -114,47 +115,32 @@
 			<div class="col-sm-10">
 				<form id="zyn-form-add" class="form-horizontal">
 					<div class="form-group">
-						<label for="zyn-input-announcement_title" class="control-label col-sm-4">公告标题：</label>
+						<label for="zyn-input-community_hospitals_name" class="control-label col-sm-4">医院名称：</label>
 						<div class="col-sm-5">
-							<input id="zyn-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入标题"/>
+							<input id="zyn-input-community_hospitals_name" class="form-control" type="text" name="community_hospitals_name" placeholder="请输入医院名称"/>
 						</div>
 						<div class="col-sm-3">
-							<p class="zyn-p-validate-result" attr-validate = "announcement_title"></p>
+							<p class="zyn-p-validate-result" attr-validate = "community_hospitals_name"></p>
 						</div>
 					</div>
-					
 					<div class="form-group">
-						<label for="zyn-input-image" class="control-label col-sm-4">图片：</label>
-						<div class="col-sm-6">
-								<input id="zyn-input-uploader" type="file" />
-								<!--缩略图-->
-								<img src="" alt="" id="zyn-image-show-thumb" width="150px" style="display: none;"/>
-								<!--封面图-->
-								<input type="hidden" name="announcement_picture" id="zyn-input-image-path"/>
-								<!--缩略图-->
-								<input type="hidden" name="announcement_small_picture" id="zyn-input-thumb-path"/>
-							</div>
-					</div>
-					<div class="form-group">					
-						<label for="zyn-textarea-content" class="control-label col-sm-4">内容：</label>
+						<label for="zyn-input-hospital_account_num" class="control-label col-sm-4">申请账号:</label>
 						<div class="col-sm-5">
-							<textarea class="js-editor" id="zyn-textarea-content" name="announcement_content" rows="20" cols="40"></textarea>
+							<input id="zyn-input-hospital_account_num" class="form-control" type="text" name="hospital_account_num" placeholder="请输入申请账号"/>
 						</div>
 						<div class="col-sm-3">
-							<p class="zyn-p-validate-result" attr-validate = "announcement_content"></p>
+							<p class="zyn-p-validate-result" attr-validate = "hospital_account_num"></p>
 						</div>
-					</div>					
-					
-								
-					<!--<div class="form-group">
-						<label for="" class="col-sm-4 control-label">状态类型：</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-hospital_account_password" class="control-label col-sm-4">密码:</label>
 						<div class="col-sm-5">
-							<input type="radio" name="status" value="1" checked/>开启
-							<input type="radio" name="status" value="0"/>关闭
+							<input id="zyn-input-hospital_account_password" class="form-control" type="text" name="hospital_account_password" placeholder="请输入密码"/>
 						</div>
-					</div>-->
-					<input type="hidden" name="announcement_company_type" value="1"/>
-					<input type="hidden" name="announcement_check_state" value="1"/>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "hospital_account_password"></p>
+						</div>
+					</div>
 					<div class="row">
 						<div class="col=sm-6 col-sm-offset-5">
 							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
@@ -170,10 +156,10 @@
 
 <script>
 	var SCOPE = {
-		'add_url':'/jjyl/admin.php/Announcement/add',
-		'success_jump_url':'/jjyl/admin.php/Announcement/index',
+		'add_url':'/jjyl/admin.php/HospitalRegister/add',
+		'success_jump_url':'/jjyl/admin.php/HospitalRegister/index',
 		'ajax_upload_swf':'/jjyl/public/js/vendor/uploadify/uploadify.swf',
-		'ajax_upload_url':'/jjyl/admin.php/Announcement/ajaxUploadImage', 
+		'ajax_upload_url':'/jjyl/admin.php/HospitalRegister/ajaxUploadImage', 
 	};
 </script>
 		

@@ -56,40 +56,40 @@
 					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-dashboard"></i>审核<span class="fa arrow"></span></a>
+					<a><i class="fa fa-fw fa-server"></i>审核<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>商户商户</a>
+							<a href="/jjyl/admin.php/Examine/index"><i class="fa fa-fw fa-university"></i>商户审核</a>
 						</li>
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>视频信息审核</a>
+							<a href="#"><i class="fa fa-fw fa-newspaper-o"></i>公告信息审核</a>
 						</li>
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>通告信息审核</a>
+							<a href="#"><i class="fa fa-fw fa-film"></i>视频信息审核</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-dashboard"></i>公告管理</a>
+					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>社区医院管理</a>
+					<a href="#"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>店铺管理</a>
+					<a href="#"><i class="fa fa-fw fa-university"></i>店铺管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>视频管理</a>
+					<a href="/jjyl/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-dashboard"></i>医院后台注册</a>
+					<a href="/jjyl/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-edit"></i>医院后台注册</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
+				
 	<div id="page-wrapper">
 		
 		<div class="container-fluid">
@@ -103,16 +103,18 @@
 					</ol>
 				</div>
 			</div><!--.row面包屑导航-->
-			<div class="row zz-div-search" >
-				<div class="col-sm-6">
-					<form action="/jjyl/admin.php/Announcement/index" method="get" class="form-horizontal">
+			<div class="row zyn-div-search" >
+				<div class="col-sm-5">
+					<form class="form-horizontal" action="/jjyl/admin.php/Announcement/index" method="post">
 						<div class="input-group">
-							<span class="input-group-addon">查询</span>
-							<span class="input-group">
-    							<input type="text" class="form-control input-lg" id="zz-input-keywords" placeholder="search">
-    							<span class="input-group-addon btn btn-primary" id="zz-span-thesearch">搜索</span>
-							</span>
-						</div>	
+							<span class="input-group-addon">搜索</span>
+							<input type="text" name='search' style="width: 320px; height: 35px;" />
+							<div class="input-group-btn">
+							<button type="submit" class="btn btn-primary">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+							</div>
+						</div>
 					</form>
 				</div>
 				<div class="col-sm-2">
@@ -123,26 +125,29 @@
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-responsive">
-						<form id="zz-form-list">
-							<table class="table table-bordered table-hover zz-table-list" >
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list" >
 								<thead>
 									<tr>
 										<td>标题</td>
 										<td>发布用户</td>
 										<td>所属单位</td>
 										<td>审核人员</td>
+										<td>审核状态</td>
 										<td>发布时间</td>
-										<td>查看</td>
+										<td>操作</td>
 									</tr>
 								</thead>
 								<tbody>
-									<?php if(is_array($articles)): $i = 0; $__LIST__ = $articles;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-											<td><?php echo ($vo["article_id"]); ?></td>
-											<td><?php echo ($vo["title"]); ?></td>
+									<?php if(is_array($ancheckstate)): $i = 0; $__LIST__ = $ancheckstate;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+											<td><?php echo ($vo["announcement_title"]); ?></td>
+											<td>admin</td>
 											<td><?php echo ($vo["small_title"]); ?></td>
-											<td><?php echo ($vo["keywords"]); ?></td>
-											<td><?php echo (getDataStatus($vo["status"])); ?></td>
-											<td><?php echo ($vo["create_time"]); ?></td>
+											<td>aaaaa</td>
+											<td><?php echo (getDataStatus($vo["announcement_check_state"])); ?></td>
+											<td><?php echo ($vo["announcement_creat_time"]); ?></td>
+											<td id='zyn-span-edit' attr-id="<?php echo ($vo["announcement_id"]); ?>"><a href="#">查看与修改状态</a></td>
+											
 										</tr><?php endforeach; endif; else: echo "" ;endif; ?>
 								</tbody>
 							</table>

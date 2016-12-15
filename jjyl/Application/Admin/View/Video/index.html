@@ -1,0 +1,103 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-film"></i>
+							<a href="__ACTION__">视频管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-table"></i>视频列表
+						</li>
+					</ol>
+				</div>
+			</div><!--面包屑导航-->
+			<div class="row">
+				<form action="__ACTION__" method="get" class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">类型</span>
+						<select class="form-control" name="video_type_id">
+							<option value="-723">全部列表</option>
+							<option value="0" <if condition="$type eq 0">selected</if>>宣传</option>
+							<option value="1"<if condition="$type eq 1">selected</if>>内科</option>
+							<option value="2"<if condition="$type eq 2">selected</if>>外科</option>
+						</select>
+						<div class="input-group-btn">
+						    <button type="submit" class="btn btn-primary">
+							    <span class="glyphicon glyphicon-search"></span>
+						    </button>
+					    </div>
+					</div>
+				</form>
+			</div><!--搜索-->
+			<div class="row">
+				<button type="button" class="btn btn-primary" id="zyn-btn-add">
+					<i class="fa fa-fw fa-plus"></i>
+					添加
+				</button>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list">
+								<thead>
+									<tr>
+										<td>视频内码</td>
+										<td>视频发布单位</td>
+										<td>视频标题</td>
+										<td>视频简介</td>
+										<td>视频类别</td>
+										<td colspan="3">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="articles" id="vo">
+									　　<tr>
+										    <td>{$vo.video_id}</td>
+										　　<td>{$vo.community_hospitals_id}</td>
+										　　<td>{$vo.video_title}</td>
+										　　<td>{$vo.video_introduction}</td>
+										　　<td>{$vo.video_type_id}</td>
+										    　<td>
+										    	<span class="zh-span-operation" id="zh-span-show" attr-id="{$vo.community_hospitals_id}">预览</span>
+										    </td>
+										　　<td>
+										    	<span class="zh-span-operation" id="zyn-span-edit" attr-id="{$vo.community_hospitals_id}">编辑</span>
+										    </td>
+										    <td>
+										    	<span class="zh-span-operation" id="zyn-span-trash" attr-id="{$vo.community_hospitals_id}">删除</span>
+										    </td>
+									　　</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+						<!--分页控件-->
+						<nav>
+							<ul class="pagination">
+								{$pageRes}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'edit_url':'__URL__/edit',
+		'set_status_url':'__URL__/setStatus',
+		'list_order_url':'__URL__/listOrder',
+		'success_refresh_url':'__ACTION__',
+	};
+</script>
+<include file="Index/footer"/>
+

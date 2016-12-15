@@ -103,7 +103,7 @@
 						</li>
 						<li class="active">
 							<i class="fa fa-fw fa-edit"></i>
-							添加公告
+							修改
 						</li>
 					</ol>
 				</div>
@@ -116,7 +116,7 @@
 					<div class="form-group">
 						<label for="zyn-input-announcement_title" class="control-label col-sm-4">公告标题：</label>
 						<div class="col-sm-5">
-							<input id="zyn-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入标题"/>
+							<input id="zyn-input-announcement_title" class="form-control" type="text" name="announcement_title" value="<?php echo ($announcement["announcement_title"]); ?>"/>
 						</div>
 						<div class="col-sm-3">
 							<p class="zyn-p-validate-result" attr-validate = "announcement_title"></p>
@@ -126,19 +126,13 @@
 					<div class="form-group">
 						<label for="zyn-input-image" class="control-label col-sm-4">图片：</label>
 						<div class="col-sm-6">
-								<input id="zyn-input-uploader" type="file" />
-								<!--缩略图-->
-								<img src="" alt="" id="zyn-image-show-thumb" width="150px" style="display: none;"/>
-								<!--封面图-->
-								<input type="hidden" name="announcement_picture" id="zyn-input-image-path"/>
-								<!--缩略图-->
-								<input type="hidden" name="announcement_small_picture" id="zyn-input-thumb-path"/>
-							</div>
+							<img src="<?php echo ($announcement["announcement_small_picture"]); ?>" alt="" id="zyn-image-show-thumb" width="150px"/>
+						</div>
 					</div>
 					<div class="form-group">					
 						<label for="zyn-textarea-content" class="control-label col-sm-4">内容：</label>
 						<div class="col-sm-5">
-							<textarea class="js-editor" id="zyn-textarea-content" name="announcement_content" rows="20" cols="40"></textarea>
+							<textarea class="js-editor" id="zyn-textarea-content" name="announcement_content" rows="20" cols="40"><?php echo ($announcement["announcement_content"]); ?></textarea>
 						</div>
 						<div class="col-sm-3">
 							<p class="zyn-p-validate-result" attr-validate = "announcement_content"></p>
@@ -146,15 +140,15 @@
 					</div>					
 					
 								
-					<!--<div class="form-group">
+					<div class="form-group">
 						<label for="" class="col-sm-4 control-label">状态类型：</label>
 						<div class="col-sm-5">
-							<input type="radio" name="status" value="1" checked/>开启
-							<input type="radio" name="status" value="0"/>关闭
+							<input type="radio" name="announcement_check_state" value="1" <?php if($announcement['announcement_check_state'] == 1): ?>checked<?php endif; ?> />开启
+							<input type="radio" name="announcement_check_state" value="0" <?php if($announcement['announcement_check_state'] == 0): ?>checked<?php endif; ?>/>关闭
+							<input type="radio" name="announcement_check_state" value="-1" <?php if($announcement['announcement_check_state'] == -1): ?>checked<?php endif; ?>/>删除
 						</div>
-					</div>-->
-					<input type="hidden" name="announcement_company_type" value="1"/>
-					<input type="hidden" name="announcement_check_state" value="1"/>
+					</div>
+					<input type="hidden" name="id" value="<?php echo ($announcement["announcement_id"]); ?>" />
 					<div class="row">
 						<div class="col=sm-6 col-sm-offset-5">
 							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
