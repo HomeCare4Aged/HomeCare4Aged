@@ -28,7 +28,14 @@
 			"js/jquery.1.11.1.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"css/home/index.css"
+			"css/home/index.css",
+			"images/home/registration.png",
+			"images/home/video.png",
+			"images/home/dropIn.png",
+			"images/home/cloudySky.png",
+			"images/home/transfuse.png",
+			"images/home/takeOut.png",
+			"images/home/message.png"
 		]
 	},
 	"view/video/index.html": {
@@ -53,7 +60,8 @@
 			"images/small.png",
 			"js/mui.min.js",
 			"fonts/mui.ttf",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"css/registration/doctorInfo.css"
 		]
 	}
 }
