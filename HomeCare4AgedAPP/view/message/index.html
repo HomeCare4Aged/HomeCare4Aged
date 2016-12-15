@@ -9,16 +9,161 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<!--<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">通知</h1>
+		</header>-->
+		
+		
+		 <header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">外卖</h1>
 		</header>
+
+        <div class="mui-content">
+            <ul class="mui-table-view">
+                <li class="mui-table-view-divider">
+                    今天：
+                    
+                    星期：
+                </li>
+                <ul class="mui-table-view" id="TIH_EventList_UL">
+                    
+                </ul>
+            </ul>
+        </div>
+		
+		
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init({
-				swipeBack:true //启用右滑关闭功能
-			})
-			
+		window.onload = function() {
+				mui.init({
+					swipeBack: true //启用右滑关闭功能
+				});
+				mui.plusReady(function() {
+					// for <a href="http://www.it165.net/pro/ydad/" target="_blank" class="keylink">Android</a> back event
+					mui.options.maintabid = mui.currentWebview.__uuid__;
+					// fill head
+					var curDate = new Date();
+					fillHeader(curDate);
+
+					// righticon add event
+					mui.addEventListenerBySelector("#info", "tap", function() {
+						plus.device.vibrate();
+					});
+
+					// ajax request data
+					getListData(curDate);
+				});
+			}
+
+			function fillHeader(cdate) {
+				mui.html('curdatestr', cdate.toString("yyyy年MM月dd日"));
+				mui.html('curdateweekstr', cdate.week());
+			}
+
+			function getListData(cdate) {
+				if (!mui.constMap.key_historyOnToday) {
+					mui.toast("请在app.js中配置KEY!!! ");
+					return;
+				}
+				plus.nativeUI.showWaiting("数据加载中，请稍候...");
+				console.log(plus.storage.getLength());
+				var existsCache = false;
+				for (var i = 0; i < plus.storage.getLength(); i++) {
+					var stVal = plus.storage.key(i);
+					console.log(stVal.substring(5).length + "========" + cdate.toString().length);
+					if (stVal.substring(5) == cdate.toString()) {
+						// exists cache date in curdate
+						existsCache = true;
+						break;
+					}
+				}
+				if (!existsCache) {
+					// clear all cache
+					plus.storage.clear();
+				}
+
+				var stKey = "main:" + cdate;
+				var cdata = plus.storage.getItem(stKey);
+				if (cdata) {
+					console.log("read cache");
+					// fill cached data
+					cdata = mui.readJson(cdata);
+					notifiULList(cdata);
+				} else {
+					console.log("read real data");
+
+					var url = 'http://japi.juhe.cn/toh/toh?key=' + mui.constMap.key_historyOnToday + 'dtype=json&v=1.0&month=' + cdate.month() + '&day=' + cdate.day();
+					mui.sendRequest(url, {}, function(result) {
+
+						if (result.success) {
+							var n = result.retval.result;
+							notifiULList(n);
+							plus.storage.setItem(stKey, mui.writeJson(n));
+						} else {
+							mui.toast(result.error);
+						}
+					}, 'json');
+				}
+			};
+
+			function notifiULList(cdataList) {
+				plus.nativeUI.closeWaiting();
+				var doc = document,
+					fragment = doc.createDocumentFragment(),
+					container = doc.getElementById("TIH_EventList_UL");
+				mui.each(cdataList, function(i, n) {
+					console.info(n.id)
+					notifiAndSetLiDetail(fragment, n);
+				});
+				container.appendChild(fragment);
+				mui.addEventListenerBySelector("a.aEvent", "tap", showDetail);
+			}
+
+			function notifiAndSetLiDetail(fragment, n) {
+				var doc = document,
+					li = doc.createElement("li"),
+					a = doc.createElement("a"),
+					img = doc.createElement("img"),
+					div = doc.createElement("div"),
+					p = doc.createElement("p");
+				li.setAttribute("class", "mui-table-view-cell mui-media");
+				console.info(n._id)//明明是_id 接口上说id   坑我   
+				a.setAttribute("eid", n._id);
+				//a.addEventListener("click", showDetail(n.id)); //note:showDetail() has been called every times. i dont know why.
+				a.setAttribute("class", "aEvent");
+				img.setAttribute("class", "mui-media-object mui-pull-left");
+				img.setAttribute("style", "width: 42px; height: 42px;");
+				img.setAttribute("src", n.pic.isBlank() ? 'images/logo.png' : n.pic);
+				div.setAttribute("class", "mui-media-body");
+				div.innerText = n.title;
+				p.innerHTML = n.year + "年" + n.month + "月" + n.day + "日" + ", " + n.lunar;
+				li.appendChild(a);
+				a.appendChild(img);
+				a.appendChild(div);
+				div.appendChild(p);
+				fragment.appendChild(li);
+			}
+
+			function showDetail(o) {
+				var a = o.target.offsetParent;
+				
+				if (a.tagName != 'A') {
+					// fix the end of line onclick event, it's return li not a, i dont know why.
+					return;
+				}
+				mui.openWindow({
+					id: "detail.html",
+					url: "detail.html",
+					show: {
+						autoShow: false
+					},
+					extras: {
+						eid: a.getAttribute("eid")
+					}
+				});
+			}
 		</script>
 	</body>
 

@@ -11,3 +11,22 @@ body{
 .black-text{
 	color: black;
 }
+.mui-table-view:after{
+	left:25px;
+	right:25px;
+}
+.mui-table-view:before{
+	left:25px;
+	right:25px;
+}
+.mui-table-view-cell:after{
+	left:25px;
+	right:25px;
+}
+.top60px{
+	margin-top: 60px;
+	background: white;
+}
+.top45px{
+	margin-top: 45px;
+}
