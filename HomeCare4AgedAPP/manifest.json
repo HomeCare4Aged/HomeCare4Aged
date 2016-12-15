@@ -155,10 +155,7 @@
 					"<uses-permission android:name=\"android.permission.WRITE_SETTINGS\"/>"
 				]
 			},
-			"orientation": [
-				"portrait-primary",
-				"portrait-secondary"
-			],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
+			"orientation": ["portrait-primary","portrait-secondary"],/*应用支持的方向，portrait-primary：竖屏正方向；portrait-secondary：竖屏反方向；landscape-primary：横屏正方向；landscape-secondary：横屏反方向*/
 			"icons": {
 				"ios": {
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
@@ -240,7 +237,8 @@
 					"view/registration/index.html",
 					"view/message/index.html",
 					"view/transfuse/index.html",
-					"view/video/index.html"
+					"view/video/index.html",
+					"view/dropIn/index.html"
 				],
 				"priority": 0
 			},
@@ -280,13 +278,21 @@
 				],
 				"refer": [],
 				"priority": 0
+			},
+			"view/dropIn/index.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
 			}
 		},
 		"idle": {
 			"resources": [
 				"view/takeOut/index.html",
 				"js/mui.js",
-				"view/dropIn/index.html",
 				"css/mui.css"
 			]
 		}
