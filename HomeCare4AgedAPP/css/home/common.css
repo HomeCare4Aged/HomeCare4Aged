@@ -4,11 +4,14 @@
 .m_white{
 	background: #FFFFFF;
 }
-.m_title{
+.m_gray_text{
 	color: rgb(97,98,99);
 }
-.m_text{
+.m_black_text{
 	color: #000000;
+}
+.m_white_text{
+	color: #FFFFFF;
 }
 .m_line{
 	background: rgb(204,205,206);
