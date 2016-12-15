@@ -2,11 +2,12 @@
 namespace XXKit;
 
 class ImageUploader{
+	
 	private $_uploadObj = '';
 	
 	function __construct(){
 		$config = array(
-			'rootPath' => './UploadImages/',
+			'rootPath' =>'./UploadImages/',
 			'subName' => date(Y).'/'.date(m).'/'.date(d),
 		);
 		$this->_uploadObj = new \Think\Upload($config);
@@ -16,8 +17,8 @@ class ImageUploader{
 	function imageUpload(){
 		$res = $this->_uploadObj->upload();
 		if($res){
-			$imagePath = $this->_uploadObj->rootPath.$res['Filedata']['savepath'].$res['Filedata']['savename'];
-			$thumbPath = $this->_uploadObj->rootPath.$res['Filedata']['savepath'].$res['Filedata']['savename'];
+			$imagePath = $this->_uploadObj->rootPath.$res['file']['savepath'].$res['file']['savename'];
+			$thumbPath = $this->_uploadObj->rootPath.$res['file']['savepath'].'small_'.$res['file']['savename'];
 			//制作缩略图
 			$image = new \Think\Image();
 			$image->open($imagePath);
@@ -35,12 +36,7 @@ class ImageUploader{
 		}else{
 			return false;
 		}
-		
+
 	}
-	
-	
 }
-
-
-
 ?>
