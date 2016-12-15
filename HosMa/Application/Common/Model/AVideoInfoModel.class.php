@@ -27,7 +27,33 @@ class AVideoInfoModel extends Model{
 		return $this->add($data);
 	}
 	
+	//按照id查询
+	public function findVideoById($id){
+		if($id===null){
+			throw_exception("菜单id不合法");
+		}
+		$cond['video_id']=intval($id);
+		return $this->where($cond)->find();
+	}
+	//按照ID去更新数据
+	public function updateVideoById($id,$data){
+		if($id===null||!is_numeric($id)){
+			throw_exception('菜单ID不合法');
+		}
+		if($data===null||!is_array($data)){
+			throw_exception('菜单数据不合法');
+		}
+		return $this->where('video_id='.$id)->save($data);
+	}
 	
-	
+	public function deleteVideoById($id){
+		if($id===null||!is_numeric($id)){
+			throw_exception('菜单ID不合法');
+		}
+//		if($data===null||!is_array($data)){
+//			throw_exception('菜单数据不合法');
+//		}
+		return $this->where('video_id='.$id)->delete();
+	}
 }
 ?>

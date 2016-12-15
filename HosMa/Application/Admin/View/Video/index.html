@@ -27,11 +27,10 @@
 										<td>视频ID</td>
 										<td>发布视频单位</td>
 										<td>视频标题</td>
-										<td>视频时长</td>
 										<td>视频简介</td>
 										<td>视频分类</td>
 										<td>状态</td>
-										<td colspan="2">操作</td>
+										<td colspan="3">操作</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -40,10 +39,13 @@
 											<td>{$vo.video_id}</td>
 											<td>{$vo.community_hospitals_id}</td>
 											<td>{$vo.video_title}</td>
-											<td>{$vo.video_length}</td>
 											<td>{$vo.video_introduction}</td>
 											<td>{$vo.video_type_id}</td>
 											<td>{$vo.video_type_id}</td>
+											<td>
+												<span class="glyphicon glyphicon-play-circle" id="xx-span-circle" attr-id="{$vo.video_id}"></span>
+
+											</td>
 											<td>
 												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="{$vo.video_id}"></span>
 
@@ -70,6 +72,8 @@
 		'set_status_url':'__URL__/setStatus',
 		'list_order_url':'__URL__/listOrder',
 		'success_refresh_url':'__ACTION__',
+		'delete_status_url' : '__URL__/deleteStatus',
+		'circle_url' : '__URL__/circle'
 	};
 	
 </script>
