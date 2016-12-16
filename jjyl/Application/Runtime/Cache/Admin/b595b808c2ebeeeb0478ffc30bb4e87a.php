@@ -72,10 +72,10 @@
 					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
+					<a href="/jjyl/admin.php/Hospital/index"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-university"></i>店铺管理</a>
+					<a href="/jjyl/admin.php/Shop/index"><i class="fa fa-fw fa-university"></i>店铺管理</a>
 				</li>
 				<li>
 					<a href="/jjyl/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>

@@ -1,0 +1,96 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-stethoscope"></i>
+							<a href="__ACTION__">医院管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-table"></i>医院列表
+						</li>
+					</ol>
+				</div>
+			</div><!--面包屑导航-->
+<!--			<div class="row">
+				<form action="__ACTION__" method="get" class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">类型</span>
+						<select class="form-control" name="video_type_id">
+							<option value="-723">全部列表</option>
+							<option value="0" <if condition="$type eq 0">selected</if>>宣传</option>
+							<option value="1"<if condition="$type eq 1">selected</if>>内科</option>
+							<option value="2"<if condition="$type eq 2">selected</if>>外科</option>
+						</select>
+						<div class="input-group-btn">
+						    <button type="submit" class="btn btn-primary">
+							    <span class="glyphicon glyphicon-search"></span>
+						    </button>
+					    </div>
+					</div>
+				</form>
+            </div>                 -->                       
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list">
+								<thead>
+									<tr>
+										<!--<td>医院内码</td>-->
+										<td>医院名称</td>
+										<td>医院地址</td>
+										<td>医院负责人</td>
+										<td>医院负责人联系方式</td>
+										<td>输液床位</td>
+										<td>输液座位</td>
+										<td>营业时间</td>
+										<td>权限</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="articles" id="vo">
+									　　<tr>
+										    <!--<td>{$vo.community_hospitals_id}</td>-->
+										    <td>{$vo.community_hospitals_name}</td>
+										    <td>{$vo.community_hospitals_address}</td>
+										    <td>{$vo.community_hospitals_principal}</td>
+										    <td>{$vo.principal_contact_phone}</td>
+										    <td>{$vo.hospital_bad_number}</td>
+										    <td>{$vo.hospital_seat_number}</td>
+										    <td>{$vo.hospital_business_time}</td>
+										    <td >
+										    	<span class="input-group-addon btn btn-primary" id='zyn-span-edit' attr-id="{$vo.community_hospitals_id}">修改权限</span>
+										    </td>
+									　　</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+						<!--分页控件-->
+						<nav>
+							<ul class="pagination">
+								{$pageRes}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'edit_url':'__URL__/edit',
+		'set_status_url':'__URL__/setStatus',
+		'list_order_url':'__URL__/listOrder',
+		'success_refresh_url':'__ACTION__',
+	};
+</script>
+<include file="Index/footer"/>
