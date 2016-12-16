@@ -25,6 +25,7 @@
 	<body>
 	
 
+		
 <div id="wrapper">
 	
 <!--后台管理系统的导航栏-->
@@ -91,81 +92,87 @@
 				
 	<div id="page-wrapper">
 		<div class="container-fluid">
-			<!--面包屑导航.row-->
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li>
-							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Video/index">视频管理</a>
+							<i class="fa fa-fw fa-money"></i>
+							<a href="/jjyl/admin.php/Shop/index">店铺管理</a>
 						</li>
 						<li class="active">
-							<i class="fa fa-fw fa-edit"></i>
-							编辑视频
+							<i class="fa fa-fw fa-table"></i>店铺列表
 						</li>
 					</ol>
 				</div>
-			</div>
-			<!--表单.row-->
-			<div class="col-sm-10">
-				<form id="zyn-form-add" class="form-horizontal">
-					<div class="form-group">
-						<label for="zh-input-community_hospitals_id" class="control-label col-sm-3">视频发布单位:</label>
-						<div class="col-sm-4">
-							<input id="zh-input-community_hospitals_id" class="form-control" type="text" 
-							    name="community_hospitals_id" placeholder="请输入视频发布单位" value="<?php echo ($menu["community_hospitals_id"]); ?>"/>
-						</div>
-						<div class="col-sm-5">
-							<p class="zyn-p-validate-result" attr-validate="community_hospitals_id"></p>
-						</div>
+			</div><!--面包屑导航-->
+<!--			<div class="row">
+				<form action="/jjyl/admin.php/Shop/index" method="get" class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">类型</span>
+						<select class="form-control" name="video_type_id">
+							<option value="-723">全部列表</option>
+							<option value="0" <?php if($type == 0): ?>selected<?php endif; ?>>宣传</option>
+							<option value="1"<?php if($type == 1): ?>selected<?php endif; ?>>内科</option>
+							<option value="2"<?php if($type == 2): ?>selected<?php endif; ?>>外科</option>
+						</select>
+						<div class="input-group-btn">
+						    <button type="submit" class="btn btn-primary">
+							    <span class="glyphicon glyphicon-search"></span>
+						    </button>
+					    </div>
 					</div>
-					<div class="form-group">
-						<label for="zh-input-video_title" class="control-label col-sm-3">视频标题:</label>
-						<div class="col-sm-4">
-							<input id="zh-input-video_title" class="form-control" type="text" 
-							    name="video_title" placeholder="请输入视频标题" value="<?php echo ($menu["video_title"]); ?>"/>
-						</div>
-						<div class="col-sm-5">
-							<p class="zyn-p-validate-result" attr-validate="video_title"></p>
-						</div>
+				</form>
+            </div>                 -->                       
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list">
+								<thead>
+									<tr>
+										<td>店铺名称</td>
+										<td>店铺类型</td>
+										<td>创建人</td>
+										<td>店铺简介</td>
+										<td>店铺地址</td>
+										<td>开始营业时间</td>
+										<td>结束营业时间</td>
+										<td>运费</td>
+										<td>运送范围</td>
+										<td>联系人姓名</td>
+										<td>联系人电话</td>
+										<td>当前营业状态</td>
+										<td>经营范围</td>
+										<td>操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<?php if(is_array($articles)): $i = 0; $__LIST__ = $articles;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>　　<tr>
+										    <td><?php echo ($vo["store_shop_name"]); ?></td>
+										    <td><?php echo ($vo["store_type_id"]); ?></td>
+										    <td><?php echo ($vo["store_user_id"]); ?></td>
+										    <td><?php echo ($vo["store_shop_introduction"]); ?></td>
+										    <td><?php echo ($vo["store_shop_address"]); ?></td>
+										    <td><?php echo ($vo["store_begin_time"]); ?></td>
+										    <td><?php echo ($vo["store_end_time"]); ?></td>
+										    <td><?php echo ($vo["store_carriage"]); ?></td>
+										　　<td><?php echo ($vo["store_send_distance"]); ?></td>
+										　　<td><?php echo ($vo["store_contact_user_name"]); ?></td>
+										　　<td><?php echo ($vo["store_contact_user_phone"]); ?></td>
+										　　<td><?php echo ($vo["store_business_state"]); ?></td>
+										    　<td><a href="/jjyl/admin.php/Shop/shop">详情</a></td>
+										    <td><a href="">下架</a></td>
+									　　</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+								</tbody>
+							</table>
+						</form>
+						<!--分页控件-->
+						<nav>
+							<ul class="pagination">
+								<?php echo ($pageRes); ?>
+							</ul>
+						</nav>
 					</div>
-					<div class="form-group">
-						<label for="zh-input-video-content" class="control-label col-sm-3">视频:</label>
-						<div class="col-sm-5">
-							<input type="file" id="zh-input-video-uploader" />
-							<!--展示缩略图-->
-							<img src="" alt="" id="zh-img-show-thumb" width="150px"/>
-							<!--封面图字段-->
-							<input type="hidden" name="image_path" id="zh-input-image-path" />
-							<!--缩略图字段-->
-							<input type="hidden" name="thumb_path" id="zh-input-thumb-path" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="zh-textarea-video_introduction" class="control-label col-sm-3">视频简介:</label>
-						<div class="col-sm-4">
-							<textarea class="js-editor" id="zh-textarea-video_introduction" name="video_introduction" rows="8" value="<?php echo ($menu["video_introduction"]); ?>"></textarea>
-						</div>
-						<div class="col-sm-5">
-							<p class="zyn-p-validate-result" attr-validate="video_introduction"></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="" class="col-sm-3 control-label">视频类别：</label>
-						<div class="col-sm-4">
-							<select class="form-control" name="video_type_id">
-								<option value="0" <?php if($type == 0): ?>selected<?php endif; ?>>宣传</option>
-								<option value="1" <?php if($type == 1): ?>selected<?php endif; ?>>外科</option>
-								<option value="2"<?php if($type == 2): ?>selected<?php endif; ?>>内科</option>
-							</select>
-						</div>
-					</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-4">
-								<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -173,10 +180,11 @@
 </div>
 <script>
 	var SCOPE = {
-		'add_url':'/jjyl/admin.php/Video/edit',
-		'success_jump_url':'/jjyl/admin.php/Video/index',
-		'ajax_upload_swf':'/jjyl/public/js/vendor/uploadify/uploadify.swf',
-		'ajax_upload_url':'/jjyl/admin.php/Video/ajaxUploadImage',
+		'add_url':'/jjyl/admin.php/Shop/add',
+		'edit_url':'/jjyl/admin.php/Shop/edit',
+		'set_status_url':'/jjyl/admin.php/Shop/setStatus',
+		'list_order_url':'/jjyl/admin.php/Shop/listOrder',
+		'success_refresh_url':'/jjyl/admin.php/Shop/index',
 	};
 </script>
     <script type="text/javascript" src="/jjyl/public/js/constants.js" ></script>
