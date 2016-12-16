@@ -5,10 +5,9 @@ use Think\Model;
 class HHospitalOfficeInfoModel extends Model{
 	//设置表单验证规则
 	protected $_validate = array(
-		array('community_hospitals_address','require','医院名称不能为空'),
-		array('hospital_doctor_identity','require','简介不能为空'),
-		array('hospital_doctor_introduction','require','关键词不能为空'),
-		array('hospital_doctor_phone','require','描述不能为空'),
+		array('hospital_office_name','require','科室名称不能为空'),
+		array('hospital_office_id','require','科室编号不能为空'),
+		array('hospital_office_introduction','require','科室简介不能为空'),
 	);
 //	//是否批量处理验证
 	protected $patchValidate = true;

@@ -1,4 +1,5 @@
-<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<?php if (!defined('THINK_PATH')) exit();?><!--头尾分离    忽略错误信息 运行可用-->
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta charset="UTF-8">
@@ -90,95 +91,55 @@
 
 				
 	<div id="page-wrapper">
+		
 		<div class="container-fluid">
-			<!--面包屑导航.row-->
+			
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li>
 							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Video/index">视频管理</a>
+							<a href="/jjyl/admin.php/Hospital/index">社区医院管理</a>
 						</li>
 						<li class="active">
 							<i class="fa fa-fw fa-edit"></i>
-							编辑视频
+							修改权限
 						</li>
 					</ol>
 				</div>
 			</div>
-			<!--表单.row-->
+	<!--.row面包屑导航-->
+	
+		<div class="row">
 			<div class="col-sm-10">
 				<form id="zyn-form-add" class="form-horizontal">
-					<div class="form-group">
-						<label for="zh-input-community_hospitals_id" class="control-label col-sm-3">视频发布单位:</label>
-						<div class="col-sm-4">
-							<input id="zh-input-community_hospitals_id" class="form-control" type="text" 
-							    name="community_hospitals_id" placeholder="请输入视频发布单位" value="<?php echo ($menu["community_hospitals_id"]); ?>"/>
-						</div>
-						<div class="col-sm-5">
-							<p class="zyn-p-validate-result" attr-validate="community_hospitals_id"></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="zh-input-video_title" class="control-label col-sm-3">视频标题:</label>
-						<div class="col-sm-4">
-							<input id="zh-input-video_title" class="form-control" type="text" 
-							    name="video_title" placeholder="请输入视频标题" value="<?php echo ($menu["video_title"]); ?>"/>
-						</div>
-						<div class="col-sm-5">
-							<p class="zyn-p-validate-result" attr-validate="video_title"></p>
+					<?php if(is_array($menus)): $k = 0; $__LIST__ = $menus;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($k % 2 );++$k;?><div class="checkbox-inline">
+							<label><input type="checkbox" name="menu_id[<?php echo ($k); ?>]" value="<?php echo ($vo["menu_id"]); ?>" <?php if(in_array($vo['menu_id'],$role_menu_ids) == 1): ?>checked<?php endif; ?> /><?php echo ($vo["menu_name"]); ?></label>
+							
+						</div><?php endforeach; endif; else: echo "" ;endif; ?>
+					<input type="hidden" name="id" value="<?php echo ($announcement["announcement_id"]); ?>" />
+					<div class="row">
+						<div class="col=sm-6 col-sm-offset-5">
+							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
 						</div>
 					</div>
-					<div class="form-group">
-						<label for="zh-input-video-content" class="control-label col-sm-3">视频:</label>
-						<div class="col-sm-5">
-							<input type="file" id="zh-input-video-uploader" />
-							<!--展示缩略图-->
-							<img src="" alt="" id="zh-img-show-thumb" width="150px"/>
-							<!--封面图字段-->
-							<input type="hidden" name="image_path" id="zh-input-image-path" />
-							<!--缩略图字段-->
-							<input type="hidden" name="thumb_path" id="zh-input-thumb-path" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="zh-textarea-video_introduction" class="control-label col-sm-3">视频简介:</label>
-						<div class="col-sm-4">
-							<textarea class="js-editor" id="zh-textarea-video_introduction" name="video_introduction" rows="8" value="<?php echo ($menu["video_introduction"]); ?>"></textarea>
-						</div>
-						<div class="col-sm-5">
-							<p class="zyn-p-validate-result" attr-validate="video_introduction"></p>
-						</div>
-					</div>
-					<div class="form-group">
-						<label for="" class="col-sm-3 control-label">视频类别：</label>
-						<div class="col-sm-4">
-							<select class="form-control" name="video_type_id">
-								<option value="0" <?php if($type == 0): ?>selected<?php endif; ?>>宣传</option>
-								<option value="1" <?php if($type == 1): ?>selected<?php endif; ?>>外科</option>
-								<option value="2"<?php if($type == 2): ?>selected<?php endif; ?>>内科</option>
-							</select>
-						</div>
-					</div>
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-4">
-								<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
-							</div>
-						</div>
-					</form>
-				</div>
+				</form>
 			</div>
 		</div>
+		<!--。row表单-->
+		</div>
 	</div>
-</div>
+</div>	
+
 <script>
 	var SCOPE = {
-		'add_url':'/jjyl/admin.php/Video/edit',
-		'success_jump_url':'/jjyl/admin.php/Video/index',
+		'add_url':'/jjyl/admin.php/Hospital/add',
+		'success_jump_url':'/jjyl/admin.php/Hospital/index',
 		'ajax_upload_swf':'/jjyl/public/js/vendor/uploadify/uploadify.swf',
-		'ajax_upload_url':'/jjyl/admin.php/Video/ajaxUploadImage',
+		'ajax_upload_url':'/jjyl/admin.php/Hospital/ajaxUploadImage', 
 	};
 </script>
+		
     <script type="text/javascript" src="/jjyl/public/js/constants.js" ></script>
     <script type="text/javascript" src="/jjyl/public/js/admin/common.js" ></script>
 	</body>
