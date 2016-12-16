@@ -74,7 +74,7 @@ class NoticleController extends Controller {
 		}catch(Exception $e){
 			return ajaxReturn(\QUERY_ERROR,$e->getMessage());
 		}
-		if($menu === false){
+		if($announcement === false){
 			return ajaxReturn(\DATABASE_ERROR,'数据库查询失败');
 		}
 		
@@ -82,5 +82,18 @@ class NoticleController extends Controller {
 		$this->display();
     }
 
-
+	public function save($data){
+    	$announcement_id=$data['id'];
+    	unset($data['id']);
+    	try{
+    		$res = D('AAnnouncementInfo')->updateMenuById($announcement_id,$data);
+    	}catch(Exception $e){
+    		return ajaxReturn(\UPDATA_ERROR,$e->getMessage());
+    	}
+    	if($res===false){
+    		return ajaxReturn(\DATABASE_ERROR,"数据库查询失败");
+    	}
+    	return ajaxReturn(\SUCCESS,'公告更新成功！');
+    	
+    }
 }

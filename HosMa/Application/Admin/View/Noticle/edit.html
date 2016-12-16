@@ -49,11 +49,11 @@
 							<div class="col-sm-5">
 								<input type="file" id="xx-input-img-uploader"/>
 									<!--展示缩略图-->
-								<img src="{announcement.announcement_picture}" alt="" id="xx-img-show-thumb"  width="150px" style="display: none;"/>
+								<img src="{$announcement.announcement_picture}" alt="" id="xx-img-show-thumb"  width="150px"/>
 								<!--封面图字段-->
 								<input type="hidden" name="image_path" id="xx-input-image-path"/>
 								<!--缩略图字段-->
-								<input type="hidden" name="thumb_path" id="xx-input-thumb-path"/>
+								<input type="hidden" name="announcement_picture" id="xx-input-thumb-path"/>
 							</div>
 						</div>
 						<div class="form-group">
@@ -65,7 +65,7 @@
 								<p class="xx-p-validate-result" attr-validate="announcement_content"></p >
 							</div>
 						</div>
-						<div class="form-group">
+						<!--<div class="form-group">
 							<label for="xx-input-announcement_checker_id" class="control-label col-sm-3" value="{$announcement.announcement_checker_id}">审核人员:</label>
 							<div class="col-sm-5">
 								<input id="xx-input-announcement_checker_id" class="form-control" type="text" name="announcement_checker_id" placeholder="请输入审核内容" value="{$announcement.announcement_checker_id}"/>
@@ -73,21 +73,21 @@
 							<div class="col-sm-4">
 								<p class="xx-p-validate-result" attr-validate="announcement_content"></p >
 							</div>
-						</div>
-						<div class="form-group">
+						</div>-->
+						<!--<div class="form-group">
 							<label for=""class="control-label col-sm-3">审核状态:</label>
 							<div class="col-sm-5">
 								
 								<input type="radio" name="announcement_check_state" value="1" checked="" <if condition="$announcement.announcement_check_state eq 1">checked</if>/>通过
 								<input type="radio" name="announcement_check_state" value="0" <if condition="$announcement.announcement_check_state eq 0">checked</if>/>未通过
 							</div>
-						</div>
+						</div>-->
 						<div class="row">
 							<div class="col-sm-7 col-lg-offset-5">
 								<button type="button"  id="xx-btn-add-submit" class="btn btn-primary">更新</button>						
 							</div>							
 						</div>
-						<input type="hidden" value="{announcement.announcement_id}" name="id" />
+						<input type="hidden" value="{$announcement.announcement_id}" name="id" />
 					</form>
 				</div>
 			</div>
@@ -97,7 +97,9 @@
 <script>
 	var SCOPE = {
 		'add_url':'__URL__/add',
-		'success_url':'__URL__/index',
+		'success_jump_url':'__URL__/index',
+		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',//图片地址
+		'ajax_upload_url':'__URL__/ajaxUploadImage',//图片上传控制器地址
 	};
 </script>
 <include file="index/footer" />
