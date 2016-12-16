@@ -16,8 +16,8 @@ class HospitalController extends CommonController {
 	    	
 	    //获取分页结果
 	    $pageRes = $pageObj->show();
-	    	
-	    //绑定模板变量        
+//	    $this->assign('articleCount',$articleCount)	
+	    //绑定模板变量     
 	    $this->assign('articles',$articles);
 	    $this->assign('pageRes',$pageRes);
 	    	

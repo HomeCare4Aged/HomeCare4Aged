@@ -3,8 +3,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>后台管理系统</title>
-		<link rel="stylesheet" href="/jjyl/public/css/bootstrap.css" />
-		<link rel="stylesheet" href="/jjyl/public/css/admin/login.css" />
+		<link rel="stylesheet" href="/1/public/css/bootstrap.css" />
+		<link rel="stylesheet" href="/1/public/css/admin/login.css" />
 	    
 	</head>
 	<body>
@@ -33,7 +33,7 @@
 							<input class="form-control" type='text' name='admin_val' placeholder="请输入验证码" />
 						</div>
 						<div class="col-sm-7" id="zyn-div-val-img">
-							<img src="/jjyl/admin.php/Login/verifyImg" />
+							<img src="/1/admin.php/Login/verifyImg" />
 							<a href="javascript:void(0)"><b>点击刷新</b></a>
 						</div>
 					</div>
@@ -45,15 +45,15 @@
 		</div>
 		
 		
-		<script type="text/javascript" src="/jjyl/public/js/jquery.1.11.1.js" ></script>
-		<script type="text/javascript" src="/jjyl/public/js/dialog/layer.js" ></script>
-		<script type="text/javascript" src="/jjyl/public/js/dialog.js" ></script>
-		<script type="text/javascript" src="/jjyl/public/js/admin/login.js" ></script>
+		<script type="text/javascript" src="/1/public/js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript" src="/1/public/js/dialog/layer.js" ></script>
+		<script type="text/javascript" src="/1/public/js/dialog.js" ></script>
+		<script type="text/javascript" src="/1/public/js/admin/login.js" ></script>
 		<script>
 			var SCOPE = {
-				'login_url':'/jjyl/admin.php/Login/check',
-				'succes_jump_url':'/jjyl/admin.php/Index/index',
-				'verify_url':"/jjyl/admin.php/Login/verifyImg" ,
+				'login_url':'/1/admin.php/Login/check',
+				'succes_jump_url':'/1/admin.php/Index/index',
+				'verify_url':"/1/admin.php/Login/verifyImg" ,
 			};
 		</script>
 	</body>
