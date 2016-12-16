@@ -30,8 +30,11 @@
 						<div class="form-group">
 							<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
 							<div class="col-sm-5">
-								<input id="xx-input-hospital-office-id" class="form-control" type="text" 
-								name="hospital_office_id" placeholder="请输入科室编号" />
+								<select class="form-control" name="type">
+									<option value="">--请选择科室--</option>
+									<option value="">内科</option>
+									<option value="">外科</option>
+								</select>
 							</div>
 							<div class="col-sm-4">
 								<p class="xx-p-validate-result" attr-validate="hospital_office_id"></p>
@@ -57,7 +60,7 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="xx-input-image" class="control-label col-sm-3">医生照片：</label>
+							<label for="xx-input-image" class="control-label col-sm-3">封面图：</label>
 							<div class="col-sm-5">
 								<input id="xx-input-img-uploader" type="file" />
 								<!-- 展示缩略图 -->

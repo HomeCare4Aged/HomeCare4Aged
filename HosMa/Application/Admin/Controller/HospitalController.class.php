@@ -14,7 +14,7 @@ class HospitalController extends Controller {
 		//分页逻辑
 		$page = $_REQUEST['p'] ? $_REQUEST[p] : 1;
 		$pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 5;
-		$hospitals = D('HCommunityHospitalsInfo')->getDoctors($cond,$page,$pageSize);
+		$hospitals = D('HCommunityHospitalsInfo')->getHospitals($cond,$page,$pageSize);
 		$articlesCount = D('HCommunityHospitalsInfo')->getMenusCount($cond);
 		//分页控件
 		$pageObj = new \Think\Page($articlesCount,$pageSize);
