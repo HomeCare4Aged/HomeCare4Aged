@@ -21,7 +21,6 @@ class DoctorController extends Controller {
 		$pageRes = $pageObj->show();
 		//绑定模板变量
 		$this->assign('doctors',$doctors);
-		
 		$this->assign('pageRes',$pageRes);
     	$this->display();
     }
@@ -42,7 +41,7 @@ class DoctorController extends Controller {
 				if($res === false){
 					return ajaxReturn(\DATABASE_ERROR,'数据库新增失败');
 				}
-				return ajaxReturn(\SUCCESS,'添加文章成功');
+				return ajaxReturn(\SUCCESS,'新增医生成功');
 			}else{
 				return ajaxReturn(\VALIDATE_ERROR,D('HDoctorBaseInfo')->getError());
 			}
