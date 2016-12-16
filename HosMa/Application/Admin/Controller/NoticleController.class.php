@@ -20,11 +20,11 @@ class NoticleController extends Controller {
     		$validData = D('AAnnouncementInfo')->create();
     		// cDebug($validData);	
     		if($validData){
-//     			//编辑菜单逻辑
-// //  			cDebug($_POST);
-//     			if($_POST['id']){
-//     				return $this->save($_POST);
-//     			}
+       			//编辑菜单逻辑
+   //  			cDebug($_POST);
+       			if($_POST['id']){
+       				return $this->save($_POST);
+       			}
     			
     			//执行新增操作
     			$res = D('AAnnouncementInfo')->insert($validData);
@@ -64,5 +64,23 @@ class NoticleController extends Controller {
     	}
     	return ajaxReturn(\SUCCESS,'图片上传成功',$res);
     }
+
+
+	public function edit(){
+    	$announcement_id = I('id'); 
+		
+		try{
+			$announcement = D('AAnnouncementInfo')->findMenuById($announcement_id);
+		}catch(Exception $e){
+			return ajaxReturn(\QUERY_ERROR,$e->getMessage());
+		}
+		if($menu === false){
+			return ajaxReturn(\DATABASE_ERROR,'数据库查询失败');
+		}
+		
+		$this->assign('announcement',$announcement);
+		$this->display();
+    }
+
 
 }

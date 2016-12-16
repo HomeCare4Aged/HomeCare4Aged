@@ -231,14 +231,22 @@
 					"js/jquery.1.11.1.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"css/home/index.css"
+					"css/home/index.css",
+					"images/home/registration.png",
+					"images/home/video.png",
+					"images/home/dropIn.png",
+					"images/home/cloudySky.png",
+					"images/home/transfuse.png",
+					"images/home/takeOut.png",
+					"images/home/message.png"
 				],
 				"refer": [
 					"view/registration/index.html",
 					"view/message/index.html",
 					"view/transfuse/index.html",
 					"view/video/index.html",
-					"view/dropIn/index.html"
+					"view/dropIn/index.html",
+					"view/registration/doctorInfo.html"
 				],
 				"priority": 0
 			},
@@ -284,6 +292,20 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/registration/doctorInfo.html": {
+				"resources": [
+					"css/refistration/doctorInfo.css",
+					"css/common/common.css",
+					"images/small.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/registration/doctorInfo.css",
+					null
 				],
 				"refer": [],
 				"priority": 0

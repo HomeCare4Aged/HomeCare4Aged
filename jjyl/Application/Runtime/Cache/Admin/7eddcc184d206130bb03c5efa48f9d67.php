@@ -56,40 +56,40 @@
 					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-dashboard"></i>审核<span class="fa arrow"></span></a>
+					<a><i class="fa fa-fw fa-server"></i>审核<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>商户商户</a>
+							<a href="/jjyl/admin.php/Examine/index"><i class="fa fa-fw fa-university"></i>商户审核</a>
 						</li>
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>视频信息审核</a>
+							<a href="#"><i class="fa fa-fw fa-newspaper-o"></i>公告信息审核</a>
 						</li>
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>通告信息审核</a>
+							<a href="#"><i class="fa fa-fw fa-film"></i>视频信息审核</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-dashboard"></i>公告管理</a>
+					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>社区医院管理</a>
+					<a href="/jjyl/admin.php/Hospital/index"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>店铺管理</a>
+					<a href="/jjyl/admin.php/Shop/index"><i class="fa fa-fw fa-university"></i>店铺管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>视频管理</a>
+					<a href="/jjyl/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-dashboard"></i>医院后台注册</a>
+					<a href="/jjyl/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-edit"></i>医院后台注册</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
+				
 	<div id="page-wrapper">
 		
 		<div class="container-fluid">
@@ -114,31 +114,34 @@
 			<div class="col-sm-10">
 				<form id="zyn-form-add" class="form-horizontal">
 					<div class="form-group">
-						<label for="zyn-input-title" class="control-label col-sm-4">公告标题：</label>
+						<label for="zyn-input-announcement_title" class="control-label col-sm-4">公告标题：</label>
 						<div class="col-sm-5">
-							<input id="zyn-input-title" class="form-control" type="text" name="title" placeholder="请输入标题"/>
+							<input id="zyn-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入标题"/>
 						</div>
 						<div class="col-sm-3">
-							<p class="zyn-p-validate-result" attr-validate = "title"></p>
+							<p class="zyn-p-validate-result" attr-validate = "announcement_title"></p>
 						</div>
 					</div>
 					
 					<div class="form-group">
 						<label for="zyn-input-image" class="control-label col-sm-4">图片：</label>
-						<div class="col-sm-5">
-							<input type="file" id="zyn-input-uploader"/>
-							<img src="" alt="" id="zyn-image-show-thumb" width="150px" style="display: none;"/>
-							<input type="hidden" name="image_path" id="zyn-input-image-path"/>
-							<input type="hidden" name="thumb_path" id="zyn-input-thumb-path"/>
-						</div>
+						<div class="col-sm-6">
+								<input id="zyn-input-uploader" type="file" />
+								<!--缩略图-->
+								<img src="" alt="" id="zyn-image-show-thumb" width="150px" style="display: none;"/>
+								<!--封面图-->
+								<input type="hidden" name="announcement_picture" id="zyn-input-image-path"/>
+								<!--缩略图-->
+								<input type="hidden" name="announcement_small_picture" id="zyn-input-thumb-path"/>
+							</div>
 					</div>
 					<div class="form-group">					
 						<label for="zyn-textarea-content" class="control-label col-sm-4">内容：</label>
 						<div class="col-sm-5">
-							<textarea class="js-editor" id="zyn-textarea-content" name="content" rows="20"></textarea>
+							<textarea class="js-editor" id="zyn-textarea-content" name="announcement_content" rows="20" cols="40"></textarea>
 						</div>
 						<div class="col-sm-3">
-							<p class="zyn-p-validate-result" attr-validate = "content"></p>
+							<p class="zyn-p-validate-result" attr-validate = "announcement_content"></p>
 						</div>
 					</div>					
 					
@@ -151,6 +154,7 @@
 						</div>
 					</div>-->
 					<input type="hidden" name="announcement_company_type" value="1"/>
+					<input type="hidden" name="announcement_check_state" value="1"/>
 					<div class="row">
 						<div class="col=sm-6 col-sm-offset-5">
 							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>

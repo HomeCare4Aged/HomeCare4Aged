@@ -1,0 +1,56 @@
+html body{
+	background-color: white;
+}
+div{
+	background-color: white;
+}
+.mui-content{
+	background-color: white;
+}
+.marginLeftRight{
+	margin-left:25px ;
+	margin-right:25px ;
+}
+.zz-div-headImg{
+	float: left;
+}
+.zz-img-headImg{
+	width: 60px;
+	height: 60px;
+}
+.zz-div-doctName{
+	float: left;
+	margin-left: 15px;
+}
+.zz-div-line{
+	border-bottom: 2px solid #cccdce;
+	padding-bottom: 15px;
+}
+.zz-hr-line{
+	background-color: #cccdce; 
+	height: 2px;
+	border: none;
+	margin-top: 15px;
+	margin-bottom: 0px;
+	
+}
+.zz-h5-text{
+	margin-top: 10px;
+	font-size: 17px;
+	font-weight: 900;
+}
+.zz-label-doctInfo{
+	font-size: 25px;
+}
+.zz-div-label{
+	margin-top: 15px;
+	line-height: 30px;
+}
+.zz-btn-next{
+	margin-top: 15px;
+	width: 100%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	margin-top: 30px;
+}
