@@ -35,6 +35,15 @@ class AAnnouncementInfoModel extends Model{
 		return $this->where($cond)->find(); 
 	}
 	
-	
+	//按照ID去更新数据
+	public function updateMenuById($id,$data){
+		if($id===null||!is_numeric($id)){
+			throw_exception('菜单ID不合法');
+		}
+		if($data===null||!is_array($data)){
+			throw_exception('菜单数据不合法');
+		}
+		return $this->where('announcement_id='.$id)->save($data);
+	}
 }
 ?>
