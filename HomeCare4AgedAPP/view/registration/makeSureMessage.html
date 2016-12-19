@@ -13,14 +13,10 @@
 	<body>
 		<header class="mui-bar mui-bar-nav ">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认挂号</h1>
 		</header>
 		<div class="mui-content">
 		    <ul class="mui-table-view" id="list_ul">
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<h3  style="color: rgb(103,103,103);font-size: 20px; margin-top: 10px; font-weight: normal; margin-left: 15px;">确认挂号</h3>
-					</div>
-				</li>
 				<li class="mui-table-view-cell mui-media">
 					<div class="marginLeftRight">
 						<h3 class="MSM-gray-text" >就诊医院</h3>
@@ -46,7 +42,7 @@
 						<h3 class="MSM-gray-text MSM-top25px" >就诊医生</h3>
 					</div>
 					<div class="marginLeftRight">
-						<h1 class="MSM-black-text" id="doctorNameText">李主任</h1>
+						<h1 class="MSM-black-text" id="doctorNameText">捅主任</h1>
 					</div>
 					<div class="marginLeftRight ">
 						<h3 class="MSM-gray-text MSM-top25px" >挂号费用</h3>
@@ -64,7 +60,7 @@
 				</li>
 				<li class="mui-table-view-cell mui-media">
 					<div class="marginLeftRight">
-						<button type="button" class="zz-btn-next">下一步</button>
+						<button type="button" class="zz-btn-next" onclick="openWindow();">下一步</button>
 					</div>
 				</li>
 			</ul>
@@ -75,6 +71,18 @@
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
 			});
+			mui.plusReady(function(){
+				var sData = plus.webview.currentWebview();
+				mui.toast(sData._id);
+			});
+			function openWindow(){
+				mui.openWindow({
+					url:'../registration/finish.html',
+					extras:{
+						
+					},
+				});
+			};
 		</script>
 	</body>
 

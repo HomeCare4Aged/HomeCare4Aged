@@ -1,0 +1,23 @@
+.topDiv{
+	margin-top: 30%;
+	text-align: center;
+}
+.image{
+	width: 100px;
+	height: 100px;
+}
+.msg{
+	margin-top: 10px;
+	color: rgb(238,160,47);
+}
+.zz-btn-next{
+	position:fixed;
+	left: 10%;
+	bottom: 10%;
+	width: 80%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	background: rgb(238,160,47);
+	border: 0px;
+}

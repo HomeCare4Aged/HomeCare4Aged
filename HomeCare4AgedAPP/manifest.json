@@ -210,7 +210,11 @@
 				"resources": [
 					"css/registration/index.css",
 					"images/small.png",
-					"css/common/common.css"
+					"css/common/common.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [
 					"view/registration/doctorInfo.html"
@@ -234,13 +238,20 @@
 					"images/home/message.png"
 				],
 				"refer": [
-					"view/registration/index.html"
+					"view/registration/index.html",
+					"view/transfuse/index.html"
 				],
 				"priority": 0
 			},
 			"view/registration/doctorInfo.html": {
 				"resources": [
-					"css/registration/doctorInfo.css"
+					"css/registration/doctorInfo.css",
+					"images/small.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css",
+					"js/constants.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -289,7 +300,6 @@
 				"css/mui.poppicker.css",
 				"js/mui.indexedlist.js",
 				"js/mui.pullToRefresh.js",
-				"view/transfuse/index.html",
 				"css/mui.picker.css",
 				"css/mui.indexedlist.css",
 				"js/mui.picker.all.js",

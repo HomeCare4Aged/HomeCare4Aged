@@ -43,7 +43,9 @@
 	font-size: 40px;
 	color: white;
 	background: rgb(238,160,47);
+	border: 0px;
 }
 .mui-table-view-cell, .mui-table-view-cell:active {
     background-color: #FAFAFA;
 }
+//tableviewcell点击不变色
