@@ -21,18 +21,18 @@
 					<img src="../../images/small.png"/ class="zz-img-headImg">
 				</div>
 				<div class="zz-div-doctName">
-					<h2>张大夫</h2>
-					<h5 class="m_gray_text zz-h5-text">主任医师 | 13人预约过</h5>
+					<h2 id="doctName">张大夫</h2>
+					<h5 class="m_gray_text zz-h5-text" id="doctIdentity">主任医师 | 13人预约过</h5>
 				</div>
 			</div>
 			<div class="mui-row marginLeftRight zz-div-label">
-				<label class="zz-label-doctInfo">
+				<label class="zz-label-doctInfo" id="doctIntroduction">
 					选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室
 				</label>
 				<hr class="zz-hr-line"/>
 			</div>
 			<div class="mui-row marginLeftRight zz-div-label">
-				<label class="zz-label-doctInfo">
+				<label class="zz-label-doctInfo" id="doctRegistrationPredictMoney">
 					挂号费：12元
 				</label>
 				<hr class="zz-hr-line"/>
@@ -42,13 +42,34 @@
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
 			});
 			mui.plusReady(function(){
-				var data=plus.webview.currentWebview();
-				mui.toast(data._id);
+				mui.ajax({
+					type : 'GET',
+					url	: SERVERURL+"HDoctorBaseInfo/selectall",
+					dataType :"json",
+					//成功获取数据赋值
+					success: function(data){
+						var doctName = document.getElementById('doctName');
+						doctName.innerHTML = data.data[0].hospital_doctor_name;
+						var doctIdentity = document.getElementById('doctIdentity');
+						doctIdentity.innerHTML = data.data[0].hospital_doctor_identity+'|'+'13人预约过';
+						var doctIntroduction = document.getElementById('doctIntroduction');
+						doctIntroduction.innerHTML = data.data[0].hospital_doctor_introduction;
+						var doctRegistrationPredictMoney = document.getElementById('doctRegistrationPredictMoney');
+						doctRegistrationPredictMoney.innerHTML = '挂号费：'+data.data[0].registration_predict_money+'元';
+					},
+					error:function (xhr,type,errorThrown) {
+						console.log(type);
+						mui.toast(type);
+					}
+				});
+				
+				
 			});
 		</script>
 	</body>
