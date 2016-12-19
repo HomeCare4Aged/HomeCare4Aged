@@ -1,29 +1,1146 @@
-[ 2016-12-14T09:19:08+08:00 ] 127.0.0.1 /jjyl/admin.php/Index/shop
-ERR: Think\Model:getStoreShopInfos方法不存在！
+[ 2016-12-14T14:40:11+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
 
-[ 2016-12-14T09:19:22+08:00 ] 127.0.0.1 /jjyl/admin.php/Index/shop
-ERR: Think\Model:getStoreShopInfos方法不存在！
+[ 2016-12-14T14:40:42+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
 
-[ 2016-12-14T09:19:43+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
-ERR: 1146:Table 'homecare.h_menu' doesn't exist
- [ SQL语句 ] : SHOW COLUMNS FROM `h_menu`
+[ 2016-12-14T14:43:25+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
 
-[ 2016-12-14T09:20:03+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
-ERR: 1146:Table 'homecare.h_menu' doesn't exist
- [ SQL语句 ] : SHOW COLUMNS FROM `h_menu`
+[ 2016-12-14T14:48:06+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
 
-[ 2016-12-14T09:23:35+08:00 ] 127.0.0.1 /jjyl/admin.php/HospitalRegister/index
-ERR: 1146:Table 'homecare.hospital_account_info' doesn't exist
- [ SQL语句 ] : SHOW COLUMNS FROM `hospital_account_info`
+[ 2016-12-14T14:49:47+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
 
-[ 2016-12-14T09:28:28+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
+[ 2016-12-14T14:54:28+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+ERR: 非法操作:ajaxUploadImage
+
+[ 2016-12-14T15:02:37+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-12-14T15:02:48+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T15:36:34+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-14T15:36:48+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-12-14T15:46:14+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
 ERR: 1146:Table 'homecare.menu' doesn't exist
  [ SQL语句 ] : SHOW COLUMNS FROM `menu`
 
-[ 2016-12-14T09:33:10+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/index
-ERR: 无法加载控制器:Announcement
+[ 2016-12-14T16:21:58+08:00 ] 127.0.0.1 /jjyl/admin.php/Login/check
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: SQLSTATE[HY000] [1130] Host '103.226.133.68' is not allowed to connect to this MySQL server
 
-[ 2016-12-14T09:49:02+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
+[ 2016-12-14T16:21:59+08:00 ] 127.0.0.1 /jjyl/admin.php/Login/check
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T16:22:10+08:00 ] 127.0.0.1 /jjyl/admin.php/Login/check
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+ERR: SQLSTATE[HY000] [1130] Host '103.226.133.68' is not allowed to connect to this MySQL server
+
+[ 2016-12-14T16:22:50+08:00 ] 127.0.0.1 /jjyl/admin.php/Login/check
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T16:25:28+08:00 ] 127.0.0.1 /jjyl/admin.php/
+ERR: SQLSTATE[HY000] [1130] Host '103.226.133.68' is not allowed to connect to this MySQL server
+
+[ 2016-12-14T16:27:34+08:00 ] 127.0.0.1 /jjyl/admin.php
+ERR: SQLSTATE[HY000] [1130] Host '103.226.133.68' is not allowed to connect to this MySQL server
+
+[ 2016-12-14T16:46:16+08:00 ] 127.0.0.1 /jjyl/admin.php/Menu/index
 ERR: 1146:Table 'homecare.menu' doesn't exist
  [ SQL语句 ] : SHOW COLUMNS FROM `menu`
+
+[ 2016-12-14T17:10:44+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:10:45+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:10:54+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T17:14:49+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:29:15+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.042002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.042002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-12-14T17:29:16+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.046003s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.046003s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T17:29:24+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T17:29:26+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0280s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.000000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.000000s ]
+
+[ 2016-12-14T17:33:33+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.044002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.045002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001001s ]
+
+[ 2016-12-14T17:33:35+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.017001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.017001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:33:41+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.005001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.005001s ]
+
+[ 2016-12-14T17:33:47+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0040s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:39:44+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.003000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:41:18+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.077005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.077005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:41:20+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:41:25+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0060s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.021002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.021002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:41:38+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:41:43+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0050s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.015001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.015001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002001s ]
+
+[ 2016-12-14T17:46:21+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.175010s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.176010s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:46:22+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.002001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.002001s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T17:46:29+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:46:33+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0040s ]
+SQL: INSERT INTO `a_announcement_info` (`announcement_title`,`announcement_picture`,`announcement_small_picture`,`announcement_content`,`announcement_company_type`) VALUES ('zz','http://127.0.0.1/jjyl/UploadImages/2016/12/14/585114f56bf33.jpg','http://127.0.0.1/jjyl/UploadImages/2016/12/14/small_585114f56bf33.jpg','zzzz','1') [ RunTime:0.1420s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:49:00+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:49:02+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:49:10+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T17:49:13+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [2] date() expects at least 1 parameter, 0 given E:\xampp\htdocs\jjyl\Application\Admin\Controller\AnnouncementController.class.php 第 16 行.
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0190s ]
+SQL: INSERT INTO `a_announcement_info` (`announcement_title`,`announcement_picture`,`announcement_small_picture`,`announcement_content`,`announcement_company_type`,`announcement_creat_time`) VALUES ('xx','http://127.0.0.1/jjyl/UploadImages/2016/12/14/5851159652da5.jpg','http://127.0.0.1/jjyl/UploadImages/2016/12/14/small_5851159652da5.jpg','xxxx','1','') [ RunTime:0.1400s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:51:17+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.102005s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.102005s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.038003s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.038003s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.008000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.009000s ]
+
+[ 2016-12-14T17:51:19+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.032002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.002000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.021001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.021001s ]
+
+[ 2016-12-14T17:51:25+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:51:28+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.004001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0050s ]
+SQL: INSERT INTO `a_announcement_info` (`announcement_title`,`announcement_picture`,`announcement_small_picture`,`announcement_content`,`announcement_company_type`,`announcement_creat_time`) VALUES ('nn','http://127.0.0.1/jjyl/UploadImages/2016/12/14/5851161d6883c.jpg','http://127.0.0.1/jjyl/UploadImages/2016/12/14/small_5851161d6883c.jpg','nnn','1','2016-12-14 17:51:28') [ RunTime:0.1140s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:59:22+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.027001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:59:24+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.016001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.016001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T17:59:36+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0050s ]
+NOTIC: [8] Undefined index: validate E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:00:12+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T18:00:13+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.014000s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.014000s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:00:22+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/ajaxUploadImage
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant Y - assumed 'Y' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant m - assumed 'm' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [8] Use of undefined constant d - assumed 'd' E:\xampp\htdocs\jjyl\ThinkPHP\Library\ZHKit\ImageUploader.class.php 第 11 行.
+NOTIC: [2] call_user_func() expects parameter 1 to be a valid callback, no array or string given E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Upload.class.php 第 170 行.
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:00:26+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.000000s ]
+SQL: SHOW COLUMNS FROM `a_announcement_info` [ RunTime:0.0040s ]
+NOTIC: [8] Undefined index: validate E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Model.class.php 第 1185 行.
+NOTIC: [8] Undefined index: auto E:\xampp\htdocs\jjyl\ThinkPHP\Library\Think\Model.class.php 第 1128 行.
+SQL: INSERT INTO `a_announcement_info` (`announcement_title`,`announcement_picture`,`announcement_small_picture`,`announcement_content`,`announcement_company_type`,`announcement_creat_time`) VALUES ('hahah','http://127.0.0.1/jjyl/UploadImages/2016/12/14/58511835e2052.jpg','http://127.0.0.1/jjyl/UploadImages/2016/12/14/small_58511835e2052.jpg','aaaaaaa','1','2016-12-14 18:00:26') [ RunTime:0.0920s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:00:27+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.043002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.043002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:03:33+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/index
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.013001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.013001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004000s ]
+
+[ 2016-12-14T18:03:36+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: session E:\xampp\htdocs\jjyl\Application\Admin\Controller\AnnouncementController.class.php 第 15 行.
+
+[ 2016-12-14T18:03:57+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Use of undefined constant session - assumed 'session' E:\xampp\htdocs\jjyl\Application\Admin\Controller\AnnouncementController.class.php 第 15 行.
+
+[ 2016-12-14T18:05:07+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.012001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.012001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.003000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.003000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:05:09+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:05:29+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.005000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.029002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.029002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.016001s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.016001s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.014000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.014000s ]
+
+[ 2016-12-14T18:05:30+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.001000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.012000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.012000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.002000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T18:06:39+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.018001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.018001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:06:41+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.002000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.001001s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.001001s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.024001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.024001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:06:45+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001001s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002000s ]
+
+[ 2016-12-14T18:08:16+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.020001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.020001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:08:17+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.004001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.004001s ]
+
+[ 2016-12-14T18:08:43+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001001s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001001s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.023001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.023001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.005000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.005000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.001000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:08:44+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.026001s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.026001s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.006000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.006000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.006001s ]
+INFO: [ app_end ] --END-- [ RunTime:0.006001s ]
+
+[ 2016-12-14T18:08:51+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+
+[ 2016-12-14T18:09:12+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\7eddcc184d206130bb03c5efa48f9d67.php 第 39 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.039002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.039002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-12-14T18:09:14+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.001000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
+INFO: [ view_parse ] --START--
+INFO: [ template_filter ] --START--
+INFO: Run Behavior\ContentReplaceBehavior [ RunTime:0.000000s ]
+INFO: [ template_filter ] --END-- [ RunTime:0.000000s ]
+NOTIC: [8] Undefined variable: admin_name E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 39 行.
+NOTIC: [8] Undefined variable: articles E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 139 行.
+NOTIC: [8] Undefined variable: pageRes E:\xampp\htdocs\jjyl\Application\Runtime\Cache\Admin\22c6480118c91c77f77feb206f2aa8c1.php 第 153 行.
+INFO: Run Behavior\ParseTemplateBehavior [ RunTime:0.025002s ]
+INFO: [ view_parse ] --END-- [ RunTime:0.027002s ]
+INFO: [ view_filter ] --START--
+INFO: Run Behavior\WriteHtmlCacheBehavior [ RunTime:0.004000s ]
+INFO: [ view_filter ] --END-- [ RunTime:0.004000s ]
+INFO: [ app_end ] --START--
+INFO: Run Behavior\ShowPageTraceBehavior [ RunTime:0.003000s ]
+INFO: [ app_end ] --END-- [ RunTime:0.003000s ]
+
+[ 2016-12-14T18:09:21+08:00 ] 127.0.0.1 /jjyl/admin.php/Announcement/add
+INFO: [ app_init ] --START--
+INFO: Run Behavior\BuildLiteBehavior [ RunTime:0.000000s ]
+INFO: [ app_init ] --END-- [ RunTime:0.000000s ]
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.001000s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001000s ]
 

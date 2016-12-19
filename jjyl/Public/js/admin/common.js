@@ -126,7 +126,6 @@ $(document).ready(function(){
 ////	
 ////	//图片上传
 	$('#zyn-input-uploader').uploadify({
-		
 		'swf':SCOPE.ajax_upload_swf,
 		'uploader':SCOPE.ajax_upload_url,
 		'buttonText':'上传图片',
@@ -136,12 +135,32 @@ $(document).ready(function(){
 		'onUploadSuccess':function(file,data,response){
 			if(response){
 				var res = JSON.parse(data);
-				$('#zz-image-show-thumb').attr('src',res.data.thumb_path).show();
-				$('#zz-input-image-path').attr('value',res.data.image_path);
-				$('#zz-input-thumb-path').attr('value',res.data.thumb_path);
+				$('#zyn-image-show-thumb').attr('src',res.data.thumb_path).show();
+				$('#zyn-input-image-path').attr('value',res.data.image_path);
+				$('#zyn-input-thumb-path').attr('value',res.data.thumb_path);
 			}
 		},
 	});
+	//视频上传
+	$('#zh-input-video-uploader').uploadify({
+		'fileSize' : '222121212',
+		'swf':SCOPE.ajax_upload_swf,
+		'uploader':SCOPE.ajax_upload_url,
+		'buttonText':'上传视频',
+		'fileTypeExts':'.RWVB;*.AVI;*.MP4;*.MOV',
+		'fileTypeDecs':'Image File',
+		'fileObjName':'file',
+		'onUploadSuccess':function(file,data,response){
+			if(response){
+				var res = JSON.parse(data);
+				$('#zh-image-show-thumb').attr('src',res.data).show();
+				$('#zh-input-image-path').attr('value',res.data);
+				//$('#zh-input-thumb-path').attr('value',res.data.thumb_path);
+			}
+		},
+	});
+	
+	
 });
 //
 //

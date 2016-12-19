@@ -22,7 +22,7 @@ define('APP_PATH','./Application/');
 
 //设置当前入口文件定位的默认模块
 define('BIND_MODULE', 'Admin');
-
+define('SITE_HOST','http://127.0.0.1/jjyl/');
 // 引入ThinkPHP入口文件
 require './ThinkPHP/ThinkPHP.php';
 

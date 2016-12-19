@@ -18,6 +18,6 @@ return array(
 	),
 	
 	//开启页面跟踪功能
-	'SHOW_PAGE_TRACE' => TURE,
-	
+//	'SHOW_PAGE_TRACE' => TURE,
+
 );

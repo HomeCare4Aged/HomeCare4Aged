@@ -1,5 +1,4 @@
 <?php
-
 namespace ZHKit;
 
 class ImageUploader{
@@ -34,13 +33,10 @@ class ImageUploader{
 			}else{
 				return false;
 			}
+		}else{
+			return false;
 		}
-//		else{
-//			return false;
-//		}
 
 	}
 }
-
-
 ?>

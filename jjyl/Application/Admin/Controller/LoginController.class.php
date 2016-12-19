@@ -1,13 +1,15 @@
 <?php
 namespace Admin\Controller;
-//use Think\Controller;
-class LoginController extends CommonController {
+use Think\Controller;
+class LoginController extends Controller {
 	
 	//加载登录首页
     public function index(){
     	$defindConstants = get_defined_constants(TRUE);
     	
     	if (session(C('ADMIN_SESSION'))){
+//  		cdebug(session(C('ADMIN_SESSION')));
+    		$this->assign('session',session(C('ADMIN_SESSION')));
     		$this->redirect('Admin/Index/index');
     	}
         $this->display();
@@ -29,7 +31,7 @@ class LoginController extends CommonController {
       	$adminPsw = I('admin_psw');
       	//到数据库中查询对应管理员
       	try {
-      		$res = D('AdminInfo')->findAdminByName($adminName);
+      		$res = D('h_admin_info')->findAdminByName($adminName);
       	}catch(Exception $e){
       		//异常处理
       		return ajaxReturn(0,$e->getMessage());
@@ -44,6 +46,9 @@ class LoginController extends CommonController {
         	return ajaxReturn(0,'密码错误');
         }
         session(C('ADMIN_SESSION'),$res);
+//      $adminName = session(C('ADMIN_SESSION'))['admin_name'];
+//      $this->assign('adminName'.$adminName);
+//      cdebug($adminName);
         return ajaxReturn(1,'登录成功');
       }
       public function logout(){

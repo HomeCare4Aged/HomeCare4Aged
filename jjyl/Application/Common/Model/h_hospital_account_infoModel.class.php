@@ -3,11 +3,10 @@ namespace Common\Model;
 use Think\Model;
 
 class h_hospital_account_infoModel extends Model{
-	public function aa(){
-		return 'aaaa';
-	}
+	
 	//设置表单验证规则
 	protected $_validate = array(
+	array('community_hospitals_name','require','医院名不能为空！'),
 	array('hospital_account_num','require','账号不能为空！'),
 	array('hospital_account_password','require','密码不能为空！'),
 	);
@@ -26,10 +25,9 @@ class h_hospital_account_infoModel extends Model{
 	}
 	
 	public function getHospitalAccountInfo($page,$pageSize){
-//		 $this->where($cond) //查询条件
-//			->order('list_order desc,menu_id desc') ;     //排序规则
+			$this->order('community_hospitals_id desc') ;     //排序规则
 			//处理分页的业务
-			if ($page === null || $pageSize === null){
+			if ($page === null || $pageSize !== null){
 				$page = $page !== null  ? $page : 1 ;
 				$pageSize = $pageSize !== null  ? $pageSize : 10 ;
 				$offset = ($page-1) * $pageSize; //每页的起点(偏移量)

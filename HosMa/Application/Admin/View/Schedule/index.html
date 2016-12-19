@@ -2,8 +2,19 @@
 <div id="wrapper">
 	<include file="Index/nav" />
 	<div id="page-wrapper">
-		<div class="container">
-			<h3>排班</h3>
+		<div class="container-fluid">
+			<h3>排班信息</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="">
+							<i class="fa fa-fw fa-edit"></i>
+							排班信息
+						</li>
+						
+					</ol>
+				</div>				
+			</div><!--.row面包屑导航   -->
 			<div class="row">
 				<form class="form-horizontal" id="">
 				<div class="form-group">
@@ -12,14 +23,53 @@
 						<input type="text" class="form-control" id="" placeholder="请录入"/>
 					</div>
 					<div class="col-sm-2">
-						<button class="btn btn-primary">录入</button>
+						<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
 					</div>
 				</div>
 				</form>
 			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="xx-form-list" class="">
+							<table class="table table-bordered table-hover" id="xx-table-list">
+								<thead>
+									<tr>
+										<td>所属科室</td>
+										<td>照片</td>
+										<td>医生姓名</td>
+										<td>性别</td>
+										<td>职称</td>
+										<td>简介</td>
+										<td>联系方式</td>
+										<td>挂号收费</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="doctors" id="vo">
+										<tr>
+											<td>{$vo.hospital_office_id}</td>
+											<td>{$vo.hospital_doctor_picture}</td>
+											<td>{$vo.hospital_doctor_name}</td>
+											<td>{$vo.hospital_doctor_sex}</td>
+											<td>{$vo.hospital_doctor_identity}</td>
+											<td>{$vo.hospital_doctor_introduction}</td>
+											<td>{$vo.hospital_doctor_phone}</td>
+											<td>{$vo.registration_predict_money}</td>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>	
+			</div><!--row-->
 		</div>
 	</div>
 </div>
-
+	<script>
+		var SCOPE = {
+			'add_url':'__URL__/add'
+		};
+	</script>
 		
 <include file="Index/footer" />

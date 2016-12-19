@@ -1,7 +1,7 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
-class IndexController extends Controller {
+class IndexController extends CommonController {
 	//加载医院列表
    public function index(){
        $cond = array(
@@ -26,12 +26,7 @@ class IndexController extends Controller {
     	$this->assign('communityhospitalsinfos',$communityhospitalsinfos);
     	$this->assign('pageRes',$pageRes);
     	
-    	//输出模板
-        $this->display();
-    }
     
-    //加载商户列表
-    public function shop(){
 
        $cond = array(
     	
@@ -49,13 +44,20 @@ class IndexController extends Controller {
     	$pageObj = new \Think\Page($storeshopinfoCount,$pageSize);
     	
     	//获取分页结果
-    	$pageRes = $pageObj->show();
+    	$pageRes2 = $pageObj->show();
     	
     	//绑定模板变量        
     	$this->assign('storeshopinfos',$storeshopinfos);
-    	$this->assign('pageRes',$pageRes);
+    	$this->assign('pageRes2',$pageRes2);
     	
     	//输出模板
         $this->display();
+    }
+    
+    public function nav(){
+    	$session = (session(C('ADMIN_SESSION')));
+    	$admin_name = $session['admin_name'];
+    	$this->assign('admin_name',$admin_name);
+    	$this->display();
     }
 }
