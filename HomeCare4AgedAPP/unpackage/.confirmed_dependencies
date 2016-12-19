@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
 	"view/registration/index.html": {
 		"resources": [
 			"js/mui.min.js",
@@ -91,3 +92,95 @@
 		"refer": []
 	}
 }
+=======
+  "view/registration/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/registration/index.css",
+      "images/small.png",
+      "css/common/common.css"
+    ],
+    "refer": [
+      "view/registration/doctorInfo.html"
+    ]
+  },
+  "view/transfuse/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "view/home/index.html": {
+    "refer": [
+      "view/registration/index.html",
+      "view/transfuse/index.html",
+      "view/video/index.html",
+      "view/dropIn/index.html",
+      "view/registration/doctorInfo.html"
+    ],
+    "resources": [
+      "images/123.png",
+      "images/small.png",
+      "js/mui.min.js",
+      "js/jquery.1.11.1.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/home/index.css",
+      "images/home/registration.png",
+      "images/home/video.png",
+      "images/home/dropIn.png",
+      "images/home/cloudySky.png",
+      "images/home/transfuse.png",
+      "images/home/takeOut.png",
+      "images/home/message.png",
+      "js/constants.js"
+    ]
+  },
+  "view/video/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "m.mp4",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "view/dropIn/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  },
+  "view/registration/doctorInfo.html": {
+    "resources": [
+      "css/refistration/doctorInfo.css",
+      "css/common/common.css",
+      "images/small.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/registration/doctorInfo.css"
+    ],
+    "refer": []
+  },
+  "index.html": {
+    "resources": [
+      "css/index.css",
+      "images/123.png",
+      "images/small.png",
+      "js/constants.js",
+      "js/mui.min.js",
+      "js/jquery.1.11.1.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+  }
+}
+>>>>>>> 153d04218efa1335d5b6e4f3cbe46d6f3620d08f
