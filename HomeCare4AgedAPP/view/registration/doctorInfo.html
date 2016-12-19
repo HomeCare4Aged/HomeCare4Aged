@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav" id="zz-header-header">
+		<header class="mui-bar mui-bar-nav m_orange" id="zz-header-header">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">医生信息</h1>
 		</header>
@@ -55,15 +55,15 @@
 					dataType :"json",
 					//成功获取数据赋值
 					success: function(data){
-						data_id = data.data[0].hospital_doctor_id;
+						data_id = data.data.hospital_doctor_id;
 						var doctName = document.getElementById('doctName');
-						doctName.innerHTML = data.data[0].hospital_doctor_name;
+						doctName.innerHTML = data.data.hospital_doctor_name;
 						var doctIdentity = document.getElementById('doctIdentity');
-						doctIdentity.innerHTML = data.data[0].hospital_doctor_identity+'|'+'13人预约过';
+						doctIdentity.innerHTML = data.data.hospital_doctor_identity+'|'+'13人预约过';
 						var doctIntroduction = document.getElementById('doctIntroduction');
-						doctIntroduction.innerHTML = data.data[0].hospital_doctor_introduction;
+						doctIntroduction.innerHTML = data.data.hospital_doctor_introduction;
 						var doctRegistrationPredictMoney = document.getElementById('doctRegistrationPredictMoney');
-						doctRegistrationPredictMoney.innerHTML = '挂号费：'+data.data[0].registration_predict_money+'元';
+						doctRegistrationPredictMoney.innerHTML = '挂号费：'+data.data.registration_predict_money+'元';
 					},
 					error:function (xhr,type,errorThrown) {
 						console.log(type);
