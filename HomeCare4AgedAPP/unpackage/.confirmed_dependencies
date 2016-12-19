@@ -3,7 +3,17 @@
     "resources": [
       "js/mui.min.js",
       "fonts/mui.ttf",
+<<<<<<< HEAD
       "css/mui.min.css"
+=======
+      "css/mui.min.css",
+      "css/registration/index.css",
+      "images/small.png",
+      "css/common/common.css"
+    ],
+    "refer": [
+      "view/registration/doctorInfo.html"
+>>>>>>> 99965b3ed5a8e236c124ba3c7b1a36630dd211ec
     ]
   },
   "view/transfuse/index.html": {
@@ -11,7 +21,12 @@
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "refer": []
+>>>>>>> 99965b3ed5a8e236c124ba3c7b1a36630dd211ec
   },
   "view/home/index.html": {
     "refer": [
@@ -35,7 +50,12 @@
       "images/home/cloudySky.png",
       "images/home/transfuse.png",
       "images/home/takeOut.png",
+<<<<<<< HEAD
       "images/home/message.png"
+=======
+      "images/home/message.png",
+      "js/constants.js"
+>>>>>>> 99965b3ed5a8e236c124ba3c7b1a36630dd211ec
     ]
   },
   "view/video/index.html": {
@@ -44,14 +64,24 @@
       "m.mp4",
       "fonts/mui.ttf",
       "css/mui.min.css"
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "refer": []
+>>>>>>> 99965b3ed5a8e236c124ba3c7b1a36630dd211ec
   },
   "view/dropIn/index.html": {
     "resources": [
       "js/mui.min.js",
       "fonts/mui.ttf",
       "css/mui.min.css"
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "refer": []
+>>>>>>> 99965b3ed5a8e236c124ba3c7b1a36630dd211ec
   },
   "view/registration/doctorInfo.html": {
     "resources": [
@@ -62,6 +92,24 @@
       "fonts/mui.ttf",
       "css/mui.min.css",
       "css/registration/doctorInfo.css"
+<<<<<<< HEAD
     ]
+=======
+    ],
+    "refer": []
+  },
+  "index.html": {
+    "resources": [
+      "css/index.css",
+      "images/123.png",
+      "images/small.png",
+      "js/constants.js",
+      "js/mui.min.js",
+      "js/jquery.1.11.1.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": []
+>>>>>>> 99965b3ed5a8e236c124ba3c7b1a36630dd211ec
   }
 }

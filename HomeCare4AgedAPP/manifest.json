@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "view/home/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -188,6 +188,114 @@
 					"xxhdpi": ""
 				}
 			}
+		}
+	},
+	"dependencies": {
+		"pages": {
+			"index.html": {
+				"resources": [
+					"css/index.css",
+					"images/123.png",
+					"images/small.png",
+					"js/constants.js",
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/registration/index.html": {
+				"resources": [
+					"css/registration/index.css",
+					"images/small.png",
+					"css/common/common.css"
+				],
+				"refer": [
+					"view/registration/doctorInfo.html"
+				],
+				"priority": 0
+			},
+			"view/home/index.html": {
+				"resources": [
+					"js/constants.js",
+					"fonts/mui.ttf",
+					"images/home/takeOut.png",
+					"images/home/registration.png",
+					"images/home/video.png",
+					"images/home/dropIn.png",
+					"js/mui.min.js",
+					"images/home/cloudySky.png",
+					"js/jquery.1.11.1.js",
+					"css/mui.min.css",
+					"images/home/transfuse.png",
+					"css/home/index.css",
+					"images/home/message.png"
+				],
+				"refer": [
+					"view/registration/index.html"
+				],
+				"priority": 0
+			},
+			"view/registration/doctorInfo.html": {
+				"resources": [
+					"css/registration/doctorInfo.css"
+				],
+				"refer": [],
+				"priority": 0
+			}
+		},
+		"idle": {
+			"resources": [
+				"view/registration/detepicker.html",
+				"css/feedback.css",
+				"js/mui.picker.min.js",
+				"view/takeOut/index.html",
+				"js/mui.dtpicker.js",
+				"js/mui.zoom.js",
+				"m.mp4",
+				"js/mui.poppicker.js",
+				"js/mui.previewimage.js",
+				"js/city.data.js",
+				"js/mui.js",
+				"view/dropIn/index.html",
+				"css/mui.picker.min.css",
+				"css/mui.imageviewer.css",
+				"js/mui.view.js",
+				"js/beecloud.js",
+				"js/mui.picker.js",
+				"js/registration/doctorInfo.js",
+				"js/mui.pullToRefresh.material.js",
+				"css/mui.listpicker.css",
+				"js/mui.lazyload.js",
+				"css/mui.css",
+				"js/city.data-3.js",
+				"js/95516.js",
+				"css/mui.dtpicker.css",
+				"js/registration/dateChose.js",
+				"css/mui.picker.all.css",
+				"view/video/index.html",
+				"js/update.js",
+				"js/feedback.js",
+				"js/arttmpl.js",
+				"js/mui.imageViewer.js",
+				"view/message/index.html",
+				"css/icons-extra.css",
+				"js/ad.js",
+				"js/mui.lazyload.img.js",
+				"js/registration/index.js",
+				"js/mui.listpicker.js",
+				"css/mui.poppicker.css",
+				"js/mui.indexedlist.js",
+				"js/mui.pullToRefresh.js",
+				"view/transfuse/index.html",
+				"css/mui.picker.css",
+				"css/mui.indexedlist.css",
+				"js/mui.picker.all.js",
+				"css/app.css",
+				"js/mui.locker.js"
+			]
 		}
 	}
 }
