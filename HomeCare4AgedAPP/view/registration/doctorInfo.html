@@ -45,7 +45,11 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
-			})
+			});
+			mui.plusReady(function(){
+				var data=plus.webview.currentWebview();
+				mui.toast(data._id);
+			});
 		</script>
 	</body>
 

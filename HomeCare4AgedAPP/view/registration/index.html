@@ -23,118 +23,70 @@
 			<!--<div class="mui-row marginLeftRight" style="margin-bottom: 10px;">
 				<label class="m_gray_text" style="font-size: 30px;">选择科室</label>		
 			</div>-->
-			<ul class="mui-table-view ">
-				<li class="mui-table-view-cell mui-media">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" id="list" >
 					<div class="marginLeftRight">
-						<a href="javascript:;">
 							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">111五官科</h1>
-						</a>
+							<h1 class="black-text listCellText"></h1>
 					</div>
 				</li>
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" id="list" >
 					<div class="marginLeftRight">
-						<a href="javascript:;">
 							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
+							<h1 class="black-text listCellText"></h1>
 					</div>
 				</li>
-				<li class="mui-table-view-cell mui-media">
+				<li class="mui-table-view-cell mui-media" id="list" >
 					<div class="marginLeftRight">
-						<a href="javascript:;">
 							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<a href="javascript:;">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text">五官科</h1>
-						</a>
+							<h1 class="black-text listCellText"></h1>
 					</div>
 				</li>
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
 			});
+			//获取科室列表
+			mui.plusReady(function(){
+				mui.ajax({
+					type : 'GET',
+					url	: SERVERURL+"HospitalOfficeInfo/selectall",
+					dataType :"json",
+					//成功获取数据赋值
+					success: function(data){
+						var list =document.getElementsByClassName('listCellText');
+						for (var i = 0;i<list.length;i++) {
+							list[i].innerHTML = data.data[i].hospital_office_name;
+							console.log(list[i].innerHTML);
+							list[i].id = data.data[i].hospital_office_id;
+							console.log(list[i].id);
+						}
+					},
+					error:function (xhr,type,errorThrown) {
+						console.log(type);
+						mui.toast(type);
+					}
+				});
+				//跳转传值
+				var list =document.getElementsByClassName('listCellText');
+				for (var i = 0;i<list.length;i++) {
+					list[i].addEventListener('tap',function(){
+						mui.openWindow({
+							url:'../registration/doctorInfo.html',
+							extras:{
+								_id:this.id,
+							},
+						});
+					});
+				}
+			});
+			
+				
+			
 		</script>
 	</body>
 
