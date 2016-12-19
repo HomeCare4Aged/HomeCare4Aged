@@ -67,6 +67,7 @@
 
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script type="text/javascript">
 			mui.init()
 			window.addEventListener('orientationchange', function(event) {
@@ -75,7 +76,7 @@
 		</script>
 		<script type="text/javascript">
 			$('.mui-icon-image').css('width', document.documentElement.clientWidth);
-			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 4);
+			$('.mui-icon-image').css('height', document.documentElement.clientWidth*HOMETOPIMGSCALE);
 			setInterval(function() {
 				var hour = new Date().getHours()
 				var min = new Date().getMinutes();
@@ -88,7 +89,7 @@
 				$("#span-date").html(date);
 			}, 50);
 			$('.mui-btn').css('width', document.documentElement.clientWidth / 2);
-			$('.mui-btn').css('height', (document.documentElement.clientHeight - document.documentElement.clientHeight / 3.5) / 2);
+			$('.mui-btn').css('height', (document.documentElement.clientWidth / 2)*HOMEIMGSCALE);
 
 			function openWindow($url) {
 				mui.openWindow({
