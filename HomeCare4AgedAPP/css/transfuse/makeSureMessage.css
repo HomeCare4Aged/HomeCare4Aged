@@ -4,10 +4,18 @@
 	font-weight: bold; 
 	margin-left: 15px;
 	color: rgb(115,115,115);
+	
+}
+.zz-gray-text{
+	font-size: 20px;
+	margin-top: 10px; 
+	font-weight: bold; 
+	color: rgb(115,115,115);
+	
 }
 .MSM-black-text{
 	font-size: 30px;
-	margin-top: 10px; 
+	margin-top: 15px; 
 	margin-left: 15px;
 }
 .marginLeftRight{
@@ -26,8 +34,8 @@
 	left:25px;
 	right:25px;
 }
-.MSM-top25px{
-	margin-top: 25px;
+.MSM-top35px{
+	margin-top: 35px;
 }
 .MSM-red-text{
 	font-size: 30px;
@@ -42,7 +50,6 @@
 	height: 70px;
 	font-size: 40px;
 	color: white;
-	background: rgb(238,160,47);
 	border: 0px;
 }
 .mui-table-view-cell, .mui-table-view-cell:active {

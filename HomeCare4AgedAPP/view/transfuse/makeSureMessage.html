@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/transfuse/makeSureMessage.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认输液</h1>
+		</header>
+		<div class="mui-content top35px ">
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">输液医院</h3>
+					<h1 class="MSM-black-text" id="doctIdentity">贺福里社区医院</h1>
+					<hr class="zz-hr-line"/>
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">输液时间</h3>
+					<h1 class="MSM-black-text" id="doctIdentity">2016-12-20 下午</h1>
+					<hr class="zz-hr-line"/>
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">预约时长</h3>
+					<h1 class="MSM-black-text" id="doctIdentity">2小时</h1>
+					<hr class="zz-hr-line"/>
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">就诊人</h3>
+					<h1 class="MSM-black-text" id="doctIdentity">李晨</h1>
+					<hr class="zz-hr-line"/>
+				</div>
+			</div>
+			<div class="mui-row marginLeftRight MSM-top35px">
+				<h3 class="zz-gray-text" style="text-align: center;">当前可预约：<span style="color: rgb(76,188,236);">20</span>个输液位</h3>
+				<button type="button" class="zz-btn-next m_blue" onclick="openWindow('../transfuse/finish.html');">下一步</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui.plusReady(function(){
+				var sData = plus.webview.currentWebview();
+				mui.toast(sData._id);
+			});
+			function openWindow($url){
+				mui.openWindow({
+					url:$url,
+					extras:{
+						
+					},
+				});
+			};
+		</script>
+	</body>
+
+</html>

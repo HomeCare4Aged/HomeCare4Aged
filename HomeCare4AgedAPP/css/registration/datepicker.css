@@ -1,6 +1,6 @@
 .mui-dtpicker.mui-active {
     -webkit-transform: translateY(0);
-    height: 70%;
+    height: 100%;
 }
 .mui-ios .mui-dtpicker-body {
     height: 700px;
