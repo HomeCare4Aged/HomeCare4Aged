@@ -38,7 +38,7 @@
 				<hr class="zz-hr-line"/>
 			</div>
 			<div class="mui-row marginLeftRight ">
-				<button class="zz-btn-next m_orange">下一步</button>
+				<button type="button" class="zz-btn-next m_orange" onclick="openWindow();">下一步</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
@@ -50,6 +50,11 @@
 				var data=plus.webview.currentWebview();
 				mui.toast(data._id);
 			});
+			function openWindow(){
+				mui.openWindow({
+					url:'../registration/makeSureMessage.html',
+				});
+			};
 		</script>
 	</body>
 

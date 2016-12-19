@@ -23,25 +23,13 @@
 			<!--<div class="mui-row marginLeftRight" style="margin-bottom: 10px;">
 				<label class="m_gray_text" style="font-size: 30px;">选择科室</label>		
 			</div>-->
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media" id="list" >
+			<ul class="mui-table-view" id="list_ul">
+				<!--<li class="mui-table-view-cell mui-media" id="list" >
 					<div class="marginLeftRight">
 							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
 							<h1 class="black-text listCellText"></h1>
 					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media" id="list" >
-					<div class="marginLeftRight">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text listCellText"></h1>
-					</div>
-				</li>
-				<li class="mui-table-view-cell mui-media" id="list" >
-					<div class="marginLeftRight">
-							<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-							<h1 class="black-text listCellText"></h1>
-					</div>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
@@ -59,30 +47,44 @@
 					//成功获取数据赋值
 					success: function(data){
 						var list =document.getElementsByClassName('listCellText');
-						for (var i = 0;i<list.length;i++) {
-							list[i].innerHTML = data.data[i].hospital_office_name;
-							console.log(list[i].innerHTML);
-							list[i].id = data.data[i].hospital_office_id;
-							console.log(list[i].id);
-						}
+						var doc = document,
+
+						fragment = doc.createDocumentFragment(),
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							var doc = document;
+							console.log(i);
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							li.setAttribute("class","mui-table-view-cell mui-media");
+							div.setAttribute("class","marginLeftRight");
+							img.setAttribute("class","mui-media-object mui-pull-left");
+							img.setAttribute("src","../../images/small.png");
+							h1.setAttribute("class","black-text")
+							h1.innerHTML = data.data[i].hospital_office_name;
+							h1.id = data.data[i].hospital_office_id;
+							h1.addEventListener('tap',function(){
+								mui.openWindow({
+									url:'../registration/doctorInfo.html',
+									extras:{
+										_id:this.id,
+									},
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(img);
+							div.appendChild(h1);
+							fragment.appendChild(li);
+						});
+						container.appendChild(fragment);
 					},
 					error:function (xhr,type,errorThrown) {
 						console.log(type);
 						mui.toast(type);
 					}
 				});
-				//跳转传值
-				var list =document.getElementsByClassName('listCellText');
-				for (var i = 0;i<list.length;i++) {
-					list[i].addEventListener('tap',function(){
-						mui.openWindow({
-							url:'../registration/doctorInfo.html',
-							extras:{
-								_id:this.id,
-							},
-						});
-					});
-				}
 			});
 			
 				

@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/makeSureMessage.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav ">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		</header>
+		<div class="mui-content">
+		    <ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<h3  style="color: rgb(103,103,103);font-size: 20px; margin-top: 10px; font-weight: normal; margin-left: 15px;">确认挂号</h3>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<h3 class="MSM-gray-text" >就诊医院</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="hospitalText">大铁棍子医院</h1>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<h3 class="MSM-gray-text" >候诊时间</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="timeText">2000-12-12 下午</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >科室</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="roomText">妇科</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >就诊医生</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="doctorNameText">李主任</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >挂号费用</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-red-text" style="float: left;" id="doctorNameText">￥15</h1>
+						<h1 class="MSM-black-text" id="priceText">（医院到付）</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >就诊人</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="personText">李晨</h1>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<button type="button" class="zz-btn-next">下一步</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+		</script>
+	</body>
+
+</html>
