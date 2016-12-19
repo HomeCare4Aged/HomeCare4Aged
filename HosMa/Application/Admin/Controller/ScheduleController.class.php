@@ -1,6 +1,8 @@
 <?php
 namespace Admin\Controller;
 use Think\Controller;
+import("XXKit.Constants");
+
 class ScheduleController extends Controller {
     public function index(){
     	$cond = array(
@@ -10,14 +12,14 @@ class ScheduleController extends Controller {
 		//分页逻辑
 		$page = $_REQUEST['p'] ? $_REQUEST[p] : 1;
 		$pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 5;
-		$hospitals = D('HCommunityHospitalsInfo')->getDoctors($cond,$page,$pageSize);
-		$articlesCount = D('HCommunityHospitalsInfo')->getMenusCount($cond);
+		$schedules = D('HSchedulingInfo')->getSchedules($cond,$page,$pageSize);
+		$articlesCount = D('HSchedulingInfo')->getMenusCount($cond);
 		//分页控件
 		$pageObj = new \Think\Page($articlesCount,$pageSize);
 		//获取分页结果
 		$pageRes = $pageObj->show();
 		//绑定模板变量
-		$this->assign('hospitals',$hospitals);
+		$this->assign('schedules',$schedules);
 		
 		$this->assign('pageRes',$pageRes);
     	$this->display();
@@ -26,7 +28,7 @@ class ScheduleController extends Controller {
     public function add(){
 		if($_POST){
 			//表单验证
-			$validData = D('HCommunityHospitalsInfo')->create();
+			$validData = D('HSchedulingInfo')->create();
 //			cDebug($validData);
 			if($validData){
 				//编辑逻辑
@@ -34,13 +36,13 @@ class ScheduleController extends Controller {
 //					return $this->save($_POST);
 //				}
 				//执行新操作
-				$res = D('HCommunityHospitalsInfo')->inset($validData);
+				$res = D('HSchedulingInfo')->inset($validData);
 				if($res === false){
 					return ajaxReturn(\DATABASE_ERROR,'数据库新增失败');
 				}
 				return ajaxReturn(\SUCCESS,'添加文章成功');
 			}else{
-				return ajaxReturn(\VALIDATE_ERROR,D('HCommunityHospitalsInfo')->getError());
+				return ajaxReturn(\VALIDATE_ERROR,D('HSchedulingInfo')->getError());
 			}
 		}else{
 //			cDebug($res);

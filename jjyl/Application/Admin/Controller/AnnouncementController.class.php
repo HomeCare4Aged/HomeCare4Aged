@@ -8,6 +8,7 @@ use ZHKit\ImageUploader;
 //use ZHKit\constants;
 class AnnouncementController extends CommonController{
 	public function index(){
+//		cdebug(session(C('ADMIN_SESSION'))['admin_name']);
 		//获取公告信息
 		$cond=array(
 		    'announcement_check_state'=>array('eq',1),
@@ -30,7 +31,7 @@ class AnnouncementController extends CommonController{
         }
         //分页
         $page=$_REQUEST['p'] ?$_REQUEST['p']:1;
-    	$pageSize=$_REQUEST['pageSize']?$_REQUEST['pageSize']:1;
+    	$pageSize=$_REQUEST['pageSize']?$_REQUEST['pageSize']:10;
     	$ancheckstate=D('a_announcement_info')->getAncheckstates($cond,$page,$pageSize);
     	$ancheckstatesCount=D('a_announcement_info')->getAncheckstatesCount($cond);
     	//分页控件
@@ -49,6 +50,7 @@ class AnnouncementController extends CommonController{
 				if($_POST['id']){
 					return $this->save($_POST);
 				}
+				$validData['announcement_checker_id']=session(C('ADMIN_SESSION'))['admin_name'];
 				$validData['announcement_creat_time']=date('Y-m-d H:i:s');
 				$res = D('a_announcement_info')->insert($validData);
 				if($res){

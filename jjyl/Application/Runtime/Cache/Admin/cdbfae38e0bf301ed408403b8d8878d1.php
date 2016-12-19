@@ -4,22 +4,22 @@
 		<meta charset="UTF-8">
 		<title>居家养老服务平台管理系统</title>
 	
-	<link rel="stylesheet" href="/jjyl/public/css/bootstrap.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/sb-admin-2.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/metisMenu.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/font-awesome/css/font-awesome.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/admin/common.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/vendor/uploadify/uploadify.css" />
+	<link rel="stylesheet" href="/1/public/css/bootstrap.css" />
+	<link rel="stylesheet" href="/1/public/css/sb-admin-2.css" />
+	<link rel="stylesheet" href="/1/public/css/metisMenu.css" />
+	<link rel="stylesheet" href="/1/public/css/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="/1/public/css/admin/common.css" />
+	<link rel="stylesheet" href="/1/public/css/vendor/uploadify/uploadify.css" />
 	
 	
-	<script type="text/javascript" src="/jjyl/public/js/jquery.1.11.1.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/bootstrap.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/sb-admin-2.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/metisMenu.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/dialog/layer.js" ></script>
-	<script type="text/javascript" src="/jjyl/public/js/dialog.js" ></script>
-	<script type="text/javascript" src="/jjyl/public/js/vendor/uploadify/jquery.uploadify.js" ></script>
-	<script type="text/javascript" src="/jjyl/public/js/vendor/kindeditor/kindeditor-all.js"></script>
+	<script type="text/javascript" src="/1/public/js/jquery.1.11.1.js" ></script>
+    <script type="text/javascript" src="/1/public/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="/1/public/js/sb-admin-2.js" ></script>
+    <script type="text/javascript" src="/1/public/js/metisMenu.js" ></script>
+    <script type="text/javascript" src="/1/public/js/dialog/layer.js" ></script>
+	<script type="text/javascript" src="/1/public/js/dialog.js" ></script>
+	<script type="text/javascript" src="/1/public/js/vendor/uploadify/jquery.uploadify.js" ></script>
+	<script type="text/javascript" src="/1/public/js/vendor/kindeditor/kindeditor-all.js"></script>
 		
 	</head>
 	<body>
@@ -44,7 +44,7 @@
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="/jjyl/admin.php/Login/logout"><i class="fa fa-fw fa-power-off "></i>注销</a>
+					<a href="/1/admin.php/Login/logout"><i class="fa fa-fw fa-power-off "></i>注销</a>
 				</li>
 			</ul>
 		</li>
@@ -53,50 +53,50 @@
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav in" id="side-menu">
 				<li>
-					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
+					<a href="/1/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-dashboard"></i>审核<span class="fa arrow"></span></a>
+					<a><i class="fa fa-fw fa-server"></i>审核<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
-						
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>商户商户</a>
+							<a href="/1/admin.php/Examine/index"><i class="fa fa-fw fa-university"></i>商户审核</a>
 						</li>
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>视频信息审核</a>
+							<a href="#"><i class="fa fa-fw fa-newspaper-o"></i>公告信息审核</a>
 						</li>
 						<li>
-							<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>通告信息审核</a>
+							<a href="#"><i class="fa fa-fw fa-film"></i>视频信息审核</a>
 						</li>
 					</ul>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-dashboard"></i>公告管理</a>
+					<a href="/1/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>社区医院管理</a>
+					<a href="/1/admin.php/Hospital/index"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>店铺管理</a>
+					<a href="/1/admin.php/Shop/index"><i class="fa fa-fw fa-university"></i>店铺管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Menu/index"><i class="fa fa-fw fa-dashboard"></i>视频管理</a>
+					<a href="/1/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-dashboard"></i>医院后台注册</a>
+					<a href="/1/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-edit"></i>医院后台注册</a>
 				</li>
 			</ul>
 		</div>
 	</div>
 </nav>
 
+				
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<i class="fa fa-fw fa-table"></i>
-						<a href="/jjyl/admin.php/HospitalRegister/index">医院后台</a>
+						<a href="/1/admin.php/HospitalRegister/index">医院后台</a>
 					</ol>
 				</div>
 			</div>
@@ -107,7 +107,7 @@
                   -->
             <div class="row zyn-div-search">
             	<div class="col-md-4 col-md-offset-1">
-	            	<form action="/jjyl/admin.php/HospitalRegister/index" method="get" class="form-horizontal">
+	            	<form action="/1/admin.php/HospitalRegister/index" method="get" class="form-horizontal">
 	            		<div class="input-group">
 	            			<span class='input-group-addon'>搜索</span>
 	            	
@@ -122,14 +122,19 @@
 	            		
 	            	</form>
 	            </div>
+	            <div class="col-md-4">
+				<button type="button" class="btn btn-group btn-primary" id="zyn-btn-add">注册医院后台</button>
+				<!--<button type="button" class="btn btn-group btn-primary" id="zyn-btn-list_order">排序</button>-->
+				</div>
             </div>
+            <br/>
             <div class="row">
             	<div class="col-md-9 col-md-offset-1">
             		<div class="table-responsive">
             			<form id="zyn-form-list">
             				<table class="table table-bordered table-hover zyn-table-list">
             					<thead>
-            						<tr>
+            						<tr class="success">
             							<td>医院名称</td>
             							<td>账号</td>
             							<td>密码</td>
@@ -153,23 +158,19 @@
             		</div>
             	</div>
             </div>
-			<div class="row">
-				<button type="button" class="btn btn-group btn-primary" id="zyn-btn-add">注册医院后台</button>
-				<!--<button type="button" class="btn btn-group btn-primary" id="zyn-btn-list_order">排序</button>-->
-			</div>
 		</div>
 	</div>
 </div>		
 <script>
 	var SCOPE = {
-		'add_url':'/jjyl/admin.php/HospitalRegister/add',
-		'edit_url':'/jjyl/admin.php/HospitalRegister/edit',
-		'set_status_url':'/jjyl/admin.php/HospitalRegister/setStatus',
-		'list_order_url':'/jjyl/admin.php/HospitalRegister/listOrder',
-		'success_refresh_url':'/jjyl/admin.php/HospitalRegister/index',
+		'add_url':'/1/admin.php/HospitalRegister/add',
+		'edit_url':'/1/admin.php/HospitalRegister/edit',
+		'set_status_url':'/1/admin.php/HospitalRegister/setStatus',
+		'list_order_url':'/1/admin.php/HospitalRegister/listOrder',
+		'success_refresh_url':'/1/admin.php/HospitalRegister/index',
 	};
 </script>	
-    <script type="text/javascript" src="/jjyl/public/js/constants.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/admin/common.js" ></script>
+    <script type="text/javascript" src="/1/public/js/constants.js" ></script>
+    <script type="text/javascript" src="/1/public/js/admin/common.js" ></script>
 	</body>
 </html>

@@ -2,8 +2,19 @@
 <div id="wrapper">
 	<include file="Index/nav" />
 	<div id="page-wrapper">
-		<div class="container">
+		<div class="container-fluid">
 			<h3>医生信息录入</h3>
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="">
+							<i class="fa fa-fw fa-edit"></i>
+							医生信息录入
+						</li>
+						
+					</ol>
+				</div>				
+			</div><!--.row面包屑导航   -->
 			<div class="row">
 				<div class="col-sm-10">
 					<form id="xx-form-add" class="form-horizontal">
@@ -30,8 +41,11 @@
 						<div class="form-group">
 							<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
 							<div class="col-sm-5">
-								<input id="xx-input-hospital-office-id" class="form-control" type="text" 
-								name="hospital_office_id" placeholder="请输入科室编号" />
+								<select class="form-control" name="type">
+									<option value="">--请选择科室--</option>
+									<option value="">内科</option>
+									<option value="">外科</option>
+								</select>
 							</div>
 							<div class="col-sm-4">
 								<p class="xx-p-validate-result" attr-validate="hospital_office_id"></p>
@@ -40,7 +54,7 @@
 						<div class="form-group">
 							<label for="xx-input-hospital-doctor-introduction" class="control-label col-sm-3">医生简介：</label>
 							<div class="col-sm-5">
-								<textarea class="js-editor" id="xx-textarea-hospital-doctor-introduction" name="hospital_doctor_introduction" cols="50" rows="5" placeholder="请输入内容"></textarea>
+								<textarea class="js-editor" id="xx-textarea-hospital-doctor-introduction" name="hospital_doctor_introduction" cols="44" rows="5" placeholder="请输入内容"></textarea>
 							</div>
 							<div class="col-sm-4">
 								<p class="xx-p-validate-result" attr-validate="hospital_doctor_introduction"></p>

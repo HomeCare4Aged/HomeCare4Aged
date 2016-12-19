@@ -4,22 +4,22 @@
 		<meta charset="UTF-8">
 		<title>居家养老服务平台管理系统</title>
 	
-	<link rel="stylesheet" href="/jjyl/public/css/bootstrap.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/sb-admin-2.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/metisMenu.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/font-awesome/css/font-awesome.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/admin/common.css" />
-	<link rel="stylesheet" href="/jjyl/public/css/vendor/uploadify/uploadify.css" />
+	<link rel="stylesheet" href="/1/public/css/bootstrap.css" />
+	<link rel="stylesheet" href="/1/public/css/sb-admin-2.css" />
+	<link rel="stylesheet" href="/1/public/css/metisMenu.css" />
+	<link rel="stylesheet" href="/1/public/css/font-awesome/css/font-awesome.css" />
+	<link rel="stylesheet" href="/1/public/css/admin/common.css" />
+	<link rel="stylesheet" href="/1/public/css/vendor/uploadify/uploadify.css" />
 	
 	
-	<script type="text/javascript" src="/jjyl/public/js/jquery.1.11.1.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/bootstrap.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/sb-admin-2.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/metisMenu.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/dialog/layer.js" ></script>
-	<script type="text/javascript" src="/jjyl/public/js/dialog.js" ></script>
-	<script type="text/javascript" src="/jjyl/public/js/vendor/uploadify/jquery.uploadify.js" ></script>
-	<script type="text/javascript" src="/jjyl/public/js/vendor/kindeditor/kindeditor-all.js"></script>
+	<script type="text/javascript" src="/1/public/js/jquery.1.11.1.js" ></script>
+    <script type="text/javascript" src="/1/public/js/bootstrap.js" ></script>
+    <script type="text/javascript" src="/1/public/js/sb-admin-2.js" ></script>
+    <script type="text/javascript" src="/1/public/js/metisMenu.js" ></script>
+    <script type="text/javascript" src="/1/public/js/dialog/layer.js" ></script>
+	<script type="text/javascript" src="/1/public/js/dialog.js" ></script>
+	<script type="text/javascript" src="/1/public/js/vendor/uploadify/jquery.uploadify.js" ></script>
+	<script type="text/javascript" src="/1/public/js/vendor/kindeditor/kindeditor-all.js"></script>
 		
 	</head>
 	<body>
@@ -43,7 +43,7 @@
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="/jjyl/admin.php/Login/logout"><i class="fa fa-fw fa-power-off "></i>注销</a>
+					<a href="/1/admin.php/Login/logout"><i class="fa fa-fw fa-power-off "></i>注销</a>
 				</li>
 			</ul>
 		</li>
@@ -52,13 +52,13 @@
 		<div class="sidebar-nav navbar-collapse">
 			<ul class="nav in" id="side-menu">
 				<li>
-					<a href="/jjyl/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
+					<a href="/1/admin.php/Index/index"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
 					<a><i class="fa fa-fw fa-server"></i>审核<span class="fa arrow"></span></a>
 					<ul class="nav nav-second-level">
 						<li>
-							<a href="/jjyl/admin.php/Examine/index"><i class="fa fa-fw fa-university"></i>商户审核</a>
+							<a href="/1/admin.php/Examine/index"><i class="fa fa-fw fa-university"></i>商户审核</a>
 						</li>
 						<li>
 							<a href="#"><i class="fa fa-fw fa-newspaper-o"></i>公告信息审核</a>
@@ -69,19 +69,19 @@
 					</ul>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
+					<a href="/1/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
+					<a href="/1/admin.php/Hospital/index"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-university"></i>店铺管理</a>
+					<a href="/1/admin.php/Shop/index"><i class="fa fa-fw fa-university"></i>店铺管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>
+					<a href="/1/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>
 				</li>
 				<li>
-					<a href="/jjyl/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-edit"></i>医院后台注册</a>
+					<a href="/1/admin.php/HospitalRegister/index"><i class="fa fa-fw fa-edit"></i>医院后台注册</a>
 				</li>
 			</ul>
 		</div>
@@ -90,53 +90,95 @@
 
 				
 	<div id="page-wrapper">
-		<!--面包屑导航.row-->
-			<div class="row">
-				<div class="col-md-12">
-					<ol class="breadcrumb">
-						<li>
-							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Index/index">医院列表</a>
-						</li>
-						<li>
-							<i class="fa fa-fw fa-table"></i>
-							<a href="/jjyl/admin.php/Index/shop">商户列表</a>
-						</li>
-					</ol>
-				</div>
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-info">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			        <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				                医院列表
+				        </a>
+				    </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			        <div class="panel-body">
+				        <div class="row">
+						    <div class="col-sm-12">
+						    	<div class="table-responsive">
+									<form id="zh-form-list">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr class="success">
+													<td>医院名称</td>
+													<td>医院地址</td>
+													<td>联系方式</td>
+												</tr>
+											</thead>
+											<tbody>
+												<?php if(is_array($communityhospitalsinfos)): $i = 0; $__LIST__ = $communityhospitalsinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+													    <td><?php echo ($vo["community_hospitals_name"]); ?></td>
+														<td><?php echo ($vo["community_hospitals_address"]); ?></td>
+														<td><?php echo ($vo["principal_contact_phone"]); ?></td>
+													</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+											</tbody>
+										</table>
+									</form>
+									<nav>
+										<ul class="pagination">
+											<?php echo ($pageRes); ?>
+										</ul>
+									</nav>
+								</div>
+						    </div>
+						</div>
+			        </div>
+			    </div>
 			</div>
-		<div class="row">
-		    <div class="col-sm-12">
-		    	<div class="table-responsive">
-					<form id="zh-form-list">
-						<table class="table table-bordered table-hover">
-							<thead>
-								<tr>
-									<td>医院名称</td>
-									<td>医院地址</td>
-									<td>联系方式</td>
-								</tr>
-							</thead>
-							<tbody>
-								<?php if(is_array($communityhospitalsinfos)): $i = 0; $__LIST__ = $communityhospitalsinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
-									    <td><?php echo ($vo["community_hospitals_name"]); ?></td>
-										<td><?php echo ($vo["community_hospitals_address"]); ?></td>
-										<td><?php echo ($vo["principal_contact_phone"]); ?></td>
-									</tr><?php endforeach; endif; else: echo "" ;endif; ?>
-							</tbody>
-						</table>
-					</form>
-					<nav>
-						<ul class="pagination">
-							<?php echo ($pageRes); ?>
-						</ul>
-					</nav>
-				</div>
-		    </div>
+			<div class="panel panel-info">
+			    <div class="panel-heading" role="tab" id="headingTwo">
+			        <h4 class="panel-title"> 
+			            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			                        商户列表   
+			            </a>
+			        </h4>
+			    </div>
+			    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			        <div class="panel-body">
+				        <div class="row">
+						    <div class="col-sm-12">
+						    	<div class="table-responsive">
+									<form id="zh-form-list">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr class="success">
+													<td>商户名称</td>
+													<td>商户地址</td>
+													<td>联系方式</td>
+												</tr>
+											</thead>
+											<tbody>
+												<?php if(is_array($storeshopinfos)): $i = 0; $__LIST__ = $storeshopinfos;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?><tr>
+													    <td><?php echo ($vo["store_shop_name"]); ?></td>
+														<td><?php echo ($vo["store_shop_address"]); ?></td>
+														<td><?php echo ($vo["store_contact_user_phone"]); ?></td>
+													</tr><?php endforeach; endif; else: echo "" ;endif; ?>
+											</tbody>
+										</table>
+									</form>
+									<nav>
+										<ul class="pagination">
+											<?php echo ($pageRes2); ?>
+										</ul>
+								   </nav>
+							    </div>
+					        </div>
+					    </div> 
+			        </div>
+			    </div>
+			</div> 
 		</div>
 	</div>
 </div>
-    <script type="text/javascript" src="/jjyl/public/js/constants.js" ></script>
-    <script type="text/javascript" src="/jjyl/public/js/admin/common.js" ></script>
+    <script type="text/javascript" src="/1/public/js/constants.js" ></script>
+    <script type="text/javascript" src="/1/public/js/admin/common.js" ></script>
 	</body>
 </html>

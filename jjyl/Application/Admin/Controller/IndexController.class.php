@@ -26,12 +26,7 @@ class IndexController extends CommonController {
     	$this->assign('communityhospitalsinfos',$communityhospitalsinfos);
     	$this->assign('pageRes',$pageRes);
     	
-    	//输出模板
-        $this->display();
-    }
     
-    //加载商户列表
-    public function shop(){
 
        $cond = array(
     	
@@ -49,11 +44,11 @@ class IndexController extends CommonController {
     	$pageObj = new \Think\Page($storeshopinfoCount,$pageSize);
     	
     	//获取分页结果
-    	$pageRes = $pageObj->show();
+    	$pageRes2 = $pageObj->show();
     	
     	//绑定模板变量        
     	$this->assign('storeshopinfos',$storeshopinfos);
-    	$this->assign('pageRes',$pageRes);
+    	$this->assign('pageRes2',$pageRes2);
     	
     	//输出模板
         $this->display();

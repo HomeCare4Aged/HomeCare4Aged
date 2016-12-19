@@ -2,37 +2,34 @@
 <div id="wrapper">
 	<include file="Index/nav" />
 	<div id="page-wrapper">
-		<div class="container">
+		<div class="container-fluid">
 			<h3>医生信息</h3>
-			<h4>怎么办</h4>
-			<div class="row">
-				<form class="form-horizontal" id="">
-				<div class="form-group">
-					<label id="" class="control-label col-sm-3">在班医生信息：</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" id="" placeholder="请录入"/>
-					</div>
-					<div class="col-sm-2">
-						<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
-					</div>
-				</div>
-				</form>
-			</div>
 			<div class="row">
 				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="">
+							<i class="fa fa-fw fa-edit"></i>
+							医生信息预览
+						</li>
+						
+					</ol>
+				</div>				
+			</div><!--.row面包屑导航   -->
+			<div class="row">
+				<div class="col-sm-12">
 					<div class="table-responsive">
-						<form id="xx-form-list" class="">
-							<table class="table table-bordered table-hover" id="xx-table-list">
+						<form id="xx-form-list">
+							<table class="table table-bordered table-hover xx-table-list">
 								<thead>
 									<tr>
 										<td>所属科室</td>
 										<td>照片</td>
 										<td>医生姓名</td>
-										<td>性别</td>
 										<td>职称</td>
 										<td>简介</td>
 										<td>联系方式</td>
 										<td>挂号收费</td>
+										<td colspan="2">操作</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -41,11 +38,16 @@
 											<td>{$vo.hospital_office_id}</td>
 											<td>{$vo.hospital_doctor_picture}</td>
 											<td>{$vo.hospital_doctor_name}</td>
-											<td>{$vo.hospital_doctor_sex}</td>
 											<td>{$vo.hospital_doctor_identity}</td>
 											<td>{$vo.hospital_doctor_introduction}</td>
 											<td>{$vo.hospital_doctor_phone}</td>
 											<td>{$vo.registration_predict_money}</td>
+											<td>
+												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="{$vo.hospital_office_id}">编辑</span>
+											</td>
+											<td>
+												<span class="glyphicon glyphicon-trash" id="xx-span-delete" attr-id="{$vo.hospital_office_id}">删除</span>
+											</td>
 									</volist>
 								</tbody>
 							</table>
@@ -53,6 +55,11 @@
 					</div>
 				</div>	
 			</div><!--row-->
+			<div class="row">
+				<div class="col-sm-2">
+						<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
+					</div>
+			</div>
 		</div>
 	</div>
 </div>

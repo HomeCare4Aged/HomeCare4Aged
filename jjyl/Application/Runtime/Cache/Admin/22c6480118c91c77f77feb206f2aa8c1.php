@@ -73,10 +73,10 @@
 					<a href="/jjyl/admin.php/Announcement/index"><i class="fa fa-fw fa-newspaper-o"></i>公告管理</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
+					<a href="/jjyl/admin.php/Hospital/index"><i class="fa fa-fw fa-stethoscope"></i>社区医院管理</a>
 				</li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-university"></i>店铺管理</a>
+					<a href="/jjyl/admin.php/Shop/index"><i class="fa fa-fw fa-university"></i>店铺管理</a>
 				</li>
 				<li>
 					<a href="/jjyl/admin.php/Video/index"><i class="fa fa-fw fa-film"></i>视频管理</a>
@@ -104,11 +104,11 @@
 				</div>
 			</div><!--.row面包屑导航-->
 			<div class="row zyn-div-search" >
-				<div class="col-sm-5">
+				<div class="col-md-4">
 					<form class="form-horizontal" action="/jjyl/admin.php/Announcement/index" method="post">
 						<div class="input-group">
 							<span class="input-group-addon">搜索</span>
-							<input type="text" name='search' style="width: 320px; height: 35px;" />
+							<input type="text" name='search' style="width: 250px; height: 34px;" />
 							<div class="input-group-btn">
 							<button type="submit" class="btn btn-primary">
 								<span class="glyphicon glyphicon-search"></span>
@@ -117,18 +117,19 @@
 						</div>
 					</form>
 				</div>
-				<div class="col-sm-2">
+				<div class="col-md-4">
 					<button id="zyn-btn-add" type="button" class="btn btn-primary">添加公告</button>
 				</div>
 				
 			</div><!--搜索-->
+			<br />
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<form id="zyn-form-list">
 							<table class="table table-bordered table-hover zyn-table-list" >
 								<thead>
-									<tr>
+									<tr class="success">
 										<td>标题</td>
 										<td>发布用户</td>
 										<td>所属单位</td>
@@ -143,7 +144,7 @@
 											<td><?php echo ($vo["announcement_title"]); ?></td>
 											<td>admin</td>
 											<td><?php echo ($vo["small_title"]); ?></td>
-											<td>aaaaa</td>
+											<td><?php echo ($vo["announcement_checker_id"]); ?></td>
 											<td><?php echo (getDataStatus($vo["announcement_check_state"])); ?></td>
 											<td><?php echo ($vo["announcement_creat_time"]); ?></td>
 											<td id='zyn-span-edit' attr-id="<?php echo ($vo["announcement_id"]); ?>"><a href="#">查看与修改状态</a></td>

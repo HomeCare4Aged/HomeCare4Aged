@@ -6,7 +6,7 @@ class CommonController extends Controller {
 	public function __construct(){
 		parent::__construct();
 		//登录限制
-//		$this->loginVerify();
+		$this->loginVerify();
 //		//访问过滤
 //		$this->authrize();
 	}
@@ -16,7 +16,7 @@ class CommonController extends Controller {
 //		$currentCA = strtolower(CONTROLLER_NAME.'-'.ACTION_NAME);
 //		$loginCA = strtolower('login-index,login-check,login-out,login-verifyImg,');
 		//&& strpos($loginCA,$currentCA) === false
-		if (!$admin ){
+		if ($admin == null ){
 			return $this->redirect('Login/index');
 		}
 	}
