@@ -1,0 +1,56 @@
+body{
+	background: #FFFFFF;
+}
+.marginLeftRight{
+	margin-left:25px ;
+	margin-right:25px ;
+}
+.mui-content{
+	background: white;
+}
+.black-text{
+	color: black;
+}
+.mui-table-view:after{
+	left:25px;
+	right:25px;
+}
+.mui-table-view:before{
+	left:25px;
+	right:25px;
+}
+.mui-table-view-cell:after{
+	left:25px;
+	right:25px;
+}
+.top60px{
+	margin-top: 60px;
+	background: rgb(254,227,109);
+}
+.top110px{
+	margin-top: 130px;
+	background: white;
+}
+.top95px{
+	margin-top: 135px;
+}
+.mui-bar-nav {
+    top: 0;
+    -webkit-box-shadow: 0 1px 6px #ccc;
+    box-shadow: 0 1px 6px #ccc;
+    height: 60px;
+    
+    
+}
+
+.zz-btn-next{
+	position:fixed;
+	left: 10%;
+	bottom: 10%;
+	width: 80%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	background: rgb(76,188,236);
+	border: 0px;
+}
