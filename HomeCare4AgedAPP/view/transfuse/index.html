@@ -8,11 +8,11 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/transfuse/index.css" />
-		
-		<link rel="stylesheet" type="text/css" href="../../css/app.css"/>
+
+		<link rel="stylesheet" type="text/css" href="../../css/app.css" />
 		<link rel="stylesheet" href="../../css/mui.picker.min.css" />
-		
-		<style>
+
+		<!--<style>
 			html,
 			body,
 			.mui-content {
@@ -20,52 +20,112 @@
 				margin: 0px;
 				background-color: #efeff4;
 			}
+			
 			h5.mui-content-padded {
 				margin-left: 3px;
 				margin-top: 20px !important;
 			}
+			
 			h5.mui-content-padded:first-child {
 				margin-top: 12px !important;
 			}
+			
 			.mui-btn {
 				font-size: 16px;
 				padding: 8px;
-				margin: 3px;
+				margin: 0px;
 			}
+			
 			.ui-alert {
 				text-align: center;
 				padding: 20px 10px;
 				font-size: 16px;
 			}
+			
 			* {
 				-webkit-touch-callout: none;
 				-webkit-user-select: none;
 			}
-		</style>
+		</style>-->
 	</head>
 
 	<body>
-		<!--<header class="mui-bar mui-bar-nav m_blue">
+		<header class="mui-bar mui-bar-nav m_blue">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">输液</h1>
-		</header>-->
+		</header>
 		<div class="mui-content">
-			
-			<label id='demo7' data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"},{"text":"晚上","value":"晚上"}]},"labels":["年", "月", "日", "时段", "分"]}' class=" zz-label">选择时段 ...</label>
-			
+
+			<!--<div class="mui-dtpicker" data-type="datetime">
+				<div class="mui-dtpicker-header">
+					<button data-id="btn-cancel" class="mui-btn">取消</button>
+					<button data-id="btn-ok" class="mui-btn mui-btn-blue">确定</button>
+				</div>
+				<div class="mui-dtpicker-title">
+					<h5 data-id="title-y">年</h5>
+					<h5 data-id="title-m">月</h5>
+					<h5 data-id="title-d">日</h5>
+					<h5 data-id="title-h">时</h5>
+					<h5 data-id="title-i">分</h5></div>
+				<div class="mui-dtpicker-body">
+					<div data-id="picker-y" class="mui-picker">
+						<div class="mui-picker-inner">
+							<div class="mui-pciker-rule mui-pciker-rule-ft"></div>
+							<ul class="mui-pciker-list">
+							</ul>
+							<div class="mui-pciker-rule mui-pciker-rule-bg"></div>
+						</div>
+					</div>
+					<div data-id="picker-m" class="mui-picker">
+						<div class="mui-picker-inner">
+							<div class="mui-pciker-rule mui-pciker-rule-ft"></div>
+							<ul class="mui-pciker-list">
+							</ul>
+							<div class="mui-pciker-rule mui-pciker-rule-bg"></div>
+						</div>
+					</div>
+					<div data-id="picker-d" class="mui-picker">
+						<div class="mui-picker-inner">
+							<div class="mui-pciker-rule mui-pciker-rule-ft"></div>
+							<ul class="mui-pciker-list">
+							</ul>
+							<div class="mui-pciker-rule mui-pciker-rule-bg"></div>
+						</div>
+					</div>
+					<div data-id="picker-h" class="mui-picker">
+						<div class="mui-picker-inner">
+							<div class="mui-pciker-rule mui-pciker-rule-ft"></div>
+							<ul class="mui-pciker-list">
+							</ul>
+							<div class="mui-pciker-rule mui-pciker-rule-bg"></div>
+						</div>
+					</div>
+					<div data-id="picker-i" class="mui-picker">
+						<div class="mui-picker-inner">
+							<div class="mui-pciker-rule mui-pciker-rule-ft"></div>
+							<ul class="mui-pciker-list">
+							</ul>
+							<div class="mui-pciker-rule mui-pciker-rule-bg"></div>
+						</div>
+					</div>
+				</div>
+			</div>-->
+
+			<!--<button id='demo7' data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"},{"text":"晚上","value":"晚上"}]},"labels":["年", "月", "日", "时段", "分"]}' class=" zz-label">选择时段 ...</button>-->
+
 			<div class="mui-row">
 				<button type="button" class="zz-btn-next m_blue" onclick="openWindow('../transfuse/transFuseTime.html');">下一步</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
 		<script type="text/javascript">
 //			(function($) {
 //				$.init();
 ////				var result = $('#result')[0];
 //				var btns = $('.zz-label');
 //				btns.each(function(i, btn) {
-////					btn.addEventListener('tap', function() {
+//					btn.addEventListener('tap', function() {
 //						var optionsJson = this.getAttribute('data-options') || '{}';
 //						var options = JSON.parse(optionsJson);
 //						var id = this.getAttribute('id');
@@ -98,20 +158,20 @@
 //							 */
 //							picker.dispose();
 //						});
-////					}, false);
+//					}, false);
 //				});
 //			})(mui);
-			mui.init({
-				swipeBack: true //启用右滑关闭功能
-			});
-			function openWindow($url){
-				mui.openWindow({
-					url:$url,
-					extras:{
-						
-					},
-				});
-			};
+						mui.init({
+							swipeBack: true //启用右滑关闭功能
+						});
+						function openWindow($url){
+							mui.openWindow({
+								url:$url,
+								extras:{
+									
+								},
+							});
+						};
 		</script>
 	</body>
 

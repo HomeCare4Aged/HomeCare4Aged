@@ -1,6 +1,14 @@
+
+html body{
+	background: #FFFFFF;
+}
+.mui-content{
+	background-color: white;
+}
 .topDiv{
 	margin-top: 30%;
 	text-align: center;
+	background-color: white;
 }
 .image{
 	width: 100px;
