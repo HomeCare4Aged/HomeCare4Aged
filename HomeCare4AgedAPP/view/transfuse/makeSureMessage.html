@@ -19,54 +19,103 @@
 			<div class="mui-row zz-div-line marginLeftRight">
 				<div class="zz-div-doctName">
 					<h3 class="MSM-gray-text">输液医院</h3>
-					<h1 class="MSM-black-text" id="doctIdentity">贺福里社区医院</h1>
-					<hr class="zz-hr-line"/>
+					<h1 class="MSM-black-text" id="hospitalName">贺福里社区医院</h1>
+					<hr class="zz-hr-line" />
 				</div>
 			</div>
 			<div class="mui-row zz-div-line marginLeftRight">
 				<div class="zz-div-doctName">
 					<h3 class="MSM-gray-text">输液时间</h3>
-					<h1 class="MSM-black-text" id="doctIdentity">2016-12-20 下午</h1>
-					<hr class="zz-hr-line"/>
+					<h1 class="MSM-black-text" id="transTime">2016-12-20 下午</h1>
+					<hr class="zz-hr-line" />
 				</div>
 			</div>
 			<div class="mui-row zz-div-line marginLeftRight">
 				<div class="zz-div-doctName">
 					<h3 class="MSM-gray-text">预约时长</h3>
-					<h1 class="MSM-black-text" id="doctIdentity">2小时</h1>
-					<hr class="zz-hr-line"/>
+					<h1 class="MSM-black-text" id="transDuration">2小时</h1>
+					<hr class="zz-hr-line" />
 				</div>
 			</div>
 			<div class="mui-row zz-div-line marginLeftRight">
 				<div class="zz-div-doctName">
 					<h3 class="MSM-gray-text">就诊人</h3>
-					<h1 class="MSM-black-text" id="doctIdentity">李晨</h1>
-					<hr class="zz-hr-line"/>
+					<h1 class="MSM-black-text" id="userName" name="uasername">李晨</h1>
+					<hr class="zz-hr-line" />
 				</div>
 			</div>
 			<div class="mui-row marginLeftRight MSM-top35px">
 				<h3 class="zz-gray-text" style="text-align: center;">当前可预约：<span style="color: rgb(76,188,236);">20</span>个输液位</h3>
-				<button type="button" class="zz-btn-next m_blue" onclick="openWindow('../transfuse/finish.html');">下一步</button>
+				<button type="button" class="zz-btn-next m_blue" id="zz-btn-next">下一步</button>
+				<!--onclick="openWindow('../transfuse/finish.html');"-->
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
 			});
-			mui.plusReady(function(){
-				var sData = plus.webview.currentWebview();
-				mui.toast(sData._id);
-			});
-			function openWindow($url){
-				mui.openWindow({
-					url:$url,
-					extras:{
-						
+//			mui.plusReady(function(){
+//				var sData = plus.webview.currentWebview();
+//				mui.toast(sData._id);
+//			}
+			
+			var btn = document.getElementById("zz-btn-next");
+			btn.addEventListener("tap", function() {
+				//		//			console.log('document.getElementById("userName").innerHTML');
+				//					var hostitalName = document.getElementById("hospitalName").innerHTML;
+//									var transTime = document.getElementById("transTime").innerHTML;
+				//					var transDuration = document.getElementById("transDuration").innerHTML;
+				//					var userName = document.getElementById("userName").innerHTML;
+				//					
+				var postData = {};
+				postData['user_transfusion_id'] = '0001';
+				postData['community_user_id'] = '0002';
+//				postData['community_hospitals_id'] = '0001';
+//				postData['user_appointment_date'] = transTime;
+//				postData['user_appointment_time'] = '00:00:00';
+//				postData['predict_finished_time'] = '12:00:00';
+//				postData['user_transfusion_date'] = '2016-12-18 14:48:00';
+//				postData['user_transfusion_type'] = '床位';
+//				postData['transfusion_state'] = '未完成';
+//				postData['transfusion_cancel_time'] = '2016-12-18 14:48:00';
+//				console.log(postData);
+				//					
+				
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "HTransfusionInfo/add",
+					dataType: "json",
+					data: postData,
+					//成功获取数据赋值
+					success: function(data) {
+//						console.log(data.status);
+//						if(data.status == 1) {
+							console.log('success');
+							//mui.toast('1');
+//						}
 					},
+					error: function(xhr, type, errorThrown) {
+						
+						console.log(xhr);
+						console.log(errorThrown);
+						console.log(type);
+						//mui.toast(xhr);
+					}
 				});
-			};
+			});
+			//			});
+			//			function openWindow($url){
+			//				mui.openWindow({
+			//					url:$url,
+			//					extras:{
+			//						
+			//					},
+			//				});
+			//			};
+
+			
 		</script>
 	</body>
 

@@ -1,3 +1,9 @@
+html body{
+	background: #FFFFFF;
+}
+.mui-content{
+	background-color: white;
+}
 .MSM-gray-text{
 	font-size: 20px;
 	margin-top: 10px; 
