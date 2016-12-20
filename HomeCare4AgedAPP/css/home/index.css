@@ -20,7 +20,7 @@ div{
 	color: white;
 	font-size:300%;
 }
-#img-F{
+.img-F{
 	position:absolute;
     top:40px;
     left:150px;
@@ -28,7 +28,7 @@ div{
 	height:20px;
 	overflow:hidden;
 }
-#span-F{
+.span-F{
 	position:absolute;
     top:50%;
     left:5%;

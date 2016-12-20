@@ -11,9 +11,9 @@
 
 	<body>
 		<div class="mui-row">
-			<img src="../../images/home/cloudySky.png" class="mui-icon-image" id="g-top-img" />
+			<img src="../../images/home/qingtian.png" class="mui-icon-image" id="g-top-img" />
 			<span id="span-date"></span>
-			<span id="span-F" class="">严重污染!!!!</span>
+			<span id="weather" class="span-F">正在获取天气...</span>
 			<span id="span-address" class="mui-icon mui-icon-location">社区</span>
 		</div>
 		<div class="mui-row">
@@ -67,7 +67,7 @@
 
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init()
 			window.addEventListener('orientationchange', function(event) {
@@ -76,7 +76,7 @@
 		</script>
 		<script type="text/javascript">
 			$('.mui-icon-image').css('width', document.documentElement.clientWidth);
-			$('.mui-icon-image').css('height', document.documentElement.clientWidth*HOMETOPIMGSCALE);
+			$('.mui-icon-image').css('height', document.documentElement.clientWidth * HOMETOPIMGSCALE);
 			setInterval(function() {
 				var hour = new Date().getHours()
 				var min = new Date().getMinutes();
@@ -89,13 +89,61 @@
 				$("#span-date").html(date);
 			}, 50);
 			$('.mui-btn').css('width', document.documentElement.clientWidth / 2);
-			$('.mui-btn').css('height', (document.documentElement.clientWidth / 2)*HOMEIMGSCALE);
+			$('.mui-btn').css('height', (document.documentElement.clientWidth / 2) * HOMEIMGSCALE);
 
 			function openWindow($url) {
 				mui.openWindow({
 					url: $url,
 				});
 			}
+
+			function findWeather() {
+				var cityUrl = 'http://int.dpool.sina.com.cn/iplookup/iplookup.php?format=js';
+				$.getScript(cityUrl, function(script, textStatus, jqXHR) {
+					var citytq = remote_ip_info.city; // 获取城市
+					var url = "http://php.weather.sina.com.cn/iframe/index/w_cl.php?code=js&city=" + citytq + "&day=0&dfc=3";
+					$.ajax({
+						url: url,
+						dataType: "script",
+						scriptCharset: "gbk",
+						success: function(data) {
+							var _w = window.SWther.w[citytq][0];
+							var _f = _w.f1 + "_0.png";
+							if(new Date().getHours() > 17) {
+								_f = _w.f2 + "_1.png";
+								setImg(_w.s2);
+							}else{
+								setImg(_w.s1);
+							}            
+							var tq = _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃ ";
+							var weather = document.getElementById('weather');
+							weather.innerHTML = tq;
+						}
+					});
+				});
+			}
+			function setImg(tq){
+				var topImg = document.getElementById('g-top-img');
+				if(tq.indexOf("雾") == 0 ){
+				    topImg.src = "../../images/home/wumai.png";
+				}else if(tq.indexOf("雨") == 0 ){
+					topImg.src = "../../images/home/xiayu.png";
+				}else if(tq.indexOf("阴") == 0 ){
+					topImg.src = "../../images/home/yintian.png";
+				}else if(tq.indexOf("多云") == 0 ){
+					topImg.src = "../../images/home/duoyun.png";
+				}else if(tq.indexOf("晴") == 0 ){
+					topImg.src = "../../images/home/qingtian.png";
+				}else if(tq.indexOf("雷") == 0 ){
+					topImg.src = "../../images/home/leiyu.png";
+				}else if(tq.indexOf("雪") == 0 ){
+					topImg.src = "../../images/home/xiaxue.png";
+				}
+				
+			}
+			mui.plusReady(function() {
+				findWeather();
+			});
 		</script>
 
 	</body>

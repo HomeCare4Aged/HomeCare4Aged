@@ -23,12 +23,12 @@ div{
 	margin-left: 15px;
 }
 .zz-div-line{
-	border-bottom: 2px solid #cccdce;
+	border-bottom: 1px solid rgb(228,228,228);
 	padding-bottom: 15px;
 }
 .zz-hr-line{
-	background-color: #cccdce; 
-	height: 2px;
+	background-color: rgb(228,228,228); 
+	height: 1px;
 	border: none;
 	margin-top: 15px;
 	margin-bottom: 0px;
@@ -36,7 +36,7 @@ div{
 }
 .zz-h5-text{
 	margin-top: 10px;
-	font-size: 17px;
+	font-size: 18px;
 	font-weight: 900;
 }
 .zz-label-doctInfo{

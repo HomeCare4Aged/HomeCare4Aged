@@ -22,18 +22,18 @@
 				</div>
 				<div class="zz-div-doctName">
 					<h2 id="doctName">张大夫</h2>
-					<h5 class="m_gray_text zz-h5-text" id="doctIdentity">主任医师 | 13人预约过</h5>
+					<h3 class="m_gray_text zz-h5-text" id="doctIdentity">主任医师 | 13人预约过</h3>
 				</div>
 			</div>
 			<div class="mui-row marginLeftRight zz-div-label">
-				<label class="zz-label-doctInfo" id="doctIntroduction">
-					选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室
+				<label class="zz-label-doctInfo m_gray_text" id="doctIntroduction">
+					简介
 				</label>
 				<hr class="zz-hr-line"/>
 			</div>
 			<div class="mui-row marginLeftRight zz-div-label">
-				<label class="zz-label-doctInfo" id="doctRegistrationPredictMoney">
-					挂号费：12元
+				<label class="zz-label-doctInfo m_gray_text" id="doctRegistrationPredictMoney">
+					挂号费：0元
 				</label>
 				<hr class="zz-hr-line"/>
 			</div>
@@ -47,23 +47,34 @@
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
 			});
-			var data_id;
-			mui.plusReady(function(){
+			var hospital_doctor_id;
+			var postData = {};
+			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				hospital_doctor_id = sData.hospital_doctor_id;				
 				mui.ajax({
 					type : 'GET',
-					url	: SERVERURL+"HDoctorBaseInfo/selectall",
+					url	: SERVERURL+"HDoctorBaseInfo/findDoctInfo?hospital_doctor_id="+hospital_doctor_id,
 					dataType :"json",
 					//成功获取数据赋值
 					success: function(data){
-						data_id = data.data.hospital_doctor_id;
 						var doctName = document.getElementById('doctName');
 						doctName.innerHTML = data.data.hospital_doctor_name;
 						var doctIdentity = document.getElementById('doctIdentity');
-						doctIdentity.innerHTML = data.data.hospital_doctor_identity+'|'+'13人预约过';
+						doctIdentity.innerHTML = data.data.identity_name+' | '+'13人预约过';
 						var doctIntroduction = document.getElementById('doctIntroduction');
 						doctIntroduction.innerHTML = data.data.hospital_doctor_introduction;
 						var doctRegistrationPredictMoney = document.getElementById('doctRegistrationPredictMoney');
-						doctRegistrationPredictMoney.innerHTML = '挂号费：'+data.data.registration_predict_money+'元';
+						doctRegistrationPredictMoney.innerHTML = '挂号费：'+data.data.registration_money+'元';
+						
+						postData['registration_money'] = sData.registration_money;
+						postData['community_hospitals_id'] = sData.community_hospitals_id;
+						postData['hospital_office_id'] = sData.hospital_office_id;
+						postData['hospital_doctor_id'] = data.data.hospital_doctor_id;
+						postData['hospital_doctor_name'] = data.data.hospital_doctor_name;
+						postData['hospital_office_name'] = sData.hospital_office_name;
+						console.log(JSON.stringify(postData));
+						
 					},
 					error:function (xhr,type,errorThrown) {
 						console.log(type);
@@ -74,10 +85,11 @@
 				
 			});
 			function openWindow(){
+				var sData = plus.webview.currentWebview().hospital_doctor_id;	
 				mui.openWindow({
 					url:'../registration/makeSureMessage.html',
 					extras:{
-						_id:data_id,
+						data:postData,
 					},
 				});
 			};
