@@ -10,6 +10,11 @@ class DoctorController extends Controller {
 			//筛选掉已经删除的数据
 			'status' => array('neq',-1),
 		);
+		//分类搜索逻辑
+		if(isset($_REQUEST['keywords']) && $_REQUEST['keywords'] != ''){
+			$cond['hospital_office_id|hospital_doctor_name']= array('like','%'.$_REQUEST['keywords'].'%');
+			$this->assign('keywords',$cond['hospital_office_id|hospital_doctor_name']);
+		}
 		//分页逻辑
 		$page = $_REQUEST['p'] ? $_REQUEST[p] : 1;
 		$pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 5;
@@ -37,6 +42,7 @@ class DoctorController extends Controller {
 //					return $this->save($_POST);
 //				}
 				//执行新操作
+				$validData['hospital_doctor_id'] = get_uuid();
 				$res = D('HDoctorBaseInfo')->inset($validData);
 				if($res === false){
 					return ajaxReturn(\DATABASE_ERROR,'数据库新增失败');
@@ -50,7 +56,20 @@ class DoctorController extends Controller {
 			$this->display();
 		}
     }
-    
+    //编辑页展示
+	public function edit(){
+		$doctor_id = I('id');
+		try{
+			$doctor = D('HDoctorBaseInfo')->findMenuById($doctor_id);
+		}catch(exception $e){
+			return ajaxReturn(\QUERY_ERROR,$e->getMessage());
+		}
+		if($menu === false){
+			return ajaxReturn(\DATABASE_ERROR,'数据库查询失败');
+		}
+		$this->assign('doctor',$doctor);
+		$this->display();
+	}
     //上传封面图，制作缩略图
     function ajaxUploadImage(){
     	 $uploader = new ImageUploader();

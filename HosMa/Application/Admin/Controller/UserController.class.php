@@ -23,7 +23,36 @@ class UserController extends Controller {
 		$this->assign('pageRes',$pageRes);
     	$this->display();
     }
-    
+    //角色权限获取
+    public function assignAuth(){
+    	if($_POST){
+    		try{
+    			$res = D('h_user_limit_info')->saveAuth(intval(I('hospital_user_id')),I('limit_id'));
+    			if($res === false){
+    				return ajaxReturn(\DATABASE_ERROR,'权限更新失败');
+    		}
+    				return ajaxReturn(\SUCESS,'权限更新成功');
+    			}catch(exception $e){
+    				return ajaxReturn(\UPDATE_ERROR,$e->getMessage());
+    		}
+    		
+    	}else{
+    		$id = I('id');
+	    	if($id === null || $id == ''){
+	    		return ajaxReturn(\ARGUMENT_ERROR,'未获取角色ID');
+	    	}
+	    	//获取当前角色信息
+	    	$role = D('h_user_limit_info')->find(intval($id));
+	    	//获取全部权限信息
+	    	$menus = D('h_hospital_menu')->getMenus(array('status' => array('neq',-1)));
+	    	//获取当前角色拥有的权限ID
+	    	$role_menu_ids = explode(',', $role['limit_id']);
+	    	$this->assign('menus',$menus);
+	    	$this->assign('role',$role);
+	    	$this->assign('role_menu_ids',$role_menu_ids);
+	    	$this->display();
+    	}
+    }
     //点击添加文章按钮
     public function add(){
 		if($_POST){

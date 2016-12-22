@@ -38,12 +38,15 @@ class HDoctorBaseInfoModel extends Model{
 		//处理分页的业务
 		if($page === null || $pageSize !== null){
 			$page = $page !== null ? $page : 1;
-			$pageSize = $pageSize !== null ? $pageSize : 10;
+			$pageSize = $pageSize !== null ? $pageSize : 5;
 			//每页的起点（偏移量）
 			$offset = ($page - 1) * $pageSize;
-			$this->limit($offset,$pageSize);    //查询条数
+//			$this->limit($offset,$pageSize);    //查询条数
 		}
-			$list = $this->select();
+			$list = M('h_doctor_base_info')->limit($offset,$pageSize)-> join('h_hospital_office_info on h_doctor_base_info.hospital_office_id=h_hospital_office_info.hospital_office_id')
+			->join('h_indentity_info on h_doctor_base_info.hospital_doctor_identity=h_indentity_info.identity_id')
+			 ->select();
+//		cdebug($list);
 		return $list;
 	}
 	//获取菜单组数
