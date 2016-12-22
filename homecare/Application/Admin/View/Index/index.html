@@ -1,0 +1,97 @@
+<include file="Index/header"/>
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+			<div class="panel panel-info">
+			    <div class="panel-heading" role="tab" id="headingOne">
+			        <h4 class="panel-title">
+				        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+				                医院列表
+				        </a>
+				    </h4>
+			    </div>
+			    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+			        <div class="panel-body">
+				        <div class="row">
+						    <div class="col-sm-12">
+						    	<div class="table-responsive">
+									<form id="zh-form-list">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr class="success">
+													<td>医院名称</td>
+													<td>医院地址</td>
+													<td>联系方式</td>
+												</tr>
+											</thead>
+											<tbody>
+												<volist name="communityhospitalsinfos" id="vo">
+												    <tr>
+													    <td>{$vo.community_hospitals_name}</td>
+														<td>{$vo.community_hospitals_address}</td>
+														<td>{$vo.principal_contact_phone}</td>
+													</tr>
+												</volist>
+											</tbody>
+										</table>
+									</form>
+									<nav>
+										<ul class="pagination">
+											{$pageRes}
+										</ul>
+									</nav>
+								</div>
+						    </div>
+						</div>
+			        </div>
+			    </div>
+			</div>
+			<div class="panel panel-info">
+			    <div class="panel-heading" role="tab" id="headingTwo">
+			        <h4 class="panel-title"> 
+			            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+			                        商户列表   
+			            </a>
+			        </h4>
+			    </div>
+			    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+			        <div class="panel-body">
+				        <div class="row">
+						    <div class="col-sm-12">
+						    	<div class="table-responsive">
+									<form id="zh-form-list">
+										<table class="table table-bordered table-hover">
+											<thead>
+												<tr class="success">
+													<td>商户名称</td>
+													<td>商户地址</td>
+													<td>联系方式</td>
+												</tr>
+											</thead>
+											<tbody>
+												<volist name="storeshopinfos" id="vo">
+												    <tr>
+													    <td>{$vo.store_shop_name}</td>
+														<td>{$vo.store_shop_address}</td>
+														<td>{$vo.store_contact_user_phone}</td>
+													</tr>
+												</volist>
+											</tbody>
+										</table>
+									</form>
+									<nav>
+										<ul class="pagination">
+											{$pageRes2}
+										</ul>
+								   </nav>
+							    </div>
+					        </div>
+					    </div> 
+			        </div>
+			    </div>
+			</div> 
+		</div>
+	</div>
+</div>
+<include file="Index/footer"/>

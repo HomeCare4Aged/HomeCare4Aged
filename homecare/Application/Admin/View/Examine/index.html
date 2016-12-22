@@ -1,0 +1,61 @@
+<include file="Index/header"/>
+
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!--面包屑导航.row-->
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-university"></i>
+							<a href="__ACTION__">商户审核</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-table"></i>
+							商户审核列表
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!--表单.row-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zh-form-list">
+							<table class="table table-bordered table-hover">
+								<thead>
+									<tr>
+										<td>店铺名称</td>
+										<td>发布人</td>
+										<td>审核状态</td>
+										<td>审核人</td>
+										<td>审核</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>1</td>
+										<td>菜单</td>
+										<td>admin</td>
+										<td>menu</td>
+										<td>
+										    <span class="glyphicon glyphicon-trash" id="zh-span-delete" attr-id=""></span>审核
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+	};
+</script>
+<include file="Index/footer"/>

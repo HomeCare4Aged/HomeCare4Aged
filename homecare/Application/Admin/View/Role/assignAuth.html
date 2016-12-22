@@ -1,0 +1,45 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">权限管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							分配权限 [ {$role.role_name} ]
+						</li>
+					</ol>
+				</div>
+			</div><!--.row面包屑导航-->
+			<div class="col-sm-10">
+				<form id="zyn-form-assign-auth" class="form-inline">
+					<volist name='menus' id = 'vo' key='k'>	
+						<div class="checkbox-inline">
+							<label><input type="checkbox" name="menu_id[{$k}]" value="{$vo.menu_id}" <if condition="in_array($vo['menu_id'],$role_menu_ids) eq 1">checked</if> />{$vo.menu_name}</label>
+							
+						</div>
+					</volist>
+					<input type="hidden" name='role_id' value="{$role.role_id}" />
+				</form>
+			</div><!--.row表单-->		
+			<div class="col-sm-6">
+				<button type="button" class="btn btn-primary" id="zyn-btn-assign-auth">分配权限</button>
+			</div>
+		</div>
+	</div>
+</div>		
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'success_jump_url':'__URL__/index',
+		'assign_auth_url':'__ACTION__',
+	};
+</script>	
+<include file="Index/footer"/>
