@@ -1,0 +1,116 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/index.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_orange" id="zz-header-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">医生列表</h1>
+		</header>
+		<div class="mui-content ">
+			<ul class="mui-table-view" id="list_ul">
+				<!--<li class="mui-table-view-cell mui-media" id="list" >
+					<div class="marginLeftRight">
+						<div class="mui-media-object mui-pull-left">
+							<img style="width: 80px; height: 80px; margin-top: 10px;"  src="../../images/small.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 40px;">
+							<h1 class="black-text listCellText" >yihsen</h1>
+							<h3 class="black-text listCellText" style="margin-top: 5px;">主任</h3>
+							<h3 class="black-text listCellText"style="margin-top: 5px;">15</h3>
+						</div>
+					</div>
+				</li>-->
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+	
+			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				var community_hospitals_id = sData.community_hospitals_id;
+				var hospital_office_id = sData.hospital_office_id;
+				var hospital_office_name = sData.hospital_office_name;
+				console.log(hospital_office_name);
+				
+				mui.ajax({
+					type: 'GET',
+					url: SERVERURL + "HDoctorBaseInfo/selectDoctList?community_hospitals_id="+community_hospitals_id+'&hospital_office_id='+hospital_office_id,
+					dataType: "json",
+					//成功获取数据赋值
+					success: function(data) {
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							div1 = doc.createElement("div");
+							div2 = doc.createElement("div");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							h31 = doc.createElement("h3");
+							h32 = doc.createElement("h3");
+							li.setAttribute("class","mui-table-view-cell mui-media");
+							div.setAttribute("class","marginLeftRight");
+							div1.setAttribute("class","mui-media-object mui-pull-left");
+							div1.setAttribute("style","margin-top: 15px;")
+							img.setAttribute("src","../../images/small.png");
+							div2.setAttribute("class","mui-pull-left");
+							div2.setAttribute("style","margin-left: 40px;");
+							h1.setAttribute("class","black-text listCellText");
+							h31.setAttribute("class","m_gray_text");
+							h32.setAttribute("class","m_gray_text");
+							h1.innerHTML = data.data[i].hospital_doctor_name;
+							h31.innerHTML = data.data[i].identity_name;
+							h32.innerHTML = '挂号费：'+data.data[i].registration_money+'元';
+							li.id = data.data[i].hospital_doctor_id;
+							li.setAttribute('money',data.data[i].registration_money);
+							li.addEventListener('tap',function(){
+								mui.openWindow({
+									url:'../registration/doctorInfo.html',
+									extras:{
+										hospital_doctor_id:li.id,
+										community_hospitals_id :community_hospitals_id,
+										hospital_office_id :hospital_office_id,
+										registration_money:li.getAttribute('money'),
+										hospital_office_name:hospital_office_name,
+									},
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(div1);
+							div.appendChild(div2);
+							div1.appendChild(img);
+							div2.appendChild(h1);
+							div2.appendChild(h31);
+							div2.appendChild(h32);
+							fragment.appendChild(li);
+						});
+						container.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						mui.toast(type);
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

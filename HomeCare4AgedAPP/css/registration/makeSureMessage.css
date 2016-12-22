@@ -1,0 +1,50 @@
+.MSM-gray-text{
+	font-size: 20px;
+	margin-top: 10px; 
+	font-weight: bold; 
+	margin-left: 15px;
+	color: rgb(115,115,115);
+}
+.MSM-black-text{
+	font-size: 30px;
+	margin-top: 10px; 
+	margin-left: 15px;
+}
+.marginLeftRight{
+	margin-left:25px;
+	margin-right:25px;
+}
+.mui-table-view:after{
+	left:25px;
+	right:25px;
+}
+.mui-table-view:before{
+	left:25px;
+	right:25px;
+}
+.mui-table-view-cell:after{
+	left:25px;
+	right:25px;
+}
+.MSM-top25px{
+	margin-top: 25px;
+}
+.MSM-red-text{
+	font-size: 30px;
+	color: red;
+	margin-left: 15px;
+	margin-top: 0px;
+}
+.zz-btn-next{
+	margin-top: 15px;
+	margin-bottom: 10px;
+	width: 100%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	background: rgb(238,160,47);
+	border: 0px;
+}
+.mui-table-view-cell, .mui-table-view-cell:active {
+    background-color: #FAFAFA;
+}

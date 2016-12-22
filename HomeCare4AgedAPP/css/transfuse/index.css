@@ -1,4 +1,4 @@
-body{
+html body{
 	background: #FFFFFF;
 }
 .marginLeftRight{
@@ -33,4 +33,23 @@ body{
 }
 .top95px{
 	margin-top: 135px;
+}
+.mui-bar-nav {
+    top: 0;
+    -webkit-box-shadow: 0 1px 6px #ccc;
+    box-shadow: 0 1px 6px #ccc;
+    height: 60px;
+    background: rgb(76,188,236);
+    
+}
+.zz-btn-next{
+	position:fixed;
+	left: 10%;
+	bottom: 10%;
+	width: 80%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	background: rgb(76,188,236);
+	border: 0px;
 }

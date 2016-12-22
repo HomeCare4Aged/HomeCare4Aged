@@ -1,0 +1,43 @@
+body{
+	background: white;
+}
+.marginLeftRight{
+	margin-left:25px ;
+	margin-right:25px ;
+}
+.gray-text{
+	color: gray;
+}
+.top14px{
+	margin-top: 14px;
+	
+}
+.headline{
+	background: white;
+	height: 60px;
+}
+.title{
+	font-size: 30px;
+	margin-left:40px ;
+	padding-top: 15px;
+	font-weight: normal;
+}
+.mui-table-view:before{
+	left:25px;
+	right:25px;
+}
+.mui-table-view-cell:after{
+	left:25px;
+	right:25px;
+}
+.marginLeftRight{
+	margin-left:25px;
+	margin-right:25px;
+}
+.mui-table-view:after{
+	left:25px;
+	right:25px;
+}
+.yellow{
+	background: rgb(254,227,109);
+}

@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/makeSureMessage.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_orange">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">确认挂号</h1>
+		</header>
+		<div class="mui-content">
+		    <ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<h3 class="MSM-gray-text" >就诊医院</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="hospitalText">大铁棍子医院</h1>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<h3 class="MSM-gray-text" >候诊时间</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="timeText">2000-12-12 下午</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >科室</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="roomText">妇科</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >就诊医生</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="doctorNameText">捅主任</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >挂号费用</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-red-text" style="float: left;" id="priceText">￥0</h1>
+						<h1 class="MSM-black-text" id="priceText">（医院到付）</h1>
+					</div>
+					<div class="marginLeftRight ">
+						<h3 class="MSM-gray-text MSM-top25px" >就诊人</h3>
+					</div>
+					<div class="marginLeftRight">
+						<h1 class="MSM-black-text" id="personText">李晨</h1>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<button type="button" class="zz-btn-next" onclick="openWindow();">下一步</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			mui.plusReady(function(){
+				
+				console.log(JSON.stringify(postData));
+				var postData = plus.webview.currentWebview().data;
+				var hospitalText = document.getElementById('hospitalText');
+				var timeText = document.getElementById('timeText');
+				var roomText = document.getElementById('roomText');
+				roomText.innerHTML = postData.hospital_office_name;
+				var doctorNameText = document.getElementById('doctorNameText');
+				doctorNameText.innerHTML = postData.hospital_doctor_name;
+				var priceText = document.getElementById('priceText');
+				priceText.innerHTML = '￥'+postData.registration_money;
+				var personText = document.getElementById('personText');
+				
+//				setInterval(function() {
+//					console.log(getNowFormatDate());
+//				}, 50);
+				
+			});
+			function openWindow(){
+				var postData = plus.webview.currentWebview().data;
+				postData['registration_state'] = '未完成';
+				postData['user_registration_date'] = getNowFormatDate();
+				var hour = new Date().getDate();
+				console.log(JSON.stringify(postData));
+				mui.ajax({
+					type : 'POST',
+					data : postData,
+					url	: SERVERURL+"HRegistrationInfo/postRegistration",
+					dataType :"json",
+					//成功获取数据赋值
+					success: function(data){
+						if (data.status == 1){
+							mui.openWindow({
+								url:'../registration/finish.html',
+								extras:{
+								},
+							});
+						};
+						if (data.status == 0){
+							mui.alert(data.msg);
+						};
+						
+					},
+					error:function (xhr,type,errorThrown) {
+						console.log(type);
+						mui.alert('预约失败');
+					}
+				});
+				
+			};
+			//获取当前时间
+			function getNowFormatDate() {
+				var date = new Date();
+				var seperator1 = "-";
+				var seperator2 = ":";
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var hours = date.getHours();
+				var minutes = date.getMinutes();
+				var seconds = date.getSeconds();
+				if(hours >= 0 && hours <= 9) {
+					hours = "0" + hours;
+				}
+				if(minutes >= 0 && minutes <= 9) {
+					minutes = "0" + minutes;
+				}
+				if(seconds >= 0 && seconds <= 9) {
+					seconds = "0" + seconds;
+				}
+				var currentdate = year + seperator1 + month + seperator1 + strDate +
+					" " + hours + seperator2 + minutes +
+					seperator2 + seconds;
+				return currentdate;
+			}
+		</script>
+	</body>
+
+</html>

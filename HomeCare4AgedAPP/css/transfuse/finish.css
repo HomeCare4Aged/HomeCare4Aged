@@ -1,0 +1,31 @@
+
+html body{
+	background: #FFFFFF;
+}
+.mui-content{
+	background-color: white;
+}
+.topDiv{
+	margin-top: 30%;
+	text-align: center;
+	background-color: white;
+}
+.image{
+	width: 100px;
+	height: 100px;
+}
+.msg{
+	margin-top: 10px;
+	color: rgb(76,188,236);
+}
+.zz-btn-next{
+	position:fixed;
+	left: 10%;
+	bottom: 10%;
+	width: 80%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	background: rgb(76,188,236);
+	border: 0px;
+}

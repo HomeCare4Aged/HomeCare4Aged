@@ -11,7 +11,7 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav" id="zz-header-header">
+		<header class="mui-bar mui-bar-nav m_orange" id="zz-header-header">
 		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 		    <h1 class="mui-title">医生信息</h1>
 		</header>
@@ -21,35 +21,78 @@
 					<img src="../../images/small.png"/ class="zz-img-headImg">
 				</div>
 				<div class="zz-div-doctName">
-					<h2>张大夫</h2>
-					<h5 class="m_gray_text zz-h5-text">主任医师 | 13人预约过</h5>
+					<h2 id="doctName">张大夫</h2>
+					<h3 class="m_gray_text zz-h5-text" id="doctIdentity">主任医师 | 13人预约过</h3>
 				</div>
 			</div>
 			<div class="mui-row marginLeftRight zz-div-label">
-				<label class="zz-label-doctInfo">
-					选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室选择科室
+				<label class="zz-label-doctInfo m_gray_text" id="doctIntroduction">
+					简介
 				</label>
 				<hr class="zz-hr-line"/>
 			</div>
 			<div class="mui-row marginLeftRight zz-div-label">
-				<label class="zz-label-doctInfo">
-					挂号费：12元
+				<label class="zz-label-doctInfo m_gray_text" id="doctRegistrationPredictMoney">
+					挂号费：0元
 				</label>
 				<hr class="zz-hr-line"/>
 			</div>
 			<div class="mui-row marginLeftRight ">
-				<button class="zz-btn-next m_orange">下一步</button>
+				<button type="button" class="zz-btn-next m_orange" onclick="openWindow();">下一步</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack:true //启用右滑关闭功能
 			});
-			mui.plusReady(function(){
-				var data=plus.webview.currentWebview();
-				mui.toast(data._id);
+			var hospital_doctor_id;
+			var postData = {};
+			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				hospital_doctor_id = sData.hospital_doctor_id;				
+				mui.ajax({
+					type : 'GET',
+					url	: SERVERURL+"HDoctorBaseInfo/findDoctInfo?hospital_doctor_id="+hospital_doctor_id,
+					dataType :"json",
+					//成功获取数据赋值
+					success: function(data){
+						var doctName = document.getElementById('doctName');
+						doctName.innerHTML = data.data.hospital_doctor_name;
+						var doctIdentity = document.getElementById('doctIdentity');
+						doctIdentity.innerHTML = data.data.identity_name+' | '+'13人预约过';
+						var doctIntroduction = document.getElementById('doctIntroduction');
+						doctIntroduction.innerHTML = data.data.hospital_doctor_introduction;
+						var doctRegistrationPredictMoney = document.getElementById('doctRegistrationPredictMoney');
+						doctRegistrationPredictMoney.innerHTML = '挂号费：'+data.data.registration_money+'元';
+						
+						postData['registration_money'] = sData.registration_money;
+						postData['community_hospitals_id'] = sData.community_hospitals_id;
+						postData['hospital_office_id'] = sData.hospital_office_id;
+						postData['hospital_doctor_id'] = data.data.hospital_doctor_id;
+						postData['hospital_doctor_name'] = data.data.hospital_doctor_name;
+						postData['hospital_office_name'] = sData.hospital_office_name;
+						console.log(JSON.stringify(postData));
+						
+					},
+					error:function (xhr,type,errorThrown) {
+						console.log(type);
+						mui.toast(type);
+					}
+				});
+				
+				
 			});
+			function openWindow(){
+				var sData = plus.webview.currentWebview().hospital_doctor_id;	
+				mui.openWindow({
+					url:'../registration/makeSureMessage.html',
+					extras:{
+						data:postData,
+					},
+				});
+			};
 		</script>
 	</body>
 

@@ -16,11 +16,11 @@ div{
 #span-date{
 	position:absolute;
     top:20%;
-    left:3%;
+    left:5%;
 	color: white;
-	font-size:200%;
+	font-size:300%;
 }
-#img-F{
+.img-F{
 	position:absolute;
     top:40px;
     left:150px;
@@ -28,19 +28,19 @@ div{
 	height:20px;
 	overflow:hidden;
 }
-#span-F{
+.span-F{
 	position:absolute;
-    top:40%;
-    left:3%;
+    top:50%;
+    left:5%;
 	color: white;
-	font-size:120%;
+	font-size:150%;
 }
 #span-address{
 	position:absolute;
-    top:60%;
-    left:3%;
+    top:70%;
+    left:5%;
 	color: white;
-	font-size:120%;
+	font-size:150%;
 }
 #g-btn{
 	position:relative;
@@ -61,5 +61,5 @@ div{
 	position:relative;
     
 	color: white;
-	font-size:250%;
+	font-size:350%;
 }
