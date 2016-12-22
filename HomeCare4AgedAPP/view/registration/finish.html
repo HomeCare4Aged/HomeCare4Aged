@@ -12,7 +12,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_orange">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h3 id="backHome" class="  mui-pull-left" style="margin-top: 20px; color: white;">首页</h3>
 			<h1 class="mui-title">挂号成功</h1>
 		</header>
 		<div class="mui-content">
@@ -20,13 +20,34 @@
 				<img class="image" src="../../images/123.png" />
 				<h1 class="msg">您已成功挂号!</h1>
 			</div>
-			<button class="zz-btn-next">查看详情</button>
+			<button type="button" class="zz-btn-next" id="btn-details">查看详情</button>
 
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init({
-				swipeBack: true //启用右滑关闭功能
+			mui.init();
+			mui.plusReady(function() {
+
+				var backHome = document.getElementById('backHome');
+				backHome.addEventListener('tap', function() {
+					
+					mui.openWindow({
+						url: '../home/index.html',
+					});
+				});
+
+				var details = document.getElementById('btn-details');
+				var postData = plus.webview.currentWebview().data;
+					console.log(postData+"finish");
+				details.addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../registration/details.html',
+						extras:{
+							data:postData,
+						},
+					});
+				});
+
 			});
 		</script>
 	</body>

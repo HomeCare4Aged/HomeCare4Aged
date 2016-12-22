@@ -36,13 +36,13 @@
 						<h3 class="MSM-gray-text MSM-top25px" >科室</h3>
 					</div>
 					<div class="marginLeftRight">
-						<h1 class="MSM-black-text" id="roomText">妇科</h1>
+						<h1 class="MSM-black-text" id="roomText"></h1>
 					</div>
 					<div class="marginLeftRight ">
 						<h3 class="MSM-gray-text MSM-top25px" >就诊医生</h3>
 					</div>
 					<div class="marginLeftRight">
-						<h1 class="MSM-black-text" id="doctorNameText">捅主任</h1>
+						<h1 class="MSM-black-text" id="doctorNameText"></h1>
 					</div>
 					<div class="marginLeftRight ">
 						<h3 class="MSM-gray-text MSM-top25px" >挂号费用</h3>
@@ -55,7 +55,7 @@
 						<h3 class="MSM-gray-text MSM-top25px" >就诊人</h3>
 					</div>
 					<div class="marginLeftRight">
-						<h1 class="MSM-black-text" id="personText">李晨</h1>
+						<h1 class="MSM-black-text" id="personText">李</h1>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-media">
@@ -107,6 +107,7 @@
 							mui.openWindow({
 								url:'../registration/finish.html',
 								extras:{
+									data:postData,
 								},
 							});
 						};

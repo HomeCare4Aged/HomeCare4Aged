@@ -73,6 +73,15 @@
 			window.addEventListener('orientationchange', function(event) {
 				location.reload();
 			});
+			if (localStorage.tqSrc){
+				var topImg = document.getElementById('g-top-img');
+				topImg.src = localStorage.tqSrc;
+			}
+			if (localStorage.tqText){
+				var weather = document.getElementById('weather');
+				weather.innerHTML = localStorage.tqText;
+			}
+			
 		</script>
 		<script type="text/javascript">
 			$('.mui-icon-image').css('width', document.documentElement.clientWidth);
@@ -94,6 +103,10 @@
 			function openWindow($url) {
 				mui.openWindow({
 					url: $url,
+					extras: {
+						webId: plus.webview.currentWebview().id,
+					},
+
 				});
 			}
 
@@ -108,41 +121,108 @@
 						scriptCharset: "gbk",
 						success: function(data) {
 							var _w = window.SWther.w[citytq][0];
+							var tq;
 							var _f = _w.f1 + "_0.png";
 							if(new Date().getHours() > 17) {
 								_f = _w.f2 + "_1.png";
 								setImg(_w.s2);
-							}else{
+								tq = _w.s2 + " " + _w.t1 + "℃～" + _w.t2 + "℃ ";
+							} else {
 								setImg(_w.s1);
+								tq = _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃ ";
 							}            
-							var tq = _w.s1 + " " + _w.t1 + "℃～" + _w.t2 + "℃ ";
+							localStorage.tqText = tq;
 							var weather = document.getElementById('weather');
 							weather.innerHTML = tq;
 						}
 					});
 				});
 			}
-			function setImg(tq){
+
+			function setImg(tq) {
 				var topImg = document.getElementById('g-top-img');
-				if(tq.indexOf("雾") == 0 ){
-				    topImg.src = "../../images/home/wumai.png";
-				}else if(tq.indexOf("雨") == 0 ){
+				var tqArray = {};
+				console.log(tq);
+				if(tq.indexOf("雾") >= 0) {
+					tqArray[tq.indexOf("雾")] = "雾";
+				}
+				if(tq.indexOf("霾") >= 0) {
+					tqArray[tq.indexOf("霾")] = "雾";
+				}
+				if(tq.indexOf("雨") >= 0) {
+					tqArray[tq.indexOf("雨")] = "雨";
+				}
+				if(tq.indexOf("阴") >= 0) {
+					tqArray[tq.indexOf("阴")] = "阴";
+				}
+				if(tq.indexOf("多云") >= 0) {
+					tqArray[tq.indexOf("多云")] = "多云";
+				}
+				if(tq.indexOf("晴") >= 0) {
+					tqArray[tq.indexOf("晴")] = "晴";
+				}
+				if(tq.indexOf("雷") >= 0) {
+					tqArray[tq.indexOf("雷")] = "雷";
+				}
+				if(tq.indexOf("雪") >= 0) {
+					tqArray[tq.indexOf("雪")] = "雪";
+				}
+				var tianqi = tqArray[getKey(tqArray)];
+				if(tianqi == "雾") {
+					localStorage.tqSrc = "../../images/home/wumai.png";
+					topImg.src = "../../images/home/wumai.png";
+				}
+				if(tianqi == "雨") {
+					localStorage.tqSrc = "../../images/home/xiayu.png";
 					topImg.src = "../../images/home/xiayu.png";
-				}else if(tq.indexOf("阴") == 0 ){
+				}
+				if(tianqi == "阴") {
+					localStorage.tqSrc = "../../images/home/yintian.png";
 					topImg.src = "../../images/home/yintian.png";
-				}else if(tq.indexOf("多云") == 0 ){
+				}
+				if(tianqi == "多云") {
+					localStorage.tqSrc = "../../images/home/duoyun.png";
 					topImg.src = "../../images/home/duoyun.png";
-				}else if(tq.indexOf("晴") == 0 ){
+				}
+				if(tianqi == "晴") {
+					localStorage.tqSrc = "../../images/home/qingtian.png";
 					topImg.src = "../../images/home/qingtian.png";
-				}else if(tq.indexOf("雷") == 0 ){
+				}
+				if(tianqi == "雷") {
+					localStorage.tqSrc = "../../images/home/leiyu.png";
 					topImg.src = "../../images/home/leiyu.png";
-				}else if(tq.indexOf("雪") == 0 ){
+				}
+				if(tianqi == "雪") {
+					localStorage.tqSrc = "../../images/home/xiaxue.png";
 					topImg.src = "../../images/home/xiaxue.png";
 				}
-				
 			}
+
+			function getKey(json) {
+				var keyText;
+				var i = 0;
+				for(var key in json) {
+					if(i == 0) {
+						keyText = key;
+					} else {
+						if(key < keyText) {
+							keyText = key;
+						}
+					}
+					++i;
+				}
+				console.log(keyText);
+				return keyText;
+			}
+
 			mui.plusReady(function() {
 				findWeather();
+				
+				window.addEventListener('refreshWeather', function() {
+					plus.navigator.setStatusBarBackground('#FFFFFF');
+					findWeather();
+					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+				});
 			});
 		</script>
 

@@ -14,44 +14,214 @@
 		<header class="mui-bar mui-bar-nav yellow ">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
 			<h1 class="mui-title" style="color: black;">我的挂号</h1>
+
 		</header>
 		<div class="mui-content">
-			<div class="top14px headline">
-				<h1 class="title">已预约</h1>
+			<div class="top14px headline" id"already_title">
+				<h1 class="title" >已预约</h1>
+				<label id="g-delete" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 20px;font-size: 30px;">删除预约</label>
+				<label id="cancel" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 100px;font-size: 30px;"></label>
 			</div>
-			<ul class="mui-table-view" id="list_ul">
-				<li class="mui-table-view-cell mui-media" id="list">
+			<ul class="mui-table-view" id="list_already">
+				<!--<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight">
 						<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-						<h1>李晨</h1>
+						<h1>李</h1>
 						<label class="gray-text">2016-12-12 下午</label>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight">
 						<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-						<h1>李晨</h1>
+						<h1>李</h1>
 						<label class="gray-text">2016-12-12 下午</label>
 					</div>
-				</li>
+				</li>-->
 			</ul>
 			<div class="headline" style="margin-top: -10px;">
 				<h1 class="title">已就诊</h1>
 			</div>
-			<ul class="mui-table-view" id="list_ul">
-				<li class="mui-table-view-cell mui-media" id="list">
+			<ul class="mui-table-view" id="list_finish">
+				<!--<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight">
 						<img class="mui-media-object mui-pull-left" src="../../images/small.png">
-						<h1>李晨</h1>
+						<h1>李</h1>
 						<label class="gray-text">2016-12-12 下午</label>
 					</div>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
+			});
+			mui.plusReady(function() {
+
+				getListData();
+
+				var btndelete = document.getElementById('g-delete');
+				var status = 1;
+				btndelete.addEventListener('tap', function() {
+					if(status == 1) {
+						btndelete.innerHTML = '删除';
+						var list = document.getElementsByClassName('deleteList');
+//						console.log(list.length);
+						mui.each(list, function(i) {
+							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList mui-checkbox mui-left");
+							var g_input = document.createElement('input');
+							g_input.setAttribute("name", "checkbox");
+							g_input.setAttribute("style", "margin-top: 25px");
+							g_input.setAttribute("type", "checkbox");
+							g_input.setAttribute("class", "choseinput");
+							g_input.id = list[i].id;
+							list[i].appendChild(g_input);
+						});
+						status = 0;
+						
+						
+						var label = document.getElementById('cancel');
+						label.innerHTML = "取消";
+						label.addEventListener('tap', function() {
+							
+							label.innerHTML = "";
+							
+							
+						btndelete.innerHTML = '删除预约';
+						var listinput = document.getElementsByClassName('choseinput');
+						
+						for(var i = list.length - 1; i >= 0; i--) {
+							list[i].removeChild(listinput[i]);
+							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
+						}
+							status = 1;
+						});
+						
+						
+					} else {
+						btndelete.innerHTML = '删除预约';
+						var listli = document.getElementsByClassName('deleteList');
+						var listinput = document.getElementsByClassName('choseinput');
+//						console.log(listli.length);
+//						console.log(listinput.length);
+						
+						var postData = new Array();
+						var count = 0;
+						for(var i = listli.length - 1; i >= 0; i--) {
+							if(listinput[i].checked == true) {
+								postData[count] = listinput[i].id;
+								count++;
+							}
+							listli[i].removeChild(listinput[i]);
+							listli[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
+						}
+						var label = document.getElementById('cancel');
+						label.innerHTML = "";
+						if(postData.length > 0) {
+							console.log(postData);
+							mui.ajax({
+								type: 'POST',
+								url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
+								dataType: "json",
+								data: {'id':postData},
+								//成功获取数据赋值
+								success: function(data) {
+									if (data.status == 1){
+										mui.alert(data.msg);
+										plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+									} 
+								},
+
+								error: function(xhr, type, errorThrown) {
+									console.log(type);
+									mui.alert('删除失败');
+								}
+							});
+						}
+
+						status = 1;
+					}
+
+				});
+
+				function getListData() {
+					mui.ajax({
+						type: 'GET',
+						url: SERVERURL + "HRegistrationInfo/getRegistrationList",
+						dataType: "json",
+						//成功获取数据赋值
+						success: function(data) {
+							var dataAlready = data.data.Unfinished;
+							var dataFinish = data.data.Finish;
+//							console.log(dataAlready);
+//							console.log(dataFinish);
+							var doc = document;
+							fragment = doc.createDocumentFragment();
+							container_already = doc.getElementById("list_already");
+							mui.each(dataAlready, function(i) {
+								var doc = document;
+								li = doc.createElement("li");
+								div = doc.createElement("div");
+								g_input = doc.createElement("input");
+								img = doc.createElement("img");
+								h1 = doc.createElement("h1");
+								label = doc.createElement("label");
+								li.setAttribute("class", "mui-table-view-cell mui-media deleteList");
+								li.id = dataAlready[i].user_registration_id;
+								div.setAttribute("class", "marginLeftRight");
+								img.setAttribute("class", "mui-media-object mui-pull-left");
+								img.setAttribute("src", "../../images/small.png")
+								h1.innerHTML = "李";
+								label.setAttribute("class", "gray-text");
+								label.innerHTML = '2016-12-12 12:12';
+
+								li.addEventListener('tap', function() {
+
+								});
+								li.appendChild(div);
+								div.appendChild(img);
+								div.appendChild(h1);
+								div.appendChild(label);
+								fragment.appendChild(li);
+							});
+							container_already.appendChild(fragment);
+
+							var doc = document;
+							fragment = doc.createDocumentFragment();
+							container_finish = doc.getElementById("list_finish");
+							mui.each(dataFinish, function(i) {
+								var doc = document;
+								li = doc.createElement("li");
+								div = doc.createElement("div");
+								img = doc.createElement("img");
+								h1 = doc.createElement("h1");
+								label = doc.createElement("label");
+								li.setAttribute("class", "mui-table-view-cell mui-media");
+								div.setAttribute("class", "marginLeftRight");
+								img.setAttribute("class", "mui-media-object mui-pull-left");
+								img.setAttribute("src", "../../images/small.png")
+								h1.innerHTML = '张';
+								label.setAttribute("class", "gray-text");
+								label.innerHTML = '2016-12-12 12:12';
+								li.addEventListener('tap', function() {
+
+								});
+								li.appendChild(div);
+								div.appendChild(img);
+								div.appendChild(h1);
+								div.appendChild(label);
+								fragment.appendChild(li);
+							});
+							container_finish.appendChild(fragment);
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+							mui.toast(type);
+						}
+					});
+				}
+
 			});
 		</script>
 	</body>
