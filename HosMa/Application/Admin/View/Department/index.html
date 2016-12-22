@@ -3,7 +3,6 @@
 	<include file="Index/nav" />
 	<div id="page-wrapper">
 		<div class="container-fluid">
-			<h3>科室信息</h3>
 			<div class="row">
 				<div class="col-md-12">
 					<ol class="breadcrumb">
@@ -15,18 +14,14 @@
 					</ol>
 				</div>				
 			</div><!--.row面包屑导航   -->
-			<div class="row">
-				<form class="form-horizontal" id="">
-				<div class="form-group">
-					<label id="" class="control-label col-sm-3">在班医生信息：</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" id="" placeholder="请录入"/>
-					</div>
-					<div class="col-sm-2">
-						<button class="btn btn-primary" type="button" id="xx-btn-add">新增录入</button>
-					</div>
+			<div class="row xx-div-search">
+				<div class="col-sm-2">
+					<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
 				</div>
-				</form>
+				<!-- 按钮触发模态框 -->
+				<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					 弹框
+				</button>
 			</div><!--row.结束-->
 			<div class="row">
 				<div class="col-md-12">
@@ -35,10 +30,8 @@
 							<table class="table table-bordered table-hover" id="xx-table-list">
 								<thead>
 									<tr>
-										<td>科室ID</td>
+										<td>科室内码</td>
 										<td>科室名称</td>
-										<td>科室编号</td>
-										<td>科室简介</td>
 									</tr>
 								</thead>
 								<tbody>
@@ -46,8 +39,6 @@
 										<tr>
 											<td>{$vo.hospital_office_id}</td>
 											<td>{$vo.hospital_office_name}</td>
-											<td>{$vo.hospital_doctor_name}</td>
-											<td>{$vo.hospital_doctor_sex}</td>
 									</volist>
 								</tbody>
 							</table>
@@ -58,6 +49,60 @@
 		</div>
 	</div>
 </div>
+				<!--弹出框-->
+				<div class="col-sm-10">
+					<!-- 模态框（Modal） -->
+					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+									</button>
+									<h4 class="modal-title" id="myModalLabel">
+										新增科室信息
+									</h4>
+								</div>
+								<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-10 col-sm-offset-1d">
+											<form id="xx-form-add" class="form-horizontal">
+												<div class="form-group">
+													<label for="xx-input-hospital-office-name" class="control-label col-sm-3">科室名称：</label>
+													<div class="col-sm-5">
+														<input id="xx-input-hospital-office-name" class="form-control" type="text" 
+														name="hospital_office_name" placeholder="请输入科室名称" />
+													</div>
+													<div class="col-sm-4">
+														<p class="xx-p-validate-result" attr-validate="hospital_office_name"></p>
+													</div>
+												</div>
+												<div class="form-group">
+													<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
+													<div class="col-sm-5">
+														<input id="xx-input-hospital-office-id" class="form-control" type="text" 
+														name="hospital_office_id" placeholder="请输入科室编号" />
+													</div>
+													<div class="col-sm-4">
+														<p class="xx-p-validate-result" attr-validate="hospital_office_id"></p>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div><!--.row表单-->
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-default" data-dismiss="modal">
+										关闭
+									</button>
+									<button type="button" class="btn btn-primary" id="xx-btn-add-submit">
+										提交更改
+									</button>
+								</div>
+							</div><!-- /.modal-content -->
+						</div><!-- /.modal -->
+					</div>
+				</div>
 	<script>
 		var SCOPE = {
 			'add_url':'__URL__/add'

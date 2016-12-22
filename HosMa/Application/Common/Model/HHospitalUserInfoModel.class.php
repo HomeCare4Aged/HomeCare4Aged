@@ -3,6 +3,50 @@ namespace Common\Model;
 use Think\Model;
 
 class HHospitalUserInfoModel extends Model{
+	//登录部分
+//	private $_db='';//定义一个数据库私有变量
+//		//写一个构造方法
+//		public function __construct(){
+//			//既能调用父类也能调用子类方法
+////			parent::__construct();
+//			//调用一个成员变量,M();方法是thinkphp中的方法，它的作用是实例化一个数据库表
+//			$this->_db = M('h_hospital_user_info');//把一个表转化为实例化对象
+//		}
+		//查询医院内码的方法
+	public function findHospitalCode($hospitalCode) {
+		//做判断 是为了防止服务器挂掉
+		//如果传入的值为空就抛出异常  管理员账号不合法
+		if (!$hospitalCode) {
+			throw_exception('查询医院内码时超级管理员账号不合法');
+		}
+		//操作数据库,这个字段（hospital_user_no）=传进来的值（$adminName）这个字段等于传进来的值
+		$condition['community_hospital_numbers'] = $hospitalCode;
+		//$res = $this->_db->where($condition)->find();//连贯去掉，查询一个用户名
+		$res = $this->where($condition) -> find();
+//		$res = $this->_db->join('h_hospitals_info on h_hospital_user_info')
+//		$list = M('h_hospital_user_info')-> join('h_hospitals_info on h_hospital_user_info.community_hospitals_id=h_user_limit_info.hospital_user_id')->select();
+//		var_dump($res);exit;
+//		cDebug($res);
+		return $res;
+	}
+	
+	//查找登录密码方法
+	public function findUserPassword($hospitalID,$employeeNumber) {
+		//做判断 是为了防止服务器挂掉
+		//如果传入的值为空就抛出异常  管理员账号不合法
+		if (!$hospitalID || !$employeeNumber) {
+			throw_exception('错误信息');
+		}
+		//操作数据库,这个字段（hospital_user_no）=传进来的值（$adminName）这个字段等于传进来的值
+		$condition['community_hospitals_id'] = $hospitalID;
+		$condition['hospital_user_no'] = $employeeNumber;
+		//$res = $this->_db->where($condition)->find();//连贯去掉，查询一个用户名
+		$res = $this->where($condition) -> find();
+//		var_dump($res);exit;
+		return $res;
+	}
+	//登录部分结束
+	
 	//设置表单验证规则
 	protected $_validate = array(
 		array('hospital_user_name','require','员工姓名不能为空'),
@@ -12,13 +56,6 @@ class HHospitalUserInfoModel extends Model{
 	);
 //	//是否批量处理验证
 	protected $patchValidate = true;
-//	private $_db = '';
-	
-	//构造方法
-//	public function __construct(){
-//		parent::__construct();
-//		$this->_db = M('doctor_base_info');
-//	}
 	//新增菜单数据
 	public function inset($data){
 		if(!$data || !is_array($data)){
@@ -67,5 +104,8 @@ class HHospitalUserInfoModel extends Model{
 		}
 		return $this->where('article_id='.$id)->save($data);
 	}
+	
+	
+	
 }
 ?>
