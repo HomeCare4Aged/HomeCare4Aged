@@ -42,7 +42,7 @@
 							<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
 							<div class="col-sm-5">
 								<select class="form-control" name="type">
-									<option value="">--请选择科室--</option>
+									<option value=""></option>
 									<option value="">内科</option>
 									<option value="">外科</option>
 								</select>
@@ -83,13 +83,15 @@
 							</div>
 						</div>
 						<div class="form-group">
-							<label for="xx-input-registration-predict-money" class="control-label col-sm-3">挂号费用：</label>
+							<label for="xx-input-image" class="control-label col-sm-3">医生照片：</label>
 							<div class="col-sm-5">
-								<input id="xx-input-registration-predict-money" class="form-control" type="text" 
-								name="registration_predict_money" placeholder="请输入挂号费用" />
-							</div>
-							<div class="col-sm-4">
-								<p class="xx-p-validate-result" attr-validate="registration_predict_money"></p>
+								<input id="xx-input-img2-uploader" type="file" />
+								<!-- 展示缩略图 -->
+								<img src="" alt="" id="xx-img-show-thumb" width="150px" style="display: none;"/>
+								<!-- 封面图字段 -->
+								<input type="hidden" name="image_path" id="xx-input-image-path"/>
+								<!-- 缩略图图字段 -->
+								<input type="hidden" name="thumb_path" id="xx-input-thumb-path"/>
 							</div>
 						</div>
 						<div class="form-group">
