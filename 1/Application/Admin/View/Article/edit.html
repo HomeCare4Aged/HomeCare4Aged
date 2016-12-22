@@ -1,0 +1,110 @@
+<!--头尾分离    忽略错误信息 运行可用-->
+<include file="Index/header" />
+<div id="wrapper">
+	<include file="Index/nav" />
+	<div id="page-wrapper">
+		
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">文章管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							编辑文章
+						</li>
+					</ol>
+				</div>
+			</div>
+	<!--.row面包屑导航-->
+			<div class="row">
+			<div class="col-sm-10">
+				<form id="zyn-form-add" class="form-horizontal">
+					<div class="form-group">
+						<label for="zyn-input-title" class="control-label col-sm-4">标题：</label>
+						<div class="col-sm-5">
+							<input id="zyn-input-title" class="form-control" type="text" name="title" placeholder="请输入标题" value="{$article.title}"/>
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "title"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-small-title" class="control-label col-sm-4">副标题：</label>
+						<div class="col-sm-5">
+							<input id="zyn-input-small-title" class="form-control" type="text" name="small_title" placeholder="请输入副标题"/ value="{$article.small_title}">
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "small_title"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-image" class="control-label col-sm-4">封面图：</label>
+						<div class="col-sm-5">
+							<input type="file" id="zyn-input-uploader"/>
+							<img src="{$article.thumb_path}" alt="" id="zyn-image-show-thumb" width="150px" <if condition="$article['thumb_path'] eq ''">style="display: none;" </if>/>
+							<input type="hidden" name="image_path" id="zyn-input-image-path"/>
+							<input type="hidden" name="thumb_path" id="zyn-input-thumb-path"/>
+						</div>
+					</div>
+					<div class="form-group">					
+						<label for="zyn-textarea-content" class="control-label col-sm-4">内容：</label>
+						<div class="col-sm-5">
+							<textarea class="js-editor" id="zyn-textarea-content" name="content" rows="20" >
+								{$articleContent.content}
+							</textarea>
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "content"></p>
+						</div>
+					</div>					
+					<div class="form-group">
+						<label for="zyn-input-keywords" class="control-label col-sm-4">关键词：</label>
+						<div class="col-sm-5">
+							<input id="zyn-input-keywords" class="form-control" type="text" name="keywords" placeholder="请输入关键词"/ value="{$article.keywords}">
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "keywords"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-description" class="control-label col-sm-4">描述：</label>
+						<div class="col-sm-5">
+							<input id="zyn-input-description" class="form-control" type="text" name="description" placeholder="请输入描述"/ value="{$article.description}">
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "description"></p>
+						</div>
+					</div>					
+					<div class="form-group">
+						<label for="" class="col-sm-4 control-label">状态类型：</label>
+						<div class="col-sm-5">
+							<input type="radio" name="status" value="1" checked/>开启
+							<input type="radio" name="status" value="0"/>关闭
+						</div>
+					</div>
+					<div class="row">
+						<div class="col=sm-6 col-sm-offset-5">
+							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
+						</div>
+					</div>
+					<input type="hidden" value="{$menu.article_id}" name="id"/>
+				</form>
+			</div>
+		</div><!--。row表单-->
+		</div>
+	</div>
+</div>	
+
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'success_jump_url':'__URL__/index',
+	};
+</script>
+		
+<include file="Index/footer" />

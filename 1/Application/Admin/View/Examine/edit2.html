@@ -1,0 +1,75 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/announcement">公告信息审核</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							公告审核
+						</li>
+					</ol>
+				</div>
+			</div><!--.row面包屑导航-->
+			<div class="col-sm-12">
+				<form id="zyn-form-add" class="form-horizontal">
+					<div class="form-group">
+						<label for="zyn-input-menu-name" class="control-label col-sm-3">公告标题:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_title}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-module" class="control-label col-sm-3">发布用户:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_sender_id}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-controller" class="control-label col-sm-3">所属单位:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_hospital_id}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-action" class="control-label col-sm-3">发布时间:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.send_datetime}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-action" class="control-label col-sm-3">公告类型:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_type_id}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-action" class="control-label col-sm-3">公告图片:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_picture}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-action" class="control-label col-sm-6">公告内容:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_content}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-action" class="control-label col-sm-4">撤销日期:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{$menu.announcement_end_date}</label>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-announcement_checker_id" class="control-label col-sm-3">审核人:</label>
+						<div class="col-sm-4">
+							<input id="zyn-input-announcement_checker_id" class="form-control" type="text" 
+							    name="announcement_checker_id" placeholder="请输入审核人姓名" value="{menu.announcement_checker_id}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="announcement_checker_id"></p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-4">
+							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">通过</button>
+							<input type="button" id="zyn-btn-add-submit2" class="btn btn-primary" value="未通过">
+						</div>
+					</div>	
+					<input type="hidden" value="{$menu.menu_id}" name="id" />
+				</form>
+			</div><!--.row表单-->
+		</div>
+	</div>
+</div>		
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'success_jump_url':'__URL__/index',
+	};
+</script>	
+<include file="Index/footer"/>
