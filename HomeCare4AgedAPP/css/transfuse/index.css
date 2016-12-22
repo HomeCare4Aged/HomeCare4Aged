@@ -5,9 +5,9 @@ html body{
 	margin-left:25px ;
 	margin-right:25px ;
 }
-.mui-content{
+/*.mui-content{
 	background: white;
-}
+}*/
 .black-text{
 	color: black;
 }
@@ -34,14 +34,14 @@ html body{
 .top95px{
 	margin-top: 135px;
 }
-.mui-bar-nav {
+/*.mui-bar-nav {
     top: 0;
     -webkit-box-shadow: 0 1px 6px #ccc;
     box-shadow: 0 1px 6px #ccc;
     height: 60px;
     background: rgb(76,188,236);
     
-}
+}*/
 .zz-btn-next{
 	position:fixed;
 	left: 10%;
@@ -53,3 +53,5 @@ html body{
 	background: rgb(76,188,236);
 	border: 0px;
 }
+
+

@@ -8,21 +8,112 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/transfuse/transFuseTime.css" />
+		
+		<!--<link rel="stylesheet" href="../../css/app.css" />-->
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+		
+		<style>
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.ui-alert {
+				text-align: center;
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+		</style>
+		
 	</head>
 		
 	<body>
 		<header class="mui-bar mui-bar-nav m_blue">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">输液时间</h1>
+			<h1 class="mui-title">输液时长</h1>
 		</header>
 		<div class="mui-content">
+			
+			<button id='showUserPicker' class="mui-btn mui-btn-block" type='button' style="margin-top: 45px;">一级选择示例 ...</button>
+				<div id='userResult' class="ui-alert"></div>
+			
 			<div class="mui-row ">
-				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/makeSureMessage.html');">下一步</button>
+				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/makeSureMessage.html');">
+					下一步
+				</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.picker.min.js" ></script>
+		<script type="text/javascript" src="../../js/mui.picker.js" ></script>
+		<script type="text/javascript" src="../../js/mui.poppicker.js" ></script>
+		<script type="text/javascript" src="../../js/city.data.js" ></script>
+		<script type="text/javascript" src="../../js/city.data-3.js" ></script>
 		<script type="text/javascript">
-			mui.init()
+			(function($, doc) {
+				$.init();
+				$.ready(function() {
+					//普通示例
+					var userPicker = new $.PopPicker();
+					userPicker.setData([{
+						value: '2',
+						text: '2小时'
+					}, {
+						value: '2.5',
+						text: '2.5小时'
+					}, {
+						value: '3',
+						text: '3小时'
+					}, ]);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					var userResult = doc.getElementById('userResult');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							userResult.innerText = JSON.stringify(items[0]);
+							//返回 false 可以阻止选择框的关闭
+							//return false;
+						});
+					}, false);
+					//-----------------------------------------
+//					级联示例
+//					var cityPicker = new $.PopPicker({
+//						layer: 2
+//					});
+//					cityPicker.setData(cityData);
+//					var showCityPickerButton = doc.getElementById('showCityPicker');
+//					var cityResult = doc.getElementById('cityResult');
+//					showCityPickerButton.addEventListener('tap', function(event) {
+//						cityPicker.show(function(items) {
+//							cityResult.innerText = "你选择的城市是:" + items[0].text + " " + items[1].text;
+//							//返回 false 可以阻止选择框的关闭
+//							//return false;
+//						});
+//					}, false);
+					//-----------------------------------------
+					//					//级联示例
+//					var cityPicker3 = new $.PopPicker({
+//						layer: 3
+//					});
+//					cityPicker3.setData(cityData3);
+//					var showCityPickerButton = doc.getElementById('showCityPicker3');
+//					var cityResult3 = doc.getElementById('cityResult3');
+//					showCityPickerButton.addEventListener('tap', function(event) {
+//						cityPicker3.show(function(items) {
+//							cityResult3.innerText = "你选择的城市是:" + (items[0] || {}).text + " " + (items[1] || {}).text + " " + (items[2] || {}).text;
+//							//返回 false 可以阻止选择框的关闭
+//							//return false;
+//						});
+//					}, false);
+				});
+			})(mui, document);
 			function openWindow($url) {
 				mui.openWindow({
 					url: $url,

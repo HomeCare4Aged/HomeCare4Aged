@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/message/content.css"/>
+
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_green">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">公告内容</h1>
+		</header>
+		<div class="mui-content marginLeftRight top35px">
+		    <div class="mui-row">
+		    	<h1 id="zz-h1-title">这里是通知标题</h1>
+		    </div>
+		    <div class="mui-row">
+		    	<h3 class="MSM-gray-text zz-h3-hospitalName" id="zz-h3-hospitalId">发布：这里是医院名称</h3>
+		    </div>
+		    <div class="mui-row">
+		    	<h3 class="MSM-gray-text" id="zz-h3-dateTime">发布日期</h3>
+		    </div>
+		    <div class="mui-row zz-div-content" >
+		    	<h1 id="zz-h1-content">这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，这里是内容，</h1>
+		    </div>
+		    <!--<div class="mui-row">-->
+		    	<img src="../../images/123.png" class="zz-img-contentPicture"/>
+		    <!--</div>-->
+		    
+		</div>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				
+				//返回刷新
+				beforeback: function(){
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+					
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner,'refreshList');
+					
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+			});
+			
+			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				var	announcement_title = sData.announcement_title;
+				var	announcement_content = sData.announcement_content;
+				var	send_datetime = sData.send_datetime;
+				var	announcement_hospital_id = sData.announcement_hospital_id;
+				
+				document.getElementById("zz-h1-title").innerHTML = sData.announcement_title;
+				document.getElementById("zz-h1-content").innerHTML = announcement_content;
+				document.getElementById("zz-h3-dateTime").innerHTML = send_datetime;
+				
+				if(announcement_hospital_id == '9999'){
+					document.getElementById("zz-h3-hospitalId").innerHTML = '发布：总后台';
+				}else{
+					document.getElementById("zz-h3-hospitalId").innerHTML = '发布：' + announcement_hospital_id;
+				}
+//				console.log(JSON.stringify(announcement_title));
+				$('.zz-img-contentPicture').css('width', document.documentElement.clientWidth-50);
+				
+			});
+			
+			
+		</script>
+	</body>
+
+</html>

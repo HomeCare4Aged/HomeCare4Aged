@@ -1,0 +1,83 @@
+body{
+	background: #FFFFFF;
+}
+.marginLeftRight{
+	margin-left:25px ;
+	margin-right:25px ;
+	/*background-color: red;*/
+}
+.mui-content{
+	background: white;
+}
+.black-text{
+	color: black;
+}
+.mui-table-view:after{
+	left:25px;
+	right:25px;
+}
+.mui-table-view:before{
+	left:25px;
+	right:25px;
+}
+.mui-table-view-cell:after{
+	left:25px;
+	right:25px;
+}
+.top60px{
+	margin-top: 60px;
+	background: rgb(254,227,109);
+}
+.top110px{
+	margin-top: 130px;
+	background: white;
+}
+.top95px{
+	margin-top: 135px;
+}
+.MSM-gray-text{
+	font-size: 20px;
+	font-weight: bold; 
+	color: rgb(115,115,115);
+	
+}
+.zz-h5-newMark{
+	background-color: rgb(60,172,39);
+	margin-left: 10px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	border-radius: 5px;
+	color: white;
+	padding: 2px;
+}
+.zz-h5-unreadMark{
+	background-color: rgb(244,86,118);
+	margin-left: 10px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	border-radius: 5px;
+	color: white;
+	padding: 2px;
+}
+.zz-h5-readMark{
+	background-color: rgb(63,183,236);
+	margin-left: 10px;
+	-moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+	border-radius: 5px;
+	color: white;
+	padding: 2px;
+}
+.zz-style-position{
+	float: left;
+}
+
+.zz-h3-hospitalName{
+	margin-top: 15px;
+}
+.zz-div-content{
+	margin-top: 20px;
+}
+.zz-img-contentPicture{
+	margin-bottom: 25px;
+}

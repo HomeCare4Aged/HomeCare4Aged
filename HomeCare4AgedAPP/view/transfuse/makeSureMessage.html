@@ -61,25 +61,26 @@
 //				mui.toast(sData._id);
 //			}
 			
+			
 			var btn = document.getElementById("zz-btn-next");
 			btn.addEventListener("tap", function() {
 				//		//			console.log('document.getElementById("userName").innerHTML');
 				//					var hostitalName = document.getElementById("hospitalName").innerHTML;
-//									var transTime = document.getElementById("transTime").innerHTML;
+									var transTime = document.getElementById("transTime").innerHTML;
 				//					var transDuration = document.getElementById("transDuration").innerHTML;
 				//					var userName = document.getElementById("userName").innerHTML;
 				//					
 				var postData = {};
-				postData['user_transfusion_id'] = '0001';
-				postData['community_user_id'] = '0002';
-//				postData['community_hospitals_id'] = '0001';
-//				postData['user_appointment_date'] = transTime;
-//				postData['user_appointment_time'] = '00:00:00';
-//				postData['predict_finished_time'] = '12:00:00';
-//				postData['user_transfusion_date'] = '2016-12-18 14:48:00';
-//				postData['user_transfusion_type'] = '床位';
-//				postData['transfusion_state'] = '未完成';
-//				postData['transfusion_cancel_time'] = '2016-12-18 14:48:00';
+//				postData['user_transfusion_id'] = '0030';
+//				postData['community_user_id'] = '0012';
+				postData['community_hospitals_id'] = '0010';
+				postData['user_appointment_date'] = transTime;
+				postData['user_appointment_time'] = '00:00:00';
+				postData['predict_finished_time'] = '12:00:00';
+				postData['user_transfusion_date'] = '2016-12-18 14:50:00';
+				postData['user_transfusion_type'] = '床位';
+				postData['transfusion_state'] = '完成';
+				postData['transfusion_cancel_time'] = '2016-12-18 14:50:00';
 //				console.log(postData);
 				//					
 				
