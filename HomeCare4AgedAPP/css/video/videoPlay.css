@@ -1,10 +1,11 @@
 .blackTitle{
 	font-size: 40px; 
-	margin-top: -50px;
+	margin-top: 10px;
+	margin-left: 10px
 }
 .grayText{
 	color: gray;
-	font-size: 20px; 
+	font-size: 30px; 
 	margin-top: 20px;
 	font-weight: bold;
 	float: left;
@@ -18,7 +19,7 @@
 	color: white;
 	padding: 2px;
 	float: left;
-	margin-top: 21px;
+	margin-top: 17px;
 }
 .zz-h5-unreadMark{
 	background-color: rgb(244,86,118);
@@ -29,7 +30,7 @@
 	color: white;
 	padding: 2px;
 	float: left;
-	margin-top: 21px;
+	margin-top: 17px;
 }
 .zz-h5-readMark{
 	background-color: rgb(94,119,154);
@@ -40,5 +41,8 @@
 	color: white;
 	padding: 2px;
 	float: left;
-	margin-top: 21px;
+	margin-top: 17px;
+}
+.mui-table-view-cell, .mui-table-view-cell:active {
+    background-color: #FAFAFA;
 }

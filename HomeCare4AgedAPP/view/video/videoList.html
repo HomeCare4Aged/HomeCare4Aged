@@ -7,38 +7,161 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/video/videoList.css" />
 	</head>
 
-	<body>
+	<body style="background: white;">
 		<header class="mui-bar mui-bar-nav m_gray">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">视频</h1>
 			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
-				<h5 class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
+				<h5 id="videoType" class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
 				<img id="pullUp" src="../../images/video/pullUp.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />
 			</div>
 		</header>
 		<div class="mui-content" style="margin-top: 60px;">
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media">
-					<img  style="width: 80px;  margin-top: 10px;" class="mui-pull-left" src="../../images/video/videoPlay.png" />
-					<div class="marginLeftRight mui-pull-left" style="margin-left: 40px;">
-						<h1 class="blackTitle" >我的播放记录</h1>
-						<h3 id="myVideoCount" class="grayText">0个视频</h3>
+			<ul class="mui-table-view" id="list_ul">
+				<!--<li class="mui-table-view-cell mui-media">
+					<img style="width: 80px;  margin-top: 30px; margin-left: 10px;" class="mui-pull-left" src="../../images/video/videoPlay.png" />
+					<div style=" margin-top: 10px; margin-left: 110px;">
+						<div class="mui-row">
+							<h1 class="grayText">2012-12-12</h1>
+							<h5 class="zz-h5-newMark">新</h5>
+							<h5 class="zz-h5-unreadMark">未播</h5>
+							<h5 class="zz-h5-readMark">已播</h5>
+						</div>
+						<h3 id="myVideoCount" class="blackTitle">制作制作制作制作制作制作制作</h3>
 					</div>
-				</li>
+				</li>-->
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
-			mui.plusReady( function(){
+			mui.plusReady(function() {
+
+				//点击后改为已读
+				window.addEventListener('refreshRead', function() {
+					var h5 = document.getElementById(localStorage.videoReadIdLabel);
+
+					h5.innerHTML = "已读";
+					h5.setAttribute("class", 'zz-h5-readMark');
+					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+				});
+
 				console.log(localStorage.videoIndexDataId);
 				console.log(localStorage.videoIndexDataName);
+				console.log(getNowFormatDate());
+				
+				if(localStorage.videoIndexDataName == '我的播放记录'){
+					console.log('我的播放记录');
+					var h5 = document.getElementById('videoType');
+					h5.innerHTML = '我的播放记录';
+				}
+				if(localStorage.videoIndexDataName != '我的播放记录'){
+					var h5 = document.getElementById('videoType');
+					h5.innerHTML = localStorage.videoIndexDataName;
+					console.log('！我的播放记录');
+					mui.ajax({
+						type: 'GET',
+						url: SERVERURL + "AVideoInfo/getVideoInfoTypeList?video_type_id=" + localStorage.videoIndexDataId,
+						dataType: "json",
+						//成功获取数据赋值
+						success: function(data) {
+							console.log(JSON.stringify(data) + '111');
+							var doc = document;
+							fragment = doc.createDocumentFragment();
+							container = doc.getElementById("list_ul");
+							mui.each(data.data, function(i) {
+								console.log(data.data[i].send_datetime.substring(0, 10));
+								var doc = document;
+								li = doc.createElement("li");
+								li.setAttribute("class", "mui-table-view-cell mui-media");
+								img = doc.createElement('img');
+								img.setAttribute("style", "width: 80px;  margin-top: 30px; margin-left: 10px;")
+								img.setAttribute("class", "mui-pull-left");
+								img.setAttribute("src", "../../images/video/videoPlay.png");
+								div = doc.createElement("div");
+								div.setAttribute("style", " margin-top: 10px; margin-left: 110px;");
+								div1 = doc.createElement('div');
+								div1.setAttribute("class", "mui-row");
+								h1 = doc.createElement("h1");
+								h1.setAttribute("class", "grayText")
+								h1.innerHTML = data.data[i].send_datetime.substring(0, 10);
+								h5new = doc.createElement("h5");
+								h5new.setAttribute("class", "zz-h5-newMark");
+								h5new.innerHTML = '新';
+								h5un = doc.createElement("h5");
+								h5un.innerHTML = '未播';
+								h5un.setAttribute("class", "zz-h5-unreadMark");
+								h5un.id = data.data[i].video_id + "videoRead";
+								h5read = doc.createElement("h5");
+								h5read.innerHTML = '已播';
+								h5read.setAttribute("class", "zz-h5-readMark");
+								h3 = doc.createElement("h3");
+								h3.setAttribute("class", "blackTitle");
+								h3.innerHTML = data.data[i].video_introduction;
+								li.id = data.data[i].video_id;
+								li.addEventListener('tap', function() {
+									localStorage.videoId = this.id;
+									localStorage.videoIndexDataName = this.name;
+									localStorage.setItem('videoRead' + this.id, "read");
+									localStorage.videoReadIdLabel = this.id + "videoRead";
+									localStorage.webId = plus.webview.currentWebview().id;
+									mui.openWindow({
+										url: '../video/videoPlay.html',
+										extras: {
+
+										},
+									});
+								});
+								li.appendChild(img);
+								li.appendChild(div);
+								div.appendChild(div1);
+								div1.appendChild(h1);
+
+								if(data.data[i].send_datetime.substring(0, 10) == getNowFormatDate()) {
+									console.log(data.data[i].send_datetime.substring(0, 10));
+									div1.appendChild(h5new);
+								}
+								if(localStorage.getItem('videoRead' + li.id) == 'read') {
+									div1.appendChild(h5read);
+								} else {
+									div1.appendChild(h5un);
+								}
+								div.appendChild(h3);
+								fragment.appendChild(li);
+							});
+							container.appendChild(fragment);
+							console.log(JSON.stringify(data.data));
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});
+				}
 			});
+
+			function getNowFormatDate() {
+				var date = new Date();
+				var seperator1 = "-";
+				var seperator2 = ":";
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = year + seperator1 + month + seperator1 + strDate;
+				return currentdate;
+			}
 		</script>
 	</body>
 

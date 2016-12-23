@@ -58,8 +58,7 @@
 				plus.navigator.setStatusBarBackground('#767B9A');
 				var li = document.getElementById('myHistoryVideo');
 				li.addEventListener('tap', function() {
-								localStorage.videoIndexDataId = '我的播放记录';
-								localStorage.videoIndexDataMyVideoCount = li.getAdjacentText();
+								localStorage.videoIndexDataName = '我的播放记录';
 								mui.openWindow({
 									url: '../video/videoList.html',
 									extras: {

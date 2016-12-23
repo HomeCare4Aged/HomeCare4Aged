@@ -1,187 +1,187 @@
 {
-	"view/registration/index.html": {
-		"resources": [
-			"images/registration/neike.png",
-			"css/registration/index.css",
-			"js/constants.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"images/registration/wuguan.png",
-			"images/registration/pifu.png",
-			"css/mui.min.css",
-			"css/common/common.css",
-			"images/registration/define.png"
-		],
-		"refer": [
-			"view/registration/doctorList.html",
-			"view/registration/myHistory.html"
-		]
-	},
-	"view/message/index.html": {
-		"resources": [
-			"js/constants.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/common/common.css",
-			"css/message/index.css"
-		],
-		"refer": [
-			"view/message/content.html"
-		]
-	},
-	"view/transfuse/index.html": {
-		"resources": [
-			"js/mui.picker.min.js",
-			"js/mui.min.js",
-			"css/transfuse/index.css",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/common/common.css",
-			"css/mui.picker.min.css",
-			"js/jquery.1.11.1.js"
-		],
-		"refer": [
-			"view/transfuse/transFuseTime.html"
-		]
-	},
-	"view/home/index.html": {
-		"resources": [
-			"js/constants.js",
-			"fonts/mui.ttf",
-			"images/home/takeOut.png",
-			"images/home/registration.png",
-			"images/home/video.png",
-			"images/home/dropIn.png",
-			"js/mui.min.js",
-			"images/home/qingtian.png",
-			"js/jquery.1.11.1.js",
-			"css/mui.min.css",
-			"images/home/transfuse.png",
-			"css/home/index.css",
-			"images/home/message.png"
-		],
-		"refer": [
-			"view/registration/index.html",
-			"view/message/index.html",
-			"view/transfuse/index.html",
-			"view/video/index.html",
-			"view/takeOut/index.html",
-			"view/dropIn/index.html"
-		]
-	},
-	"view/registration/doctorInfo.html": {
-		"resources": [
-			"css/registration/doctorInfo.css"
-		],
-		"refer": [
-			"view/registration/makeSureMessage.html"
-		]
-	},
-	"view/registration/doctorList.html": {
-		"resources": [
-			"images/small.png",
-			"js/jquery.1.11.1.js",
-			"css/registration/index.css",
-			"js/constants.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/common/common.css"
-		],
-		"refer": [
-			"view/registration/doctorInfo.html"
-		]
-	},
-	"view/registration/finish.html": {
-		"resources": [
-			"images/123.png",
-			"css/registration/finish.css"
-		],
-		"refer": [
-			"view/registration/details.html"
-		]
-	},
-	"view/registration/makeSureMessage.html": {
-		"resources": [
-			"css/registration/makeSureMessage.css"
-		],
-		"refer": [
-			"view/registration/finish.html"
-		]
-	},
-	"view/registration/details.html": {
-		"refer": [
-			"view/home/index.html"
-		]
-	},
-	"view/transfuse/transFuseTime.html": {
-		"resources": [
-			"js/mui.picker.js",
-			"js/mui.poppicker.js",
-			"js/city.data.js",
-			"css/mui.poppicker.css",
-			"css/mui.picker.css",
-			"css/transfuse/transFuseTime.css",
-			"js/city.data-3.js",
-			"js/mui.picker.min.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/common/common.css",
-			"js/jquery.1.11.1.js"
-		],
-		"refer": [
-			"view/transfuse/makeSureMessage.html"
-		]
-	},
-	"view/transfuse/makeSureMessage.html": {
-		"resources": [
-			"css/transfuse/makeSureMessage.css",
-			"js/constants.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/common/common.css"
-		]
-	},
-	"view/message/content.html": {
-		"resources": [
-			"images/123.png",
-			"css/message/content.css",
-			"js/jquery.1.11.1.js",
-			"js/constants.js",
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css",
-			"css/common/common.css"
-		]
-	},
-	"view/video/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"view/takeOut/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"view/dropIn/index.html": {
-		"resources": [
-			"js/mui.min.js",
-			"fonts/mui.ttf",
-			"css/mui.min.css"
-		]
-	},
-	"view/registration/myHistory.html": {
-		"resources": [
-			"css/registration/myHistory.css",
-			"images/small.png"
-		]
-	}
+  "view/registration/index.html": {
+    "resources": [
+      "images/registration/neike.png",
+      "css/registration/index.css",
+      "js/constants.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "images/registration/wuguan.png",
+      "images/registration/pifu.png",
+      "css/mui.min.css",
+      "css/common/common.css",
+      "images/registration/define.png"
+    ],
+    "refer": [
+      "view/registration/doctorList.html",
+      "view/registration/myHistory.html"
+    ]
+  },
+  "view/message/index.html": {
+    "resources": [
+      "js/constants.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common/common.css",
+      "css/message/index.css"
+    ],
+    "refer": [
+      "view/message/content.html"
+    ]
+  },
+  "view/transfuse/index.html": {
+    "resources": [
+      "js/mui.picker.min.js",
+      "js/mui.min.js",
+      "css/transfuse/index.css",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common/common.css",
+      "css/mui.picker.min.css",
+      "js/jquery.1.11.1.js"
+    ],
+    "refer": [
+      "view/transfuse/transFuseTime.html"
+    ]
+  },
+  "view/home/index.html": {
+    "resources": [
+      "js/constants.js",
+      "fonts/mui.ttf",
+      "images/home/takeOut.png",
+      "images/home/registration.png",
+      "images/home/video.png",
+      "images/home/dropIn.png",
+      "js/mui.min.js",
+      "images/home/qingtian.png",
+      "js/jquery.1.11.1.js",
+      "css/mui.min.css",
+      "images/home/transfuse.png",
+      "css/home/index.css",
+      "images/home/message.png"
+    ],
+    "refer": [
+      "view/registration/index.html",
+      "view/message/index.html",
+      "view/transfuse/index.html",
+      "view/video/index.html",
+      "view/takeOut/index.html",
+      "view/dropIn/index.html"
+    ]
+  },
+  "view/registration/doctorInfo.html": {
+    "resources": [
+      "css/registration/doctorInfo.css"
+    ],
+    "refer": [
+      "view/registration/makeSureMessage.html"
+    ]
+  },
+  "view/registration/doctorList.html": {
+    "resources": [
+      "images/small.png",
+      "js/jquery.1.11.1.js",
+      "css/registration/index.css",
+      "js/constants.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common/common.css"
+    ],
+    "refer": [
+      "view/registration/doctorInfo.html"
+    ]
+  },
+  "view/registration/finish.html": {
+    "resources": [
+      "images/123.png",
+      "css/registration/finish.css"
+    ],
+    "refer": [
+      "view/registration/details.html"
+    ]
+  },
+  "view/registration/makeSureMessage.html": {
+    "resources": [
+      "css/registration/makeSureMessage.css"
+    ],
+    "refer": [
+      "view/registration/finish.html"
+    ]
+  },
+  "view/registration/details.html": {
+    "refer": [
+      "view/home/index.html"
+    ]
+  },
+  "view/transfuse/transFuseTime.html": {
+    "resources": [
+      "js/mui.picker.js",
+      "js/mui.poppicker.js",
+      "js/city.data.js",
+      "css/mui.poppicker.css",
+      "css/mui.picker.css",
+      "css/transfuse/transFuseTime.css",
+      "js/city.data-3.js",
+      "js/mui.picker.min.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common/common.css",
+      "js/jquery.1.11.1.js"
+    ],
+    "refer": [
+      "view/transfuse/makeSureMessage.html"
+    ]
+  },
+  "view/transfuse/makeSureMessage.html": {
+    "resources": [
+      "css/transfuse/makeSureMessage.css",
+      "js/constants.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common/common.css"
+    ]
+  },
+  "view/message/content.html": {
+    "resources": [
+      "images/123.png",
+      "css/message/content.css",
+      "js/jquery.1.11.1.js",
+      "js/constants.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "css/common/common.css"
+    ]
+  },
+  "view/video/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "view/takeOut/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "view/dropIn/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+  },
+  "view/registration/myHistory.html": {
+    "resources": [
+      "css/registration/myHistory.css",
+      "images/small.png"
+    ]
+  }
 }
