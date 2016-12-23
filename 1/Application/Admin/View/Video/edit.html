@@ -1,0 +1,115 @@
+<include file="Index/header"/>
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<!--面包屑导航.row-->
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">视频管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							编辑视频
+						</li>
+					</ol>
+				</div>
+			</div>
+			<!--表单.row-->
+			<div class="col-sm-10">
+				<form id="zyn-form-add" class="form-horizontal">
+					<div class="form-group">
+						<label for="zh-input-video_title" class="control-label col-sm-3">视频标题:</label>
+						<div class="col-sm-4">
+							<input id="zh-input-video_title" class="form-control" type="text" 
+							    name="video_title" placeholder="请输入视频标题" value="{$menu.video_title}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="video_title"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zh-textarea-video_introduction" class="control-label col-sm-3">视频简介:</label>
+						<div class="col-sm-4">
+							<textarea class="js-editor" id="zh-textarea-video_introduction" name="video_introduction" rows="8">{$menu.video_introduction}</textarea>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="video_introduction"></p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="zh-input-video_length" class="control-label col-sm-3">视频时长:</label>
+						<div class="col-sm-4">
+							<input id="zh-input-video_length" class="form-control" type="text" 
+							    name="video_length" placeholder="请输入视频时长" value="{$menu.video_length}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="video_length"></p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="zh-input-send_datetime" class="control-label col-sm-3">发布时间:</label>
+						<div class="col-sm-4">
+							<input id="zh-input-send_datetime" class="form-control" type="text" 
+							    name="send_datetime" placeholder="请输入发布时间" value="{$menu.send_datetime}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="send_datetime"></p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="zh-input-sender_id" class="control-label col-sm-3">发布人:</label>
+						<div class="col-sm-4">
+							<input id="zh-input-sender_id" class="form-control" type="text" 
+							    name="sender_id" placeholder="请输入发布人" value="{$menu.sender_id}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="sender_id"></p>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">视频类别:</label>
+						<div class="col-sm-5">
+							<input type="radio" name="video_type_id" value="0000" <if condition="$menu.video_type_id eq 0000">checked</if>/>疾病防治
+							<input type="radio" name="video_type_id" value="00000000" <if condition="$menu.video_type_id eq 00000000">checked</if>/>交通安全
+							<input type="radio" name="video_type_id" value="00000001" <if condition="$menu.video_type_id eq 00000001">checked</if>/>关节炎
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">状态:</label>
+						<div class="col-sm-5">
+							<input type="radio" name="state" value="开启" <if condition="$menu.state eq 开启">checked</if>/>开启
+							<input type="radio" name="state" value="关闭" <if condition="$menu.state eq 关闭">checked</if>/>关闭
+						</div>
+					</div>
+					<input type="hidden" name="id" id="video_id" value="{$menu.video_id}" />
+						<div class="row">
+							<div class="col-sm-6 col-sm-offset-4">
+								<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">提交</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'success_jump_url':'__URL__/index',
+		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',
+		'ajax_upload_url':'__URL__/ajaxUploadImage',
+	};
+</script>
+<include file="Index/footer"/>
+
+
+

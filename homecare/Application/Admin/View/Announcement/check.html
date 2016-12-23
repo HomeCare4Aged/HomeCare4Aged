@@ -1,0 +1,72 @@
+<!--头尾分离    忽略错误信息 运行可用-->
+
+<include file="Index/header" />
+<div id="wrapper">
+	<include file="Index/nav" />
+	<div id="page-wrapper">
+		
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							审核公告
+						</li>
+					</ol>
+				</div>
+			</div>
+	<!--.row面包屑导航-->
+			<div class="row">
+            	<div class="col-md-9 col-md-offset-1">
+            		<div class="table-responsive">
+            			<form id="zyn-form-list">
+            				<table class="table table-bordered table-hover zyn-table-list">
+            					<thead>
+            						<tr class="success">
+            							<td>公告标题</td>
+            							<td>发布人</td>
+            							<td>发布时间</td>
+            							<td>操作</td>
+            						</tr>
+            					</thead>
+            					<tbody>
+            						<volist name='ancheckstate' id='vo' >
+	            						<tr>
+	            							<td>{$vo.announcement_title}</td>
+	            							<td>{$vo.announcement_sender_id}</td>
+	            							<td>{$vo.send_datetime}</td>
+	            							<td>
+	            								<span class="btn btn-primary" id='zyn-span-edit' attr-id="{$vo.announcement_id}">查看详情</span>
+	            							</td>
+	            						</tr>
+	            					</volist>
+            					</tbody>
+            				</table>
+            			</form>
+            			<nav>
+							<ul class="pagination">
+								{$pageRes}
+							</ul>
+						</nav>
+            		</div>
+            	</div>
+            </div>
+		</div>
+	</div>
+</div>	
+
+<script>
+	var SCOPE = {
+		'edit_url':'__URL__/edit'
+//		'add_url':'__ACTION__',
+//		'success_jump_url':'__URL__/index',
+//		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',
+//		'ajax_upload_url':'__URL__/ajaxUploadImage', 
+	};
+</script>
+		
+<include file="Index/footer" />
+
+

@@ -1,0 +1,95 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">菜单管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							编辑菜单
+						</li>
+					</ol>
+				</div>
+			</div><!--.row面包屑导航-->
+			<div class="col-sm-10">
+				<form id="zyn-form-add" class="form-horizontal">
+					<div class="form-group">
+						<label for="zyn-input-menu-name" class="control-label col-sm-3">菜单名:</label>
+						<div class="col-sm-4">
+							<input id="zyn-input-menu-name" class="form-control" type="text" 
+							    name="menu_name" placeholder="请输入菜单名称" value="{$menu.menu_name}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="menu_name"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-module" class="control-label col-sm-3">模块名:</label>
+						<div class="col-sm-4">
+							<input id="zyn-input-menu-module" class="form-control" type="text" 
+							    name="menu_module" placeholder="请输入模块名称" value="{$menu.menu_module}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="menu_module"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-controller" class="control-label col-sm-3">控制器名:</label>
+						<div class="col-sm-4">
+							<input id="zyn-input-menu-controller" class="form-control" type="text" 
+							    name="menu_controller" placeholder="请输入控制器名称" value="{$menu.menu_controller}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="menu_controller"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-menu-action" class="control-label col-sm-3">方法名:</label>
+						<div class="col-sm-4">
+							<input id="zyn-input-menu-action" class="form-control" type="text" 
+							    name="menu_action" placeholder="请输入方法名称" value="{$menu.menu_action}"/>
+						</div>
+						<div class="col-sm-5">
+							<p class="zyn-p-validate-result" attr-validate="menu_action"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">菜单类型:</label>
+						<div class="col-sm-5">
+							
+							<input type="radio" name="type" value="1" <if condition="$menu.type eq 1">checked</if>/>后台菜单
+							<input type="radio" name="type" value="0" <if condition="$menu.type eq 0">checked</if>/>前端导航
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="" class="col-sm-3 control-label">状态:</label>
+						<div class="col-sm-5">
+							<input type="radio" name="status" value="1" <if condition="$menu.status eq 1">checked</if>/>开启
+							<input type="radio" name="status" value="0" <if condition="$menu.status eq 0">checked</if>/>关闭
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-6 col-sm-offset-4">
+							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">确定更新</button>
+						</div>
+					</div>	
+					<input type="hidden" value="{$menu.menu_id}" name="id" />
+				</form>
+			</div><!--.row表单-->
+		</div>
+	</div>
+</div>		
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'success_jump_url':'__URL__/index',
+	};
+</script>	
+<include file="Index/footer"/>

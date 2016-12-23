@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/transfuse/index.css" />
@@ -18,7 +19,7 @@
 			.mui-content {
 				height: 0px;
 				margin: 0px;
-				background-color: #efeff4;
+				background-color: white;
 			}
 			
 			h5.mui-content-padded {
@@ -56,13 +57,22 @@
 			<h1 class="mui-title">输液时间</h1>
 		</header>
 		<div class="mui-content">
-			<button id='demo7' data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"},{"text":"晚上","value":"晚上"}]},"labels":["年", "月", "日", "时段", "分"]}' class="btn mui-btn mui-btn-block" style="margin-top: 45px;">选择时段 ...</button>
-			<div id='result' class="ui-alert"></div>
-
 			<div class="mui-row ">
+				<button type="button" id='zz-btn-time'  data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"}]},"labels":["年", "月", "日", "时段", "分"]}' class="zz-btn-timeClass " >选择输液时间</button>
+			</div>
+			
+			<div  class="mui-row zz-div-result">
+				<label id="zz-label-ymd"></label>
+			</div>
+			<div  class="mui-row zz-div-result">
+				<label id="zz-label-timeSlot"></label>
+			</div>
+			
+			<div class="mui-row marginLeftRight">
 				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/transFuseTime.html');">下一步</button>
 			</div>
 		</div>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
 		<script type="text/javascript">
@@ -76,14 +86,23 @@
 					//返回true，继续页面关闭逻辑
 					return true;
 				},
+				
 			});
 			mui.plusReady(function() {
 				plus.navigator.setStatusBarBackground('#4CBCEC');
+
 			});
+			
+			var timeResult;
+			var ymd;
+			var timeSlot;
+			ymd = document.getElementById('zz-label-ymd');
+			timeSlot = document.getElementById('zz-label-timeSlot');
+			
 			(function($) {
 				$.init();
-				var result = $('#result')[0];
-				var btns = $('.btn');
+//				var result = $('#result')[0];
+				var btns = $('.zz-btn-timeClass');
 				btns.each(function(i, btn) {
 					btn.addEventListener('tap', function() {
 						var optionsJson = this.getAttribute('data-options') || '{}';
@@ -91,17 +110,80 @@
 						var id = this.getAttribute('id');
 						var picker = new $.DtPicker(options);
 						picker.show(function(rs) {
-							result.innerText = '选择结果: ' + rs.text;
+							timeResult = rs.text;
+							ymd.innerHTML = rs.text.substr(0, 10);
+							timeSlot.innerHTML = rs.text.substr(10, 3);
 							picker.dispose();
 						});
 					}, false);
 				});
+				
 			})(mui);
-
+			
+			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
+			
 			function openWindow($url) {
-				mui.openWindow({
-					url: $url,
-				});
+				
+				var ymd = document.getElementById('zz-label-ymd');
+				var timeSlot = document.getElementById('zz-label-timeSlot');
+				yyy = parseInt(ymd.innerHTML.substr(0,4));
+				mmm = parseInt(ymd.innerHTML.substr(5,2));
+				ddd = parseInt(ymd.innerHTML.substr(8,2));
+				hours = timeSlot.innerHTML;
+				
+				now = new Date();
+				year = now.getFullYear();
+				myYear = parseInt(year);
+				month = now.getMonth();
+				myMonth = parseInt(month)+1;
+				day = now.getDate();
+				myDay = parseInt(day);
+				myHours = now.getHours();
+				var myHhh;
+				if(myHours < 12){
+					myHhh = '上午';
+				}else{
+					myHhh = '下午';
+				}
+				
+				if(ymd.innerHTML == ''){
+					mui.alert('请您选择输液时间');
+				}else if(yyy < myYear){
+					mui.alert('请您选择正确的时间');
+				}else if(mmm < myMonth){
+					mui.alert('请您选择正确的时间');
+				}else if(ddd < myDay){
+					mui.alert('请您选择正确的时间');
+				}else if(yyy == myYear && mmm == myMonth && ddd == myDay){
+					if(myHhh == '上午'){
+						mui.openWindow({
+							url: $url,
+							extras: {
+										'timeResult' : timeResult			
+									}
+						});
+					}
+					if(myHhh == '下午' && hours == ' 上午'){
+						
+						mui.alert('上午已经过去了哦~');
+					}
+					if(myHhh == '下午' && hours == ' 下午'){
+						
+						mui.openWindow({
+						url: $url,
+						extras: {
+									'timeResult' : timeResult			
+								}
+					});
+					}
+				}else{
+					mui.openWindow({
+						url: $url,
+						extras: {
+									'timeResult' : timeResult			
+								}
+					});
+				}
 			}
 		</script>
 	</body>
