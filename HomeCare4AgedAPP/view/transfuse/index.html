@@ -58,7 +58,8 @@
 		</header>
 		<div class="mui-content">
 			<div class="mui-row ">
-				<button type="button" id='zz-btn-time'  data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"}]},"labels":["年", "月", "日", "时段", "分"]}' class="zz-btn-timeClass " >选择输液时间</button>
+				<!--<button type="button" id='zz-btn-time'  data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"}]},"labels":["年", "月", "日", "时段", "分"]}' class="zz-btn-timeClass " >选择输液时间</button>-->
+				<button id='zz-btn-time' data-options='{}' class="zz-btn-timeClass">选择输液日期</button>
 			</div>
 			
 			<div  class="mui-row zz-div-result">
@@ -112,7 +113,7 @@
 						picker.show(function(rs) {
 							timeResult = rs.text;
 							ymd.innerHTML = rs.text.substr(0, 10);
-							timeSlot.innerHTML = rs.text.substr(10, 3);
+							timeSlot.innerHTML = rs.text.substr(10, 6);
 							picker.dispose();
 						});
 					}, false);
@@ -129,33 +130,55 @@
 				yyy = parseInt(ymd.innerHTML.substr(0,4));
 				mmm = parseInt(ymd.innerHTML.substr(5,2));
 				ddd = parseInt(ymd.innerHTML.substr(8,2));
-				hours = timeSlot.innerHTML;
+				hours = parseInt(timeSlot.innerHTML.substr(0,3));
+				minutes = parseInt(timeSlot.innerHTML.substr(4,2));
+				
+//				console.log('=========================');
+//				console.log(minutes);
+//				console.log('=========================');
 				
 				now = new Date();
-				year = now.getFullYear();
+				year = now.getFullYear();     //当前年
 				myYear = parseInt(year);
-				month = now.getMonth();
+				month = now.getMonth();       //当前月
 				myMonth = parseInt(month)+1;
-				day = now.getDate();
+				day = now.getDate();          //当前日
 				myDay = parseInt(day);
-				myHours = now.getHours();
-				var myHhh;
-				if(myHours < 12){
-					myHhh = '上午';
-				}else{
-					myHhh = '下午';
-				}
+				myHours = now.getHours();     //当前点
+				myMinutes = now.getMinutes(); //当前分
+				
+				var kkkk = now.toLocaleString();
+				console.log('=========================');
+				console.log(kkkk);
+				console.log('=========================');
+				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
+				console.log(timeResult);
+				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
+//				var myHhh;
+//				if(myHours < 12){
+//					myHhh = '上午';
+//				}else{
+//					myHhh = '下午';
+//				}
 				
 				if(ymd.innerHTML == ''){
-					mui.alert('请您选择输液时间');
+					mui.alert('请您选择输液日期');
 				}else if(yyy < myYear){
-					mui.alert('请您选择正确的时间');
+					mui.alert('您选择的年份已经过去了');
 				}else if(mmm < myMonth){
-					mui.alert('请您选择正确的时间');
+					mui.alert('您选择的月份已经过去了');
 				}else if(ddd < myDay){
-					mui.alert('请您选择正确的时间');
+					mui.alert('您选择的日期已经过去了');
 				}else if(yyy == myYear && mmm == myMonth && ddd == myDay){
-					if(myHhh == '上午'){
+					if(hours < myHours){
+						mui.alert('您选择的时间已经过去了');
+					}
+					if(minutes < myMinutes){
+						
+						mui.alert('您选择的分钟已经过去了');
+					}
+					if(minutes == myMinutes){
+						
 						mui.openWindow({
 							url: $url,
 							extras: {
@@ -163,28 +186,19 @@
 									}
 						});
 					}
-					if(myHhh == '下午' && hours == ' 上午'){
-						
-						mui.alert('上午已经过去了哦~');
-					}
-					if(myHhh == '下午' && hours == ' 下午'){
+					if(minutes > myMinutes){
 						
 						mui.openWindow({
-						url: $url,
-						extras: {
-									'timeResult' : timeResult			
-								}
-					});
+							url: $url,
+							extras: {
+										'timeResult' : timeResult			
+									}
+						});
 					}
-				}else{
-					mui.openWindow({
-						url: $url,
-						extras: {
-									'timeResult' : timeResult			
-								}
-					});
+					
+					
 				}
-			}
+				}
 		</script>
 	</body>
 

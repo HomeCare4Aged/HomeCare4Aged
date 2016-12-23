@@ -88,7 +88,7 @@
 			var transtime = document.getElementById('zz-label-ymd');
 			transtime.innerHTML = timeResult.substr(0, 10);
 			var timeSlot = document.getElementById('zz-label-timeSlot');
-			timeSlot.innerHTML = timeResult.substr(10, 3);
+			timeSlot.innerHTML = timeResult.substr(10, 6);
 //			console.log(timeResult);
 
 
@@ -102,13 +102,19 @@
 					//普通示例
 					var userPicker = new $.PopPicker();
 					userPicker.setData([{
+						value: '1',
+						text: '1小时'
+					},{
+						value: '1.5',
+						text: '1.5小时'
+					}, {
 						value: '2',
 						text: '2小时'
 					}, {
 						value: '2.5',
 						text: '2.5小时'
-					}, {
-						value: '3',
+					},{
+						value: '3.',
 						text: '3小时'
 					}, ]);
 					var showUserPickerButton = doc.getElementById('showUserPicker');

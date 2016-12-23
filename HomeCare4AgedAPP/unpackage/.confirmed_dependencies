@@ -161,7 +161,13 @@
 		"resources": [
 			"js/mui.min.js",
 			"fonts/mui.ttf",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"images/video/pullDown.png",
+			"css/registration/index.css",
+			"js/constants.js",
+			"css/video/index.css",
+			"js/jquery.1.11.1.js",
+			"css/common/common.css"
 		]
 	},
 	"view/takeOut/index.html": {
