@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/mui.min.css" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/video/videoPlay.css" />
+		<link rel="stylesheet" href="../../css/video/bvd.css" />
+	</head>
+
+	<body style="background: white;">
+		<header class="mui-bar mui-bar-nav m_gray">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">视频</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="list_ul">
+				<!--<li class=" mui-table-view-cell mui-media">-->
+					 <video webkit-playsinline>
+					<!--ios请用mp4格式-->
+					<source src='../../m.mp4' type="video"></source>
+					<p>设备不支持</p>
+				</video>
+				<!--</li>-->
+				<li class=" mui-table-view-cell mui-media">
+					 <h1 id="title" class="blackTitle">1</h1>
+				</li>
+				<li class=" mui-table-view-cell mui-media">
+					<div class="mui-row">
+						 <h1 id="author" style="margin-top: 10px; margin-left: 10px;" class="grayText">发布：1</h1>
+					</div>
+					<div class="mui-row">
+						<h1 id="date" style="margin-top: 10px; margin-left: 10px;" class="grayText">2011</h1>
+					</div>
+					<div class="mui-row">
+						<h1 id="time" style="margin-top: 10px; margin-left: 10px;" class="grayText">时长：09:09</h1>
+						 <h5 id="sign" class=""></h5>
+					</div>
+					<div class="mui-row">
+						<h1 id="introduce" style="margin-top: 10px; margin-left: 10px;" class="grayText">简介：啥都好时间按电话时间卡活动开始就阿訇多看书骄傲和大家看撒谎的 </h1>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/video/bvd.js" ></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.webId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshRead');
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+			});
+			mui.plusReady(function() {
+
+				console.log(localStorage.videoId);
+			
+				var h5 = document.getElementById('sign');
+				mui.ajax({
+					type: 'GET',
+					url: SERVERURL + "AVideoInfo/getVideoInfo?video_id="+localStorage.videoId,
+					dataType: "json",
+					//成功获取数据赋值
+					success: function(data) {
+						console.log('==='+JSON.stringify(data));
+						var h1 = document.getElementById("title");
+						h1.innerHTML = data.data.video_title;
+						
+						h1 = document.getElementById("author");
+						h1.innerHTML = "发布：";
+						
+						h1 = document.getElementById("date");
+						h1.innerHTML = data.data.send_datetime.substring(0, 16);
+						
+						h1 = document.getElementById("time");
+						h1.innerHTML = "时长："+data.data.video_length;
+						
+						h1 = document.getElementById("introduce");
+						h1.innerHTML = "简介："+data.data.video_introduction;
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>
