@@ -1,7 +1,8 @@
 html body{
-	background: #FFFFFF;
+	background-color: white;
 }
 .marginLeftRight{
+	margin-top: 30%;
 	margin-left:25px ;
 	margin-right:25px ;
 }
@@ -34,14 +35,16 @@ html body{
 .top95px{
 	margin-top: 135px;
 }
-/*.mui-bar-nav {
-    top: 0;
-    -webkit-box-shadow: 0 1px 6px #ccc;
-    box-shadow: 0 1px 6px #ccc;
-    height: 60px;
-    background: rgb(76,188,236);
-    
-}*/
+.zz-btn-timeClass{
+	background-color: rgb(76,188,236);
+	color: white;
+	font-size: 40px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	margin-top: 20%;
+	
+}
 .zz-btn-next{
 	position:fixed;
 	left: 10%;
@@ -52,6 +55,14 @@ html body{
 	color: white;
 	background: rgb(76,188,236);
 	border: 0px;
+	
 }
-
+.zz-div-result{
+	font-size: 40px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	margin-top: 10%;
+	text-align: center;
+}
 
