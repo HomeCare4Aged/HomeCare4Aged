@@ -2,9 +2,9 @@
 //域名
 
 
-//const SERVERURL = 'http://10.96.117.123/HomeCare4AgedPHP/index.php/Home/';
+const SERVERURL = 'http://10.96.97.80/HomeCare4AgedPHP/index.php/Home/';
 
-const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
+//const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
 
 //定义比例
 const SCALE = window.screen.width/320;

@@ -65,8 +65,8 @@
 					//成功获取数据赋值
 					success: function(data) {
 						var list = document.getElementsByClassName('listCellText');
+						
 						var doc = document;
-
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
 						mui.each(data.data, function(i) {

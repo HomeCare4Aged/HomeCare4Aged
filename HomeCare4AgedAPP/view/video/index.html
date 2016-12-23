@@ -6,31 +6,115 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/index.css" />
+		<link rel="stylesheet" href="../../css/video/index.css" />
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<header class="mui-bar mui-bar-nav m_gray">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">视频</h1>
+			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
+				<h5 class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
+				<img id="pullDown" src="../../images/video/pullDown.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />
+			</div>
 		</header>
-		
-		<div class="mui-content">
-		    <div class="mui-row" >
-		    	<h4 style="float: left;">asd</h4>
-		    	<label style="float: left;">asd</label>
-		    </div>
-		    <div class="mui-row" >
-		    	<h1>asaaaaaaaaa</h1>
-		    </div>
+		<div class="mui-content" style="margin-top: 60px;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" id="myHistoryVideo">
+					<div class="marginLeftRight">
+						<h1 class="blackTitle" >我的播放记录</h1>
+						<h3 id="myVideoCount" class="grayText">0个视频</h3>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="list_ul">
+				<!--<li class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight">
+						<h1 class="blackTitle" >我的播放记录</h1>
+						<h3 class="grayText">主任</h3>
+					</div>
+				</li>-->
+			</ul>
+			
 		</div>
-		
-		
-		
-		
-		
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+			});
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarBackground('#767B9A');
+				var li = document.getElementById('myHistoryVideo');
+				li.addEventListener('tap', function() {
+								localStorage.videoIndexDataId = '我的播放记录';
+								localStorage.videoIndexDataMyVideoCount = li.getAdjacentText();
+								mui.openWindow({
+									url: '../video/videoList.html',
+									extras: {
+									
+									},
+								});
+							});
+				
+				mui.ajax({
+					type : 'GET',
+					url	: SERVERURL+"AVideoInfo/getVideoInfoList",
+					dataType :"json",
+					//成功获取数据赋值
+					success: function(data){						
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							h1 = doc.createElement("h1");
+							h3 = doc.createElement("h3");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							h1.setAttribute("class", "blackTitle")
+							h3.setAttribute("class", "grayText")
+							h1.innerHTML = data.data[i].name;
+							h3.innerHTML = data.data[i].count+'个视频';
+							li.id = data.data[i].id;
+							li.addEventListener('tap', function() {
+								localStorage.videoIndexDataId = data.data[i].id;
+								localStorage.videoIndexDataName = data.data[i].name;
+								mui.openWindow({
+									url: '../video/videoList.html',
+									extras: {
+									
+									},
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(h1);
+							div.appendChild(h3);
+							fragment.appendChild(li);
+						});
+						container.appendChild(fragment);
+						console.log(JSON.stringify(data.data));
+						
+					},
+					error:function (xhr,type,errorThrown) {
+						console.log(type);
+					}
+				});
+				
+			});
 		</script>
 	</body>
 

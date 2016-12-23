@@ -11,7 +11,7 @@
 
 	<body>
 		<div class="mui-row">
-			<img src="../../images/home/qingtian.png" class="mui-icon-image" id="g-top-img" />
+			<img  src="../../images/home/qingtian.png" class="mui-icon-image" id="g-top-img" />
 			<span id="span-date"></span>
 			<span id="weather" class="span-F">正在获取天气...</span>
 			<span id="span-address" class="mui-icon mui-icon-location">社区</span>
@@ -101,6 +101,7 @@
 			$('.mui-btn').css('height', (document.documentElement.clientWidth / 2) * HOMEIMGSCALE);
 
 			function openWindow($url) {
+				localStorage.homeWebId = plus.webview.currentWebview().id;
 				mui.openWindow({
 					url: $url,
 					extras: {
@@ -150,6 +151,7 @@
 					tqArray[tq.indexOf("霾")] = "雾";
 				}
 				if(tq.indexOf("雨") >= 0) {
+					
 					tqArray[tq.indexOf("雨")] = "雨";
 				}
 				if(tq.indexOf("阴") >= 0) {
@@ -162,40 +164,51 @@
 					tqArray[tq.indexOf("晴")] = "晴";
 				}
 				if(tq.indexOf("雷") >= 0) {
+					
 					tqArray[tq.indexOf("雷")] = "雷";
 				}
 				if(tq.indexOf("雪") >= 0) {
+					
 					tqArray[tq.indexOf("雪")] = "雪";
 				}
+				
 				var tianqi = tqArray[getKey(tqArray)];
 				if(tianqi == "雾") {
+					localStorage.tqrbg = '#CBB364';
 					localStorage.tqSrc = "../../images/home/wumai.png";
 					topImg.src = "../../images/home/wumai.png";
 				}
 				if(tianqi == "雨") {
+					localStorage.tqrbg = '#B0BBD3';
 					localStorage.tqSrc = "../../images/home/xiayu.png";
 					topImg.src = "../../images/home/xiayu.png";
 				}
 				if(tianqi == "阴") {
+					localStorage.tqrbg = '#B0BBD3';
 					localStorage.tqSrc = "../../images/home/yintian.png";
 					topImg.src = "../../images/home/yintian.png";
 				}
 				if(tianqi == "多云") {
+					localStorage.tqrbg = '#69E7F5';
 					localStorage.tqSrc = "../../images/home/duoyun.png";
 					topImg.src = "../../images/home/duoyun.png";
 				}
 				if(tianqi == "晴") {
+					localStorage.tqrbg = '#69E7F5';
 					localStorage.tqSrc = "../../images/home/qingtian.png";
 					topImg.src = "../../images/home/qingtian.png";
 				}
 				if(tianqi == "雷") {
+					localStorage.tqrbg = '#B0BBD3';
 					localStorage.tqSrc = "../../images/home/leiyu.png";
 					topImg.src = "../../images/home/leiyu.png";
 				}
 				if(tianqi == "雪") {
+					localStorage.tqrbg = '#A785DC';
 					localStorage.tqSrc = "../../images/home/xiaxue.png";
 					topImg.src = "../../images/home/xiaxue.png";
 				}
+//				plus.navigator.setStatusBarBackground(localStorage.tqrbg);
 			}
 
 			function getKey(json) {
@@ -221,7 +234,7 @@
 				window.addEventListener('refreshWeather', function() {
 					plus.navigator.setStatusBarBackground('#FFFFFF');
 					findWeather();
-					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
 				});
 			});
 		</script>

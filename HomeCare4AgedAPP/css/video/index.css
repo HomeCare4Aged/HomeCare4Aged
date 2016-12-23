@@ -1,0 +1,10 @@
+.blackTitle{
+	font-size: 40px; 
+	margin-top: 20px;
+}
+.grayText{
+	color: gray;
+	font-size: 30px; 
+	margin-top: 10px;
+	font-weight: normal;
+}

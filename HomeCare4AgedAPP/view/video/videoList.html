@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_gray">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">视频</h1>
+			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
+				<h5 class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
+				<img id="pullUp" src="../../images/video/pullUp.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />
+			</div>
+		</header>
+		<div class="mui-content" style="margin-top: 60px;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media">
+					<img  style="width: 80px;  margin-top: 10px;" class="mui-pull-left" src="../../images/video/videoPlay.png" />
+					<div class="marginLeftRight mui-pull-left" style="margin-left: 40px;">
+						<h1 class="blackTitle" >我的播放记录</h1>
+						<h3 id="myVideoCount" class="grayText">0个视频</h3>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+			});
+			mui.plusReady( function(){
+				console.log(localStorage.videoIndexDataId);
+				console.log(localStorage.videoIndexDataName);
+			});
+		</script>
+	</body>
+
+</html>
