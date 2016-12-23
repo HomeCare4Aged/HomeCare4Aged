@@ -1,0 +1,92 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-money"></i>
+							<a href="__ACTION__">店铺管理</a>
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-table"></i>店铺列表
+						</li>
+					</ol>
+				</div>
+			</div><!--面包屑导航-->
+<!--			<div class="row">
+				<form action="__ACTION__" method="get" class="form-horizontal">
+					<div class="input-group">
+						<span class="input-group-addon">类型</span>
+						<select class="form-control" name="video_type_id">
+							<option value="-723">全部列表</option>
+							<option value="0" <if condition="$type eq 0">selected</if>>宣传</option>
+							<option value="1"<if condition="$type eq 1">selected</if>>内科</option>
+							<option value="2"<if condition="$type eq 2">selected</if>>外科</option>
+						</select>
+						<div class="input-group-btn">
+						    <button type="submit" class="btn btn-primary">
+							    <span class="glyphicon glyphicon-search"></span>
+						    </button>
+					    </div>
+					</div>
+				</form>
+            </div>                 -->                       
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list">
+								<thead>
+									<tr class="success">
+										<td>店铺名称</td>
+										<td>店铺类型</td>
+										<td>营业时间</td>
+										<td>联系人姓名</td>
+										<td>联系人电话</td>
+										<td>当前营业状态</td>
+										<td>经营范围</td>
+										<td>操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="articles" id="vo">
+									　　<tr>
+										    <td>{$vo.store_shop_name}</td>
+										    <td>{$vo.store_type_id}</td>
+										    <td>{$vo.store_begin_time}</td>
+										　　<td>{$vo.store_contact_user_name}</td>
+										　　<td>{$vo.store_contact_user_phone}</td>
+										　　<td>{$vo.store_business_state}</td>
+										    　<td><a href="__URL__/shop">详情</a></td>
+										    <td><a href="">下架</a></td>
+									　　</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+						<!--分页控件-->
+						<nav>
+							<ul class="pagination">
+								{$pageRes}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'edit_url':'__URL__/edit',
+		'set_status_url':'__URL__/setStatus',
+		'list_order_url':'__URL__/listOrder',
+		'success_refresh_url':'__ACTION__',
+	};
+</script>
+<include file="Index/footer"/>

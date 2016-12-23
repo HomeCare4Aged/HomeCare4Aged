@@ -1,0 +1,96 @@
+<include file="Index/header"/>
+		
+<div id="wrapper">
+	<include file="Index/nav"/>
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="active">
+							<i class="fa fa-fw fa-table"></i>视频列表
+						</li>
+					</ol>
+				</div>
+			</div><!--面包屑导航-->
+			<div class="row zyn-div-search">
+            	<div class="col-md-4 col-md-offset-1">
+	            	<form action="__ACTION__" method="POST" class="form-horizontal">
+	            		<div class="input-group">
+	            			<span class='input-group-addon'>搜索</span>
+	            	
+	            				<input type="text" name="search" id="" value="" placeholder="请输入视频标题" style="line-height: 27px;width: 300px;"/>
+	            	
+	            			<div class="input-group-btn">
+		            			<button type="submit" class="btn btn-primary">
+		            				<span class='glyphicon glyphicon-search'></span>
+		            			</button>
+	            			</div>
+	            		</div>
+	            		
+	            	</form>
+	            </div>
+	            <div class="col-md-4">
+				<button type="button" class="btn btn-group btn-primary" id="zyn-btn-add">添加视频</button>
+				<!--<button type="button" class="btn btn-group btn-primary" id="zyn-btn-list_order">排序</button>-->
+				</div>
+            </div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<form id="zyn-form-list">
+							<table class="table table-bordered table-hover zyn-table-list">
+								<thead>
+									<tr class="success">
+										<td>视频标题</td>
+										<td>视频简介</td>
+										<td>视频类别</td>
+										<td>发布人</td>
+										<td>审核状态</td>
+										<td>状态</td>
+										<td colspan="2">操作</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="articles" id="vo">
+									　　<tr>
+										　　<td>{$vo.video_title}</td>
+										　　<td>{$vo.video_introduction}</td>
+										　　<td>{$vo.video_type_name}</td>
+										    <td>{$vo.sender_id}</td>
+										    <td>{$vo.video_check_state}</td>
+										    <td>{$vo.state}</td>
+										    　<td>
+										    	<a href="#"><span class="zh-span-operation" id="zh-span-show" attr-id="{$vo.video_id}">预览</span></a>
+										    </td>
+										　　<td>
+										    	<a href="#"><span class="zh-span-operation" id="zyn-span-edit" attr-id="{$vo.video_id}">编辑</span></a>
+										    </td>
+									　　</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+						<!--分页控件-->
+						<nav>
+							<ul class="pagination">
+								{$pageRes}
+							</ul>
+						</nav>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'edit_url':'__URL__/edit',
+		'set_status_url':'__URL__/setStatus',
+		'list_order_url':'__URL__/listOrder',
+		'success_refresh_url':'__ACTION__',
+	};
+</script>
+<include file="Index/footer"/>
+

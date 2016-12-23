@@ -1,0 +1,168 @@
+<include file="Index/header"/>
+
+
+<div id="wrapper">
+	<include file="Index/nav"/>
+	
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="">
+							<i class="fa fa-fw fa-edit"></i>
+							公告预览
+						</li>
+						
+					</ol>
+				</div>				
+			</div><!--.row面包屑导航   -->
+			<div class="row">
+				<div class="col-sm-12">
+						<select name="xx-select-user" id="xx-select-choosse">
+							<option value="0" selected="selected">我的公告</option>
+							<option value="1">全部</option>
+						</select>
+						<select name="xx-select-type" id="xx-select-type" style="display: auto;">
+							<option value="1">未审核</option>
+							<option value="2">通过</option>
+							<option value="3">未通过</option>
+						</select>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<form id="xx-form-list">
+							<table class="table table-bordered table-hover xx-table-list" id="tableID">
+								<thead>
+									<tr>
+										<td style="display: none;"></td>
+										<td>发布时间</td>
+										<td>公告标题</td>
+										<td>审核状态</td>
+										<td>查看详情</td>
+										<td>编辑</td>
+										<td>删除</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="announcement" id="vo">
+										<tr>
+											<td style="display: none;">{$vo.announcement_id}</td>
+											<td>{$vo.send_datetime}</td>
+											<td>{$vo.announcement_title}</td>
+											<td>{$vo.announcement_check_state}</td>	
+											<td>
+												<span class="glyphicon glyphicon-check" id="xx-span-editor3"></span>
+											</td>
+											<td>
+												<span class="glyphicon glyphicon-edit" id="xx-span-edit"></span>
+											</td>
+											<td>
+												<span class="glyphicon glyphicon-trash" id="xx-span-delete"></span>
+											</td>
+										</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>	
+<script>
+	var SCOPE={
+		'add_url':'__URL__/add',
+		'edit_url':'__URL__/edit',
+		'set_status_url':'__URL__/setStatus',
+		'list_order_url':'__URL__/listOrder',
+		'success_refresh_url':'__ACTION__',
+	};
+	$("#xx-select-type").on('change',function(){
+		var selectedValue = $(this).val();
+		$.ajax({
+			type:"post",
+			url:"__URL__/getData",
+			async:true,
+			data:{'selectedValue':selectedValue},
+			dataType:'json',
+			success:function(data){
+				console.log(data);
+				$('#tableID tbody').remove();
+				var sRows = '';
+				for( var i in data ){
+					var sRow = '<tr>' +
+									'<td style="display: none;">' + data[i].announcement_id + '</td>'+
+									'<td>' + data[i].send_datetime + '</td>' +
+									'<td>' + data[i].announcement_title + '</td>'+
+									'<td>' + data[i].announcement_check_state + '</td>'+	
+									'<td>' +
+										'<span class="glyphicon glyphicon-edit" id="xx-span-edit"></span>'+
+									'</td>' +
+									'<td>' +
+										'<span class="glyphicon glyphicon-trash" id="xx-span-delete"></span>'+
+									'</td>' +
+									'<td>' +
+										'<span class="glyphicon glyphicon-check" id="xx-span-editor3"></span>'+
+									'</td>' +
+								'</tr>';
+					
+					sRows += sRow;
+				}
+				$('#tableID').append('<tbody></tbody>');
+				$('#tableID tbody').html(sRows);
+										
+									
+			}
+		});
+		
+	});
+	$('#xx-select-choosse').click(function(){
+        if(($(this).val()) == 0){
+        	$('#xx-select-type').attr('style','display:auto');
+        }
+        if(($(this).val()) == 1){	
+        	$('#xx-select-type').attr('style','display:none');
+        }
+    });
+    $("#xx-select-choosse").on('change',function(){
+		var selectedValue = $(this).val();
+		$.ajax({
+			type:"post",
+			url:"__URL__/getSourse",
+			async:true,
+			data:{'selectedValue':selectedValue},
+			dataType:'json',
+			success:function(data){
+				console.log(data);
+				$('#tableID tbody').remove();
+				var sRows = '';
+				for( var i in data ){
+					var sRow = '<tr>' +
+									'<td style="display: none;">' + data[i].announcement_id + '</td>'+
+									'<td>' + data[i].send_datetime + '</td>' +
+									'<td>' + data[i].announcement_title + '</td>'+
+									'<td>' + data[i].announcement_check_state + '</td>'+	
+									'<td>' +
+										'<span class="glyphicon glyphicon-edit" id="xx-span-edit"></span>'+
+									'</td>' +
+									'<td>' +
+										'<span class="glyphicon glyphicon-trash" id="xx-span-delete"></span>'+
+									'</td>' +
+									'<td>' +
+										'<span class="glyphicon glyphicon-check" id="xx-span-editor3"></span>'+
+									'</td>' +
+								'</tr>';
+					sRows += sRow;
+				}
+				$('#tableID').append('<tbody></tbody>');
+				$('#tableID tbody').html(sRows);
+			}
+		});
+		
+	});
+</script>
+<include file="Index/footer"/>

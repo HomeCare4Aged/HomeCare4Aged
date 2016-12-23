@@ -1,0 +1,109 @@
+<!--头尾分离    忽略错误信息 运行可用-->
+
+<include file="Index/header" />
+<div id="wrapper">
+	<include file="Index/nav" />
+	<div id="page-wrapper">
+		
+		<div class="container-fluid">
+			
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="active">
+							<i class="fa fa-fw fa-edit"></i>
+							添加公告
+						</li>
+					</ol>
+				</div>
+			</div>
+	<!--.row面包屑导航-->
+	
+		<div class="row">
+			<div class="col-sm-10">
+				<form id="zyn-form-add" class="form-horizontal">
+					<div class="form-group">
+						<label for="zyn-input-announcement_title" class="control-label col-sm-4">公告标题：</label>
+						<div class="col-sm-5">
+							<input id="zyn-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入标题"/>
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "announcement_title"></p>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-announcement_type_id" class="control-label col-sm-4">公告类型：</label>
+						<div class="col-sm-5">
+							<select class="form-control" name="announcement_type_id">
+								<option value="0000">全体用户</option>
+								<option value="0001">关节炎</option>
+								<option value="0002">肺心病</option>
+						    </select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="zyn-input-image" class="control-label col-sm-4">图片：</label>
+						<div class="col-sm-6">
+								<input id="zyn-input-uploader" type="file" />
+								<!--缩略图-->
+								<img src="" alt="" id="zyn-image-show-thumb" width="150px" style="display: none;"/>
+								<!--封面图-->
+								<input type="hidden" name="announcement_picture" id="zyn-input-image-path"/>
+								<!--缩略图-->
+								<!--<input type="hidden" name="announcement_small_picture" id="zyn-input-thumb-path"/>-->
+							</div>
+					</div>
+					<div class="form-group">					
+						<label for="zyn-textarea-content" class="control-label col-sm-4">内容：</label>
+						<div class="col-sm-5">
+							<textarea class="js-editor" id="zyn-textarea-content" name="announcement_content" rows="10" cols="43"></textarea>
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "announcement_content"></p>
+						</div>
+					</div>		
+					<div class="form-group">
+						<label for="zyn-input-announcement_title" class="control-label col-sm-4">到期时间：</label>
+						<div class="col-sm-5">
+							<input class="form-control" type="text" name="announcement_end_date" id="J-xl"/>
+						</div>
+						<div class="col-sm-3">
+							<p class="zyn-p-validate-result" attr-validate = "announcement_end_date"></p>
+						</div>
+					</div>
+					
+								
+					<!--<div class="form-group">
+						<label for="" class="col-sm-4 control-label">状态类型：</label>
+						<div class="col-sm-5">
+							<input type="radio" name="status" value="1" checked/>开启
+							<input type="radio" name="status" value="0"/>关闭
+						</div>
+					</div>-->
+					<input type="hidden" name="announcement_company_type" value="1"/>
+					<input type="hidden" name="announcement_check_state" value="1"/>
+					<div class="row">
+						<div class="col=sm-6 col-sm-offset-5">
+							<button type="button" id="zyn-btn-add-submit" class="btn btn-primary">确认提交</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!--。row表单-->
+		</div>
+	</div>
+</div>	
+
+<script>
+	var SCOPE = {
+		'add_url':'__ACTION__',
+		'success_jump_url':'__URL__/index',
+		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',
+		'ajax_upload_url':'__URL__/ajaxUploadImage', 
+	};
+</script>
+		
+<include file="Index/footer" />
+
+
