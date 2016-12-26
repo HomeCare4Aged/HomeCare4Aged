@@ -62,33 +62,56 @@
 				var transTime = sData.transtime;
 				var transTimeHtml = document.getElementById("transTime");
 				transTimeHtml.innerHTML = transTime;
+				console.log(sData);
 				
 				var transDuration = sData.userResult;
 				var transDurationHtml = document.getElementById("transDuration");
 				transDurationHtml.innerHTML = transDuration;
+				console.log(transDurationHtml.innerHTML);
 				
 			});
 			
 			
 			var btn = document.getElementById("zz-btn-next");
 			btn.addEventListener("tap", function() {
+				var transDuration = document.getElementById("transDuration").innerHTML;
+				var minutes = transDuration.replace("小时","") * 60;//换算成分钟
+				var mydate= new Date();
+				var transTimeHtml = document.getElementById("transTime");
+				var oldTime = (new Date(transTimeHtml.innerHTML)).getTime(); //得到所选择时间 的毫秒数  
+				var nowMillisecond =  Number(oldTime)+  Number(minutes*60*1000);//预计完成时间的毫秒数
+				var newTime = new Date(nowMillisecond); //预计完成的的普通格式时间
+				var newHours = newTime.getHours();
+				var newMinutes = newTime.getMinutes();
+				var resTime = newHours+':'+newMinutes;//时间的上传格式
+				console.log(newHours+':'+newMinutes);
+				
+				
+				
+				
+				
+				
+				
 				//		//			console.log('document.getElementById("userName").innerHTML');
 				//					var hostitalName = document.getElementById("hospitalName").innerHTML;
 									var transTime = document.getElementById("transTime").innerHTML;
-				//					var transDuration = document.getElementById("transDuration").innerHTML;
+//									var transDuration = document.getElementById("transDuration").innerHTML;
 				//					var userName = document.getElementById("userName").innerHTML;
 				//					
+				
+				var userAppointmentTime = transTime.substr(10, 6);
+//				console.log(user_appointment_time+'++++++++++++++++++++++');
 				var postData = {};
-//				postData['user_transfusion_id'] = '0030';
-//				postData['community_user_id'] = '0012';
-				postData['community_hospitals_id'] = '0010';
-				postData['user_appointment_date'] = transTime;
-				postData['user_appointment_time'] = '00:00:00';
-				postData['predict_finished_time'] = '12:00:00';
-				postData['user_transfusion_date'] = '2016-12-18 14:50:00';
-				postData['user_transfusion_type'] = '床位';
-				postData['transfusion_state'] = '完成';
-				postData['transfusion_cancel_time'] = '2016-12-18 14:50:00';
+//				postData['user_transfusion_id'] = '0030';				 	  //输液信息内码
+//				postData['community_user_id'] = '0012';						  //输液用户内码
+				postData['community_hospitals_id'] = '0010';				  //医院内码
+				postData['user_appointment_date'] = transTime;                //预约时间 yyy/mmm/ddd
+				postData['user_appointment_time'] = userAppointmentTime;    //预约时间  hh/mm
+				postData['predict_finished_time'] = resTime;			  //预计完成时间
+				postData['user_transfusion_date'] = mydate.toLocaleString();   //预约输液操作时间
+				postData['user_transfusion_type'] = '床位';					  //输液类型内码
+				postData['transfusion_state'] = '未完成';						  //状态
+//				postData['transfusion_cancel_time'] = '2016-12-18 14:50:00';  //取消时间
 //				console.log(postData);
 				//					
 				
@@ -99,18 +122,20 @@
 					data: postData,
 					//成功获取数据赋值
 					success: function(data) {
-//						console.log(data.status);
-//						if(data.status == 1) {
-							console.log('success');
-							//mui.toast('1');
-//						}
+						console.log('success');
+						mui.openWindow({
+							url:'../transfuse/finish.html',
+							extras:{
+								transTime:transTimeHtml.innerHTML,
+								transDuration:transDuration
+							},
+						});
 					},
 					error: function(xhr, type, errorThrown) {
 						
 						console.log(xhr);
 						console.log(errorThrown);
 						console.log(type);
-						//mui.toast(xhr);
 					}
 				});
 			});

@@ -12,7 +12,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_blue">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h3 id="backHome" class="  mui-pull-left" style="margin-top: 20px; color: white;">首页</h3>
 			<h1 class="mui-title ">预约成功</h1>
 		</header>
 		<div class="mui-content">
@@ -21,13 +21,42 @@
 				<h1 class="msg">您已成功</h1>
 				<h1 class="msg">预约输液</h1>
 			</div>
-			<button class="zz-btn-next">查看详情</button>
+			<button type="button" class="zz-btn-next" id="btn-details">查看详情</button>
 
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true //启用右滑关闭功能
+			});
+			mui.plusReady(function() {
+
+				var backHome = document.getElementById('backHome');
+				backHome.addEventListener('tap', function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					mui.openWindow({
+						url: '../home/index.html',
+					});
+				});
+
+				var details = document.getElementById('btn-details');
+				var sData = plus.webview.currentWebview();
+				var transTime = sData.transTime;
+				var transDuration = sData.transDuration;
+				console.log(transDuration + "finish");
+				details.addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../transfuse/details.html',
+						extras: {
+							transTime:transTime,
+							transDuration:transDuration
+						},
+					});
+				});
+
 			});
 		</script>
 	</body>

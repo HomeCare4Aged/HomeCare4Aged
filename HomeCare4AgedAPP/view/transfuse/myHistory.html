@@ -13,7 +13,7 @@
 	<body>
 		<header class="mui-bar mui-bar-nav yellow ">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
-			<h1 class="mui-title" style="color: black;">我的挂号</h1>
+			<h1 class="mui-title" style="color: black;">我的输液</h1>
 
 		</header>
 		<div class="mui-content">
@@ -113,18 +113,21 @@
 								postData[count] = listinput[i].id;
 								count++;
 							}
+//							console.log(listinput[i].id+'jjjjjjjjjjjjjjjjjjjjjjjjjjj');
 							listli[i].removeChild(listinput[i]);
 							listli[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
 						}
 						var label = document.getElementById('cancel');
 						label.innerHTML = "";
 						if(postData.length > 0) {
-							console.log(postData);
+							var aa = {'id':postData};
+							
+							console.log(JSON.stringify(aa['id']));
 							mui.ajax({
 								type: 'POST',
-								url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
+								url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
 								dataType: "json",
-								data: {'id':postData,'community_user_id':''},
+								data: {'id':postData},
 								//成功获取数据赋值
 								success: function(data) {
 									if (data.status == 1){
@@ -148,7 +151,7 @@
 				function getListData() {
 					mui.ajax({
 						type: 'GET',
-						url: SERVERURL + "HRegistrationInfo/getRegistrationList",
+						url: SERVERURL + "HTransfusionInfo/getTransfusionList",
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
@@ -168,14 +171,15 @@
 								h1 = doc.createElement("h1");
 								label = doc.createElement("label");
 								li.setAttribute("class", "mui-table-view-cell mui-media deleteList");
-								li.id = dataAlready[i].user_registration_id;
+								li.id = dataAlready[i].user_transfusion_id;
+								console.log(li.id);
 								div.setAttribute("class", "marginLeftRight");
 								img.setAttribute("class", "mui-media-object mui-pull-left");
 								img.setAttribute("src", "../../images/small.png")
 								h1.innerHTML = "李";
 								label.setAttribute("class", "gray-text");
-								label.innerHTML = dataAlready[i].user_registration_date; 
-								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+								label.innerHTML = dataAlready[i].user_appointment_date;  
+//								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
 								li.addEventListener('tap', function() {
 
@@ -204,7 +208,7 @@
 								img.setAttribute("src", "../../images/small.png")
 								h1.innerHTML = '张';
 								label.setAttribute("class", "gray-text");
-								label.innerHTML = '2016-12-12 12:12';
+								label.innerHTML = dataFinish[i].user_appointment_date;;
 								li.addEventListener('tap', function() {
 
 								});

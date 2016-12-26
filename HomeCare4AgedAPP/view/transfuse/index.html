@@ -89,16 +89,19 @@
 				},
 				
 			});
-			mui.plusReady(function() {
-				plus.navigator.setStatusBarBackground('#4CBCEC');
-
-			});
-			
 			var timeResult;
 			var ymd;
 			var timeSlot;
 			ymd = document.getElementById('zz-label-ymd');
 			timeSlot = document.getElementById('zz-label-timeSlot');
+			ymd.innerHTML = '';
+			timeSlot.innerHTML = '';
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarBackground('#4CBCEC');
+				console.log('小宝儿~')
+			});
+			
+			
 			
 			(function($) {
 				$.init();
@@ -137,67 +140,78 @@
 //				console.log(minutes);
 //				console.log('=========================');
 				
-				now = new Date();
-				year = now.getFullYear();     //当前年
-				myYear = parseInt(year);
-				month = now.getMonth();       //当前月
-				myMonth = parseInt(month)+1;
-				day = now.getDate();          //当前日
-				myDay = parseInt(day);
-				myHours = now.getHours();     //当前点
-				myMinutes = now.getMinutes(); //当前分
-				
-				var kkkk = now.toLocaleString();
-				console.log('=========================');
-				console.log(kkkk);
-				console.log('=========================');
-				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
-				console.log(timeResult);
-				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
-//				var myHhh;
-//				if(myHours < 12){
-//					myHhh = '上午';
-//				}else{
-//					myHhh = '下午';
-//				}
+//				now = new Date();
+//				year = now.getFullYear();     //当前年
+//				myYear = parseInt(year);
+//				month = now.getMonth();       //当前月
+//				myMonth = parseInt(month)+1;
+//				day = now.getDate();          //当前日
+//				myDay = parseInt(day);
+//				myHours = now.getHours();     //当前点
+//				myMinutes = now.getMinutes(); //当前分
+//				
+//				var kkkk = now.toLocaleString();
+//				console.log('=========================');
+//				console.log(kkkk);
+//				console.log('=========================');
+//				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
+//				console.log(timeResult);
+//				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
+				var nowTime = (new Date()).getTime();
+				console.log('当前时间毫秒'+nowTime);
+				var myTime = (new Date(ymd.innerHTML+':'+timeSlot.innerHTML)).getTime();
+				console.log('所选时间毫秒'+myTime);
 				
 				if(ymd.innerHTML == ''){
-					mui.alert('请您选择输液日期');
-				}else if(yyy < myYear){
-					mui.alert('您选择的年份已经过去了');
-				}else if(mmm < myMonth){
-					mui.alert('您选择的月份已经过去了');
-				}else if(ddd < myDay){
-					mui.alert('您选择的日期已经过去了');
-				}else if(yyy == myYear && mmm == myMonth && ddd == myDay){
-					if(hours < myHours){
-						mui.alert('您选择的时间已经过去了');
-					}
-					if(minutes < myMinutes){
-						
-						mui.alert('您选择的分钟已经过去了');
-					}
-					if(minutes == myMinutes){
-						
-						mui.openWindow({
-							url: $url,
-							extras: {
-										'timeResult' : timeResult			
-									}
-						});
-					}
-					if(minutes > myMinutes){
-						
-						mui.openWindow({
-							url: $url,
-							extras: {
-										'timeResult' : timeResult			
-									}
-						});
-					}
-					
-					
+					mui.alert('请选择输液日期');
+				}else if(nowTime>myTime){
+					mui.alert('所选时间已经过去');
+				}else{
+					mui.openWindow({
+						url: $url,
+						extras: {
+									'timeResult' : timeResult			
+								}
+					});
 				}
+				
+//				if(ymd.innerHTML == ''){
+//					mui.alert('请您选择输液日期');
+//				}else if(yyy < myYear){
+//					mui.alert('您选择的年份已经过去了');
+//				}else if(mmm < myMonth){
+//					mui.alert('您选择的月份已经过去了');
+//				}else if(ddd < myDay){
+//					mui.alert('您选择的日期已经过去了');
+//				}else if(yyy == myYear && mmm == myMonth && ddd == myDay){
+//					if(hours < myHours){
+//						mui.alert('您选择的时间已经过去了');
+//					}
+//					if(minutes < myMinutes){
+//						
+//						mui.alert('您选择的分钟已经过去了');
+//					}
+//					if(minutes == myMinutes){
+//						
+//						mui.openWindow({
+//							url: $url,
+//							extras: {
+//										'timeResult' : timeResult			
+//									}
+//						});
+//					}
+//					if(minutes > myMinutes ){
+//						
+//						mui.openWindow({
+//							url: $url,
+//							extras: {
+//										'timeResult' : timeResult			
+//									}
+//						});
+//					}
+//					
+//					
+//				}
 				}
 		</script>
 	</body>
