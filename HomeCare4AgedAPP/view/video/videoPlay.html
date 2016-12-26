@@ -9,7 +9,8 @@
 		<link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/video/videoPlay.css" />
-		<link rel="stylesheet" href="../../css/video/bvd.css" />
+		<link href="../../js/video-js-5.11.4/video-js.css" rel="stylesheet">
+		
 	</head>
 
 	<body style="background: white;">
@@ -19,26 +20,24 @@
 		</header>
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
-				<!--<li class=" mui-table-view-cell mui-media">-->
-					 <video webkit-playsinline>
-					<!--ios请用mp4格式-->
-					<source src='../../m.mp4' type="video"></source>
-					<p>设备不支持</p>
+
+				<video id="videoPlay" webkit-playsinline="true">
+					<source src="../../m.mp4"></source>
 				</video>
-				<!--</li>-->
+	
 				<li class=" mui-table-view-cell mui-media">
-					 <h1 id="title" class="blackTitle">1</h1>
+					<h1 id="title" class="blackTitle">1</h1>
 				</li>
 				<li class=" mui-table-view-cell mui-media">
 					<div class="mui-row">
-						 <h1 id="author" style="margin-top: 10px; margin-left: 10px;" class="grayText">发布：1</h1>
+						<h1 id="author" style="margin-top: 10px; margin-left: 10px;" class="grayText">发布：1</h1>
 					</div>
 					<div class="mui-row">
 						<h1 id="date" style="margin-top: 10px; margin-left: 10px;" class="grayText">2011</h1>
 					</div>
 					<div class="mui-row">
 						<h1 id="time" style="margin-top: 10px; margin-left: 10px;" class="grayText">时长：09:09</h1>
-						 <h5 id="sign" class=""></h5>
+						<h5 id="sign" class=""></h5>
 					</div>
 					<div class="mui-row">
 						<h1 id="introduce" style="margin-top: 10px; margin-left: 10px;" class="grayText">简介：啥都好时间按电话时间卡活动开始就阿訇多看书骄傲和大家看撒谎的 </h1>
@@ -48,7 +47,9 @@
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
-		<script type="text/javascript" src="../../js/video/bvd.js" ></script>
+		<script src="../../js/video-js-5.11.4/video.min.js"></script>
+		<script src="../../js/video-js-5.11.4/ie8/videojs-ie8.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -62,31 +63,36 @@
 				},
 			});
 			mui.plusReady(function() {
+				var video = document.getElementById("videoPlay");
+				video.setAttribute("width", document.documentElement.clientWidth);
+				video.setAttribute("height", document.documentElement.clientWidth * VIDEOSCALE);
+
+				video.height = document.documentElement.clientWidth * VIDEOSCALE;
 
 				console.log(localStorage.videoId);
-			
+
 				var h5 = document.getElementById('sign');
 				mui.ajax({
 					type: 'GET',
-					url: SERVERURL + "AVideoInfo/getVideoInfo?video_id="+localStorage.videoId,
+					url: SERVERURL + "AVideoInfo/getVideoInfo?video_id=" + localStorage.videoId,
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
-						console.log('==='+JSON.stringify(data));
+						console.log('===' + JSON.stringify(data));
 						var h1 = document.getElementById("title");
 						h1.innerHTML = data.data.video_title;
-						
+
 						h1 = document.getElementById("author");
 						h1.innerHTML = "发布：";
-						
+
 						h1 = document.getElementById("date");
 						h1.innerHTML = data.data.send_datetime.substring(0, 16);
-						
+
 						h1 = document.getElementById("time");
-						h1.innerHTML = "时长："+data.data.video_length;
-						
+						h1.innerHTML = "时长：" + data.data.video_length;
+
 						h1 = document.getElementById("introduce");
-						h1.innerHTML = "简介："+data.data.video_introduction;
+						h1.innerHTML = "简介：" + data.data.video_introduction;
 					},
 					error: function(xhr, type, errorThrown) {
 						console.log(type);

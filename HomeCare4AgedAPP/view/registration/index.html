@@ -56,6 +56,10 @@
 			});
 			//获取科室列表
 			mui.plusReady(function() {
+				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
+				window.addEventListener('refresh', function() {
+					plus.navigator.setStatusBarBackground('#EEA02F');
+				});
 				plus.navigator.setStatusBarBackground('#EEA02F');
 				var community_hospitals_id = '0001';
 				mui.ajax({
