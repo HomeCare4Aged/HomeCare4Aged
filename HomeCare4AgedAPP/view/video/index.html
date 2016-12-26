@@ -17,14 +17,13 @@
 			<h1 class="mui-title">视频</h1>
 			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
 				<h5 class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
-				<img id="pullDown" src="../../images/video/pullDown.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />
 			</div>
 		</header>
 		<div class="mui-content" style="margin-top: 60px;">
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" id="myHistoryVideo">
 					<div class="marginLeftRight">
-						<h1 class="blackTitle" >我的播放记录</h1>
+						<h1 class="blackTitle">我的播放记录</h1>
 						<h3 id="myVideoCount" class="grayText">0个视频</h3>
 					</div>
 				</li>
@@ -37,7 +36,7 @@
 					</div>
 				</li>-->
 			</ul>
-			
+
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
@@ -55,24 +54,45 @@
 				},
 			});
 			mui.plusReady(function() {
+				localStorage.VideoIndexWebId = plus.webview.currentWebview().id;
+				window.addEventListener('refreshHistory', function() {
+					var li = document.getElementById('myHistoryVideo');
+					if(localStorage.myHistoryVideoList) {
+						var list = JSON.parse(localStorage.myHistoryVideoList);
+						console.log(JSON.stringify(list));
+						var reg = new RegExp(":", "g");
+						var count = (JSON.stringify(list).match(reg).length);
+						var h3 = document.getElementById('myVideoCount');
+						h3.innerHTML = count + '个视频';
+					}
+				});
 				plus.navigator.setStatusBarBackground('#767B9A');
 				var li = document.getElementById('myHistoryVideo');
+				if(localStorage.myHistoryVideoList) {
+					var list = JSON.parse(localStorage.myHistoryVideoList);
+					console.log(JSON.stringify(list));
+					var reg = new RegExp(":", "g");
+					var count = (JSON.stringify(list).match(reg).length);
+					var h3 = document.getElementById('myVideoCount');
+					h3.innerHTML = count + '个视频';
+				}
+
 				li.addEventListener('tap', function() {
-								localStorage.videoIndexDataName = '我的播放记录';
-								mui.openWindow({
-									url: '../video/videoList.html',
-									extras: {
-									
-									},
-								});
-							});
-				
+					localStorage.videoIndexDataName = '我的播放记录';
+					mui.openWindow({
+						url: '../video/videoList.html',
+						extras: {
+
+						},
+					});
+				});
+
 				mui.ajax({
-					type : 'GET',
-					url	: SERVERURL+"AVideoInfo/getVideoInfoList",
-					dataType :"json",
+					type: 'GET',
+					url: SERVERURL + "AVideoInfo/getVideoInfoList",
+					dataType: "json",
 					//成功获取数据赋值
-					success: function(data){						
+					success: function(data) {
 						var doc = document;
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
@@ -87,7 +107,7 @@
 							h1.setAttribute("class", "blackTitle")
 							h3.setAttribute("class", "grayText")
 							h1.innerHTML = data.data[i].name;
-							h3.innerHTML = data.data[i].count+'个视频';
+							h3.innerHTML = data.data[i].count + '个视频';
 							li.id = data.data[i].id;
 							li.addEventListener('tap', function() {
 								localStorage.videoIndexDataId = data.data[i].id;
@@ -95,7 +115,7 @@
 								mui.openWindow({
 									url: '../video/videoList.html',
 									extras: {
-									
+
 									},
 								});
 							});
@@ -106,13 +126,13 @@
 						});
 						container.appendChild(fragment);
 						console.log(JSON.stringify(data.data));
-						
+
 					},
-					error:function (xhr,type,errorThrown) {
+					error: function(xhr, type, errorThrown) {
 						console.log(type);
 					}
 				});
-				
+
 			});
 		</script>
 	</body>

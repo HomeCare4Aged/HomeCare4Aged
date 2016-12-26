@@ -16,7 +16,7 @@
 			<h1 class="mui-title">视频</h1>
 			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
 				<h5 id="videoType" class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
-				<img id="pullUp" src="../../images/video/pullUp.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />
+				<!--<img id="pullUp" src="../../images/video/pullUp.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />-->
 			</div>
 		</header>
 		<div class="mui-content" style="margin-top: 60px;">
@@ -40,6 +40,16 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
+				beforeback: function(){
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.VideoIndexWebId);
+					
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner,'refreshHistory');
+					
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
 			});
 			mui.plusReady(function() {
 
@@ -55,13 +65,100 @@
 				console.log(localStorage.videoIndexDataId);
 				console.log(localStorage.videoIndexDataName);
 				console.log(getNowFormatDate());
-				
-				if(localStorage.videoIndexDataName == '我的播放记录'){
+
+				if(localStorage.videoIndexDataName == '我的播放记录') {
 					console.log('我的播放记录');
 					var h5 = document.getElementById('videoType');
 					h5.innerHTML = '我的播放记录';
+					var list = JSON.parse(localStorage.myHistoryVideoList);
+					var postData = new Array();
+					var i = 0;
+					for(var key in list) {
+						postData[i] = list[key];
+						i++;
+					}
+					mui.ajax({
+						type: 'POST',
+						url: SERVERURL + "AVideoInfo/getHistoryVideoListInfo",
+						data: {
+							ids: postData
+						},
+						dataType: "json",
+						//成功获取数据赋值
+						success: function(data) {
+							console.log(JSON.stringify(data) + '111');
+							var doc = document;
+							fragment = doc.createDocumentFragment();
+							container = doc.getElementById("list_ul");
+							mui.each(data.data, function(i) {
+								console.log(data.data[i].send_datetime.substring(0, 10));
+								var doc = document;
+								li = doc.createElement("li");
+								li.setAttribute("class", "mui-table-view-cell mui-media");
+								img = doc.createElement('img');
+								img.setAttribute("style", "width: 80px;  margin-top: 30px; margin-left: 10px;")
+								img.setAttribute("class", "mui-pull-left");
+								img.setAttribute("src", "../../images/video/videoPlay.png");
+								div = doc.createElement("div");
+								div.setAttribute("style", " margin-top: 10px; margin-left: 110px;");
+								div1 = doc.createElement('div');
+								div1.setAttribute("class", "mui-row");
+								h1 = doc.createElement("h1");
+								h1.setAttribute("class", "grayText")
+								h1.innerHTML = data.data[i].send_datetime.substring(0, 10);
+								h5read = doc.createElement("h5");
+								h5read.innerHTML = '已播';
+								h5read.setAttribute("class", "zz-h5-readMark");
+								h3 = doc.createElement("h3");
+								h3.setAttribute("class", "blackTitle");
+								h3.innerHTML = data.data[i].video_introduction;
+								li.id = data.data[i].video_id;
+								li.addEventListener('tap', function() {
+									localStorage.videoId = this.id;
+									localStorage.videoIndexDataName = this.name;
+									localStorage.setItem('videoRead' + this.id, "read");
+									var list = {}
+									if(localStorage.myHistoryVideoList) {
+										list = JSON.parse(localStorage.myHistoryVideoList);
+									}
+									list[this.id] = this.id;
+									localStorage.myHistoryVideoList = JSON.stringify(list);
+									console.log(JSON.stringify(localStorage.myHistoryVideoList[0]) + "ss");
+
+									localStorage.setItem('myHistoryVideo' + this.id, "read");
+									localStorage.videoReadIdLabel = this.id + "videoRead";
+									localStorage.webId = plus.webview.currentWebview().id;
+									mui.openWindow({
+										url: '../video/videoPlay.html',
+										extras: {
+
+										},
+									});
+								});
+								li.appendChild(img);
+								li.appendChild(div);
+								div.appendChild(div1);
+								div1.appendChild(h1);
+
+								if(data.data[i].send_datetime.substring(0, 10) == getNowFormatDate()) {
+									console.log(data.data[i].send_datetime.substring(0, 10));
+									div1.appendChild(h5new);
+								}
+								div1.appendChild(h5read);
+								div.appendChild(h3);
+								fragment.appendChild(li);
+							});
+							container.appendChild(fragment);
+							console.log(JSON.stringify(data.data));
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+						}
+					});
 				}
-				if(localStorage.videoIndexDataName != '我的播放记录'){
+
+				if(localStorage.videoIndexDataName != '我的播放记录') {
 					var h5 = document.getElementById('videoType');
 					h5.innerHTML = localStorage.videoIndexDataName;
 					console.log('！我的播放记录');
@@ -109,6 +206,15 @@
 									localStorage.videoId = this.id;
 									localStorage.videoIndexDataName = this.name;
 									localStorage.setItem('videoRead' + this.id, "read");
+									var list = {}
+									if(localStorage.myHistoryVideoList) {
+										list = JSON.parse(localStorage.myHistoryVideoList);
+									}
+									list[this.id] = this.id;
+									localStorage.myHistoryVideoList = JSON.stringify(list);
+									console.log(JSON.stringify(localStorage.myHistoryVideoList[0]) + "ss");
+
+									localStorage.setItem('myHistoryVideo' + this.id, "read");
 									localStorage.videoReadIdLabel = this.id + "videoRead";
 									localStorage.webId = plus.webview.currentWebview().id;
 									mui.openWindow({
