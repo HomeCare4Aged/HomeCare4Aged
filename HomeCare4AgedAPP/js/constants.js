@@ -1,15 +1,13 @@
 
 //域名
 
-<<<<<<< HEAD
+
 
 
 const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
 
 
-=======
-const SERVERURL = 'http://10.96.108.150/HomeCare4AgedPHP/index.php/Home/';
->>>>>>> 67a8c20161069e1f78ce66ff8680198aeee725c1
+
 //const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
 
 //定义比例

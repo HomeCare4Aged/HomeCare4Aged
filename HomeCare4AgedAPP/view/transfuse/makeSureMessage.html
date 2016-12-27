@@ -47,7 +47,6 @@
 			<div class="mui-row marginLeftRight MSM-top35px">
 				<h3 class="zz-gray-text" style="text-align: center;">当前可预约：<span style="color: rgb(76,188,236);">20</span>个输液位</h3>
 				<button type="button" class="zz-btn-next m_blue" id="zz-btn-next">下一步</button>
-				<!--onclick="openWindow('../transfuse/finish.html');"-->
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
@@ -87,20 +86,8 @@
 				console.log(newHours+':'+newMinutes);
 				
 				
-				
-				
-				
-				
-				
-				//		//			console.log('document.getElementById("userName").innerHTML');
-				//					var hostitalName = document.getElementById("hospitalName").innerHTML;
-									var transTime = document.getElementById("transTime").innerHTML;
-//									var transDuration = document.getElementById("transDuration").innerHTML;
-				//					var userName = document.getElementById("userName").innerHTML;
-				//					
-				
+				var transTime = document.getElementById("transTime").innerHTML;
 				var userAppointmentTime = transTime.substr(10, 6);
-//				console.log(user_appointment_time+'++++++++++++++++++++++');
 				var postData = {};
 //				postData['user_transfusion_id'] = '0030';				 	  //输液信息内码
 //				postData['community_user_id'] = '0012';						  //输液用户内码
@@ -109,11 +96,8 @@
 				postData['user_appointment_time'] = userAppointmentTime;    //预约时间  hh/mm
 				postData['predict_finished_time'] = resTime;			  //预计完成时间
 				postData['user_transfusion_date'] = mydate.toLocaleString();   //预约输液操作时间
-				postData['user_transfusion_type'] = '床位';					  //输液类型内码
+				postData['user_transfusion_type'] = localStorage.getItem('selectSeat');					  //输液类型内码
 				postData['transfusion_state'] = '未完成';						  //状态
-//				postData['transfusion_cancel_time'] = '2016-12-18 14:50:00';  //取消时间
-//				console.log(postData);
-				//					
 				
 				mui.ajax({
 					type: 'POST',
@@ -139,15 +123,6 @@
 					}
 				});
 			});
-			//			});
-			//			function openWindow($url){
-			//				mui.openWindow({
-			//					url:$url,
-			//					extras:{
-			//						
-			//					},
-			//				});
-			//			};
 
 			
 		</script>

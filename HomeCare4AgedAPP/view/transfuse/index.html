@@ -58,17 +58,14 @@
 		</header>
 		<div class="mui-content">
 			<div class="mui-row ">
-				<!--<button type="button" id='zz-btn-time'  data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"}]},"labels":["年", "月", "日", "时段", "分"]}' class="zz-btn-timeClass " >选择输液时间</button>-->
 				<button id='zz-btn-time' data-options='{}' class="zz-btn-timeClass">选择输液日期</button>
 			</div>
-			
 			<div  class="mui-row zz-div-result">
 				<label id="zz-label-ymd"></label>
 			</div>
 			<div  class="mui-row zz-div-result">
 				<label id="zz-label-timeSlot"></label>
 			</div>
-			
 			<div class="mui-row marginLeftRight">
 				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/transFuseTime.html');">下一步</button>
 			</div>
@@ -76,6 +73,7 @@
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -89,6 +87,7 @@
 				},
 				
 			});
+			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
 			var timeResult;
 			var ymd;
 			var timeSlot;
@@ -98,9 +97,68 @@
 			timeSlot.innerHTML = '';
 			mui.plusReady(function() {
 				plus.navigator.setStatusBarBackground('#4CBCEC');
-				console.log('小宝儿~')
+				console.log(localStorage.getItem('selectSeat'));
+				//获取医院信息
+				getHospitalData();
+				
 			});
+			//日期加上天数得到新的日期  
+			//dateTemp 需要参加计算的日期，days要添加的天数，返回新的日期，日期格式：YYYY-MM-DD  
+			function getNewDay(dateTemp, days) {  
+			    var dateTemp = dateTemp.split("-");  
+			    var nDate = new Date(dateTemp[1] + '-' + dateTemp[2] + '-' + dateTemp[0]); //转换为MM-DD-YYYY格式    
+			    var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);  
+			    var rDate = new Date(millSeconds);  
+			    var year = rDate.getFullYear();  
+			    var month = rDate.getMonth() + 1;  
+			    if (month < 10) month = "0" + month;  
+			    var date = rDate.getDate();  
+			    if (date < 10) date = "0" + date;  
+			    return (year + "-" + month + "-" + date);  
+			}  
 			
+			function getNowFormatDate() {
+				var date = new Date();
+				var seperator1 = "-";
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = year + seperator1 + month + seperator1 + strDate;
+				return currentdate;
+			}
+			
+			var hospital_business_begintime;//营业开始时间
+			var hospital_business_endtime;//营业结束时间
+			function getHospitalData() {
+				
+				var community_hospitals_id = '0000';
+					mui.ajax({
+						type: 'GET',
+						url: SERVERURL + "HHospitalsInfo/selectHospitalInfo?community_hospitals_id=" + community_hospitals_id,
+						dataType: "json",
+						//成功获取数据赋值
+						success: function(data) {
+							hospital_business_begintime = data.data[0].hospital_business_begintime;
+							hospital_business_endtime = data.data[0].hospital_business_endtime;
+							
+							localStorage.setItem('hospital_business_begintime', hospital_business_begintime);
+							localStorage.setItem('hospital_business_endtime', hospital_business_endtime);
+						
+							console.log(hospital_business_begintime+'==================');
+							console.log(hospital_business_endtime+'+++++++++++++++++');
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+							mui.toast(type);
+						}
+					});
+				}
 			
 			
 			(function($) {
@@ -124,48 +182,70 @@
 				
 			})(mui);
 			
-			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
 			
+			
+			function timepanduan (beginTime, endTime, nowTime) {
+			  var strb = beginTime.split (":");
+			  if (strb.length != 2) {
+			    return false;
+			  }
+			 
+			  var stre = endTime.split (":");
+			  if (stre.length != 2) {
+			    return false;
+			  }
+			 
+			  var strn = nowTime.split (":");
+			  if (stre.length != 2) {
+			    return false;
+			  }
+			  var b = new Date ();
+			  var e = new Date ();
+			  var n = new Date ();
+			 
+			  b.setHours (strb[0]);
+			  b.setMinutes (strb[1]);
+			  e.setHours (stre[0]);
+			  e.setMinutes (stre[1]);
+			  n.setHours (strn[0]);
+			  n.setMinutes (strn[1]);
+			 
+			  if (n.getTime () - b.getTime () > 0 && n.getTime () - e.getTime () < 0) {
+			    return true;
+			  } else {
+			    return false;
+			  }
+			}
+
 			function openWindow($url) {
+				//判断所选预约时间是否在营业时间内
+				var time_range = timepanduan(localStorage.getItem('hospital_business_begintime'), localStorage.getItem('hospital_business_endtime'), timeSlot.innerHTML);
 				
-				var ymd = document.getElementById('zz-label-ymd');
-				var timeSlot = document.getElementById('zz-label-timeSlot');
-				yyy = parseInt(ymd.innerHTML.substr(0,4));
-				mmm = parseInt(ymd.innerHTML.substr(5,2));
-				ddd = parseInt(ymd.innerHTML.substr(8,2));
-				hours = parseInt(timeSlot.innerHTML.substr(0,3));
-				minutes = parseInt(timeSlot.innerHTML.substr(4,2));
-				
-//				console.log('=========================');
-//				console.log(minutes);
-//				console.log('=========================');
-				
-//				now = new Date();
-//				year = now.getFullYear();     //当前年
-//				myYear = parseInt(year);
-//				month = now.getMonth();       //当前月
-//				myMonth = parseInt(month)+1;
-//				day = now.getDate();          //当前日
-//				myDay = parseInt(day);
-//				myHours = now.getHours();     //当前点
-//				myMinutes = now.getMinutes(); //当前分
-//				
-//				var kkkk = now.toLocaleString();
-//				console.log('=========================');
-//				console.log(kkkk);
-//				console.log('=========================');
-//				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
-//				console.log(timeResult);
-//				console.log('>>>>>>>>>>>>>>>>>>>>>>>>>');
+				//转换为毫秒判断预约时间不能超过两周
+				var NowFormatDate = getNowFormatDate();
 				var nowTime = (new Date()).getTime();
-				console.log('当前时间毫秒'+nowTime);
-				var myTime = (new Date(ymd.innerHTML+':'+timeSlot.innerHTML)).getTime();
-				console.log('所选时间毫秒'+myTime);
+				var myTime = (new Date(ymd.innerHTML+timeSlot.innerHTML)).getTime();
+				var twoWeek = getNewDay(NowFormatDate,14);
+				var twoWeekMillisecond = (new Date(twoWeek+timeSlot.innerHTML)).getTime();
+
+				//转换为分钟判断停业前一个小时不可
+				var mytimeNum = timeSlot.innerHTML.split(":");
+				var endTimeNum = localStorage.getItem('hospital_business_endtime').split(":");
+				var myTimeToMinutes = parseInt(mytimeNum[0])*60+parseInt(mytimeNum[1]);
+				var endTimeToMinutes = parseInt(endTimeNum[0])*60+parseInt(endTimeNum[1]);
+				var timeDifference = (endTimeToMinutes - myTimeToMinutes) / 60;
 				
 				if(ymd.innerHTML == ''){
 					mui.alert('请选择输液日期');
 				}else if(nowTime>myTime){
 					mui.alert('所选时间已经过去');
+				}else if(myTime>twoWeekMillisecond){
+					mui.alert('请您预约两周之内的时间');
+				}else if(timeDifference<1){
+					mui.alert('每天预约输液的结束时间为停止营业前的一个小时,该医院营业时间为：每日上午 '+hospital_business_begintime+' 至 '+'每日下午：'+hospital_business_endtime);
+				}
+				else if(time_range == false){
+					mui.alert('您所选的时间医院尚未营业,该医院营业时间为：每日上午 '+hospital_business_begintime+' 至 '+'每日下午：'+hospital_business_endtime);
 				}else{
 					mui.openWindow({
 						url: $url,
@@ -174,44 +254,6 @@
 								}
 					});
 				}
-				
-//				if(ymd.innerHTML == ''){
-//					mui.alert('请您选择输液日期');
-//				}else if(yyy < myYear){
-//					mui.alert('您选择的年份已经过去了');
-//				}else if(mmm < myMonth){
-//					mui.alert('您选择的月份已经过去了');
-//				}else if(ddd < myDay){
-//					mui.alert('您选择的日期已经过去了');
-//				}else if(yyy == myYear && mmm == myMonth && ddd == myDay){
-//					if(hours < myHours){
-//						mui.alert('您选择的时间已经过去了');
-//					}
-//					if(minutes < myMinutes){
-//						
-//						mui.alert('您选择的分钟已经过去了');
-//					}
-//					if(minutes == myMinutes){
-//						
-//						mui.openWindow({
-//							url: $url,
-//							extras: {
-//										'timeResult' : timeResult			
-//									}
-//						});
-//					}
-//					if(minutes > myMinutes ){
-//						
-//						mui.openWindow({
-//							url: $url,
-//							extras: {
-//										'timeResult' : timeResult			
-//									}
-//						});
-//					}
-//					
-//					
-//				}
 				}
 		</script>
 	</body>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/transfuse/selectSeat.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_blue">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">输液</h1>
+			<div id="myHistory" class="mui-bar top60px " style="height: 70px;">
+				<h5 class="black-text" style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-left: 15px;">我的输液历史</h5>
+				<h5 class="black-text" style="font-weight: bold; font-size: 30px;float: right;margin-top: -37px;margin-right: 10px;">></h5>
+			</div>
+		    <div class="mui-bar top110px " style="height: 70px;">
+				<h5 class="m_gray_text" style="font-size: 30px; margin-top: 20px; font-weight: normal; margin-left: 15px;">选择座位类型</h5>
+			</div>
+		</header>
+		<div class="mui-content " style="margin-top: 170px; margin-left: 20px; margin-right: 20px;">
+		    <!--<input type="button" value="第一个按钮" style="height: 110px;"/>
+		    <input type="button" value="第二个按钮" />-->
+		    <img src="../../images/transfuse/selectSeat.png" class="zz-img-seatClass" id="zz-img-seat" onClick="changeSeat()" style="float: left;">
+		    <img src="../../images/transfuse/unselectBed.png" class="zz-img-bedClass" id="zz-img-bed"  onClick="changeBed()" style="float: right;">
+		    <div class="mui-row marginLeftRight">
+				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/index.html');">
+					下一步
+				</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function(){
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+					
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner,'refreshWeather');
+					
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+				
+			});
+			$('.zz-img-seatClass').css('width', document.documentElement.clientWidth/2.5);
+			$('.zz-img-bedClass').css('width', document.documentElement.clientWidth/2.5);
+			 localStorage.setItem('selectSeat', "座位");
+			 console.log(localStorage.getItem('selectSeat'));
+			 
+			function changeSeat(){
+				document.getElementById("zz-img-seat").src="../../images/transfuse/selectSeat.png";
+				document.getElementById("zz-img-bed").src="../../images/transfuse/unselectBed.png";
+				localStorage.setItem('selectSeat', "座位");
+				console.log(localStorage.getItem('selectSeat'));
+			}
+			function changeBed(){
+				document.getElementById("zz-img-seat").src="../../images/transfuse/unselectSeat.png";
+				document.getElementById("zz-img-bed").src="../../images/transfuse/selectBed.png";
+				localStorage.setItem('selectSeat', "床位");
+				console.log(localStorage.getItem('selectSeat'));
+			}
+			
+			function openWindow($url) {
+				mui.openWindow({
+					url: $url,
+					extras: {
+						webId: plus.webview.currentWebview().id,
+					},
+
+				});
+			}
+			
+			var btn = document.getElementById("myHistory");
+				btn.addEventListener("tap", function() {
+					mui.openWindow({
+						url: '../transfuse/myHistory.html',
+						id:'home',
+						extras: {
+							_id: this.id,
+						},
+					});
+				});
+		</script>
+	</body>
+
+</html>

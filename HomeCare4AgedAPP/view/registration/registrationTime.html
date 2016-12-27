@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title></title>
+		<!--标准mui.css-->
+		<!--<link rel="stylesheet" href="../../css/mui.min.css">-->
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/registrationTime.css" />
+
+		<!--<link rel="stylesheet" href="../../css/app.css" />-->
+		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
+		<style>
+			html,
+			body,
+			.mui-content {
+				height: 0px;
+				margin: 0px;
+				background-color: #efeff4;
+			}
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			.mui-btn {
+				font-size: 16px;
+				padding: 8px;
+				margin: 3px;
+			}
+			.ui-alert {
+				text-align: center;
+				padding: 20px 10px;
+				font-size: 16px;
+			}
+			* {
+				-webkit-touch-callout: none;
+				-webkit-user-select: none;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_orange">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">挂号时间</h1>
+		</header>
+		<div class="mui-content"> 
+			<div class="mui-row ">
+				<button id='zz-btn-time' data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"}]}}' class="zz-btn-timeClass">选择挂号日期</button>
+			</div>
+			<div  class="mui-row zz-div-result">
+				<label id="zz-label-ymd"></label>
+			</div>
+			<div  class="mui-row zz-div-result">
+				<label id="zz-label-timeSlot"></label>
+			</div>
+			<div class="mui-row marginLeftRight">
+				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/transFuseTime.html');">下一步</button>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script>
+			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
+			var timeResult;
+			var ymd;
+			var timeSlot;
+			ymd = document.getElementById('zz-label-ymd');
+			timeSlot = document.getElementById('zz-label-timeSlot');
+			(function($) {
+				$.init();
+//				var result = $('#result')[0];
+				var btns = $('.zz-btn-timeClass');
+				btns.each(function(i, btn) {
+					btn.addEventListener('tap', function() {
+						var optionsJson = this.getAttribute('data-options') || '{}';
+						var options = JSON.parse(optionsJson);
+						var id = this.getAttribute('id');
+						var picker = new $.DtPicker(options);
+						picker.show(function(rs) {
+							timeResult = rs.text;
+							ymd.innerHTML = rs.text.substr(0, 10);
+							timeSlot.innerHTML = rs.text.substr(11, 2);
+							picker.dispose();
+						});
+					}, false);
+				});
+				
+			})(mui);
+			
+			function getNewDay(dateTemp, days) {  
+			    var dateTemp = dateTemp.split("-");  
+			    var nDate = new Date(dateTemp[1] + '-' + dateTemp[2] + '-' + dateTemp[0]); //转换为MM-DD-YYYY格式    
+			    var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);  
+			    var rDate = new Date(millSeconds);  
+			    var year = rDate.getFullYear();  
+			    var month = rDate.getMonth() + 1;  
+			    if (month < 10) month = "0" + month;  
+			    var date = rDate.getDate();  
+			    if (date < 10) date = "0" + date;  
+			    return (year + "-" + month + "-" + date);  
+			}  
+			function getNowFormatDate() {
+				var date = new Date();
+				var seperator1 = "-";
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = year + seperator1 + month + seperator1 + strDate;
+				return currentdate;
+			}
+			
+			function openWindow($url){
+				var NowFormatDate = getNowFormatDate();
+				var NowFormatDateMillisecond = (new Date(NowFormatDate)).getTime();//当前时间毫秒
+				var myTimeMillisecond = (new Date(ymd.innerHTML)).getTime();//两周之后毫秒
+			
+				var s1;
+				s1 = new Date(ymd.innerHTML.replace(/-/g, "/"));
+				s2 = new Date(NowFormatDate);
+				var days = s2.getTime() - s1.getTime();
+				var time = parseInt(days / (1000 * 60 * 60 * 24));
+				var timeDifference = Math.abs(time);
+				
+				var nowHours =  new Date().getHours();
+				var nowTimeSlot;
+				if(nowHours<10){
+					nowTimeSlot = '上午';
+				}else{
+					nowTimeSlot = '下午';
+				}
+				console.log(nowHours);
+				if(ymd.innerHTML == undefined){
+					mui.alert('您还没有选择挂号日期');
+				}else if(myTimeMillisecond<NowFormatDateMillisecond){
+					mui.alert('所选日期已经过去了，请您重新选择');
+				}else if(timeDifference>14){
+					mui.alert('请您预约两周之内的日期'); 
+				}else if(timeDifference == 0){
+					if(nowTimeSlot == '下午' && timeSlot.innerHTML == '上午'){
+						mui.alert('您所预约的时间段已经过去了');
+					}
+					if(nowTimeSlot == '下午' && timeSlot.innerHTML == '下午'){
+						mui.alert('下午可预约下午');
+					}
+					if(nowTimeSlot == '上午'){
+						alert('上午随时预约');
+					}
+				}
+				
+			}
+			
+		</script>
+	</body>
+
+</html>

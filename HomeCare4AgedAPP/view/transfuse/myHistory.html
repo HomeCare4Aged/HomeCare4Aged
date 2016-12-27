@@ -120,9 +120,9 @@
 						var label = document.getElementById('cancel');
 						label.innerHTML = "";
 						if(postData.length > 0) {
-							var aa = {'id':postData};
-							
-							console.log(JSON.stringify(aa['id']));
+//							var aa = {'id':postData};
+//							
+//							console.log(JSON.stringify(aa['id']));
 							mui.ajax({
 								type: 'POST',
 								url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
