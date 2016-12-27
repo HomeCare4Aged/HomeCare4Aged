@@ -272,6 +272,10 @@
 				});
 			}
 			
+			function test(){
+				console.log('触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发')
+			}
+			 
 			mui.plusReady(function() {
 				findWeather();
 				findUserInfo();
@@ -279,6 +283,7 @@
 				window.addEventListener('refreshWeather', function() {
 					plus.navigator.setStatusBarBackground('#FFFFFF');
 					findWeather();
+//					test();
 //					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
 				});
 				

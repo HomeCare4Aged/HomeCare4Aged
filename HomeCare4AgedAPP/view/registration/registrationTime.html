@@ -144,7 +144,8 @@
 					nowTimeSlot = '下午';
 				}
 				console.log(nowHours);
-				if(ymd.innerHTML == undefined){
+				console.log(ymd.innerHTML);
+				if(ymd.innerHTML == '' || ymd.innerHTML == undefined){
 					mui.alert('您还没有选择挂号日期');
 				}else if(myTimeMillisecond<NowFormatDateMillisecond){
 					mui.alert('所选日期已经过去了，请您重新选择');

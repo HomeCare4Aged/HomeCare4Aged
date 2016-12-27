@@ -97,9 +97,10 @@
 			timeSlot.innerHTML = '';
 			mui.plusReady(function() {
 				plus.navigator.setStatusBarBackground('#4CBCEC');
-				console.log(localStorage.getItem('selectSeat'));
+//				console.log(localStorage.getItem('selectSeat'));
 				//获取医院信息
 				getHospitalData();
+				console.log('看这里看这里看这里看这里看这里看这里看这里看这里看这里看这里')
 				
 			});
 			//日期加上天数得到新的日期  
@@ -150,8 +151,8 @@
 							localStorage.setItem('hospital_business_begintime', hospital_business_begintime);
 							localStorage.setItem('hospital_business_endtime', hospital_business_endtime);
 						
-							console.log(hospital_business_begintime+'==================');
-							console.log(hospital_business_endtime+'+++++++++++++++++');
+//							console.log(hospital_business_begintime+'==================');
+//							console.log(hospital_business_endtime+'+++++++++++++++++');
 						},
 						error: function(xhr, type, errorThrown) {
 							console.log(type);
@@ -167,6 +168,7 @@
 				var btns = $('.zz-btn-timeClass');
 				btns.each(function(i, btn) {
 					btn.addEventListener('tap', function() {
+						
 						var optionsJson = this.getAttribute('data-options') || '{}';
 						var options = JSON.parse(optionsJson);
 						var id = this.getAttribute('id');
