@@ -47,7 +47,7 @@
 			</div>
 
 			<div class="mui-row">
-				<h1 id="zz-label-time" class="zz-div-result"></h1> 
+				<h1 id="zz-label-time" class="zz-div-result"></h1>
 			</div>
 			<div class="mui-row marginLeftRight">
 				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/makeSureMessage.html');">
@@ -64,6 +64,8 @@
 		<script type="text/javascript" src="../../js/city.data-3.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
+			var registrationTime;
+
 			mui.plusReady(function() {
 				var sData = plus.webview.currentWebview();
 				var timeResult = sData.timeResult;
@@ -100,41 +102,48 @@
 						data['value'] = i;
 						data['text'] = days[i] + ' 上午';
 						setData.push(data);
-						
+
 						var data = {};
-						data['value'] = i+1;
+						data['value'] = i + 1;
 						data['text'] = days[i] + ' 下午';
 						setData.push(data);
 
 					}
 					var date = new Date();
-					if(date.getHours()>=12){
-						setData.splice(0,1);
+					if(date.getHours() >= 12) {
+						setData.splice(0, 1);
 					}
-					if(date.getHours()>=17){
-						setData.splice(0,1);
+					if(date.getHours() >= 17) {
+						setData.splice(0, 1);
 					}
-					
+
 					userPicker.setData(setData);
 					var showUserPickerButton = doc.getElementById('showUserPicker');
 					var userResult = doc.getElementById('zz-label-time');
 					showUserPickerButton.addEventListener('tap', function(event) {
 						userPicker.show(function(items) {
 							var str = JSON.stringify(items[0]['text']);
-							str = str.substr(1,str.length-2);
+							str = str.substr(1, str.length - 2);
+							registrationTime = str;
 							userResult.innerHTML = str;
+//							console.log(str.substring(0,10));
+//							console.log(str.substring(str.length-3,1));
 						});
 					}, false);
 				});
 			})(mui, document);
 			//			console.log(timeResult);
 			function openWindow($url) {
-	
-				var userResult = document.getElementById('zz-label-time');
 
-				mui.openWindow({
-					url: '../registration/index.html',
-				});
+				var userResult = document.getElementById('zz-label-time');
+				if(registrationTime) {
+					localStorage.registrationTime = registrationTime;
+					mui.openWindow({
+						url: '../registration/index.html',
+					});
+				} else {
+					mui.alert("请先选择时间")
+				}
 
 			}
 		</script>
