@@ -56,6 +56,7 @@
 			});
 			//获取科室列表
 			mui.plusReady(function() {
+				plus.nativeUI.showWaiting();
 				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refresh', function() {
 					plus.navigator.setStatusBarBackground('#EEA02F');
@@ -68,6 +69,7 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						var list = document.getElementsByClassName('listCellText');
 						
 						var doc = document;
@@ -121,6 +123,8 @@
 						container.appendChild(fragment);
 					},
 					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
 						//						console.log(type);
 						//						mui.toast(type);
 					}
