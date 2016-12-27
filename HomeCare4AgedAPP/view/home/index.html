@@ -269,11 +269,13 @@
 				});
 			}
 
+
 			mui.plusReady(function() {
 				findWeather();
 				findUserInfo();
 				plus.screen.lockOrientation("portrait-primary");
 				window.addEventListener('refreshWeather', function() {
+
 						plus.navigator.setStatusBarBackground('#FFFFFF');
 						findWeather();
 						//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
@@ -286,6 +288,7 @@
 								continue;
 							plus.webview.close(wvs[i]);
 						}
+
 				});
 
 			});

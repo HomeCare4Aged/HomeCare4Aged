@@ -87,6 +87,7 @@
 						return true;
 					},
 				});
+
 				$.ready(function() {
 
 					//普通示例
@@ -104,6 +105,7 @@
 						data['value'] = i+1;
 						data['text'] = days[i] + ' 下午';
 						setData.push(data);
+
 					}
 					var date = new Date();
 					if(date.getHours()>=12){

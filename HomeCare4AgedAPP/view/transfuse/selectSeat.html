@@ -60,24 +60,24 @@
 			$('.zz-img-seatClass').css('width', document.documentElement.clientWidth/2.5);
 			$('.zz-img-bedClass').css('width', document.documentElement.clientWidth/2.5);
 			 localStorage.setItem('selectSeat', "座位");
-			 console.log(localStorage.getItem('selectSeat'));
+//			 console.log(localStorage.getItem('selectSeat'));
 			 
 			function changeSeat(){
 				document.getElementById("zz-img-seat").src="../../images/transfuse/selectSeat.png";
 				document.getElementById("zz-img-bed").src="../../images/transfuse/unselectBed.png";
 				localStorage.setItem('selectSeat', "座位");
-				console.log(localStorage.getItem('selectSeat'));
+//				console.log(localStorage.getItem('selectSeat'));
 			}
 			function changeBed(){
 				document.getElementById("zz-img-seat").src="../../images/transfuse/unselectSeat.png";
 				document.getElementById("zz-img-bed").src="../../images/transfuse/selectBed.png";
 				localStorage.setItem('selectSeat', "床位");
-				console.log(localStorage.getItem('selectSeat'));
 			}
 			
 			function openWindow($url) {
 				mui.openWindow({
 					url: $url,
+					id:'selectSeat.html',
 					extras: {
 						webId: plus.webview.currentWebview().id,
 					},

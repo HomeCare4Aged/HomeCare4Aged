@@ -39,7 +39,7 @@
 				plus.navigator.setStatusBarBackground('#3DAD27');
 				window.addEventListener('refreshList', function() {
 					var h5 = document.getElementById(localStorage.messageId);
-
+					console.log(localStorage.messageId); 
 					h5.innerHTML = "已读";
 					h5.setAttribute("class", 'zz-h5-readMark zz-style-position');
 					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
@@ -109,7 +109,6 @@
 										'announcement_hospital_id': data.data[i].announcement_hospital_id
 									},
 								});
-//								localStorage.setItem(li.id, "read");
 
 							});
 							var myDate = new Date();

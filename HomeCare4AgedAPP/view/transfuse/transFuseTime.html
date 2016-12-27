@@ -67,6 +67,9 @@
 		<script type="text/javascript" src="../../js/city.data.js" ></script>
 		<script type="text/javascript" src="../../js/city.data-3.js" ></script>
 		<script type="text/javascript">
+		mui.init({
+				swipeBack: true, //启用右滑关闭功能
+			});
 		mui.plusReady(function() {
 			var sData = plus.webview.currentWebview();
 			var timeResult = sData.timeResult;
@@ -119,8 +122,8 @@
 				var userResultNum2 = parseInt(userResult.innerHTML.substr(0,1))*100;
 				var userResultNum = userResultNum1 + userResultNum2;
 				var endTimeNum = parseInt(localStorage.getItem('hospital_business_endtime').replace(":",""));
-				console.log(userResultNum);
-				console.log(endTimeNum);
+//				console.log(userResultNum);
+//				console.log(endTimeNum);
 				if(userResult.innerHTML == ''){
 					mui.alert('您还没有选择输液时长');
 				}else if(userResultNum>endTimeNum){
