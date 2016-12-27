@@ -41,10 +41,9 @@
 	
 			mui.plusReady(function() {
 				plus.nativeUI.showWaiting();
-				var sData = plus.webview.currentWebview();
-				var community_hospitals_id = sData.community_hospitals_id;
-				var hospital_office_id = sData.hospital_office_id;
-				var hospital_office_name = sData.hospital_office_name;
+				var community_hospitals_id = localStorage.community_hospitals_id;
+				var hospital_office_id = localStorage.hospital_office_id;
+				var hospital_office_name = localStorage.hospital_office_name;
 				console.log(hospital_office_name);
 				
 				mui.ajax({

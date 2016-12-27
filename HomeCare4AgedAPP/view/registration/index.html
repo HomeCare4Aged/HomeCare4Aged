@@ -35,13 +35,23 @@
 							<h1 class="black-text listCellText"></h1>
 					</div>
 				</li>-->
-			 </ul>
+			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
 			});
 			//获取科室列表
 			mui.plusReady(function() {
@@ -60,13 +70,13 @@
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
 						var list = document.getElementsByClassName('listCellText');
-						
+
 						var doc = document;
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
 						mui.each(data.data, function(i) {
 							var doc = document;
-//							console.log(i);
+							//							console.log(i);
 							li = doc.createElement("li");
 							div = doc.createElement("div");
 							img = doc.createElement("img");
@@ -84,9 +94,9 @@
 							} else if(data.data[i].hospital_office_id == '0003') {
 								img.setAttribute("src", "../../images/registration/wuguan.png");
 							}
-//							else if(data.data[i].hospital_office_id =='0004'){
-//								img.setAttribute("src","../../images/small.png");
-//							}
+							//							else if(data.data[i].hospital_office_id =='0004'){
+							//								img.setAttribute("src","../../images/small.png");
+							//							}
 							else {
 								img.setAttribute("src", "../../images/registration/define.png");
 							}
@@ -95,12 +105,13 @@
 							li.setAttribute("name", data.data[i].hospital_office_name);
 							li.id = data.data[i].hospital_office_id.toString();
 							li.addEventListener('tap', function() {
+								localStorage.hospital_office_id = this.id;
+								localStorage.community_hospitals_id = community_hospitals_id; //医院内码
+								localStorage.hospital_office_name = this.getAttribute("name");
 								mui.openWindow({
-									url: '../registration/doctorList.html',
+									url: '../registration/registrationTime.html',
 									extras: {
-										hospital_office_id: this.id,
-										community_hospitals_id: community_hospitals_id,//医院内码
-										hospital_office_name: this.getAttribute("name"),
+
 									},
 								});
 							});
@@ -123,7 +134,7 @@
 				btn.addEventListener("tap", function() {
 					mui.openWindow({
 						url: '../registration/myHistory.html',
-						id:'home',
+						id: 'home',
 						extras: {
 							_id: this.id,
 						},
