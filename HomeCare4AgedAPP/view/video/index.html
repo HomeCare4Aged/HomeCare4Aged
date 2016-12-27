@@ -20,23 +20,32 @@
 			</div>
 		</header>
 		<div class="mui-content" style="margin-top: 60px;">
-			<ul class="mui-table-view">
-				<li class="mui-table-view-cell mui-media" id="myHistoryVideo">
-					<div class="marginLeftRight">
-						<h1 class="blackTitle">我的播放记录</h1>
-						<h3 id="myVideoCount" class="grayText">0个视频</h3>
-					</div>
-				</li>
-			</ul>
-			<ul class="mui-table-view" id="list_ul">
-				<!--<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
-						<h1 class="blackTitle" >我的播放记录</h1>
-						<h3 class="grayText">主任</h3>
-					</div>
-				</li>-->
-			</ul>
+			<div class="list-t-wrap">
+				<div id="refreshContainer" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="list-wrapper" style="margin-top: 120px;">
+							<!--列表一定要放到容器内,因为会有一个div append到mui-scroll中,需要在底部才能起作用-->
 
+							<ul class="mui-table-view">
+								<li class="mui-table-view-cell mui-media" id="myHistoryVideo">
+									<div class="marginLeftRight">
+										<h1 class="blackTitle">我的播放记录</h1>
+										<h3 id="myVideoCount" class="grayText">0个视频</h3>
+									</div>
+								</li>
+							</ul>
+							<ul class="mui-table-view" id="list_ul">
+								<!--<li class="mui-table-view-cell mui-media">
+									<div class="marginLeftRight">
+										<h1 class="blackTitle" >我的播放记录</h1>
+										<h3 class="grayText">主任</h3>
+									</div>
+								</li>-->
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
@@ -52,8 +61,51 @@
 					//返回true，继续页面关闭逻辑
 					return true;
 				},
+//				pullRefresh: {
+//					container: "#refreshContainer", //待刷新区域标识，querySelector能定位的css选择器均可，比如：id、.class等
+//					up: {
+//						height: 50, // 可选.默认50.触发上拉加载拖动距离
+//						auto: false, // 可选,默认false.自动上拉加载一次
+//						contentrefresh: "正在加载...", // 可选，正在加载状态时，上拉加载控件上显示的标题内容
+//						callback: function() {
+//								var self = this; // 这里的this == mui('#refreshContainer').pullRefresh()
+//								// 加载更多的内容
+//								loadMore(this);
+//							} //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+//					},
+//					down: {
+//						height: 50, // 可选.默认50.触发上拉加载拖动距离
+//						auto: false, // 可选,默认false.自动上拉加载一次
+//						contentrefresh: "正在加载...", // 可选，正在加载状态时，上拉加载控件上显示的标题内容
+//						contentnomore: '没有更多数据了', // 可选，请求完毕若没有更多数据时显示的提醒内容；
+//						callback: function() {
+//								var self = this; // 这里的this == mui('#refreshContainer').pullRefresh()
+//								// 加载更多的内容
+//								refresh(this);
+//							} //必选，刷新函数，根据具体业务来编写，比如通过ajax从服务器获取新数据；
+//					}
+//				}
 			});
+//			var refresh = function(pullRefresh) {
+//				// 加载更多的内容到列表中
+//				console.log('下拉刷新');
+//				// 如果没有更多数据了，则关闭上拉加载
+////								pullRefresh.endPullupToRefresh(true);
+//								 mui('#refreshContainer').pullRefresh().endPulldownToRefresh(true);
+//				// 如果有更多数据，则继续
+////				pullRefresh.endPullupToRefresh(false);
+//			};
+//			
+//			var loadMore = function(pullRefresh) {
+//				// 加载更多的内容到列表中
+//				console.log('上拉加载');
+//				// 如果没有更多数据了，则关闭上拉加载
+//				//				pullRefresh.endPullupToRefresh(true);
+//				// 如果有更多数据，则继续
+//				pullRefresh.endPullupToRefresh(false);
+//			};
 			mui.plusReady(function() {
+				var nwaiting = plus.nativeUI.showWaiting();
 				localStorage.VideoIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refreshHistory', function() {
 					var li = document.getElementById('myHistoryVideo');
@@ -93,6 +145,7 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+
 						var doc = document;
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
@@ -126,10 +179,12 @@
 						});
 						container.appendChild(fragment);
 						console.log(JSON.stringify(data.data));
-
+						plus.nativeUI.closeWaiting();
 					},
 					error: function(xhr, type, errorThrown) {
 						console.log(type);
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
 					}
 				});
 

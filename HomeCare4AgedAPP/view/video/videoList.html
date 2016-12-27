@@ -52,7 +52,8 @@
 				},
 			});
 			mui.plusReady(function() {
-
+				
+				var nwaiting = plus.nativeUI.showWaiting();
 				//点击后改为已读
 				window.addEventListener('refreshRead', function() {
 					var h5 = document.getElementById(localStorage.videoReadIdLabel);
@@ -86,6 +87,7 @@
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
+							plus.nativeUI.closeWaiting();
 							console.log(JSON.stringify(data) + '111');
 							var doc = document;
 							fragment = doc.createDocumentFragment();
@@ -150,10 +152,13 @@
 							});
 							container.appendChild(fragment);
 							console.log(JSON.stringify(data.data));
-
+							
 						},
 						error: function(xhr, type, errorThrown) {
 							console.log(type);
+							plus.nativeUI.closeWaiting();
+							mui.alert('网络连接失败');
+							
 						}
 					});
 				}
@@ -168,6 +173,7 @@
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
+							plus.nativeUI.closeWaiting();
 							console.log(JSON.stringify(data) + '111');
 							var doc = document;
 							fragment = doc.createDocumentFragment();
@@ -246,6 +252,8 @@
 
 						},
 						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.closeWaiting();
+							mui.alert('网络连接失败');
 							console.log(type);
 						}
 					});

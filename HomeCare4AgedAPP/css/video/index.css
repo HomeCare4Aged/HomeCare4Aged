@@ -8,3 +8,12 @@
 	margin-top: 10px;
 	font-weight: normal;
 }
+ .mui-bar-nav ~ .mui-content .mui-pull-top-pocket{
+            top: 130px !important;
+}
+ .mui-bar-footer ~ .mui-content {
+        padding-bottom: 414px;
+    }
+    .mui-bar-tab ~ .mui-content {
+        padding-bottom: 410px;
+    }

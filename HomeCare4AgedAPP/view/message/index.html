@@ -35,6 +35,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#3DAD27');
 				window.addEventListener('refreshList', function() {
 					var h5 = document.getElementById(localStorage.messageId);
@@ -50,6 +51,7 @@
 					dataType: "json",
 					//
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						console.log(JSON.stringify(data));
 						var list = document.getElementsByClassName('listCellText');
 						var doc = document;
@@ -135,7 +137,8 @@
 					},
 					error: function(xhr, type, errorThrown) {
 						console.log(type);
-						mui.toast(type);
+						plus.nativeUI.closeWaiting();
+        					mui.alert('网络连接失败');
 					}
 				});
 

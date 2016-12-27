@@ -68,6 +68,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#FEE36D');
 				getListData();
 
@@ -130,13 +131,15 @@
 						label.innerHTML = "";
 						if(postData.length > 0) {
 							console.log(postData);
+							plus.nativeUI.showWaiting();
 							mui.ajax({
 								type: 'POST',
 								url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
 								dataType: "json",
-								data: {'id':postData,'community_user_id':''},
+								data: {'id':postData,'community_user_id':'0000'},
 								//成功获取数据赋值
 								success: function(data) {
+									plus.nativeUI.closeWaiting();
 									if (data.status == 1){
 										mui.alert(data.msg);
 										plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
@@ -145,7 +148,8 @@
 
 								error: function(xhr, type, errorThrown) {
 									console.log(type);
-									mui.alert('删除失败');
+									plus.nativeUI.closeWaiting();
+									mui.alert('网络连接失败');
 								}
 							});
 						}
@@ -162,6 +166,7 @@
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
+							plus.nativeUI.closeWaiting();
 							var dataAlready = data.data.Unfinished;
 							var dataFinish = data.data.Finish;
 //							console.log(dataAlready);
@@ -227,7 +232,8 @@
 						},
 						error: function(xhr, type, errorThrown) {
 							console.log(type);
-							mui.toast(type);
+							plus.nativeUI.closeWaiting();
+							mui.alert('网络连接失败');
 						}
 					});
 				}

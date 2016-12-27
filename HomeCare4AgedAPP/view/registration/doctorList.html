@@ -40,6 +40,7 @@
 			});
 	
 			mui.plusReady(function() {
+				plus.nativeUI.showWaiting();
 				var sData = plus.webview.currentWebview();
 				var community_hospitals_id = sData.community_hospitals_id;
 				var hospital_office_id = sData.hospital_office_id;
@@ -52,6 +53,7 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						var doc = document;
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
@@ -105,7 +107,8 @@
 					},
 					error: function(xhr, type, errorThrown) {
 						console.log(type);
-						mui.toast(type);
+						plus.nativeUI.closeWaiting();
+         				mui.alert('网络连接失败');
 					}
 				});
 

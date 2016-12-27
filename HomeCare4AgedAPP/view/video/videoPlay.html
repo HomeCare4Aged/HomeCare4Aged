@@ -9,8 +9,8 @@
 		<link rel="stylesheet" href="../../css/mui.min.css" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/video/videoPlay.css" />
-		<link href="../../js/video-js-5.11.4/video-js.css" rel="stylesheet">
-		
+		<link rel="stylesheet" href="../../css/video/zy.media.min.css" />
+
 	</head>
 
 	<body style="background: white;">
@@ -20,11 +20,19 @@
 		</header>
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
+<<<<<<< HEAD
 
 				<video id="videoPlay" >
 					<source src="../../m.mp4"></source>
 				</video>
 	
+=======
+				<div id="videoPlay" class="zy_media">
+					<video poster="test.jpg">
+						<source src="../../test.mp4" type="video/mp4"> 您的浏览器不支持HTML5视频</source>
+					</video>
+				</div>
+>>>>>>> 6b60907dad3db38bbaa86f8e8d523e997cd1bad0
 				<li class=" mui-table-view-cell mui-media">
 					<h1 id="title" class="blackTitle">1</h1>
 				</li>
@@ -49,7 +57,8 @@
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script src="../../js/video-js-5.11.4/video.min.js"></script>
 		<script src="../../js/video-js-5.11.4/ie8/videojs-ie8.js"></script>
-		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript" src="../../js/video/zy.media.min.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -63,12 +72,13 @@
 				},
 			});
 			mui.plusReady(function() {
-				var video = document.getElementById("videoPlay");
-				video.setAttribute("width", document.documentElement.clientWidth);
-				video.setAttribute("height", document.documentElement.clientWidth * VIDEOSCALE);
-
-				video.height = document.documentElement.clientWidth * VIDEOSCALE;
-
+				var nwaiting = plus.nativeUI.showWaiting();
+//				var video = document.getElementById("videoPlay");
+//				video.setAttribute("width", document.documentElement.clientWidth);
+//				video.setAttribute("height", document.documentElement.clientWidth * VIDEOSCALE);
+//				var list = document.getElementById("list_ul");
+//				list.style.top = document.documentElement.clientWidth * VIDEOSCALE+'px';
+				zymedia('video');
 				console.log(localStorage.videoId);
 
 				var h5 = document.getElementById('sign');
@@ -78,10 +88,10 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						console.log('===' + JSON.stringify(data));
 						var h1 = document.getElementById("title");
 						h1.innerHTML = data.data.video_title;
-
 						h1 = document.getElementById("author");
 						h1.innerHTML = "发布：";
 
@@ -95,6 +105,9 @@
 						h1.innerHTML = "简介：" + data.data.video_introduction;
 					},
 					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+
 						console.log(type);
 					}
 				});
