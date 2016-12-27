@@ -129,6 +129,7 @@
 						}
 						var label = document.getElementById('cancel');
 						label.innerHTML = "";
+						console.log(postData)+'aaaaaaaaaaaaaaaaaaaaaaaaaaa';
 						if(postData.length > 0) {
 //							var aa = {'id':postData};
 //							
@@ -137,7 +138,7 @@
 								type: 'POST',
 								url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
 								dataType: "json",
-								data: {'id':postData},
+								data: {'id':postData,'community_user_id':'0000'},
 								//成功获取数据赋值
 								success: function(data) {
 									if (data.status == 1){
