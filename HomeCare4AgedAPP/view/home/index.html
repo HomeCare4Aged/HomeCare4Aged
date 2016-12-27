@@ -268,26 +268,15 @@
 
 				});
 			}
-<<<<<<< HEAD
-			
-			function test(){
-				console.log('触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发触发')
-			}
-			 
-=======
 
->>>>>>> a9bdba1a365ebedd9393c01bc6bfe1a5cf42b8df
+			 
+
 			mui.plusReady(function() {
 				findWeather();
 				findUserInfo();
 				plus.screen.lockOrientation("portrait-primary");
 				window.addEventListener('refreshWeather', function() {
-<<<<<<< HEAD
-					plus.navigator.setStatusBarBackground('#FFFFFF');
-					findWeather();
-//					test();
-//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
-=======
+
 						plus.navigator.setStatusBarBackground('#FFFFFF');
 						findWeather();
 						//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
@@ -299,11 +288,7 @@
 							if(wvs[i].getURL() == curr.getURL())
 								continue;
 							plus.webview.close(wvs[i]);
-							plus.webview.open('../home/index.html');
 						}
-						//打开login页面后再关闭setting页面
-						curr.close();
->>>>>>> a9bdba1a365ebedd9393c01bc6bfe1a5cf42b8df
 				});
 
 			});

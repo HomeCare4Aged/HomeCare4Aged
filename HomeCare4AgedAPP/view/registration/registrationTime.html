@@ -87,69 +87,7 @@
 						return true;
 					},
 				});
-<<<<<<< HEAD
-				
-			})(mui);
-			
-			function getNewDay(dateTemp, days) {  
-			    var dateTemp = dateTemp.split("-");  
-			    var nDate = new Date(dateTemp[1] + '-' + dateTemp[2] + '-' + dateTemp[0]); //转换为MM-DD-YYYY格式    
-			    var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);  
-			    var rDate = new Date(millSeconds);  
-			    var year = rDate.getFullYear();  
-			    var month = rDate.getMonth() + 1;  
-			    if (month < 10) month = "0" + month;  
-			    var date = rDate.getDate();  
-			    if (date < 10) date = "0" + date;  
-			    return (year + "-" + month + "-" + date);  
-			}  
-			function getNowFormatDate() {
-				var date = new Date();
-				var seperator1 = "-";
-				var year = date.getFullYear();
-				var month = date.getMonth() + 1;
-				var strDate = date.getDate();
-				if(month >= 1 && month <= 9) {
-					month = "0" + month;
-				}
-				if(strDate >= 0 && strDate <= 9) {
-					strDate = "0" + strDate;
-				}
-				var currentdate = year + seperator1 + month + seperator1 + strDate;
-				return currentdate;
-			}
-			
-			function openWindow($url){
-				var NowFormatDate = getNowFormatDate();
-				var NowFormatDateMillisecond = (new Date(NowFormatDate)).getTime();//当前时间毫秒
-				var myTimeMillisecond = (new Date(ymd.innerHTML)).getTime();//两周之后毫秒
-			
-				var s1;
-				s1 = new Date(ymd.innerHTML.replace(/-/g, "/"));
-				s2 = new Date(NowFormatDate);
-				var days = s2.getTime() - s1.getTime();
-				var time = parseInt(days / (1000 * 60 * 60 * 24));
-				var timeDifference = Math.abs(time);
-				
-				var nowHours =  new Date().getHours();
-				var nowTimeSlot;
-				if(nowHours<10){
-					nowTimeSlot = '上午';
-				}else{
-					nowTimeSlot = '下午';
-				}
-				console.log(nowHours);
-				console.log(ymd.innerHTML);
-				if(ymd.innerHTML == '' || ymd.innerHTML == undefined){
-					mui.alert('您还没有选择挂号日期');
-				}else if(myTimeMillisecond<NowFormatDateMillisecond){
-					mui.alert('所选日期已经过去了，请您重新选择');
-				}else if(timeDifference>14){
-					mui.alert('请您预约两周之内的日期'); 
-				}else if(timeDifference == 0){
-					if(nowTimeSlot == '下午' && timeSlot.innerHTML == '上午'){
-						mui.alert('您所预约的时间段已经过去了');
-=======
+
 				$.ready(function() {
 
 					//普通示例
@@ -167,7 +105,7 @@
 						data['value'] = i+1;
 						data['text'] = days[i] + ' 下午';
 						setData.push(data);
->>>>>>> a9bdba1a365ebedd9393c01bc6bfe1a5cf42b8df
+
 					}
 					var date = new Date();
 					if(date.getHours()>=12){
