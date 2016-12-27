@@ -50,6 +50,13 @@
 				},
 				
 			});
+			mui.plusReady(function(){
+				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
+				window.addEventListener('refresh', function() {
+					plus.navigator.setStatusBarBackground('#4CBCEC');
+				});
+				plus.navigator.setStatusBarBackground('#4CBCEC');
+			});
 			$('.zz-img-seatClass').css('width', document.documentElement.clientWidth/2.5);
 			$('.zz-img-bedClass').css('width', document.documentElement.clientWidth/2.5);
 			 localStorage.setItem('selectSeat', "座位");
