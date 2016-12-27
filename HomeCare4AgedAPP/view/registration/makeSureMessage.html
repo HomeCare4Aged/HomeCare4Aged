@@ -16,10 +16,10 @@
 			<h1 class="mui-title">确认挂号</h1>
 		</header>
 		<div class="mui-content">
-		    <ul class="mui-table-view" id="list_ul">
+			<ul class="mui-table-view" id="list_ul">
 				<li class="mui-table-view-cell mui-media">
 					<div class="marginLeftRight">
-						<h3 class="MSM-gray-text" >就诊医院</h3>
+						<h3 class="MSM-gray-text">就诊医院</h3>
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-black-text" id="hospitalText">大铁棍子医院</h1>
@@ -27,32 +27,32 @@
 				</li>
 				<li class="mui-table-view-cell mui-media">
 					<div class="marginLeftRight">
-						<h3 class="MSM-gray-text" >候诊时间</h3>
+						<h3 class="MSM-gray-text">候诊时间</h3>
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-black-text" id="timeText">2000-12-12 下午</h1>
 					</div>
 					<div class="marginLeftRight ">
-						<h3 class="MSM-gray-text MSM-top25px" >科室</h3>
+						<h3 class="MSM-gray-text MSM-top25px">科室</h3>
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-black-text" id="roomText"></h1>
 					</div>
 					<div class="marginLeftRight ">
-						<h3 class="MSM-gray-text MSM-top25px" >就诊医生</h3>
+						<h3 class="MSM-gray-text MSM-top25px">就诊医生</h3>
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-black-text" id="doctorNameText"></h1>
 					</div>
 					<div class="marginLeftRight ">
-						<h3 class="MSM-gray-text MSM-top25px" >挂号费用</h3>
+						<h3 class="MSM-gray-text MSM-top25px">挂号费用</h3>
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-red-text" style="float: left;" id="priceText">￥0</h1>
 						<h1 class="MSM-black-text" id="priceText">（医院到付）</h1>
 					</div>
 					<div class="marginLeftRight ">
-						<h3 class="MSM-gray-text MSM-top25px" >就诊人</h3>
+						<h3 class="MSM-gray-text MSM-top25px">就诊人</h3>
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-black-text" id="personText">李</h1>
@@ -66,13 +66,13 @@
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
-		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
-			mui.plusReady(function(){
-				
+			mui.plusReady(function() {
+
 				console.log(JSON.stringify(postData));
 				var postData = plus.webview.currentWebview().data;
 				var hospitalText = document.getElementById('hospitalText');
@@ -82,46 +82,47 @@
 				var doctorNameText = document.getElementById('doctorNameText');
 				doctorNameText.innerHTML = postData.hospital_doctor_name;
 				var priceText = document.getElementById('priceText');
-				priceText.innerHTML = '￥'+postData.registration_money;
+				priceText.innerHTML = '￥' + postData.registration_money;
 				var personText = document.getElementById('personText');
-				
-//				setInterval(function() {
-//					console.log(getNowFormatDate());
-//				}, 50);
-				
+
+				//				setInterval(function() {
+				//					console.log(getNowFormatDate());
+				//				}, 50);
+
 			});
-			function openWindow(){
+
+			function openWindow() {
 				var postData = plus.webview.currentWebview().data;
 				postData['registration_state'] = '未完成';
 				postData['user_registration_date'] = getNowFormatDate();
 				var hour = new Date().getDate();
 				console.log(JSON.stringify(postData));
 				mui.ajax({
-					type : 'POST',
-					data : postData,
-					url	: SERVERURL+"HRegistrationInfo/postRegistration",
-					dataType :"json",
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + "HRegistrationInfo/postRegistration",
+					dataType: "json",
 					//成功获取数据赋值
-					success: function(data){
-						if (data.status == 1){
+					success: function(data) {
+						if(data.status == 1) {
 							mui.openWindow({
-								url:'../registration/finish.html',
-								extras:{
-									data:postData,
+								url: '../registration/finish.html',
+								extras: {
+									data: postData,
 								},
 							});
 						};
-						if (data.status == 0){
+						if(data.status == 0) {
 							mui.alert(data.msg);
 						};
-						
+
 					},
-					error:function (xhr,type,errorThrown) {
+					error: function(xhr, type, errorThrown) {
 						console.log(type);
 						mui.alert('预约失败');
 					}
 				});
-				
+
 			};
 			//获取当前时间
 			function getNowFormatDate() {

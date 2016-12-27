@@ -1,48 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 
 	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="UTF-8">
 		<title></title>
-		<!--标准mui.css-->
-		<!--<link rel="stylesheet" href="../../css/mui.min.css">-->
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
-		<link rel="stylesheet" href="../../css/registration/registrationTime.css" />
+		<link rel="stylesheet" href="../../css/registration/selectTime.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
 
-		<!--<link rel="stylesheet" href="../../css/app.css" />-->
-		<link rel="stylesheet" type="text/css" href="../../css/mui.picker.min.css" />
 		<style>
-			html,
-			body,
-			.mui-content {
-				height: 0px;
-				margin: 0px;
-				background-color: #efeff4;
-			}
-			h5.mui-content-padded {
-				margin-left: 3px;
-				margin-top: 20px !important;
-			}
-			h5.mui-content-padded:first-child {
-				margin-top: 12px !important;
-			}
 			.mui-btn {
 				font-size: 16px;
 				padding: 8px;
 				margin: 3px;
 			}
+			
+			h5.mui-content-padded {
+				margin-left: 3px;
+				margin-top: 20px !important;
+			}
+			
+			h5.mui-content-padded:first-child {
+				margin-top: 12px !important;
+			}
+			
 			.ui-alert {
 				text-align: center;
 				padding: 20px 10px;
 				font-size: 16px;
 			}
-			* {
-				-webkit-touch-callout: none;
-				-webkit-user-select: none;
-			}
 		</style>
+
 	</head>
 
 	<body>
@@ -50,49 +41,53 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">挂号时间</h1>
 		</header>
-		<div class="mui-content"> 
+		<div class="mui-content">
 			<div class="mui-row ">
-				<button id='zz-btn-time' data-options='{"type":"hour","customData":{"h":[{"text":"上午","value":"上午"},{"text":"下午","value":"下午"}]}}' class="zz-btn-timeClass">选择挂号日期</button>
+				<button id='showUserPicker' class="zz-btn-timeClass" type='button'>选择挂号时间</button>
 			</div>
-			<div  class="mui-row zz-div-result">
-				<label id="zz-label-ymd"></label>
-			</div>
-			<div  class="mui-row zz-div-result">
-				<label id="zz-label-timeSlot"></label>
+
+			<div class="mui-row">
+				<h1 id="zz-label-time" class="zz-div-result"></h1> 
 			</div>
 			<div class="mui-row marginLeftRight">
-				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/transFuseTime.html');">下一步</button>
+				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/makeSureMessage.html');">
+					下一步
+				</button>
 			</div>
 		</div>
-		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
-		<script type="text/javascript" src="../../js/constants.js" ></script>
-		<script>
-			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
-			var timeResult;
-			var ymd;
-			var timeSlot;
-			ymd = document.getElementById('zz-label-ymd');
-			timeSlot = document.getElementById('zz-label-timeSlot');
-			(function($) {
-				$.init();
-//				var result = $('#result')[0];
-				var btns = $('.zz-btn-timeClass');
-				btns.each(function(i, btn) {
-					btn.addEventListener('tap', function() {
-						var optionsJson = this.getAttribute('data-options') || '{}';
-						var options = JSON.parse(optionsJson);
-						var id = this.getAttribute('id');
-						var picker = new $.DtPicker(options);
-						picker.show(function(rs) {
-							timeResult = rs.text;
-							ymd.innerHTML = rs.text.substr(0, 10);
-							timeSlot.innerHTML = rs.text.substr(11, 2);
-							picker.dispose();
-						});
-					}, false);
+		<script type="text/javascript" src="../../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../../js/city.data.js"></script>
+		<script type="text/javascript" src="../../js/city.data-3.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript">
+			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				var timeResult = sData.timeResult;
+
+			});
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarBackground('#EEA02F');
+			});
+			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth / 2);
+			(function($, doc) {
+				$.init({
+					swipeBack: true, //启用右滑关闭功能
+					beforeback: function() {
+						//获得你要前往页面的webview id
+						var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+
+						//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+						mui.fire(Scanner, 'refreshWeather');
+
+						//返回true，继续页面关闭逻辑
+						return true;
+					},
 				});
+<<<<<<< HEAD
 				
 			})(mui);
 			
@@ -154,17 +149,56 @@
 				}else if(timeDifference == 0){
 					if(nowTimeSlot == '下午' && timeSlot.innerHTML == '上午'){
 						mui.alert('您所预约的时间段已经过去了');
+=======
+				$.ready(function() {
+
+					//普通示例
+					var userPicker = new $.PopPicker();
+					var days = getDays(14);
+
+					var setData = new Array()
+					for(var i = 0; i < days.length; i++) {
+						var data = {};
+						data['value'] = i;
+						data['text'] = days[i] + ' 上午';
+						setData.push(data);
+						
+						var data = {};
+						data['value'] = i+1;
+						data['text'] = days[i] + ' 下午';
+						setData.push(data);
+>>>>>>> a9bdba1a365ebedd9393c01bc6bfe1a5cf42b8df
 					}
-					if(nowTimeSlot == '下午' && timeSlot.innerHTML == '下午'){
-						mui.alert('下午可预约下午');
+					var date = new Date();
+					if(date.getHours()>=12){
+						setData.splice(0,1);
 					}
-					if(nowTimeSlot == '上午'){
-						alert('上午随时预约');
+					if(date.getHours()>=17){
+						setData.splice(0,1);
 					}
-				}
-				
+					
+					userPicker.setData(setData);
+					var showUserPickerButton = doc.getElementById('showUserPicker');
+					var userResult = doc.getElementById('zz-label-time');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							var str = JSON.stringify(items[0]['text']);
+							str = str.substr(1,str.length-2);
+							userResult.innerHTML = str;
+						});
+					}, false);
+				});
+			})(mui, document);
+			//			console.log(timeResult);
+			function openWindow($url) {
+	
+				var userResult = document.getElementById('zz-label-time');
+
+				mui.openWindow({
+					url: '../registration/index.html',
+				});
+
 			}
-			
 		</script>
 	</body>
 

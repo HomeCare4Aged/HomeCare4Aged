@@ -1,0 +1,72 @@
+html body{
+	background: #FFFFFF;
+}
+.mui-bar-nav~.mui-content {
+    padding-top: 44px;
+    background-color: white;
+}
+.marginLeftRight{
+	margin-top: 30%;
+	margin-left:25px ;
+	margin-right:25px ;
+}
+/*.mui-content{
+	background: white;
+}*/
+.black-text{
+	color: black;
+}
+.mui-table-view:after{
+	left:25px;
+	right:25px;
+}
+.mui-table-view:before{
+	left:25px;
+	right:25px;
+}
+.mui-table-view-cell:after{
+	left:25px;
+	right:25px;
+}
+.top60px{
+	margin-top: 60px;
+	background: rgb(254,227,109);
+}
+.top110px{
+	margin-top: 130px;
+	background: white;
+}
+.top95px{
+	margin-top: 135px;
+}
+.zz-btn-timeClass{
+	background: rgb(238,160,47);
+	color: white;
+	font-size: 40px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	margin-top: 20%;
+	
+}
+.zz-btn-next{
+	position:fixed;
+	left: 10%;
+	bottom: 10%;
+	width: 80%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	background: rgb(238,160,47);
+	border: 0px;
+	
+}
+.zz-div-result{
+	font-size: 40px;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	margin-top: 10%;
+	text-align: center;
+}
+
