@@ -226,52 +226,10 @@
 				//				console.log(keyText);
 				return keyText;
 			}
-			//查询用户信息
-			function findUserInfo() {
-//				console.log('asd');
-				mui.ajax({
-					type: 'GET',
-					url: SERVERURL + "ACommunityUserInfo/findUser",
-					dataType: "json",
-					success: function(data) {
-						var community_user_id; //社区用户内码
-						var community_user_phone; //用户手机号
-						var community_user_password; //登录密码
-						var community_user_name; //用户姓名
-						var community_user_sex; //用户性别
-						var community_user_picture; //用户头像url
-						var community_user_address; //用户住址
-						var community_id; //社区内码
-						var community_hospitals_id; //社区医院内码
-						var state; //状态
-
-						localStorage.setItem(community_user_id, data.data.community_user_id);
-						console.log(localStorage.getItem(community_user_id));
-						localStorage.setItem(community_user_phone, data.data.community_user_phone);
-						console.log(localStorage.getItem(community_user_phone));
-						localStorage.setItem(community_user_password, data.data.community_user_password);
-						console.log(localStorage.getItem(community_user_password));
-						localStorage.setItem(community_user_name, data.data.community_user_name);
-						console.log(localStorage.getItem(community_user_name));
-						localStorage.setItem(community_user_sex, data.data.community_user_sex);
-						console.log(localStorage.getItem(community_user_sex));
-						localStorage.setItem(community_user_picture, data.data.community_user_picture);
-						console.log(localStorage.getItem(community_user_picture));
-						localStorage.setItem(community_user_address, data.data.community_user_address);
-						console.log(localStorage.getItem(community_user_address));
-						localStorage.setItem(community_id, data.data.community_id);
-						console.log(localStorage.getItem(community_id));
-						localStorage.setItem(community_hospitals_id, data.data.community_hospitals_id);
-						console.log(localStorage.getItem(community_hospitals_id));
-
-					},
-
-				});
-			}
+			
 
 			mui.plusReady(function() {
 				findWeather();
-				findUserInfo();
 				plus.screen.lockOrientation("portrait-primary");
 				window.addEventListener('refreshWeather', function() {
 
