@@ -1,0 +1,85 @@
+
+.marginLeftRight {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
+.mui-content {
+	background: white;
+}
+
+.cell-image {
+	width: 35px;
+	/*height: 50px;*/
+	margin-top: 10px;
+}
+
+.black-text {
+	margin-top: 8px;
+	color: black;
+	font-weight: normal;
+}
+.btn-certification{
+	margin-top: 105px;
+	bottom: 10px;
+	width: 100%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	border: 0px;
+	background: rgb(238,160,47);
+}
+.mui-table-view:after {
+	left: 25px;
+	right: 25px;
+}
+
+.mui-table-view:before {
+	left: 25px;
+	right: 25px;
+}
+
+
+.mui-table-view-cell:after {
+	left: 25px;
+	right: 25px;
+}
+
+.mui-input-row {
+	border: 0px;
+	font-size: 18px;
+}
+
+.mui-input-row .mui-icon-clear {
+	margin-top: 13px;
+	margin-right: -10px;
+	
+}
+
+::-webkit-input-placeholder {
+	/* WebKit browsers */
+	color: #999;
+	padding-top: 10px;
+	text-align: right;
+}
+
+:-moz-placeholder {
+	/* Mozilla Firefox 4 to 18 */
+	color: #999;
+	padding-top: 10px;
+	text-align: right;
+}
+
+::-moz-placeholder {
+	/* Mozilla Firefox 19+ */
+	color: #999;
+	padding-top: 10px;
+	text-align: right;
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10+ */
+	color: #999;
+	padding-top: 10px;
+	text-align: right;
+}

@@ -1,0 +1,232 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/loginRegister/certification.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_orange" id="zz-header-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">实名认证</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media" id="li-name">
+					<div class="marginLeftRight ">
+						<div class="mui-media-object mui-pull-left">
+							<img class="cell-image" src="../../images/loginRegister/Person.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 5px;margin-top: 5px;">
+							<h1 class="black-text listCellText ">姓名</h1>
+						</div>
+						<div class="mui-pull-right" style="margin-top: 10px;">
+							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
+						</div>
+					</div>
+					<div id="div-name" class=" " style="display: none; margin-left: 0px;margin-top: -55px;padding-right: -10px;margin-bottom: -20px;">
+						<input id="input-name" type="text" class="mui-input-clear " style="padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;" placeholder="">
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-media" id="li-sex">
+					<div class="marginLeftRight ">
+						<div class="mui-media-object mui-pull-left">
+							<img class="cell-image" style="margin-top: 5px;" src="../../images/loginRegister/Female.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 5px;margin-top: 5px;">
+							<h1 class="black-text listCellText ">性别</h1>
+						</div>
+						<div class="mui-pull-right" style="margin-top: 10px;">
+							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
+						</div>
+					</div>
+					<div id="div-sex" class=" " style="display: none; margin-left: 15px;margin-top: 60px; padding-right: -10px;">
+						<h1 id="input-sex" class="black-text" style="padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;">ss</h1>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-media" id="li-age">
+					<div class="marginLeftRight ">
+						<div class="mui-media-object mui-pull-left">
+							<img class="cell-image" style="width: 45px;margin-top: 10px;" src="../../images/loginRegister/Address_Book2.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 5px;margin-top: 5px;">
+							<h1 class="black-text listCellText ">年龄</h1>
+						</div>
+						<div class="mui-pull-right" style="margin-top: 10px;">
+							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
+						</div>
+					</div>
+					<div id="div-age" class=" " style="display: none; margin-left: 0px;margin-top: -55px;padding-right: -10px;margin-bottom: -20px;">
+						<input id="input-age" type="number" class="mui-input-clear " style="padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;" placeholder="">
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-media" id="li-phoneNum">
+					<div class="marginLeftRight ">
+						<div class="mui-media-object mui-pull-left">
+							<img class="cell-image" src="../../images/loginRegister/iPhone.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 5px;margin-top: 5px;">
+							<h1 class="black-text listCellText ">手机号码</h1>
+						</div>
+						<div class="mui-pull-right" style="margin-top: 10px;">
+							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
+						</div>
+					</div>
+					<div id="div-phoneNum" class=" " style="display: none; margin-left: 0px;margin-top: -55px;padding-right: -10px;margin-bottom: -20px;">
+						<input id="input-phoneNum" type="number" class="mui-input-clear " style="padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;" placeholder="">
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-media" id="li-home">
+					<div class="marginLeftRight ">
+						<div class="mui-media-object mui-pull-left">
+							<img class="cell-image" src="../../images/loginRegister/Home.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 5px;margin-top: 5px;">
+							<h1 class="black-text listCellText ">家庭住址</h1>
+						</div>
+						<div class="mui-pull-right" style="margin-top: 10px;">
+							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
+						</div>
+					</div>
+					<div id="div-home" class=" " style="display: none; margin-left: 0px;margin-top: -55px;padding-right: -10px;margin-bottom: -20px;">
+						<textarea id="input-home" type="" class="mui-input-clear " style="line-height: 35px;padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;" placeholder=""></textarea>
+					</div>
+				</li>
+
+				<li class="mui-table-view-cell mui-media" id="li-hospital">
+					<div class="marginLeftRight ">
+						<div class="mui-media-object mui-pull-left">
+							<img class="cell-image" src="../../images/loginRegister/City1.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 5px;margin-top: 5px;">
+							<h1 class="black-text listCellText ">社区医院</h1>
+						</div>
+						<div class="mui-pull-right" style="margin-top: 10px;">
+							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
+						</div>
+					</div>
+					<div id="div-hospital" class=" " style="display: none; margin-left: 0px;margin-top: -55px;padding-right: -10px;margin-bottom: -20px;">
+						<textarea id="input-hospital" type="text" class="mui-input-clear " style="line-height: 35px; padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;" placeholder=""></textarea>
+					</div>
+				</li>
+			</ul>
+			<div class="marginLeftRight">
+				<button type="button" class="btn-certification" onclick="openWindow();">注册</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+			});
+
+			function openWindow() {
+				sessionStorage.userPhoneNum = document.getElementById('input-phoneNum').value;
+				if(!isPhoneNum(sessionStorage.userPhoneNum)) {
+					mui.alert('请输入正确手机号');
+					return;
+				}
+
+				sessionStorage.userName = document.getElementById('input-name').value;
+				sessionStorage.userAge = document.getElementById('input-age').value;
+				sessionStorage.userPhoneNum = document.getElementById('input-phoneNum').value;
+				sessionStorage.userHome = document.getElementById('input-home').value;
+				sessionStorage.userHospital = document.getElementById('input-hospital').value;
+
+				if(!isNullStr(sessionStorage.userName) && !isNullStr(sessionStorage.userSex) &&
+					!isNullStr(sessionStorage.userAge) && !isNullStr(sessionStorage.userPhoneNum) &&
+					!isNullStr(sessionStorage.userHome) && !isNullStr(sessionStorage.userHospital) &&
+					isPhoneNum(sessionStorage.userPhoneNum)) {
+
+					var postData = {};
+					postData['community_user_name'] = sessionStorage.userName;
+					postData['community_user_sex'] = sessionStorage.userSex;
+					postData['age'] = sessionStorage.userAge;
+					postData['community_user_phone'] = sessionStorage.userPhoneNum;
+					postData['community_user_address'] = sessionStorage.userHome;
+					postData['community_hospitals_id'] = sessionStorage.userHospital;
+
+					mui.ajax({
+						type: 'POST',
+						data: postData,
+						url: SERVERURL + "ACommunityUserInfo/postUserInfo",
+						dataType: "json",
+						//成功获取数据赋值
+						success: function(data) {
+							if(data.status == 1) {
+								mui.openWindow({
+									url: '../home/index.html',
+								});
+							};
+							if(data.status == 0) {
+								mui.alert(data.msg);
+							};
+
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+							mui.alert('注册失败');
+						}
+					});
+
+				} else {
+					mui.alert('请补全信息');
+				}
+
+			};
+
+			mui.plusReady(function() {
+				plus.navigator.setStatusBarBackground('#EEA02F');
+				document.getElementById("li-sex").addEventListener('tap', function() {
+					var btnArray = ['男', '女', '取消'];
+					mui.confirm('请选择您的性别', '', btnArray, function(e) {
+						if(e.index == 0) {
+							sessionStorage.userSex = "男";
+							document.getElementById('div-sex').style.display = '';
+							document.getElementById('input-sex').innerHTML = sessionStorage.userSex;
+						} else if(e.index == 1) {
+							sessionStorage.userSex = "女";
+							document.getElementById('div-sex').style.display = '';
+							document.getElementById('input-sex').innerHTML = sessionStorage.userSex;
+						} else {
+
+						}
+					});
+				});
+				document.getElementById("li-name").addEventListener('tap', function() {
+					document.getElementById('div-name').style.display = '';
+					document.getElementById('input-name').focus();
+				});
+				document.getElementById("li-age").addEventListener('tap', function() {
+					document.getElementById('div-age').style.display = '';
+					document.getElementById('input-age').focus();
+				});
+				document.getElementById("li-phoneNum").addEventListener('tap', function() {
+					document.getElementById('div-phoneNum').style.display = '';
+					document.getElementById('input-phoneNum').focus();
+				});
+				document.getElementById("li-home").addEventListener('tap', function() {
+					document.getElementById('div-home').style.display = '';
+					document.getElementById('input-home').focus();
+				});
+				document.getElementById("li-hospital").addEventListener('tap', function() {
+					document.getElementById('div-hospital').style.display = '';
+					document.getElementById('input-hospital').focus();
+				});
+
+			});
+		</script>
+	</body>
+
+</html>
