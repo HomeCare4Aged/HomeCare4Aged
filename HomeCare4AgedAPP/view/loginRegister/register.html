@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/loginRegister/register.css" />
+		
+		
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_orange">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">注册</h1>
+		</header>
+		<div class="mui-content zz-ul-accountPsw">
+		    <ul class="mui-table-view " id="list_ul">
+				<li class="mui-table-view-cell mui-media" id="list" >
+					<div class="marginLeftRight"style="margin-top: 5%;">
+						<div class="mui-input-row">
+							<img src="../../images/loginRegister/iPhone.png" class="zz-img-icon">
+							<input type="tel" id="zz-input-phone" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请输入注册手机" />
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="list" >
+					<div class="marginLeftRight"style="margin-top: 5%;">
+						<div class="mui-input-row">
+							<img src="../../images/loginRegister/Locked.png" class="zz-img-icon">
+							<input type="text" id="zz-input-psw" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请输入密码" />
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell mui-media" id="list" >
+					<div class="marginLeftRight"style="margin-top: 5%;">
+						<div class="mui-input-row">
+							<img src="../../images/loginRegister/confirm.png" class="zz-img-icon">
+							<input type="text" id="zz-input-confirmPsw" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请确认密码" />
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="zz-div-next">
+			<button type="button" class="zz-btn-next"onclick="openWindow('../home/index.html');">下一步</button>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init()
+			
+			function openWindow($url){
+				var checkPhoneZ = checkPhone();
+				var checkPswZ = checkPsw();
+				var checkConfirmPswZ = checkConfirmPsw();
+				if(checkPhoneZ == false){
+					mui.alert("手机号码有误，请重填");
+				}else if(checkPswZ == false){
+					mui.alert("请输入您的密码");
+				}else if(checkConfirmPswZ == false){
+					mui.alert("请您输入相同的密码");
+				}else{
+//					mui.openWindow({
+//						url: $url,
+//					});
+					mui.toast('hahahahah');
+				}
+			}
+			//手机号验证
+			function checkPhone(){ 
+			    var phone = document.getElementById('zz-input-phone').value;
+			    if(!(/^1[34578]\d{9}$/.test(phone))){ 
+			        return false; 
+		  		  } 
+//		  		  localStorage.setItem('community_user_phone',phone);
+			}
+			//密码验证
+			function checkPsw(){
+				var psw = document.getElementById('zz-input-psw').value;
+				if(psw == ''){
+					return false;
+				}
+//				localStorage.setItem('community_user_password',psw);
+			}
+			
+			//确认密码
+			function checkConfirmPsw(){
+				var psw = document.getElementById('zz-input-psw').value;
+				var confirmPsw = document.getElementById('zz-input-confirmPsw').value;
+				if(psw != confirmPsw){
+					return false;
+				}
+				return true;
+			}
+			
+			
+		</script>
+	</body>
+
+</html>

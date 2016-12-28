@@ -30,10 +30,12 @@ body{
 	float: left; 
 	width: 15%;
 }
-.mui-input-row .mui-icon-clear {
-	/*margin-top: 3px;*/
-
-}
+/*.zz-input-input{
+	float: left; 
+	width: 80%;
+	height: 70px;
+	font-size: 50px;
+}*/
 .zz-ul-accountPsw{
 	margin-top: 10%;
 	text-decoration: underline;
@@ -47,7 +49,7 @@ body{
 	font-style: italic;
 }
 .zz-div-next{
-	margin-top: 53%;
+	margin-top: 30%;
 	margin-left: 10%;
 }
 .zz-btn-next{
@@ -59,4 +61,27 @@ body{
 	color: white;
 	background: rgb(238,160,47);
 	border: 0px;
+}
+::-webkit-input-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+} 
+
+:-moz-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+}
+
+::-moz-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+}
+
+:-ms-input-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
 }
