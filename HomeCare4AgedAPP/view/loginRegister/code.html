@@ -6,13 +6,80 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/loginRegister/certification.css" />
 	</head>
 
-	<body>
+	<body style="background-color: gainsboro;" id="body">
+		 
+		<header class="mui-bar mui-bar-nav m_orange" id="zz-header-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">输入验证码</h1>
+		</header>
+		<div class="mui-content" style="background-color: gainsboro;margin-top: 50px;">
+			<h1 style="text-align: center;font-weight: normal; font-size: 200%;">请输入收到的验证码：</h1>
+			<div class="mui-row" style="margin-top: 30px;">
+				<!--{ position: absolute; opacity: 0; filter:Alpha(opacity=0); / 不占据空间，可以点击 / }-->
+				<input  style="position: absolute;opacity: 0; top: -50px;" type="number" id="g-id-input" oninput="if(value.length>4)value=value.slice(0,4)">
+				<!--<input type="number" class="g-input" id="input1" oninput="if(value.length>1)value=value.slice(0,1)">
+				<input type="number" class="g-input" id="input2" oninput="if(value.length>1)value=value.slice(0,1)">
+				<input type="number" class="g-input" id="input3" oninput="if(value.length>1)value=value.slice(0,1)">
+				<input type="number" class="g-input" id="input4" oninput="if(value.length>1)value=value.slice(0,1)">-->
+				<label class="mui-pull-left g-input" style="background-color: white;"></label>
+				<label class="mui-pull-left g-input" style="background-color: white;"></label>
+				<label class="mui-pull-left g-input" style="background-color: white;"></label>
+				<label class="mui-pull-left g-input" style="background-color: white;"></label>
+			</div>
+			<div class="marginLeftRight">
+				<button type="button" class="btn-certification" onclick="openWindow();">下一步</button>
+			</div>
+		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
+			});
+
+			mui.plusReady(function() {
+				var gInput = document.getElementById('g-id-input');
+				plus.navigator.setStatusBarBackground('#EEA02F');
+				var inputList = document.getElementsByClassName('g-input');
+				mui.each(inputList, function(i) {
+					var width = (document.documentElement.clientWidth - 40 - 30) / 4;
+					if(i != 0) {
+						inputList[i].style.marginLeft = '10px';
+					}else{
+						inputList[i].style.marginLeft = '20px';
+					}
+					
+					inputList[i].style.textAlign = 'center';
+					inputList[i].style.fontSize = '60px';
+					inputList[i].style.width = width + 'px';
+					inputList[i].style.height = width * 1.5 + 'px';
+					inputList[i].style.lineHeight = '100px';
+					inputList[i].style.border = '0px';
+					inputList[i].style.display = 'inline-block';
+
+					inputList[i].addEventListener('tap', function() {
+						gInput.focus();
+					});
+				});
+				var webView = plus.webview.currentWebview().nativeInstanceObject();
+				webView.plusCallMethod({
+					"setKeyboardDisplayRequiresUserAction": false,
+				});
+
+				gInput.focus();
+
+				setInterval(function() {
+					var str = gInput.value;
+					inputList[0].innerHTML = str.substr(0, 1);
+					inputList[1].innerHTML = str.substr(1, 1);
+					inputList[2].innerHTML = str.substr(2, 1);
+					inputList[3].innerHTML = str.substr(3, 1);
+				}, 50);
 			});
 		</script>
 	</body>
