@@ -10,7 +10,7 @@
 	"icons": {
 		"72": "icon.png"
 	},
-	"launch_path": "view/loginRegister/code.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
+	"launch_path": "view/loginRegister/index.html",/*应用的入口页面，默认为根目录下的index.html；支持网络地址，必须以http://或https://开头*/
 	"developer": {
 		"name": "",/*开发者名称*/
 		"email": "",/*开发者邮箱地址*/
@@ -244,7 +244,8 @@
 					"images/home/transfuse.png",
 					"css/home/index.css",
 					"images/home/message.png",
-					"images/home/qingtian.png"
+					"images/home/qingtian.png",
+					"images/home/duoyun.png"
 				],
 				"refer": [
 					"view/registration/index.html",
@@ -252,7 +253,8 @@
 					"view/message/index.html",
 					"view/video/index.html",
 					"view/takeOut/index.html",
-					"view/dropIn/index.html"
+					"view/dropIn/index.html",
+					"view/loginRegister/index.html"
 				],
 				"priority": 0
 			},
@@ -427,6 +429,59 @@
 				"resources": [
 					"css/registration/myHistory.css",
 					"images/small.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/loginRegister/register.html": {
+				"resources": [
+					"css/loginRegister/register.css",
+					"js/mui.min.js",
+					"images/loginRegister/confirm.png",
+					"images/loginRegister/Locked.png",
+					"view/loginRegister/index.html",
+					"fonts/mui.ttf",
+					"images/loginRegister/iPhone.png",
+					"css/mui.min.css",
+					"css/common/common.css",
+					"js/constants.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/loginRegister/index.html": {
+				"resources": [
+					"css/loginRegister/index.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"view/loginRegister/register.html",
+					"js/jquery.1.11.1.js",
+					"images/loginRegister/Locked.png",
+					"fonts/mui.ttf",
+					"images/loginRegister/iPhone.png",
+					"css/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [
+					"view/home/index.html"
+				],
+				"priority": 0
+			},
+			"view/loginRegister/certification.html": {
+				"resources": [
+					"images/loginRegister/Home.png",
+					"js/constants.js",
+					"images/loginRegister/City1.png",
+					"fonts/mui.ttf",
+					"css/common/common.css",
+					"images/loginRegister/Address_Book2.png",
+					"images/loginRegister/Female.png",
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"css/loginRegister/certification.css",
+					"css/mui.min.css",
+					"images/loginRegister/iPhone.png",
+					"images/loginRegister/Person.png"
 				],
 				"refer": [],
 				"priority": 0
