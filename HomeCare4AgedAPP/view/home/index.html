@@ -226,25 +226,25 @@
 				//				console.log(keyText);
 				return keyText;
 			}
-			
 
 			mui.plusReady(function() {
+				plus.navigator.setStatusBarBackground('#FFFFFF');
 				findWeather();
 				plus.screen.lockOrientation("portrait-primary");
 				window.addEventListener('refreshWeather', function() {
 
-						plus.navigator.setStatusBarBackground('#FFFFFF');
-						findWeather();
-						//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
-						// 获取所有Webview窗口
-						var curr = plus.webview.currentWebview();
-						var wvs = plus.webview.all();
-						for(var i = 0, len = wvs.length; i < len; i++) {
-							//关闭除setting页面外的其他页面
-							if(wvs[i].getURL() == curr.getURL())
-								continue;
-							plus.webview.close(wvs[i]);
-						}
+					plus.navigator.setStatusBarBackground('#FFFFFF');
+					findWeather();
+//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+					// 获取所有Webview窗口
+					var curr = plus.webview.currentWebview();
+					var wvs = plus.webview.all();
+					for(var i = 0, len = wvs.length; i < len; i++) {
+						//关闭除setting页面外的其他页面
+						if(wvs[i].getURL() == curr.getURL())
+							continue;
+						plus.webview.close(wvs[i]);
+					}
 
 				});
 
