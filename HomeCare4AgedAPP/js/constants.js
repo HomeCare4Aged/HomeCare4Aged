@@ -1,8 +1,8 @@
 //域名
 
-const SERVERURL = 'http:/10.96.110.77/HomeCare4AgedPHP/index.php/Home/';
+//const SERVERURL = 'http:/10.96.110.77/HomeCare4AgedPHP/index.php/Home/';
 
-//const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
+const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
 
 //定义比例
 const SCALE = window.screen.width / 320;
@@ -56,4 +56,13 @@ function isPhoneNum(str) {
 	} else {
 		return false;
 	};
+}
+
+//确认密码
+function checkConfirmPsw($psw,$confirmPsw){
+	if($psw != $confirmPsw){
+		return false;
+		console.log('false');
+	}
+	return true;
 }
