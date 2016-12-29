@@ -463,7 +463,8 @@
 					"css/common/common.css"
 				],
 				"refer": [
-					"view/home/index.html"
+					"view/home/index.html",
+					"view/loginRegister/code.html"
 				],
 				"priority": 0
 			},
@@ -481,9 +482,28 @@
 					"css/loginRegister/certification.css",
 					"css/mui.min.css",
 					"images/loginRegister/iPhone.png",
-					"images/loginRegister/Person.png"
+					"images/loginRegister/Person.png",
+					"js/mui.picker.min.js",
+					"css/mui.dtpicker.css",
+					"css/mui.picker.min.css",
+					"js/mui.dtpicker.js"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"view/loginRegister/code.html": {
+				"resources": [
+					"css/loginRegister/certification.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [
+					"view/loginRegister/certification.html"
+				],
 				"priority": 0
 			}
 		},
@@ -491,7 +511,6 @@
 			"resources": [
 				"view/registration/detepicker.html",
 				"css/feedback.css",
-				"js/mui.dtpicker.js",
 				"js/mui.zoom.js",
 				"m.mp4",
 				"js/mui.previewimage.js",
@@ -505,7 +524,6 @@
 				"js/mui.lazyload.js",
 				"css/mui.css",
 				"js/95516.js",
-				"css/mui.dtpicker.css",
 				"js/registration/dateChose.js",
 				"css/mui.picker.all.css",
 				"js/update.js",

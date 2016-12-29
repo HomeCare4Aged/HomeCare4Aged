@@ -4,6 +4,7 @@
 
 const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
 const MESSAGEURL = 'http://192.168.136.1/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
+
 //定义比例
 const SCALE = window.screen.width / 320;
 //定义首页图片比例
@@ -59,10 +60,16 @@ function isPhoneNum(str) {
 }
 
 //确认密码
-function checkConfirmPsw($psw,$confirmPsw){
-	if($psw != $confirmPsw){
+function checkConfirmPsw($psw, $confirmPsw) {
+	if($psw != $confirmPsw) {
 		return false;
 		console.log('false');
 	}
 	return true;
+}
+//密码验证6-16位字符只包含字母数字
+function isRegisterPsw(s) {
+	var patrn = /^[0-9A-Za-z]{6,16}$/;
+	if(!patrn.exec(s)) return false
+	return true
 }

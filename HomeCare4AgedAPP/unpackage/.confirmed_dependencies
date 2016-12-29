@@ -52,7 +52,8 @@
 		],
 		"refer": [
 			"view/loginRegister/register.html",
-			"view/home/index.html"
+			"view/home/index.html",
+			"view/loginRegister/code.html"
 		]
 	},
 	"view/loginRegister/certification.html": {
@@ -69,7 +70,25 @@
 			"css/loginRegister/certification.css",
 			"css/mui.min.css",
 			"images/loginRegister/iPhone.png",
-			"images/loginRegister/Person.png"
+			"images/loginRegister/Person.png",
+			"js/mui.picker.min.js",
+			"css/mui.dtpicker.css",
+			"css/mui.picker.min.css",
+			"js/mui.dtpicker.js"
+		]
+	},
+	"view/loginRegister/code.html": {
+		"resources": [
+			"css/loginRegister/certification.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/loginRegister/certification.html"
 		]
 	}
 }

@@ -60,3 +60,26 @@ body{
 	background: rgb(238,160,47);
 	border: 0px;
 }
+::-webkit-input-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+} 
+
+:-moz-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+}
+
+::-moz-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+}
+
+:-ms-input-placeholder {
+	color: #999;
+	padding-top: 5px;
+	text-align: left;
+}
