@@ -116,8 +116,8 @@
 							<h1 style="text-align: right; color: gray; font-size: 30px; background: none;" class="black-text" id="name">设置</h1>
 						</div>
 					</div>
-					<div id="div-hospital" class=" " style="display: none; margin-left: 0px;margin-top: -55px;padding-right: -10px;margin-bottom: -20px;">
-						<textarea id="input-hospital" type="text" class="mui-input-clear " style="line-height: 35px; padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;" placeholder=""></textarea>
+					<div id="div-hospital" class=" " style="display: none; margin-left: 15px;margin-top: 60px; padding-right: -10px;">
+						<h1 id="input-hospital" class="black-text" style="padding-right: 20px; text-align: left; background: none; border: 0px; font-size: 200%;height: 200%;"></h1>
 					</div>
 				</li>
 			</ul>
@@ -130,6 +130,7 @@
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.picker.min.js"></script>
 		<script type="text/javascript" src="../../js/mui.dtpicker.js"></script>
+		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=wXSH8SFsI69TCVMQEz25m12k"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -181,7 +182,6 @@
 							if(data.status == 0) {
 								mui.alert(data.msg);
 							};
-
 						},
 						error: function(xhr, type, errorThrown) {
 							console.log(type);
@@ -194,11 +194,16 @@
 				}
 
 			};
-
 			mui.plusReady(function() {
+				plus.geolocation.getCurrentPosition(function(p) {
+					console.log(JSON.stringify(p));
+				}, function(e) {
+					alert("Geolocation error: " + e.message);
+				});
+
 				plus.navigator.setStatusBarBackground('#EEA02F');
 				document.getElementById("li-sex").addEventListener('tap', function() {
-					document.activeElement.blur(); 
+					document.activeElement.blur();
 					var btnArray = ['男', '女', '取消'];
 					mui.confirm('请选择您的性别', '', btnArray, function(e) {
 						if(e.index == 0) {
@@ -221,7 +226,7 @@
 					document.getElementById('input-name').focus();
 				});
 				document.getElementById("li-age").addEventListener('tap', function() {
-					document.activeElement.blur(); 
+					document.activeElement.blur();
 					document.getElementById('div-age').style.display = '';
 					var optionsJson = {};
 					optionsJson['type'] = 'date';
@@ -270,12 +275,88 @@
 					document.getElementById('input-home').focus();
 				});
 				document.getElementById("li-hospital").addEventListener('tap', function() {
-					document.getElementById('div-hospital').style.display = '';
-					document.getElementById('input-hospital').focus();
-				});
 
+					localStorage.userHome = document.getElementById('input-home').value;
+					console.log(localStorage.userHome);
+					console.log(isNullStr(localStorage.userHome));
+
+					if(isNullStr(localStorage.userHome)) {
+						mui.alert('请先选择地址');
+					} else {
+
+						plus.nativeUI.showWaiting('正在查询附近医院');
+						var myGeo = new BMap.Geocoder();
+						// 将地址解析结果显示在地图上,并调整地图视野
+						myGeo.getPoint(localStorage.userHome, function(point) {
+							if(point) {
+								document.getElementById('div-hospital').style.display = '';
+								plus.nativeUI.closeWaiting();
+								localStorage.lng = point['lng'];
+								localStorage.lat = point['lat'];
+								console.log(localStorage.lng);
+								console.log(localStorage.lat);
+								
+								document.activeElement.blur();
+								var userPicker = new mui.PopPicker();
+								var days = getDays(14);
+								var setData = new Array()
+								for(var i = 0; i < days.length; i++) {
+									var data = {};
+									data['value'] = i;
+									data['text'] = days[i] + ' 上午';
+									setData.push(data);
+								}
+								userPicker.setData(setData);
+								userPicker.show(function(items) {
+									var str = JSON.stringify(items[0]['text']);
+									str = str.substr(1, str.length - 2);
+									document.getElementById('input-hospital').innerHTML = str;
+								});
+
+							} else {
+								plus.nativeUI.closeWaiting();
+								mui.alert('您选择的地址附近没有社区医院!')
+							}
+						}, localStorage.GetCity);
+					}
+				});
 			});
 		</script>
+		<script type="text/javascript">
+			// 百度地图API功能
+			function G(id) {
+				return document.getElementById(id);
+			}
+			var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+				{
+					"input": "input-home",
+					"location": localStorage.GetCity,
+				});
+
+			ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+				var str = "";
+				var _value = e.fromitem.value;
+				var value = "";
+				if(e.fromitem.index > -1) {
+					value = _value.province + _value.city + _value.district + _value.street + _value.business;
+				}
+				str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+
+				value = "";
+				if(e.toitem.index > -1) {
+					_value = e.toitem.value;
+					value = _value.province + _value.city + _value.district + _value.street + _value.business;
+				}
+				str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+			});
+
+			var myValue;
+			ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+				var _value = e.item.value;
+				myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+			});
+		</script>
+
 	</body>
 
 </html>

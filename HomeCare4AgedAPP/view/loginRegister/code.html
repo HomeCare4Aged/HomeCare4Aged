@@ -66,12 +66,15 @@
 						gInput.focus();
 					});
 				});
-				
-				
-//				var webView = plus.webview.currentWebview().nativeInstanceObject();
-//				webView.plusCallMethod({
-//					"setKeyboardDisplayRequiresUserAction": false,
-//				});
+				var u = navigator.userAgent;
+				var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+				var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+				if(isiOS) {
+					var webView = plus.webview.currentWebview().nativeInstanceObject();
+					webView.plusCallMethod({
+						"setKeyboardDisplayRequiresUserAction": false,
+					});
+				}
 
 				gInput.focus();
 
@@ -83,9 +86,9 @@
 					inputList[3].innerHTML = str.substr(3, 1);
 				}, 50);
 
-				mui.openWindow({
-					url: '../loginRegister/certification.html',
-				});
+				//				mui.openWindow({
+				//					url: '../loginRegister/certification.html',
+				//				});
 			});
 		</script>
 	</body>

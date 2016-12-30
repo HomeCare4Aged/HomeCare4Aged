@@ -1,4 +1,3 @@
-
 .marginLeftRight {
 	margin-left: 15px;
 	margin-right: 15px;
@@ -19,7 +18,8 @@
 	color: black;
 	font-weight: normal;
 }
-.btn-certification{
+
+.btn-certification {
 	margin-top: 105px;
 	bottom: 10px;
 	width: 100%;
@@ -27,8 +27,9 @@
 	font-size: 40px;
 	color: white;
 	border: 0px;
-	background: rgb(238,160,47);
+	background: rgb(238, 160, 47);
 }
+
 .mui-table-view:after {
 	left: 25px;
 	right: 25px;
@@ -38,7 +39,6 @@
 	left: 25px;
 	right: 25px;
 }
-
 
 .mui-table-view-cell:after {
 	left: 25px;
@@ -53,7 +53,6 @@
 .mui-input-row .mui-icon-clear {
 	margin-top: 13px;
 	margin-right: -10px;
-	
 }
 
 ::-webkit-input-placeholder {
@@ -82,4 +81,25 @@
 	color: #999;
 	padding-top: 10px;
 	text-align: right;
+}
+
+.tangram-suggestion table {
+	width: 100%;
+	font-size: 35px !important;
+	margin-top: 10px !important;
+}
+
+.tangram-suggestion table tr td {
+	overflow: scroll !important;
+	height: 42px !important;
+	padding: 0 10px !important;
+	line-height: 42px !important;
+}
+
+.tangram-suggestion .route-icon {
+	overflow: hidden;
+	padding-left: 30px !important;
+	font-style: normal;
+	background: url(../../images/loginRegister/search.png) no-repeat 2px 10px  !important;
+	background-size: 25px 25px !important;
 }

@@ -47,6 +47,13 @@
 		<script type="text/javascript">
 			mui.init()
 			mui.plusReady(function() {
+				//获取所在城市
+				plus.geolocation.getCurrentPosition(function(p) {
+					localStorage.GetCity = p.address['city'];
+				}, function(e) {
+					alert("Geolocation error: " + e.message);
+				});
+				
 				plus.navigator.setStatusBarBackground('#EEA02F');
 			});
 
