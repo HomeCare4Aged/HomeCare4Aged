@@ -7,35 +7,23 @@ use XXKit\ImageUploader;
 
 class HospitalController extends Controller {
     public function index(){
-    	$cond = array(
-			//筛选掉已经删除的数据
-			'status' => array('neq',-1),
+    	$nav_admin = session(C(('ADMIN_SESSION')));
+    	$admin = array(
+			'community_hospitals_id' => $nav_admin['community_hospitals_id'],
 		);
-		//分页逻辑
-		$page = $_REQUEST['p'] ? $_REQUEST[p] : 1;
-		$pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 5;
-		$hospitals = D('HHospitalsInfo')->getHospitals($cond,$page,$pageSize);
-		$articlesCount = D('HHospitalsInfo')->getMenusCount($cond);
-		//分页控件
-		$pageObj = new \Think\Page($articlesCount,$pageSize);
-		//获取分页结果
-		$pageRes = $pageObj->show();
+		$hospitals = D('HHospitalsInfo')->where($admin)->select();
+//		cDebug($hospitals);
 		//绑定模板变量
-		$this->assign('hospitals',$hospitals);
-		$this->assign('pageRes',$pageRes);
-    	$this->display();
-    }
-    //点击添加文章按钮
-    public function add(){
-		if($_POST){
+		$this->assign('hospitals',$hospitals[0]);
+    	if($_POST){
 			//表单验证
 			$validData = D('HHospitalsInfo')->create();
 //			cDebug($validData);
 			if($validData){
 				//编辑逻辑
-//				if($_POST['id']){
-//					return $this->save($_POST);
-//				}
+				if($_POST['id']){
+					return $this->save($_POST);
+				}
 				//执行新操作
 				$res = D('HHospitalsInfo')->inset($validData);
 				if($res === false){
@@ -50,4 +38,18 @@ class HospitalController extends Controller {
 			$this->display();
 		}
     }
+    //更新数据的接口
+    public function save($data){
+		$community_hospitals_id = $data['id'];
+		unset($data['id']);
+		try{
+			$res = D('HHospitalsInfo')->updateMenuById($community_hospitals_id,$data );
+		}catch(exception $e){
+			return ajaxReturn(\UPDATE_ERROR,$e->getMessage());
+		}
+		if($res === false){
+			return ajaxReturn(\DATABASE_ERROR,'数据库查询失败');
+		}
+			return ajaxReturn(\SUCCESS,'更新医院信息成功');
+	}
 }

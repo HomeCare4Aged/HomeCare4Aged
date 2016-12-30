@@ -2,34 +2,39 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>WebChina后台管理系统</title>
+		<title>社区医院管理系统</title>
 		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/vendor/metisMenu/metisMenu.min.css"/>
 		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/sb-admin-2.css"/>
 		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/vendor/font-awesome/css/font-awesome.min.css"/>
 		<link rel="stylesheet" href="/HosMa/Public/css/admin/common.css" />
 		<link rel="stylesheet" href="/HosMa/Public/css/vendor/uploadify/uploadify.css" />
+		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/daterangepicker-bs3.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/dataTable/jquery.dataTables.min.css" />
 		
 		<script type="text/javascript" src="/HosMa/Public/js/jquery 1.11.1.js"></script>
 		<script type="text/javascript" src="/HosMa/Public/js/bootstrap.js"></script>
 		<script type="text/javascript" src="/HosMa/Public/js/dialog/layer.js"></script>
 		<script type="text/javascript" src="/HosMa/Public/js/dialog.js"></script>
 		<script type="text/javascript" src="/HosMa/Public/js/vendor/uploadify/jquery.uploadify.js" ></script>
-		<script type="text/javascript" src="/HosMa/Public/js/vendor/kindeditor/kindeditor-all.js" ></script>
+		<script type="text/javascript" src="/HosMa/Public/js/vendor/kindeditor/kindeditor-all.js" ></script>		
 	</head>
 	<body>
 
 
 <div id="wrapper">
-	<!--后台管理系统的导航栏-->
-<nav class="navbar navbar-default navbar-static-top">
+	<?php
+ $nav_admin = session(C('ADMIN_SESSION')); $admin = array( 'hospital_user_id' => $nav_admin['hospital_user_id'], ); $nav_user = D('h_user_limit_info')->where($admin)->select(); $nav_user_menu_ids = $nav_user[0]['limit_id']; $nav_hospital = D('h_hospitals_info')->where('community_hospitals_id='.$nav_admin['hospital_user_id'])->select(); $nav_use = D('h_hospitals_info')->where('community_hospitals_id='.$nav_admin['hospital_user_id'])->select(); $index = 'index'; ?>
+	
+<!--后台管理系统的导航栏-->
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="navbar-header">
 		<a href="#" class="navbar-brand">社区医院管理平台</a>
 	</div>
 	<ul class="nav navbar-right top-nav">
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-fw fa-user"></i>wxx<i class="caret"></i>
+				<i class="fa fa-fw fa-user"></i><?php echo ($nav_admin["hospital_user_name"]); ?><i class="caret"></i>
 			</a>
 			<ul class="dropdown-menu">
 				<li>
@@ -37,7 +42,7 @@
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="#"><i class="fa fa-fw fa-power-off"></i>注销</a>
+						<a href="/HosMa/admin.php/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
 				</li>
 			</ul>
 		</li>
@@ -46,7 +51,7 @@
         <div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
 				<li>
-					<a href="../Index/index.html"><i class="fa fa-fw fa-home"></i>首页</a>
+					<a href="/HosMa/admin.php/Index/index.html"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
 					<a href="#">
@@ -54,13 +59,16 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="../Hospital/index.html">医院信息</a>
+		                    <a href="/HosMa/admin.php/Hospital/index.html">医院信息</a>
 		                </li>
 		                <li>
-		                    <a href="../Department/index.html">科室信息</a>
+		                    <a href="/HosMa/admin.php/Department/index.html">科室信息</a>
 		                </li>
 		                <li>
-		                	<a href="../Doctor/index.html">医生信息</a>
+		                	<a href="/HosMa/admin.php/Doctor/index.html">医生信息</a>
+		                </li>
+		                <li>
+		                	<a href="/HosMa/admin.php/User/index.html">员工信息</a>
 		                </li>
 		            </ul>
 		            <!-- /.nav-second-level二级目录下拉 -->
@@ -71,20 +79,20 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="../Schedule/index.html">排班信息录入</a>
+		                    <a href="/HosMa/admin.php/Schedule/index.html">排班信息录入</a>
 		                </li>
 		            </ul>
 				</li>
 				<li>
 					<a href="#">
-						<i class="fa fa-fw fa-cogs"></i>挂单号<span class="fa arrow"></span>
+						<i class="fa fa-fw fa-cogs"></i>挂号单<span class="fa arrow"></span>
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="../Register/index.html">号池信息录入</a>
+		                    <a href="/HosMa/admin.php/Register/index.html">号池信息录入</a>
 		                </li>
 		                <li>
-		                    <a href="../Register/info.html">挂号信息显示</a>
+		                    <a href="/HosMa/admin.php/Register/info.html">挂号信息显示</a>
 		                </li>
 		            </ul>
 				</li>
@@ -94,13 +102,13 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="../Noticle/index.html">公告信息预览</a>
+		                    <a href="/HosMa/admin.php/Noticle/index.html">公告审核</a>
 		                </li>
+		                <!--<li>-->
+		                    <!--<a href="/HosMa/admin.php/Noticle/add.html">公告发布</a>-->
+		                <!--</li>-->
 		                <li>
-		                    <a href="../Noticle/add.html">公告发布</a>
-		                </li>
-		                <li>
-		                    <a href="../Noticle/review.html">公告审核</a>
+		                    <a href="/HosMa/admin.php/Noticle/review.html">公告管理</a>
 		                </li>
 		            </ul>
 				</li>
@@ -110,10 +118,10 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="../Video/index.html">视频信息预览</a>
+		                    <a href="/HosMa/admin.php/Video/index.html">视频信息预览</a>
 		                </li>
 		                <li>
-		                    <a href="../Video/add.html">视频发布</a>
+		                    <a href="/HosMa/admin.php/Video/add.html">视频发布</a>
 		                </li>
 		            </ul>
 				</li>
@@ -165,13 +173,14 @@
 				<div class="form-group">
 					<label for="xx-input-image" class="control-label col-sm-3">选择视频:</label>
 					<div class="col-sm-5">
-						<input type="file" id="xx-input-image"/>
+						<input type="file" id="xx-input-video-uploader"/>
 						<!--展示缩略图-->
 						<video src="" alt="" id="xx-img-show-thumb"  width="150px" style="display: none;"/>
 						<!--封面图字段-->
-						<input type="hidden" name="image_path" id="xx-input-image-path"/>
-						<!--缩略图字段-->
-						<input type="hidden" name="thumb_path" id="xx-input-thumb-path"/>
+						<input type="hidden" name="video_url" id="xx-input-video_url"/>
+					</div>
+					<div class="col-sm-4">
+						<p class="xx-p-validate-result" attr-validate="video_url"></p>
 					</div>
 				</div>
 				<div class="form-group">
@@ -203,8 +212,8 @@
 	var SCOPE = {
 		'add_url':'/HosMa/admin.php/Video/add',
 		'success_jump_url':'/HosMa/admin.php/Video/index',
-		'ajax_upload_swf':'/HosMa/Public/js/vendor/uploadify/uploadify.swf',//图片地址
-		'ajax_upload_url':'/HosMa/admin.php/Video/ajaxUploadImage',//图片上传控制器地址
+		'ajax_upload_swf':'/HosMa/Public/js/vendor/uploadify/uploadify.swf',//视频地址
+		'ajax_upload_url':'/HosMa/admin.php/Video/ajaxUploadAudio',//视频上传控制器地址
 	}
 </script>
 		
@@ -212,5 +221,8 @@
 	<script type="text/javascript" src="/HosMa/Public/js/sb-admin-2.js"></script>
 	<script type="text/javascript" src="/HosMa/Public/js/constants.js"></script>
 	<script type="text/javascript" src="/HosMa/Public/js/admin/common.js"></script>
+	<script type="text/javascript" src="/HosMa/Public/js/moment.js"></script>
+	<script type="text/javascript" src="/HosMa/Public/js/daterangepicker.js"></script>
+	<script type="text/javascript" src="/HosMa/Public/js/dataTable/jquery.dataTables.min.js"></script>
 	</body>
 </html>

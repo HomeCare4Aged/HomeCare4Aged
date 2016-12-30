@@ -77,7 +77,22 @@ class HHospitalUserInfoModel extends Model{
 			$offset = ($page - 1) * $pageSize;
 			$this->limit($offset,$pageSize);    //查询条数
 		}
-			$list = $this->select();
+			$list = M('h_user_limit_info')
+			->where($cond)
+			->limit($offset,$pageSize)
+			->join('h_hospital_user_info on h_user_limit_info.hospital_user_id=h_hospital_user_info.hospital_user_id')
+//			->join('h_hospital_menu on h_user_limit_info.limit_id=h_hospital_menu.role_id')
+			->select();
+//			$list = $this->select();
+			return $list;
+	}
+	//获取权限信息
+	public function getMenus($cond=array()){
+			$list = M('h_hospital_menu')->where($cond)->select();
+		return $list;
+	}
+	public function getAssign($data){
+		$list = M('h_hospital_user_info')->join('h_user_limit_info on h_hospital_user_info.hospital_user_id=h_user_limit_info.hospital_user_id')->select();
 		return $list;
 	}
 	//获取菜单组数
@@ -90,7 +105,7 @@ class HHospitalUserInfoModel extends Model{
 		if($id == null){
 			throw_exception('菜单ID不合法');
 		}
-		$cond['article_id'] = intval($id);
+		$cond['hospital_user_id'] = intval($id);
 		return $this->where($cond)->find();
 	}
 	
@@ -102,9 +117,31 @@ class HHospitalUserInfoModel extends Model{
 		if($data === null || !is_array($data)){
 			throw_exception('菜单数据不合法');
 		}
-		return $this->where('article_id='.$id)->save($data);
+		return $this->where('hospital_user_id='.$id)->save($data);
 	}
-	
+	//存路径
+	function saveAuth($role_id,$data){
+		if($role_id === null || !is_numeric($role_id)){
+			throw_exception('角色ID不合法');
+		}
+		if($data === null || !is_array($data)){
+			throw_exception('角色数据不合法');
+		}
+		$role_menu_ids = implode(',',$data);
+		$menus = D('h_user_limit_info')->select($role_menus_ids);
+//		$role_menu_path = '';
+//		foreach($menus as $k => $menu){
+//			$role_menu_path.= $menu['menu_controller'].'-'.$menu['menu_action'].',';
+//		}
+//		$role_menu_path = rtrim($role_menu_path,',');
+		$updateData = array(
+			'role_menu_ids' => $role_menu_ids,
+//			'role_menu_path' => $role_menu_path,
+		);
+//		cDebug($updateData);
+		return $this->where('hospital_user_id='.$role_id)->save($updateData);
+		
+	}
 	
 	
 }

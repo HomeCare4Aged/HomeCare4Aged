@@ -61,10 +61,36 @@ class HHospitalOfficeInfoModel extends Model{
 		if($id === null || !is_numeric($id)){
 			throw_exception('菜单ID不合法');
 		}
-		if($data === null || !is_array($data)){
+		if($data === null){
 			throw_exception('菜单数据不合法');
 		}
-		return $this->where('article_id='.$id)->save($data);
+		$updataData = array(
+			'hospital_office_id' => $data,
+		);
+		return M('h_hospital_office_list')->where('community_hospitals_id='.$id)->save($updataData);
+	}
+	//更新权限
+	function saveAuth($role_id,$data){
+		if($role_id === null || !is_numeric($role_id)){
+			throw_exception('角色ID不合法');
+		}
+		if($data === null || !is_array($data)){
+			throw_exception('角色数据不合法');
+		}
+		$role_menu_ids = implode(',',$data);
+		$menus = D('Menu')->select($role_menus_ids);
+		$role_menu_path = '';
+		foreach($menus as $k => $menu){
+			$role_menu_path.= $menu['menu_controller'].'-'.$menu['menu_action'].',';
+		}
+		$role_menu_path = rtrim($role_menu_path,',');
+		$updateData = array(
+			'role_menu_ids' => $role_menu_ids,
+			'role_menu_path' => $role_menu_path,
+		);
+//		cDebug($updateData);
+		return $this->where('role_id='.$role_id)->save($updateData);
+		
 	}
 }
 ?>

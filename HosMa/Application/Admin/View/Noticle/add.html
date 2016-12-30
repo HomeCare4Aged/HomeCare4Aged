@@ -16,43 +16,48 @@
 			<div class="row">
 				<form class="form-horizontal" id="xx-form-add">
 				<div class="form-group">
-				<label for="xx-input-announcement_sender_id" class="control-label col-sm-3">发布用户:</label>
-					<div class="col-sm-5">
-						<input id="xx-input-announcement_sender_id" class="form-control" type="text" name="announcement_sender_id" placeholder="请输入发布用户"/>
-					</div>
-					<div class="col-sm-4">
-						<p class="xx-p-validate-result" attr-validate="announcement_sender_id"></p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="xx-input-announcement_company_id" class="control-label col-sm-3">所属单位:</label>
-					<div class="col-sm-5">
-						<input id="xx-input-announcement_company_id" class="form-control" type="text" name="announcement_company_id" placeholder="请输入所属单位"/>
-					</div>
-					<div class="col-sm-4">
-						<p class="xx-p-validate-result" attr-validate="announcement_company_id"></p>
-					</div>
-				</div>
-				<div class="form-group">
 					<label for="xx-input-announcement_title" class="control-label col-sm-3">公告标题:</label>
+				<div class="col-sm-5">
+					<input id="xx-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入公告标题"/>
+				</div>
+				<div class="col-sm-4">
+					<p class="xx-p-validate-result" attr-validate="announcement_title"></p>
+				</div>
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_title" class="control-label col-sm-3">公告类型:</label>
 					<div class="col-sm-5">
-						<input id="xx-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入公告标题"/>
-					</div>
-					<div class="col-sm-4">
-						<p class="xx-p-validate-result" attr-validate="announcement_title"></p>
+						<select class="form-control" name="announcement_type_id">
+							<volist name="announcement_type" id="vo">
+								<option name="announcement_type_id" id="vo.announcement_type_id" value="{$vo.announcement_type_id}">{$vo.announcement_type_name}</option>
+							</volist>
+						</select>
 					</div>
 				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_sender_id" class="control-label col-sm-3">发布用户:</label>
+				<div class="col-sm-5">
+					<p id="xx-input-announcement_sender_id" class="form-control" name="announcement_sender_id"/>{$nav_admin.hospital_user_name}</p>
+				</div>				
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_hospital_id" class="control-label col-sm-3">所属医院:</label>
+					<div class="col-sm-5">
+						<p id="xx-input-announcement_hospital_id" class="form-control" name="announcement_hospital_id"/>{$nav_hospital[0].community_hospitals_name}</p>	
+					</div>
+				</div>
+				
 				<div class="form-group">
 					<label for="xx-input-announcement_content" class="control-label col-sm-3">公告内容:</label>
 					<div class="col-sm-5">
-						<input id="xx-input-announcement_content" class="form-control" type="text" name="announcement_content" placeholder="请输入公告内容"/>
+						<textarea id="xx-input-announcement_content" class="form-control"  name="announcement_content" placeholder="请输入公告内容"/ style="height: 200px;"></textarea>
 					</div>
 					<div class="col-sm-4">
 						<p class="xx-p-validate-result" attr-validate="announcement_content"></p>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="xx-input-announcement_picture" class="control-label col-sm-3">公告图片:</label>
+					<label for="xx-input-announcement_picture" class="control-label col-sm-3">上传图片:</label>
 					<div class="col-sm-5">
 						<input type="file" id="xx-input-img-uploader"/>
 						<!--展示缩略图-->
@@ -63,25 +68,24 @@
 						<input type="hidden" name="announcement_picture" id="xx-input-thumb-path"/>
 					</div>
 				</div>
-				<!--<div class="form-group">
-					<label for="xx-input-announcement_checker_id" class="control-label col-sm-3">审核人员:</label>
+				<div class="form-group">
+				<label for="xx-input-announcement_end_date" class="control-label col-sm-3">过期日期:</label>
 					<div class="col-sm-5">
-						<input id="xx-input-announcement_checker_id" class="form-control" type="text" name="announcement_checker_id" placeholder="请输入视频简介"/>
+						<!--<input id="xx-input-announcement_end_date" class="form-control" type="text" name="announcement_end_date" placeholder="请输入公告撤销时间"/>-->
+						<div class="controls">
+                     <div class="input-prepend input-group">
+                       <span class="add-on input-group-addon"><i class="glyphicon glyphicon-calendar fa fa-calendar"></i></span><input type="text" readonly style="width: 200px" name="announcement_end_date" id="xx-input-announcement_end_date" class="form-control" value="{$endTime}" /> 
+                     </div>
+                    </div>
 					</div>
 					<div class="col-sm-4">
-						<p class="xx-p-validate-result" attr-validate="announcement_checker_id"></p>
+						<p class="xx-p-validate-result" attr-validate="announcement_end_date"></p>
 					</div>
-				</div>-->
-				<!--<div class="form-group">
-					<label for="announcement_check_state"class="control-label col-sm-3">审核状态:</label>
-					<div class="col-sm-5">
-						<input type="radio" name="announcement_check_state" value="1" checked=""/>开启
-						<input type="radio" name="announcement_check_state" value="0"/>关闭
-					</div>
-				</div>-->
+				</div>
 				<div class="row">
 					<div class="col-sm-4 col-sm-offset-4">
-						<button type="button"  id="xx-btn-add-submit" class="btn btn-primary">提交</button>						
+						<button type="button"  id="xx-btn-add-submit" class="btn btn-primary">提交</button>
+						<button type="button"  id="xx-btn-add-return" class="btn btn-primary">返回</button>
 					</div>							
 				</div>
 				
@@ -93,9 +97,10 @@
 <script>
 	var SCOPE = {
 		'add_url':'__URL__/add',
-		'success_jump_url':'__URL__/index',
+		'success_jump_url':'__URL__/review',
 		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',//图片地址
 		'ajax_upload_url':'__URL__/ajaxUploadImage',//图片上传控制器地址
+		'return_url':'__URL__/review',
 	}
 </script>
 		

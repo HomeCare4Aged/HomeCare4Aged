@@ -1,12 +1,28 @@
+<?php
+	$nav_admin = session(C('ADMIN_SESSION'));
+	$admin = array(
+		'hospital_user_id' => $nav_admin['hospital_user_id'],
+	);
+	$nav_user = D('h_user_limit_info')->where($admin)->select();
+	$nav_user_menu_ids = $nav_user[0]['limit_id'];
+	//$nav_menus = D('h_hospital_menu')->select($nav_user_menu_ids);
+	//$role = D('h_user_limit_info')->find($nav_admin['hospital_user_id']);
+	//设置首页控制器
+	$nav_hospital = D('h_hospitals_info')->where('community_hospitals_id='.$nav_admin['hospital_user_id'])->select();
+	$nav_use = D('h_hospitals_info')->where('community_hospitals_id='.$nav_admin['hospital_user_id'])->select();
+	//cDebug($nav_admin);
+	$index = 'index';
+?>
+	
 <!--后台管理系统的导航栏-->
-<nav class="navbar navbar-default navbar-static-top">
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="navbar-header">
 		<a href="#" class="navbar-brand">社区医院管理平台</a>
 	</div>
 	<ul class="nav navbar-right top-nav">
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				<i class="fa fa-fw fa-user"></i>wxx<i class="caret"></i>
+				<i class="fa fa-fw fa-user"></i>{$nav_admin.hospital_user_name}<i class="caret"></i>
 			</a>
 			<ul class="dropdown-menu">
 				<li>
@@ -14,7 +30,7 @@
 				</li>
 				<li class="divider"></li>
 				<li>
-					<a href="__MODULE__/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
+						<a href="__MODULE__/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
 				</li>
 			</ul>
 		</li>
@@ -61,10 +77,10 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="__MODULE__/Register/hang.html">挂号信息显示</a>
+		                    <a href="__MODULE__/Register/index.html">号池信息录入</a>
 		                </li>
 		                <li>
-		                    <a href="__MODULE__/Register/infusion.html">输液信息显示</a>
+		                    <a href="__MODULE__/Register/info.html">挂号信息显示</a>
 		                </li>
 		            </ul>
 				</li>
@@ -74,28 +90,20 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="__MODULE__/Noticle/index.html">公告信息预览</a>
+		                    <a href="__MODULE__/Noticle/index.html">公告审核</a>
 		                </li>
+		                <!--<li>-->
+		                    <!--<a href="__MODULE__/Noticle/add.html">公告发布</a>-->
+		                <!--</li>-->
 		                <li>
-		                    <a href="__MODULE__/Noticle/add.html">公告发布</a>
-		                </li>
-		                <li>
-		                    <a href="__MODULE__/Noticle/review.html">公告审核</a>
+		                    <a href="__MODULE__/Noticle/review.html">公告管理</a>
 		                </li>
 		            </ul>
 				</li>
 				<li>
-					<a href="#">
-						<i class="fa fa-fw fa-cogs"></i>视频栏<span class="fa arrow"></span>
+					<a href="__MODULE__/Account/index.html">
+						<i class="fa fa-fw fa-cogs"></i>账户信息<span class="fa arrow"></span>
 					</a>
-					<ul class="nav nav-second-level">
-		                <li>
-		                    <a href="__MODULE__/Video/index.html">视频信息预览</a>
-		                </li>
-		                <li>
-		                    <a href="__MODULE__/Video/add.html">视频发布</a>
-		                </li>
-		            </ul>
 				</li>
 			</ul>
 		</div>

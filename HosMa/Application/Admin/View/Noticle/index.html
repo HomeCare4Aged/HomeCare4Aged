@@ -10,8 +10,8 @@
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li class="">
-							<i class="fa fa-fw fa-edit"></i>
-							公告预览
+							<i class="fa fa-fw fa-table"></i>
+							公告审核
 						</li>
 						
 					</ol>
@@ -19,50 +19,93 @@
 			</div><!--.row面包屑导航   -->
 			<div class="row">
 				<div class="col-sm-12">
-					<div class="table-responsive">
-						<form id="xx-form-list">
-							<table class="table table-bordered table-hover xx-table-list">
-								<thead>
-									<tr>
-										<td>公告ID</td>
-										<td>发布用户</td>
-										<td>所属单位</td>
-										<td>公告标题</td>
-										<td>公告内容</td>
-										<td>公告图片</td>
-										<td>审核状态</td>
-										<td>审核人员</td>
-										<td colspan="2">操作</td>
-									</tr>
-								</thead>
-								<tbody>
-									<volist name="announcement" id="vo">
-										<tr>
-											<td>{$vo.announcement_id}</td>
-											<td>{$vo.announcement_sender_id}</td>
-											<td>{$vo.announcement_company_id}</td>
-											<td>{$vo.announcement_title}</td>
-											<td>{$vo.announcement_content}</td>
-											<td><img src="{$vo.announcement_picture}"></td>
-											<td>{$vo.announcement_check_state}</td>
-											<td>{$vo.announcement_checker_id}</td>
-											<td>
-												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="{$vo.announcement_id}"></span>
-
-											</td>
-											<td>
-												<span class="glyphicon glyphicon-trash" id="xx-span-delete" attr-id="{$vo.announcement_id}"></span>
-												
-											</td>
-										</tr>
-									</volist>
-								</tbody>
-							</table>
-						</form>
-					</div>
+					<ul class="nav nav-tabs">
+						<li class="active"><a href="#movie1" data-toggle="tab">待审核公告</a></li>
+						<li><a href="#movie2" data-toggle="tab">已审核公告</a></li>
+					</ul>
 				</div>
 			</div>
+			<div class="tab-content">
+				<div class="tab-pane active" id="movie1">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="table-responsive">
+								<form id="xx-form-list">
+									<table class="table table-bordered table-hover xx-table-list" id="tableID">
+										<thead>
+											<tr>
+												<td style="display: none;"></td>
+												<td style="display: none;"></td>
+												<td>公告标题</td>
+												<td>发布时间</td>
+												<td>发布人</td>
+												<td>查看详情</td>
+		
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="announcement" id="vo">
+												<tr>
+													<td style="display: none;">{$vo.announcement_id}</td>
+													<td style="display: none;">{$vo.announcement_version_number}</td>
+													<td>{$vo.announcement_title}</td>
+													<td>{$vo.send_datetime}</td>
+													<td>{$vo.announcement_sender_id}</td>	
+													<td>
+														<span class="glyphicon glyphicon-check" id="xx-span-editor3" onclick="clickCheck(this)"   ></span>
+													</td>
+												</tr>
+											</volist>
+										</tbody>
+									</table>
+								</form>
+							</div>
+						</div>
+				
+					</div>
+				</div>
+			
+			
+				<div class="tab-pane" id="movie2">
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="table-responsive">
+								<form id="xx-form-list">
+									<table class="table table-bordered table-hover xx-table-list" id="tableID">
+										<thead>
+											<tr>
+												<td style="display: none;"></td>
+												<td style="display: none;"></td>
+												<td>公告标题</td>
+												<td>发布时间</td>
+												<td>发布人</td>
+												<td>查看详情</td>
+		
+											</tr>
+										</thead>
+										<tbody>
+											<volist name="announcemence" id="vo">
+												<tr>
+													<td style="display: none;">{$vo.announcement_id}</td>
+													<td style="display: none;">{$vo.announcement_version_number}</td>
+													<td>{$vo.announcement_title}</td>
+													<td>{$vo.send_datetime}</td>
+													<td>{$vo.announcement_sender_id}</td>	
+													<td>
+														<span class="glyphicon glyphicon-check" id="xx-span-editor3" onclick="clickCheck(this)"></span>
+													</td>
+												</tr>
+											</volist>
+										</tbody>
+									</table>
+								</form>
+							</div>
+						</div>	
+					</div>
+				</div>
+			</div>	
 		</div>
+		
 	</div>
 </div>	
 <script>
@@ -72,7 +115,26 @@
 		'set_status_url':'__URL__/setStatus',
 		'list_order_url':'__URL__/listOrder',
 		'success_refresh_url':'__ACTION__',
+		'review_url':'__URL__/saveAnother',
+		'detail_url':'__URL__/detail',
 	};
+	
+	
+	function clickCheck(obj){
+		var objpp = obj.parentNode.parentNode;
+			var msg = [];
+//			console.log(objpp.children);
+//			console.log(objpp.children.length);
+			for (var i=0 ; i<objpp.children.length;i++){
+//				console.log(objpp.children[i].innerText)
+				msg[i] = objpp.children[i].innerText;
+			}
+			var id = msg[0];
+			var num = msg[1];
+			console.log(num);
+		location.href = SCOPE.detail_url+'?id='+id+'&num='+num;	
+	}
+</script>
 	
 </script>
 	

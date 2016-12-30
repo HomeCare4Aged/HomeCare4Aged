@@ -15,7 +15,7 @@
 				</div>				
 			</div><!--.row面包屑导航   -->
 			<div class="row xx-div-search">
-				<div class="col-md-6">
+				<!--<div class="col-md-6">
 					<form action="__ACTION__" method="get" class="form-horizontal">
 						<div class="input-group">
 							<span class="input-group-addon">搜索</span>
@@ -27,17 +27,16 @@
 							</span>
 						</div>
 					</form>
-				</div>
+				</div>-->
 				<div class="col-sm-2">
-					<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
+					<button class="btn btn-primary " data-toggle="modal" data-target="#myModal">
+					 新增医生
+				</button>
 				</div>
 				<!-- 按钮触发模态框 -->
-				<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-					 弹框新增
-				</button>
-				<button class="btn btn-primary" data-toggle="modal" data-target="#Modal">
+				<!--<button class="btn btn-primary" data-toggle="modal" data-target="#Modal">
 					 弹框修改
-				</button>
+				</button>-->
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
@@ -46,26 +45,34 @@
 							<table class="table table-bordered table-hover xx-table-list">
 								<thead>
 									<tr>
-										<td>所属科室</td>
-										<td>照片</td>
+										<td style="display: none;"></td>
 										<td>医生姓名</td>
+										<td>照片</td>
+										<td>所属科室</td>
 										<td>职称</td>
 										<td>简介</td>
 										<td>联系方式</td>
+										<td style="display: none;"></td>
+										<td style="display: none;"></td>
+										<td style="display: none;"></td>
 										<td colspan="2">操作</td>
 									</tr>
 								</thead>
 								<tbody>
 									<volist name="doctors" id="vo">
 										<tr>
-											<td>{$vo.hospital_office_name}</td>
-											<td>{$vo.hospital_doctor_picture}</td>
+											<td style="display: none;">{$vo.hospital_doctor_id}</td>
 											<td>{$vo.hospital_doctor_name}</td>
+											<td>{$vo.hospital_doctor_picture}</td>
+											<td>{$vo.hospital_office_name}</td>
 											<td>{$vo.identity_name}</td>
 											<td>{$vo.hospital_doctor_introduction}</td>
 											<td>{$vo.hospital_doctor_phone}</td>
+											<td style="display: none;">{$vo.hospital_office_id}</td>
+											<td style="display: none;">{$vo.hospital_doctor_identity}</td>
+											<td style="display: none;">{$vo.hospital_doctor_sex}</td>
 											<td>
-												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="" data-toggle="modal" data-target="#Modal">编辑</span>
+												<span class="glyphicon glyphicon-edit" id="xx-span-edit1" attr-id="" data-toggle="modal"  onclick="editClick(this)">编辑</span>
 											</td>
 											<td>
 												<span class="glyphicon glyphicon-trash" id="xx-span-delete" attr-id="{$vo.hospital_doctor_id}">删除</span>
@@ -100,9 +107,9 @@
 									<div class="col-sm-10 col-sm-offset-1">
 										<form id="xx-form-add" class="form-horizontal">
 											<div class="form-group">
-												<label for="xx-input-hospital-doctor-name" class="control-label col-sm-3">医生姓名：</label>
+												<label for="xx-input-hospital-doctor-name-add" class="control-label col-sm-3">医生姓名：</label>
 												<div class="col-sm-5">
-													<input id="xx-input-hospital-doctor-name" class="form-control" type="text" 
+													<input id="xx-input-hospital-doctor-name-add" class="form-control" type="text" 
 													name="hospital_doctor_name" placeholder="请输入医生姓名" />
 												</div>
 												<div class="col-sm-4">
@@ -112,20 +119,25 @@
 											<div class="form-group">
 												<label for="xx-input-hospital-doctor-identity" class="control-label col-sm-3">医生职称：</label>
 												<div class="col-sm-5">
-													<input id="xx-input-hospital-doctor-identity" class="form-control" type="text" 
-													name="hospital_doctor_identity" placeholder="请输入医生职称" />
+													<!--<input id="xx-input-hospital-doctor-identity" class="form-control" type="text" 
+													name="identity_name" placeholder="请输入医生职称" />-->
+													<select class="form-control" name="identity_name" id="xx-input-hospital-doctor-identity">
+														<volist name="userindentity" id="vo">
+															<option value="">{$vo.identity_name}</option>
+														</volist>
+													</select>
 												</div>
 												<div class="col-sm-4">
-													<p class="xx-p-validate-result" attr-validate="hospital_doctor_identity"></p>
+													<p class="xx-p-validate-result" attr-validate="identity_name"></p>
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
+												<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室名称：</label>
 												<div class="col-sm-5">
-													<select class="form-control" name="type">
-														<option value=""></option>
-														<option value="">内科</option>
-														<option value="">外科</option>
+													<select class="form-control" name="hospital_office_name" id="selectedKESHI">
+														<volist name="useroffices" id="vo">
+															<option value="">{$vo.hospital_office_name}</option>
+														</volist>
 													</select>
 												</div>
 												<div class="col-sm-4">
@@ -166,8 +178,8 @@
 											<div class="form-group">
 												<label for="" class="control-label col-sm-3">性别：</label>
 												<div class="col-sm-5">
-													<input type="radio" name="hospital_doctor_sex" value="1" checked="" />男
-													<input type="radio" name="hospital_doctor_sex" value="0" />女
+													<input type="radio" name="hospital_doctor_sex" value="男" />男
+													<input type="radio" name="hospital_doctor_sex" value="女" />女
 												</div>
 											</div>
 											<div class="form-group">
@@ -211,9 +223,18 @@
 									<div class="col-sm-10 col-sm-offset-1">
 										<form id="xx-form-add" class="form-horizontal">
 											<div class="form-group">
-												<label for="xx-input-hospital-doctor-name" class="control-label col-sm-3">医生姓名：</label>
+												<input id="xx-input-doctorid" class="form-control" type="text"name="hospital_doctor_id" style="display: none;"/>
+											</div>
+											<div class="form-group">
+												<input id="xx-input-hospital-office-id-edit" class="form-control" type="text"name="hospital_office_id" style="display: none;"/>
+											</div>
+											<div class="form-group">
+												<input id="xx-input-hospital-doctor-identity-edit" class="form-control" type="text"name="hospital_doctor_identity" style="display: none;"/>
+											</div>
+											<div class="form-group">
+												<label for="xx-input-hospital-doctor-name-edit" class="control-label col-sm-3">医生姓名：</label>
 												<div class="col-sm-5">
-													<input id="xx-input-hospital-doctor-name" class="form-control" type="text" 
+													<input id="xx-input-hospital-doctor-name-edit" class="form-control" type="text" 
 													name="hospital_doctor_name" placeholder="请输入医生姓名" />
 												</div>
 												<div class="col-sm-4">
@@ -221,22 +242,27 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="xx-input-hospital-doctor-identity" class="control-label col-sm-3">医生职称：</label>
+												<label for="xx-input-identity-name-edit" class="control-label col-sm-3">医生职称：</label>
 												<div class="col-sm-5">
-													<input id="xx-input-hospital-doctor-identity" class="form-control" type="text" 
-													name="hospital_doctor_identity" placeholder="请输入医生职称" />
+													<!--<input id="xx-input-identity-name-edit" class="form-control" type="text" 
+													name="identity_name" value="{$doctors.hospital_doctor_identity}" placeholder="请输入医生职称" />-->
+													<select class="form-control" name="identity_name" id="xx-input-identity-name-edit">
+														<volist name="userindentity" id="vo">
+															<option value="{$vo.identity_name}">{$vo.identity_name}</option>
+														</volist>
+													</select>
 												</div>
 												<div class="col-sm-4">
 													<p class="xx-p-validate-result" attr-validate="hospital_doctor_identity"></p>
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
+												<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室名称：</label>
 												<div class="col-sm-5">
-													<select class="form-control" name="type">
-														<option value=""></option>
-														<option value="">内科</option>
-														<option value="">外科</option>
+													<select class="form-control" name="type" id="xx-select-keshi">
+														<volist name="useroffices" id="vo">
+															<option value="{$vo.hospital_office_name}">{$vo.hospital_office_name}</option>
+														</volist>
 													</select>
 												</div>
 												<div class="col-sm-4">
@@ -244,18 +270,18 @@
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="xx-input-hospital-doctor-introduction" class="control-label col-sm-3">医生简介：</label>
+												<label for="xx-input-hospital-doctor-introduction-edit" class="control-label col-sm-3">医生简介：</label>
 												<div class="col-sm-5">
-													<textarea class="js-editor" id="xx-textarea-hospital-doctor-introduction" name="hospital_doctor_introduction" rows="5" placeholder="请输入内容"></textarea>
+													<textarea class="js-editor" id="xx-textarea-hospital-doctor-introduction-edit" name="hospital_doctor_introduction" rows="5" placeholder="请输入内容"></textarea>
 												</div>
 												<div class="col-sm-4">
 													<p class="xx-p-validate-result" attr-validate="hospital_doctor_introduction"></p>
 												</div>
 											</div>
 											<div class="form-group">
-												<label for="xx-input-hospital-doctor-phone" class="control-label col-sm-3">联系方式：</label>
+												<label for="xx-input-hospital-doctor-phone-edit" class="control-label col-sm-3">联系方式：</label>
 												<div class="col-sm-5">
-													<input id="xx-input-hospital-doctor-phone" class="form-control" type="text" 
+													<input id="xx-input-hospital-doctor-phone-edit" class="form-control" type="text" 
 													name="hospital_doctor_phone" placeholder="请输入联系方式" />
 												</div>
 												<div class="col-sm-4">
@@ -277,8 +303,8 @@
 											<div class="form-group">
 												<label for="" class="control-label col-sm-3">性别：</label>
 												<div class="col-sm-5">
-													<input type="radio" name="hospital_doctor_sex" value="1" checked="" />男
-													<input type="radio" name="hospital_doctor_sex" value="0" />女
+													<input type="radio" name="hospital_doctor_sex" id="man" value="男" />男
+													<input type="radio" name="hospital_doctor_sex" id="woman" value="女" />女
 												</div>
 											</div>
 											<div class="form-group">
@@ -296,7 +322,7 @@
 								<button type="button" class="btn btn-default" data-dismiss="modal">
 									关闭
 								</button>
-								<button type="button" class="btn btn-primary" id="xx-btn-add-submit">
+								<button type="button" class="btn btn-primary" id="xx-btn-add-submit" onclick="update()">
 									提交更改
 								</button>
 							</div>
@@ -307,14 +333,83 @@
 		</div>
 	</div>
 </div>
+
 	<script>
 		var SCOPE = {
 			'add_url':'__URL__/add',
+			'save_url':'__URL__/save',
 			'success_jump_url':'__URL__/index',
+			'set_status_url':'__URL__/setStatus',
 			'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',
 			'ajax_upload_url':'__URL__/ajaxUploadImage',
 		};
 		$('#element1').popover('show')
+		//向模态框传值
+		function editClick(obj){
+//			console.log(obj.parentNode.parentNode);
+			var objpp = obj.parentNode.parentNode;
+			var msg = [];
+//			console.log(objpp.children);
+//			console.log(objpp.children.length);
+			for (var i=0 ; i<objpp.children.length;i++){
+//				console.log(objpp.children[i].innerText)
+				msg[i] = objpp.children[i].innerText;
+			}
+			console.log(msg);
+			$('#xx-input-doctorid').val(msg[0]);
+			$('#xx-input-hospital-doctor-name-edit').val(msg[1]);
+			$('#xx-input-identity-name-edit').val(msg[4]);
+			$('#xx-select-keshi').val(msg[3]);
+			$('#xx-textarea-hospital-doctor-introduction-edit').val(msg[5]);
+			$('#xx-input-hospital-doctor-phone-edit').val(msg[6]);
+			$('#xx-img-show-thumb').val(msg[2]);
+			$('#xx-input-hospital-office-id-edit').val(msg[7]);
+			$('#xx-input-hospital-doctor-identity-edit').val(msg[8]);
+			if (msg[7] == '女') {  
+       			$('#woman').attr('checked','true');  
+   			} else {  
+      			$('#man').attr('checked','true');   
+ 			}  
+			$('#Modal').modal();
+		}
+		//从模态框取值,编辑医生信息
+		function update() {  
+		    //获取模态框数据 
+		    var postData = {};
+		    postData['hospital_doctor_id'] = $('#xx-input-doctorid').val();
+		    postData['hospital_doctor_name'] = $('#xx-input-hospital-doctor-name-edit').val();
+			postData['identity_name'] = $('#xx-input-identity-name-edit').val();
+			postData['hospital_office_name'] = $('#xx-select-keshi').val();
+			postData['hospital_doctor_introduction'] = $('#xx-textarea-hospital-doctor-introduction-edit').val();
+			postData['hospital_doctor_phone'] = $('#xx-input-hospital-doctor-phone-edit').val();
+			postData['community_hospitals_id'] = $('#xx-input-hospital-office-id-edit').val();
+			postData['hospital_doctor_identity'] = $('#xx-input-hospital-doctor-identity-edit').val();
+			postData['hospital_doctor_sex'] = $('input:radio[name="hospital_doctor_sex"]:checked').val();
+			console.log(postData);
+		    $.ajax({
+		        type: 'post',  
+		        url: SCOPE.add_url,  
+		        data: postData,
+		        dataType: 'json',  
+		        success: function(result) {  
+		            //location.reload();
+		            if(result.status == SUCCESS){
+						//成功
+						return Dialog.success(result.msg,SCOPE.success_jump_url);
+					}else if(result.status == VALIDATE_ERROR){
+						//表单验证出错
+						var errors = result.msg;
+						//把input对应name下的错误信息取出来，添加到input后面
+						$('.xx-p-validate-result').each(function(){
+							var errorMsg = errors[$(this).attr('attr-validate')];
+							$(this).html(errorMsg != undefined ? '*'+errorMsg : '').css({color:'red'});
+						});
+					}else{
+	 					return Dialog.error(result.msg);
+					}
+			    }  
+		    });
+		}
 	</script>
 		
 <include file="Index/footer" />

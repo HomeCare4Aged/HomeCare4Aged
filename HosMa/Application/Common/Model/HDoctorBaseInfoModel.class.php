@@ -6,10 +6,11 @@ class HDoctorBaseInfoModel extends Model{
 	//设置表单验证规则
 	protected $_validate = array(
 		array('hospital_doctor_name','require','医生姓名不能为空'),
-		array('hospital_doctor_identity','require','医生职称不能为空'),
-		array('hospital_offic_id','require','科室编号不能为空'),
+		array('identity_name','require','医生职称不能为空'),
+		array('hospital_offic_name','require','科室编号不能为空'),
 		array('hospital_doctor_introduction','require','简介不能为空'),
 		array('hospital_doctor_phone','require','联系方式不能为空'),
+		array('hospital_doctor_phone','/^1[0-9]{10}$/','请输入11位手机号'),
 		array('hospital_doctor_picture','require','照片必须上传'),
 		array('registration_predict_money','require','挂号费用不能为空'),
 	);
@@ -43,7 +44,7 @@ class HDoctorBaseInfoModel extends Model{
 			$offset = ($page - 1) * $pageSize;
 //			$this->limit($offset,$pageSize);    //查询条数
 		}
-			$list = M('h_doctor_base_info')->limit($offset,$pageSize)-> join('h_hospital_office_info on h_doctor_base_info.hospital_office_id=h_hospital_office_info.hospital_office_id')
+			$list = M('h_doctor_base_info')->where($cond)->limit($offset,$pageSize)-> join('h_hospital_office_info on h_doctor_base_info.hospital_office_id=h_hospital_office_info.hospital_office_id')
 			->join('h_indentity_info on h_doctor_base_info.hospital_doctor_identity=h_indentity_info.identity_id')
 			 ->select();
 //		cdebug($list);
@@ -59,19 +60,19 @@ class HDoctorBaseInfoModel extends Model{
 		if($id == null){
 			throw_exception('医生ID不合法');
 		}
-		$cond['article_id'] = intval($id);
+		$cond['hospital_doctor_id'] = intval($id);
 		return $this->where($cond)->find();
 	}
 	
 	//按照id更新数据
 	public function updateMenuById($id,$data){
-		if($id === null || !is_numeric($id)){
+		if($id === null){
 			throw_exception('医生ID不合法');
 		}
 		if($data === null || !is_array($data)){
 			throw_exception('医生数据不合法');
 		}
-		return $this->where('article_id='.$id)->save($data);
+		return $this->where('hospital_doctor_id='.$id)->save($data);
 	}
 }
 ?>

@@ -1,21 +1,51 @@
-<include file="Index/header" />
+<include file="Index/header"/>
 <div id="wrapper">
 	<include file="Index/nav" />
 	<div id="page-wrapper">
-		<div class="container">
+		<div class="container-fluid">
 			<div class="row">
-				<form class="form-horizontal" id="">
-				<div class="form-group">
-					<label id="" class="control-label col-sm-3">在班医生信息：</label>
-					<div class="col-sm-3">
-						<input type="text" class="form-control" id="" placeholder="请录入"/>
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li class="">
+							<i class="fa fa-fw fa-edit"></i>
+							在班医生信息
+						</li>
+						
+					</ol>
+				</div>				
+			</div><!--.row面包屑导航   -->
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="table-responsive">
+						<form id="xx-form-list">
+							<table class="table table-bordered table-hover xx-table-list">
+								<thead>
+									<tr>
+										<td>状态</td>
+										<td>医生姓名</td>
+										<td>职称</td>
+										<td>科室编号</td>
+										<td>剩余挂号数量</td>
+										<td>挂号收费</td>
+									</tr>
+								</thead>
+								<tbody>
+									<volist name="schedules" id="vo">
+										<tr>
+											<td>在班</td>
+											<td>{$vo.hospital_doctor_name}</td>
+											<td>{$vo.identity_name}</td>
+											<td>{$vo.hospital_office_name}</td>
+											<td>{$vo.registration_number_left}</td>
+											<td>{$vo.registration_money}</td>
+										</tr>
+									</volist>
+								</tbody>
+							</table>
+						</form>
 					</div>
-					<div class="col-sm-2">
-						<button class="btn btn-primary" id="xx-btn-add-doctor">录入</button>
-					</div>
-				</div>
-				</form>
-			</div>
+				</div>	
+			</div><!--row-->
 		</div>
 	</div>
 </div>

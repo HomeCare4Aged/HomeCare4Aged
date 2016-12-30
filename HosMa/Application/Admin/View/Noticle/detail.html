@@ -1,0 +1,197 @@
+<include file="Index/header"/>
+
+
+<div id="wrapper">
+	<include file="Index/nav"/>
+	
+	<div id="page-wrapper">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<ol class="breadcrumb">
+						<li>
+							<i class="fa fa-fw fa-table"></i>
+							<a href="__URL__/index">公告审核</a>	
+						</li>
+						<li class="active">
+							<i class="fa fa-fw fa-television"></i>审核详情
+						</li>
+						
+					</ol>
+				</div>				
+			</div><!--.row面包屑导航   -->
+			<div class="row">
+				<div class="col-sm-10">
+					<form id="xx-form-add" class="form-horizontal">
+					<div class="form-group">
+					<label for="xx-input-announcement_title" class="control-label col-sm-3">公告标题:</label>	
+					<div class="col-sm-5">
+						<input id="xx-input-announcement_title" class="form-control" type="text" name="announcement_title" placeholder="请输入公告标题" value="{$announcement.announcement_title}" disabled=""/>
+					</div>
+					<div class="col-sm-4">
+						<p class="xx-p-validate-result" attr-validate="announcement_title"></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_title" class="control-label col-sm-3">公告类型:</label>
+					<div class="col-sm-5">
+						<select class="form-control" name="announcement_type_id" disabled="">
+							<volist name="announcement_type" id="vo">
+								<option  value="{$vo.announcement_type_id}" <if condition="$vo[announcement_type_name] eq $announcement[announcement_type_name]">selected</if>>{$vo.announcement_type_name}</option>
+							</volist>
+						</select>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_sender_id" class="control-label col-sm-3">发布用户:</label>
+				<div class="col-sm-5">
+					<p id="xx-input-announcement_sender_id" class="form-control" name="announcement_sender_id" disabled=""/>{$nav_admin.hospital_user_name}</p>
+				</div>				
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_hospital_id" class="control-label col-sm-3">所属医院:</label>
+					<div class="col-sm-5">
+						<p id="xx-input-announcement_hospital_id" class="form-control" name="announcement_hospital_id" disabled=""/>{$nav_hospital[0].community_hospitals_name}</p>	
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_content" class="control-label col-sm-3">公告内容:</label>
+					<div class="col-sm-5">
+						<textarea id="xx-input-announcement_content" class="form-control"  name="announcement_content" placeholder="请输入公告内容" style="height: 200px;" disabled=""/>{$announcement.announcement_content}</textarea>
+					</div>
+					<div class="col-sm-4">
+						<p class="xx-p-validate-result" attr-validate="announcement_content"></p>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="xx-input-announcement_picture" class="control-label col-sm-3">公告图片:</label>
+					<div class="col-sm-5">
+						<!--<input type="file" id="xx-input-img-uploader"/>-->
+						<!--展示缩略图-->
+						<img src="{$announcement.announcement_picture}" alt="" id="xx-img-show-thumb"  width="150px"/>
+						<!--封面图字段-->
+						<input type="hidden" name="image_path" id="xx-input-image-path"/>
+						<!--缩略图字段-->
+						<input type="hidden" name="announcement_picture" id="xx-input-thumb-path"/>
+					</div>
+				</div>
+				<div class="form-group">
+				<label for="xx-input-announcement_end_dat" class="control-label col-sm-3">公告撤销时间:</label>
+					<div class="col-sm-5">
+						<p id="xx-input-announcement_end_dat" class="form-control" name="announcement_announcement_end_date" disabled=""/>{$announcement.announcement_end_date}</p>	
+					</div>
+					</div>
+					<div class="col-sm-4">
+						<p class="xx-p-validate-result" attr-validate="announcement_end_date"></p>
+					</div>
+				</div>
+				
+						<div class="row">
+							<div class="col-sm-2 col-sm-offset-3">
+								<button type="button"  id="xx-btn-pass" class="btn btn-primary" <if condition="$result eq 0">disabled</if>>通过</button>
+							</div>	
+							<div class="col-sm-2">	
+								<button type="button"  id="xx-btn-back" class="btn btn-primary" data-toggle="modal" data-target="#myModal" attr-id="{$announcement.announcement_id}" <if condition="$result eq 0">disabled</if>>未通过</button>
+							</div>							
+						</div>
+						<input type="hidden" value="{$announcement.announcement_id}" name="announcement_id" />
+						<input type="hidden" value="{$announcement.announcement_version_number}" name="announcement_version_number" />
+					</form>
+				</div>
+			</div>
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			  <div class="modal-dialog">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+			        <h4 class="modal-title" id="myModalLabel">请输入未通过原因</h4>
+			      </div>
+			      <div class="modal-body">
+			        <form id="xx-form-model-add">
+			        	<textarea name="error_message" rows="2" cols="75"></textarea>
+			        	<input type="hidden" name="id" value="{$announcement.announcement_id}" />
+			        	<input type="hidden" name="num" value="{$announcement.announcement_version_number}" />
+			        </form>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+			        <button type="button" class="btn btn-primary" id="xx-btn-back-add">提交</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			
+		</div>
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url':'__URL__/add',
+		'success_jump_url':'__URL__/index',
+		'ajax_upload_swf':'__JS__/vendor/uploadify/uploadify.swf',//图片地址
+		'ajax_upload_url':'__URL__/ajaxUploadImage',//图片上传控制器地址
+	};
+	$('#xx-btn-pass').click(function(){
+		var formData = $('#xx-form-add').serializeArray();
+		var postData = {};
+		$(formData).each(function(i){
+			postData[this.name] = this.value;
+		});
+//		console.log(postData);
+		delete postData.image_path;
+		delete postData.announcement_picture;
+		$.ajax({
+			type:"post",
+			url:"__URL__/pass",
+			async:true,
+			data:postData,
+			dataType:'json',
+			success:function(result){
+				if(result.status == SUCCESS){
+					//成功
+					return Dialog.success(result.msg,SCOPE.success_jump_url);
+				}
+				else{
+					return Dialog.error(result.msg);
+				}
+//										
+//									
+			}
+		
+		});		
+	});
+	$('#xx-btn-back').click(function(){
+		var id = $(this).attr('attr-id');
+		$('#announcment_id').val(id); 
+	});
+	$('#xx-btn-back-add').click(function(){
+		var formData = $('#xx-form-model-add').serializeArray();
+		var postData = {};
+		$(formData).each(function(i){
+			postData[this.name] = this.value;
+		});
+		console.log(postData);
+		$.ajax({
+			type:"post",
+			url:"__URL__/back",
+			async:true,
+			data:postData,
+			dataType:'json',
+			success:function(result){
+				if(result.status == SUCCESS){
+					//成功
+					return Dialog.success(result.msg,SCOPE.success_jump_url);
+				}
+				
+				else{
+					return Dialog.error(result.msg);
+				}
+//										
+//									
+			}
+		});
+	});
+</script>
+<include file="index/footer" />
+
+

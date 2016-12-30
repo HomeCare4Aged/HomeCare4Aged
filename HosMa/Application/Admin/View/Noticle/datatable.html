@@ -1,0 +1,173 @@
+<include file="Index/header" />
+<div id="wrapper">
+	<include file="Index/nav" />
+	<div id="page-wrapper">
+		<div class="container">
+			<table id="table_id_example" class="display">
+			    <thead>
+			        <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr>
+			         <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr> <tr>
+			            <th>Column 1</th>
+			            <th>Column 2</th>
+			        </tr>
+			    </thead>
+			    <tbody>
+			        <tr>
+			            <td>Row 1 Data 1</td>
+			            <td>Row 1 Data 2</td>
+			        </tr>
+			        <tr>
+			            <td>Row 2 Data 1</td>
+			            <td>Row 2 Data 2</td>
+			        </tr>
+			    </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+	<script>
+		var SCOPE = {
+			'add_url':'__URL__/add',
+		};
+		$(document).ready( function () {
+   			$('#table_id_example').dataTable({
+            "sPaginationType" : "full_numbers",
+            "oLanguage" : {
+                "sLengthMenu": "每页显示 _MENU_ 条记录",
+                "sZeroRecords": "抱歉， 没有找到",
+                "sInfo": "从 _START_ 到 _END_ /共 _TOTAL_ 条数据",
+                "sInfoEmpty": "没有数据",
+                "sInfoFiltered": "(从 _MAX_ 条数据中检索)",
+                "sZeroRecords": "没有检索到数据",
+                 "sSearch": "名称:",
+                "oPaginate": {
+                "sFirst": "首页",
+                "sPrevious": "前一页",
+                "sNext": "后一页",
+                "sLast": "尾页"
+                }
+                     
+            }
+        }
+   			
+       );
+	</script>
+		
+<include file="Index/footer" />
