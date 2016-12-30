@@ -2,8 +2,26 @@
 <div id="wrapper">
 	<include file="Index/nav" />
 	<div id="page-wrapper">
-		<div class="container">
+		<div class="container-fluid">
 			<h3>输液信息显示</h3>
+			<!--模糊搜索开始-->
+			<div class="row">
+				<div class="col-md-6">
+					<form method="post" id="zh-form-search-infusion" action="__ACTION__">
+						<div class="input-group">
+							<span class="input-group-addon">类型</span>
+							<input class="form-control" type="text" placeholder="请输入查询字段" id="zh-input-like-serach-infusion" name="keywords" />
+							<div class="input-group-btn">
+								<button class="btn btn-primary" type="submit" id="zh-btn-search-infusion">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--模糊搜索结束-->
+			<!--显示数据表-->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-responsive">
@@ -11,36 +29,91 @@
 							<table class="table table-bordered table-hover" id="xx-table-list">
 								<thead>
 									<tr>
-										<td>医生姓名</td>
-										<td>医院内码</td>
-										<td>输液人内码</td>
-										<td>输液时间</td>
-										<td>预计结束时间</td>
-										<td>输液方式</td>
+										<td class="zh-td-hide">输液信息内码</td>
+										<td class="zh-td-hide">输液用户内码</td>
+										<!--<td class="zh-td-hide">医院编号</td>-->
+										<td class="zh-td-hide">预约人姓名</td>
+										<!--<td class="zh-td-hide">预约医生姓名</td>-->
+										<td class="zh-td-hide">预约日期</td>
+										<td class="zh-td-hide">预约时间</td>
+										<td class="zh-td-hide">预计完成时间</td>
+										<td class="zh-td-hide">预约输液操作时间</td>
+										<td class="zh-td-hide">取消时间</td>
+										<td class="zh-td-hide">预约状态</td>
 									</tr>
 								</thead>
 								<tbody>
-									<volist name="doctors" id="vo">
+									<tr>
+										<!--<td>医院编号</td>-->
+										<td>预约人姓名</td>
+										<!--<td>预约医生姓名</td>-->
+										<td>预约日期</td>
+										<td>预约时间</td>
+										<td>预计完成时间</td>
+										<td>预约输液操作时间</td>
+										<td>取消时间</td>
+										<td>预约状态</td>
+									</tr>
+									<tr>
+										<!--<td>25393</td>-->
+										<td>预约人姓名</td>
+										<!--<td>预约医生姓名</td>-->
+										<td>2016-12-21</td>
+										<td>上午9点</td>
+										<td>中午12点</td>
+										<td>上午9点15</td>
+										<td>取消时间</td>
+										<td>未完成</td>
+									</tr>
+									<volist name="transfusion" id="vo">
 										<tr>
-											<td>{$vo.hospital_doctor_id}</td>
-											<td>{$vo.community_hospitals_id}</td>
-											<td>{$vo.hospital_office_id}</td>
-											<td>{$vo.hospital_doctor_name}</td>
-											<td>{$vo.hospital_doctor_identity}</td>
-											<td>{$vo.hospital_doctor_introduction}</td>
-											<td>{$vo.hospital_doctor_phone}</td>
-											<td>{$vo.hospital_doctor_picture}</td>
-											<td>{$vo.doctor_registration_number}</td>
-											<td>{$vo.registration_predict_money}</td>
-											<td>{$vo.hospital_doctor_sex}</td>
+											<td class="zh-td-hide-user-transfusion-id">{$vo.user_transfusion_id}</td>
+											<td class="zh-td-hide-user-transfusion-id">{$vo.community_user_id}</td>
+											<!--<td>{$vo.community_hospital_numbers}</td>-->
+											<td>{$vo.community_user_name}</td>
+											<!--<td>{$vo.hospital_doctor_name}</td>-->
+											<td>{$vo.user_appointment_date}</td>
+											<td>{$vo.user_appointment_time}</td>
+											<td>{$vo.predict_finished_time}</td>
+											<td>{$vo.user_transfusion_date}</td>
+											<td>{$vo.transfusion_cancel_time}</td>
+											<!--style="cursor: pointer; background: red;"-->
+											<td 
+												<if condition="$vo['transfusion_state'] eq 未完成">style="color:red;"
+													<elseif condition="$vo['transfusion_state'] eq 已完成"/>style="color:#39D21F;"
+												</if>
+											>
+												<!--id是传值的，选择器-->
+												<span class="zh-span-transfusion-state" id="zh-span-onclick" >
+													{$vo.transfusion_state}
+												</span>
+											</td>
+										</tr>
 									</volist>
 								</tbody>
 							</table>
 						</form>
+						
 					</div>
 				</div>	
 			</div><!--输液信息显示结束-->
+			<!--分页开始-->
+			<div class="row">
+				<nav>
+					<ul class="pagination">
+						{$pageResult}
+					</ul>
+				</nav>
+			</div>
+			<!--分页结束-->
 		</div>
 	</div>
 </div>
+<!--<script type="text/javascript" src="__JS__/jquery 1.11.1.js" ></script>-->
+<script>
+	var SCOPE = {
+		'infusion_url':'__URL__/updateInfusionState',
+		'infusion_self_url':'__URL__/infusion',
+	};
+</script>
 <include file="Index/footer" />

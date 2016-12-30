@@ -59,7 +59,12 @@
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
 						mui.each(data.data, function(i) {
+							var announcementEndDate =parseInt(data.data[i].announcement_end_date.replace("-","").replace("-",""));
+							var nowDate = parseInt(gmtToDate(new Date()).replace("-","").replace("-",""));
+							console.log(nowDate);
+							if(nowDate<announcementEndDate || nowDate==announcementEndDate){
 
+							}else{
 							var doc = document;
 							li = doc.createElement("li");
 							div = doc.createElement("div");
@@ -131,6 +136,7 @@
 							divContent.appendChild(h1);
 
 							fragment.appendChild(li);
+							}
 						});
 						container.appendChild(fragment);
 					},

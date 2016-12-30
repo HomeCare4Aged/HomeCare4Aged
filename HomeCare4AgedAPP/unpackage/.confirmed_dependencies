@@ -31,10 +31,20 @@
       "images/home/transfuse.png",
       "css/mui.min.css",
       "css/home/index.css",
+<<<<<<< HEAD
       "images/home/message.png"
     ],
     "refer": [
       "view/loginRegister/index.html"
+=======
+      "images/home/message.png",
+      "images/home/wumai.png"
+    ],
+    "refer": [
+      "view/loginRegister/index.html",
+      "view/message/index.html",
+      "view/takeOut/index.html"
+>>>>>>> 261edc677507ae0942c46fe07ecf05c0b75147bb
     ]
   },
   "view/loginRegister/index.html": {
@@ -90,5 +100,35 @@
     "refer": [
       "view/loginRegister/certification.html"
     ]
+<<<<<<< HEAD
+=======
+  },
+  "view/message/index.html": {
+    "resources": [
+      "css/common/common.css",
+      "css/message/index.css",
+      "js/constants.js",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ],
+    "refer": [
+      "view/message/content.html"
+    ]
+  },
+  "view/message/content.html": {
+    "resources": [
+      "images/123.png",
+      "css/message/content.css",
+      "js/jquery.1.11.1.js"
+    ]
+  },
+  "view/takeOut/index.html": {
+    "resources": [
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css"
+    ]
+>>>>>>> 261edc677507ae0942c46fe07ecf05c0b75147bb
   }
 }

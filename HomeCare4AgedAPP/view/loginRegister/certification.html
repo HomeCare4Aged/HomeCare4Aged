@@ -184,7 +184,7 @@
 							};
 						},
 						error: function(xhr, type, errorThrown) {
-							console.log(type);
+							plus.nativeUI.closeWaiting();
 							mui.alert('注册失败');
 						}
 					});
@@ -268,14 +268,13 @@
 				});
 				document.getElementById("li-phoneNum").addEventListener('tap', function() {
 					document.getElementById('div-phoneNum').style.display = '';
-					document.getElementById('input-phoneNum').focus();
+//					document.getElementById('input-phoneNum').focus();
 				});
 				document.getElementById("li-home").addEventListener('tap', function() {
 					document.getElementById('div-home').style.display = '';
-					document.getElementById('input-home').focus();
+//					document.getElementById('input-home').focus();
 				});
 				document.getElementById("li-hospital").addEventListener('tap', function() {
-
 					localStorage.userHome = document.getElementById('input-home').value;
 					console.log(localStorage.userHome);
 					console.log(isNullStr(localStorage.userHome));
@@ -319,6 +318,7 @@
 							}
 						}, localStorage.GetCity);
 					}
+					document.getElementById('div-hospital').style.display = '';
 				});
 			});
 		</script>

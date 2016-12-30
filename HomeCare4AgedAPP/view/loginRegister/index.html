@@ -8,7 +8,6 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/loginRegister/index.css" />
-
 	</head>
 
 	<body>
@@ -23,7 +22,7 @@
 						<div class="mui-input-row">
 							<img src="../../images/loginRegister/iPhone.png" class="zz-img-icon">
 							<input type="tel" id="zz-input-phone" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请输入注册手机" />
-							
+
 						</div>
 					</div>
 				</li>
@@ -47,17 +46,29 @@
 		<script type="text/javascript">
 			mui.init()
 			mui.plusReady(function() {
+				localStorage.autoLoginIn = 'true';
+				if(!isNullStr(localStorage.community_user_phone) &&
+					!isNullStr(localStorage.community_user_psw &&
+						localStorage.autoLoginIn == 'true')) {
+					var postData = {};
+					postData['community_user_phone'] = localStorage.community_user_phone;
+					postData['community_user_password'] = localStorage.community_user_psw;
+					findUserInfo(postData);
+				}
+
 				//获取所在城市
 				plus.geolocation.getCurrentPosition(function(p) {
 					localStorage.GetCity = p.address['city'];
 				}, function(e) {
 					alert("Geolocation error: " + e.message);
 				});
-				
+
 				plus.navigator.setStatusBarBackground('#EEA02F');
+
 			});
 
 			function openWindow($url) {
+
 				var phone = document.getElementById('zz-input-phone').value;
 				var psw = document.getElementById('zz-input-psw').value;
 				if(!isPhoneNum(phone)) {
@@ -65,26 +76,27 @@
 				} else if(isNullStr(psw)) {
 					mui.alert("请核对您的密码");
 				} else {
-					findUserInfo();
+					var postData = {};
+					var phone = document.getElementById('zz-input-phone').value;
+					var psw = document.getElementById('zz-input-psw').value;
+					postData['community_user_phone'] = phone;
+					postData['community_user_password'] = psw
+					findUserInfo(postData);
 				}
 
 			}
 
 			//查询用户信息
-			function findUserInfo() {
+			function findUserInfo(postData) {
+			console.log(JSON.stringify(postData));
 				plus.nativeUI.showWaiting();
-				var phone = document.getElementById('zz-input-phone').value;
-				var psw = document.getElementById('zz-input-psw').value;
-				var postData = {};
-				postData['community_user_phone'] = phone;
-				postData['community_user_password'] = psw;
 				mui.ajax({
 					type: 'POST',
 					url: SERVERURL + "ACommunityUserInfo/logIn",
 					dataType: "json",
 					data: postData,
 					success: function(data) {
-
+						console.log('11');
 						if(data.status == 0) {
 							plus.nativeUI.closeWaiting();
 							mui.alert(data.msg);
@@ -93,7 +105,7 @@
 							plus.nativeUI.closeWaiting();
 							var community_user_id; //社区用户内码
 							var community_user_phone; //用户手机号
-							var community_user_password; //登录密码
+
 							var community_user_name; //用户姓名
 							var community_user_sex; //用户性别
 							var community_user_picture; //用户头像url
@@ -106,8 +118,7 @@
 							console.log(localStorage.getItem(community_user_id));
 							localStorage.setItem(community_user_phone, data.data.community_user_phone);
 							console.log(localStorage.getItem(community_user_phone));
-							localStorage.setItem(community_user_password, data.data.community_user_password);
-							console.log(localStorage.getItem(community_user_password));
+
 							localStorage.setItem(community_user_name, data.data.community_user_name);
 							console.log(localStorage.getItem(community_user_name));
 							localStorage.setItem(community_user_sex, data.data.community_user_sex);
@@ -123,21 +134,24 @@
 							var psw = document.getElementById('zz-input-psw').value;
 
 							// 获取所有Webview窗口
-								var curr = plus.webview.currentWebview();
-								var wvs = plus.webview.all();
-								for(var i = 0, len = wvs.length; i < len; i++) {
-									//关闭除setting页面外的其他页面
-									if(wvs[i].getURL() == curr.getURL())
-										continue;
-									plus.webview.close(wvs[i]);
-								}
-								//打开login页面后再关闭setting页面
-								mui.toast('登录成功');
-								plus.webview.open('../home/index.html');
-								curr.close();
+							var curr = plus.webview.currentWebview();
+							var wvs = plus.webview.all();
+							for(var i = 0, len = wvs.length; i < len; i++) {
+								//关闭除setting页面外的其他页面
+								if(wvs[i].getURL() == curr.getURL())
+									continue;
+								plus.webview.close(wvs[i]);
+							}
+							//打开login页面后再关闭setting页面
+							mui.toast('登录成功');
+							plus.webview.open('../home/index.html');
+							curr.close();
 						}
-
 					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+					}
 
 				});
 
