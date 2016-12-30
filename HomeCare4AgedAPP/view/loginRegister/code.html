@@ -41,11 +41,13 @@
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
-
 			mui.plusReady(function() {
+				
 				var gInput = document.getElementById('g-id-input');
 				plus.navigator.setStatusBarBackground('#EEA02F');
 				var inputList = document.getElementsByClassName('g-input');
+				initNativeObjects();
+				showSoftInput();
 				mui.each(inputList, function(i) {
 					var width = (document.documentElement.clientWidth - 40 - 30) / 4;
 					if(i != 0) {
@@ -63,15 +65,21 @@
 					inputList[i].style.display = 'inline-block';
 
 					inputList[i].addEventListener('tap', function() {
-						gInput.focus();
+						initNativeObjects();
+						showSoftInput();
+//						gInput.focus();
 					});
 				});
-				
-				
-//				var webView = plus.webview.currentWebview().nativeInstanceObject();
-//				webView.plusCallMethod({
-//					"setKeyboardDisplayRequiresUserAction": false,
-//				});
+
+				var u = navigator.userAgent;
+				var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+				var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+				if(isiOS) {
+					var webView = plus.webview.currentWebview().nativeInstanceObject();
+					webView.plusCallMethod({
+						"setKeyboardDisplayRequiresUserAction": false,
+					});
+				}
 
 				gInput.focus();
 
@@ -83,10 +91,58 @@
 					inputList[3].innerHTML = str.substr(3, 1);
 				}, 50);
 
-				mui.openWindow({
-					url: '../loginRegister/certification.html',
-				});
+				
+//								mui.openWindow({
+//									url: '../loginRegister/certification.html',
+//								});
 			});
+			function openWindow($url) {
+				
+				var gInput = document.getElementById('g-id-input').value;
+				console.log(localStorage.code);
+				console.log(gInput);
+				
+				if(gInput == localStorage.code){
+					mui.openWindow({
+										url: '../loginRegister/certification.html',
+									});					
+					
+				}else if(localStorage.time){
+					
+				}
+				else{
+					mui.alert('请核对您的验证码');
+				}
+
+				
+			}
+			
+			var nativeWebview, imm, InputMethodManager;
+			var initNativeObjects = function() {
+				if(mui.os.android) {
+					var main = plus.android.runtimeMainActivity();
+					var Context = plus.android.importClass("android.content.Context");
+					InputMethodManager = plus.android.importClass("android.view.inputmethod.InputMethodManager");
+					imm = main.getSystemService(Context.INPUT_METHOD_SERVICE);
+				} else {
+					nativeWebview = plus.webview.currentWebview().nativeInstanceObject();
+				}
+			};
+			var showSoftInput = function() {
+				if(mui.os.android) {
+					imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
+				} else {
+					nativeWebview.plusCallMethod({
+						"setKeyboardDisplayRequiresUserAction": false
+					});
+				}
+				setTimeout(function() {
+					//此处可写具体逻辑设置获取焦点的input
+					var gInput = document.getElementById('g-id-input');
+//					var inputElem = document.querySelector('g-id-input');
+					gInput.focus();
+				}, 200);
+			};
 		</script>
 	</body>
 

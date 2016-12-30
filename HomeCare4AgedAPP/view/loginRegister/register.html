@@ -46,7 +46,7 @@
 		</div>
 
 		<div class="zz-div-next">
-			<button type="button" class="zz-btn-next" onclick="openWindow('../home/index.html');">下一步</button>
+			<button type="button" class="zz-btn-next" onclick="openWindow();">下一步</button>
 		</div>
 
 		<script src="../../js/mui.min.js"></script>
@@ -81,16 +81,46 @@
 							plus.nativeUI.closeWaiting();
 							if(data.status == 0) {
 								mui.alert(data.msg);
-							}
-							if(data.status == 1) {
-								mui.openWindow({
-									url: '../loginRegister/code.html',
+								return;
+							}else{
+								console.log('可以注册');
+								var postData = {};
+								postData['community_user_phone'] = localStorage.userPhoneNum;
+								mui.ajax({
+									type: 'POST',
+									data: postData,
+									url: MESSAGEURL,
+									dataType: "json",
+									//成功获取数据赋值
+									success: function(data) {
+										console.log('看这！！！！！！！！！！！！！！！！')
+										plus.nativeUI.closeWaiting();
+										localStorage.code = data.data[0];
+										console.log(localStorage.code); 
+//										if(data.status == 0) {
+//											mui.alert(data.msg);
+//										}
+//										if(data.status == 1) {
+											mui.toast('验证码已经发往您的手机，请注意查收');
+//											var mytime = new Date().getTime();
+//											console.log(mytime);
+											mui.openWindow({
+												url: '../loginRegister/code.html',
+											});
+//										};
+									},
+									error: function(xhr, type, errorThrown) {
+										plus.nativeUI.closeWaiting();
+										console.log(errorThrown);
+										mui.alert('网络连接失败');
+									}
 								});
+								
 							};
 						},
 						error: function(xhr, type, errorThrown) {
 							plus.nativeUI.closeWaiting();
-							console.log(type);
+//							console.log(type);
 							mui.alert('网络连接失败');
 						}
 					});

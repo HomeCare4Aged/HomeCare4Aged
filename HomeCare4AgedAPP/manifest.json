@@ -245,7 +245,8 @@
 					"css/home/index.css",
 					"images/home/message.png",
 					"images/home/qingtian.png",
-					"images/home/duoyun.png"
+					"images/home/duoyun.png",
+					"images/home/wumai.png"
 				],
 				"refer": [
 					"view/registration/index.html",

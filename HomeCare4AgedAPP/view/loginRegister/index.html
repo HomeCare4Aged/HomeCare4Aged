@@ -8,7 +8,17 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/loginRegister/index.css" />
-
+ <!--<script type="text/javascript">
+// H5 plus事件处理
+function plusReady(){
+    var Context = plus.android.importClass("android.content.Context");
+    var InputMethodManager = plus.android.importClass("android.view.inputmethod.InputMethodManager");
+    var main = plus.android.runtimeMainActivity();
+    var imm = main.getSystemService(Context.INPUT_METHOD_SERVICE);
+    imm.toggleSoftInput(0,InputMethodManager.SHOW_FORCED);
+}
+document.addEventListener("plusready",plusReady,false); 
+        </script>-->
 	</head>
 
 	<body>
@@ -19,7 +29,7 @@
 			<ul class="mui-table-view " id="list_ul">
 				<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight" style="margin-top: 5%;">
-
+ 
 						<div class="mui-input-row">
 							<img src="../../images/loginRegister/iPhone.png" class="zz-img-icon">
 							<input type="tel" id="zz-input-phone" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请输入注册手机" />
@@ -48,9 +58,11 @@
 			mui.init()
 			mui.plusReady(function() {
 				plus.navigator.setStatusBarBackground('#EEA02F');
-			});
 
+			});
+ 			
 			function openWindow($url) {
+				
 				var phone = document.getElementById('zz-input-phone').value;
 				var psw = document.getElementById('zz-input-psw').value;
 				if(!isPhoneNum(phone)) {
