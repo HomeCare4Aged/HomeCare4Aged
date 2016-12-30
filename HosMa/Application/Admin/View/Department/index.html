@@ -7,22 +7,42 @@
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li class="">
-							<i class="fa fa-fw fa-edit"></i>
-							科室信息
+							<i class="fa fa-fw fa-edit"></i> 科室信息
 						</li>
-						
+
 					</ol>
-				</div>				
-			</div><!--.row面包屑导航   -->
-			<div class="row xx-div-search">
-				<div class="col-sm-2">
-					<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
 				</div>
+			</div>
+			<!--.row面包屑导航   -->
+			<div class="row xx-div-search">
+				<div class="col-md-6">
+					<form action="__ACTION__" method="get" class="form-horizontal" id="xx-form-add-keshi">
+						<div class="input-group">
+							<span class="input-group-addon">科室编号</span>
+							<select class="form-control" name="hospital_office_name">
+								<volist name="offices" id="voo">
+									<option name="hospital_office_name"><div type="hidden" name="id" value="{$voo.hospital_office_id}" ></div>{$voo.hospital_office_name}</option>
+								</volist>
+							</select>
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary" id="xx-btn-add-keshi">
+									<span class="">添加</span>
+								</button>
+							</span>
+						</div>
+					</form>
+				</div>
+				<!--<div class="col-sm-2">
+					<button type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
+				</div>-->
 				<!-- 按钮触发模态框 -->
-				<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-					 弹框
-				</button>
-			</div><!--row.结束-->
+				<div class="col-sm-2">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+						 新增科室
+					</button>
+				</div>
+			</div>
+			<!--row.结束-->
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-responsive">
@@ -35,7 +55,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<volist name="offices" id="vo">
+									<volist name="useroffices" id="vo">
 										<tr>
 											<td>{$vo.hospital_office_id}</td>
 											<td>{$vo.hospital_office_name}</td>
@@ -44,68 +64,83 @@
 							</table>
 						</form>
 					</div>
-				</div>	
-			</div><!--row-->
+				</div>
+			</div>
+			<!--row-->
 		</div>
 	</div>
 </div>
-				<!--弹出框-->
-				<div class="col-sm-10">
-					<!-- 模态框（Modal） -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+<!--弹出框-->
+<div class="col-sm-10">
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 									&times;
 									</button>
-									<h4 class="modal-title" id="myModalLabel">
+					<h4 class="modal-title" id="myModalLabel">
 										新增科室信息
 									</h4>
-								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div class="col-sm-10 col-sm-offset-1d">
-											<form id="xx-form-add" class="form-horizontal">
-												<div class="form-group">
-													<label for="xx-input-hospital-office-name" class="control-label col-sm-3">科室名称：</label>
-													<div class="col-sm-5">
-														<input id="xx-input-hospital-office-name" class="form-control" type="text" 
-														name="hospital_office_name" placeholder="请输入科室名称" />
-													</div>
-													<div class="col-sm-4">
-														<p class="xx-p-validate-result" attr-validate="hospital_office_name"></p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="xx-input-hospital-office-id" class="control-label col-sm-3">科室编号：</label>
-													<div class="col-sm-5">
-														<input id="xx-input-hospital-office-id" class="form-control" type="text" 
-														name="hospital_office_id" placeholder="请输入科室编号" />
-													</div>
-													<div class="col-sm-4">
-														<p class="xx-p-validate-result" attr-validate="hospital_office_id"></p>
-													</div>
-												</div>
-											</form>
-										</div>
-									</div><!--.row表单-->
-								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">
-										关闭
-									</button>
-									<button type="button" class="btn btn-primary" id="xx-btn-add-submit">
-										提交更改
-									</button>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal -->
-					</div>
 				</div>
-	<script>
-		var SCOPE = {
-			'add_url':'__URL__/add'
-		};
-	</script>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1d">
+							<form id="xx-form-add" class="form-horizontal">
+								<div class="form-group">
+									<label for="xx-input-hospital-office-name" class="control-label col-sm-3">科室名称：</label>
+									<div class="col-sm-5">
+										<input id="xx-input-hospital-office-name" class="form-control" type="text" name="hospital_office_name" placeholder="请输入科室名称" />
+									</div>
+									<div class="col-sm-4">
+										<p class="xx-p-validate-result" attr-validate="hospital_office_name"></p>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!--.row表单-->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+						关闭
+					</button>
+					<button type="button" class="btn btn-primary" id="xx-btn-add-submit">
+						提交更改
+					</button>
+				</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url': '__URL__/add',
+		'save_url':'__URL__/save',
+		'success_jump_url':'__URL__/index',
+	};
+	$('#xx-btn-add-keshi').click(function(){
+		var formData = $('#xx-form-add-keshi').serializeArray();
+		var postData = {};
+		$(formData).each(function(i){
+			postData[this.name] = this.value;
+		});
+		console.log(postData);
+		$.ajax({
+			type:"post",
+			url:SCOPE.save_url,
+			data: postData,
+		    dataType: 'json',
+		    success: function(result) {
+		    	if(result = SUCCESS){
+		    		return Dialog.success(result.msg,'');
+		    	}
+		    	return Dialog.error(result.msg);
+		    }
+		});
+	});
+</script>
 <include file="Index/footer" />

@@ -7,11 +7,11 @@
 	<div id="page-wrapper">
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-12">
+				<div class="col-sm-12">
 					<ol class="breadcrumb">
 						<li class="">
-							<i class="fa fa-fw fa-edit"></i>
-							公告预览
+							<i class="fa fa-fw fa-table"></i>
+							公告管理
 						</li>
 						
 					</ol>
@@ -19,52 +19,107 @@
 			</div><!--.row面包屑导航   -->
 			<div class="row">
 				<div class="col-sm-12">
+					<!--<div class="col-lg-6">-->
+						<form class="form-horizontal" action="__ACTION__" method="post" id="xx-form-span">
+						<div class="form-group">
+						<div class="col-sm-2">
+						<select name="select-user" id="xx-select-choosse" class="form-control">
+							<option value="0" selected="selected">我的公告</option>
+							<option value="1">全部</option>
+						</select>
+						</div>
+					<!--</div>-->
+					<!--<div class="col-lg-6">-->
+						<div class="col-sm-2">
+						<select name="select-type" id="xx-select-type" style="display: auto;" class="form-control">
+							<option value="0" selected="selected">全部状态</option>
+							<option value="1">未审核</option>
+							<option value="2">通过</option>
+							<option value="3">未通过</option>
+						</select>
+						</div>
+						<div class="col-sm-5">
+							<form id="xx-form-search"> 
+								<div class="input-group">
+									<span class="input-group-addon">搜索</span>
+									<input class="form-control" type="text" name="search" value="{$search}"/>
+										<div class="input-group-btn">
+											<button id="xx-span-click" type="button" class="btn btn-primary">
+												<span class="glyphicon glyphicon-search" ></span>											
+											</button>											
+										</div>
+								</div>						
+							</form>
+						</div>
+						<div class="col-sm-1">
+						<button type="button" class="btn btn-primary" id="xx-btn-refresh">刷新				
+							<span class="glyphicon glyphicon-refresh"></span>
+						</button>
+						</div>
+						<div class="col-sm-2">
+							<button type="button"  id="xx-btn-add" class="btn btn-primary">添加新公告</button>
+						</div>	
+						
+					</form>
+					<!--</div>-->
+				</div>
+			</div>	
+			<!--<div class="row">-->
+				<div class="col-md-12">
 					<div class="table-responsive">
 						<form id="xx-form-list">
-							<table class="table table-bordered table-hover xx-table-list">
+							<table class="table table-bordered table-hover xx-table-list" id="tableID" style="table-layout: fixed;">
 								<thead>
 									<tr>
-										<td>公告ID</td>
-										<td>发布用户</td>
-										<td>所属单位</td>
-										<td>公告标题</td>
-										<td>公告内容</td>
-										<td>公告图片</td>
+										<td style="display: none;"></td>
+										<td style="overflow:hidden; text-overflow:ellipsis;">公告标题</td>
+										<td>版本号</td>
+										<td>发布时间</td>										
 										<td>审核状态</td>
-										<td>审核人员</td>
-										<td colspan="2">操作</td>
+										<td>驳回意见</td>
+										<td>删除</td>																				
+										<td>查看详情</td>
+										<td>查看历史记录</td>
+
 									</tr>
 								</thead>
 								<tbody>
 									<volist name="announcement" id="vo">
 										<tr>
-											<td>{$vo.announcement_id}</td>
-											<td>{$vo.announcement_sender_id}</td>
-											<td>{$vo.announcement_company_id}</td>
-											<td>{$vo.announcement_title}</td>
-											<td>{$vo.announcement_content}</td>
-											<td><img src="{$vo.thumb_path}"></td>
-											<td>{$vo.announcement_check_state}</td>
-											<td>{$vo.announcement_checker_id}</td>
+											<td style="display: none;">{$vo.announcement_id}</td>
+											<td style="overflow:hidden; text-overflow:ellipsis;">{$vo.announcement_title}</td>
+											<td>{$vo.announcement_version_number}</td>
+											<td>{$vo.send_datetime}</td>											
+											<td>{$vo.announcement_check_state}</td>	
+											<td>{$vo.error_message}</td>	
 											<td>
-												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="{$vo.announcement_id}"></span>
-
+												<span class="glyphicon glyphicon-trash" id="xx-span-delete1" onclick="clickDelete(this)"></span>
 											</td>
 											<td>
-												<span class="glyphicon glyphicon-trash" id="xx-span-delete" attr-id="{$vo.announcement_id}"></span>
-												
+												<span class="glyphicon glyphicon-check" id="xx-span-editor3" onclick="clickCheck(this)"></span>
+											</td>
+											<td>
+												<span class="glyphicon glyphicon-book" id="xx-span-history" onclick="clickHistory(this)"></span>
 											</td>
 										</tr>
 									</volist>
 								</tbody>
 							</table>
 						</form>
+						<nav>
+							<ul class="pagination" id="seq">
+								{$pageRes}
+							</ul>
+						</nav>
 					</div>
 				</div>
-			</div>
+				
+				</div>	
+			<!--</div>-->
 		</div>
 	</div>
 </div>	
+</div>
 <script>
 	var SCOPE={
 		'add_url':'__URL__/add',
@@ -72,8 +127,246 @@
 		'set_status_url':'__URL__/setStatus',
 		'list_order_url':'__URL__/listOrder',
 		'success_refresh_url':'__ACTION__',
+		'manage_url':'__URL__/manage',
 	};
-	
+	$("#xx-select-type").on('change',function(){
+		var selectedValue = $(this).val();
+		$.ajax({
+			type:"post",
+			url:"__URL__/getData",
+			async:true,
+			data:{'selectedValue':selectedValue},
+			dataType:'json',
+			success:function(data){
+				console.log(data);
+				$('#tableID tbody').remove();
+				var sRows = '';
+				for( var i in data){
+					var sRow = '<tr>'+
+									'<td style="display: none;">'+data[i].announcement_id+'</td>'+
+									'<td>'+data[i].announcement_title+'</td>'+
+									'<td>'+data[i].announcement_version_number+'</td>'+
+									'<td>'+data[i].send_datetime+'</td>'+										
+									'<td>'+data[i].announcement_check_state+'</td>'+	
+									'<td>'+data[i].error_message+'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-trash" id="xx-span-delete1" onclick="clickDelete(this)"></span>'+
+									'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-check" id="xx-span-editor3" onclick="clickCheck(this)"></span>'+
+									'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-book" id="xx-span-history" onclick="clickHistory(this)"></span>'+
+									'</td>'+
+								'</tr>';
+					
+					sRows += sRow;
+				}
+				$('#tableID').append('<tbody></tbody>');
+				$('#tableID tbody').html(sRows);
+//				var row = '<ul class="pagination" id="seq">' +
+//								{$pageRes} +
+//						  '</ul>';
+//				
+//				$('#seq').remove();	
+//				$('#seq').html(data.pageRes);	
+									
+			}
+			
+		});
+		
+	});
+	$('#xx-select-choosse').click(function(){
+        if(($(this).val()) == 0){
+        	$('#xx-select-type').attr('style','display:auto');
+        	
+        }
+        if(($(this).val()) == 1){	
+        	$('#xx-select-type').attr('style','display:none');
+        }
+    });
+    $('#xx-btn-refresh').click(function(){
+    	location.href = '__ACTION__';
+    });
+    $("#xx-select-choosse").on('change',function(){
+		var selectedValue = $(this).val();
+		$.ajax({
+			type:"post",
+			url:"__URL__/getSourse",
+			async:true,
+			data:{'selectedValue':selectedValue},
+			dataType:'json',
+			success:function(data){
+				console.log(data);
+				$('#tableID tbody').remove();
+				var sRows = '';
+				for( var i in data ){
+					var sRow = '<tr>'+
+									'<td style="display: none;">'+data[i].announcement_id+'</td>'+
+									'<td>'+data[i].announcement_title+'</td>'+
+									'<td>'+data[i].announcement_version_number+'</td>'+
+									'<td>'+data[i].send_datetime+'</td>'+											
+									'<td>'+data[i].announcement_check_state+'</td>'+	
+									'<td>'+data[i].error_message+'</td>'+	
+									'<td>'+
+										'<span class="glyphicon glyphicon-trash" id="xx-span-delete1" onclick="clickDelete(this)"></span>'+
+									'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-check" id="xx-span-editor3" onclick="clickCheck(this)"></span>'+
+									'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-book" id="xx-span-history" onclick="clickHistory(this)"></span>'+
+									'</td>'+
+								'</tr>'
+					
+					sRows += sRow;
+				}
+				$('#tableID').append('<tbody></tbody>');
+				$('#tableID tbody').html(sRows);
+										
+									
+			}
+		});
+		
+	});
+	function clickEdit(obj){
+		if($("#xx-select-choosse").find("option:selected").val() == 1){
+			Dialog.error('全部公告无法编辑和删除');
+				return;
+		}
+//		console.log(obj.parentNode.parentNode);
+		else {
+			
+		
+			var objpp = obj.parentNode.parentNode;
+			var msg = [];
+//			console.log(objpp.children);
+//			console.log(objpp.children.length);
+			for (var i=0 ; i<objpp.children.length;i++){
+//				console.log(objpp.children[i].innerText)
+				msg[i] = objpp.children[i].innerText;
+			}
+			if(msg[3] == '通过'){
+				Dialog.error('通过后的公告无法编辑和删除');
+				return;
+			}
+			var id = msg[0];
+//			console.log(id);
+		location.href = SCOPE.edit_url+'?id='+id;	
+		}
+	}
+	function clickDelete(obj){
+	if($("#xx-select-choosse").find("option:selected").val() == 1){
+		Dialog.error('全部公告无法编辑和删除');
+			return;
+	}
+	else {
+//			console.log(obj.parentNode.parentNode);
+			var objpp = obj.parentNode.parentNode;
+			var msg = [];
+//			console.log(objpp.children);
+//			console.log(objpp.children.length);
+			for (var i=0 ; i<objpp.children.length;i++){
+//				console.log(objpp.children[i].innerText)
+				msg[i] = objpp.children[i].innerText;
+			}
+			if(msg[4] != '未审核'){
+//				console.log(msg[4]);
+				Dialog.error('不是未审核的公告无法删除');
+				return;
+			}
+			var id = msg[0];
+			var num = msg[2];
+		var url = SCOPE.set_status_url;;
+		var postData = {};
+		postData['id'] = id;
+		postData['num'] = num;	
+		postData['state'] = '关闭';
+//		console.log(postData);
+		Dialog.confirm('是否确认删除数据？',function(){
+			$.ajax({
+				type:"post",
+				url:url,
+				async:true,
+				data:postData,
+				dataType:'json',
+				success:function(result){
+					if(result.status == SUCCESS){
+						return Dialog.success(result.msg,SCOPE.success_refresh_url);
+					}
+					return Dialog.error(result.msg);
+				}
+			});
+		});	
+	}
+	}
+	function clickCheck(obj){
+		var objpp = obj.parentNode.parentNode;
+		var id = objpp.children[0].innerText;
+		var num = objpp.children[2].innerText;
+		location.href = '__URL__/manage'+'?id='+id+'&num='+num;
+	}
+	function clickHistory(obj){
+		if($("#xx-select-choosse").find("option:selected").val() == 1){
+		Dialog.error('全部公告无法查看历史纪录');
+			return;
+		}else{
+			var objpp = obj.parentNode.parentNode;
+			var id = objpp.children[0].innerText;
+	//		console.log(id);
+			var postData={};
+			location.href = '__URL__/history'+'?id='+id;	
+		}
+		
+	}
+	$('#xx-span-click').click(function(){
+		var formData = $('#xx-form-span').serializeArray();
+		var postData = {};
+		$(formData).each(function(i){
+			postData[this.name] = this.value;
+		});
+		var temp = postData['search'];
+		console.log(1);
+		var spanData = {};
+		spanData['search'] = temp;
+		$.ajax({
+			type:"post",
+			url:"__URL__/getSearch",
+			async:true,
+			data:postData,
+			dataType:'json',
+			success:function(data){
+				console.log(data);
+				$('#tableID tbody').remove();
+				var sRows = '';
+				for( var i in data ){
+					var sRow = '<tr>'+
+									'<td style="display: none;">'+data[i].announcement_id+'</td>'+
+									'<td>'+data[i].announcement_title+'</td>'+
+									'<td>'+data[i].announcement_version_number+'</td>'+
+									'<td>'+data[i].send_datetime+'</td>'+											
+									'<td>'+data[i].announcement_check_state+'</td>'+	
+									'<td>'+data[i].error_message+'</td>'+	
+									'<td>'+
+										'<span class="glyphicon glyphicon-trash" id="xx-span-delete1" onclick="clickDelete(this)"></span>'+
+									'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-check" id="xx-span-editor3" onclick="clickCheck(this)"></span>'+
+									'</td>'+
+									'<td>'+
+										'<span class="glyphicon glyphicon-book" id="xx-span-history" onclick="clickHistory(this)"></span>'+
+									'</td>'+
+								'</tr>'
+					
+					sRows += sRow;
+				}
+				$('#tableID').append('<tbody></tbody>');
+				$('#tableID tbody').html(sRows);
+//										
+//									
+			}
+		});
+	});
 </script>
 	
 <include file="Index/footer"/>

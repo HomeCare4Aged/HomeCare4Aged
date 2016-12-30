@@ -7,21 +7,23 @@
 				<div class="col-md-12">
 					<ol class="breadcrumb">
 						<li class="">
-							<i class="fa fa-fw fa-edit"></i>
-							员工信息
+							<i class="fa fa-fw fa-edit"></i> 员工信息
 						</li>
-						
+
 					</ol>
-				</div>				
-			</div><!--.row面包屑导航   -->
-			<div class="row xx-div-search">
-				<div class="col-sm-2">
-					<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
 				</div>
+			</div>
+			<!--.row面包屑导航   -->
+			<div class="row xx-div-search">
+				<!--<div class="col-sm-2">
+					<button  type="button" class="btn btn-primary" id="xx-btn-add">新增</button>
+				</div>-->
 				<!-- 按钮触发模态框 -->
-				<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
-					 弹框
+				<div class="col-sm-2">
+					<button class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+					 新增员工
 				</button>
+				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12">
@@ -30,19 +32,24 @@
 							<table class="table table-bordered table-hover" id="xx-table-list">
 								<thead>
 									<tr>
+										<td style="display: none;"></td>
 										<td>员工姓名</td>
 										<td>员工工号</td>
-										<td colspan="2">操作</td>
+										<td colspan="3">操作</td>
 									</tr>
 								</thead>
 								<tbody>
 									<volist name="users" id="vo">
 										<tr>
+											<td style="display: none;">{$vo.hospital_user_id}</td>
 											<td>{$vo.hospital_user_name}</td>
 											<td>{$vo.hospital_user_no}</td>
 											<td>
-												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="{$vo.hospital_office_id}">编辑</span>
+												<span class="glyphicon glyphicon-gift" data-toggle="modal" data-target="#xx-modal-assign"  attr-id="{$vo.hospital_user_id}" onclick="assign11(this)">分配权限</span>
 											</td>
+											<!--<td>
+												<span class="glyphicon glyphicon-edit" id="xx-span-edit" attr-id="{$vo.hospital_office_id}">编辑</span>
+											</td>-->
 											<td>
 												<span class="glyphicon glyphicon-trash" id="xx-span-delete" attr-id="{$vo.hospital_office_id}">删除</span>
 											</td>
@@ -51,86 +58,146 @@
 							</table>
 						</form>
 					</div>
-				</div>	
-			</div><!--row-->
+				</div>
+			</div>
+			<!--row-->
 		</div>
 	</div>
 </div>
-				<!--弹出框-->
-				<div class="col-sm-10">
-					<!-- 模态框（Modal） -->
-					<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+<!--弹出框-->
+<div class="col-sm-10">
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
 									&times;
 									</button>
-									<h4 class="modal-title" id="myModalLabel">
+					<h4 class="modal-title" id="myModalLabel">
 										新增员工信息
 									</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1">
+							<form id="xx-form-add" class="form-horizontal">
+								<div class="form-group">
+									<label for="xx-input-hospital-user-name" class="control-label col-sm-3">员工姓名：</label>
+									<div class="col-sm-5">
+										<input id="xx-input-hospital-user-name" class="form-control" type="text" name="hospital_user_name" placeholder="请输入员工姓名" />
+									</div>
+									<div class="col-sm-4">
+										<p class="xx-p-validate-result" attr-validate="hospital_user_name"></p>
+									</div>
 								</div>
-								<div class="modal-body">
-									<div class="row">
-										<div class="col-sm-10 col-sm-offset-1">
-											<form id="xx-form-add" class="form-horizontal">
-												<div class="form-group">
-													<label for="xx-input-hospital-user-name" class="control-label col-sm-3">员工姓名：</label>
-													<div class="col-sm-5">
-														<input id="xx-input-hospital-user-name" class="form-control" type="text" 
-														name="hospital_user_name" placeholder="请输入员工姓名" />
-													</div>
-													<div class="col-sm-4">
-														<p class="xx-p-validate-result" attr-validate="hospital_user_name"></p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="xx-input-hospital-user-no" class="control-label col-sm-3">员工工号：</label>
-													<div class="col-sm-5">
-														<input id="xx-input-hospital-user-no" class="form-control" type="text" 
-														name="hospital_user_no" placeholder="请输入员工工号" />
-													</div>
-													<div class="col-sm-4">
-														<p class="xx-p-validate-result" attr-validate="hospital_user_no"></p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="xx-input-hospital-user-phone" class="control-label col-sm-3">联系方式：</label>
-													<div class="col-sm-5">
-														<input id="xx-input-hospital-user-phone" class="form-control" type="text" 
-														name="hospital_user_phone" placeholder="请输入联系方式" />
-													</div>
-													<div class="col-sm-4">
-														<p class="xx-p-validate-result" attr-validate="hospital_user_phone"></p>
-													</div>
-												</div>
-												<div class="form-group">
-													<label for="" class="control-label col-sm-3">性别：</label>
-													<div class="col-sm-5">
-														<input type="radio" name="hospital_doctor_sex" value="1" checked="" />男
-														<input type="radio" name="hospital_doctor_sex" value="0" />女
-													</div>
-												</div>
-											</form>
-										</div>
-									</div><!--.row表单-->
+								<div class="form-group">
+									<label for="xx-input-hospital-user-no" class="control-label col-sm-3">员工工号：</label>
+									<div class="col-sm-5">
+										<input id="xx-input-hospital-user-no" class="form-control" type="text" name="hospital_user_no" placeholder="请输入员工工号" />
+									</div>
+									<div class="col-sm-4">
+										<p class="xx-p-validate-result" attr-validate="hospital_user_no"></p>
+									</div>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-default" data-dismiss="modal">
+								<div class="form-group">
+									<label for="xx-input-hospital-user-phone" class="control-label col-sm-3">联系方式：</label>
+									<div class="col-sm-5">
+										<input id="xx-input-hospital-user-phone" class="form-control" type="text" name="hospital_user_phone" placeholder="请输入联系方式" />
+									</div>
+									<div class="col-sm-4">
+										<p class="xx-p-validate-result" attr-validate="hospital_user_phone"></p>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="" class="control-label col-sm-3">性别：</label>
+									<div class="col-sm-5">
+										<input type="radio" name="hospital_doctor_sex" value="1" checked="" />男
+										<input type="radio" name="hospital_doctor_sex" value="0" />女
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+					<!--.row表单-->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
 										关闭
 									</button>
-									<button type="button" class="btn btn-primary" id="xx-btn-add-submit">
+					<button type="button" class="btn btn-primary" id="xx-btn-add-submit">
 										提交更改
 									</button>
-								</div>
-							</div><!-- /.modal-content -->
-						</div><!-- /.modal -->
-					</div>
 				</div>
-	<script>
-		var SCOPE = {
-			'add_url':'__URL__/add'
-		};
-	</script>
-		
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+<div class="col-sm-10">
+	<!-- 模态框（Modal） -->
+	<div class="modal fade" id="xx-modal-assign" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+									&times;
+									</button>
+					<h4 class="modal-title" id="myModalLabel">
+										分配权限
+									</h4>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-sm-10 col-sm-offset-1">
+							<form id="xx-form-assign-auth" class="form-inline">
+								<volist name='menus' id="vo" key="k">
+									<div class="checkbox-inline">
+										<label>
+											<input type="checkbox"  value="{$vo.menu_id}" name="menu_id[{$k}]" <if condition="in_array($vo['menu_id'],$role_menu_ids) eq 1">checked</if>/>
+											{$vo.hospital_menu_name}
+										</label>
+									</div>
+								</volist>
+								<input name="hospital_user_id" type="text" value="" id="user-id-quanxian"/>
+							</form>
+						</div>
+					</div><!--.row表单-->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">
+										关闭
+									</button>
+					<button type="button" class="btn btn-primary" id="xx-btn-assign-auth1">
+										提交更改
+									</button>
+					</div>
+			</div>
+			<!-- /.modal-content -->
+		</div>
+		<!-- /.modal -->
+	</div>
+</div>
+<script>
+	var SCOPE = {
+		'add_url': '__URL__/add',
+		'success_jump_url':'__URL__/index',
+		'assign_auth_url':'__URL__/assignAuth',
+	};
+	function assign11(obj){
+		var id = $(obj).attr('attr-id');
+		var objpp = obj.parentNode.parentNode;
+		var msg = {};
+		var postData = {};
+		for (var i=0 ; i<objpp.children.length;i++){
+//				console.log(objpp.children[i].innerText)
+				msg[i] = objpp.children[i].innerText;
+			}
+		postData['id'] = id;
+		$('#user-id-quanxian').val(id);
+		console.log($('#user-id-quanxian').val(id));
+	}
+</script>
+
 <include file="Index/footer" />

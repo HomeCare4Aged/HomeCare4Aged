@@ -3,6 +3,22 @@ namespace Common\Model;
 use Think\Model;
 
 class HHospitalsInfoModel extends Model{
+	//设置表单验证规则
+	protected $_validate = array(
+		array('community_hospitals_name','require','医院名称不能为空'),
+		array('community_hospitals_address','require','医院地址不能为空'),
+		array('hospital_business_time','require','营业时间不能为空'),
+		array('hospital_introduction','require','简介不能为空'),
+		array('community_hospitals_principal','require','医院负责人不能为空'),
+		array('principal_contact_phone','require','联系方式不能为空'),
+		array('principal_contact_phone','/^1[0-9]{10}$/','请输入11位手机号'),
+		array('hospital_business_begintime','require','营业时间不能为空'),
+		array('hospital_business_endtime','require','营业结束时间不能为空'),
+		
+	);
+//	//是否批量处理验证
+	protected $patchValidate = true;
+//	private $_db = '';
 	//登录
 	public function findHospitalID($hospitalNumber) {
 		//做判断 是为了防止服务器挂掉
@@ -18,21 +34,6 @@ class HHospitalsInfoModel extends Model{
 		return $res;
 	}
 	
-	//设置表单验证规则
-	protected $_validate = array(
-		array('community_hospitals_name','require','医院名称不能为空'),
-		array('community_hospitals_address','require','医院地址不能为空'),
-		array('hospital_business_time','require','营业时间不能为空'),
-		array('hospital_introduction','require','简介不能为空'),
-		array('community_hospitals_principal','require','医院负责人不能为空'),
-		array('principal_contact_phone','require','联系方式不能为空'),
-		array('hospital_business_begintime','require','营业时间不能为空'),
-		array('hospital_business_endtime','require','营业结束时间不能为空'),
-		
-	);
-//	//是否批量处理验证
-	protected $patchValidate = true;
-//	private $_db = '';
 	
 	//构造方法
 //	public function __construct(){
@@ -70,12 +71,12 @@ class HHospitalsInfoModel extends Model{
 	//按照id更新医院数据
 	public function updateMenuById($id,$data){
 		if($id === null || !is_numeric($id)){
-			throw_exception('菜单ID不合法');
+			throw_exception('医院ID不合法');
 		}
 		if($data === null || !is_array($data)){
-			throw_exception('菜单数据不合法');
+			throw_exception('医院数据不合法');
 		}
-		return $this->where('article_id='.$id)->save($data);
+		return $this->where('community_hospitals_id='.$id)->save($data);
 	}
 }
 ?>

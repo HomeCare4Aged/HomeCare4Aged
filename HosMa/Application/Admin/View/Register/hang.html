@@ -2,189 +2,43 @@
 <div id="wrapper">
 	<include file="Index/nav" />
 	<div id="page-wrapper">
-		<div class="container-fluid">
+		<div class="container">
 			<h3>挂号信息显示</h3>
-			<!--搜索栏开始-->
-			<div class="row" id="zh-search-hang">
-				<div class="col-md-6">
-					<form action="__ACTION__" method="post" id="zh-form-searche-hang">
-						<div class="input-group">
-							<span class="input-group-addon">类型</span>
-							<!--<select class="form-control" name="type" id="zh-select-hang">-->
-								<!--<option value="1" id="zh-option-hang-all">全部</option>-->
-								<!--<option value="2" id="zh-option-hang-name">挂号人姓名</option>-->
-								<!--<option value="3" id="zh-option-doctor-name">医生姓名</option>-->
-								<!--<option value="4" id="zh-option-hang-state">挂号状态</option>-->
-								<!--使用if标签判断select标签-->
-								<!--condition="$type eq 1"如果$type=1输出selected-->
-								<!--<option value="1" <if condition="$type eq 1">selected</if>>挂号人姓名</option>-->
-								<!--<option value="0" <if condition="$type eq 0">selected</if>>医生姓名</option>-->
-								<!--<option value="">挂号状态</option>-->
-							<!--</select>-->
-							<!--<input type="password" class="form-control" name="hospital_user_psw" placeholder="请输入登录密码" />-->
-							<input class="form-control" type="text" id="zh-input-like-search" placeholder="请输入查询字段" name="keywords"/>
-							<div class="input-group-btn">
-								<!--蓝色的btn-primary-->
-								<button type="submit" class="btn btn-primary" id="zh-btn-search-hang">
-									<span class="glyphicon glyphicon-search">
-										
-									</span>
-								</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<!--搜索栏结束-->
-			<!--挂号信息显示开始-->
 			<div class="row">
 				<div class="col-md-12">
-					<!--<div class="table-responsive">-->
-						<!--<form id="xx-form-list" class="">-->
-							<table class="table table-bordered table-hover" id="zh-table-list">
+					<div class="table-responsive">
+						<form id="xx-form-list" class="">
+							<table class="table table-bordered table-hover" id="xx-table-list">
 								<thead>
 									<tr>
-										<td class="zh-td-hide">挂号内码id</td>
-										<td class="zh-td-hide">挂号人姓名</td>
-										<td class="zh-td-hide">医生姓名</td>
-										<td class="zh-td-hide">预约的挂号日期</td>
-										<td class="zh-td-hide">预约时间段</td>
-										<td class="zh-td-hide">预约的操作日期</td>
-										<td class="zh-td-hide">取消时间</td>
-										<td class="zh-td-hide">挂号状态</td>
+										<td>医生姓名</td>
+										<td>挂号人内码</td>
+										<td>预约时间</td>
+										<td>挂号时间</td>
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>挂号人姓名</td>
-										<td>医生姓名</td>
-										<td>预约的挂号日期</td>
-										<td>预约时间段</td>
-										<td>预约的操作日期</td>
-										<td>取消时间
-											<!--<span class="glyphicon glyphicon-trash"></span>-->
-										</td>
-										<td>挂号状态
-										</td>
-									</tr>
-									<tr>
-										<td >张大爷</td>
-										<td >王医生</td>
-										<td >2012-12-1</td>
-										<td >下午</td>
-										<td >2012-13-1</td>
-										<td >23:12:23</td>
-										<td >未完成</td>
-									</tr>
-									<volist name="registration" id="vo">
+									<volist name="doctors" id="vo">
 										<tr>
-											<td class="zh-td-hide">{$vo.user_registration_id}</td>
-											<td class="zh-td-hide">{$vo.community_user_id}</td>
-											<td>{$vo.community_user_name}</td>
+											<td>{$vo.hospital_doctor_id}</td>
+											<td>{$vo.community_hospitals_id}</td>
+											<td>{$vo.hospital_office_id}</td>
 											<td>{$vo.hospital_doctor_name}</td>
-											<td>{$vo.user_appointment_date}</td>
-											<td>{$vo.user_appointment_time}</td>
-											<td>{$vo.user_registration_date}</td>
-											<td>{$vo.registration_cancel_time}</td>
-											<!--<if condition="$vo['registration_state'] eq 未完成">style="color:red;"</if>-->
-											<td 
-												<if condition="$vo['registration_state'] eq 未完成">style="color: red;"
-													<elseif condition="$vo['registration_state'] eq 已完成" />style="color: #39D21F;"
-												</if>
-											>
-												<span class="zh-span-registrantion-state" id="zh-span-update-state" >
-													{$vo.registration_state}
-												</span>
-											</td>
-											<!--<td>{$vo.registration_state}</td>-->
-											<!--<if condition="$vo['state'] eq 关闭">style="color:red;"</if>-->
-											<!--<td <if condition="$vo['registration_state'] eq 已完成">style="color:#39D21F;"</if>>-->
-											<!--<td <if condition="$vo['registration_state'] eq 已完成">#39D21F</if>>-->
-												<!--style="color: red;"-->
-											<!--<td>-->
-												<!--<span class="zh-span-registrantion-state" id="zh-span-update-state" >{$vo.registration_state}</span>-->
-											<!--</td>-->
-											<!--<td>{$o.registration_state}</td>-->
-											
-											<!--<td style="background-color: <if condition="$vo.registration_state eq '已完成' " > #369E36 <else /> #ff6e6e</if>;cursor: pointer;">
-												<span onclick="editClick1(this)" id="zh-span-update-state" style="display:block;color:#FFFFFF;width: 100%;text-align: center;font-weight: bolder;">{$vo.registration_state}</span>
-											</td>-->
-											<!--<td <if condition = "$vo.registration_state eq '已完成'">#39D21F<else /> #E86A6A </if> >-->
-											<!--<td <if condition = "$vo.registration_state eq '已完成'">#E86A6A<else /> #39D21F </if> >
-												<span class="zh-span-registrantion-state" id="zh-span-update-state" >{$vo.registration_state}</span>
-											</td>-->
-										</tr>
+											<td>{$vo.hospital_doctor_identity}</td>
+											<td>{$vo.hospital_doctor_introduction}</td>
+											<td>{$vo.hospital_doctor_phone}</td>
+											<td>{$vo.hospital_doctor_picture}</td>
+											<td>{$vo.doctor_registration_number}</td>
+											<td>{$vo.registration_predict_money}</td>
+											<td>{$vo.hospital_doctor_sex}</td>
 									</volist>
 								</tbody>
 							</table>
-						<!--</form>-->
-					<!--</div>-->
-				</div>
-			</div>
-			<!--挂号信息显示表结束-->
-			<!--分页开始-->
-			<!--<div class="row">
-				<nav>
-					<ul class="pagination">
-						{$pageResult}
-					</ul>
-				</nav>
-			</div>-->
-			<!--分页结束-->
+						</form>
+					</div>
+				</div>	
+			</div><!--挂号信息显示结束-->
 		</div>
 	</div>
 </div>
-<script>
-	
-//为挂号状态绑定事件
-//		function editClick1(obj){
-//			console.log(123);
-//			console.log(obj.parentNode.parentNode);
-//			var objpp = obj.parentNode.parentNode;
-//			console.log(objpp);
-//			var msg = [];
-//			var json = {};
-//			console.log(objpp.children);
-//			console.log(objpp.children.length);
-//			for (var i=0 ; i<objpp.children.length;i++){
-//				console.log(objpp.children[i].innerText)
-//				msg[i] = objpp.children[i].innerText;
-//			}
-//			var jsonMsg = JSON.stringify(msg);
-//			console.log(msg);
-			
-//			$('#xx-input-hospital-doctor-name-edit').val(msg[2]);
-			//val()中有参数就是赋值，没有就是取值
-//			$('#xx-input-hospital-doctor-identity-edit').val(msg[3]);
-//			$('#selectedKESHI').val(msg[2]);
-//			$('#xx-textarea-hospital-doctor-introduction-edit').val(msg[4]);
-//			$('#xx-input-hospital-doctor-phone-edit').val(msg[5]);
-			
-//			$('#Modal').modal();
-//			$('#zh-span-update-state').modal();Bootstrap 模态框（Modal）插件
-			
-//				$('#Modal').click(function(msg){
-//		console.log(msg);
-//		$.ajax({
-//			type:'post',
-//			url:'__URL__/updateState',
-//			data:{'data':{'registration_state':msg[7],'user_registration_id':msg[0]}},
-//			data:{'data':msg},
-//			dataType:'json',
-//			async:'true',
-//			success:function(result){
-				//连接服务器成功
-				
-//			},
-			
-//		});
-//	}
-</script>
-<script>
-		var SCOPE = {
-			'hang_update_url':'__URL__/updateState',
-			'hang_self_url':'__URL__/hang',
-			'hang_search_url':'__URL__/searchHangInfo',
-		};
-</script>
 <include file="Index/footer" />
