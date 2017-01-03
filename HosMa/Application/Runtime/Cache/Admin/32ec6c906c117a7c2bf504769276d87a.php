@@ -4,8 +4,8 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>社区医院后台管理系统</title>
-		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/admin/login.css" />
+		<link rel="stylesheet" type="text/css" href="/HosMa9/Public/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="/HosMa9/Public/css/admin/login.css" />
 	</head>
 
 	<body>
@@ -45,7 +45,7 @@
 								<!--<input class="form-control" type="text" name="admin_verify" placeholder="请输入验证码" />-->
 							<!--</div>-->
 							<!--<div class="col-sm-5" id="xx-div-val-img">-->
-								<!--<img src="/HosMa7/admin.php/Login/veriyfyImg" />-->
+								<!--<img src="/HosMa9/admin.php/Login/veriyfyImg" />-->
 								<!--javascript:void(0)只有超链接样式，没有跳转-->
 								<!--<a href="javascript:void(0)">点击刷新</a>-->
 							<!--</div>-->
@@ -61,17 +61,17 @@
 				</div>
 			</div>
 		</div>
-		<script type="text/javascript" src="/HosMa7/Public/js/jquery 1.11.1.js"></script>
-		<script type="text/javascript" src="/HosMa7/Public/js/dialog/layer.js"></script>
-		<script type="text/javascript" src="/HosMa7/Public/js/admin/login.js"></script>
-		<script type="text/javascript" src="/HosMa7/Public/js/loginDialog.js"></script>
-		<script type="text/javascript" src="/HosMa7/Public/js/admin/login.js" ></script>
+		<script type="text/javascript" src="/HosMa9/Public/js/jquery 1.11.1.js"></script>
+		<script type="text/javascript" src="/HosMa9/Public/js/dialog/layer.js"></script>
+		<script type="text/javascript" src="/HosMa9/Public/js/admin/login.js"></script>
+		<script type="text/javascript" src="/HosMa9/Public/js/loginDialog.js"></script>
+		<script type="text/javascript" src="/HosMa9/Public/js/admin/login.js" ></script>
 		<!--写地址用于json路径跳转-->
 		<script>
 			var SCOPE = {
-				'login_url': '/HosMa7/admin.php/Login/check',
-				'success_jump_url': '/HosMa7/admin.php/Index/index',
-				'verify_url': '/HosMa7/admin.php/Login/veriyfyImg',
+				'login_url': '/HosMa9/admin.php/Login/check',
+				'success_jump_url': '/HosMa9/admin.php/Index/index',
+				'verify_url': '/HosMa9/admin.php/Login/veriyfyImg',
 			};
 		</script>
 	</body>

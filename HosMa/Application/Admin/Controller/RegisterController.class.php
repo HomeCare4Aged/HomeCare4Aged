@@ -31,7 +31,7 @@ class RegisterController extends Controller {
 		$page = $_REQUEST['p'] ? $_REQUEST['p'] : 1;
 		//2条分一页
 //		var_dump($condition);exit;
-		$pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 1;
+		$pageSize = $_REQUEST['pageSize'] ? $_REQUEST['pageSize'] : 5;
 		$transfusion = D('HTransfusionInfo') -> findRransfusionID($condition,$page, $pageSize);
 		$infusionCount = D('HTransfusionInfo') -> getInfusionCount($cond);
 //		var_dump($condition);exit;

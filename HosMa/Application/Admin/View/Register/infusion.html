@@ -9,11 +9,16 @@
 				<div class="col-md-6">
 					<form method="post" id="zh-form-search-infusion" action="__ACTION__">
 						<div class="input-group">
-							<span class="input-group-addon">类型</span>
-							<input class="form-control" type="text" placeholder="请输入查询字段" id="zh-input-like-serach-infusion" name="keywords" />
+							<!--<span class="input-group-addon">类型</span>-->
+							<input class="form-control" type="text" placeholder="请输入预约人姓名和预约人状态" id="zh-input-like-serach-infusion" name="keywords" />
 							<div class="input-group-btn">
 								<button class="btn btn-primary" type="submit" id="zh-btn-search-infusion">
 									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div>
+							<div class="col-md-3">
+								<button type="button" class="btn btn-primary" id="zh-btn-refresh">刷新				
+									<span class="glyphicon glyphicon-refresh"></span>
 								</button>
 							</div>
 						</div>
@@ -54,17 +59,17 @@
 										<td>取消时间</td>
 										<td>预约状态</td>
 									</tr>
-									<tr>
+									<!--<tr>-->
 										<!--<td>25393</td>-->
-										<td>预约人姓名</td>
+										<!--<td>李大爷</td>-->
 										<!--<td>预约医生姓名</td>-->
-										<td>2016-12-21</td>
-										<td>上午9点</td>
-										<td>中午12点</td>
-										<td>上午9点15</td>
-										<td>取消时间</td>
-										<td>未完成</td>
-									</tr>
+										<!--<td>2016-12-21</td>-->
+										<!--<td>上午9点</td>-->
+										<!--<td>中午12点</td>-->
+										<!--<td>上午9点15</td>-->
+										<!--<td>取消时间</td>-->
+										<!--<td>未完成</td>-->
+									<!--</tr>-->
 									<volist name="transfusion" id="vo">
 										<tr>
 											<td class="zh-td-hide-user-transfusion-id">{$vo.user_transfusion_id}</td>
@@ -114,6 +119,7 @@
 	var SCOPE = {
 		'infusion_url':'__URL__/updateInfusionState',
 		'infusion_self_url':'__URL__/infusion',
+		'refresh_url':'__ACTION__',
 	};
 </script>
 <include file="Index/footer" />
