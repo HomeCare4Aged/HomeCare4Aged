@@ -20,6 +20,9 @@ body{
 .m_white{
 	background: #FFFFFF;
 }
+.m_green2DropIn{
+	background: rgb(48,182,156);
+}
 .m_gray_text{
 	color: rgb(97,98,99);
 }
