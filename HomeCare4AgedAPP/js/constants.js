@@ -1,9 +1,9 @@
 //域名
 
-const SERVERURL = 'http:/10.96.127.234/HomeCare4AgedPHP/index.php/Home/';
+//const SERVERURL = 'http:/10.96.127.234/HomeCare4AgedPHP/index.php/Home/';
 
-//const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
-const MESSAGEURL = 'http://10.96.127.234/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
+const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
+const MESSAGEURL = 'http://192.168.136.1/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 
 //定义比例
 const SCALE = window.screen.width / 320;

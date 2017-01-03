@@ -6,18 +6,54 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/takeOut/index.css" />
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<header class="mui-bar mui-bar-nav m_orange2"> 
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">外卖</h1>
+			<div id="zz-div-address" class="mui-bar top60px " style="height: 70px;">
+				<h5 class="black-text" id="zz-h5-address" style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-left: 15px;">aa</h5>
+				<h5 class="black-text" style="font-weight: bold; font-size: 30px;float: right;margin-top: -37px;margin-right: 10px;">></h5>
+			</div>
 		</header>
 		
 		
+		
+		
+		
+		
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+		//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+			});
+			
+			mui.plusReady(function () {
+//			    plus.nativeUI.showWaiting();
+//				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
+				window.addEventListener('refresh', function() {
+					plus.navigator.setStatusBarBackground('#FF692C');
+				});
+				plus.navigator.setStatusBarBackground('#FF692C');
+				var address = document.getElementById('zz-h5-address');
+				var userAddress = localStorage.community_user_address;
+				address.innerHTML = '送至：'+userAddress;
+			});
 		</script>
 	</body>
 
