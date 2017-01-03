@@ -46,15 +46,15 @@
 		<script type="text/javascript">
 			mui.init()
 			mui.plusReady(function() {
-				localStorage.autoLoginIn = 'true';
-				if(!isNullStr(localStorage.community_user_phone) &&
-					!isNullStr(localStorage.community_user_psw &&
-						localStorage.autoLoginIn == 'true')) {
-					var postData = {};
-					postData['community_user_phone'] = localStorage.community_user_phone;
-					postData['community_user_password'] = localStorage.community_user_psw;
-					findUserInfo(postData);
-				}
+//				localStorage.autoLoginIn = 'true';
+//				if(!isNullStr(localStorage.community_user_phone) &&
+//					!isNullStr(localStorage.community_user_psw &&
+//						localStorage.autoLoginIn != 'true')) {
+//					var postData = {};
+//					postData['community_user_phone'] = localStorage.community_user_phone;
+//					postData['community_user_password'] = localStorage.community_user_psw;
+//					findUserInfo(postData);
+//				}
 
 				//获取所在城市
 				plus.geolocation.getCurrentPosition(function(p) {
@@ -114,25 +114,28 @@
 							var community_hospitals_id; //社区医院内码
 							var state; //状态
 
-							localStorage.setItem(community_user_id, data.data.community_user_id);
-							console.log(localStorage.getItem(community_user_id));
-							localStorage.setItem(community_user_phone, data.data.community_user_phone);
-							console.log(localStorage.getItem(community_user_phone));
+							localStorage.community_user_id = data.data.community_user_id;
+							console.log(localStorage.community_user_id);
+							localStorage.community_user_phone = data.data.community_user_phone;
+							console.log(localStorage.community_user_phone);
 
-							localStorage.setItem(community_user_name, data.data.community_user_name);
-							console.log(localStorage.getItem(community_user_name));
-							localStorage.setItem(community_user_sex, data.data.community_user_sex);
-							console.log(localStorage.getItem(community_user_sex));
-							localStorage.setItem(community_user_picture, data.data.community_user_picture);
-							console.log(localStorage.getItem(community_user_picture));
-							localStorage.setItem(community_user_address, data.data.community_user_address);
-							console.log(localStorage.getItem(community_user_address));
-							localStorage.setItem(community_id, data.data.community_id);
-							console.log(localStorage.getItem(community_id));
-							localStorage.setItem(community_hospitals_id, data.data.community_hospitals_id);
-							console.log(localStorage.getItem(community_hospitals_id));
+							localStorage.community_user_name = data.data.community_user_name;
+							console.log(localStorage.community_user_name);
+							localStorage.community_user_sex = data.data.community_user_sex;
+							console.log(localStorage.community_user_sex);
+							localStorage.community_user_picture =data.data.community_user_picture;
+							console.log(localStorage.community_user_picture);
+							localStorage.community_user_address = data.data.community_user_address;
+							console.log(localStorage.community_user_address);
+							localStorage.community_id = data.data.community_id ;
+							console.log(localStorage.community_id);
+							localStorage.community_hospitals_id = data.data.community_hospitals_id;
+							console.log(localStorage.community_hospitals_id);
+					
+							
+							
 							var psw = document.getElementById('zz-input-psw').value;
-
+							
 							// 获取所有Webview窗口
 							var curr = plus.webview.currentWebview();
 							var wvs = plus.webview.all();

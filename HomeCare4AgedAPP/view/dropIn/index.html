@@ -6,23 +6,45 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/index.css" />
+		<link rel="stylesheet" href="../../css/video/index.css" />
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav">
+		<header class="mui-bar mui-bar-nav m_green2DropIn">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">上门</h1>
+			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
+				<h5 id="g-address" class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;"></h5>
+			</div>
 		</header>
-		<div class="mui-content">
-		    <video width="320" height="240" controls>
-			  <source src="../../m.mp4"></source>
-			  <!--<source src="movie.ogg" type="video/ogg">-->
-			  您的浏览器不支持 HTML5 video 标签。
-			</video>
+		<div class="mui-content" style="margin-top: 60px;">
+			
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+			});
+			mui.plusReady(function() {
+			document.getElementById('g-address').innerHTML = "送至：" + localStorage.getItem('community_user_address');
+			
+//				var nwaiting = plus.nativeUI.showWaiting();
+				plus.navigator.setStatusBarBackground('#30B69C');
+
+
+			});
 		</script>
 	</body>
 
