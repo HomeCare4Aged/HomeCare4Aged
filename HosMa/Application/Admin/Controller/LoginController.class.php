@@ -5,7 +5,7 @@ import("XXKit.Constants");
 class LoginController extends Controller {
 	//登录页面
 	public function index() {
-		if (session(C('ADMIN_SESSION'))) {
+		if (session(C('DOCTOR_SESSION'))) {
 			//重定向到首页index.html
 			$this -> redirect('Admin/Index/index');
 		}
@@ -56,10 +56,18 @@ class LoginController extends Controller {
 				return ajaxReturn(0, '医院编号输入有误');
 			} else {
 				$result = D('HHospitalUserInfo') -> findUserPassword($res, $employeeNumber);
-//				$admin_info['user_id'] = $result['user_id'];
-//				//假设查出来一个$limit;
-//				$admin_info['user_limit'] = $limit['limit'];
-//				$admin_info['login_hospital'] = $res['hospital'];
+				//员工内码
+//				$loginReturnValue['hospital_user_id'] = $result['hospital_user_id']
+//				//医院内码
+//				$loginReturnValue['community_hospitals_id'] = $result['community_hospitals_id']
+//				//员工姓名
+//				$loginReturnValue['hospital_user_name'] = $result['hospital_user_name']
+//				//员工工号
+//				$loginReturnValue['hospital_user_no'] = $result['hospital_user_no']
+//				//登录密码
+//				$loginReturnValue['hospital_user_psw'] = $result['hospital_user_psw']
+//				//状态
+//				$loginReturnValue['state'] = $result['state']
 				if ($result == null) {
 					//医院编号与员工工号不匹配，说明该医院没有该员工
 					return ajaxReturn(0, '医院编号与员工工号不匹配');
@@ -70,7 +78,7 @@ class LoginController extends Controller {
 					if ($loginPassword === $loginPsw) {
 						//成功登录，存储数据（医院内码，员工编号，等信息），缓存信息有时间限制
 						//使用C()方法读取配置文件中的会话,把$result值存在ADMIN_SESSION下 去登陆时判断会话，登录过就重定向到其它页面
-						session(C('ADMIN_SESSION'), $result);
+						session(C('DOCTOR_SESSION'), $result);
 					} else {
 						//密码错误
 						return ajaxReturn(0, '员工工号的密码错误');
@@ -86,7 +94,7 @@ class LoginController extends Controller {
 	//写一个退出的方法,退出登录
 	public function loginOut() {
 		//把会话清空然后重定向
-		session(C('ADMIN_SESSION'),null);
+		session(C('DOCTOR_SESSION'), null);
 		return $this -> redirect('Admin/Login/index');
 	}
 

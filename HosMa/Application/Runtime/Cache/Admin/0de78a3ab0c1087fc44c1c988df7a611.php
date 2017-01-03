@@ -5,21 +5,28 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>社区医院管理系统</title>
-		<link rel="stylesheet" type="text/css" href="/hosma/Public/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="/hosma/Public/css/vendor/metisMenu/metisMenu.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/hosma/Public/css/sb-admin-2.css"/>
-		<link rel="stylesheet" type="text/css" href="/hosma/Public/css/vendor/font-awesome/css/font-awesome.min.css"/>
-		<link rel="stylesheet" href="/hosma/Public/css/admin/common.css" />
-		<link rel="stylesheet" href="/hosma/Public/css/vendor/uploadify/uploadify.css" />
-		<link rel="stylesheet" type="text/css" href="/hosma/Public/css/daterangepicker-bs3.css"/>
-		<link rel="stylesheet" type="text/css" href="/hosma/Public/css/dataTable/jquery.dataTables.min.css" />
-		
-		<script type="text/javascript" src="/hosma/Public/js/jquery 1.11.1.js"></script>
-		<script type="text/javascript" src="/hosma/Public/js/bootstrap.js"></script>
-		<script type="text/javascript" src="/hosma/Public/js/dialog/layer.js"></script>
-		<script type="text/javascript" src="/hosma/Public/js/dialog.js"></script>
-		<script type="text/javascript" src="/hosma/Public/js/vendor/uploadify/jquery.uploadify.js" ></script>
-		<script type="text/javascript" src="/hosma/Public/js/vendor/kindeditor/kindeditor-all.js" ></script>		
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/vendor/metisMenu/metisMenu.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/sb-admin-2.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/vendor/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="/HosMa7/Public/css/admin/common.css" />
+		<link rel="stylesheet" href="/HosMa7/Public/css/vendor/uploadify/uploadify.css" />
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/daterangepicker-bs3.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/dataTable/jquery.dataTables.min.css" />
+		<!--挂号-->
+		<link rel="stylesheet" href="/HosMa7/Public/css/admin/hang.css" />
+		<!--输液-->
+		<link rel="stylesheet" href="/HosMa7/Public/css/admin/infusion.css" />
+		<script type="text/javascript" src="/HosMa7/Public/js/jquery 1.11.1.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/dialog/layer.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/dialog.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/vendor/uploadify/jquery.uploadify.js" ></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/vendor/kindeditor/kindeditor-all.js" ></script>		
+		<!--挂号-->
+		<script type="text/javascript" src="/HosMa7/Public/js/admin/hang.js" ></script>
+		<!--输液-->
+		<script type="text/javascript" src="/HosMa7/Public/js/admin/infusion.js" ></script>
 	</head>
 	<body>
 
@@ -46,7 +53,7 @@
 				</li>
 				<li class="divider"></li>
 				<li>
-						<a href="/hosma/admin.php/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
+						<a href="/HosMa7/admin.php/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
 				</li>
 			</ul>
 		</li>
@@ -55,7 +62,7 @@
         <div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
 				<li>
-					<a href="/hosma/admin.php/Index/index.html"><i class="fa fa-fw fa-home"></i>首页</a>
+					<a href="/HosMa7/admin.php/Index/index.html"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
 					<a href="#">
@@ -63,16 +70,16 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/hosma/admin.php/Hospital/index.html">医院信息</a>
+		                    <a href="/HosMa7/admin.php/Hospital/index.html">医院信息</a>
 		                </li>
 		                <li>
-		                    <a href="/hosma/admin.php/Department/index.html">科室信息</a>
+		                    <a href="/HosMa7/admin.php/Department/index.html">科室信息</a>
 		                </li>
 		                <li>
-		                	<a href="/hosma/admin.php/Doctor/index.html">医生信息</a>
+		                	<a href="/HosMa7/admin.php/Doctor/index.html">医生信息</a>
 		                </li>
 		                <li>
-		                	<a href="/hosma/admin.php/User/index.html">员工信息</a>
+		                	<a href="/HosMa7/admin.php/User/index.html">员工信息</a>
 		                </li>
 		            </ul>
 		            <!-- /.nav-second-level二级目录下拉 -->
@@ -83,7 +90,7 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/hosma/admin.php/Schedule/index.html">排班信息录入</a>
+		                    <a href="/HosMa7/admin.php/Schedule/index.html">排班信息录入</a>
 		                </li>
 		            </ul>
 				</li>
@@ -93,10 +100,10 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/hosma/admin.php/Register/index.html">号池信息录入</a>
+		                    <a href="/HosMa7/admin.php/Register/hang.html">挂号信息显示</a>
 		                </li>
 		                <li>
-		                    <a href="/hosma/admin.php/Register/info.html">挂号信息显示</a>
+		                    <a href="/HosMa7/admin.php/Register/infusion.html">输液信息显示</a>
 		                </li>
 		            </ul>
 				</li>
@@ -106,28 +113,20 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/hosma/admin.php/Noticle/index.html">公告审核</a>
+		                    <a href="/HosMa7/admin.php/Noticle/index.html">公告审核</a>
 		                </li>
 		                <!--<li>-->
-		                    <!--<a href="/hosma/admin.php/Noticle/add.html">公告发布</a>-->
+		                    <!--<a href="/HosMa7/admin.php/Noticle/add.html">公告发布</a>-->
 		                <!--</li>-->
 		                <li>
-		                    <a href="/hosma/admin.php/Noticle/review.html">公告管理</a>
+		                    <a href="/HosMa7/admin.php/Noticle/review.html">公告管理</a>
 		                </li>
 		            </ul>
 				</li>
 				<li>
-					<a href="#">
-						<i class="fa fa-fw fa-cogs"></i>视频栏<span class="fa arrow"></span>
+					<a href="/HosMa7/admin.php/Account/index.html">
+						<i class="fa fa-fw fa-cogs"></i>账户信息<span class="fa arrow"></span>
 					</a>
-					<ul class="nav nav-second-level">
-		                <li>
-		                    <a href="/hosma/admin.php/Video/index.html">视频信息预览</a>
-		                </li>
-		                <li>
-		                    <a href="/hosma/admin.php/Video/add.html">视频发布</a>
-		                </li>
-		            </ul>
 				</li>
 			</ul>
 		</div>
@@ -142,7 +141,7 @@
 					<ol class="breadcrumb">
 						<li>
 							<i class="fa fa-fw fa-table"></i>
-							<a href="/hosma/admin.php/Noticle/review">公告管理</a>	
+							<a href="/HosMa7/admin.php/Noticle/review">公告管理</a>	
 						</li>
 						<li class="active">
 							<i class="fa fa-fw fa-history"></i>历史纪录
@@ -154,7 +153,7 @@
 			<div class="row">
 				<div class="col-sm-12">
 					<!--<div class="col-lg-6">-->
-						<form class="form-horizontal" action="/hosma/admin.php/Noticle/history" method="post">
+						<form class="form-horizontal" action="/HosMa7/admin.php/Noticle/history" method="post">
 						<div class="form-group">
 						<!--<div class="col-sm-2">
 						<select name="xx-select-user" id="xx-select-choosse" class="form-control">
@@ -221,17 +220,17 @@
 </div>	
 <script>
 	var SCOPE={
-		'add_url':'/hosma/admin.php/Noticle/add',
-		'edit_url':'/hosma/admin.php/Noticle/edit',
-		'set_status_url':'/hosma/admin.php/Noticle/setStatus',
-		'list_order_url':'/hosma/admin.php/Noticle/listOrder',
-		'success_refresh_url':'/hosma/admin.php/Noticle/history',
+		'add_url':'/HosMa7/admin.php/Noticle/add',
+		'edit_url':'/HosMa7/admin.php/Noticle/edit',
+		'set_status_url':'/HosMa7/admin.php/Noticle/setStatus',
+		'list_order_url':'/HosMa7/admin.php/Noticle/listOrder',
+		'success_refresh_url':'/HosMa7/admin.php/Noticle/history',
 	};
 	$("#xx-select-type").on('change',function(){
 		var selectedValue = $(this).val();
 		$.ajax({
 			type:"post",
-			url:"/hosma/admin.php/Noticle/getHistory",
+			url:"/HosMa7/admin.php/Noticle/getHistory",
 			async:true,
 			data:{'selectedValue':selectedValue},
 			dataType:'json',
@@ -343,23 +342,23 @@
 		var objpp = obj.parentNode.parentNode;
 		var id = objpp.children[0].innerText;
 		var num = objpp.children[2].innerText;
-		location.href = '/hosma/admin.php/Noticle/edit'+'?id='+id+'&num='+num;
+		location.href = '/HosMa7/admin.php/Noticle/edit'+'?id='+id+'&num='+num;
 	}
 	function clickHistory(obj){
 		var objpp = obj.parentNode.parentNode;
 		var id = objpp.children[0].innerText;
 //		console.log(id);
 		var postData={};
-		location.href = '/hosma/admin.php/Noticle/history'+'?id='+id;	
+		location.href = '/HosMa7/admin.php/Noticle/history'+'?id='+id;	
 	}
 </script>
 	
-	<script type="text/javascript" src="/hosma/Public/js/vendor/metisMenu/metisMenu.min.js"></script>
-	<script type="text/javascript" src="/hosma/Public/js/sb-admin-2.js"></script>
-	<script type="text/javascript" src="/hosma/Public/js/constants.js"></script>
-	<script type="text/javascript" src="/hosma/Public/js/admin/common.js"></script>
-	<script type="text/javascript" src="/hosma/Public/js/moment.js"></script>
-	<script type="text/javascript" src="/hosma/Public/js/daterangepicker.js"></script>
-	<script type="text/javascript" src="/hosma/Public/js/dataTable/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/vendor/metisMenu/metisMenu.min.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/sb-admin-2.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/constants.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/admin/common.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/moment.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/daterangepicker.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/dataTable/jquery.dataTables.min.js"></script>
 	</body>
 </html>

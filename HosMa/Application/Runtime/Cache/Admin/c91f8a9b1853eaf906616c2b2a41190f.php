@@ -3,21 +3,21 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>社区医院管理系统</title>
-		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/vendor/metisMenu/metisMenu.min.css"/>
-		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/sb-admin-2.css"/>
-		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/vendor/font-awesome/css/font-awesome.min.css"/>
-		<link rel="stylesheet" href="/HosMa/Public/css/admin/common.css" />
-		<link rel="stylesheet" href="/HosMa/Public/css/vendor/uploadify/uploadify.css" />
-		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/daterangepicker-bs3.css"/>
-		<link rel="stylesheet" type="text/css" href="/HosMa/Public/css/dataTable/jquery.dataTables.min.css" />
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/vendor/metisMenu/metisMenu.min.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/sb-admin-2.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/vendor/font-awesome/css/font-awesome.min.css"/>
+		<link rel="stylesheet" href="/HosMa7/Public/css/admin/common.css" />
+		<link rel="stylesheet" href="/HosMa7/Public/css/vendor/uploadify/uploadify.css" />
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/daterangepicker-bs3.css"/>
+		<link rel="stylesheet" type="text/css" href="/HosMa7/Public/css/dataTable/jquery.dataTables.min.css" />
 		
-		<script type="text/javascript" src="/HosMa/Public/js/jquery 1.11.1.js"></script>
-		<script type="text/javascript" src="/HosMa/Public/js/bootstrap.js"></script>
-		<script type="text/javascript" src="/HosMa/Public/js/dialog/layer.js"></script>
-		<script type="text/javascript" src="/HosMa/Public/js/dialog.js"></script>
-		<script type="text/javascript" src="/HosMa/Public/js/vendor/uploadify/jquery.uploadify.js" ></script>
-		<script type="text/javascript" src="/HosMa/Public/js/vendor/kindeditor/kindeditor-all.js" ></script>		
+		<script type="text/javascript" src="/HosMa7/Public/js/jquery 1.11.1.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/bootstrap.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/dialog/layer.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/dialog.js"></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/vendor/uploadify/jquery.uploadify.js" ></script>
+		<script type="text/javascript" src="/HosMa7/Public/js/vendor/kindeditor/kindeditor-all.js" ></script>		
 	</head>
 	<body>
 
@@ -42,7 +42,7 @@
 				</li>
 				<li class="divider"></li>
 				<li>
-						<a href="/HosMa/admin.php/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
+						<a href="/HosMa7/admin.php/Login/loginOut"><i class="fa fa-fw fa-power-off"></i>注销</a>
 				</li>
 			</ul>
 		</li>
@@ -51,7 +51,7 @@
         <div class="sidebar-nav navbar-collapse">
 			<ul class="nav" id="side-menu">
 				<li>
-					<a href="/HosMa/admin.php/Index/index.html"><i class="fa fa-fw fa-home"></i>首页</a>
+					<a href="/HosMa7/admin.php/Index/index.html"><i class="fa fa-fw fa-home"></i>首页</a>
 				</li>
 				<li>
 					<a href="#">
@@ -59,16 +59,16 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/HosMa/admin.php/Hospital/index.html">医院信息</a>
+		                    <a href="/HosMa7/admin.php/Hospital/index.html">医院信息</a>
 		                </li>
 		                <li>
-		                    <a href="/HosMa/admin.php/Department/index.html">科室信息</a>
+		                    <a href="/HosMa7/admin.php/Department/index.html">科室信息</a>
 		                </li>
 		                <li>
-		                	<a href="/HosMa/admin.php/Doctor/index.html">医生信息</a>
+		                	<a href="/HosMa7/admin.php/Doctor/index.html">医生信息</a>
 		                </li>
 		                <li>
-		                	<a href="/HosMa/admin.php/User/index.html">员工信息</a>
+		                	<a href="/HosMa7/admin.php/User/index.html">员工信息</a>
 		                </li>
 		            </ul>
 		            <!-- /.nav-second-level二级目录下拉 -->
@@ -79,7 +79,7 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/HosMa/admin.php/Schedule/index.html">排班信息录入</a>
+		                    <a href="/HosMa7/admin.php/Schedule/index.html">排班信息录入</a>
 		                </li>
 		            </ul>
 				</li>
@@ -89,10 +89,10 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/HosMa/admin.php/Register/index.html">号池信息录入</a>
+		                    <a href="/HosMa7/admin.php/Register/infusion.html">号池信息录入</a>
 		                </li>
 		                <li>
-		                    <a href="/HosMa/admin.php/Register/info.html">挂号信息显示</a>
+		                    <a href="/HosMa7/admin.php/Register/hang.html">挂号信息显示</a>
 		                </li>
 		            </ul>
 				</li>
@@ -102,18 +102,18 @@
 					</a>
 					<ul class="nav nav-second-level">
 		                <li>
-		                    <a href="/HosMa/admin.php/Noticle/index.html">公告审核</a>
+		                    <a href="/HosMa7/admin.php/Noticle/index.html">公告审核</a>
 		                </li>
 		                <!--<li>-->
-		                    <!--<a href="/HosMa/admin.php/Noticle/add.html">公告发布</a>-->
+		                    <!--<a href="/HosMa7/admin.php/Noticle/add.html">公告发布</a>-->
 		                <!--</li>-->
 		                <li>
-		                    <a href="/HosMa/admin.php/Noticle/review.html">公告管理</a>
+		                    <a href="/HosMa7/admin.php/Noticle/review.html">公告管理</a>
 		                </li>
 		            </ul>
 				</li>
 				<li>
-					<a href="#">
+					<a href="/HosMa7/admin.php/Account/index.html">
 						<i class="fa fa-fw fa-cogs"></i>账户信息<span class="fa arrow"></span>
 					</a>
 				</li>
@@ -215,20 +215,20 @@
 </div>
 <script>
 	var SCOPE = {
-		'add_url':'/HosMa/admin.php/Noticle/add',
-		'success_jump_url':'/HosMa/admin.php/Noticle/review',
-		'ajax_upload_swf':'/HosMa/Public/js/vendor/uploadify/uploadify.swf',//图片地址
-		'ajax_upload_url':'/HosMa/admin.php/Noticle/ajaxUploadImage',//图片上传控制器地址
-		'return_url':'/HosMa/admin.php/Noticle/review',
+		'add_url':'/HosMa7/admin.php/Noticle/add',
+		'success_jump_url':'/HosMa7/admin.php/Noticle/review',
+		'ajax_upload_swf':'/HosMa7/Public/js/vendor/uploadify/uploadify.swf',//图片地址
+		'ajax_upload_url':'/HosMa7/admin.php/Noticle/ajaxUploadImage',//图片上传控制器地址
+		'return_url':'/HosMa7/admin.php/Noticle/review',
 	}
 </script>
 		
-	<script type="text/javascript" src="/HosMa/Public/js/vendor/metisMenu/metisMenu.min.js"></script>
-	<script type="text/javascript" src="/HosMa/Public/js/sb-admin-2.js"></script>
-	<script type="text/javascript" src="/HosMa/Public/js/constants.js"></script>
-	<script type="text/javascript" src="/HosMa/Public/js/admin/common.js"></script>
-	<script type="text/javascript" src="/HosMa/Public/js/moment.js"></script>
-	<script type="text/javascript" src="/HosMa/Public/js/daterangepicker.js"></script>
-	<script type="text/javascript" src="/HosMa/Public/js/dataTable/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/vendor/metisMenu/metisMenu.min.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/sb-admin-2.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/constants.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/admin/common.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/moment.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/daterangepicker.js"></script>
+	<script type="text/javascript" src="/HosMa7/Public/js/dataTable/jquery.dataTables.min.js"></script>
 	</body>
 </html>

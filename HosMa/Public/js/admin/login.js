@@ -1,7 +1,17 @@
 $(document).ready(function() {
+	//监听键盘的“Enter”，登录
+	document.onkeydown = function(){
+		if(event.keyCode == 13){
+//			alert('enter');
+			enterLogin();
+		}
+	}
 	//登录按钮绑定事件
-	$('#xx-btn-login').click(function() {
-		//拿到input标签拼接键和值
+//	$('#xx-btn-login').click(login);
+//	function login(){
+	$('#zh-btn-login').click(enterLogin);
+	function enterLogin(){
+				//拿到input标签拼接键和值
 		var hospitalNumber = $('input[name="community_hospital_numbers"]').val();
 		var employeeNumber= $('input[name="hospital_user_no"]').val();
 		var loginPassword = $('input[name="hospital_user_psw"]').val();
@@ -21,8 +31,8 @@ $(document).ready(function() {
 //			return login.error('验证码不能为空！');
 //		}
 		//表单提交序列化事件
-		var formData = $('#xx-form-login').serializeArray();
-//		console.log(formData);
+		var formData = $('#zh-form-login').serializeArray();
+		console.log(formData);
 		//把formData转换为json
 		var postData = {};
 		$(formData).each(function(i) {
@@ -43,13 +53,18 @@ $(document).ready(function() {
 				if(reslut0.status == 0) {
 					return login.error(reslut0.msg);
 				}
+//				if(reslut0.status == 1) {
+//					//SCOPE=__ROOT__/adminDoctor/Index/index,登录成功后跳转到首页
+//					return login.success(reslut0.msg, SCOPE.success_jump_url);
+//				}
 				if(reslut0.status == 1) {
-					//SCOPE=__ROOT__/adminDoctor/Index/index,登录成功后跳转到首页
-					return login.success(reslut0.msg, SCOPE.success_jump_url);
+					if(reslut0.msg == '登录成功啦'){
+						location.href = SCOPE.success_jump_url;
+					}
 				}
 			},
 		});
-	});
+	}
 });
 
 //$('#xx-div-val-img a').click(function(){
