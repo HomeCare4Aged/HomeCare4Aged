@@ -19,7 +19,7 @@
 			<div class="row">
 				<div class="col-sm-3">
 					<select class="form-control" name="hospital_doctor_id" id="hy-select-name-search">
-					  <option value="10086">选择医生姓名</option>
+					  <option value="10086">全部医生</option>
 					  <volist name="doctor" id="vo">
 					  <option value="{$vo.hospital_doctor_id}">{$vo.hospital_doctor_name}</option>
 					  </volist>
@@ -44,7 +44,7 @@
 				</div>
 			</div>
               <br />
-			<div class="row">
+			<div class="row pre-scrollable">
 				<div class="col-md-12">
 					<div class="table-responsive">
 						<form id="xx-form-list" class="">
@@ -76,11 +76,13 @@
 						</form>
 						<nav>
 							<ul class="pagination" id="pageRes">
-								{$pageRes}{$res.pageRes}
+								{$pageRes}
+								<!--{$res.pageRes}-->
 							</ul>
 						</nav>
 					</div>
 				</div>	
+				<!--模态框-->
 				<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 					<div class="modal-dialog">
 						<div class="modal-content">
