@@ -7,21 +7,26 @@
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
-		<link rel="stylesheet" href="../../css/registration/index.css" />
-		<link rel="stylesheet" href="../../css/video/index.css" />
+		<link rel="stylesheet" href="../../css/dropIn/index.css" />
 	</head>
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_green2DropIn">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">上门</h1>
-			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
-				<h5 id="g-address" class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;"></h5>
+			<div id="zz-div-address" class="mui-bar top60px" style="height: 90px;">
+				<h5 class="grayText" id="zz-h5-address" style="font-weight: bold; font-size: 30px; float: left; margin-left: 15px; padding-top: 1%;padding-bottom: 6%;width: 85%; line-height: 30px; margin-right: 0px;"></h5>
+				<img id="zz-h5-go" src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -70px;margin-right: 10px;"/>
 			</div>
 		</header>
-		<div class="mui-content" style="margin-top: 60px;">
-			
-		</div>
+		<ul class="mui-table-view" id="list_ul">
+			<li id="g-li" class="mui-table-view-cell mui-media">
+				<div class="marginLeftRight">
+					<h1 class="blackTitle">家政清洁</h1>
+					<h3 class="grayText">17个服务</h3>
+				</div>
+			</li>
+		</ul>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
@@ -37,13 +42,88 @@
 					return true;
 				},
 			});
+
 			mui.plusReady(function() {
-			document.getElementById('g-address').innerHTML = "送至：" + localStorage.getItem('community_user_address');
-			
-//				var nwaiting = plus.nativeUI.showWaiting();
+				//				var nwaiting = plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#30B69C');
 
+				document.getElementById('zz-h5-address').innerHTML = '送至：'+localStorage.community_user_address;
+				var ulHeight = document.getElementById("zz-h5-address");
+				document.getElementById("zz-div-address").setAttribute("style","height:" +ulHeight.offsetHeight+"px;")
+				document.getElementById("zz-h5-go").style.marginTop = "-"+document.getElementById("zz-div-address").offsetHeight/1.3+"px";
+				console.log(document.getElementById("zz-div-address").offsetHeight);
+				var ulMarginTop = document.getElementById("zz-div-address").offsetHeight+60;
+				document.getElementById("list_ul").setAttribute("style","margin-top:"+ulMarginTop +"px;");
+				document.getElementById('g-li').addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../dropIn/serviceList.html',
+					});
+				})
 
+				//				mui.ajax({
+				//					type: 'GET',
+				//					url: SERVERURL + '',
+				//					dataType: "json",
+				//					//成功获取数据赋值
+				//					success: function(data) {
+				//						plus.nativeUI.closeWaiting();
+				//						var doc = document;
+				//						fragment = doc.createDocumentFragment();
+				//						container = doc.getElementById("list_ul");
+				//						mui.each(data.data, function(i) {
+				//							var doc = document;
+				//							li = doc.createElement("li");
+				//							div = doc.createElement("div");
+				//							div1 = doc.createElement("div");
+				//							div2 = doc.createElement("div");
+				//							img = doc.createElement("img");
+				//							h1 = doc.createElement("h1");
+				//							h31 = doc.createElement("h3");
+				//							h32 = doc.createElement("h3");
+				//							li.setAttribute("class", "mui-table-view-cell mui-media");
+				//							div.setAttribute("class", "marginLeftRight");
+				//							div1.setAttribute("class", "mui-media-object mui-pull-left");
+				//							div1.setAttribute("style", "margin-top: 15px;")
+				//							img.setAttribute("src", "../../images/small.png");
+				//							div2.setAttribute("class", "mui-pull-left");
+				//							div2.setAttribute("style", "margin-left: 40px;");
+				//							h1.setAttribute("class", "black-text listCellText");
+				//							h31.setAttribute("class", "m_gray_text");
+				//							h32.setAttribute("class", "m_gray_text");
+				//							h1.innerHTML = data.data[i].hospital_doctor_name;
+				//							h31.innerHTML = data.data[i].identity_name;
+				//							h32.innerHTML = '挂号费：' + data.data[i].registration_money + '元';
+				//							li.id = data.data[i].hospital_doctor_id;
+				//							li.setAttribute('money', data.data[i].registration_money);
+				//							li.addEventListener('tap', function() {
+				//								mui.openWindow({
+				//									url: '../registration/doctorInfo.html',
+				//									extras: {
+				//										hospital_doctor_id: li.id,
+				//										community_hospitals_id: community_hospitals_id,
+				//										hospital_office_id: hospital_office_id,
+				//										registration_money: li.getAttribute('money'),
+				//										hospital_office_name: hospital_office_name,
+				//									},
+				//								});
+				//							});
+				//							li.appendChild(div);
+				//							div.appendChild(div1);
+				//							div.appendChild(div2);
+				//							div1.appendChild(img);
+				//							div2.appendChild(h1);
+				//							div2.appendChild(h31);
+				//							div2.appendChild(h32);
+				//							fragment.appendChild(li);
+				//						});
+				//						container.appendChild(fragment);
+				//					},
+				//					error: function(xhr, type, errorThrown) {
+				//						console.log(type);
+				//						plus.nativeUI.closeWaiting();
+				//						mui.alert('网络连接失败');
+				//					}
+				//				});
 			});
 		</script>
 	</body>

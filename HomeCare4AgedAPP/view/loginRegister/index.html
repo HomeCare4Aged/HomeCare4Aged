@@ -21,7 +21,7 @@
 
 						<div class="mui-input-row">
 							<img src="../../images/loginRegister/iPhone.png" class="zz-img-icon">
-							<input type="tel" id="zz-input-phone" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请输入注册手机" />
+							<input type="tel" id="zz-input-phone" class="mui-input-clear" style="float: left; width: 80%;  font-size: 150%; border: none;" placeholder="请输入手机号" />
 
 						</div>
 					</div>
@@ -46,19 +46,23 @@
 		<script type="text/javascript">
 			mui.init()
 			mui.plusReady(function() {
-//				localStorage.autoLoginIn = 'true';
-//				if(!isNullStr(localStorage.community_user_phone) &&
-//					!isNullStr(localStorage.community_user_psw &&
-//						localStorage.autoLoginIn != 'true')) {
-//					var postData = {};
-//					postData['community_user_phone'] = localStorage.community_user_phone;
-//					postData['community_user_password'] = localStorage.community_user_psw;
-//					findUserInfo(postData);
-//				}
+				console.log(localStorage.community_user_phone);
+				console.log(localStorage.community_user_psw);
+				if(!isNullStr(localStorage.community_user_phone) &&
+					!isNullStr(localStorage.community_user_psw &&
+						localStorage.autoLoginIn == 'true')) {
+					document.getElementById('zz-input-phone').value = localStorage.community_user_phone;
+					document.getElementById('zz-input-psw').value = localStorage.community_user_psw;
+					var postData = {};
+					postData['community_user_phone'] = localStorage.community_user_phone;
+					postData['community_user_password'] = localStorage.community_user_psw;
+					findUserInfo(postData);
+				}
 
 				//获取所在城市
 				plus.geolocation.getCurrentPosition(function(p) {
 					localStorage.GetCity = p.address['city'];
+					console.log(JSON.stringify(p.address));
 				}, function(e) {
 					alert("Geolocation error: " + e.message);
 				});
@@ -133,8 +137,11 @@
 							console.log(localStorage.community_hospitals_id);
 					
 							
-							
-							var psw = document.getElementById('zz-input-psw').value;
+							localStorage.autoLoginIn = 'true';
+							if (isNullStr(localStorage.community_user_psw)) {
+								var psw = document.getElementById('zz-input-psw').value;
+								localStorage.community_user_psw = psw;
+							}
 							
 							// 获取所有Webview窗口
 							var curr = plus.webview.currentWebview();

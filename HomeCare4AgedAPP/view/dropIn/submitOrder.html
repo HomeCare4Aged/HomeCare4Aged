@@ -1,0 +1,172 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/dropIn/index.css" />
+		<link rel="stylesheet" href="../../css/mui.picker.css" />
+		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
+	</head>
+
+	<body style="background: white;">
+		<header class="mui-bar mui-bar-nav m_green2DropIn">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="g-title" class="mui-title">服务信息</h1>
+		</header>
+		<div class="mui-content" style="background: white;">
+			<ul class="mui-table-view">
+				<li class="mui-table-view-cell mui-media" id="list">
+					<div class="marginLeftRight">
+						<div class="mui-media-object mui-pull-left">
+							<img style="width: 40px;margin-left: -20px; margin-top: 20px;" src="../../images/dropIn/compositePath.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 40px;margin-top: -30px;">
+							<h1 id="userInfo" style="font-weight: normal;font-size: 30px;"></h1>
+							<h2 id="userAddress" class="grayText" style="margin-top: 5px;"></h2>
+						</div>
+					</div>
+				</li>
+				<li style="padding-top: 20px;padding-bottom: 20px;padding-left: 25px;">
+					<label class="grayText" style="color: rgb(75,75,75);">选择服务时间</label>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li id="g-li-time" style="padding-top: 20px;padding-bottom: 20px;padding-left: 25px;">
+					<div class="mui-row">
+						<label class="grayText" style="color: rgb(75,75,75);">上门时间 </label>
+					</div>
+					<div id="g-div-time" class="mui-row" style="text-align: center; display: none;margin-top: 15px;">
+						<label id="g-label-time" class="grayText" style="color: rgb(75,75,75);"></label>
+					</div>
+					<div class="" style="text-align: center;margin-top: 15px;">
+						<label style="padding: 2px; color: grey;font-size: 25px;border-color: grey;border-style: solid;border-width: 1px;border-radius: 5px;">点击选择上门时间</label>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class="">
+					<div class="mui-row" style="margin-left: 15px;">
+						<label class="mui-pull-left grayText" style="text-align: left; margin-left: 15px;">保洁时长</label>
+					</div>
+					<div class="mui-row" style="margin-top: 15px;">
+						<div class="mui-pull-left mui-col-xs-3"style="text-align: right;">
+							<img id="g-btn-lessen" class="g-btnActive" src="../../images/dropIn/lessen.png" width="40px" style="" />
+						</div>
+						<div class="mui-col-xs-6"style="text-align: center;">
+							<h1 id="serviceTime" class="grayText" style="margin-top: 5px; margin-left: 10%; font-size: 30px;">￥190.0</h1>
+						</div>
+						<div class="mui-col-xs-3 mui-pull-left"style="text-align: left;">
+							<img id="g-btn-add" class="g-btnActive" src="../../images/dropIn/add.png" width="40px" style="" />
+						</div>
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<label class="mui-col-xs-5 mui-pull-left grayText" style="text-align: left; margin-left: 15px;">价格</label>
+					<label class="mui-col-xs-5 mui-pull-right grayText" style="text-align: right; color: red;margin-right: 10px;">￥100.0</label>
+				</li>
+				<li class="mui-table-view-cell mui-checkbox mui-right">
+					<div class="mui-row mui-col-xs-12">
+						<h1 class="mui-pull-left mui-col-xs-10 g-inputText" style="margin-left: 15px;padding-right: 20px;">使用我们提供的工具</h1>
+						<input id="g-input-service" class="mui-col-xs-2" name="checkbox" type="checkbox">
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view">
+				<li class=" mui-table-view-cell ">
+					<h1 class="mui-col-xs-5 mui-pull-left grayText" style="margin-left: 15px;text-align: left;">支付方式</h1>
+					<h1 class="mui-col-xs-5 mui-pull-right grayText" style="margin-right: 10px;text-align: right;">上门付款</h1>
+				</li>
+			</ul>
+
+			<div class="mui-row marginLeftRight " style="background: white;">
+				<button id="g-btn" type="button" class="zz-btn-next">立即预约</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+			});
+			mui.plusReady(function() {
+				//				var nwaiting = plus.nativeUI.showWaiting();
+				document.getElementById('userInfo').innerHTML = localStorage.community_user_name + ' ' + localStorage.community_user_phone;
+				document.getElementById('userAddress').innerHTML = localStorage.community_user_address;
+				document.getElementById('g-li-time').addEventListener('tap', function() {
+
+				});
+				var count = 0.5;
+				document.getElementById('serviceTime').innerHTML = count+'小时'
+				document.getElementById('g-btn-lessen').addEventListener('tap',function () {
+					if (count == 0) {
+						return;	
+					}
+					count -= 0.5;
+					document.getElementById('serviceTime').innerHTML = count+'小时'
+				});
+				document.getElementById('g-btn-add').addEventListener('tap',function () {
+					if (count == 12) {
+						return;	
+					}
+					count += 0.5;
+					document.getElementById('serviceTime').innerHTML = count+'小时'
+				});
+				
+
+				document.getElementById('g-btn').addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../dropIn/finish.html',
+					});
+				})
+			});
+			(function($, doc) {
+				$.ready(function() {
+
+					//普通示例
+					var userPicker = new $.PopPicker();
+					var days = getDays(7);
+
+					var setData = new Array()
+					for(var i = 0; i < days.length; i++) {
+						var data = {};
+						data['value'] = i;
+						data['text'] = days[i] + ' 上午';
+						setData.push(data);
+
+						var data = {};
+						data['value'] = i + 1;
+						data['text'] = days[i] + ' 下午';
+						setData.push(data);
+
+					}
+					var date = new Date();
+					if(date.getHours() >= 12) {
+						setData.splice(0, 1);
+					}
+					if(date.getHours() >= 17) {
+						setData.splice(0, 1);
+					}
+
+					userPicker.setData(setData);
+					var showUserPickerButton = doc.getElementById('g-li-time');
+					var userResult = doc.getElementById('g-label-time');
+					showUserPickerButton.addEventListener('tap', function(event) {
+						userPicker.show(function(items) {
+							var str = JSON.stringify(items[0]['text']);
+							str = str.substr(1, str.length - 2);
+							registrationTime = str;
+							userResult.innerHTML = str;
+							document.getElementById('g-div-time').style.display = '';
+						});
+					}, false);
+				});
+			})(mui, document);
+		</script>
+	</body>
+
+</html>

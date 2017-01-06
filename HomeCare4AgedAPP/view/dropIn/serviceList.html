@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/dropIn/index.css" />
+	</head>
+
+	<body style="background: white;">
+		<header class="mui-bar mui-bar-nav m_green2DropIn">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="g-title" class="mui-title">家政清洁</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media" id="g-li">
+					<div class="marginLeftRight">
+						<div class="mui-media-object mui-pull-left"style="margin-left: -5%;margin-top: 15px;">
+							<img style="width: 80px; height: 80px;"  src="../../images/small.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 15%;">
+							<h1 class="blackTitleNormal" >家庭清洁</h1>
+							<h3 class="grayText" style="margin-top: 5px;">爱家家政</h3>
+							<h3 class="redPrice"style="margin-top: 5px;">￥15/小时</h3>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+
+			});
+			mui.plusReady(function() {
+				//				var nwaiting = plus.nativeUI.showWaiting();
+				plus.navigator.setStatusBarBackground('#30B69C');
+				document.getElementById('g-li').addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../dropIn/serviceInfo.html',
+					});
+				})
+			});
+		</script>
+	</body>
+
+</html>

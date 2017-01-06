@@ -12,7 +12,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_blue">
-			<h3 id="backHome" class="mui-pull-left" style="font-size: 30px; margin-top: 17px; color: white;">首页</h3>
+			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
 			<h1 class="mui-title">查看详情</h1>
 		</header>
 		<div class="mui-content top35px ">
@@ -55,7 +55,15 @@
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
-				swipeBack: true //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					mui.openWindow({
+						url: '../home/index.html',
+					});
+				},
 			});
 			mui.plusReady(function(){
 				var sData = plus.webview.currentWebview();
@@ -69,22 +77,6 @@
 				var transDurationHtml = document.getElementById("transDuration");
 				transDurationHtml.innerHTML = transDuration;
 				console.log(transDurationHtml.innerHTML);
-				
-				
-				var backHome = document.getElementById('backHome');
-				backHome.addEventListener('tap', function() {
-					//获得你要前往页面的webview id
-					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
-					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner,'refreshWeather');
-					console.log('首页');
-					
-					 
-					
-					mui.openWindow({  
-						url: '../home/index.html',
-					});
-				});
 				
 			});
 		</script>

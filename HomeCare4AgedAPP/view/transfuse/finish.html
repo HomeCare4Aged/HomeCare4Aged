@@ -12,12 +12,12 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_blue">
-			<h3 id="backHome" class="  mui-pull-left" style="font-size: 30px; margin-top: 17px; color: white;">首页</h3>
+			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
 			<h1 class="mui-title ">预约成功</h1>
 		</header>
 		<div class="mui-content">
 			<div class="topDiv">
-				<img class="image" src="../../images/123.png" />
+				<img class="image" src="../../images/transfuse/success.png" />
 				<h1 class="msg">您已成功</h1>
 				<h1 class="msg">预约输液</h1>
 			</div>
@@ -27,12 +27,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init({
-				swipeBack: true //启用右滑关闭功能
-			});
-			mui.plusReady(function() {
-
-				var backHome = document.getElementById('backHome');
-				backHome.addEventListener('tap', function() {
+				beforeback: function() {
 					//获得你要前往页面的webview id
 					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
 					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
@@ -40,7 +35,9 @@
 					mui.openWindow({
 						url: '../home/index.html',
 					});
-				});
+				},
+			});
+			mui.plusReady(function() {
 
 				var details = document.getElementById('btn-details');
 				var sData = plus.webview.currentWebview();

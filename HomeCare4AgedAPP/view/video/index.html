@@ -130,6 +130,10 @@
 				}
 
 				li.addEventListener('tap', function() {
+					if (isNullStr(localStorage.myHistoryVideoList)) {
+						mui.alert('没有播放记录');
+						return;
+					}
 					localStorage.videoIndexDataName = '我的播放记录';
 					mui.openWindow({
 						url: '../video/videoList.html',

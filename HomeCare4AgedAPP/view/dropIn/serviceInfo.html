@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/dropIn/serviceInfo.css" />
+	</head>
+
+	<body style="background: white;">
+		<header class="mui-bar mui-bar-nav m_green2DropIn">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="g-title" class="mui-title">服务信息</h1>
+		</header>
+		<div class="mui-content" style="background: white;">
+			<img id="g-img" src="../../images/home/leiyu.png" />
+			<div class="divMask">
+				<h1 id="g-title" class="whiteText">s撒的撒打算ss</h1>
+			</div>
+			<ul class="mui-table-view ">
+				<li style="padding-top: 20px;padding-bottom: 20px;padding-left: 25px;">
+					<label class="grayText">服务价格</label>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell">
+					<label class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
+					<hr class="mui-col-xs-2 mui-pull-left tableLine" />
+					<label class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<label class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
+					<hr class="mui-col-xs-2 mui-pull-left tableLine" />
+					<label class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
+				</li>
+				<li class="mui-table-view-cell mui-media">
+					<label class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
+					<hr class="mui-col-xs-2 mui-pull-left tableLine" />
+					<label class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="g-moreList">
+				<li class="mui-table-view-cell mui-media" style="padding-top: 10px;padding-bottom: 20px;">
+					<div class="grayText" style="text-align: center;">更多</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view ">
+				<li style="padding-top: 20px;padding-bottom: 20px;padding-left: 25px;">
+					<label class="grayText">服务范围</label>
+				</li>
+			</ul>
+			<ul class="mui-table-view ">
+				<li style="padding-top: 5px;padding-bottom: 20px;margin-left: 30px;margin-right: 10px;">
+					<h1 id="g-intro" class="grayText">sssssssssssssssssssssss</h1>
+				</li>
+			</ul>
+			<div class="mui-row marginLeftRight " style="background: white;">
+				<button id="g-btn" type="button" class="zz-btn-next">立即预约</button>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+
+			});
+			mui.plusReady(function() {
+				//				var nwaiting = plus.nativeUI.showWaiting();
+				plus.navigator.setStatusBarBackground('#30B69C');
+				document.getElementById('g-img').style.height = document.documentElement.clientWidth + 'px';
+				document.getElementById('g-img').style.width = document.documentElement.clientWidth + 'px';
+
+				var leftText = document.getElementsByClassName('LeftTableText');
+				var rightText = document.getElementsByClassName('RightTableText');
+				var tableLine = document.getElementsByClassName('tableLine');
+				mui.each(leftText, function(i) {
+					//					leftText[i].style.width = width-0.5+'px';
+					//					rightText[i].style.width = width-0.5+'px';
+				});
+
+				document.getElementById('g-btn').addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../dropIn/submitOrder.html',
+					});
+				})
+			});
+		</script>
+	</body>
+
+</html>

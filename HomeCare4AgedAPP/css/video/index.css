@@ -1,19 +1,23 @@
-.blackTitle{
-	font-size: 40px; 
+.blackTitle {
+	font-size: 40px;
 	margin-top: 20px;
 }
-.grayText{
+
+.grayText {
 	color: gray;
-	font-size: 30px; 
+	font-size: 30px;
 	margin-top: 10px;
 	font-weight: normal;
 }
- .mui-bar-nav ~ .mui-content .mui-pull-top-pocket{
-            top: 130px !important;
+
+.mui-bar-nav~ .mui-content .mui-pull-top-pocket {
+	top: 130px !important;
 }
- .mui-bar-footer ~ .mui-content {
-        padding-bottom: 414px;
-    }
-    .mui-bar-tab ~ .mui-content {
-        padding-bottom: 410px;
-    }
+
+.mui-bar-footer~ .mui-content {
+	padding-bottom: 414px;
+}
+
+.mui-bar-tab~ .mui-content {
+	padding-bottom: 410px;
+}

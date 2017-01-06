@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/dropIn/serviceInfo.css" />
+	</head>
+
+	<body style="background: white;">
+		<header class="mui-bar mui-bar-nav m_green2DropIn">
+			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
+			<h1 id="g-title" class="mui-title">订单详情</h1>
+		</header>
+		<div class="mui-content">
+			<ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media" id="g-li">
+					<div class="marginLeftRight">
+						<img id="g-img-status" style="width: 100%; margin-top: 10px;" src="../../images/dropIn/status.png">
+						<h1 id="g-text-status" style="color: rgb(48,182,156);font-size: 40px;text-align: center;">等待商家接单</h1>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media" id="list">
+					<div class="mui-media-object mui-pull-left" style="margin-left: 5%;margin-top: 5%;">
+						<img style="width: 40px;margin-top: -30%;" src="../../images/dropIn/compositePath.png">
+					</div>
+					<div class="mui-pull-left" style="margin-left: 20%;margin-top: -20%;width: 80%;">
+						<h1 id="g-text-namePhone" class="grayText" style="color: black;"></h1>
+						<h3 id="g-text-address" class="grayText" style="margin-top: 5px;"></h3>
+					</div>
+				</li>
+			</ul>
+			<ul class="mui-table-view" id="list_ul">
+				<li class=" mui-table-view-cell ">
+					<label id="g-text-shopName" class="grayText" style="margin-left: 15px;text-align: left;"></label>
+				</li>
+				<ul class="mui-table-view">
+					<li class=" mui-table-view-cell ">
+						<h1 class="mui-pull-left grayText" style="margin-left: 15px;text-align: left;">上门服务：</h1>
+						<h1 id="g-text-service" class="mui-pull-left grayText" style="margin-left: 15px;"></h1>
+					</li>
+					<li class=" mui-table-view-cell " style="margin-top: -5%;">
+						<h1 class="mui-pull-left grayText" style="margin-left: 15px;text-align: left;">上门时间：</h1>
+						<h1 id="g-orderDropInTime" class="mui-pull-left grayText" style="margin-left: 15px;text-align: left;"></h1>
+					</li>
+				</ul>
+				<ul class="mui-table-view" id="list_ul">
+					<li class="mui-table-view-cell mui-checkbox mui-right">
+						<div class="mui-row mui-col-xs-12">
+							<h1 class="mui-pull-left mui-col-xs-10 g-inputText" style="margin-left: 15px;padding-right: 20px;">使用我们提供的工具</h1>
+							<input id="g-input-service" class="mui-col-xs-2" name="checkbox" type="checkbox">
+						</div>
+					</li>
+				</ul>
+				<ul class="mui-table-view" id="list_ul">
+					<li class=" mui-table-view-cell ">
+						<h1 class="mui-col-xs-5 mui-pull-left grayText" style="margin-left: 10px;text-align: left;">支付方式</h1>
+						<h1 class="mui-col-xs-5 mui-pull-right grayText" style="margin-right: 10px;text-align: right;">上门付款</h1>
+					</li>
+				</ul>
+				<li class=" mui-table-view-cell ">
+					<h1 class="mui-pull-left grayText" style="margin-left: 10px;text-align: left;">下单时间：</h1>
+					<h1 id="g-text-orderTime" class="mui-pull-left grayText" style="margin-left: 10px;text-align: left;"></h1>
+				</li>
+			</ul>
+		</div>
+		<div class="mui-row marginLeftRight " style="background: white;">
+			<button id="g-btn" type="button" class="zz-btn-next">联系商家</button>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					mui.openWindow({
+						url: '../home/index.html',
+					});
+				},
+			});
+			mui.plusReady(function() {
+				//				var nwaiting = plus.nativeUI.showWaiting();
+				plus.navigator.setStatusBarBackground('#30B69C');
+
+				document.getElementById('g-text-namePhone').innerHTML = localStorage.community_user_name + " " + localStorage.community_user_phone;
+				document.getElementById('g-text-address').innerHTML = localStorage.community_user_address;
+				document.getElementById('g-text-shopName').innerHTML = '商家：水水水水';
+				document.getElementById('g-text-service').innerHTML = '大扫除擦玻璃';
+				document.getElementById('g-orderDropInTime').innerHTML = '2016-12-12 上午';
+				document.getElementById('g-text-orderTime').innerHTML = '2016-12-12 上午';
+				document.getElementById('g-btn').addEventListener('tap', function() {
+					if(plus.os.name == "Android") {
+						var Intent = plus.android.importClass("android.content.Intent");
+						var Uri = plus.android.importClass("android.net.Uri");
+						var main = plus.android.runtimeMainActivity();
+						var uri = Uri.parse("tel:" + number);
+						var call = new Intent("android.intent.action.CALL", uri);
+						main.startActivity(call);
+					} else {
+						var UIAPP = plus.ios.importClass("UIApplication");
+						var NSURL = plus.ios.importClass("NSURL");
+						var app = UIAPP.sharedApplication();
+						app.openURL(NSURL.URLWithString("tel://" + '10086'));
+					}
+				})
+			});
+		</script>
+	</body>
+
+</html>

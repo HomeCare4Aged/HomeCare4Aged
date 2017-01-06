@@ -1,0 +1,121 @@
+body {
+	background: white;
+}
+
+.top60px {
+	margin-top: 60px;
+	background: white;
+}
+
+.marginLeftRight {
+	margin-left: 25px;
+	margin-right: 25px;
+}
+
+.grayText {
+	color: rgb(83, 83, 83);
+	font-size: 30px;
+	margin-left: 0px;
+	margin-right: 20px;
+	margin-top: 10px;
+	font-weight: normal;
+}
+
+.mui-table-view:after {
+	left: 25px;
+	right: 25px;
+}
+
+.mui-table-view:before {
+	left: 25px;
+	right: 25px;
+}
+
+.mui-table-view-cell:after {
+	left:25px;
+	right:25px;
+	height: 1px;
+}
+
+.blackTitle {
+	font-size: 40px;
+	margin-top: 0px;
+}
+.blackTitleNormal {
+	font-size: 40px;
+	margin-top: 0px;
+	font-weight: normal;
+}
+.redPrice {
+	color: red;
+	font-size: 30px;
+	margin-top: 10px;
+	font-weight: normal;
+}
+
+.divMask {
+	position: relative;
+	background: rgba(000, 000, 000, 0.6);
+	height: 70px;
+	margin-top: -80px;
+}
+
+.whiteText {
+	color: white;
+	padding-top: 20px;
+	text-align: center;
+	font-weight: normal;
+	font-size: 30px;
+}
+
+.tableLine {
+	width: 1px;
+	background-color: rgb(230, 230, 230);
+	border: 0px;
+	margin-top: -20px;
+	margin-bottom: -2000px;
+	height: 80px;
+}
+
+.LeftTableText {
+	text-align: center;
+	color: rgb(83, 83, 83);
+	font-size: 30px;
+	margin-left: 0px;
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: normal;
+}
+
+.RightTableText {
+	text-align: left;
+	color: red;
+	font-size: 30px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	padding-left: -10px;
+	font-weight: normal;
+}
+
+.zz-btn-next {
+	margin-top: 30px;
+	margin-bottom: 30px;
+	width: 100%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	border: 0px;
+	background: rgb(48, 182, 156);
+}
+
+.g-inputText {
+	text-align: left;
+	color: rgb(83, 83, 83);
+	font-size: 30px;
+	margin-left: 0px;
+	margin-right: 20px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	font-weight: normal;
+}

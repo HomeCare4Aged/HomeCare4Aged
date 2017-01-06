@@ -1,9 +1,9 @@
 //域名
 
-const SERVERURL = 'http:/169.254.38.142/HomeCare4AgedPHP/index.php/Home/';
+const SERVERURL = 'http:/10.96.125.217/HomeCare4AgedPHP/index.php/Home/';
 
 //const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
-const MESSAGEURL = 'http://169.254.38.142/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
+const MESSAGEURL = 'http://10.96.125.217/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 
 //定义比例
 const SCALE = window.screen.width / 320;
@@ -45,6 +45,8 @@ function gmtToDate(str) {
 //判断输入字符串是否为空或者全部都是空格
 function isNullStr(str) {
 	if(str == "") return true;
+	if(str == null) return true;
+	if(str == undefined) return true;
 	var regu = "^[ ]+$";
 	var re = new RegExp(regu);
 	return re.test(str);
