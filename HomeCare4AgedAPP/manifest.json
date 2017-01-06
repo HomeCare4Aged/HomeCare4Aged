@@ -255,7 +255,8 @@
 					"view/video/index.html",
 					"view/takeOut/index.html",
 					"view/dropIn/index.html",
-					"view/loginRegister/index.html"
+					"view/loginRegister/index.html",
+					"view/transfuse/selectSeat.html"
 				],
 				"priority": 0
 			},
@@ -297,7 +298,8 @@
 					"css/mui.min.css",
 					"css/common/common.css",
 					"css/mui.picker.min.css",
-					"js/jquery.1.11.1.js"
+					"js/jquery.1.11.1.js",
+					"js/constants.js"
 				],
 				"refer": [
 					"view/transfuse/transFuseTime.html"
@@ -412,9 +414,17 @@
 				"resources": [
 					"js/mui.min.js",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"images/small.png",
+					"images/right.png",
+					"css/takeOut/index.css",
+					"css/common/common.css",
+					"js/constants.js",
+					"js/jquery.1.11.1.js"
 				],
-				"refer": [],
+				"refer": [
+					"view/takeOut/store.html"
+				],
 				"priority": 0
 			},
 			"view/dropIn/index.html": {
@@ -506,6 +516,86 @@
 					"view/loginRegister/certification.html"
 				],
 				"priority": 0
+			},
+			"view/takeOut/detail.html": {
+				"resources": [
+					"images/takeOut/progress1.png",
+					"images/takeOut/location.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/takeOut/progress.html": {
+				"resources": [
+					"images/takeOut/progress1.png",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/takeOut/location.png",
+					"css/takeOut/progress.css",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/takeOut/orderForm.html": {
+				"resources": [
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.css",
+					"images/takeOut/location.png",
+					"css/takeOut/orderForm.css",
+					"css/common/common.css",
+					"images/takeOut/progress1.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/takeOut/store.html": {
+				"resources": [
+					"images/takeOut/reduce.png",
+					"images/small.png",
+					"js/constants.js",
+					"images/takeOut/add.png",
+					"fonts/mui.ttf",
+					"images/takeOut/pullup.png",
+					"css/common/common.css",
+					"images/takeOut/address.png",
+					"images/takeOut/pull.png",
+					"images/123.png",
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"images/home/cloudySky.png",
+					"css/mui.min.css",
+					"images/takeOut/distance.png",
+					"images/takeOut/box1.png",
+					"images/takeOut/freight.png",
+					"css/takeOut/store.css",
+					"images/takeOut/box3.png"
+				],
+				"refer": [
+					"view/takeOut/orderForm.html"
+				],
+				"priority": 0
+			},
+			"view/transfuse/selectSeat.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"css/transfuse/selectSeat.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"images/transfuse/selectSeat.png",
+					"css/common/common.css",
+					"images/transfuse/unselectBed.png"
+				],
+				"refer": [
+					"view/transfuse/index.html"
+				],
+				"priority": 0
 			}
 		},
 		"idle": {
@@ -523,7 +613,6 @@
 				"js/mui.pullToRefresh.material.js",
 				"css/mui.listpicker.css",
 				"js/mui.lazyload.js",
-				"css/mui.css",
 				"js/95516.js",
 				"js/registration/dateChose.js",
 				"css/mui.picker.all.css",

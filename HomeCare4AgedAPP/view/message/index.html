@@ -62,8 +62,8 @@
 							var announcementEndDate =parseInt(data.data[i].announcement_end_date.replace("-","").replace("-",""));
 							var nowDate = parseInt(gmtToDate(new Date()).replace("-","").replace("-",""));
 							console.log(nowDate);
-							if(nowDate<announcementEndDate || nowDate==announcementEndDate){
-
+							if(nowDate==announcementEndDate || nowDate>announcementEndDate){
+								console.log('aaaaa');
 							}else{
 							var doc = document;
 							li = doc.createElement("li");
