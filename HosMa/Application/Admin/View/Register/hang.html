@@ -1,44 +1,127 @@
 <include file="Index/header" />
-<div id="wrapper">
+<div id="wrapper"  >
 	<include file="Index/nav" />
-	<div id="page-wrapper">
-		<div class="container">
+	<div id="page-wrapper" >
+		<div class="container-fluid" >
 			<h3>挂号信息显示</h3>
+			<!--搜索栏开始-->
+			<!--<div class="row" id="zh-search-hang" >
+				<div class="col-sm-7" >
+					<form action="__ACTION__" method="post" id="zh-form-searche-hang">
+						<div class="input-group" >
+								<input class="form-control" type="text" id="zh-input-like-search" placeholder="请输入挂号人姓名和挂号状态查看" name="keywords"/>
+								<div>
+									<button type="submit" class="btn btn-primary" id="zh-btn-search-hang">
+									<span class="glyphicon glyphicon-search">
+										
+									</span>
+									</button>
+								</div>
+						</div>
+					</form>
+				</div>
+				<div class="col-md-3" >
+						<button type="button" class="btn btn-primary" id="zh-btn-refresh">刷新				
+							<span class="glyphicon glyphicon-refresh"></span>
+						</button>
+				</div>
+			</div>-->
+			<div class="row">
+				<div class="col-md-7">
+					<form method="post" id="zh-form-searche-hang" action="__ACTION__">
+						<div class="input-group">
+							<!--<span class="input-group-addon">类型</span>-->
+							<input class="form-control" type="text" placeholder="请输入挂号人姓名和挂号状态查看" id="zh-input-like-search" name="keywords" />
+							<div class="input-group-btn">
+								<button class="btn btn-primary" type="submit" id="zh-btn-search-hang">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>
+							</div>
+							<div class="col-md-4" >
+								<button type="button" class="btn btn-primary" id="zh-btn-refresh">刷新				
+									<span class="glyphicon glyphicon-refresh"></span>
+								</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!--搜索栏结束-->
+			<!--挂号信息显示开始-->
 			<div class="row">
 				<div class="col-md-12">
-					<div class="table-responsive">
-						<form id="xx-form-list" class="">
-							<table class="table table-bordered table-hover" id="xx-table-list">
+					<!--<div class="table-responsive">-->
+						<!--<form id="xx-form-list" class="">-->
+							<table class="table table-bordered table-hover" id="zh-table-list">
 								<thead>
 									<tr>
-										<td>医生姓名</td>
-										<td>挂号人内码</td>
-										<td>预约时间</td>
-										<td>挂号时间</td>
+										<td class="zh-td-hide">挂号内码id</td>
+										<td class="zh-td-hide">挂号人姓名</td>
+										<td class="zh-td-hide">医生姓名</td>
+										<td class="zh-td-hide">预约的挂号日期</td>
+										<td class="zh-td-hide">预约时间段</td>
+										<td class="zh-td-hide">预约的操作日期</td>
+										<td class="zh-td-hide">取消时间</td>
+										<td class="zh-td-hide">挂号状态</td>
 									</tr>
 								</thead>
 								<tbody>
-									<volist name="doctors" id="vo">
+									<tr>
+										<td >张大爷</td>
+										<td >王医生</td>
+										<td >2012-12-1</td>
+										<td >下午</td>
+										<td >2012-13-1</td>
+										<td >23:12:23</td>
+										<td >未完成</td>
+									</tr>
+									<volist name="registration" id="vo">
 										<tr>
-											<td>{$vo.hospital_doctor_id}</td>
-											<td>{$vo.community_hospitals_id}</td>
-											<td>{$vo.hospital_office_id}</td>
+											<td class="zh-td-hide">{$vo.user_registration_id}</td>
+											<td class="zh-td-hide">{$vo.community_user_id}</td>
+											<td>{$vo.community_user_name}</td>
 											<td>{$vo.hospital_doctor_name}</td>
-											<td>{$vo.hospital_doctor_identity}</td>
-											<td>{$vo.hospital_doctor_introduction}</td>
-											<td>{$vo.hospital_doctor_phone}</td>
-											<td>{$vo.hospital_doctor_picture}</td>
-											<td>{$vo.doctor_registration_number}</td>
-											<td>{$vo.registration_predict_money}</td>
-											<td>{$vo.hospital_doctor_sex}</td>
+											<td>{$vo.user_appointment_date}</td>
+											<td>{$vo.user_appointment_time}</td>
+											<td>{$vo.user_registration_date}</td>
+											<td>{$vo.registration_cancel_time}</td>
+											<!--<if condition="$vo['registration_state'] eq 未完成">style="color:red;"</if>-->
+											<td 
+												<if condition="$vo['registration_state'] eq 未完成">style="color: red;"
+													<elseif condition="$vo['registration_state'] eq 已完成" />style="color: #39D21F;"
+												</if>
+											>
+												<span class="zh-span-registrantion-state" id="zh-span-update-state" >
+													{$vo.registration_state}
+												</span>
+											</td>
+										</tr>
 									</volist>
 								</tbody>
 							</table>
-						</form>
-					</div>
-				</div>	
-			</div><!--挂号信息显示结束-->
+						<!--</form>-->
+					<!--</div>-->
+				</div>
+			</div>
+			<!--挂号信息显示表结束-->
+			<!--分页开始-->
+			<!--<div class="row">
+				<nav>
+					<ul class="pagination">
+						{$pageResult}
+					</ul>
+				</nav>
+			</div>-->
+			<!--分页结束-->
 		</div>
 	</div>
 </div>
+<script>
+		var SCOPE = {
+			'hang_update_url':'__URL__/updateState',
+			'hang_self_url':'__URL__/hang',
+			'hang_search_url':'__URL__/searchHangInfo',
+			'refresh_url':'__ACTION__',
+		};
+</script>
 <include file="Index/footer" />

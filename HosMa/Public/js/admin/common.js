@@ -289,24 +289,23 @@ $(document).ready(function(){
     
     $('#hy-select-name-search').on('change',function(){
     	var selectValue=$(this).val();
-//  	console.log(selectValue);
 		$.ajax({
 			type:"post",
 			url:SCOPE.get_name_url,
 			async:true,
 			data:{'selectValue':selectValue},
 			dataType:'json',
-			success:function(res){
-				console.log(res);
+			success:function(data){
+//				console.log(data);
 				$('#hy-table-search tbody').remove();
 				var sRows = '';
-				for( var i in res['schedule'] ){
+				for( var i in data ){
 //					console.log(data[i].hospital_doctor_id);
 					var sRow = '<tr>' +
-									'<td>' + res['schedule'][i].hospital_doctor_name + '</td>'+
-									'<td>' + res['schedule'][i].schedule_date + '</td>' +
-									'<td>' + res['schedule'][i].schedule_time + '</td>'+
-									'<td>' + res['schedule'][i].open_registration_number + '</td>'+	
+									'<td>' + data[i].hospital_doctor_name + '</td>'+
+									'<td>' + data[i].schedule_date + '</td>' +
+									'<td>' + data[i].schedule_time + '</td>'+
+									'<td>' + data[i].open_registration_number + '</td>'+	
 									'<td>' +
 										'<span class="glyphicon glyphicon-edit" id="xx-span-editor" attr-id="{$vo.hospital_doctor_id}" onclick="clickedit(this)" data-toggle="modal" data-target="#myModal"></span>'+
 									'</td>' +
@@ -317,7 +316,7 @@ $(document).ready(function(){
 				$('#hy-table-search').append('<tbody></tbody>');
 				$('#hy-table-search tbody').html(sRows);
 				
-				$('#pageRes').html(res.pageRes);
+//				$('#pageRes').html(res.pageRes);
 			}
 		});
     });
