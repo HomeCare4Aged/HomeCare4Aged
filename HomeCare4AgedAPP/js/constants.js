@@ -1,10 +1,7 @@
 //域名
 
-
-//const SERVERURL = 'http:/10.96.98.85/HomeCare4AgedPHP/index.php/Home/';
-
-const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
-const MESSAGEURL = 'http://192.168.136.1/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
+const SERVERURL = 'http://169.254.38.142/HomeCare4AgedPHP/index.php/Home/';
+const MESSAGEURL = 'http://169.254.38.142/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 
 //定义比例
 const SCALE = window.screen.width / 320;
@@ -29,21 +26,34 @@ function getDays(dayNum) {
 }
 //获取当前的日期时间 格式“yyyy-MM-dd HH:MM:SS”
 function getNowFormatDate() {
-    var date = new Date();
-    var seperator1 = "-";
-    var seperator2 = ":";
-    var month = date.getMonth() + 1;
-    var strDate = date.getDate();
-    if (month >= 1 && month <= 9) {
-        month = "0" + month;
-    }
-    if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-    }
-    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
-            + " " + date.getHours() + seperator2 + date.getMinutes()
-            + seperator2 + date.getSeconds();
-    return currentdate;
+	var date = new Date();
+	var seperator1 = "-";
+	var seperator2 = ":";
+	var month = date.getMonth() + 1;
+	var strDate = date.getDate();
+	if(month >= 1 && month <= 9) {
+		month = "0" + month;
+	}
+	if(strDate >= 0 && strDate <= 9) {
+		strDate = "0" + strDate;
+	}
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var seconds = date.getSeconds();
+	if(hours >= 0 && hours <= 9) {
+		hours = "0" + hours;
+	}
+	if(minutes >= 0 && minutes <= 9) {
+		minutes = "0" + minutes;
+	}
+	if(seconds >= 0 && seconds <= 9) {
+		seconds = "0" + seconds;
+	}
+
+	var currentdate = year + seperator1 + month + seperator1 + strDate +
+		" " + hours + seperator2 + minutes +
+		seperator2 + seconds;
+	return currentdate;
 }
 
 function gmtToDate(str) {
@@ -95,88 +105,88 @@ function isRegisterPsw(s) {
 	return true
 }
 //判断当前时间是否在某一时间段内 在返回true 不在返回false
-function is_now_time_range (beginTime, endTime) {
-  var strb = beginTime.split (":");
-  if (strb.length != 2) {
-    beginTime = strb[0]+':'+strb[1];
-  }
+function is_now_time_range(beginTime, endTime) {
+	var strb = beginTime.split(":");
+	if(strb.length != 2) {
+		beginTime = strb[0] + ':' + strb[1];
+	}
 
-  var stre = endTime.split (":");
-  if (stre.length != 2) {
-    endTime = stre[0]+':'+stre[1];
-  }
+	var stre = endTime.split(":");
+	if(stre.length != 2) {
+		endTime = stre[0] + ':' + stre[1];
+	}
 
-  var b = new Date ();
-  var e = new Date ();
-  var n = new Date ();
+	var b = new Date();
+	var e = new Date();
+	var n = new Date();
 
-  b.setHours (strb[0]);
-  b.setMinutes (strb[1]);
-  e.setHours (stre[0]);
-  e.setMinutes (stre[1]);
+	b.setHours(strb[0]);
+	b.setMinutes(strb[1]);
+	e.setHours(stre[0]);
+	e.setMinutes(stre[1]);
 
-  if (n.getTime () - b.getTime () > 0 && n.getTime () - e.getTime () < 0) {
-    return true;
-  } else {
-    return false;
-  }
+	if(n.getTime() - b.getTime() > 0 && n.getTime() - e.getTime() < 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 //判断某时间是否在某一时间段内 在返回true 不在返回false
-function is_time_range (beginTime, endTime, nowTime) {
-  var strb = beginTime.split (":");
-  if (strb.length != 2) {
-    beginTime = strb[0]+':'+strb[1];
-  }
+function is_time_range(beginTime, endTime, nowTime) {
+	var strb = beginTime.split(":");
+	if(strb.length != 2) {
+		beginTime = strb[0] + ':' + strb[1];
+	}
 
-  var stre = endTime.split (":");
-  if (stre.length != 2) {
-    endTime = stre[0]+':'+stre[1];
-  }
+	var stre = endTime.split(":");
+	if(stre.length != 2) {
+		endTime = stre[0] + ':' + stre[1];
+	}
 
-  var strn = nowTime.split (":");
-  if (stre.length != 2) {
-    nowTime = strn[0]+':'+strn[1];
-  }
-  var b = new Date ();
-  var e = new Date ();
-  var n = new Date ();
-  b.setHours (strb[0]);
-  b.setMinutes (strb[1]);
-  e.setHours (stre[0]);
-  e.setMinutes (stre[1]);
-  n.setHours (strn[0]);
-  n.setMinutes (strn[1]);
+	var strn = nowTime.split(":");
+	if(stre.length != 2) {
+		nowTime = strn[0] + ':' + strn[1];
+	}
+	var b = new Date();
+	var e = new Date();
+	var n = new Date();
+	b.setHours(strb[0]);
+	b.setMinutes(strb[1]);
+	e.setHours(stre[0]);
+	e.setMinutes(stre[1]);
+	n.setHours(strn[0]);
+	n.setMinutes(strn[1]);
 
-  if (n.getTime () - b.getTime () > 0 && n.getTime () - e.getTime () < 0) {
-    return true;
-  } else {
-    return false;
-  }
+	if(n.getTime() - b.getTime() > 0 && n.getTime() - e.getTime() < 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 //判断俩时间差 大于返回true 否则返回false
-function isTimeDifference (oneTime, anotherTime) {
-  var stro = oneTime.split (":");
-  if (stro.length != 2) {
-    oneTime = stro[0]+':'+stro[1];
-  }
+function isTimeDifference(oneTime, anotherTime) {
+	var stro = oneTime.split(":");
+	if(stro.length != 2) {
+		oneTime = stro[0] + ':' + stro[1];
+	}
 
-  var stra = anotherTime.split (":");
-  if (stre.length != 2) {
-    anotherTime = stre[0]+':'+stre[1];
-  }
+	var stra = anotherTime.split(":");
+	if(stre.length != 2) {
+		anotherTime = stre[0] + ':' + stre[1];
+	}
 
-  var o = new Date ();
-  var a = new Date ();
+	var o = new Date();
+	var a = new Date();
 
-  o.setHours (stro[0]);
-  o.setMinutes (stro[1]);
-  a.setHours (stra[0]);
-  a.setMinutes (stra[1]);
+	o.setHours(stro[0]);
+	o.setMinutes(stro[1]);
+	a.setHours(stra[0]);
+	a.setMinutes(stra[1]);
 
-  if (o.getTime () > a.getTime ()) {
-    return true;
-  } else {
-    return false;
-  }
+	if(o.getTime() > a.getTime()) {
+		return true;
+	} else {
+		return false;
+	}
 }

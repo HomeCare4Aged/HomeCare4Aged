@@ -17,9 +17,9 @@
 
 		</header>
 		<div class="mui-content">
-			<div class="top14px headline" id"already_title">
-				<h1 class="title" >已预约</h1>
-				<label id="g-delete" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 20px;font-size: 30px;">删除预约</label>
+			<div class="top14px headline" id "already_title">
+				<h1 class="title">已预约</h1>
+				<!--<label id="g-delete" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 20px;font-size: 30px;">删除预约</label>-->
 				<label id="cancel" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 100px;font-size: 30px;"></label>
 			</div>
 			<ul class="mui-table-view" id="list_already">
@@ -56,108 +56,113 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
-				beforeback: function(){
+				beforeback: function() {
 					//获得你要前往页面的webview id
 					var Scanner = plus.webview.getWebviewById(localStorage.registrationIndexWebId);
-					
+
 					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner,'refresh');
-					
+					mui.fire(Scanner, 'refresh');
+
 					//返回true，继续页面关闭逻辑
 					return true;
 				},
 			});
 			mui.plusReady(function() {
+				localStorage.historylistId = plus.webview.currentWebview().id;
+				window.addEventListener('deleteLi', function() {
+					console.log('shanchu');
+					document.getElementById('list_already').removeChild(document.getElementById(localStorage.historyLiId));
+				});
 				plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#FEE36D');
 				getListData();
 
 				var btndelete = document.getElementById('g-delete');
 				var status = 1;
-				btndelete.addEventListener('tap', function() {
-					if(status == 1) {
-						btndelete.innerHTML = '删除';
-						var list = document.getElementsByClassName('deleteList');
-//						console.log(list.length);
-						mui.each(list, function(i) {
-							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList mui-checkbox mui-left");
-							var g_input = document.createElement('input');
-							g_input.setAttribute("name", "checkbox");
-							g_input.setAttribute("style", "margin-top: 25px");
-							g_input.setAttribute("type", "checkbox");
-							g_input.setAttribute("class", "choseinput");
-							g_input.id = list[i].id;
-							list[i].appendChild(g_input);
-						});
-						status = 0;
-						
-						
-						var label = document.getElementById('cancel');
-						label.innerHTML = "取消";
-						label.addEventListener('tap', function() {
-							
-							label.innerHTML = "";
-							
-							
-						btndelete.innerHTML = '删除预约';
-						var listinput = document.getElementsByClassName('choseinput');
-						
-						for(var i = list.length - 1; i >= 0; i--) {
-							list[i].removeChild(listinput[i]);
-							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
-						}
-							status = 1;
-						});
-						
-						
-					} else {
-						btndelete.innerHTML = '删除预约';
-						var listli = document.getElementsByClassName('deleteList');
-						var listinput = document.getElementsByClassName('choseinput');
-//						console.log(listli.length);
-//						console.log(listinput.length);
-						
-						var postData = new Array();
-						var count = 0;
-						for(var i = listli.length - 1; i >= 0; i--) {
-							if(listinput[i].checked == true) {
-								postData[count] = listinput[i].id;
-								count++;
-							}
-							listli[i].removeChild(listinput[i]);
-							listli[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
-						}
-						var label = document.getElementById('cancel');
-						label.innerHTML = "";
-						if(postData.length > 0) {
-							console.log(postData);
-							plus.nativeUI.showWaiting();
-							mui.ajax({
-								type: 'POST',
-								url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
-								dataType: "json",
-								data: {'id':postData,'community_user_id':''},
-								//成功获取数据赋值
-								success: function(data) {
-									plus.nativeUI.closeWaiting();
-									if (data.status == 1){
-										mui.alert(data.msg);
-										plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
-									} 
-								},
-
-								error: function(xhr, type, errorThrown) {
-									console.log(type);
-									plus.nativeUI.closeWaiting();
-									mui.alert('网络连接失败');
-								}
-							});
-						}
-
-						status = 1;
-					}
-
-				});
+				//				btndelete.addEventListener('tap', function() {
+				//					if(status == 1) {
+				//						btndelete.innerHTML = '删除';
+				//						var list = document.getElementsByClassName('deleteList');
+				//						//						console.log(list.length);
+				//						mui.each(list, function(i) {
+				//							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList mui-checkbox mui-left");
+				//							var g_input = document.createElement('input');
+				//							g_input.setAttribute("name", "checkbox");
+				//							g_input.setAttribute("style", "margin-top: 25px");
+				//							g_input.setAttribute("type", "checkbox");
+				//							g_input.setAttribute("class", "choseinput");
+				//							g_input.id = list[i].id;
+				//							list[i].appendChild(g_input);
+				//						});
+				//						status = 0;
+				//
+				//						var label = document.getElementById('cancel');
+				//						label.innerHTML = "取消";
+				//						label.addEventListener('tap', function() {
+				//
+				//							label.innerHTML = "";
+				//
+				//							btndelete.innerHTML = '删除预约';
+				//							var listinput = document.getElementsByClassName('choseinput');
+				//
+				//							for(var i = list.length - 1; i >= 0; i--) {
+				//								list[i].removeChild(listinput[i]);
+				//								list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
+				//							}
+				//							status = 1;
+				//						});
+				//
+				//					} else {
+				//						btndelete.innerHTML = '删除预约';
+				//						var listli = document.getElementsByClassName('deleteList');
+				//						var listinput = document.getElementsByClassName('choseinput');
+				//						//						console.log(listli.length);
+				//						//						console.log(listinput.length);
+				//
+				//						var postData = new Array();
+				//						var count = 0;
+				//						for(var i = listli.length - 1; i >= 0; i--) {
+				//							if(listinput[i].checked == true) {
+				//								postData[count] = listinput[i].id;
+				//								count++;
+				//							}
+				//							listli[i].removeChild(listinput[i]);
+				//							listli[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
+				//						}
+				//						var label = document.getElementById('cancel');
+				//						label.innerHTML = "";
+				//						if(postData.length > 0) {
+				//							console.log(postData);
+				//							plus.nativeUI.showWaiting();
+				//							mui.ajax({
+				//								type: 'POST',
+				//								url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
+				//								dataType: "json",
+				//								data: {
+				//									'id': postData,
+				//									'community_user_id': ''
+				//								},
+				//								//成功获取数据赋值
+				//								success: function(data) {
+				//									plus.nativeUI.closeWaiting();
+				//									if(data.status == 1) {
+				//										mui.alert(data.msg);
+				//										plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+				//									}
+				//								},
+				//
+				//								error: function(xhr, type, errorThrown) {
+				//									console.log(type);
+				//									plus.nativeUI.closeWaiting();
+				//									mui.alert('网络连接失败');
+				//								}
+				//							});
+				//						}
+				//
+				//						status = 1;
+				//					}
+				//
+				//				});
 
 				function getListData() {
 					mui.ajax({
@@ -169,8 +174,8 @@
 							plus.nativeUI.closeWaiting();
 							var dataAlready = data.data.Unfinished;
 							var dataFinish = data.data.Finish;
-//							console.log(dataAlready);
-//							console.log(dataFinish);
+							console.log(JSON.stringify(dataAlready));
+							//							console.log(dataFinish);
 							var doc = document;
 							fragment = doc.createDocumentFragment();
 							container_already = doc.getElementById("list_already");
@@ -186,13 +191,18 @@
 								li.id = dataAlready[i].user_registration_id;
 								div.setAttribute("class", "marginLeftRight");
 								img.setAttribute("class", "mui-media-object mui-pull-left");
-								img.setAttribute("src", "../../images/small.png")
-								h1.innerHTML = "李";
+								img.setAttribute("style", 'width: 70px;border-radius: 35px;');
+								img.setAttribute("src", dataAlready[i].hospital_doctor_picture);
+								h1.innerHTML = dataAlready[i].hospital_doctor_name;
 								label.setAttribute("class", "gray-text");
-								label.innerHTML = dataAlready[i].user_registration_date; 
+								label.innerHTML = dataAlready[i].user_appointment_date + ' ' + dataAlready[i].user_appointment_time;
 
 								li.addEventListener('tap', function() {
-
+									localStorage.historyLiId = this.id;
+									localStorage.resistationHistoryDetail = JSON.stringify(dataAlready[i])
+									mui.openWindow({
+										url: '../registration/historyDetails.html',
+									});
 								});
 								li.appendChild(div);
 								div.appendChild(img);
@@ -215,12 +225,16 @@
 								li.setAttribute("class", "mui-table-view-cell mui-media");
 								div.setAttribute("class", "marginLeftRight");
 								img.setAttribute("class", "mui-media-object mui-pull-left");
-								img.setAttribute("src", "../../images/small.png")
-								h1.innerHTML = '张';
+								img.setAttribute("style", 'width: 70px;border-radius: 35px;');
+								img.setAttribute("src", dataFinish[i].hospital_doctor_picture);
+								h1.innerHTML = dataFinish[i].hospital_doctor_name;
 								label.setAttribute("class", "gray-text");
-								label.innerHTML = dataAlready[i].user_appointment_date;
+								label.innerHTML = dataFinish[i].user_appointment_date + ' ' + dataFinish[i].user_appointment_time;
 								li.addEventListener('tap', function() {
-
+									localStorage.resistationHistoryDetail = JSON.stringify(dataFinish[i]);
+									mui.openWindow({
+										url: '../registration/historyDetails.html',
+									});
 								});
 								li.appendChild(div);
 								div.appendChild(img);

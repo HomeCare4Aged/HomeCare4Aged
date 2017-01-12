@@ -62,7 +62,7 @@
 					plus.navigator.setStatusBarBackground('#EEA02F');
 				});
 				plus.navigator.setStatusBarBackground('#EEA02F');
-				var community_hospitals_id = '0001';
+				var community_hospitals_id = localStorage.community_hospitals_id;
 				mui.ajax({
 					type: 'GET',
 					url: SERVERURL + "HHospitalOfficeList/selectList?community_hospitals_id=" + community_hospitals_id,

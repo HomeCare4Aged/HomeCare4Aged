@@ -18,48 +18,48 @@
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
 				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h3 class="MSM-gray-text">就诊医院</h3>
 					</div>
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h1 class="MSM-black-text" id="hospitalText">大铁棍子医院</h1>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h3 class="MSM-gray-text">候诊时间</h3>
 					</div>
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h1 class="MSM-black-text" id="timeText">2000-12-12 下午</h1>
 					</div>
-					<div class="marginLeftRight ">
+					<div class="  ">
 						<h3 class="MSM-gray-text MSM-top25px">科室</h3>
 					</div>
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h1 class="MSM-black-text" id="roomText"></h1>
 					</div>
-					<div class="marginLeftRight ">
+					<div class="  ">
 						<h3 class="MSM-gray-text MSM-top25px">就诊医生</h3>
 					</div>
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h1 class="MSM-black-text" id="doctorNameText"></h1>
 					</div>
-					<div class="marginLeftRight ">
+					<div class="  ">
 						<h3 class="MSM-gray-text MSM-top25px">挂号费用</h3>
 					</div>
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h1 class="MSM-red-text" style="float: left;" id="priceText">￥0</h1>
-						<h1 class="MSM-black-text" id="priceText">（医院到付）</h1>
+						<h1 class="MSM-black-text" id="priceText">&nbsp(医院到付)</h1>
 					</div>
-					<div class="marginLeftRight ">
+					<div class="  ">
 						<h3 class="MSM-gray-text MSM-top25px">就诊人</h3>
 					</div>
-					<div class="marginLeftRight">
+					<div class=" ">
 						<h1 class="MSM-black-text" id="personText">李</h1>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-media">
-					<div class="marginLeftRight">
+					<div class=" ">
 						<button type="button" class="zz-btn-next" onclick="openWindow();">下一步</button>
 					</div>
 				</li>
@@ -76,15 +76,17 @@
 				console.log(JSON.stringify(postData));
 				var postData = plus.webview.currentWebview().data;
 				var hospitalText = document.getElementById('hospitalText');
+				hospitalText.innerHTML = localStorage.community_hospitals_name;
 				var timeText = document.getElementById('timeText');
 				timeText.innerHTML = localStorage.registrationTime;
 				var roomText = document.getElementById('roomText');
 				roomText.innerHTML = postData.hospital_office_name;
 				var doctorNameText = document.getElementById('doctorNameText');
-				doctorNameText.innerHTML = postData.hospital_doctor_name;
+				doctorNameText.innerHTML = postData.hospital_doctor_name+" ("+localStorage.doctorLevel+")";
 				var priceText = document.getElementById('priceText');
 				priceText.innerHTML = '￥' + postData.registration_money;
 				var personText = document.getElementById('personText');
+				personText.innerHTML = localStorage.community_user_name
 
 				//				setInterval(function() {
 				//					console.log(getNowFormatDate());

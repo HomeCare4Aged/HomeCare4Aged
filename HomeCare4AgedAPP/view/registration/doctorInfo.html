@@ -76,6 +76,7 @@
 						postData['hospital_doctor_id'] = data.data.hospital_doctor_id;
 						postData['hospital_doctor_name'] = data.data.hospital_doctor_name;
 						postData['hospital_office_name'] = sData.hospital_office_name;
+						localStorage.doctorLevel = data.data.identity_name;
 						console.log(JSON.stringify(postData));
 
 					},
