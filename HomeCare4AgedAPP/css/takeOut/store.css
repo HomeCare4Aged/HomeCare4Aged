@@ -47,65 +47,74 @@ body{
     
     filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
 }
+
 #zz-img-head{
-	background: red;
-	position:absolute;
-    top:15%;
-    left:40%;
+	/*position:relative;*/
+    /*top:10%;*/
+    /*left:40%;*/
     width: 20%;
+   margin-top: 10%;
+   margin-left: 40%;
+}
+.zz-1{
+	margin-top: 6%;
+	width: 100%;
 }
 #addressImg{
-	position:absolute;
-    top:29%;
-    left:5%;
-	float: left;
+	margin-left: 5%;
 	width: 20px;
 }
+
 #span-address{
-	position:absolute;
-    top:30%;
-    left:13%;
+	margin-left: 5px;
+	font-size: 150%;
 	color: white;
-	font-size:150%;
-	float: left;
+	margin-top: 5px;
+}
+.zz-2{
+	margin-top: 6%;
+	width: 100%;
 }
 #freightImg{
-	position:absolute;
-    top:38%;
-    left:5%;
-	float: left;
+	margin-left: 5%;
 	width: 20px;
+
 }
 #span-freight{
-	position:absolute;
-    top:38%;
-    left:13%;
+	margin-left: 5px;
+	font-size: 150%;
 	color: white;
-	font-size:150%;
+
+}
+.zz-3{
+	margin-top: 6%;
+	width: 100%;
 }
 #distanceImg{
-	position:absolute;
-    top:46%;
-    left:5%;
-	float: left;
-	width: 20px;	
+	margin-left: 5%;
+	width: 20px;
 }
 #span-distance{
-	position:absolute;
-    top:46%;
-    left:13%;
+margin-left: 5px;
+	font-size: 150%;
 	color: white;
-	font-size:150%;
+}
+.zz-4{
+	margin-top: 1600px;
+	width: 100%;
 }
 #storeName{
-	position:relative;
+	/*position:absolute;*/
 	background: rgba(30,40,34,0.6);
-	margin-top: -12%;
+	/*margin-top: -12%;*/
 	height: 45px;
 	font-size: 150%;
 	text-align: center;
 	color: white;
-	padding-top: 15px;	
+	padding-top: 15px;
+	bottom: 0;
+	width: 100%;
+	margin-top: 5%;
 }
 .mui-navigate-right:after, .mui-push-right:after {
     right: 15px;

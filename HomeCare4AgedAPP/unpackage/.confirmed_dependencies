@@ -17,7 +17,11 @@
 			"css/mui.min.css",
 			"images/takeOut/location.png",
 			"css/takeOut/progress.css",
-			"css/common/common.css"
+			"css/common/common.css",
+			"js/constants.js",
+			"images/takeOut/progress3.png",
+			"images/takeOut/progress2.png",
+			"images/takeOut/progress4.png"
 		],
 		"refer": []
 	},
@@ -29,9 +33,14 @@
 			"images/takeOut/location.png",
 			"css/takeOut/orderForm.css",
 			"css/common/common.css",
-			"images/takeOut/progress1.png"
+			"images/takeOut/progress1.png",
+			"js/jquery.1.11.1.js",
+			"js/constants.js"
 		],
-		"refer": []
+		"refer": [
+			"view/takeOut/progress.html",
+			"view/takeOut/finish.html"
+		]
 	},
 	"view/home/index.html": {
 		"resources": [
@@ -49,11 +58,17 @@
 			"css/mui.min.css",
 			"images/home/transfuse.png",
 			"css/home/index.css",
-			"images/home/message.png"
+			"images/home/message.png",
+			"images/home/userInfo.png"
 		],
 		"refer": [
 			"view/takeOut/index.html",
-			"view/transfuse/selectSeat.html"
+			"view/transfuse/selectSeat.html",
+			"view/dropIn/index.html",
+			"view/registration/index.html",
+			"view/message/index.html",
+			"view/userInfo/index.html",
+			"view/video/index.html"
 		]
 	},
 	"view/takeOut/index.html": {
@@ -103,7 +118,12 @@
 			"js/mui.picker.min.js",
 			"js/constants.js",
 			"css/transfuse/index.css",
-			"css/mui.picker.min.css"
+			"css/mui.picker.min.css",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		],
 		"refer": [
 			"view/transfuse/transFuseTime.html"
@@ -118,10 +138,14 @@
 			"css/mui.min.css",
 			"images/transfuse/selectSeat.png",
 			"css/common/common.css",
-			"images/transfuse/unselectBed.png"
+			"images/transfuse/unselectBed.png",
+			"images/right.png",
+			"images/transfuse/selectBed.png",
+			"images/transfuse/unselectSeat.png"
 		],
 		"refer": [
-			"view/transfuse/index.html"
+			"view/transfuse/index.html",
+			"view/transfuse/myHistory.html"
 		]
 	},
 	"view/transfuse/transFuseTime.html": {
@@ -145,17 +169,309 @@
 			"images/loginRegister/iPhone.png",
 			"css/mui.min.css",
 			"css/common/common.css",
-			"view/loginRegister/register.html"
+			"view/loginRegister/register.html",
+			"fonts/mui.ttf"
 		],
 		"refer": [
-			"view/loginRegister/register.html"
+			"view/loginRegister/register.html",
+			"view/home/index.html",
+			"view/loginRegister/code.html"
 		]
 	},
 	"view/loginRegister/register.html": {
 		"resources": [
 			"css/loginRegister/register.css",
 			"images/loginRegister/confirm.png",
-			"fonts/mui.ttf"
+			"fonts/mui.ttf",
+			"js/constants.js",
+			"js/mui.min.js",
+			"images/loginRegister/Locked.png",
+			"images/loginRegister/iPhone.png",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"view/loginRegister/index.html"
+		],
+		"refer": [
+			"view/loginRegister/index.html"
+		]
+	},
+	"view/dropIn/serviceList.html": {
+		"resources": [
+			"images/small.png",
+			"css/dropIn/index.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/dropIn/serviceInfo.html"
+		]
+	},
+	"view/dropIn/index.html": {
+		"resources": [
+			"css/dropIn/index.css",
+			"images/right.png",
+			"css/common/common.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"view/dropIn/serviceList.html"
+		]
+	},
+	"view/dropIn/serviceInfo.html": {
+		"resources": [
+			"images/home/leiyu.png",
+			"css/dropIn/serviceInfo.css"
+		],
+		"refer": [
+			"view/dropIn/submitOrder.html"
+		]
+	},
+	"view/registration/index.html": {
+		"resources": [
+			"images/registration/neike.png",
+			"css/registration/index.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"images/right.png",
+			"fonts/mui.ttf",
+			"images/registration/wuguan.png",
+			"images/registration/pifu.png",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"images/registration/define.png"
+		],
+		"refer": [
+			"view/registration/myHistory.html",
+			"view/registration/registrationTime.html"
+		]
+	},
+	"view/registration/myHistory.html": {
+		"resources": [
+			"css/registration/myHistory.css",
+			"images/small.png",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/message/index.html": {
+		"resources": [
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"css/message/index.css"
+		],
+		"refer": [
+			"view/message/content.html"
+		]
+	},
+	"view/loginRegister/code.html": {
+		"resources": [
+			"css/loginRegister/certification.css"
+		],
+		"refer": [
+			"view/loginRegister/certification.html"
+		]
+	},
+	"view/loginRegister/certification.html": {
+		"resources": [
+			"js/mui.picker.min.js",
+			"images/loginRegister/Home.png",
+			"images/loginRegister/Female.png",
+			"images/loginRegister/City1.png",
+			"css/mui.dtpicker.css",
+			"images/loginRegister/Person.png",
+			"css/mui.picker.min.css",
+			"js/mui.dtpicker.js",
+			"images/loginRegister/Address_Book2.png",
+			"images/loginRegister/search.png",
+			"js/constants.js",
+			"fonts/mui.ttf",
+			"css/common/common.css",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"css/loginRegister/certification.css",
+			"css/mui.min.css",
+			"images/loginRegister/iPhone.png"
+		],
+		"refer": [
+			"view/loginRegister/index.html"
+		]
+	},
+	"view/userInfo/index.html": {
+		"resources": [
+			"js/constants.js",
+			"js/mui.min.js",
+			"images/right.png",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/userInfo/certification.html",
+			"view/userInfo/order.html",
+			"view/loginRegister/index.html"
+		]
+	},
+	"view/dropIn/submitOrder.html": {
+		"resources": [
+			"images/dropIn/lessen.png",
+			"js/mui.picker.min.js",
+			"images/dropIn/compositePath.png",
+			"images/dropIn/add.png",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css"
+		],
+		"refer": [
+			"view/dropIn/finish.html"
+		]
+	},
+	"view/dropIn/finish.html": {
+		"resources": [
+			"css/registration/finish.css",
+			"images/dropIn/success.png"
+		],
+		"refer": [
+			"view/dropIn/detail.html"
+		]
+	},
+	"view/dropIn/detail.html": {
+		"resources": [
+			"images/dropIn/status.png",
+			"js/constants.js",
+			"fonts/mui.ttf",
+			"images/dropIn/compositePath.png",
+			"css/dropIn/serviceInfo.css"
+		]
+	},
+	"view/userInfo/certification.html": {
+		"resources": [
+			"js/mui.picker.min.js",
+			"images/loginRegister/Home.png",
+			"images/loginRegister/Female.png",
+			"js/jquery.1.11.1.js",
+			"images/loginRegister/City1.png",
+			"css/mui.dtpicker.css",
+			"css/loginRegister/certification.css",
+			"images/loginRegister/iPhone.png",
+			"images/loginRegister/Person.png",
+			"css/mui.picker.min.css",
+			"js/mui.dtpicker.js",
+			"images/loginRegister/Address_Book2.png"
+		]
+	},
+	"view/video/videoList.html": {
+		"resources": [
+			"images/video/videoPlay.png",
+			"css/video/videoList.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/video/videoPlay.html"
+		]
+	},
+	"view/video/videoPlay.html": {
+		"resources": [
+			"js/video/zy.media.min.js",
+			"css/video/videoPlay.css",
+			"css/video/zy.media.min.css",
+			"js/jquery.1.11.1.js"
+		]
+	},
+	"view/video/index.html": {
+		"resources": [
+			"css/registration/index.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"css/video/index.css",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/video/videoList.html"
+		]
+	},
+	"view/registration/registrationTime.html": {
+		"resources": [
+			"css/registration/selectTime.css",
+			"css/mui.poppicker.css",
+			"css/mui.picker.css",
+			"js/mui.picker.js",
+			"js/mui.picker.min.js",
+			"js/mui.poppicker.js",
+			"js/jquery.1.11.1.js",
+			"js/city.data.js",
+			"js/city.data-3.js",
+			"js/constants.js",
+			"fonts/mui.ttf",
+			"css/common/common.css",
+			"js/mui.min.js",
+			"css/mui.min.css"
+		]
+	},
+	"view/message/content.html": {
+		"resources": [
+			"images/123.png",
+			"css/message/content.css",
+			"js/jquery.1.11.1.js",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/userInfo/order.html": {
+		"resources": [
+			"js/jquery.1.11.1.js",
+			"css/loginRegister/certification.css"
+		],
+		"refer": [
+			"view/transfuse/myHistory.html",
+			"view/registration/myHistory.html"
+		]
+	},
+	"view/transfuse/myHistory.html": {
+		"resources": [
+			"css/registration/myHistory.css",
+			"images/small.png",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/takeOut/finish.html": {
+		"resources": [
+			"css/registration/finish.css",
+			"images/dropIn/success.png",
+			"css/mui.min.css",
+			"js/mui.min.js",
+			"css/common/common.css",
+			"images/takeOut/Check3.png"
+		],
+		"refer": [
+			"view/takeOut/progress.html",
+			"view/dropIn/detail.html"
 		]
 	}
 }

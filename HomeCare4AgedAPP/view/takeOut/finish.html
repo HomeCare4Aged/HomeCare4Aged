@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/registration/finish.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav m_orangeTakeOut">
+			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
+			<h1 class="mui-title">订餐成功</h1>
+		</header>
+		<div class="mui-content" style="background-color:white ;">
+			<div class="topDiv ">
+				<img class="image" src="../../images/takeOut/Check3.png" />
+				<h1 class="marginLeftRight msg" style="color: rgb(255,122,66);margin-left: 25px;margin-right: 25px;">您已成功发送订单</h1>
+				<!--<h1 id="g-serviceTitle" class="marginLeftRight " style="font-weight: normal;font-size: 30px; color: black;margin-top: 20px; margin-left: 25px;margin-right: 25px;">预计送达时间</h1>-->
+			</div>
+			<button type="button" class="zz-btn-next" id="btn-details" style="background: rgb(255,122,66);">查看详情</button>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init({
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					mui.openWindow({
+						url: '../home/index.html',
+					});
+				},
+			});
+			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+
+				var details = document.getElementById('btn-details');
+				var postData = plus.webview.currentWebview().data;
+				console.log(postData + "finish");
+				details.addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../takeOut/progress.html',
+						extras: {
+							//							data: postData,
+							"storeName": sData.storeName,
+							"freight": sData.freight,
+						},
+					});
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

@@ -27,25 +27,29 @@
 			<h1 class="mui-title">店铺详情</h1>
 		</header>
 		<div class="mui-content" style="margin-top: 15px;margin-bottom: 17%;">
-			<img src="../../images/home/cloudySky.png" class="mui-icon-image blur" />
-			<img src="../../images/small.png" id="zz-img-head" />
-			<div class="mui-row">
-				<img src="../../images/takeOut/address.png" id="addressImg" />
-				<span id="span-address">地qq址地址地址地址地址</span>
+
+			<img src="../../images/home/cloudySky.png" class="mui-icon-image blur" id="backgroundImg" style="position: absolute; height: 50%;" />
+			<div class="BG" style="background: rgba(0,0,0,0.4);position: relative;" id="BGBlack">
+				<img src="" id="zz-img-head" />
+				<div class="mui-row zz-1 mui-col-xs-12">
+					<img class="mui-col-xs-2" src="../../images/takeOut/address.png" id="addressImg" />
+					<span class="mui-col-xs-10" id="span-address"></span>
+				</div>
+				<div class="mui-row zz-2 mui-col-xs-12">
+					<img class="mui-col-xs-2" src="../../images/takeOut/freight.png" id="freightImg" />
+					<span class="mui-col-xs-10" id="span-freight"></span>
+				</div>
+				<div class="mui-row zz-3 mui-col-xs-12">
+					<img class="mui-col-xs-2" src="../../images/takeOut/distance.png" id="distanceImg" />
+					<span class="mui-col-xs-10" id="span-distance"></span>
+				</div>
+				<div class="mui-row zz-4" id="storeName">
+
+				</div>
 			</div>
-			<div class="mui-row">
-				<img src="../../images/takeOut/freight.png" id="freightImg" />
-				<span id="span-freight">基础运费：2元</span>
-			</div>
-			<div class="mui-row">
-				<img src="../../images/takeOut/distance.png" id="distanceImg" />
-				<span id="span-distance">距离：1.2千米</span>
-			</div>
-			<div class="mui-row" id="storeName">
-				杨铭宇黄焖鸡米饭
-			</div>
+
 			<ul class="mui-table-view mui-table-view-chevron" id="list_already">
-				<li class="mui-table-view-cell mui-collapse">
+				<!--<li class="mui-table-view-cell mui-collapse">
 					<a class="mui-navigate-right">
 						黄焖类
 						<img src="../../images/takeOut/pull.png" style=" width: 30px; float: right; margin-right: -40px; margin-top: 10px;" />
@@ -71,8 +75,30 @@
 							</div>
 						</li>
 					</ul>
-				</li>
+					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell" style="padding:10px 25px;">
+							<div class="mui-row mui-col-xs-12">
+								<div class="mui-col-xs-1">
+									<img src="../../images/takeOut/pull.png" style=" width: 50px;" />
+								</div>
+								<div class="mui-col-xs-7" style="margin-left: 40px; margin-top: -5px;">
+									<h4>黄焖鸡h黄焖鸡小份</h4>
+									<h4 style="margin-top: 15px;" class="gray-text">
+										月售2000份&nbsp;
+										<span style="color: red;">￥25元</span>
+									</h4>
+								</div>
+								<div class="mui-col-xs-2" style="float: right;width: 50px;">
+									<span style="float: left;">x1</span>
+									<img src="../../images/takeOut/add.png" style="width: 20px;float: right;" />
+									<img src="../../images/takeOut/reduce.png" style="width: 20px;margin-top: 15px; float: right; margin-left: 80px;" />
+								</div>
+							</div>
+						</li>
+					</ul>
+				</li>-->
 			</ul>
+
 			<div id="middlePopover" class="mui-popover">
 				<img src="../../images/123.png" style="width: 100%;height: 85%;" id="zz-img-popoverImgShow" />
 				<div class="mui-row mui-col-xs-12">
@@ -84,7 +110,7 @@
 					</h4>
 					</div>
 					<div class="mui-col-xs-1" style="float: right;margin-right: 20px;margin-top: 33px;">
-						<img src="../../images/takeOut/add.png" style="width: 25px;" id="zz-img-popoverAdd" />
+						<img src="../../images/takeOut/add.png" style="width: 25px;" id="zz-img-popoverAdd" class="g-btnActive" />
 					</div>
 				</div>
 			</div>
@@ -92,10 +118,10 @@
 				<div style="height: 10%;position: fixed;bottom: 0px; background: rgb(51,51,51);" class="mui-col-xs-7">
 					<img src="../../images/takeOut/box1.png" style="width: 53px;margin-left: 15px;margin-top: 3%;" id="zz-img-box" />
 					<span style="color: black;bottom: 6.1%;left: 14.5%; position: fixed;font-size: 10px;font-weight: bold; width: 20px;text-align: center; display: none;" id="zz-span-count">1</span>
-					<span style="color: white;bottom: 3%;left: 22%; position: fixed;font-size: 19px;font-weight: bold;display: none;" id="zz-span-commodityMoneyAll">￥25</span>
+					<span style="color: white;bottom: 3%;left: 22%; position: fixed;font-size: 19px;font-weight: bold;display: none;" id="zz-span-commodityMoneyAll"></span>
 				</div>
 				<div style=" height: 100%; background: rgb(51,51,51); float: right;" class="mui-col-xs-5" id="zz-div-statrtPrice">
-					<h4 style="color: white;text-align: center;margin-top: 16%;" id="zz-h4-statrtPrice">35元起送</h4>
+					<h4 style="color: white;text-align: center;margin-top: 16%;" id="zz-h4-statrtPrice"></h4>
 				</div>
 			</div>
 
@@ -105,21 +131,57 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+
+			$('.BG').css('width', document.documentElement.clientWidth);
+			//			$('.BG').css('height', document.documentElement.clientHeight / 1.8);
 			$('.mui-icon-image').css('width', document.documentElement.clientWidth);
-			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 2);
+			//			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 1.8);
 			mui.plusReady(function() {
 
-				localStorage.statrtPrice = 35;
-localStorage.commodityMoneyAll = 0;
-				var is_open = '0';
-				var is_CommodityOn = 0;
+				localStorage.commodityMoneyAll = 0;
+				//				var is_open = '0';
+				localStorage.is_chanceFood = '0';
+
+				console.log('jinlaile');
+				mui.back = function() {
+					if(localStorage.is_chanceFood == '1') {
+						var btnArray = ['返回', '留下', ];
+						mui.confirm('如果返回您刚才所选的物品将被清空！', '', btnArray, function(e) {
+							if(e.index == 0) {
+								mui.currentWebview.close();
+							} else if(e.index == 1) {}
+
+						});
+					}
+					if(localStorage.is_chanceFood == '0') {
+						mui.currentWebview.close();
+					}
+				}
+
+				//				var is_CommodityOn = 0;
 				var priceDifferences; //差价
 				var doc = document;
+				var dataInfo = {};
+				var sData = plus.webview.currentWebview();
+				localStorage.statrtPrice = sData.store_up_to_send_price;
+				console.log(localStorage.statrtPrice);
+				doc.getElementById('backgroundImg').setAttribute('src', sData.store_shop_picture);
+				doc.getElementById('zz-img-head').setAttribute('src', sData.store_shop_picture);
+				doc.getElementById('span-address').innerHTML = sData.store_shop_address;
+				doc.getElementById('span-freight').innerHTML = "基础运费：" + sData.store_carriage + "元";
+				if(parseInt(sData.distance) < 1) {
+					doc.getElementById('span-distance').innerHTML = "距离：" + sData.distance * 1000 + "米";
+				} else {
+					doc.getElementById('span-distance').innerHTML = "距离：" + sData.distance.toFixed(1) + "千米";
+				}
+				doc.getElementById('storeName').innerHTML = sData.store_shop_name;
+
 				fragment = doc.createDocumentFragment();
 				container_already = doc.getElementById("list_already");
 				zz_img_box = doc.getElementById('zz-img-box');
 				zz_h4_statrtPrice = doc.getElementById('zz-h4-statrtPrice'); //起送价
+				zz_h4_statrtPrice.innerHTML = sData.store_up_to_send_price + "元起送";
 				zz_span_count = doc.getElementById('zz-span-count');
 				zz_span_commodityMoneyAll = doc.getElementById('zz-span-commodityMoneyAll'); //商品总价
 				zz_div_statrtPrice = doc.getElementById('zz-div-statrtPrice');
@@ -128,178 +190,300 @@ localStorage.commodityMoneyAll = 0;
 				zz_h4_popoverSale = doc.getElementById('zz-h4-popoverSale');
 				zz_span_popoverMoney = doc.getElementById('zz-span-popoverMoney');
 				zz_img_popoverAdd = doc.getElementById('zz-img-popoverAdd');
-				//			    mui.each(dataAlready, function(i) {
-				liHeader = doc.createElement("li");
-				liHeader.setAttribute("class", "mui-table-view-cell mui-collapse");
-				a = doc.createElement("a");
-				a.setAttribute("class", "mui-navigate-right");
-				a.innerHTML = "黄焖类";
-				imgPull = doc.createElement("img");
-				imgPull.setAttribute("src", "../../images/takeOut/pull.png");
-				imgPull.setAttribute("style", "width: 30px; float: right; margin-right: -40px; margin-top: 10px;");
-				ul = doc.createElement("ul");
-				ul.setAttribute("class", "mui-table-view mui-table-view-chevron");
-				liContent = doc.createElement("li");
-				liContent.setAttribute("class", "mui-table-view-cell");
-				liContent.setAttribute("style", "padding:10px 25px;");
-				divContent = doc.createElement("div");
-				divContent.setAttribute("class", "mui-row mui-col-xs-12");
-				divImg = doc.createElement("div");
-				divImg.setAttribute("class", "mui-col-xs-1");
-				aImg = doc.createElement("a");
-				aImg.setAttribute("href", "#middlePopover");
-				imgShow = doc.createElement("img");
-				imgShow.setAttribute("src", "../../images/takeOut/pull.png");
-				imgShow.setAttribute("style", "width: 50px;");
-				divDescribe = doc.createElement("div");
-				divDescribe.setAttribute("class", "mui-col-xs-7");
-				divDescribe.setAttribute("style", "margin-left: 40px;margin-top: -5px;");
-				
-				h4Name = doc.createElement("h4");
-				h4Name.innerHTML = "黄焖鸡小份";
-				h4Sale = doc.createElement("h4");
-				h4Sale.setAttribute("class", "gray-text");
-				h4Sale.setAttribute("style", "margin-top: 15px;");
-				h4Sale.innerHTML = "月售2000份  ";
-				spanMoney = doc.createElement("span");
-				spanMoney.setAttribute("style", "color: red;");
-				spanMoney.innerHTML = "￥" + "25" + "元";
 
-				divAddOrReduce = doc.createElement("div");
-				divAddOrReduce.setAttribute("class", "mui-col-xs-2");
-				divAddOrReduce.setAttribute("style", "float: right;width: 50px;");
-				spanCopies = doc.createElement("span");
-				spanCopies.setAttribute("style","float: left; display: none;");
-				spanCopies.innerHTML = 'x1';
-				imgAdd = doc.createElement("img");
-				imgAdd.setAttribute("src", "../../images/takeOut/add.png");
-				imgAdd.setAttribute("style", "width: 20px;float: right;");
-				imgReduce = doc.createElement("img");
-				imgReduce.setAttribute("src", "../../images/takeOut/reduce.png");
-				imgReduce.setAttribute("style", "width: 20px;margin-top: 15px; float: right; margin-left: 80px;display: none;");
-
-				liHeader.appendChild(a);
-				a.appendChild(imgPull);
-				liHeader.appendChild(ul);
-				ul.appendChild(liContent);
-				liContent.appendChild(divContent);
-				divContent.appendChild(divImg);
-				divImg.appendChild(aImg);
-				aImg.appendChild(imgShow);
-				divContent.appendChild(divDescribe);
-				divDescribe.appendChild(h4Name);
-				divDescribe.appendChild(h4Sale);
-				h4Sale.appendChild(spanMoney);
-				divContent.appendChild(divAddOrReduce);
-				divAddOrReduce.appendChild(spanCopies);
-				divAddOrReduce.appendChild(imgAdd);
-				divAddOrReduce.appendChild(imgReduce);
-				
-				fragment.appendChild(liHeader);
-				container_already.appendChild(fragment);
-				//			    });
-				
-				a.addEventListener('tap', function() {
-					console.log("点击分类标签");
-					if(is_open == "0") {
-						imgPull.setAttribute("src", "../../images/takeOut/pullup.png");
-						is_open = "1";
-					} else {
-						imgPull.setAttribute("src", "../../images/takeOut/pull.png");
-						is_open = "0";
-					}
-				});
-				aImg.addEventListener("tap", function() {
-					console.log('点击展示图');
-					zz_h4_popoverName.innerHTML = h4Name.innerHTML;
-					zz_h4_popoverSale.innerHTML = h4Sale.innerHTML;
-					zz_span_popoverMoney = spanMoney.innerHTML;
-					zz_img_popoverImgShow.src = imgShow.src;
-					console.log(imgShow.src);
-				});
-				imgAdd.addEventListener("tap", function() {
-					console.log('点击添加菜品');
-					add();
-				});
 				zz_img_popoverAdd.addEventListener("tap", function() {
 					console.log('点击蒙版图上的添加菜品');
-					add();
+					console.log(this.id);
+					add(this.id);
 				});
-				imgReduce.addEventListener("tap", function() {
-					console.log('点击减少菜品');
-					reduce();
-				});
-				function reduce(){
-					is_CommodityOn = is_CommodityOn - 1;
-					console.log('dianjicishu'+is_CommodityOn);
-					if(is_CommodityOn == 0) {
-						spanCopies.style.display = 'none';
-						imgReduce.style.display = 'none';
-						zz_span_commodityMoneyAll.style.display = 'none';
-						console.log(is_CommodityOn);
+
+				var matchData;
+				var store_carriage;
+				postData = {};
+				postData['store_shop_id'] = sData.store_shop_id;
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "SStoreGoodsInfo/getStoreGoodsInfo",
+					data: postData,
+					dataType: "json",
+					//成功获取数据赋值
+					success: function(data) {
+						console.log(JSON.stringify(data.classify));
+						console.log(JSON.stringify(data.matchData));
+						matchData = data.matchData;
+						store_carriage =
+							console.log("+++++++++++++++++++++++" + JSON.stringify(matchData));
+						dataInfo = data.idPrice;
+						mui.each(data.classify, function(i) {
+
+							var name = data.classify[i]['type'];
+							liHeader = doc.createElement("li");
+							liHeader.setAttribute("class", "mui-table-view-cell mui-collapse");
+							liHeader.id = data[i];
+
+							a = doc.createElement("a");
+							a.setAttribute("class", "mui-navigate-right");
+							a.innerHTML = data.classify[i]['type'];
+							imgPull = doc.createElement("img");
+							imgPull.setAttribute("src", "../../images/takeOut/pull.png");
+							imgPull.setAttribute("style", "width: 30px; float: right; margin-right: -40px; margin-top: 10px;");
+							liHeader.appendChild(a);
+							a.appendChild(imgPull);
+							fragment.appendChild(liHeader);
+							//							a.addEventListener('tap', function() {
+							//								console.log("点击分类标签");
+							//								if(is_open == "0") {
+							//									imgPull.setAttribute("src", "../../images/takeOut/pullup.png");
+							//									is_open = "1";
+							//								} else {
+							//									imgPull.setAttribute("src", "../../images/takeOut/pull.png");
+							//									is_open = "0";
+							//								}
+							//							});
+							mui.each(data.data[data.classify[i]['type']], function(i) {
+
+								ul = doc.createElement("ul");
+								ul.setAttribute("class", "mui-table-view mui-table-view-chevron");
+								liContent = doc.createElement("li");
+								liContent.setAttribute("class", "mui-table-view-cell");
+								liContent.setAttribute("style", "padding:10px 25px;");
+								divContent = doc.createElement("div");
+								divContent.setAttribute("class", "mui-row mui-col-xs-12");
+								divImg = doc.createElement("div");
+								divImg.setAttribute("class", "mui-col-xs-1");
+
+								aImg = doc.createElement("a");
+								aImg.setAttribute("href", "#middlePopover");
+								aImg.id = data.data[name][i]['store_goods_id'] + 'aImg';
+								imgShow = doc.createElement("img");
+								imgShow.setAttribute("src", data.data[name][i]['store_goods_picture']);
+								aImg.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
+								imgShow.setAttribute("style", "width: 50px; height: 50px;");
+								divDescribe = doc.createElement("div");
+								divDescribe.setAttribute("class", "mui-col-xs-7");
+								divDescribe.setAttribute("style", "margin-left: 40px;margin-top: -5px;");
+
+								h4Name = doc.createElement("h4");
+								h4Name.innerHTML = data.data[name][i]['store_goods_name'];
+								h4Name.id = data.data[name][i]['store_goods_id'] + 'foodName';
+								//								h4Name.setAttribute('attr',data.data[name][i]['store_goods_name']);
+								//								console.log(h4Name.innerHTML);
+								h4Sale = doc.createElement("h4");
+								h4Sale.setAttribute("class", "gray-text");
+								h4Sale.setAttribute("style", "margin-top: 15px;");
+								h4Sale.id = data.data[name][i]['store_goods_id'] + 'foodSale';
+								h4Sale.innerHTML = "月售" + data.data[name][i]['store_monthly_sales'] + "份  ";
+								spanMoney = doc.createElement("span");
+								spanMoney.setAttribute("style", "color: red;");
+								spanMoney.setAttribute("attr", data.data[name][i]['store_goods_price']);
+								spanMoney.innerHTML = "￥" + data.data[name][i]['store_goods_price'] + "元";
+
+								divAddOrReduce = doc.createElement("div");
+								divAddOrReduce.setAttribute("class", "mui-col-xs-2");
+								divAddOrReduce.setAttribute("style", "float: right;width: 50px;");
+								spanCopies = doc.createElement("span");
+								spanCopies.setAttribute("style", "float: left;");
+								//								spanCopies.innerHTML = 'x1';
+								spanCopies.id = data.data[name][i]['store_goods_id'] + 'span';
+								spanCopies.setAttribute("count", "0");
+								spanCopies.setAttribute("price", data.data[name][i]['store_goods_price']);
+								imgAdd = doc.createElement("img");
+								imgAdd.setAttribute("src", "../../images/takeOut/add.png");
+								imgAdd.setAttribute("style", "width: 20px;float: right; ");
+								imgAdd.setAttribute("class", "g-btnActive");
+								imgAdd.setAttribute("attr", data.data[name][i]['store_goods_id']);
+								imgAdd.id = data.data[name][i]['store_goods_id'] + 'add';
+
+								imgReduce = doc.createElement("img");
+								imgReduce.setAttribute("src", "../../images/takeOut/reduce.png");
+								imgReduce.setAttribute("style", "width: 20px;margin-top: 15px; float: right; margin-left: 80px;display: none;");
+								imgReduce.setAttribute("class", "g-btnActive");
+								imgReduce.id = data.data[name][i]['store_goods_id'] + 'reduce';
+								imgReduce.setAttribute("count", "0");
+
+								aImg.addEventListener("tap", function() {
+									var id = this.id.replace('aImg', "");
+									console.log('点击展示图');
+									console.log(aImg.id);
+									zz_h4_popoverName.innerHTML = document.getElementById(id + 'foodName').innerHTML;
+									console.log(h4Name.id);
+									zz_h4_popoverSale.innerHTML = document.getElementById(id + 'foodSale').innerHTML;;
+									zz_span_popoverMoney = spanMoney.innerHTML;
+									zz_img_popoverImgShow.src = this.getAttribute("selfSrc");
+									zz_img_popoverAdd.id = id + 'add';
+									console.log(zz_img_popoverAdd.id);
+								});
+
+								imgAdd.addEventListener("tap", function() {
+									console.log('点击添加菜品');
+									add(this.id);
+								});
+
+								imgReduce.addEventListener("tap", function() {
+									console.log('点击减少菜品');
+									reduce(this.id);
+								});
+
+								//								liHeader.appendChild(a);
+								//								a.appendChild(imgPull);
+								liHeader.appendChild(ul);
+								ul.appendChild(liContent);
+								liContent.appendChild(divContent);
+								divContent.appendChild(divImg);
+								divImg.appendChild(aImg);
+								aImg.appendChild(imgShow);
+								divContent.appendChild(divDescribe);
+								divDescribe.appendChild(h4Name);
+								divDescribe.appendChild(h4Sale);
+								h4Sale.appendChild(spanMoney);
+								divContent.appendChild(divAddOrReduce);
+								divAddOrReduce.appendChild(spanCopies);
+								divAddOrReduce.appendChild(imgAdd);
+								divAddOrReduce.appendChild(imgReduce);
+								//								fragment.appendChild(liHeader);
+
+							});
+
+						});
+						container_already.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						mui.toast(type);
 					}
-					
-					spanCopies.innerHTML = 'x'+is_CommodityOn;
-					localStorage.commodityMoneyAll = parseInt(localStorage.commodityMoneyAll) - parseInt(spanMoney.innerHTML.substring(1, spanMoney.innerHTML.length - 1));
-					zz_span_commodityMoneyAll.innerHTML = "￥" + localStorage.commodityMoneyAll;
-					console.log(localStorage.commodityMoneyAll+"hahhhahahahahaha");
-					if(parseInt(localStorage.commodityMoneyAll) < parseInt(localStorage.statrtPrice) && parseInt(localStorage.commodityMoneyAll) != 0){
-						
-						console.log('l111111111111111111ssssss'+localStorage.commodityMoneyAll);
-						console.log('22222222222222222ssssss'+localStorage.statrtPrice);
+
+				});
+				var storeCount = 0;
+				var storeFoodData = {};
+				var storeFoodALLData = [];
+				localStorage.commodityMoneyAll = 0;
+
+				function reduce(id) {
+					console.log(id);
+					var id = id.replace('reduce', "");
+					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) - 1);
+					console.log(count);
+					storeCount--;
+					console.log()
+					document.getElementById('zz-span-count').innerHTML = storeCount;
+					document.getElementById(id + 'span').setAttribute('count', count);
+
+					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) - parseFloat(document.getElementById(id + 'span').getAttribute('price'));
+					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
+
+					storeFoodData[id] = count;
+					storeFoodALLData.push(storeFoodData);
+					console.log('----------------------' + JSON.stringify(storeFoodData));
+					if(localStorage.commodityMoneyAll == 0) {
+						document.getElementById('zz-span-commodityMoneyAll').style.display = 'none';
+					}
+					console.log(localStorage.commodityMoneyAll);
+					if(parseFloat(localStorage.commodityMoneyAll) < parseFloat(localStorage.statrtPrice) && parseFloat(localStorage.commodityMoneyAll) != 0) {
+
 						priceDifferences = localStorage.statrtPrice - localStorage.commodityMoneyAll;
-						zz_span_count.style.display = 'none';
+						//						zz_span_count.style.display = 'none';
 						zz_div_statrtPrice.setAttribute("style", "height: 100%; background: rgb(17,17,17); float: right;");
 						zz_h4_statrtPrice.innerHTML = "还差" + priceDifferences + "元";
-					}else if(localStorage.commodityMoneyAll == 0){
-						zz_img_box.setAttribute("src","../../images/takeOut/box1.png");
-						zz_img_box.setAttribute("style","width: 53px;margin-left: 15px;margin-top: 3%;");
+					} else if(localStorage.commodityMoneyAll == 0) {
+						localStorage.is_chanceFood = '0';
+						zz_img_box.setAttribute("src", "../../images/takeOut/box1.png");
+						zz_img_box.setAttribute("style", "width: 53px;margin-left: 15px;margin-top: 3%;");
 						zz_div_statrtPrice.setAttribute("style", "height: 100%; background: rgb(51,51,51); float: right;");
-						zz_h4_statrtPrice.innerHTML = "35元起送";
+						zz_h4_statrtPrice.innerHTML = localStorage.statrtPrice + "元起送";
 					}
+
+					if(storeCount == 0) {
+						zz_img_box.setAttribute("src", "../../images/takeOut/box1.png");
+						zz_img_box.setAttribute("style", "width: 53px;margin-left: 15px;margin-top: 3%;");
+						document.getElementById('zz-span-count').style.display = 'none';
+					}
+					if(parseInt(document.getElementById(id + 'span').getAttribute('count')) > 0) {
+						console.log(id);
+						document.getElementById(id + 'reduce').style.display = '';
+						document.getElementById(id + 'span').innerHTML = '×' + document.getElementById(id + 'span').getAttribute('count');
+					} else {
+						document.getElementById(id + 'reduce').style.display = 'none';
+						document.getElementById(id + 'span').innerHTML = '';
+					}
+
 				}
+
 				//添加菜品
-				function add() {
-					if(is_CommodityOn == 0) {
-						zz_span_commodityMoneyAll.style.display = '';
-					}
+				function add(id) {
+					localStorage.is_chanceFood = '1';
+					//					console.log(is_chanceFood);
 					spanCopies.style.display = '';
-					imgReduce.style.display = '';
-					is_CommodityOn = is_CommodityOn + 1;
-					spanCopies.innerHTML = 'x'+is_CommodityOn;
-					console.log(is_CommodityOn);
+
+					var id = id.replace('add', "");
+					console.log(id);
+					storeCount++;
 					zz_img_box.setAttribute("src", "../../images/takeOut/box3.png");
 					zz_img_box.setAttribute("style", "width: 63px;margin-left: 15px;margin-top: -3px;");
-					
-					localStorage.commodityMoneyAll = parseInt(localStorage.commodityMoneyAll)+parseInt(spanMoney.innerHTML.substring(1, spanMoney.innerHTML.length - 1)) ;
-					console.log('localStorage.commodityMoneyAll     '+localStorage.commodityMoneyAll);
-					zz_span_commodityMoneyAll.innerHTML = "￥" + localStorage.commodityMoneyAll;
+					document.getElementById('zz-span-count').style.display = '';
+					document.getElementById('zz-span-count').innerHTML = storeCount;
+					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) + 1);
 
-					if(localStorage.commodityMoneyAll > localStorage.statrtPrice || localStorage.commodityMoneyAll == localStorage.statrtPrice) {
+					console.log('===========' + document.getElementById(id + 'span').getAttribute('count'));
+
+					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'));
+					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
+					console.log(localStorage.commodityMoneyAll);
+					localStorage.storeFoodData[id] = count;
+					document.getElementById('zz-span-commodityMoneyAll').style.display = '';
+					storeFoodData[id] = count;
+					//					storeFoodALLData.push(storeFoodData);
+					console.log('----------------------' + JSON.stringify(storeFoodData));
+					if(localStorage.commodityMoneyAll >= localStorage.statrtPrice) {
 						zz_div_statrtPrice.setAttribute("style", "height: 100%; background: rgb(255,122,66); float: right;");
 						zz_h4_statrtPrice.innerHTML = "结算";
 						zz_span_count.style.display = '';
-					}else if(localStorage.commodityMoneyAll < localStorage.statrtPrice) {
+					} else {
 						console.log('conme');
 						priceDifferences = localStorage.statrtPrice - localStorage.commodityMoneyAll;
-						if(priceDifferences>0){
+						if(priceDifferences > 0) {
 							zz_div_statrtPrice.setAttribute("style", "height: 100%; background: rgb(17,17,17); float: right;");
-						zz_h4_statrtPrice.innerHTML = "还差" + priceDifferences + "元";
+							zz_h4_statrtPrice.innerHTML = "还差" + priceDifferences + "元";
 						}
-						console.log('差价'+priceDifferences);
+						console.log('差价' + priceDifferences);
 					}
+					console.log(count);
+
+					document.getElementById(id + 'span').setAttribute('count', count);
+					if(parseInt(document.getElementById(id + 'span').getAttribute('count')) > 0) {
+						console.log(id);
+						document.getElementById(id + 'reduce').style.display = '';
+						document.getElementById(id + 'span').innerHTML = '×' + document.getElementById(id + 'span').getAttribute('count');
+					} else {
+						document.getElementById(id + 'reduce').style.display = 'none';
+						document.getElementById(id + '').innerHTML = '';
+					}
+
 				}
-			zz_div_statrtPrice.addEventListener('tap',function(){
-				console.log(zz_h4_statrtPrice.innerHTML);
-				if(zz_h4_statrtPrice.innerHTML == '结算'){
-					mui.openWindow({
-						url:'../takeOut/orderForm.html',
-					});
-				}else{
-					return;
-				}
-				
-			});
+
+				zz_div_statrtPrice.addEventListener('tap', function() {
+					console.log(zz_h4_statrtPrice.innerHTML);
+					var storeName = document.getElementById('storeName').innerHTML;
+					//					var freight = document.getElementById('span-freight').innerHTML.substr(5);
+					console.log(storeName);
+					if(zz_h4_statrtPrice.innerHTML == '结算') {
+						console.log('----------------------' + JSON.stringify(storeFoodData));
+						console.log('----------------------' + JSON.stringify(matchData));
+						localStorage.storeFoodData = JSON.stringify(storeFoodData);
+						localStorage.matchData = JSON.stringify(matchData);
+						mui.openWindow({
+							url: '../takeOut/orderForm.html',
+							extras: {
+								"matchData": matchData,
+								"storeFoodData": storeFoodData,
+								"storeName": storeName,
+								"freight": sData.store_carriage,
+							},
+						});
+					} else {
+						return;
+					}
+
+				});
 			});
 		</script>
 	</body>

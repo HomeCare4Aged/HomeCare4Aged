@@ -12,7 +12,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_yellow">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
 			<h1 class="mui-title">订单详情</h1>
 		</header>
 		<div class="mui-content">
@@ -20,67 +20,28 @@
 				<li class="mui-table-view-cell">
 					<div class="mui-row marginLeftRight">
 						<div class="mui-col-xs-12" style="margin-top: 20px;">
-							<img src="../../images/takeOut/progress1.png" style="width: 100%;" />
+							<img src="../../images/takeOut/progress1.png" style="width: 100%;" id="g-img-status"/>
 						</div>
-						<h1 style="text-align: center; color: #FF7A42; margin-top: 70px;">等待商家接单</h1>
+						<h1 style="text-align: center; color: #FF7A42; margin-top: 70px;" id="g-text-status">等待商家接单</h1>
 					</div>
 				</li>
 				<li class="mui-table-view-cell ">
 					<div class="marginLeftRight">
-						<img src="../../images/takeOut/location.png" class="mui-media-object mui-pull-left" style="width: 20px; height: 30px;margin-top: 12px;"/>
+						<img src="../../images/takeOut/location.png" class="mui-media-object mui-pull-left" style="width: 20px; height: 30px;margin-top: 12px;" />
 						<div class="mui-media-body ">
-							<h4>刘&nbsp;先生&nbsp;15620612220</h4>
-							<h4 class='mui-ellipsis gray-text' style="margin-top: 10px;">金田花园8号楼45门708</h4>
+							<h4 id="zz-h4-userNameAndPhone">刘&nbsp;先生&nbsp;15620612220</h4>
+							<h4 class='mui-ellipsis gray-text' style="margin-top: 10px;" id="zz-h4-location">金田花园8号楼45门708</h4>
 						</div>
 					</div>
 
 				</li>
 				<li class="mui-table-view-cell">
 					<div class="marginLeftRight">
-						<h4>外卖：杨铭宇黄焖鸡米饭</h4>
+						<h4 id="zz-h4-storeName">外卖：杨铭宇黄焖鸡米饭</h4>
 					</div>
 				</li>
-				<li class="mui-table-view-cell">
-					<div class="mui-row marginLeftRight">
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
+				<li class="mui-table-view-cell" id="list_food">
+					<!--<div class="mui-row marginLeftRight">
 						<div class="mui-col-xs-7">
 							<h4 class="gray-text">黄焖鸡</h4>
 						</div>
@@ -90,7 +51,7 @@
 						<div class="mui-col-xs-2 mui-text-right">
 							<h4 style="color: red;">￥20</h4>
 						</div>
-					</div>
+					</div>-->
 				</li>
 				<li class="mui-table-view-cell">
 					<div class="mui-row marginLeftRight">
@@ -98,35 +59,200 @@
 							<h4 id="sendraise" class="gray-text">配送费</h4>
 						</div>
 						<div class="mui-col-xs-2 mui-text-right">
-							<h4 style="color: red;">￥10</h4>
+							<h4 style="color: red;" id="freight">￥10</h4>
 						</div>
 					</div>
 				</li>
 				<li class="mui-table-view-cell ">
 					<div class="mui-col-xs-12 mui-text-right ">
 						<div class="marginLeftRight">
-							<h4 style="color: red;">实付￥20</h4>
+							<h4 style="color: red;" id="actualPayment">sss</h4>
 						</div>
 
 					</div>
 				</li>
 				<li class="mui-table-view-cell">
 					<div class="marginLeftRight">
-						<h4>下单:2016-12-27 22:20:30</h4>
+						<h4 id="time">下单:2016-12-27 22:20:30</h4>
 					</div>
 				</li>
 			</ul>
 		</div>
 		<div class="mui-row mui-col-xs-12" style="position: fixed; bottom: 0px;">
-			<div class="mui-col-xs-7"><button style="background-color:#FF7A42; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block">确认收货</button></div>
-			<div class="mui-col-xs-5"><button style="background-color:#52B53E; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block">联系商家</button></div>
+			<div class="mui-col-xs-7"><button style="background-color:#FF7A42; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="makeSure">确认收货</button></div>
+			<div class="mui-col-xs-5"><button style="background-color:#52B53E; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="contactMerchant">联系商家</button></div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			mui.init();
+			mui.init({
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					mui.openWindow({
+						url: '../home/index.html',
+					});
+				},
+			});
 			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				var userSex = '男';
+				if(localStorage.userSex == '男') {
+					userSex = '先生';
+				} else {
+					userSex = '女士';
+				}
+				document.getElementById('zz-h4-userNameAndPhone').innerHTML = localStorage.userName + "   " + userSex + " " + localStorage.userPhoneNum;
+				document.getElementById('zz-h4-location').innerHTML = localStorage.userHome;
+				document.getElementById('zz-h4-storeName').innerHTML = '外卖：' + sData.storeName;
+				document.getElementById('freight').innerHTML = "￥" + sData.freight;
+				document.getElementById('actualPayment').innerHTML = "实付￥" + (parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight));
+				var storeListData =  JSON.parse(localStorage.storeListData);
+				document.getElementById('time').innerHTML = "下单：" + storeListData.order.store_list_time;
+
+				fragment = document.createDocumentFragment();
+				container_list_food = document.getElementById("list_food");
+				var storeFoodData = JSON.parse(localStorage.storeFoodData);
+				var matchData = JSON.parse(localStorage.matchData);
+
+				console.log(JSON.stringify(storeFoodData));
+				console.log(JSON.stringify(matchData));
+				for(var p in storeFoodData) {
+					if(storeFoodData[p] == '0') {
+						delete storeFoodData[p];
+						continue;
+					} else {
+						divContent = document.createElement('div');
+						divContent.setAttribute("class", "mui-row marginLeftRight");
+						divFoodName = document.createElement('div');
+						divFoodName.setAttribute("class", "mui-col-xs-7");
+						h4FoodName = document.createElement('h4');
+						h4FoodName.setAttribute("class", "gray-text");
+						h4FoodName.innerHTML = matchData[p]['name'];
+
+						divContent.appendChild(divFoodName);
+						divFoodName.appendChild(h4FoodName);
+
+						divCount = document.createElement('div');
+						divCount.setAttribute("class", "mui-col-xs-3");
+						h4Count = document.createElement('h4');
+						h4Count.innerHTML = '×' + storeFoodData[p];
+						//				h4Count.setAttribute("class","mui-col-xs-3");
+
+						divContent.appendChild(divCount);
+						divCount.appendChild(h4Count);
+
+						divUnitPirce = document.createElement('div');
+						divUnitPirce.setAttribute("class", "mui-col-xs-2 mui-text-right");
+						h4UnitPirce = document.createElement('h4');
+						h4UnitPirce.setAttribute("style", "color: red;");
+						h4UnitPirce.innerHTML = storeFoodData[p] * matchData[p]['price'];
+
+						divContent.appendChild(divUnitPirce);
+						divUnitPirce.appendChild(h4UnitPirce);
+
+						fragment.appendChild(divContent);
+
+					}
+				}
+
+				container_list_food.appendChild(fragment);
+
+				document.getElementById('makeSure').addEventListener('tap', function() {
+					if(document.getElementById('makeSure').innerHTML == '确认收货') {
+						var btnArray = ['否', '是'];
+						mui.confirm('您确认收到货物吗？', '提示', btnArray, function(e) {
+								if(e.index == 1) {
+									document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
+								document.getElementById('g-text-status').innerHTML = '订单已完成';
+									document.getElementById('makeSure').setAttribute("class", "mui-btn mui-btn-block");
+									document.getElementById('makeSure').setAttribute("style", "background-color:#777777; color: white; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;");
+									document.getElementById('makeSure').innerHTML = '再来一单';
+console.log('aaaa');
+								} else {
+									
+								}
+							});
+
+						}
+					
+					if(document.getElementById('makeSure').innerHTML == '再来一单') {
+						var Scanner = plus.webview.getWebviewById(localStorage.takeOutId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refresh');
+						mui.openWindow({
+							url: '../takeOut/index.html',
+						});
+						console.log('aaaaaaaaaaaaaaa');
+					}
+					
+					
+					
+
+				});
+				
+				document.getElementById('contactMerchant').addEventListener('tap', function() {
+					var phone = JSON.parse(localStorage.shopData);
+					if(plus.os.name == "Android") {
+						var Intent = plus.android.importClass("android.content.Intent");
+						var Uri = plus.android.importClass("android.net.Uri");
+						var main = plus.android.runtimeMainActivity();
+						var uri = Uri.parse("tel:" + phone.store_contact_user_phone);
+						var call = new Intent("android.intent.action.CALL", uri);
+						main.startActivity(call);
+					} else {
+						var UIAPP = plus.ios.importClass("UIApplication");
+						var NSURL = plus.ios.importClass("NSURL");
+						var app = UIAPP.sharedApplication();
+						app.openURL(NSURL.URLWithString("tel://" + phone.store_contact_user_phone));
+					}
+				})
+				
 
 			});
+			
+			setInterval(function() {
+					var storeListData = JSON.parse(localStorage.storeListData);
+					console.log(storeListData);
+//					var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
+					var postData = {};
+					postData['store_list_id'] = storeListData.order.store_list_id;
+					mui.ajax({
+						type: 'POST',
+						data: postData,
+						url: SERVERURL + 'SStoreListInfo/getStoreListState',
+						dataType: "json",
+						//成功获取数据赋值
+						success: function(data) {
+							console.log(JSON.stringify(data.data.store_list_state_id));
+							if(data.data.store_list_state_id == '0001') {
+								document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
+								document.getElementById('g-text-status').innerHTML = '等待商家接单';
+								console.log('0001');
+							} else if(data.data.store_list_state_id == '0002') {
+								document.getElementById('g-img-status').src = '../../images/takeOut/progress2.png';
+								document.getElementById('g-text-status').innerHTML = '商家已接单';
+								console.log('0002')
+							} else if(data.data.store_list_state_id == '0003') {
+								document.getElementById('g-img-status').src = '../../images/takeOut/progress3.png';
+								document.getElementById('g-text-status').innerHTML = '正在配送...';
+								console.log('0003');
+							} else if(data.data.store_list_state_id == '0004') {
+								document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
+								document.getElementById('g-text-status').innerHTML = '订单已完成';
+								console.log('0004');
+							}
+							 else if(data.data.store_list_state_id == '0005') {
+								document.getElementById('g-img-status').src = '';
+								document.getElementById('g-text-status').innerHTML = '';
+								console.log('0005');
+							}
+						},
+						error: function(xhr, type, errorThrown) {}
+					});
+				}, 60000);
 		</script>
 
 	</body>

@@ -14,8 +14,9 @@
 		<header class="mui-bar mui-bar-nav m_orange2"> 
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">外卖</h1>
+			<a id="backHome" class="mui-icon  mui-pull-right" style="font-size: 30px; margin-top: 4%; color: white;font-weight: bold;">订单 </a>
 			<div id="zz-div-address" class="mui-bar top60px " style="height: 90px;"> 
-				<h5 class="black-text" id="zz-h5-address" style="font-weight: bold; font-size: 30px; float: left; margin-left: 15px; padding-top: 5%;padding-bottom: 5%;width: 85%; line-height: 30px; margin-right: 0px;">aa</h5>
+				<h5 class="black-text" id="zz-h5-address" style="font-weight: bold; font-size: 30px; float: left; margin-left: 15px; padding-top: 5%;padding-bottom: 5%;width: 85%; line-height: 30px; margin-right: 0px;"></h5>
 				<img id="zz-h5-go" src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -70px;margin-right: 10px;"/>
 			</div>
 		</header>
@@ -61,14 +62,28 @@
 			});
 			
 			mui.plusReady(function () {
+				localStorage.takeOutId = plus.webview.currentWebview().id;
 //			    plus.nativeUI.showWaiting();
 //				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
+
 				window.addEventListener('refresh', function() {
 					plus.navigator.setStatusBarBackground('#FF692C');
+
+					// 获取所有Webview窗口
+					var curr = plus.webview.currentWebview();
+					var curr2 = plus.webview.getWebviewById(localStorage.homeWebId);
+					var wvs = plus.webview.all();
+					for(var i = 0, len = wvs.length; i < len; i++) {
+						//关闭除setting页面外的其他页面
+						if(wvs[i].getURL() == curr.getURL() || wvs[i].getURL() == curr2.getURL())
+							continue;
+						plus.webview.close(wvs[i]);
+					}
+
 				});
 				plus.navigator.setStatusBarBackground('#FF692C');
-				document.getElementById('zz-h5-address').innerHTML = '送至：'+localStorage.community_user_address+"哈哈哈哈哈哈";
-				
+				document.getElementById('zz-h5-address').innerHTML = '送至：'+localStorage.community_user_address;
+				console.log('hahahhahahhahaha');
 				getListData();
 				var ulHeight = document.getElementById("zz-h5-address");
 				
@@ -82,13 +97,15 @@
 			
 			function getListData() {
 				postData = {};
-				console.log('localStorage.lng:    '+localStorage.lng);//纬度
-				console.log('localStorage.lat:    '+localStorage.lat);//经度
+				postData['lng'] = localStorage.lng;
+				postData['lat'] = localStorage.lat;
+				console.log('纬度.lng:    '+localStorage.lng);//纬度
+				console.log('经度.lat:    '+localStorage.lat);//经度
 				
 					mui.ajax({
 						type: 'POST',
 						url: SERVERURL + "SStoreShopInfo/getStoreShopInfo",
-//						data:
+						data:postData,
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
@@ -96,6 +113,7 @@
 							fragment = doc.createDocumentFragment();
 							container_already = doc.getElementById("list_already");
 							mui.each(data.data, function(i) {
+								console.log('11111111111111');
 								var doc = document;
 								li = doc.createElement("li");
 								div = doc.createElement("div");
@@ -113,14 +131,36 @@
 								img.setAttribute("style", "width: 50px; height: 50px;");
 								img.setAttribute("src", data.data[i].store_shop_picture); 
 								console.log(data.data[i].store_shop_picture);
-								h3.innerHTML = data.data[i].store_shop_name;
-								h3Distance.setAttribute("class", "gray-text");
-h3Distance.innerHTML = "距离500米，"+data.data[i].store_carriage+"元起送"
+								h3.innerHTML = data.data[i].store_shop_name;    
+								h3Distance.setAttribute("class", "gray-text");   
+								console.log(data.data[i].distance);
+//								localStorage.store_carriage = data.data[i].store_carriage;
+								if(parseInt(data.data[i].distance) < 1){
+									h3Distance.innerHTML = "距离"+data.data[i].distance*1000+"米，"+data.data[i].store_up_to_send_price+"元起送";
+									console.log('6666666666');
+								}else{
+									h3Distance.innerHTML = "距离"+data.data[i].distance.toFixed(1)+"千米，"+data.data[i].store_up_to_send_price+"元起送";
+								}
+								
  
 								li.addEventListener('tap', function() {
+									localStorage.shopData = JSON.stringify(data.data[i]);
+									console.log("pppppppppppppppppppppppppp"+JSON.stringify(localStorage.shopData));
+									var sssss = JSON.parse(localStorage.shopData);
+									console.log("rrrrrrrrrrrrrrrrrrrrrrrrrr"+sssss.store_contact_user_phone);
+//									console.log(localStorage.store_up_to_send_price);
 //									console.log("aaaaaaaaaaa");
 									mui.openWindow({
 										url:'../takeOut/store.html',
+										extras: {
+											'store_shop_name':data.data[i].store_shop_name,
+											'distance':data.data[i].distance,
+											'store_carriage':data.data[i].store_carriage,
+											'store_shop_picture':data.data[i].store_shop_picture,
+											'store_shop_address':data.data[i].store_shop_address,
+											'store_shop_id':data.data[i].store_shop_id,
+											'store_up_to_send_price':data.data[i].store_up_to_send_price,
+										}
 								
 									});
 								});

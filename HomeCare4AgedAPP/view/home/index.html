@@ -237,6 +237,7 @@
 			}
 
 			mui.plusReady(function() {
+				document.getElementById('span-address').innerHTML = localStorage.userHome;
 				plus.navigator.setStatusBarBackground('#FFFFFF');
 				findWeather();
 				plus.screen.lockOrientation("portrait-primary");

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
@@ -8,119 +9,186 @@
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/takeOut/orderForm.css" />
 	</head>
+
 	<body>
 		<header class="mui-bar mui-bar-nav m_orange2">
-		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-		    <h1 class="mui-title">订单详情</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单详情</h1>
 		</header>
-		
+
 		<div class="mui-content">
-		   <ul class="mui-table-view" style="margin-bottom: 80px;">
-				
+			<ul class="mui-table-view" style="margin-bottom: 80px;">
+
 				<li class="mui-table-view-cell ">
 					<div class="marginLeftRight">
-						<img src="../../images/takeOut/location.png" class="mui-media-object mui-pull-left" style="width: 20px; height: 30px;margin-top: 12px;"/>
+						<img src="../../images/takeOut/location.png" class="mui-media-object mui-pull-left" style="width: 20px; height: 30px;margin-top: 12px;" />
 						<div class="mui-media-body ">
-							<h4>刘&nbsp;先生&nbsp;15620612220</h4>
-							<h4 class='mui-ellipsis gray-text' style="margin-top: 10px;">金田花园8号楼45门708</h4>
+							<h4 id="zz-h4-userNameAndPhone"></h4>
+							<h4 class='mui-ellipsis gray-text' style="margin-top: 10px;" id="zz-h4-location"></h4>
 						</div>
 					</div>
 
 				</li>
 				<li class="mui-table-view-cell">
 					<div class="marginLeftRight">
-						<h4>外卖：杨铭宇黄焖鸡米饭</h4>
+						<h4 id="zz-h4-storeName"></h4>
 					</div>
 				</li>
-				<li class="mui-table-view-cell">
-					<div class="mui-row marginLeftRight">
+				<li class="mui-table-view-cell" id="list_food">
+					<!--<div class="mui-row marginLeftRight">
 						<div class="mui-col-xs-7">
 							<h4 class="gray-text">黄焖鸡</h4>
 						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
-						<div class="mui-col-xs-7">
-							<h4 class="gray-text">黄焖鸡</h4>
-						</div>
+						
 						<div class="mui-col-xs-3">
 							<h4>x1</h4>
 						</div>
 						<div class="mui-col-xs-2 mui-text-right">
 							<h4 style="color: red;">￥20</h4>
 						</div>
-					</div>
+					</div>-->
 				</li>
 				<li class="mui-table-view-cell">
 					<div class="mui-row marginLeftRight">
 						<div class="mui-col-xs-10">
-							<h4 id="sendraise">配送费</h4> 
+							<h4>配送费</h4>
 						</div>
 						<div class="mui-col-xs-2 mui-text-right">
-							<h4 style="color: red;">￥10</h4>
+							<h4 style="color: red;" id="freight"></h4>
 						</div>
 					</div>
 				</li>
 				<li class="mui-table-view-cell ">
 					<div class="mui-col-xs-12 mui-text-right ">
 						<div class="marginLeftRight">
-							<h4 style="color: red;">实付￥20</h4>
+							<h4 style="color: red;" id="actualPayment">实付￥20</h4>
 						</div>
 
 					</div>
 				</li>
-				<!--<li class="mui-table-view-cell">
-					<div class="marginLeftRight">
-						<h4>下单:2016-12-27 22:20:30</h4>
-					</div>
-				</li>-->
+
 			</ul>
-        	
-    	</div>
-    	<div class="mui-row mui-col-xs-12" style="position: fixed; bottom: 0px;">
-			<div class="mui-col-xs-7"><button style="background-color:rgb(51,51,51); color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block">待支付20元</button></div>
-			<div class="mui-col-xs-5"><button style="background-color:#FF7A42; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block">提交订单</button></div>
+
 		</div>
-    	<script src="../../js/mui.min.js"></script>
+		<div class="mui-row mui-col-xs-12" style="position: fixed; bottom: 0px;">
+			<div class="mui-col-xs-7"><button style="background-color:rgb(51,51,51); color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="toBePaid"></button></div>
+			<div class="mui-col-xs-5"><button style="background-color:#FF7A42; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="upOrder">提交订单</button></div>
+		</div>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			mui.plusReady(function() {
+				var sData = plus.webview.currentWebview();
+				var userSex = '男';
+				if(localStorage.userSex == '男') {
+					userSex = '先生';
+				} else {
+					userSex = '女士';
+				}
+				document.getElementById('zz-h4-userNameAndPhone').innerHTML = localStorage.userName + "   " + userSex + " " + localStorage.userPhoneNum;
+				document.getElementById('zz-h4-location').innerHTML = localStorage.userHome;
+				document.getElementById('zz-h4-storeName').innerHTML = '外卖：' + sData.storeName;
+				document.getElementById('freight').innerHTML = "￥" + sData.freight;
+				document.getElementById('actualPayment').innerHTML = "实付￥" + (parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight));
+				document.getElementById('toBePaid').innerHTML = "待支付" + (parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight)) + "元";
+				fragment = document.createDocumentFragment();
+				container_list_food = document.getElementById("list_food");
+				console.log(JSON.stringify(sData.storeFoodData));
+				var storeFoodData = JSON.parse(localStorage.storeFoodData);
+				var matchData = JSON.parse(localStorage.matchData);
+
+				console.log(JSON.stringify(storeFoodData));
+				console.log(JSON.stringify(matchData));
+				for(var p in storeFoodData) {
+					if(storeFoodData[p] == '0') {
+						delete storeFoodData[p];
+						continue;
+					} else {
+						divContent = document.createElement('div');
+						divContent.setAttribute("class", "mui-row marginLeftRight");
+						divFoodName = document.createElement('div');
+						divFoodName.setAttribute("class", "mui-col-xs-7");
+						h4FoodName = document.createElement('h4');
+						h4FoodName.setAttribute("class", "gray-text");
+						h4FoodName.innerHTML = matchData[p]['name'];
+
+						divContent.appendChild(divFoodName);
+						divFoodName.appendChild(h4FoodName);
+
+						divCount = document.createElement('div');
+						divCount.setAttribute("class", "mui-col-xs-3");
+						h4Count = document.createElement('h4');
+						h4Count.innerHTML = '×' + storeFoodData[p];
+						//				h4Count.setAttribute("class","mui-col-xs-3");
+
+						divContent.appendChild(divCount);
+						divCount.appendChild(h4Count);
+
+						divUnitPirce = document.createElement('div');
+						divUnitPirce.setAttribute("class", "mui-col-xs-2 mui-text-right");
+						h4UnitPirce = document.createElement('h4');
+						h4UnitPirce.setAttribute("style", "color: red;");
+						h4UnitPirce.innerHTML = storeFoodData[p] * matchData[p]['price'];
+
+						divContent.appendChild(divUnitPirce);
+						divUnitPirce.appendChild(h4UnitPirce);
+
+						fragment.appendChild(divContent);
+
+					}
+				}
+
+				container_list_food.appendChild(fragment);
+
+
+
+
+				var upOrder = document.getElementById('upOrder');
+				upOrder.addEventListener('tap', function() {
+					var postData = {};
+					var shopData = JSON.parse(localStorage.shopData);
+					console.log(localStorage.shopData);
+					postData['community_user_id'] = localStorage.community_user_id;
+					postData['store_type_id'] = '0001';
+					postData['store_shop_id'] = shopData.store_shop_id;
+					postData['store_list_money'] = parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight);
+					var storeFoodData = JSON.parse(localStorage.storeFoodData);
+					
+					postData['storeList'] = storeFoodData;
+					console.log(JSON.stringify(postData['storeList']));
+					mui.ajax({
+						type: 'POST',
+						url: SERVERURL + "SStoreListInfo/sendStoreListInfo",
+						data: postData,
+						dataType: "json",
+						success: function(data) {
+							localStorage.storeListData = JSON.stringify(data.data);
+							console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa       "+JSON.stringify(data.data));
+							if(data.status == 1){
+								mui.openWindow({
+									url: '../takeOut/finish.html',
+									extras: {
+										"storeName": sData.storeName,
+										"freight": sData.freight,
+									},
+								});
+							}
+							
+							console.log(JSON.stringify(data));
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+							mui.toast(type);
+						}
+
+					});
+
+				});
 
 			});
-		</script> 
+		</script>
 	</body>
-</html>
 
+</html>
