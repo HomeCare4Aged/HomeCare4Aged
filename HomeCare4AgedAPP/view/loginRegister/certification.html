@@ -140,7 +140,7 @@
 				localStorage.userName = document.getElementById('input-name').value;
 				//				localStorage.userAge = document.getElementById('input-age').value;
 				localStorage.userHome = document.getElementById('input-home').value;
-				localStorage.userHospital = document.getElementById('input-hospital').value;
+				//				localStorage.userHospital = document.getElementById('input-hospital').value;
 
 				if(!isNullStr(localStorage.userName) && !isNullStr(localStorage.userSex) &&
 					!isNullStr(localStorage.userAge) && !isNullStr(localStorage.userPhoneNum) &&
@@ -150,9 +150,11 @@
 					var postData = {};
 					postData['community_user_name'] = localStorage.userName;
 					postData['community_user_sex'] = localStorage.userSex;
-					postData['age'] = localStorage.userAge;
+					postData['community_user_birthday'] = localStorage.userAge;
 					postData['community_user_phone'] = localStorage.userPhoneNum;
 					postData['community_user_address'] = localStorage.userHome;
+					postData['community_user_lat'] = localStorage.lat;
+					postData['community_user_lng'] = localStorage.lng;
 					postData['community_hospitals_id'] = localStorage.userHospital;
 					postData['community_user_password'] = localStorage.userPsw;
 
@@ -230,7 +232,7 @@
 					document.getElementById('div-age').style.display = '';
 					var optionsJson = {};
 					optionsJson['type'] = 'date';
-					optionsJson['beginDate'] = new Date(1989, 12, 01); //设置开始日期
+					optionsJson['beginDate'] = new Date(1899, 12, 01); //设置开始日期
 					optionsJson['endDate'] = new Date(); //设置结束日期
 					console.log(JSON.stringify(optionsJson));
 					/*
@@ -268,11 +270,11 @@
 				});
 				document.getElementById("li-phoneNum").addEventListener('tap', function() {
 					document.getElementById('div-phoneNum').style.display = '';
-//					document.getElementById('input-phoneNum').focus();
+					//					document.getElementById('input-phoneNum').focus();
 				});
 				document.getElementById("li-home").addEventListener('tap', function() {
 					document.getElementById('div-home').style.display = '';
-//					document.getElementById('input-home').focus();
+					document.getElementById('input-home').focus();
 				});
 				document.getElementById("li-hospital").addEventListener('tap', function() {
 					localStorage.userHome = document.getElementById('input-home').value;
@@ -290,31 +292,76 @@
 							if(point) {
 								document.getElementById('div-hospital').style.display = '';
 								plus.nativeUI.closeWaiting();
+								if(localStorage.lng == point['lng'] &&
+									localStorage.lat == point['lat']) {
+										
+									var userPicker = new mui.PopPicker();
+									var setData = JSON.parse(localStorage.hospitalPickerData);
+									userPicker.setData(setData);
+									userPicker.show(function(items) {
+										var str = items[0]['text'];
+										console.log(JSON.stringify(items[0]['value']));
+										localStorage.userHospital = items[0]['value'];
+
+										document.getElementById('input-hospital').innerHTML = str;
+									});
+									return;
+								}
 								localStorage.lng = point['lng'];
 								localStorage.lat = point['lat'];
 								console.log(localStorage.lng);
 								console.log(localStorage.lat);
-								
-								document.activeElement.blur();
-								var userPicker = new mui.PopPicker();
-								var days = getDays(14);
-								var setData = new Array()
-								for(var i = 0; i < days.length; i++) {
-									var data = {};
-									data['value'] = i;
-									data['text'] = days[i] + ' 上午';
-									setData.push(data);
-								}
-								userPicker.setData(setData);
-								userPicker.show(function(items) {
-									var str = JSON.stringify(items[0]['text']);
-									str = str.substr(1, str.length - 2);
-									document.getElementById('input-hospital').innerHTML = str;
-								});
 
+								document.activeElement.blur();
+								var postData = {};
+								postData['lat'] = point['lat'];
+								postData['lng'] = point['lng'];
+								mui.ajax({
+									type: 'POST',
+									data: postData,
+									url: SERVERURL + 'ACommunityUserInfo/selectHospital',
+									dataType: "json",
+
+									//成功获取数据赋值
+									success: function(data) {
+										plus.nativeUI.closeWaiting();
+										plus.nativeUI.closeWaiting();
+										if(data.status == 1) {
+											var userPicker = new mui.PopPicker();
+											var setData = new Array();
+											console.log(JSON.stringify(data.data));
+											console.log(data.data.length);
+											for(var i = 0; i < data.data.length; i++) {
+												var popData = {};
+												popData['value'] = data.data[i]['community_hospitals_id'];
+												popData['text'] = data.data[i]['community_hospitals_name'];
+												setData.push(popData);
+											}
+											userPicker.setData(setData);
+											console.log('ssssssxxx');
+											localStorage.hospitalPickerData = JSON.stringify(setData); 
+											userPicker.show(function(items) {
+												var str = items[0]['text'];
+												console.log(JSON.stringify(items[0]['value']));
+												localStorage.userHospital = items[0]['value'];
+
+												document.getElementById('input-hospital').innerHTML = str;
+											});
+
+										} else {
+											mui.alert('您选择的地址附近没有社区医院!')
+										}
+
+									},
+									error: function(xhr, type, errorThrown) {
+										console.log(type);
+										plus.nativeUI.closeWaiting();
+										mui.alert('网络连接失败,无法查询附近医院');
+									}
+								});
 							} else {
 								plus.nativeUI.closeWaiting();
-								mui.alert('您选择的地址附近没有社区医院!')
+								mui.alert('网络连接失败,无法查询附近医院');
 							}
 						}, localStorage.GetCity);
 					}

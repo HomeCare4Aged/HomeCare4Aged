@@ -1,3 +1,4 @@
+/*<<<<<<< HEAD
 body{
 	word-break:break-all;
 	background: white;
@@ -92,3 +93,134 @@ body{
 	
     filter: gray;
 }
+=======*/
+body {
+	word-break: break-all;
+	background: white;
+}
+
+.m_orange {
+	background: rgb(238, 160, 47);
+}
+
+.m_orange2 {
+	background: rgb(255, 105, 44);
+}
+.m_orangeTakeOut{
+	background: rgb(255,122,66);
+}
+.m_blue {
+	background: rgb(76, 188, 236);
+}
+
+.m_green {
+	background: rgb(61, 173, 39);
+}
+
+.m_gray {
+	background: rgb(118, 123, 154);
+}
+
+.m_white {
+	background: #FFFFFF;
+}
+
+.m_green2DropIn {
+	background: rgb(48, 182, 156);
+}
+
+.m_gray_text {
+	color: rgb(97, 98, 99);
+}
+
+.m_black_text {
+	color: #000000;
+}
+
+.m_white_text {
+	color: #FFFFFF;
+}
+
+.m_line {
+	background: rgb(204, 205, 206);
+}
+
+.mui-bar-nav {
+	top: 0;
+	-webkit-box-shadow: 0 1px 6px #ccc;
+	box-shadow: 0 1px 6px #ccc;
+	height: 60px;
+}
+
+.mui-bar .mui-title {
+	right: 40px;
+	left: 40px;
+	display: inline-block;
+	overflow: hidden;
+	width: auto;
+	margin: 0;
+	text-overflow: ellipsis;
+	top: 10px;
+	font-size: 40px;
+	color: white;
+}
+
+.mui-bar-nav.mui-bar .mui-icon {
+	margin-right: -10px;
+	margin-left: -20px;
+	padding-right: 10px;
+	padding-left: 10px;
+	padding-top: 6px;
+	color: white;
+	font-size: 50px;
+}
+
+.top35px {
+	margin-top: 35px;
+}
+
+.mui-table-view:after {
+	left: 25px;
+	right: 25px;
+}
+
+.mui-table-view:before {
+	left: 25px;
+	right: 25px;
+}
+
+.mui-table-view-cell:after {
+	left: 25px;
+	right: 25px;
+}
+
+.g-btnActive:active {
+	-webkit-filter: grayscale(100%);
+	-moz-filter: grayscale(100%);
+	-ms-filter: grayscale(100%);
+	-o-filter: grayscale(100%);
+	filter: grayscale(100%);
+	filter: gray;
+}
+.mui-navigate-right:after,
+.mui-push-left:after,
+.mui-push-right:after
+{
+    font-family: Muiicons;
+    font-size: inherit;
+    line-height: 1;
+
+    position: absolute;
+    top: 50%;
+
+    display: inline-block;
+
+    -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+    text-decoration: none;
+
+    color: #bbb;
+
+    -webkit-font-smoothing: antialiased;
+}
+/*>>>>>>> 1a496143b3138295d58194b5d2bb8ff2f0157bc3*/

@@ -15,8 +15,8 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav g_yellowColor" id="zz-header-header">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"style="color: black;"></a>
-			<h1 class="mui-title"style="color: black;">实名认证</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">实名认证</h1>
 		</header>
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
@@ -109,7 +109,7 @@
 				</li>
 			</ul>
 			<div class="marginLeftRight">
-				<button type="button" class="btn-certification g_yellowColor" onclick="openWindow();"style="color: black;">修改</button>
+				<button type="button" class="btn-certification g_yellowColor" onclick="openWindow();" style="color: black;">修改</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
@@ -119,9 +119,42 @@
 		<script type="text/javascript" src="../../js/mui.dtpicker.js"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=VxZwk9aaLVGLGGGogiHIPHzOFEdHNICD"></script>
 		<script type="text/javascript">
+			mui.back = function() {
+				if(isNeedChangeData() == 1) {
+					var btnArray = ['否', '是', ];
+					mui.confirm('是否保存', '', btnArray, function(e) {
+						if(e.index == 0) {
+							mui.currentWebview.close();
+						} else if(e.index == 1) {
+							openWindow();
+						}
+					});
+				} else {
+					mui.currentWebview.close();
+				}
+			}
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
+
+			function isNeedChangeData() {
+				if(document.getElementById('input-name').value != localStorage.community_user_name) {
+					return 1;
+				}
+				if(document.getElementById('input-sex').innerHTML != localStorage.community_user_sex) {
+					return 1;
+				}
+				if(document.getElementById('input-age').innerHTML != localStorage.community_user_birthday) {
+					return 1;
+				}
+				if(document.getElementById('input-phoneNum').value != localStorage.community_user_phone) {
+					return 1;
+				}
+				if(document.getElementById('input-home').value != localStorage.community_user_address) {
+					return 1;
+				}
+				return 0;
+			}
 
 			function openWindow() {
 				plus.nativeUI.showWaiting();
@@ -134,18 +167,50 @@
 				if(document.getElementById('input-sex').innerHTML != localStorage.community_user_sex) {
 					postData['community_user_sex'] = document.getElementById('input-sex').innerHTML;
 				}
-				//				if (document.getElementById('input-age').innerHTML != localStorage.community_user_name) {
-				//					postData['community_user_name'] = document.getElementById('input-age').innerHTML ;
-				//				}
+				//				postData['community_user_birthday'] = localStorage.userAge;
+				//					postData['community_user_lat'] = localStorage.lat;
+				//					postData['community_user_lng'] = localStorage.lng;
+				if(document.getElementById('input-age').innerHTML != localStorage.community_user_birthday) {
+					postData['community_user_birthday'] = document.getElementById('input-age').innerHTML;
+				}
 				if(document.getElementById('input-phoneNum').value != localStorage.community_user_phone) {
 					postData['community_user_phone'] = document.getElementById('input-phoneNum').value;
 				}
 				if(document.getElementById('input-home').value != localStorage.community_user_address) {
+					//					if(localStorage.isOkAddress != '1') {
+					//						var myGeo = new BMap.Geocoder();
+					//						// 将地址解析结果显示在地图上,并调整地图视野
+					//						myGeo.getPoint(document.getElementById('input-home').value, function(point) {
+					//							if(point) {
+					//								plus.nativeUI.closeWaiting();
+					//								localStorage.lng = point['lng'];
+					//								localStorage.lat = point['lat'];
+					//								console.log(localStorage.lng);
+					//								console.log(localStorage.lat);
+					//								plus.nativeUI.closeWaiting();
+					//							} else {
+					//								plus.nativeUI.closeWaiting();
+					//								mui.alert('您输入的地址有误！');
+					//								return;
+					//							}
+					//						}, localStorage.GetCity);
+					//						var btnArray = ['取消', '确定'];
+					//						mui.confirm('修改地址后修改医院么', '', btnArray, function(e) {
+					//							if(e.index == 0) {} else if(e.index == 1) {
+					//
+					//							}
+					//						});
+					//						mui.alert('修改地址后请更改医院');
+					//						plus.nativeUI.closeWaiting();
+					//						return;
+					//					}
 					postData['community_user_address'] = document.getElementById('input-home').value;
+					postData['community_user_lat'] = localStorage.lat;
+					postData['community_user_lng'] = localStorage.lng;
 				}
-				//				if (document.getElementById('input-hospital').value != localStorage.community_user_address) {
-				//					postData['community_user_address'] = document.getElementById('input-hospital').value;
-				//				}
+				if(document.getElementById('input-hospital').innerHTML != localStorage.community_hospitals_name) {
+					postData['community_hospitals_id'] = localStorage.userHospitalId;
+				}
 				console.log(JSON.stringify(postData));
 				if(JSON.stringify(postData).length > 2) {
 					postData['community_user_id'] = localStorage.community_user_id;
@@ -183,6 +248,81 @@
 						return;
 
 					}
+
+					if(document.getElementById('input-home').value != localStorage.community_user_address &&
+						localStorage.isOkAddress != '1') {
+						var myGeo = new BMap.Geocoder();
+						// 将地址解析结果显示在地图上,并调整地图视野
+						myGeo.getPoint(document.getElementById('input-home').value, function(point) {
+							if(point) {
+								console.log('dizhi');
+								plus.nativeUI.closeWaiting();
+								localStorage.lng = point['lng'];
+								localStorage.lat = point['lat'];
+								console.log(localStorage.lng);
+								console.log(localStorage.lat);
+								postData['community_user_lat'] = localStorage.lat;
+								postData['community_user_lng'] = localStorage.lng;
+
+								mui.ajax({
+									type: 'POST',
+									data: postData,
+									url: SERVERURL + "ACommunityUserInfo/changeUserInfo",
+									dataType: "json",
+									//成功获取数据赋值
+									success: function(data) {
+										plus.nativeUI.closeWaiting();
+										if(data.status == 1) {
+											if(postData['community_user_name']) {
+												localStorage.community_user_name = postData['community_user_name'];
+											}
+											if(postData['community_user_sex']) {
+												localStorage.community_user_sex = postData['community_user_sex'];
+											}
+											if(postData['community_user_birthday']) {
+												localStorage.community_user_birthday = postData['community_user_birthday'];
+											}
+											if(postData['community_user_phone']) {
+												localStorage.community_user_phone = postData['community_user_phone'];
+											}
+											if(postData['community_user_address']) {
+												localStorage.community_user_address = postData['community_user_address'];
+												localStorage.community_user_lat = postData['community_user_lat'];
+												localStorage.community_user_lng = postData['community_user_lng'];
+												localStorage.lat = localStorage.community_user_lat;
+												localStorage.lng = localStorage.community_user_lng;
+												localStorage.isOkAddress = '0';
+											}
+											if(postData['community_hospitals_id']) {
+												localStorage.community_hospitals_id = postData['community_hospitals_id'];
+												localStorage.community_hospitals_name = localStorage.userHospitalName;
+											}
+
+											localStorage.isOkCode = '0';
+											mui.toast('修改成功');
+										};
+										if(data.status == 0) {
+											mui.alert(data.msg);
+											localStorage.isOkAddress = '0';
+										};
+									},
+									error: function(xhr, type, errorThrown) {
+										plus.nativeUI.closeWaiting();
+										mui.alert('修改失败');
+										localStorage.isOkAddress = '0';
+										return;
+									}
+								});
+
+							} else {
+								plus.nativeUI.closeWaiting();
+								mui.alert('您输入的地址有误！或者该地址暂不提供服务！');
+								return;
+							}
+						}, localStorage.GetCity);
+						return;
+					}
+
 					mui.ajax({
 						type: 'POST',
 						data: postData,
@@ -198,18 +338,27 @@
 								if(postData['community_user_sex']) {
 									localStorage.community_user_sex = postData['community_user_sex'];
 								}
-								//								if (postData['community_user_name']) {
-								//									localStorage.community_user_name = postData['community_user_name'];
-								//								}
+								if(postData['community_user_birthday']) {
+									localStorage.community_user_birthday = postData['community_user_birthday'];
+								}
 								if(postData['community_user_phone']) {
 									localStorage.community_user_phone = postData['community_user_phone'];
 								}
 								if(postData['community_user_address']) {
 									localStorage.community_user_address = postData['community_user_address'];
+									localStorage.community_user_lat = postData['community_user_lat'];
+									localStorage.community_user_lng = postData['community_user_lng'];
+									localStorage.lat = localStorage.community_user_lat;
+									localStorage.lng = localStorage.community_user_lng;
+									localStorage.isOkAddress = '0';
 								}
-								//								if(postData['community_user_phone']) {
-								//									localStorage.community_user_phone = postData['community_user_phone'];
-								//								}
+								//								localStorage.community_hospitals_id
+								//								localStorage.community_hospitals_name
+								if(postData['community_hospitals_id']) {
+									localStorage.community_hospitals_id = postData['community_hospitals_id'];
+									localStorage.community_hospitals_name = localStorage.userHospitalName; 
+									console.log('name'+localStorage.community_hospitals_name);
+								}
 								localStorage.isOkCode = '0';
 								mui.toast('修改成功');
 							};
@@ -228,13 +377,17 @@
 				}
 			};
 			mui.plusReady(function() {
+				document.getElementById()
 				localStorage.isOkCode = '0';
+				localStorage.isOkAddress = '0';
 				document.getElementById('input-name').value = localStorage.community_user_name;
 				document.getElementById('input-sex').innerHTML = localStorage.community_user_sex;
-				document.getElementById('input-age').innerHTML = 'localStorage.community_user_';
+				document.getElementById('input-age').innerHTML = localStorage.community_user_birthday;
 				document.getElementById('input-phoneNum').value = localStorage.community_user_phone;
-				document.getElementById('input-home').value = 'localStorage.community_user_address';
-				//				document.getElementById('input-hospital').innerHTML = localStorage.community_user_address;
+				document.getElementById('input-home').value = localStorage.community_user_address;
+				document.getElementById('input-hospital').innerHTML = localStorage.community_hospitals_name;
+				//				localStorage.community_hospitals_id
+				//				localStorage.community_hospitals_name
 
 				plus.geolocation.getCurrentPosition(function(p) {
 					console.log(JSON.stringify(p));
@@ -270,7 +423,7 @@
 					document.getElementById('div-age').style.display = '';
 					var optionsJson = {};
 					optionsJson['type'] = 'date';
-					optionsJson['beginDate'] = new Date(1989, 12, 01); //设置开始日期
+					optionsJson['beginDate'] = new Date(1899, 12, 01); //设置开始日期
 					optionsJson['endDate'] = new Date(); //设置结束日期
 					console.log(JSON.stringify(optionsJson));
 					/*
@@ -317,6 +470,7 @@
 					if(isNullStr(localStorage.userHome)) {
 						mui.alert('请先选择地址');
 					} else {
+
 						plus.nativeUI.showWaiting('正在查询附近医院');
 						var myGeo = new BMap.Geocoder();
 						// 将地址解析结果显示在地图上,并调整地图视野
@@ -324,31 +478,76 @@
 							if(point) {
 								document.getElementById('div-hospital').style.display = '';
 								plus.nativeUI.closeWaiting();
+								if(localStorage.lng == point['lng'] &&
+									localStorage.lat == point['lat']) {
+									document.activeElement.blur();
+									var userPicker = new mui.PopPicker();
+									var setData = JSON.parse(localStorage.hospitalPickerData);
+									userPicker.setData(setData);
+									userPicker.show(function(items) {
+										var str = items[0]['text'];
+										console.log(JSON.stringify(items[0]['value']));
+										localStorage.userHospitalId = items[0]['value'];
+										localStorage.userHospitalName = items[0]['text'];
+										document.getElementById('input-hospital').innerHTML = str;
+									});
+									return;
+								}
 								localStorage.lng = point['lng'];
 								localStorage.lat = point['lat'];
 								console.log(localStorage.lng);
 								console.log(localStorage.lat);
 
 								document.activeElement.blur();
-								var userPicker = new mui.PopPicker();
-								var days = getDays(14);
-								var setData = new Array()
-								for(var i = 0; i < days.length; i++) {
-									var data = {};
-									data['value'] = i;
-									data['text'] = days[i] + ' 上午';
-									setData.push(data);
-								}
-								userPicker.setData(setData);
-								userPicker.show(function(items) {
-									var str = JSON.stringify(items[0]['text']);
-									str = str.substr(1, str.length - 2);
-									document.getElementById('input-hospital').innerHTML = str;
-								});
+								var postData = {};
+								postData['lat'] = point['lat'];
+								postData['lng'] = point['lng'];
+								mui.ajax({
+									type: 'POST',
+									data: postData,
+									url: SERVERURL + 'ACommunityUserInfo/selectHospital',
+									dataType: "json",
 
+									//成功获取数据赋值
+									success: function(data) {
+										plus.nativeUI.closeWaiting();
+										document.activeElement.blur();
+										if(data.status == 1) {
+											var userPicker = new mui.PopPicker();
+											var setData = new Array();
+											console.log(JSON.stringify(data.data));
+											console.log(data.data.length);
+											for(var i = 0; i < data.data.length; i++) {
+												var popData = {};
+												popData['value'] = data.data[i]['community_hospitals_id'];
+												popData['text'] = data.data[i]['community_hospitals_name'];
+												setData.push(popData);
+											}
+											userPicker.setData(setData);
+											console.log('ssssssxxx');
+											localStorage.hospitalPickerData = JSON.stringify(setData);
+											userPicker.show(function(items) {
+												var str = items[0]['text'];
+												console.log(JSON.stringify(items[0]['value']));
+												localStorage.userHospitalId = items[0]['value'];
+												localStorage.userHospitalName = items[0]['text'];
+												document.getElementById('input-hospital').innerHTML = str;
+											});
+
+										} else {
+											mui.alert('您选择的地址附近没有社区医院!')
+										}
+
+									},
+									error: function(xhr, type, errorThrown) {
+										console.log(type);
+										plus.nativeUI.closeWaiting();
+										mui.alert('网络连接失败,无法查询附近医院');
+									}
+								});
 							} else {
 								plus.nativeUI.closeWaiting();
-								mui.alert('您选择的地址附近没有社区医院!')
+								mui.alert('网络连接失败,无法查询附近医院');
 							}
 						}, localStorage.GetCity);
 					}

@@ -36,28 +36,19 @@
 			<ul class="mui-table-view" style="margin-top: 20px;">
 				<li class="mui-table-view-cell mui-media" id="g-myHistory">
 					<div class="mui-pull-left" style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px;">
-						<h1 class="blackText">我的预约</h1>
-					</div>
-					<div class="mui-pull-right" style="margin-top: 15px;margin-right: 10px;">
-						<img style="width: 30px;" src="../../images/right.png" />
+						<h1 class="blackText mui-navigate-right">我的预约</h1>
 					</div>
 				</li>
 				<li class="mui-table-view-cell mui-media" id="g-order">
 					<div class="mui-pull-left" style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px;">
-						<h1 class="blackText">我的订单</h1>
-					</div>
-					<div class="mui-pull-right" style="margin-top: 15px;margin-right: 10px;">
-						<img style="width: 30px;" src="../../images/right.png" />
+						<h1 class="blackText mui-navigate-right">我的订单</h1>
 					</div>
 				</li>
 			</ul>
 			<ul class="mui-table-view" style="margin-top: 20px;">
 				<li class="mui-table-view-cell mui-media" id="g-approve">
 					<div class="mui-pull-left" style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px;">
-						<h1 class="blackText">实名认证</h1>
-					</div>
-					<div class="mui-pull-right" style="margin-top: 15px;margin-right: 10px;">
-						<img style="width: 30px;" src="../../images/right.png" />
+						<h1 class="blackText mui-navigate-right">实名认证</h1>
 					</div>
 				</li>
 				<!--<li class="mui-table-view-cell mui-media" id="g-patient">
@@ -158,10 +149,10 @@
 								plus.webview.close(wvs[i]);
 							}
 							//打开login页面后再关闭setting页面
-							localStorage.autoLoginIn = "no";
+//							localStorage.autoLoginIn = "no";
 							plus.webview.open('../loginRegister/index.html');
 							curr.close();
-
+							localStorage.clear();
 						}
 					});
 
