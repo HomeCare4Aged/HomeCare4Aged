@@ -21,17 +21,30 @@
 			<ul class="mui-table-view">
 				<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight">
-						<div class="mui-media-object mui-pull-left">
-							<img style="width: 40px;margin-left: -20px; margin-top: 20px;" src="../../images/dropIn/compositePath.png">
+						<div class="mui-media-object mui-pull-left" style="margin-top: 5%;">
+							<img style="width: 40px;margin-left: -20px;" src="../../images/dropIn/compositePath.png">
 						</div>
-						<div class="mui-pull-left" style="margin-left: 40px;margin-top: -30px;">
+						<div class="mui-pull-left" style="margin-left: 15%;margin-top: -20%;">
 							<h1 id="userInfo" style="font-weight: normal;font-size: 30px;"></h1>
 							<h2 id="userAddress" class="grayText" style="margin-top: 5px;"></h2>
 						</div>
 					</div>
 				</li>
+				<!--<li class="mui-table-view-cell mui-media" id="g-li">
+					<div class="marginLeftRight">
+						<div class="mui-media-object mui-pull-left"style="margin-left: -5%;margin-top: 15px;">
+							<img style="width: 40px;"  src="../../images/dropIn/compositePath.png">
+						</div>
+						<div class="mui-pull-left" style="margin-left: 15%;margin-top: -20%;">
+							<h1 id="userInfo" class="blackTitleNormal" >家庭清洁</h1>
+							<h3 id="userAddress"  class="grayText" style="margin-top: 5px;">爱家家政</h3>
+							<h3 class="redPrice"style="margin-top: 5px;">￥15/小时</h3>
+						</div>
+					</div>
+				</li>-->
 				<li style="padding-top: 20px;padding-bottom: 20px;padding-left: 25px;">
 					<label class="grayText" style="color: rgb(75,75,75);">选择服务时间</label>
+					<h1 id="startEndTime" class="grayText" style="color: red;">选择服务时间</h1>
 				</li>
 			</ul>
 			<ul class="mui-table-view">
@@ -50,30 +63,30 @@
 			<ul class="mui-table-view">
 				<li class="">
 					<div class="mui-row" style="margin-left: 15px;">
-						<label class="mui-pull-left grayText" style="text-align: left; margin-left: 15px;">保洁时长</label>
+						<label class="mui-pull-left grayText" style="text-align: left; margin-left: 15px;">服务个数</label>
 					</div>
 					<div class="mui-row" style="margin-top: 15px;">
-						<div class="mui-pull-left mui-col-xs-3"style="text-align: right;">
+						<div class="mui-pull-left mui-col-xs-3" style="text-align: right;">
 							<img id="g-btn-lessen" class="g-btnActive" src="../../images/dropIn/lessen.png" width="40px" style="" />
 						</div>
-						<div class="mui-col-xs-6"style="text-align: center;">
+						<div class="mui-col-xs-6" style="text-align: center;">
 							<h1 id="serviceTime" class="grayText" style="margin-top: 5px; margin-left: 10%; font-size: 30px;">￥190.0</h1>
 						</div>
-						<div class="mui-col-xs-3 mui-pull-left"style="text-align: left;">
+						<div class="mui-col-xs-3 mui-pull-left" style="text-align: left;">
 							<img id="g-btn-add" class="g-btnActive" src="../../images/dropIn/add.png" width="40px" style="" />
 						</div>
 					</div>
 				</li>
 				<li class="mui-table-view-cell">
 					<label class="mui-col-xs-5 mui-pull-left grayText" style="text-align: left; margin-left: 15px;">价格</label>
-					<label class="mui-col-xs-5 mui-pull-right grayText" style="text-align: right; color: red;margin-right: 10px;">￥100.0</label>
+					<label id="g-price" class="mui-col-xs-5 mui-pull-right grayText" style="text-align: right; color: red;margin-right: 10px;">￥100.0</label>
 				</li>
-				<li class="mui-table-view-cell mui-checkbox mui-right">
+				<!--<li class="mui-table-view-cell mui-checkbox mui-right">
 					<div class="mui-row mui-col-xs-12">
 						<h1 class="mui-pull-left mui-col-xs-10 g-inputText" style="margin-left: 15px;padding-right: 20px;">使用我们提供的工具</h1>
 						<input id="g-input-service" class="mui-col-xs-2" name="checkbox" type="checkbox">
 					</div>
-				</li>
+				</li>-->
 			</ul>
 			<ul class="mui-table-view">
 				<li class=" mui-table-view-cell ">
@@ -94,33 +107,68 @@
 				swipeBack: true, //启用右滑关闭功能
 			});
 			mui.plusReady(function() {
-				//				var nwaiting = plus.nativeUI.showWaiting();
+				var serviceInfo = JSON.parse(localStorage.serviceInfo);
 				document.getElementById('userInfo').innerHTML = localStorage.community_user_name + ' ' + localStorage.community_user_phone;
 				document.getElementById('userAddress').innerHTML = localStorage.community_user_address;
-				document.getElementById('g-li-time').addEventListener('tap', function() {
-
-				});
-				var count = 0.5;
-				document.getElementById('serviceTime').innerHTML = count+'小时'
-				document.getElementById('g-btn-lessen').addEventListener('tap',function () {
-					if (count == 0) {
-						return;	
+				document.getElementById('startEndTime').innerHTML = '营业时间：' + serviceInfo.store_begin_time + '~' + serviceInfo.store_end_time;
+				var count = 1;
+				document.getElementById('serviceTime').innerHTML = count + '个';
+				document.getElementById('g-btn-lessen').addEventListener('tap', function() {
+					if(count == 1) {
+						return;
 					}
-					count -= 0.5;
-					document.getElementById('serviceTime').innerHTML = count+'小时'
+					count -= 1;
+					document.getElementById('serviceTime').innerHTML = count + '个';
+					document.getElementById('g-price').innerHTML = '￥' + serviceInfo.store_service_price * count;
 				});
-				document.getElementById('g-btn-add').addEventListener('tap',function () {
-					if (count == 12) {
-						return;	
-					}
-					count += 0.5;
-					document.getElementById('serviceTime').innerHTML = count+'小时'
+				document.getElementById('g-btn-add').addEventListener('tap', function() {
+					count += 1;
+					document.getElementById('serviceTime').innerHTML = count + '个';
+					document.getElementById('g-price').innerHTML = '￥' + serviceInfo.store_service_price * count;
 				});
-				
+				document.getElementById('g-price').innerHTML = '￥' + serviceInfo.store_service_price * count;
 
 				document.getElementById('g-btn').addEventListener('tap', function() {
-					mui.openWindow({
-						url: '../dropIn/finish.html',
+					var postData = {};
+					var serviceInfo = JSON.parse(localStorage.serviceInfo);
+					postData['community_user_id'] = localStorage.community_user_id;
+					postData['store_shop_id'] = serviceInfo.store_shop_id;
+					postData['store_list_money'] = serviceInfo.store_service_price * count;
+					postData['store_type_id'] = '0002';
+					postData['store_id'] = serviceInfo.store_service_id;
+					postData['store_count'] = count;
+					console.log(document.getElementById('g-label-time').innerHTML);
+					if (document.getElementById('g-label-time').innerHTML == 0) {
+						mui.alert('请选择服务时间');
+						return;
+					}
+					postData['store_list_require_time'] = document.getElementById('g-label-time').innerHTML;
+					plus.nativeUI.showWaiting();
+					mui.ajax({
+						type: 'POST',
+						data: postData,
+						url: SERVERURL + 'SStoreListInfo/sendStoreListInfo',
+						dataType: "json",
+						
+						//成功获取数据赋值
+						success: function(data) {
+							console.log(JSON.stringify(data.data));
+							localStorage.serviceDetailData = JSON.stringify(data.data);
+							plus.nativeUI.closeWaiting();
+							if (data.status == 1) {
+								mui.openWindow({
+									url: '../dropIn/finish.html',
+								});
+							}else{
+								mui.alert('下单失败,请检查网络');
+							}
+							
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+							plus.nativeUI.closeWaiting();
+							mui.alert('网络连接失败');
+						}
 					});
 				})
 			});
@@ -129,7 +177,8 @@
 
 					//普通示例
 					var userPicker = new $.PopPicker();
-					var days = getDays(7);
+					var serviceInfo = JSON.parse(localStorage.serviceInfo);
+					var days = getDays(Number(serviceInfo.allow_appointment_time));
 
 					var setData = new Array()
 					for(var i = 0; i < days.length; i++) {
@@ -148,7 +197,18 @@
 					if(date.getHours() >= 12) {
 						setData.splice(0, 1);
 					}
-					if(date.getHours() >= 17) {
+					var str = serviceInfo.store_end_time.split(":");
+					if(str.length != 2) {
+						oneTime = str[0] + ':' + str[1];
+					}
+					
+					var endTime = new Date();
+					endTime.setHours(str[0]);
+					endTime.setMinutes(str[1]);
+					var nowDate = new Date();
+					console.log(nowDate);
+					console.log(endTime);
+					if(nowDate.getTime() >= endTime.getTime()) {
 						setData.splice(0, 1);
 					}
 
@@ -159,7 +219,6 @@
 						userPicker.show(function(items) {
 							var str = JSON.stringify(items[0]['text']);
 							str = str.substr(1, str.length - 2);
-							registrationTime = str;
 							userResult.innerHTML = str;
 							document.getElementById('g-div-time').style.display = '';
 						});

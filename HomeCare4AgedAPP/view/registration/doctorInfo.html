@@ -18,7 +18,7 @@
 		<div class="mui-content top35px ">
 			<div class="mui-row zz-div-line marginLeftRight">
 				<div class="zz-div-headImg">
-					<img src="../../images/small.png" / class="zz-img-headImg">
+					<img id="g-doctorImg" src="../../images/small.png" / class="zz-img-headImg"style="width: 70px;height: 70px;border-radius: 35px;">
 				</div>
 				<div class="zz-div-doctName">
 					<h2 id="doctName"></h2>
@@ -60,6 +60,7 @@
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
+						document.getElementById('g-doctorImg').src = data.data.hospital_doctor_picture;
 						var doctName = document.getElementById('doctName');
 						doctName.innerHTML = data.data.hospital_doctor_name;
 						var doctIdentity = document.getElementById('doctIdentity');

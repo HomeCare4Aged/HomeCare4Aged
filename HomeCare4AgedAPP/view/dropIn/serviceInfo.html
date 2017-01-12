@@ -13,7 +13,7 @@
 	<body style="background: white;">
 		<header class="mui-bar mui-bar-nav m_green2DropIn">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 id="g-title" class="mui-title">服务信息</h1>
+			<h1 id="g-nav-title" class="mui-title">服务信息</h1>
 		</header>
 		<div class="mui-content" style="background: white;">
 			<img id="g-img" src="../../images/home/leiyu.png" />
@@ -27,24 +27,9 @@
 			</ul>
 			<ul class="mui-table-view" id="list_ul">
 				<li class="mui-table-view-cell">
-					<label class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
+					<label id="g-service-time" class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
 					<hr class="mui-col-xs-2 mui-pull-left tableLine" />
-					<label class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<label class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
-					<hr class="mui-col-xs-2 mui-pull-left tableLine" />
-					<label class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
-				</li>
-				<li class="mui-table-view-cell mui-media">
-					<label class="mui-col-xs-5 mui-pull-left LeftTableText">3.0小时</label>
-					<hr class="mui-col-xs-2 mui-pull-left tableLine" />
-					<label class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
-				</li>
-			</ul>
-			<ul class="mui-table-view" id="g-moreList">
-				<li class="mui-table-view-cell mui-media" style="padding-top: 10px;padding-bottom: 20px;">
-					<div class="grayText" style="text-align: center;">更多</div>
+					<label id="g-service-price" class="mui-col-xs-5 mui-pull-right RightTableText">￥100.0</label>
 				</li>
 			</ul>
 			<ul class="mui-table-view ">
@@ -69,19 +54,65 @@
 
 			});
 			mui.plusReady(function() {
-				//				var nwaiting = plus.nativeUI.showWaiting();
+				var nwaiting = plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#30B69C');
 				document.getElementById('g-img').style.height = document.documentElement.clientWidth + 'px';
 				document.getElementById('g-img').style.width = document.documentElement.clientWidth + 'px';
 
-				var leftText = document.getElementsByClassName('LeftTableText');
-				var rightText = document.getElementsByClassName('RightTableText');
-				var tableLine = document.getElementsByClassName('tableLine');
-				mui.each(leftText, function(i) {
-					//					leftText[i].style.width = width-0.5+'px';
-					//					rightText[i].style.width = width-0.5+'px';
+//				var leftText = document.getElementsByClassName('LeftTableText');
+//				var rightText = document.getElementsByClassName('RightTableText');
+//				var tableLine = document.getElementsByClassName('tableLine');
+//				mui.each(leftText, function(i) {
+//					leftText[i].style.width = width-0.5+'px';
+//					rightText[i].style.width = width-0.5+'px';
+//				});
+				var postData = {};
+				postData['store_service_id'] = localStorage.store_service_id;
+				mui.ajax({
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + 'SStoreServiceClassify/getServiceInfo',
+					dataType: "json",
+					//成功获取数据赋值
+					success: function(data) {
+						console.log(JSON.stringify(data.data));
+						localStorage.serviceInfo = JSON.stringify(data.data);
+						plus.nativeUI.closeWaiting();
+						document.getElementById('g-img').src = data.data.store_service_picture;
+						document.getElementById('g-nav-title').innerHTML = data.data.store_service_name;
+						document.getElementById('g-title').innerHTML = data.data.store_service_name+'('+data.data.store_shop_name+')';
+						document.getElementById('g-service-time').innerHTML = data.data.store_service_length+'小时';
+						document.getElementById('g-service-price').innerHTML = '￥'+data.data.store_service_price;
+						document.getElementById('g-intro').innerHTML = data.data.store_service_introduction;
+//						var doc = document;
+//						fragment = doc.createDocumentFragment();
+//						container = doc.getElementById("list_ul");
+//						mui.each(data.data, function(i) {
+//							var doc = document;
+//							li = doc.createElement("li");
+//						
+//							h32.setAttribute("style", "margin-top: 5px;");
+//							h32.innerHTML = data.data[i].store_service_length + '小时' + data.data[i].store_service_price + '元';
+//							li.id = data.data[i].store_service_id;
+//
+//							li.addEventListener('tap', function() {
+//								localStorage.service_classify_name = this.id;
+//								console.log('=====' + this.id);
+//								mui.openWindow({
+//									url: '../dropIn/serviceInfo.html',
+//								});
+//							});
+//							li.appendChild(img);
+//							fragment.appendChild(li);
+//						});
+//						container.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+					}
 				});
-
 				document.getElementById('g-btn').addEventListener('tap', function() {
 					mui.openWindow({
 						url: '../dropIn/submitOrder.html',

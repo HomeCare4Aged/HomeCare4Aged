@@ -72,7 +72,6 @@
 			});
 
 			function openWindow($url) {
-
 				var phone = document.getElementById('zz-input-phone').value;
 				var psw = document.getElementById('zz-input-psw').value;
 				if(!isPhoneNum(phone)) {
@@ -134,7 +133,16 @@
 							localStorage.community_id = data.data.community_id ;
 							console.log(localStorage.community_id);
 							localStorage.community_hospitals_id = data.data.community_hospitals_id;
+							localStorage.community_hospitals_name = data.data.community_hospitals_name;
+							console.log('---------');
 							console.log(localStorage.community_hospitals_id);
+							console.log(localStorage.community_hospitals_name);
+							console.log('---------');
+							localStorage.community_user_lat = data.data.community_user_lat//经度
+							localStorage.community_user_lng = data.data.community_user_lng//纬度
+							localStorage.community_user_birthday = data.data.community_user_birthday
+							localStorage.lat = localStorage.community_user_lat;
+							localStorage.lng = localStorage.community_user_lng;
 					
 							
 							localStorage.autoLoginIn = 'true';
