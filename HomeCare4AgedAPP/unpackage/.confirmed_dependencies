@@ -231,7 +231,8 @@
 			"css/mui.min.css"
 		],
 		"refer": [
-			"view/dropIn/serviceList.html"
+			"view/dropIn/serviceList.html",
+			"view/dropIn/myHistory.html"
 		]
 	},
 	"view/dropIn/serviceInfo.html": {
@@ -255,7 +256,8 @@
 			"images/registration/pifu.png",
 			"css/mui.min.css",
 			"css/common/common.css",
-			"images/registration/define.png"
+			"images/registration/define.png",
+			"images/registration/waike.png"
 		],
 		"refer": [
 			"view/registration/myHistory.html",
@@ -271,6 +273,9 @@
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"css/common/common.css"
+		],
+		"refer": [
+			"view/registration/historyDetails.html"
 		]
 	},
 	"view/message/index.html": {
@@ -468,7 +473,12 @@
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"css/common/common.css"
+			"css/common/common.css",
+			"images/transfuse/blackSeat.png",
+			"images/transfuse/blackBed.png"
+		],
+		"refer": [
+			"view/transfuse/transFuseHistoryDetails.html"
 		]
 	},
 	"view/takeOut/finish.html": {
@@ -510,6 +520,36 @@
 	"view/transfuse/details.html": {
 		"resources": [
 			"css/transfuse/makeSureMessage.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/registration/historyDetails.html": {
+		"resources": [
+			"css/registration/makeSureMessage.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/transfuse/transFuseHistoryDetails.html": {
+		"resources": [
+			"css/transfuse/makeSureMessage.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/dropIn/myHistory.html": {
+		"resources": [
+			"css/registration/myHistory.css",
 			"js/constants.js",
 			"js/mui.min.js",
 			"fonts/mui.ttf",

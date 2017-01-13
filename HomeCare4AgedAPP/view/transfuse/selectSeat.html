@@ -116,7 +116,8 @@
 				document.getElementById('seatCount').setAttribute('style','text-align: center; margin-right: 15px; color: black;');
 				document.getElementById('bedCountText').setAttribute('style','color: gray; margin-left: 15px;');
 				document.getElementById('bedCount').setAttribute('style','text-align: center; margin-left: 15px; color: gray;');
-				localStorage.setItem('selectSeat', "座位");
+//				localStorage.setItem('selectSeat', "座位");
+				localStorage.selectSeat = "座位";
 				//				console.log(localStorage.getItem('selectSeat'));
 			}
 
@@ -127,7 +128,8 @@
 				document.getElementById('seatCount').setAttribute('style','text-align: center; margin-right: 15px; color: gray;');
 				document.getElementById('bedCountText').setAttribute('style','color: black; margin-left: 15px;');
 				document.getElementById('bedCount').setAttribute('style','text-align: center; margin-left: 15px; color: black;');
-				localStorage.setItem('selectSeat', "床位");
+//				localStorage.setItem('selectSeat', "床位");
+				localStorage.selectSeat = "床位";
 			}
 
 			function openWindow($url) {

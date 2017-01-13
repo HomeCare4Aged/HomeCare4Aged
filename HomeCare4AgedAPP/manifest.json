@@ -221,7 +221,8 @@
 					"images/registration/wuguan.png",
 					"images/registration/pifu.png",
 					"images/registration/define.png",
-					"images/right.png"
+					"images/right.png",
+					"images/registration/waike.png"
 				],
 				"refer": [
 					"view/registration/doctorInfo.html",
@@ -447,7 +448,8 @@
 					"js/jquery.1.11.1.js"
 				],
 				"refer": [
-					"view/dropIn/serviceList.html"
+					"view/dropIn/serviceList.html",
+					"view/dropIn/myHistory.html"
 				],
 				"priority": 0
 			},
@@ -461,7 +463,9 @@
 					"css/mui.min.css",
 					"css/common/common.css"
 				],
-				"refer": [],
+				"refer": [
+					"view/registration/historyDetails.html"
+				],
 				"priority": 0
 			},
 			"view/loginRegister/register.html": {
@@ -793,9 +797,13 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"css/common/common.css"
+					"css/common/common.css",
+					"images/transfuse/blackSeat.png",
+					"images/transfuse/blackBed.png"
 				],
-				"refer": [],
+				"refer": [
+					"view/transfuse/transFuseHistoryDetails.html"
+				],
 				"priority": 0
 			},
 			"view/takeOut/finish.html": {
@@ -826,6 +834,42 @@
 			"view/transfuse/details.html": {
 				"resources": [
 					"css/transfuse/makeSureMessage.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/registration/historyDetails.html": {
+				"resources": [
+					"css/registration/makeSureMessage.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/transfuse/transFuseHistoryDetails.html": {
+				"resources": [
+					"css/transfuse/makeSureMessage.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/dropIn/myHistory.html": {
+				"resources": [
+					"css/registration/myHistory.css",
 					"js/constants.js",
 					"js/mui.min.js",
 					"fonts/mui.ttf",

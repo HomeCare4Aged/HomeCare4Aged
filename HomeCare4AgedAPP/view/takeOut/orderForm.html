@@ -87,8 +87,8 @@
 				} else {
 					userSex = '女士';
 				}
-				document.getElementById('zz-h4-userNameAndPhone').innerHTML = localStorage.userName + "   " + userSex + " " + localStorage.userPhoneNum;
-				document.getElementById('zz-h4-location').innerHTML = localStorage.userHome;
+				document.getElementById('zz-h4-userNameAndPhone').innerHTML = localStorage.community_user_name + "   " + userSex + " " + localStorage.community_user_phone;
+				document.getElementById('zz-h4-location').innerHTML = localStorage.community_user_address;
 				document.getElementById('zz-h4-storeName').innerHTML = '外卖：' + sData.storeName;
 				document.getElementById('freight').innerHTML = "￥" + sData.freight;
 				document.getElementById('actualPayment').innerHTML = "实付￥" + (parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight));

@@ -19,7 +19,7 @@
 		<div class="mui-content">
 			<div class="top14px headline" id"already_title">
 				<h1 class="title" >已预约</h1>
-				<label id="g-delete" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 20px;font-size: 30px;">删除预约</label>
+				<!--<label id="g-delete" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 20px;font-size: 30px;">删除预约</label>-->
 				<label id="cancel" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 100px;font-size: 30px;"></label>
 			</div>
 			<ul class="mui-table-view" id="list_already">
@@ -68,96 +68,101 @@
 				},
 			});
 			mui.plusReady(function() {
+				localStorage.transHistorylistId = plus.webview.currentWebview().id;
+				window.addEventListener('deleteLi', function() {
+					console.log('shanchu');
+					document.getElementById('list_already').removeChild(document.getElementById(localStorage.transfuseLiId));
+				});
 				plus.navigator.setStatusBarBackground('#FEE36D');
 				getListData();
 
 				var btndelete = document.getElementById('g-delete');
 				var status = 1;
-				btndelete.addEventListener('tap', function() {
-					if(status == 1) {
-						btndelete.innerHTML = '删除';
-						var list = document.getElementsByClassName('deleteList');
-//						console.log(list.length);
-						mui.each(list, function(i) {
-							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList mui-checkbox mui-left");
-							var g_input = document.createElement('input');
-							g_input.setAttribute("name", "checkbox");
-							g_input.setAttribute("style", "margin-top: 25px");
-							g_input.setAttribute("type", "checkbox");
-							g_input.setAttribute("class", "choseinput");
-							g_input.id = list[i].id;
-							list[i].appendChild(g_input);
-						});
-						status = 0;
-						
-						
-						var label = document.getElementById('cancel');
-						label.innerHTML = "取消";
-						label.addEventListener('tap', function() {
-							
-							label.innerHTML = "";
-							
-							
-						btndelete.innerHTML = '删除预约';
-						var listinput = document.getElementsByClassName('choseinput');
-						
-						for(var i = list.length - 1; i >= 0; i--) {
-							list[i].removeChild(listinput[i]);
-							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
-						}
-							status = 1;
-						});
-						
-						
-					} else {
-						btndelete.innerHTML = '删除预约';
-						var listli = document.getElementsByClassName('deleteList');
-						var listinput = document.getElementsByClassName('choseinput');
-//						console.log(listli.length);
-//						console.log(listinput.length);
-						
-						var postData = new Array();
-						var count = 0;
-						for(var i = listli.length - 1; i >= 0; i--) {
-							if(listinput[i].checked == true) {
-								postData[count] = listinput[i].id;
-								count++;
-							}
-//							console.log(listinput[i].id+'jjjjjjjjjjjjjjjjjjjjjjjjjjj');
-							listli[i].removeChild(listinput[i]);
-							listli[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
-						}
-						var label = document.getElementById('cancel');
-						label.innerHTML = "";
-						console.log(postData)+'aaaaaaaaaaaaaaaaaaaaaaaaaaa';
-						if(postData.length > 0) {
-//							var aa = {'id':postData};
+//				btndelete.addEventListener('tap', function() {
+//					if(status == 1) {
+//						btndelete.innerHTML = '删除';
+//						var list = document.getElementsByClassName('deleteList');
+////						console.log(list.length);
+//						mui.each(list, function(i) {
+//							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList mui-checkbox mui-left");
+//							var g_input = document.createElement('input');
+//							g_input.setAttribute("name", "checkbox");
+//							g_input.setAttribute("style", "margin-top: 25px");
+//							g_input.setAttribute("type", "checkbox");
+//							g_input.setAttribute("class", "choseinput");
+//							g_input.id = list[i].id;
+//							list[i].appendChild(g_input);
+//						});
+//						status = 0;
+//						
+//						
+//						var label = document.getElementById('cancel');
+//						label.innerHTML = "取消";
+//						label.addEventListener('tap', function() {
 //							
-//							console.log(JSON.stringify(aa['id']));
-							mui.ajax({
-								type: 'POST',
-								url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
-								dataType: "json",
-								data: {'id':postData,'community_user_id':'0000'},
-								//成功获取数据赋值
-								success: function(data) {
-									if (data.status == 1){
-										mui.alert(data.msg);
-										plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
-									} 
-								},
-
-								error: function(xhr, type, errorThrown) {
-									console.log(type);
-									mui.alert('删除失败');
-								}
-							});
-						}
-
-						status = 1;
-					}
-
-				});
+//							label.innerHTML = "";
+//							
+//							
+//						btndelete.innerHTML = '删除预约';
+//						var listinput = document.getElementsByClassName('choseinput');
+//						
+//						for(var i = list.length - 1; i >= 0; i--) {
+//							list[i].removeChild(listinput[i]);
+//							list[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
+//						}
+//							status = 1;
+//						});
+//						
+//						
+//					} else {
+//						btndelete.innerHTML = '删除预约';
+//						var listli = document.getElementsByClassName('deleteList');
+//						var listinput = document.getElementsByClassName('choseinput');
+////						console.log(listli.length);
+////						console.log(listinput.length);
+//						
+//						var postData = new Array();
+//						var count = 0;
+//						for(var i = listli.length - 1; i >= 0; i--) {
+//							if(listinput[i].checked == true) {
+//								postData[count] = listinput[i].id;
+//								count++;
+//							}
+////							console.log(listinput[i].id+'jjjjjjjjjjjjjjjjjjjjjjjjjjj');
+//							listli[i].removeChild(listinput[i]);
+//							listli[i].setAttribute("class", "mui-table-view-cell mui-media deleteList ");
+//						}
+//						var label = document.getElementById('cancel');
+//						label.innerHTML = "";
+//						console.log(postData)+'aaaaaaaaaaaaaaaaaaaaaaaaaaa';
+//						if(postData.length > 0) {
+////							var aa = {'id':postData};
+////							
+////							console.log(JSON.stringify(aa['id']));
+//							mui.ajax({
+//								type: 'POST',
+//								url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
+//								dataType: "json",
+//								data: {'id':postData,'community_user_id':'0000'},
+//								//成功获取数据赋值
+//								success: function(data) {
+//									if (data.status == 1){
+//										mui.alert(data.msg);
+//										plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+//									} 
+//								},
+//
+//								error: function(xhr, type, errorThrown) {
+//									console.log(type);
+//									mui.alert('删除失败');
+//								}
+//							});
+//						}
+//
+//						status = 1;
+//					}
+//
+//				});
 
 				function getListData() {
 					var postUserData = {};
@@ -193,14 +198,24 @@
 								console.log(li.id);
 								div.setAttribute("class", "marginLeftRight");
 								img.setAttribute("class", "mui-media-object mui-pull-left");
-								img.setAttribute("src", "../../images/small.png")
-								h1.innerHTML = "李";
+//								img.setAttribute("style", "margin-top: 10px;");
+								if(dataAlready[i].user_transfusion_type == '座位'){
+									img.setAttribute("src", "../../images/transfuse/blackSeat.png")
+								}else{
+									img.setAttribute("src", "../../images/transfuse/blackBed.png")
+								}
+								
+								h1.innerHTML = Math.abs(parseInt(dataAlready[i].user_appointment_time) -  parseInt(dataAlready[i].predict_finished_time))+"小时";
 								label.setAttribute("class", "gray-text");
 								label.innerHTML = dataAlready[i].user_appointment_date;  
 //								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
 								li.addEventListener('tap', function() {
-
+									localStorage.transfuseLiId = this.id;
+									localStorage.transFuseHistoryDetails = JSON.stringify(dataAlready[i])
+									mui.openWindow({
+										url: '../transfuse/transFuseHistoryDetails.html',
+									});
 								});
 								li.appendChild(div);
 								div.appendChild(img);
@@ -223,12 +238,20 @@
 								li.setAttribute("class", "mui-table-view-cell mui-media");
 								div.setAttribute("class", "marginLeftRight");
 								img.setAttribute("class", "mui-media-object mui-pull-left");
-								img.setAttribute("src", "../../images/small.png")
-								h1.innerHTML = '张';
+								if(dataFinish[i].user_transfusion_type == '座位'){
+									img.setAttribute("src", "../../images/transfuse/blackSeat.png")
+								}else{
+									img.setAttribute("src", "../../images/transfuse/blackBed.png")
+								}
+//								img.setAttribute("src", "../../images/small.png")
+								h1.innerHTML = Math.abs(parseInt(dataFinish[i].user_appointment_time) -  parseInt(dataFinish[i].predict_finished_time))+"小时";
 								label.setAttribute("class", "gray-text");
 								label.innerHTML = dataFinish[i].user_appointment_date;;
 								li.addEventListener('tap', function() {
-
+									localStorage.transFuseHistoryDetails = JSON.stringify(dataFinish[i]);
+									mui.openWindow({
+										url: '../transfuse/transFuseHistoryDetails.html',
+									});
 								});
 								li.appendChild(div);
 								div.appendChild(img);

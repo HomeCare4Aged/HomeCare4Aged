@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/transfuse/makeSureMessage.css" />
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav m_blue">
+			<a id="backHome" cclass="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: black;">首页</a>
+			<h1 class="mui-title">查看详情</h1>
+		</header>-->
+		<header class="mui-bar mui-bar-nav" style="background-color: #FFE463;">
+			<a id="backHome" class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">输液详情</h1>
+		</header>
+		<div class="mui-content top35px ">
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">输液医院</h3>
+					<h1 class="MSM-black-text" id="hospitalName">贺福里社区医院</h1>
+					<hr class="zz-hr-line" />
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">输液时间</h3>
+					<h1 class="MSM-black-text" id="transTime"></h1>
+					<hr class="zz-hr-line" />
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">预约时长</h3>
+					<h1 class="MSM-black-text" id="transDuration"></h1>
+					<hr class="zz-hr-line" />
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">就诊人</h3>
+					<h1 class="MSM-black-text" id="userName" name="uasername">李晨</h1>
+					<hr class="zz-hr-line" />
+				</div>
+			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">输液位类型</h3>
+					<h1 class="MSM-black-text" id="seatType" ></h1>
+					<hr class="zz-hr-line" />
+				</div>
+			</div>
+			<div class="marginLeftRight">
+						<button type="button" class="zz-btn-next g-btnActive" style="background-color: red;margin-top: 0px;" onclick="openWindow();" id="zz-btn-deleteBtn">删除预约</button>
+					</div>
+			<!--<div class="mui-row marginLeftRight MSM-top35px">
+				<h3 class="zz-gray-text" style="text-align: center;">当前可预约：<span style="color: rgb(76,188,236);">20</span>个输液位</h3>
+				<button type="button" class="zz-btn-next m_blue" id="zz-btn-next">下一步</button>
+				<!--onclick="openWindow('../transfuse/finish.html');"-->
+			<!--</div>-->
+		</div>
+		
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript">
+			mui.init({
+//				beforeback: function() {
+//					//获得你要前往页面的webview id
+//					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+//					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+//					mui.fire(Scanner, 'refreshWeather');
+//					mui.openWindow({
+//						url: '../home/index.html',
+//					});
+//				},
+			});
+			mui.plusReady(function(){
+				
+				var postData = {};
+				postData = JSON.parse(localStorage.transFuseHistoryDetails);
+				if(postData.transfusion_state != '未完成') {
+					document.getElementById('zz-btn-deleteBtn').style.display = 'none';
+				}
+				console.log(JSON.stringify(postData));
+				document.getElementById('hospitalName').innerHTML = localStorage.community_hospitals_name;
+				document.getElementById('transTime').innerHTML = postData.user_appointment_date+" "+postData.user_appointment_time;
+				document.getElementById('transDuration').innerHTML = Math.abs(parseInt(postData.user_appointment_time) -  parseInt(postData.predict_finished_time))+"小时";
+				document.getElementById('userName').innerHTML = localStorage.userName;
+				document.getElementById('seatType').innerHTML = postData.user_transfusion_type;
+				
+			});
+			
+			function openWindow() {
+				console.log('JSON.stringify(postData)');
+				var btnArray = ['否', '是', ];
+				mui.confirm('是否删除', '', btnArray, function(e) {
+					if(e.index == 0) {
+
+					} else if(e.index == 1) {
+						var postData = {};
+						postData['id'] = JSON.parse(localStorage.transFuseHistoryDetails).user_transfusion_id;
+						postData['community_user_id'] = JSON.parse(localStorage.transFuseHistoryDetails).community_user_id;
+						console.log(postData['id']);
+						plus.nativeUI.showWaiting();
+						mui.ajax({
+							type: 'POST',
+							data: postData,
+							url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
+							dataType: "json",
+							//成功获取数据赋值
+							success: function(data) {
+								plus.nativeUI.closeWaiting();
+								if(data.status == 1) {
+									mui.toast('删除成功');
+									//获得你要前往页面的webview id
+									var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
+									//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+									mui.fire(Scanner, 'deleteLi');
+									mui.currentWebview.close();
+									//获得你要前往页面的webview id
+								};
+								if(data.status == 0) {
+									mui.alert(data.msg);
+								};
+
+							},
+							error: function(xhr, type, errorThrown) {
+								plus.nativeUI.closeWaiting();
+								console.log(type);
+								mui.alert('预约失败');
+							}
+						});
+					}
+				});
+				//				
+
+			};
+		</script>
+	</body>
+
+</html>
