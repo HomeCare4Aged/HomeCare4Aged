@@ -100,7 +100,7 @@
 				postData['user_registration_date'] = getNowFormatDate();
 				postData['user_appointment_date'] = localStorage.registrationTime.substring(0,10);
 				postData['user_appointment_time'] = localStorage.registrationTime.substring(11,19);
-			
+				postData['community_user_id'] = localStorage.community_user_id;
 				
 				var hour = new Date().getDate();
 				console.log(JSON.stringify(postData));

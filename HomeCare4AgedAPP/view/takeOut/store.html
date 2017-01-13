@@ -429,13 +429,10 @@
 					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'));
 					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
 					console.log(localStorage.commodityMoneyAll);
-<<<<<<< HEAD
-					console.log("vvvvvvvvvvvvvvvvv"+localStorage.storeFoodData);
-					localStorage.storeFoodData[id] = count; 
-=======
+
 					console.log('count'+count);
 					localStorage.storeFoodData[id] = count;
->>>>>>> adea6b85e1d45e590da5d4439d4dfbb41f058ff7
+
 					document.getElementById('zz-span-commodityMoneyAll').style.display = '';
 					storeFoodData[id] = count;
 					//					storeFoodALLData.push(storeFoodData);

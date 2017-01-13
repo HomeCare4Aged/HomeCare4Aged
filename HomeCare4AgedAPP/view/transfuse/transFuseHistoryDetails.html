@@ -90,7 +90,7 @@
 				document.getElementById('hospitalName').innerHTML = localStorage.community_hospitals_name;
 				document.getElementById('transTime').innerHTML = postData.user_appointment_date+" "+postData.user_appointment_time;
 				document.getElementById('transDuration').innerHTML = Math.abs(parseInt(postData.user_appointment_time) -  parseInt(postData.predict_finished_time))+"小时";
-				document.getElementById('userName').innerHTML = localStorage.userName;
+				document.getElementById('userName').innerHTML = postData.community_user_name;
 				document.getElementById('seatType').innerHTML = postData.user_transfusion_type;
 				
 			});
