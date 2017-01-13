@@ -429,13 +429,14 @@
 					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'));
 					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
 					console.log(localStorage.commodityMoneyAll);
+					console.log('count'+count);
 					localStorage.storeFoodData[id] = count;
 					document.getElementById('zz-span-commodityMoneyAll').style.display = '';
 					storeFoodData[id] = count;
 					//					storeFoodALLData.push(storeFoodData);
 					console.log('----------------------' + JSON.stringify(storeFoodData));
 					if(localStorage.commodityMoneyAll >= localStorage.statrtPrice) {
-						zz_div_statrtPrice.setAttribute("style", "height: 100%; background: rgb(255,122,66); float: right;");
+						zz_div_statrtPrice.setAttribute("style", "height: 100%; background: rgb(255,105,44); float: right;");
 						zz_h4_statrtPrice.innerHTML = "结算";
 						zz_span_count.style.display = '';
 					} else {
@@ -467,8 +468,8 @@
 					//					var freight = document.getElementById('span-freight').innerHTML.substr(5);
 					console.log(storeName);
 					if(zz_h4_statrtPrice.innerHTML == '结算') {
-						console.log('----------------------' + JSON.stringify(storeFoodData));
-						console.log('----------------------' + JSON.stringify(matchData));
+						console.log('----------storeFoodData------------' + JSON.stringify(storeFoodData));
+						console.log('---------matchData-------------' + JSON.stringify(matchData));
 						localStorage.storeFoodData = JSON.stringify(storeFoodData);
 						localStorage.matchData = JSON.stringify(matchData);
 						mui.openWindow({
