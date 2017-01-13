@@ -11,9 +11,9 @@
 	</head>
 
 	<body style="background-color: white;">
-		<header class="mui-bar mui-bar-nav m_orange">
-			<a id="backHome" class="mui-action-back mui-icon  mui-pull-left" style="font-size: 30px;margin-left: -3%;margin-top: 15px;">首页</a>
-			<h1 class="mui-title">挂号详情</h1>
+		<header class="mui-bar mui-bar-nav" style="background: rgb(254,227,109);">
+			<a id="backHome" class="mui-action-back mui-icon mui-icon-back mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">挂号详情</h1>
 		</header>
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
@@ -49,7 +49,7 @@
 					</div>
 					<div class="marginLeftRight">
 						<h1 class="MSM-red-text" style="float: left;" id="priceText">￥0</h1>
-						<h1 class="MSM-black-text" id="priceText">（医院到付）</h1>
+						<h1 class="MSM-black-text" id="priceText">&nbsp(医院到付)</h1>
 					</div>
 					<div class="marginLeftRight ">
 						<h3 class="MSM-gray-text MSM-top25px">就诊人</h3>
@@ -58,33 +58,34 @@
 						<h1 class="MSM-black-text" id="personText">李</h1>
 					</div>
 				</li>
+				<li id="g-li-delete" class="mui-table-view-cell mui-media">
+					<div class="marginLeftRight ">
+						<button type="button" class="zz-btn-next g-btnActive" style="background-color: red;margin-top: 0px;" onclick="openWindow();">删除预约</button>
+					</div>
+				</li>
 			</ul>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
-				beforeback: function() {
-					//获得你要前往页面的webview id
-					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
-					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner, 'refreshWeather');
-					mui.openWindow({
-						url: '../home/index.html',
-					});
-				},
+				swipeBack: true, //启用右滑关闭功能
 			});
 			mui.plusReady(function() {
+				var postData = {};
+				postData = JSON.parse(localStorage.resistationHistoryDetail);
 				console.log(JSON.stringify(postData));
-				var postData = plus.webview.currentWebview().data;
+				if(postData.registration_state != '未完成') {
+					document.getElementById('g-li-delete').style.display = 'none';
+				}
 				var hospitalText = document.getElementById('hospitalText');
-				hospitalText.innerHTML = localStorage.community_hospitals_name;
+				hospitalText.innerHTML = postData.community_hospitals_name;
 				var timeText = document.getElementById('timeText');
-				timeText.innerHTML = localStorage.registrationTime;
+				timeText.innerHTML = postData.user_appointment_date + ' ' + postData.user_appointment_time;
 				var roomText = document.getElementById('roomText');
 				roomText.innerHTML = postData.hospital_office_name;
 				var doctorNameText = document.getElementById('doctorNameText');
-				doctorNameText.innerHTML = postData.hospital_doctor_name+" ("+localStorage.doctorLevel+")";
+				doctorNameText.innerHTML = postData.hospital_doctor_name + " (" + localStorage.doctorLevel + ")";
 				var priceText = document.getElementById('priceText');
 				priceText.innerHTML = '￥' + postData.registration_money;
 				var personText = document.getElementById('personText');
@@ -92,7 +93,51 @@
 
 			});
 
+			function openWindow() {
+				console.log('JSON.stringify(postData)');
+				var btnArray = ['否', '是', ];
+				mui.confirm('是否删除', '', btnArray, function(e) {
+					if(e.index == 0) {
 
+					} else if(e.index == 1) {
+						var postData = {};
+						postData['id'] = JSON.parse(localStorage.resistationHistoryDetail).user_registration_id;
+						postData['community_user_id'] = JSON.parse(localStorage.resistationHistoryDetail).community_user_id;
+						console.log(postData['id']);
+						plus.nativeUI.showWaiting();
+						mui.ajax({
+							type: 'POST',
+							data: postData,
+							url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
+							dataType: "json",
+							//成功获取数据赋值
+							success: function(data) {
+								plus.nativeUI.closeWaiting();
+								if(data.status == 1) {
+									mui.toast('删除成功');
+									//获得你要前往页面的webview id
+									var Scanner = plus.webview.getWebviewById(localStorage.historylistId);
+									//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+									mui.fire(Scanner, 'deleteLi');
+									mui.currentWebview.close();
+									//获得你要前往页面的webview id
+								};
+								if(data.status == 0) {
+									mui.alert(data.msg);
+								};
+
+							},
+							error: function(xhr, type, errorThrown) {
+								plus.nativeUI.closeWaiting();
+								console.log(type);
+								mui.alert('预约失败');
+							}
+						});
+					}
+				});
+				//				
+
+			};
 		</script>
 	</body>
 

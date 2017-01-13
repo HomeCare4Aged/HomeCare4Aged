@@ -1,10 +1,7 @@
 //域名
 
-
-//const SERVERURL = 'http:/10.96.98.85/HomeCare4AgedPHP/index.php/Home/';
-
-const SERVERURL = 'http://192.168.136.1/HomeCare4AgedPHP/index.php/Home/';
-const MESSAGEURL = 'http://192.168.136.1/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
+const SERVERURL = 'http://169.254.38.142/HomeCare4AgedPHP/index.php/Home/';
+const MESSAGEURL = 'http://169.254.38.142/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 
 //定义比例
 const SCALE = window.screen.width / 320;
@@ -110,88 +107,88 @@ function isRegisterPsw(s) {
 	return true
 }
 //判断当前时间是否在某一时间段内 在返回true 不在返回false
-function is_now_time_range (beginTime, endTime) {
-  var strb = beginTime.split (":");
-  if (strb.length != 2) {
-    beginTime = strb[0]+':'+strb[1];
-  }
+function is_now_time_range(beginTime, endTime) {
+	var strb = beginTime.split(":");
+	if(strb.length != 2) {
+		beginTime = strb[0] + ':' + strb[1];
+	}
 
-  var stre = endTime.split (":");
-  if (stre.length != 2) {
-    endTime = stre[0]+':'+stre[1];
-  }
+	var stre = endTime.split(":");
+	if(stre.length != 2) {
+		endTime = stre[0] + ':' + stre[1];
+	}
 
-  var b = new Date ();
-  var e = new Date ();
-  var n = new Date ();
+	var b = new Date();
+	var e = new Date();
+	var n = new Date();
 
-  b.setHours (strb[0]);
-  b.setMinutes (strb[1]);
-  e.setHours (stre[0]);
-  e.setMinutes (stre[1]);
+	b.setHours(strb[0]);
+	b.setMinutes(strb[1]);
+	e.setHours(stre[0]);
+	e.setMinutes(stre[1]);
 
-  if (n.getTime () - b.getTime () > 0 && n.getTime () - e.getTime () < 0) {
-    return true;
-  } else {
-    return false;
-  }
+	if(n.getTime() - b.getTime() > 0 && n.getTime() - e.getTime() < 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 //判断某时间是否在某一时间段内 在返回true 不在返回false
-function is_time_range (beginTime, endTime, nowTime) {
-  var strb = beginTime.split (":");
-  if (strb.length != 2) {
-    beginTime = strb[0]+':'+strb[1];
-  }
+function is_time_range(beginTime, endTime, nowTime) {
+	var strb = beginTime.split(":");
+	if(strb.length != 2) {
+		beginTime = strb[0] + ':' + strb[1];
+	}
 
-  var stre = endTime.split (":");
-  if (stre.length != 2) {
-    endTime = stre[0]+':'+stre[1];
-  }
+	var stre = endTime.split(":");
+	if(stre.length != 2) {
+		endTime = stre[0] + ':' + stre[1];
+	}
 
-  var strn = nowTime.split (":");
-  if (stre.length != 2) {
-    nowTime = strn[0]+':'+strn[1];
-  }
-  var b = new Date ();
-  var e = new Date ();
-  var n = new Date ();
-  b.setHours (strb[0]);
-  b.setMinutes (strb[1]);
-  e.setHours (stre[0]);
-  e.setMinutes (stre[1]);
-  n.setHours (strn[0]);
-  n.setMinutes (strn[1]);
+	var strn = nowTime.split(":");
+	if(stre.length != 2) {
+		nowTime = strn[0] + ':' + strn[1];
+	}
+	var b = new Date();
+	var e = new Date();
+	var n = new Date();
+	b.setHours(strb[0]);
+	b.setMinutes(strb[1]);
+	e.setHours(stre[0]);
+	e.setMinutes(stre[1]);
+	n.setHours(strn[0]);
+	n.setMinutes(strn[1]);
 
-  if (n.getTime () - b.getTime () > 0 && n.getTime () - e.getTime () < 0) {
-    return true;
-  } else {
-    return false;
-  }
+	if(n.getTime() - b.getTime() > 0 && n.getTime() - e.getTime() < 0) {
+		return true;
+	} else {
+		return false;
+	}
 }
 
 //判断俩时间差 大于返回true 否则返回false
-function isTimeDifference (oneTime, anotherTime) {
-  var stro = oneTime.split (":");
-  if (stro.length != 2) {
-    oneTime = stro[0]+':'+stro[1];
-  }
+function isTimeDifference(oneTime, anotherTime) {
+	var stro = oneTime.split(":");
+	if(stro.length != 2) {
+		oneTime = stro[0] + ':' + stro[1];
+	}
 
-  var stra = anotherTime.split (":");
-  if (stre.length != 2) {
-    anotherTime = stre[0]+':'+stre[1];
-  }
+	var stra = anotherTime.split(":");
+	if(stre.length != 2) {
+		anotherTime = stre[0] + ':' + stre[1];
+	}
 
-  var o = new Date ();
-  var a = new Date ();
+	var o = new Date();
+	var a = new Date();
 
-  o.setHours (stro[0]);
-  o.setMinutes (stro[1]);
-  a.setHours (stra[0]);
-  a.setMinutes (stra[1]);
+	o.setHours(stro[0]);
+	o.setMinutes(stro[1]);
+	a.setHours(stra[0]);
+	a.setMinutes(stra[1]);
 
-  if (o.getTime () > a.getTime ()) {
-    return true;
-  } else {
-    return false;
-  }
+	if(o.getTime() > a.getTime()) {
+		return true;
+	} else {
+		return false;
+	}
 }

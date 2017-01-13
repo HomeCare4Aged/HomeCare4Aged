@@ -108,11 +108,8 @@
 						var Intent = plus.android.importClass("android.content.Intent");
 						var Uri = plus.android.importClass("android.net.Uri");
 						var main = plus.android.runtimeMainActivity();
-<<<<<<< HEAD
-						var uri = Uri.parse("tel:" + '10086');
-=======
 						var uri = Uri.parse("tel:" + serviceInfo.store_contact_user_phone);
->>>>>>> 1a496143b3138295d58194b5d2bb8ff2f0157bc3
+
 						var call = new Intent("android.intent.action.CALL", uri);
 						main.startActivity(call);
 					} else {

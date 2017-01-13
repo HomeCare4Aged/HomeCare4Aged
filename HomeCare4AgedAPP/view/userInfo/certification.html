@@ -572,6 +572,7 @@
 				var value = "";
 				if(e.fromitem.index > -1) {
 					value = _value.province + _value.city + _value.district + _value.street + _value.business;
+					
 				}
 				str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
 
@@ -579,6 +580,12 @@
 				if(e.toitem.index > -1) {
 					_value = e.toitem.value;
 					value = _value.province + _value.city + _value.district + _value.street + _value.business;
+					console.log('province'+_value.province);
+					console.log('city'+_value.city);
+					console.log('district'+_value.district);
+					console.log('street'+_value.street);
+					console.log('business'+_value.business);
+					console.log('value'+value);
 				}
 				str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
 			});
