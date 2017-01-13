@@ -330,7 +330,8 @@
 			"view/registration/finish.html": {
 				"resources": [
 					"images/123.png",
-					"css/registration/finish.css"
+					"css/registration/finish.css",
+					"images/registration/success.png"
 				],
 				"refer": [
 					"view/registration/details.html"
@@ -775,7 +776,9 @@
 					"js/mui.min.js",
 					"css/mui.min.css"
 				],
-				"refer": [],
+				"refer": [
+					"view/registration/doctorList.html"
+				],
 				"priority": 0
 			},
 			"view/userInfo/order.html": {

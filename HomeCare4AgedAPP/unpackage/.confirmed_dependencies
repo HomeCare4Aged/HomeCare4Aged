@@ -441,6 +441,9 @@
 			"css/common/common.css",
 			"js/mui.min.js",
 			"css/mui.min.css"
+		],
+		"refer": [
+			"view/registration/doctorList.html"
 		]
 	},
 	"view/message/content.html": {
@@ -555,6 +558,40 @@
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"css/common/common.css"
+		]
+	},
+	"view/registration/doctorInfo.html": {
+		"resources": [
+			"images/small.png",
+			"css/registration/doctorInfo.css"
+		],
+		"refer": [
+			"view/registration/makeSureMessage.html"
+		]
+	},
+	"view/registration/finish.html": {
+		"resources": [
+			"css/registration/finish.css",
+			"images/registration/success.png"
+		],
+		"refer": [
+			"view/registration/details.html"
+		]
+	},
+	"view/registration/doctorList.html": {
+		"resources": [
+			"css/registration/index.css"
+		],
+		"refer": [
+			"view/registration/doctorInfo.html"
+		]
+	},
+	"view/registration/makeSureMessage.html": {
+		"resources": [
+			"css/registration/makeSureMessage.css"
+		],
+		"refer": [
+			"view/registration/finish.html"
 		]
 	}
 }
