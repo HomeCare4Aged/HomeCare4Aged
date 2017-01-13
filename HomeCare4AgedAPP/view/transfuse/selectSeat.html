@@ -16,85 +16,141 @@
 			<h1 class="mui-title">输液</h1>
 			<div id="myHistory" class="mui-bar top60px " style="height: 70px;">
 				<h5 class="black-text" style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-left: 15px;">我的输液历史</h5>
-				<img src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -30px;margin-right: 10px;"/>
+				<img src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -30px;margin-right: 10px;" />
 			</div>
-		    <div class="mui-bar top110px " style="height: 70px;">
+			<div class="mui-bar top110px " style="height: 70px;">
 				<h5 class="m_gray_text" style="font-size: 30px; margin-top: 20px; font-weight: normal; margin-left: 15px;">选择座位类型</h5>
 			</div>
 		</header>
 		<div class="mui-content " style="margin-top: 170px; margin-left: 20px; margin-right: 20px;">
-		    <!--<input type="button" value="第一个按钮" style="height: 110px;"/>
-		    <input type="button" value="第二个按钮" />-->
-		    <img src="../../images/transfuse/selectSeat.png" class="zz-img-seatClass" id="zz-img-seat" onClick="changeSeat()" style="float: left;">
-		    <img src="../../images/transfuse/unselectBed.png" class="zz-img-bedClass" id="zz-img-bed"  onClick="changeBed()" style="float: right;">
-		    <div class="mui-row marginLeftRight">
+			<div class="mui-row mui-col-xs-12">
+				<div class="mui-col-xs-6">
+					<img src="../../images/transfuse/selectSeat.png" class="zz-img-seatClass" id="zz-img-seat" onClick="changeSeat()" style="float: left;">
+				</div>
+				<div class="mui-col-xs-6">
+					<img src="../../images/transfuse/unselectBed.png" class="zz-img-bedClass" id="zz-img-bed" onClick="changeBed()" style="float: right;">
+				</div>
+			</div>
+			
+			<div class="mui-row mui-col-xs-12 " style="margin-top: 30px;">
+				<div class="mui-col-xs-6">
+					<h3 id="seatCountText" style="color: black;">剩余座位数量</h3>
+					<h3 style="text-align: center; margin-right: 15px; color: black;" id="seatCount"></h3>
+					
+				</div>
+				<div class="mui-col-xs-6">
+					<h3 style=" margin-left: 15px; color: gray;" id="bedCountText" >剩余床位数量</h3>
+					<h3 style="text-align: center; margin-left: 15px; color: gray;" id="bedCount"></h3>
+				</div>
+			</div>
+			
+			
+			<!--<img src="../../images/transfuse/unselectBed.png" class="zz-img-bedClass" id="zz-img-bed" onClick="changeBed()" style="float: right;">-->
+			<!--<div class="mui-row marginLeftRight" style="width: 100px; height: 50px; background-color: red;">
+				
+			</div>-->
+			<div class="mui-row marginLeftRight">
 				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/index.html');">
 					下一步
 				</button>
 			</div>
 		</div>
-		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript" src="../../js/constants.js" ></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
-				beforeback: function(){
+				beforeback: function() {
 					//获得你要前往页面的webview id
 					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
-					
+
 					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner,'refreshWeather');
-					
+					mui.fire(Scanner, 'refreshWeather');
+
 					//返回true，继续页面关闭逻辑
 					return true;
 				},
-				
+
 			});
-			mui.plusReady(function(){
+			mui.plusReady(function() {
 				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refresh', function() {
 					plus.navigator.setStatusBarBackground('#4CBCEC');
 				});
 				plus.navigator.setStatusBarBackground('#4CBCEC');
+				
+				var postData = {};
+				postData['community_hospital_id'] = localStorage.community_hospitals_id; 
+				
+				mui.ajax({
+
+					type: 'POST',
+					data:postData,
+					url: SERVERURL+"HHospitalTransfusionInfo/getHospitalSeatCount",
+					dataType: "json",
+					success: function(data) {
+						console.log(JSON.stringify(data.data));
+						
+						document.getElementById('seatCount').innerHTML = data.data.open_seat_num+"个";
+						document.getElementById('bedCount').innerHTML = data.data.open_bed_num+"个";
+						localStorage.seatAllCount = parseInt( data.data.open_seat_num)+parseInt( data.data.open_bed_num);
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						mui.toast(type);
+					}
+
+				});
+
 			});
-			$('.zz-img-seatClass').css('width', document.documentElement.clientWidth/2.5);
-			$('.zz-img-bedClass').css('width', document.documentElement.clientWidth/2.5);
-			 localStorage.setItem('selectSeat', "座位");
-//			 console.log(localStorage.getItem('selectSeat'));
-			 
-			function changeSeat(){
-				document.getElementById("zz-img-seat").src="../../images/transfuse/selectSeat.png";
-				document.getElementById("zz-img-bed").src="../../images/transfuse/unselectBed.png";
+			$('.zz-img-seatClass').css('width', document.documentElement.clientWidth / 2.5);
+			$('.zz-img-bedClass').css('width', document.documentElement.clientWidth / 2.5);
+			localStorage.setItem('selectSeat', "座位");
+			//			 console.log(localStorage.getItem('selectSeat'));
+
+			function changeSeat() {
+				document.getElementById("zz-img-seat").src = "../../images/transfuse/selectSeat.png";
+				document.getElementById("zz-img-bed").src = "../../images/transfuse/unselectBed.png";
+				document.getElementById('seatCountText').setAttribute('style','color: black;');
+				document.getElementById('seatCount').setAttribute('style','text-align: center; margin-right: 15px; color: black;');
+				document.getElementById('bedCountText').setAttribute('style','color: gray; margin-left: 15px;');
+				document.getElementById('bedCount').setAttribute('style','text-align: center; margin-left: 15px; color: gray;');
 				localStorage.setItem('selectSeat', "座位");
-//				console.log(localStorage.getItem('selectSeat'));
+				//				console.log(localStorage.getItem('selectSeat'));
 			}
-			function changeBed(){
-				document.getElementById("zz-img-seat").src="../../images/transfuse/unselectSeat.png";
-				document.getElementById("zz-img-bed").src="../../images/transfuse/selectBed.png";
+
+			function changeBed() {
+				document.getElementById("zz-img-seat").src = "../../images/transfuse/unselectSeat.png";
+				document.getElementById("zz-img-bed").src = "../../images/transfuse/selectBed.png";
+				document.getElementById('seatCountText').setAttribute('style','color: gray;');
+				document.getElementById('seatCount').setAttribute('style','text-align: center; margin-right: 15px; color: gray;');
+				document.getElementById('bedCountText').setAttribute('style','color: black; margin-left: 15px;');
+				document.getElementById('bedCount').setAttribute('style','text-align: center; margin-left: 15px; color: black;');
 				localStorage.setItem('selectSeat', "床位");
 			}
-			
+
 			function openWindow($url) {
 				mui.openWindow({
 					url: $url,
-					id:'selectSeat.html',
+					id: 'selectSeat.html',
 					extras: {
 						webId: plus.webview.currentWebview().id,
 					},
 
 				});
 			}
-			
+
 			var btn = document.getElementById("myHistory");
-				btn.addEventListener("tap", function() {
-					mui.openWindow({
-						url: '../transfuse/myHistory.html',
-						id:'home',
-						extras: {
-							_id: this.id,
-						},
-					});
+			btn.addEventListener("tap", function() {
+				mui.openWindow({
+					url: '../transfuse/myHistory.html',
+					id: 'home',
+					extras: {
+						_id: this.id,
+					},
 				});
+			});
 		</script>
 	</body>
 

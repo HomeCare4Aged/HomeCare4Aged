@@ -225,7 +225,9 @@
 
 				document.getElementById("li-name").addEventListener('tap', function() {
 					document.getElementById('div-name').style.display = '';
-					document.getElementById('input-name').focus();
+				    var inputName = document.getElementById('input-name');
+				    initNativeObjects();
+					showSoftInput(inputName);
 				});
 				document.getElementById("li-age").addEventListener('tap', function() {
 					document.activeElement.blur();
@@ -274,7 +276,9 @@
 				});
 				document.getElementById("li-home").addEventListener('tap', function() {
 					document.getElementById('div-home').style.display = '';
-					document.getElementById('input-home').focus();
+					var inputHome = document.getElementById('input-home');
+					initNativeObjects();
+					showSoftInput(inputHome);
 				});
 				document.getElementById("li-hospital").addEventListener('tap', function() {
 					localStorage.userHome = document.getElementById('input-home').value;
@@ -402,6 +406,36 @@
 				var _value = e.item.value;
 				myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
 			});
+			
+			
+			var nativeWebview, imm, InputMethodManager;
+			var initNativeObjects = function() {
+				if(mui.os.android) {
+					var main = plus.android.runtimeMainActivity();
+					var Context = plus.android.importClass("android.content.Context");
+					InputMethodManager = plus.android.importClass("android.view.inputmethod.InputMethodManager");
+					imm = main.getSystemService(Context.INPUT_METHOD_SERVICE);
+				} else {
+					nativeWebview = plus.webview.currentWebview().nativeInstanceObject();
+				}
+			};
+			var showSoftInput = function(inputOn) {
+				if(mui.os.android) {
+					imm.toggleSoftInput(0, InputMethodManager.SHOW_FORCED);
+				} else {
+					nativeWebview.plusCallMethod({
+						"setKeyboardDisplayRequiresUserAction": false
+					});
+				}
+				setTimeout(function() {
+					//此处可写具体逻辑设置获取焦点的input
+					var gInput = inputOn;
+					//					var inputElem = document.querySelector('g-id-input');
+					gInput.focus();
+				}, 200);
+			};
+			
+			
 		</script>
 
 	</body>

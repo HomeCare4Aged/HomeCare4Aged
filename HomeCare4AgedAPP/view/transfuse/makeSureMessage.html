@@ -44,8 +44,15 @@
 					<hr class="zz-hr-line" />
 				</div>
 			</div>
+			<div class="mui-row zz-div-line marginLeftRight">
+				<div class="zz-div-doctName">
+					<h3 class="MSM-gray-text">输液位类型</h3>
+					<h1 class="MSM-black-text" id="seatType" ></h1>
+					<hr class="zz-hr-line" />
+				</div>
+			</div>
 			<div class="mui-row marginLeftRight MSM-top35px">
-				<h3 class="zz-gray-text" style="text-align: center;">当前可预约：<span style="color: rgb(76,188,236);">20</span>个输液位</h3>
+				<h3 class="zz-gray-text" style="text-align: center;">当前可预约：<span style="color: rgb(76,188,236);" id="seatCount">20</span>个输液位</h3>
 				<button type="button" class="zz-btn-next m_blue" id="zz-btn-next">下一步</button>
 			</div>
 		</div>
@@ -67,7 +74,10 @@
 				var transDurationHtml = document.getElementById("transDuration");
 				transDurationHtml.innerHTML = transDuration;
 //				console.log(transDurationHtml.innerHTML);
-				
+				document.getElementById('seatType').innerHTML = localStorage.selectSeat;
+				document.getElementById('userName').innerHTML = localStorage.userName;
+				document.getElementById('hospitalName').innerHTML = localStorage.community_hospitals_name;
+				document.getElementById('seatCount').innerHTML = localStorage.seatAllCount;
 			});
 			
 			
@@ -90,12 +100,12 @@
 				var userAppointmentTime = transTime.substr(10, 6);
 				var postData = {};
 //				postData['user_transfusion_id'] = '0030';				 	  //输液信息内码
-				postData['community_user_id'] = '0000';						  //输液用户内码
+				postData['community_user_id'] = localStorage.community_user_id;						  //输液用户内码
 				postData['community_hospitals_id'] = '0010';				  //医院内码
 				postData['user_appointment_date'] = transTime;                //预约时间 yyy/mmm/ddd
 				postData['user_appointment_time'] = userAppointmentTime;    //预约时间  hh/mm
 				postData['predict_finished_time'] = resTime;			  //预计完成时间
-				postData['user_transfusion_date'] = mydate.toLocaleString();   //预约输液操作时间
+				postData['user_transfusion_date'] = getNowFormatDate();   //预约输液操作时间
 				postData['user_transfusion_type'] = localStorage.getItem('selectSeat');					  //输液类型内码
 				postData['transfusion_state'] = '未完成';						  //状态
 				

@@ -141,7 +141,8 @@
 			"images/transfuse/unselectBed.png",
 			"images/right.png",
 			"images/transfuse/selectBed.png",
-			"images/transfuse/unselectSeat.png"
+			"images/transfuse/unselectSeat.png",
+			"js/constants.js"
 		],
 		"refer": [
 			"view/transfuse/index.html",
@@ -156,7 +157,16 @@
 			"css/mui.poppicker.css",
 			"css/mui.picker.css",
 			"css/transfuse/transFuseTime.css",
-			"js/city.data-3.js"
+			"js/city.data-3.js",
+			"js/mui.picker.min.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/transfuse/makeSureMessage.html"
 		]
 	},
 	"view/loginRegister/index.html": {
@@ -278,7 +288,8 @@
 	},
 	"view/loginRegister/code.html": {
 		"resources": [
-			"css/loginRegister/certification.css"
+			"css/loginRegister/certification.css",
+			"js/jquery.1.11.1.js"
 		],
 		"refer": [
 			"view/loginRegister/certification.html"
@@ -472,6 +483,38 @@
 		"refer": [
 			"view/takeOut/progress.html",
 			"view/dropIn/detail.html"
+		]
+	},
+	"view/transfuse/makeSureMessage.html": {
+		"resources": [
+			"css/transfuse/makeSureMessage.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/transfuse/finish.html"
+		]
+	},
+	"view/transfuse/finish.html": {
+		"resources": [
+			"images/transfuse/success.png",
+			"css/transfuse/finish.css"
+		],
+		"refer": [
+			"view/transfuse/details.html"
+		]
+	},
+	"view/transfuse/details.html": {
+		"resources": [
+			"css/transfuse/makeSureMessage.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		]
 	}
 }

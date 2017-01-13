@@ -120,6 +120,8 @@
 								img = doc.createElement("img");
 								h3 = doc.createElement("h3");
 								h3.setAttribute("style", "margin-left: 60px;");
+								h3_status = doc.createElement("h3");
+								h3_status.setAttribute("style", "margin-left: 60px; color: red; display: none;");
 								h3Distance = doc.createElement("h3");  
 								h3Distance.setAttribute("style", "margin-left: 60px;");
 								li.setAttribute("class", "mui-table-view-cell mui-media ");
@@ -130,8 +132,14 @@
 								img.setAttribute("style", "width: 50px; height: 50px;");
 								img.setAttribute("src", data.data[i].store_shop_picture); 
 								console.log(data.data[i].store_shop_picture);
-								h3.innerHTML = data.data[i].store_shop_name;    
-								h3Distance.setAttribute("class", "gray-text");   
+								h3.innerHTML = data.data[i].store_shop_name;
+								if(data.data[i].store_business_state == '停止营业'){
+									h3_status.innerHTML = '停止营业';
+									h3_status.style.display = ''; 
+								}
+									
+								
+								h3Distance.setAttribute("class", "gray-text");
 								console.log(data.data[i].distance);
 //								localStorage.store_carriage = data.data[i].store_carriage;
 								if(parseInt(data.data[i].distance) < 1){
@@ -159,6 +167,7 @@
 											'store_shop_address':data.data[i].store_shop_address,
 											'store_shop_id':data.data[i].store_shop_id,
 											'store_up_to_send_price':data.data[i].store_up_to_send_price,
+											'store_business_state':data.data[i].store_business_state,
 										}
 								
 									});
@@ -166,6 +175,7 @@
 								li.appendChild(div);
 								div.appendChild(img);
 								div.appendChild(h3);
+								div.appendChild(h3_status);
 								div.appendChild(h3Distance);
 								fragment.appendChild(li);
 							});

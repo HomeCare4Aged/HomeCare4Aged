@@ -5,7 +5,7 @@
 		<meta charset="UTF-8">
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-		
+
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/transfuse/index.css" />
@@ -60,10 +60,10 @@
 			<div class="mui-row ">
 				<button id='zz-btn-time' data-options='{}' class="zz-btn-timeClass">选择输液日期</button>
 			</div>
-			<div  class="mui-row zz-div-result">
+			<div class="mui-row zz-div-result">
 				<label id="zz-label-ymd"></label>
 			</div>
-			<div  class="mui-row zz-div-result">
+			<div class="mui-row zz-div-result">
 				<label id="zz-label-timeSlot"></label>
 			</div>
 			<div class="mui-row marginLeftRight">
@@ -73,7 +73,7 @@
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
-		<script type="text/javascript" src="../../js/constants.js" ></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -85,9 +85,9 @@
 					//返回true，继续页面关闭逻辑
 					return true;
 				},
-				
+
 			});
-			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
+			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth / 2);
 			var timeResult;
 			var ymd;
 			var timeSlot;
@@ -97,27 +97,27 @@
 			timeSlot.innerHTML = '';
 			mui.plusReady(function() {
 				plus.navigator.setStatusBarBackground('#4CBCEC');
-//				console.log(localStorage.getItem('selectSeat'));
+				//				console.log(localStorage.getItem('selectSeat'));
 				//获取医院信息
 				getHospitalData();
-//				console.log('看这里看这里看这里看这里看这里看这里看这里看这里看这里看这里')
-				
+				//				console.log('看这里看这里看这里看这里看这里看这里看这里看这里看这里看这里')
+
 			});
 			//日期加上天数得到新的日期  
 			//dateTemp 需要参加计算的日期，days要添加的天数，返回新的日期，日期格式：YYYY-MM-DD  
-			function getNewDay(dateTemp, days) {  
-			    var dateTemp = dateTemp.split("-");  
-			    var nDate = new Date(dateTemp[1] + '-' + dateTemp[2] + '-' + dateTemp[0]); //转换为MM-DD-YYYY格式    
-			    var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);  
-			    var rDate = new Date(millSeconds);  
-			    var year = rDate.getFullYear();  
-			    var month = rDate.getMonth() + 1;  
-			    if (month < 10) month = "0" + month;  
-			    var date = rDate.getDate();  
-			    if (date < 10) date = "0" + date;  
-			    return (year + "-" + month + "-" + date);  
-			}  
-			
+			function getNewDay(dateTemp, days) {
+				var dateTemp = dateTemp.split("-");
+				var nDate = new Date(dateTemp[1] + '-' + dateTemp[2] + '-' + dateTemp[0]); //转换为MM-DD-YYYY格式    
+				var millSeconds = Math.abs(nDate) + (days * 24 * 60 * 60 * 1000);
+				var rDate = new Date(millSeconds);
+				var year = rDate.getFullYear();
+				var month = rDate.getMonth() + 1;
+				if(month < 10) month = "0" + month;
+				var date = rDate.getDate();
+				if(date < 10) date = "0" + date;
+				return(year + "-" + month + "-" + date);
+			}
+
 			function getNowFormatDate() {
 				var date = new Date();
 				var seperator1 = "-";
@@ -133,44 +133,49 @@
 				var currentdate = year + seperator1 + month + seperator1 + strDate;
 				return currentdate;
 			}
-			
-			var hospital_business_begintime;//营业开始时间
-			var hospital_business_endtime;//营业结束时间
+
+			var hospital_business_begintime; //营业开始时间
+			var hospital_business_endtime; //营业结束时间
 			function getHospitalData() {
-				
+
 				var community_hospitals_id = '0000';
-					mui.ajax({
-						type: 'GET',
-						url: SERVERURL + "HHospitalsInfo/selectHospitalInfo?community_hospitals_id=" + community_hospitals_id,
-						dataType: "json",
-						//成功获取数据赋值
-						success: function(data) {
-							hospital_business_begintime = data.data[0].hospital_business_begintime;
-							hospital_business_endtime = data.data[0].hospital_business_endtime;
-							
-							localStorage.setItem('hospital_business_begintime', hospital_business_begintime);
-							localStorage.setItem('hospital_business_endtime', hospital_business_endtime);
-						
-//							console.log(hospital_business_begintime+'==================');
-//							console.log(hospital_business_endtime+'+++++++++++++++++');
-						},
-						error: function(xhr, type, errorThrown) {
-							console.log(type);
-							mui.toast(type);
-						}
-					});
-				}
-			
-			
+				mui.ajax({
+					type: 'GET',
+					url: SERVERURL + "HHospitalsInfo/selectHospitalInfo?community_hospitals_id=" + community_hospitals_id,
+					dataType: "json",
+					//成功获取数据赋值
+					success: function(data) {
+						hospital_business_begintime = data.data[0].hospital_business_begintime;
+						hospital_business_endtime = data.data[0].hospital_business_endtime;
+
+						localStorage.setItem('hospital_business_begintime', hospital_business_begintime);
+						localStorage.setItem('hospital_business_endtime', hospital_business_endtime);
+
+						//							console.log(hospital_business_begintime+'==================');
+						//							console.log(hospital_business_endtime+'+++++++++++++++++');
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						mui.toast(type);
+					}
+				});
+			}
+
 			(function($) {
 				$.init();
-//				var result = $('#result')[0];
+				//				var result = $('#result')[0];
 				var btns = $('.zz-btn-timeClass');
 				btns.each(function(i, btn) {
 					btn.addEventListener('tap', function() {
-						
+
 						var optionsJson = this.getAttribute('data-options') || '{}';
 						var options = JSON.parse(optionsJson);
+						var now = new Date();
+						options.beginYear = now.getFullYear();
+						options.beginMonth = now.getMonth()+1;
+						options.beginDay = now.getDate();
+						options.beginHours = now.getHours();
+						options.beginMinutes = now.getMinutes();
 						var id = this.getAttribute('id');
 						var picker = new $.DtPicker(options);
 						picker.show(function(rs) {
@@ -179,84 +184,83 @@
 							timeSlot.innerHTML = rs.text.substr(10, 6);
 							picker.dispose();
 						});
+
 					}, false);
+
 				});
-				
+
 			})(mui);
-			
-			
-			
-			function timepanduan (beginTime, endTime, nowTime) {
-			  var strb = beginTime.split (":");
-			  if (strb.length != 2) {
-			    return false;
-			  }
-			 
-			  var stre = endTime.split (":");
-			  if (stre.length != 2) {
-			    return false;
-			  }
-			 
-			  var strn = nowTime.split (":");
-			  if (stre.length != 2) {
-			    return false;
-			  }
-			  var b = new Date ();
-			  var e = new Date ();
-			  var n = new Date ();
-			 
-			  b.setHours (strb[0]);
-			  b.setMinutes (strb[1]);
-			  e.setHours (stre[0]);
-			  e.setMinutes (stre[1]);
-			  n.setHours (strn[0]);
-			  n.setMinutes (strn[1]);
-			 
-			  if (n.getTime () - b.getTime () > 0 && n.getTime () - e.getTime () < 0) {
-			    return true;
-			  } else {
-			    return false;
-			  }
+
+			function timepanduan(beginTime, endTime, nowTime) {
+				var strb = beginTime.split(":");
+				if(strb.length != 2) {
+					return false;
+				}
+
+				var stre = endTime.split(":");
+				if(stre.length != 2) {
+					return false;
+				}
+
+				var strn = nowTime.split(":");
+				if(stre.length != 2) {
+					return false;
+				}
+				var b = new Date();
+				var e = new Date();
+				var n = new Date();
+
+				b.setHours(strb[0]);
+				b.setMinutes(strb[1]);
+				e.setHours(stre[0]);
+				e.setMinutes(stre[1]);
+				n.setHours(strn[0]);
+				n.setMinutes(strn[1]);
+
+				if(n.getTime() - b.getTime() > 0 && n.getTime() - e.getTime() < 0) {
+					return true;
+				} else {
+					return false;
+				}
 			}
 
 			function openWindow($url) {
 				//判断所选预约时间是否在营业时间内
 				var time_range = timepanduan(localStorage.getItem('hospital_business_begintime'), localStorage.getItem('hospital_business_endtime'), timeSlot.innerHTML);
-				
+
 				//转换为毫秒判断预约时间不能超过两周
 				var NowFormatDate = getNowFormatDate();
 				var nowTime = (new Date()).getTime();
-				var myTime = (new Date(ymd.innerHTML+timeSlot.innerHTML)).getTime();
-				var twoWeek = getNewDay(NowFormatDate,14);
-				var twoWeekMillisecond = (new Date(twoWeek+timeSlot.innerHTML)).getTime();
+				var myTime = (new Date(ymd.innerHTML + timeSlot.innerHTML)).getTime();
+				var twoWeek = getNewDay(NowFormatDate, 14);
+				var twoWeekMillisecond = (new Date(twoWeek + timeSlot.innerHTML)).getTime();
 
 				//转换为分钟判断停业前一个小时不可
 				var mytimeNum = timeSlot.innerHTML.split(":");
 				var endTimeNum = localStorage.getItem('hospital_business_endtime').split(":");
-				var myTimeToMinutes = parseInt(mytimeNum[0])*60+parseInt(mytimeNum[1]);
-				var endTimeToMinutes = parseInt(endTimeNum[0])*60+parseInt(endTimeNum[1]);
+				var myTimeToMinutes = parseInt(mytimeNum[0]) * 60 + parseInt(mytimeNum[1]);
+				var endTimeToMinutes = parseInt(endTimeNum[0]) * 60 + parseInt(endTimeNum[1]);
 				var timeDifference = (endTimeToMinutes - myTimeToMinutes) / 60;
-				
-				if(ymd.innerHTML == ''){
+
+				if(ymd.innerHTML == '') {
 					mui.alert('请选择输液日期');
-				}else if(nowTime>myTime){
+				} else if(nowTime > myTime) {
 					mui.alert('所选时间已经过去');
-				}else if(myTime>twoWeekMillisecond){
+				} else if(myTime > twoWeekMillisecond) {
 					mui.alert('请您预约两周之内的时间');
-				}else if(timeDifference<1){
-					mui.alert('每天预约输液的结束时间为停止营业前的一个小时,该医院营业时间为：每日上午 '+hospital_business_begintime+' 至 '+'每日下午：'+hospital_business_endtime);
-				}
-				else if(time_range == false){
-					mui.alert('您所选的时间医院尚未营业,该医院营业时间为：每日上午 '+hospital_business_begintime+' 至 '+'每日下午：'+hospital_business_endtime);
-				}else{
+				} else if(timeDifference < 1) {
+					mui.alert('每天预约输液的结束时间为停止营业前的一个小时,该医院营业时间为：每日上午 ' + hospital_business_begintime + ' 至 ' + '每日下午：' + hospital_business_endtime);
+				} else if(time_range == false) {
+					mui.alert('您所选的时间医院尚未营业,该医院营业时间为：每日上午 ' + hospital_business_begintime + ' 至 ' + '每日下午：' + hospital_business_endtime);
+				} else {
 					mui.openWindow({
 						url: $url,
 						extras: {
-									'timeResult' : timeResult			
-								}
+							'timeResult': timeResult
+						}
 					});
 				}
-				}
+			}
 		</script>
 	</body>
 

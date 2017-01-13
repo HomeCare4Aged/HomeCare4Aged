@@ -208,6 +208,7 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						console.log('aaaaaa'+JSON.stringify(data));
 						console.log(JSON.stringify(data.classify));
 						console.log(JSON.stringify(data.matchData));
 						matchData = data.matchData;
