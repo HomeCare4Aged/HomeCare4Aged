@@ -72,7 +72,7 @@
 		</div>
 		<div class="mui-row mui-col-xs-12" style="position: fixed; bottom: 0px;">
 			<div class="mui-col-xs-7"><button style="background-color:rgb(51,51,51); color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="toBePaid"></button></div>
-			<div class="mui-col-xs-5"><button style="background-color:#FF7A42; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="upOrder">提交订单</button></div>
+			<div class="mui-col-xs-5"><button style="background-color:#FF692C; color: #FFFFFF; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;" class="mui-btn mui-btn-block" id="upOrder">提交订单</button></div>
 		</div>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
@@ -82,13 +82,17 @@
 			mui.plusReady(function() {
 				var sData = plus.webview.currentWebview();
 				var userSex = '男';
-				if(localStorage.userSex == '男') {
+				if(localStorage.community_user_sex == '男') {
 					userSex = '先生';
 				} else {
 					userSex = '女士';
 				}
 				document.getElementById('zz-h4-userNameAndPhone').innerHTML = localStorage.community_user_name + "   " + userSex + " " + localStorage.community_user_phone;
+<<<<<<< HEAD
 				document.getElementById('zz-h4-location').innerHTML = localStorage.community_user_address;
+=======
+				document.getElementById('zz-h4-location').innerHTML = localStorage.userHome;
+>>>>>>> adea6b85e1d45e590da5d4439d4dfbb41f058ff7
 				document.getElementById('zz-h4-storeName').innerHTML = '外卖：' + sData.storeName;
 				document.getElementById('freight').innerHTML = "￥" + sData.freight;
 				document.getElementById('actualPayment').innerHTML = "实付￥" + (parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight));
