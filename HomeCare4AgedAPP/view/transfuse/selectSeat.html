@@ -82,14 +82,14 @@
 				
 				var postData = {};
 				postData['community_hospital_id'] = localStorage.community_hospitals_id; 
-				
+				plus.nativeUI.showWaiting();
 				mui.ajax({
-
 					type: 'POST',
 					data:postData,
 					url: SERVERURL+"HHospitalTransfusionInfo/getHospitalSeatCount",
 					dataType: "json",
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						console.log(JSON.stringify(data.data));
 						
 						document.getElementById('seatCount').innerHTML = data.data.open_seat_num+"个";
@@ -97,8 +97,9 @@
 						localStorage.seatAllCount = parseInt( data.data.open_seat_num)+parseInt( data.data.open_bed_num);
 					},
 					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
 						console.log(type);
-						mui.toast(type);
+						mui.alert('网络连接失败');
 					}
 
 				});

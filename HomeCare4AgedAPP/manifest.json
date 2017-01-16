@@ -250,7 +250,8 @@
 					"images/home/qingtian.png",
 					"images/home/duoyun.png",
 					"images/home/wumai.png",
-					"images/home/userInfo.png"
+					"images/home/userInfo.png",
+					"images/home/yintian.png"
 				],
 				"refer": [
 					"view/registration/index.html",
@@ -711,7 +712,8 @@
 					"js/constants.js",
 					"fonts/mui.ttf",
 					"images/dropIn/compositePath.png",
-					"css/dropIn/serviceInfo.css"
+					"css/dropIn/serviceInfo.css",
+					"images/dropIn/jindu1.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -729,7 +731,13 @@
 					"images/loginRegister/Person.png",
 					"css/mui.picker.min.css",
 					"js/mui.dtpicker.js",
-					"images/loginRegister/Address_Book2.png"
+					"images/loginRegister/Address_Book2.png",
+					"js/constants.js",
+					"fonts/mui.ttf",
+					"css/userInfo/index.css",
+					"css/common/common.css",
+					"js/mui.min.js",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -784,7 +792,13 @@
 			"view/userInfo/order.html": {
 				"resources": [
 					"js/jquery.1.11.1.js",
-					"css/loginRegister/certification.css"
+					"css/loginRegister/certification.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/userInfo/index.css",
+					"css/common/common.css"
 				],
 				"refer": [
 					"view/transfuse/myHistory.html",

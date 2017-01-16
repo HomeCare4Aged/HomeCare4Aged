@@ -85,11 +85,11 @@
 				var roomText = document.getElementById('roomText');
 				roomText.innerHTML = postData.hospital_office_name;
 				var doctorNameText = document.getElementById('doctorNameText');
-				doctorNameText.innerHTML = postData.hospital_doctor_name + " (" + localStorage.doctorLevel + ")";
+				doctorNameText.innerHTML = postData.hospital_doctor_name + " (" + postData.identity_name + ")";
 				var priceText = document.getElementById('priceText');
 				priceText.innerHTML = '￥' + postData.registration_money;
 				var personText = document.getElementById('personText');
-				personText.innerHTML = localStorage.community_user_name;
+				personText.innerHTML = postData.community_user_name;
 
 			});
 

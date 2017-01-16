@@ -137,7 +137,7 @@
 			var hospital_business_begintime; //营业开始时间
 			var hospital_business_endtime; //营业结束时间
 			function getHospitalData() {
-
+				plus.nativeUI.showWaiting();
 				var community_hospitals_id = '0000';
 				mui.ajax({
 					type: 'GET',
@@ -145,6 +145,7 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						hospital_business_begintime = data.data[0].hospital_business_begintime;
 						hospital_business_endtime = data.data[0].hospital_business_endtime;
 
@@ -155,8 +156,9 @@
 						//							console.log(hospital_business_endtime+'+++++++++++++++++');
 					},
 					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
 						console.log(type);
-						mui.toast(type);
+						mui.toast('网络连接失败');
 					}
 				});
 			}

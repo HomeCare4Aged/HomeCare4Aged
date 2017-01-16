@@ -85,8 +85,9 @@
 				var transDurationHtml = document.getElementById("transDuration");
 				transDurationHtml.innerHTML = transDuration;
 				console.log(transDurationHtml.innerHTML);
+				document.getElementById('hospitalName').innerHTML = localStorage.community_hospitals_name;
 				document.getElementById('seatType').innerHTML = localStorage.selectSeat;
-				document.getElementById('userName').innerHTML = localStorage.userName;
+				document.getElementById('userName').innerHTML = localStorage.community_user_name;
 				
 				
 			});

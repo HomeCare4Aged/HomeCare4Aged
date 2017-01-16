@@ -98,9 +98,9 @@
 				postData = {};
 				postData['lng'] = localStorage.lng;
 				postData['lat'] = localStorage.lat;
-				console.log('纬度.lng:    '+localStorage.lng);//纬度
-				console.log('经度.lat:    '+localStorage.lat);//经度
-				
+				console.log('纬度.lat:    '+localStorage.lat);//纬度
+				console.log('经度.lng:    '+localStorage.lng);//经度
+				plus.nativeUI.showWaiting();
 					mui.ajax({
 						type: 'POST',
 						url: SERVERURL + "SStoreShopInfo/getStoreShopInfo",
@@ -108,6 +108,7 @@
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
+							plus.nativeUI.closeWaiting();
 							var doc = document;
 							fragment = doc.createDocumentFragment();
 							container_already = doc.getElementById("list_already");
@@ -182,8 +183,9 @@
 							container_already.appendChild(fragment);
 						},
 						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.closeWaiting();
 							console.log(type);
-							mui.toast(type);
+							mui.toast('网络连接失败');
 						}
 					});
 				}

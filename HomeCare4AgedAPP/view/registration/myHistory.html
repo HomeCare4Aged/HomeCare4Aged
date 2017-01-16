@@ -165,9 +165,12 @@
 				//				});
 
 				function getListData() {
+					var postData = {};
+					postData['community_user_id'] = localStorage.community_user_id;
 					mui.ajax({
-						type: 'GET',
+						type: 'POST',
 						url: SERVERURL + "HRegistrationInfo/getRegistrationList",
+						data :postData,
 						dataType: "json",
 						//成功获取数据赋值
 						success: function(data) {
