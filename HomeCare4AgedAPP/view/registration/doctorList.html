@@ -33,22 +33,33 @@
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
-		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
-	
+
 			mui.plusReady(function() {
 				plus.nativeUI.showWaiting();
+				console.log('sadasd' + localStorage.registrationTime);
+				var timeArray = localStorage.registrationTime.split(' ');
+				console.log(timeArray);
+				var schedule_date = timeArray[0];
+				var schedule_time = timeArray[1];
 				var community_hospitals_id = localStorage.community_hospitals_id;
 				var hospital_office_id = localStorage.hospital_office_id;
 				var hospital_office_name = localStorage.hospital_office_name;
 				console.log(hospital_office_name);
-				
+				var postData = {};
+				postData['community_hospitals_id'] = community_hospitals_id;
+				postData['hospital_office_id'] = hospital_office_id;
+				postData['schedule_date'] = schedule_date;
+				postData['schedule_time'] = schedule_time;
+				console.log(postData);
 				mui.ajax({
-					type: 'GET',
-					url: SERVERURL + "HDoctorBaseInfo/selectDoctList?community_hospitals_id="+community_hospitals_id+'&hospital_office_id='+hospital_office_id,
+					type: 'POST',
+					url: SERVERURL + "HDoctorBaseInfo/selectDoctList",
+					data: postData,
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
@@ -57,6 +68,9 @@
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
 						mui.each(data.data, function(i) {
+							if (i == 0) {
+								console.log(JSON.stringify(data.data[0]));
+							}
 							var doc = document;
 							li = doc.createElement("li");
 							div = doc.createElement("div");
@@ -66,32 +80,35 @@
 							h1 = doc.createElement("h1");
 							h31 = doc.createElement("h3");
 							h32 = doc.createElement("h3");
-							li.setAttribute("class","mui-table-view-cell mui-media");
-							div.setAttribute("class","marginLeftRight");
-							div1.setAttribute("class","mui-media-object mui-pull-left");
-							div1.setAttribute("style","margin-top: 15px;margin-left: -5%;")
-							img.setAttribute("src",data.data[i].hospital_doctor_picture);
-							img.setAttribute("style",'width: 70px;height: 70px;border-radius: 35px;');
+							h33 = doc.createElement("h3");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							img.setAttribute("class", " mui-pull-left");
+							div1.setAttribute("style", "margin-top: 15px;margin-left: -5%;")
+							img.setAttribute("src", data.data[i].hospital_doctor_picture);
+							img.setAttribute("style", 'width: 70px;height: 70px;border-radius: 35px;');
 							console.log(data.data[i].hospital_doctor_picture);
-							div2.setAttribute("class","mui-pull-left");
-							div2.setAttribute("style","margin-left: 15%;");
-							h1.setAttribute("class","black-text listCellText");
-							h31.setAttribute("class","m_gray_text");
-							h32.setAttribute("class","m_gray_text");
+							div2.setAttribute("class", "mui-media-body");
+							div2.setAttribute("style", "margin-left: 65px;");
+							h1.setAttribute("class", "black-text listCellText");
+							h31.setAttribute("class", "m_gray_text");
+							h32.setAttribute("class", "m_gray_text");
+							h33.setAttribute("class", "m_gray_text");
 							h1.innerHTML = data.data[i].hospital_doctor_name;
 							h31.innerHTML = data.data[i].identity_name;
-							h32.innerHTML = '挂号费：'+data.data[i].registration_money+'元';
+							h32.innerHTML = '挂号费：' + data.data[i].registration_money + '元';
+							h33.innerHTML = '剩余预约号：' + data.data[i].registration_number_left;
 							li.id = data.data[i].hospital_doctor_id;
-							li.setAttribute('money',data.data[i].registration_money);
-							li.addEventListener('tap',function(){
+							li.setAttribute('money', data.data[i].registration_money);
+							li.addEventListener('tap', function() {
 								mui.openWindow({
-									url:'../registration/doctorInfo.html',
-									extras:{
-										hospital_doctor_id:li.id,
-										community_hospitals_id :community_hospitals_id,
-										hospital_office_id :hospital_office_id,
-										registration_money:li.getAttribute('money'),
-										hospital_office_name:hospital_office_name,
+									url: '../registration/doctorInfo.html',
+									extras: {
+										hospital_doctor_id: li.id,
+										community_hospitals_id: community_hospitals_id,
+										hospital_office_id: hospital_office_id,
+										registration_money: li.getAttribute('money'),
+										hospital_office_name: hospital_office_name,
 									},
 								});
 							});
@@ -102,6 +119,7 @@
 							div2.appendChild(h1);
 							div2.appendChild(h31);
 							div2.appendChild(h32);
+							div2.appendChild(h33);
 							fragment.appendChild(li);
 						});
 						container.appendChild(fragment);
@@ -109,7 +127,7 @@
 					error: function(xhr, type, errorThrown) {
 						console.log(type);
 						plus.nativeUI.closeWaiting();
-         				mui.alert('网络连接失败');
+						mui.alert('网络连接失败');
 					}
 				});
 

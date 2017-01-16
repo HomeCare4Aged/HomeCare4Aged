@@ -328,6 +328,7 @@
 
 									//成功获取数据赋值
 									success: function(data) {
+										console.log(JSON.stringify(data));
 										plus.nativeUI.closeWaiting();
 										plus.nativeUI.closeWaiting();
 										if(data.status == 1) {

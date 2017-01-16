@@ -377,7 +377,6 @@
 				}
 			};
 			mui.plusReady(function() {
-				document.getElementById()
 				localStorage.isOkCode = '0';
 				localStorage.isOkAddress = '0';
 				document.getElementById('input-name').value = localStorage.community_user_name;
@@ -476,23 +475,6 @@
 						// 将地址解析结果显示在地图上,并调整地图视野
 						myGeo.getPoint(localStorage.userHome, function(point) {
 							if(point) {
-								document.getElementById('div-hospital').style.display = '';
-								plus.nativeUI.closeWaiting();
-								if(localStorage.lng == point['lng'] &&
-									localStorage.lat == point['lat']) {
-									document.activeElement.blur();
-									var userPicker = new mui.PopPicker();
-									var setData = JSON.parse(localStorage.hospitalPickerData);
-									userPicker.setData(setData);
-									userPicker.show(function(items) {
-										var str = items[0]['text'];
-										console.log(JSON.stringify(items[0]['value']));
-										localStorage.userHospitalId = items[0]['value'];
-										localStorage.userHospitalName = items[0]['text'];
-										document.getElementById('input-hospital').innerHTML = str;
-									});
-									return;
-								}
 								localStorage.lng = point['lng'];
 								localStorage.lat = point['lat'];
 								console.log(localStorage.lng);

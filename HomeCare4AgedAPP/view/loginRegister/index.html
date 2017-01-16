@@ -116,7 +116,13 @@
 							var community_id; //社区内码
 							var community_hospitals_id; //社区医院内码
 							var state; //状态
-
+							
+							var hospitalData = data.hospitalData;
+							localStorage.hospital_business_begintime = hospitalData.hospital_business_begintime;
+							localStorage.hospital_business_endtime = hospitalData.hospital_business_endtime;
+							console.log(localStorage.hospital_business_begintime);
+							console.log(localStorage.hospital_business_endtime);
+							
 							localStorage.community_user_id = data.data.community_user_id;
 							console.log(localStorage.community_user_id);
 							localStorage.community_user_phone = data.data.community_user_phone;

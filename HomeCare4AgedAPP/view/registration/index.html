@@ -75,6 +75,7 @@
 						var doc = document;
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
+						console.log(JSON.stringify(data.data))
 						mui.each(data.data, function(i) {
 							var doc = document;
 							//							console.log(i);
@@ -86,13 +87,13 @@
 							div.setAttribute("class", "marginLeftRight");
 							img.setAttribute("class", "mui-media-object mui-pull-left");
 
-							if(data.data[i].hospital_office_id == '0000') {
+							if(data.data[i].hospital_office_id == '0') {
 								img.setAttribute("src", "../../images/registration/waike.png");
-							} else if(data.data[i].hospital_office_id == '0001') {
+							} else if(data.data[i].hospital_office_id == '1') {
 								img.setAttribute("src", "../../images/registration/neike.png");
-							} else if(data.data[i].hospital_office_id == '0002') {
+							} else if(data.data[i].hospital_office_id == '2') {
 								img.setAttribute("src", "../../images/registration/pifu.png");
-							} else if(data.data[i].hospital_office_id == '0003') {
+							} else if(data.data[i].hospital_office_id == '3') {
 								img.setAttribute("src", "../../images/registration/wuguan.png");
 							}
 							//							else if(data.data[i].hospital_office_id =='0004'){

@@ -78,7 +78,7 @@
 			(function($, doc) {
 				$.init({
 					swipeBack: true, //启用右滑关闭功能
-					
+
 				});
 
 				$.ready(function() {
@@ -104,7 +104,12 @@
 					if(date.getHours() >= 12) {
 						setData.splice(0, 1);
 					}
-					if(date.getHours() >= 17) {
+					var timeArray = localStorage.hospital_business_endtime.split(':');
+					console.log(timeArray[0], timeArray[1]);
+					if(date.getHours() > timeArray[0]) {
+						setData.splice(0, 1);
+					}
+					if(date.getHours() == timeArray[0] && date.getMinutes() == timeArray[1]) {
 						setData.splice(0, 1);
 					}
 
@@ -113,12 +118,11 @@
 					var userResult = doc.getElementById('zz-label-time');
 					showUserPickerButton.addEventListener('tap', function(event) {
 						userPicker.show(function(items) {
-							var str = JSON.stringify(items[0]['text']);
-							str = str.substr(1, str.length - 2);
+							var str = items[0]['text'];
 							registrationTime = str;
 							userResult.innerHTML = str;
 						});
-					},false);
+					}, false);
 				});
 			})(mui, document);
 			//			console.log(timeResult);
@@ -126,6 +130,7 @@
 
 				var userResult = document.getElementById('zz-label-time');
 				if(registrationTime) {
+
 					localStorage.registrationTime = registrationTime;
 					mui.openWindow({
 						url: '../registration/doctorList.html',
