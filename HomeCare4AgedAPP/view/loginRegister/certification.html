@@ -163,6 +163,7 @@
 						data: postData,
 						url: SERVERURL + "ACommunityUserInfo/postUserInfo",
 						dataType: "json",
+						timeout:20000,
 						//成功获取数据赋值
 						success: function(data) {
 							if(data.status == 1) {
@@ -325,6 +326,7 @@
 									data: postData,
 									url: SERVERURL + 'ACommunityUserInfo/selectHospital',
 									dataType: "json",
+									timeout:20000,
 
 									//成功获取数据赋值
 									success: function(data) {

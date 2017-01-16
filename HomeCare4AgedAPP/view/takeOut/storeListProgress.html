@@ -11,8 +11,9 @@
 	</head>
 
 	<body>
+
 		<header class="mui-bar mui-bar-nav m_orangeTakeOut">
-			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">订单详情</h1>
 		</header>
 		<div class="mui-content">
@@ -20,7 +21,7 @@
 				<li class="mui-table-view-cell">
 					<div class="mui-row marginLeftRight">
 						<div class="mui-col-xs-12" style="margin-top: 20px;">
-							<img src="../../images/takeOut/progress1.png" style="width: 100%;" id="g-img-status"/>
+							<img src="../../images/takeOut/progress1.png" style="width: 100%;" id="g-img-status" />
 						</div>
 						<h1 style="text-align: center; color: #FF7A42; margin-top: 70px;" id="g-text-status">等待商家接单</h1>
 					</div>
@@ -85,18 +86,10 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript" charset="utf-8">
-			mui.init({
-				beforeback: function() {
-					//获得你要前往页面的webview id
-					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
-					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner, 'refreshWeather');
-					mui.openWindow({
-						url: '../home/index.html',
-					});
-				},
-			});
+			mui.init({});
 			mui.plusReady(function() {
+				var takeOutHistoryDetails = JSON.parse(localStorage.takeOutHistoryDetails);
+				console.log('sssssssssssss'+JSON.stringify(takeOutHistoryDetails));
 				var sData = plus.webview.currentWebview();
 				var userSex = '男';
 				if(localStorage.userSex == '男') {
@@ -105,32 +98,35 @@
 					userSex = '女士';
 				}
 				document.getElementById('zz-h4-userNameAndPhone').innerHTML = localStorage.community_user_name + "   " + userSex + " " + localStorage.community_user_phone;
-				document.getElementById('zz-h4-location').innerHTML = localStorage.community_user_address; 
-				document.getElementById('zz-h4-storeName').innerHTML = '外卖：' + sData.storeName;
-				document.getElementById('freight').innerHTML = "￥" + sData.freight;
-				document.getElementById('actualPayment').innerHTML = "实付￥" + (parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight));
-				var storeListData =  JSON.parse(localStorage.storeListData);
+				document.getElementById('zz-h4-location').innerHTML = localStorage.community_user_address;
+				document.getElementById('zz-h4-storeName').innerHTML = '外卖：' + takeOutHistoryDetails.order['store_shop_name'];
+				document.getElementById('freight').innerHTML = "￥" + takeOutHistoryDetails.order['store_carriage'];
+				document.getElementById('actualPayment').innerHTML = "实付￥" + takeOutHistoryDetails.order['store_list_money'];
+				var storeListData = JSON.parse(localStorage.storeListData);
 				document.getElementById('time').innerHTML = "下单：" + storeListData.order.store_list_time;
 
 				fragment = document.createDocumentFragment();
 				container_list_food = document.getElementById("list_food");
-				var storeFoodData = JSON.parse(localStorage.storeFoodData);
+				var storeFoodData = takeOutHistoryDetails.detail;
 				var matchData = JSON.parse(localStorage.matchData);
 
-				console.log(JSON.stringify(storeFoodData));
+				console.log("ssssssssssssssssssssssssssss"+JSON.stringify(storeFoodData)); 
 				console.log(JSON.stringify(matchData));
-				for(var p in storeFoodData) {
-					if(storeFoodData[p] == '0') {
-						delete storeFoodData[p];
-						continue;
-					} else {
+//				for(var p in storeFoodData) {
+//					if(storeFoodData[p] == '0') {
+//						delete storeFoodData[p];
+//						continue;
+//					} else {
+	mui.each(storeFoodData,function(i){
+		
+	
 						divContent = document.createElement('div');
 						divContent.setAttribute("class", "mui-row marginLeftRight");
 						divFoodName = document.createElement('div');
 						divFoodName.setAttribute("class", "mui-col-xs-7");
 						h4FoodName = document.createElement('h4');
 						h4FoodName.setAttribute("class", "gray-text");
-						h4FoodName.innerHTML = matchData[p]['name'];
+						h4FoodName.innerHTML = storeFoodData[i]['store_list_id'];
 
 						divContent.appendChild(divFoodName);
 						divFoodName.appendChild(h4FoodName);
@@ -138,7 +134,7 @@
 						divCount = document.createElement('div');
 						divCount.setAttribute("class", "mui-col-xs-3");
 						h4Count = document.createElement('h4');
-						h4Count.innerHTML = '×' + storeFoodData[p];
+						h4Count.innerHTML = '×' + storeFoodData[i]['store_count'];
 						//				h4Count.setAttribute("class","mui-col-xs-3");
 
 						divContent.appendChild(divCount);
@@ -154,9 +150,9 @@
 						divUnitPirce.appendChild(h4UnitPirce);
 
 						fragment.appendChild(divContent);
-
-					}
-				}
+});
+//					}
+//				}
 
 				container_list_food.appendChild(fragment);
 
@@ -164,36 +160,33 @@
 					if(document.getElementById('makeSure').innerHTML == '确认收货') {
 						var btnArray = ['否', '是'];
 						mui.confirm('您确认收到货物吗？', '提示', btnArray, function(e) {
-								if(e.index == 1) {
-									console.log('22222222222');
-									document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
+							if(e.index == 1) {
+								console.log('22222222222');
+								document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
 								document.getElementById('g-text-status').innerHTML = '订单已完成';
-									document.getElementById('makeSure').setAttribute("class", "mui-btn mui-btn-block");
-									document.getElementById('makeSure').setAttribute("style", "background-color:#777777; color: white; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;");
-									document.getElementById('makeSure').innerHTML = '再来一单';
-console.log('aaaa');
-								} else {
-									console.log('llllllllllll');
-								}
-							});
+								document.getElementById('makeSure').setAttribute("class", "mui-btn mui-btn-block");
+								document.getElementById('makeSure').setAttribute("style", "background-color:#777777; color: white; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;");
+								document.getElementById('makeSure').innerHTML = '再来一单';
+								console.log('aaaa');
+							} else {
+								console.log('llllllllllll');
+							}
+						});
 
-						}
-					
+					}
+
 					if(document.getElementById('makeSure').innerHTML == '再来一单') {
 						var Scanner = plus.webview.getWebviewById(localStorage.takeOutId);
-					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner, 'refresh');
+						//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+						mui.fire(Scanner, 'refresh');
 						mui.openWindow({
 							url: '../takeOut/index.html',
 						});
 						console.log('aaaaaaaaaaaaaaa');
 					}
-					
-					
-					
 
 				});
-				
+
 				document.getElementById('contactMerchant').addEventListener('tap', function() {
 					var phone = JSON.parse(localStorage.shopData);
 					if(plus.os.name == "Android") {
@@ -210,51 +203,49 @@ console.log('aaaa');
 						app.openURL(NSURL.URLWithString("tel://" + phone.store_contact_user_phone));
 					}
 				})
-				
 
 			});
-			
+
 			setInterval(function() {
-					var storeListData = JSON.parse(localStorage.storeListData);
-					console.log(storeListData);
-//					var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
-					var postData = {};
-					postData['store_list_id'] = storeListData.order.store_list_id;
-					mui.ajax({
-						type: 'POST',
-						data: postData,
-						url: SERVERURL + 'SStoreListInfo/getStoreListState',
-						dataType: "json",
-						timeout:20000,
-						//成功获取数据赋值
-						success: function(data) {
-							console.log(JSON.stringify(data.data.store_list_state_id));
-							if(data.data.store_list_state_id == '0001') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
-								document.getElementById('g-text-status').innerHTML = '等待商家接单';
-								console.log('0001');
-							} else if(data.data.store_list_state_id == '0002') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress2.png';
-								document.getElementById('g-text-status').innerHTML = '商家已接单';
-								console.log('0002')
-							} else if(data.data.store_list_state_id == '0003') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress3.png';
-								document.getElementById('g-text-status').innerHTML = '正在配送...';
-								console.log('0003');
-							} else if(data.data.store_list_state_id == '0004') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
-								document.getElementById('g-text-status').innerHTML = '订单已完成';
-								console.log('0004');
-							}
-							 else if(data.data.store_list_state_id == '0005') {
-								document.getElementById('g-img-status').src = '';
-								document.getElementById('g-text-status').innerHTML = '';
-								console.log('0005');
-							}
-						},
-						error: function(xhr, type, errorThrown) {}
-					});
-				}, 60000);
+				var storeListData = JSON.parse(localStorage.storeListData);
+				console.log(storeListData);
+				//					var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
+				var postData = {};
+				postData['store_list_id'] = storeListData.order.store_list_id;
+				mui.ajax({
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + 'SStoreListInfo/getStoreListState',
+					dataType: "json",
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						console.log(JSON.stringify(data.data.store_list_state_id));
+						if(data.data.store_list_state_id == '0001') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
+							document.getElementById('g-text-status').innerHTML = '等待商家接单';
+							console.log('0001');
+						} else if(data.data.store_list_state_id == '0002') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress2.png';
+							document.getElementById('g-text-status').innerHTML = '商家已接单';
+							console.log('0002')
+						} else if(data.data.store_list_state_id == '0003') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress3.png';
+							document.getElementById('g-text-status').innerHTML = '正在配送...';
+							console.log('0003');
+						} else if(data.data.store_list_state_id == '0004') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
+							document.getElementById('g-text-status').innerHTML = '订单已完成';
+							console.log('0004');
+						} else if(data.data.store_list_state_id == '0005') {
+							document.getElementById('g-img-status').src = '';
+							document.getElementById('g-text-status').innerHTML = '';
+							console.log('0005');
+						}
+					},
+					error: function(xhr, type, errorThrown) {}
+				});
+			}, 60000);
 		</script>
 
 	</body>

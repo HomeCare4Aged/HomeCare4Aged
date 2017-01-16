@@ -57,6 +57,7 @@
 					type: 'GET',
 					url: SERVERURL + "HDoctorBaseInfo/findDoctInfo?hospital_doctor_id=" + hospital_doctor_id,
 					dataType: "json",
+					timeout:20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();

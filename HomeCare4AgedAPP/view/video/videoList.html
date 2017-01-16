@@ -81,6 +81,7 @@
 					mui.ajax({
 						type: 'POST',
 						url: SERVERURL + "AVideoInfo/getHistoryVideoListInfo",
+						timeout:20000,
 						data: {
 							ids: postData
 						},
@@ -171,6 +172,7 @@
 						type: 'GET',
 						url: SERVERURL + "AVideoInfo/getVideoInfoTypeList?video_type_id=" + localStorage.videoIndexDataId,
 						dataType: "json",
+						timeout:20000,
 						//成功获取数据赋值
 						success: function(data) {
 							plus.nativeUI.closeWaiting();

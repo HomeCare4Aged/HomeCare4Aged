@@ -76,6 +76,7 @@
 					type: 'GET',
 					url: SERVERURL + "AVideoInfo/getVideoInfo?video_id=" + localStorage.videoId,
 					dataType: "json",
+					timeout:20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();

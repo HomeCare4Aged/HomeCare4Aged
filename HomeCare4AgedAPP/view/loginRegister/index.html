@@ -98,6 +98,7 @@
 					url: SERVERURL + "ACommunityUserInfo/logIn",
 					dataType: "json",
 					data: postData,
+					timeout:20000,
 					success: function(data) {
 						console.log('11');
 						if(data.status == 0) {

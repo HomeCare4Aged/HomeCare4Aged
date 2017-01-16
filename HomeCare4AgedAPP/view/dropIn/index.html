@@ -68,8 +68,10 @@
 					data: postData,
 					url: SERVERURL + 'SStoreServiceClassify/getServiceClassifyList',
 					dataType: "json",
+					timeout:20000,
 					//成功获取数据赋值
 					success: function(data) {
+						console.log(JSON.stringify(data));
 						plus.nativeUI.closeWaiting();
 						var doc = document;
 						fragment = doc.createDocumentFragment();

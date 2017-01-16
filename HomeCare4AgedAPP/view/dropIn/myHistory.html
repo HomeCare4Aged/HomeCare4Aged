@@ -126,6 +126,7 @@
 								url: SERVERURL + "HRegistrationInfo/deleteRegistrationList",
 								dataType: "json",
 								data: {'id':postData,'community_user_id':''},
+								timeout:20000,
 								//成功获取数据赋值
 								success: function(data) {
 									plus.nativeUI.closeWaiting();
@@ -155,6 +156,7 @@
 						type: 'POST',
 						url: SERVERURL + "SStoreListInfo/getStoreListInfo",
 						dataType: "json",
+						timeout:20000,
 						//成功获取数据赋值
 						success: function(data) {
 							plus.nativeUI.closeWaiting();

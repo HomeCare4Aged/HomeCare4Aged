@@ -87,7 +87,7 @@
 					document.getElementById('zz-btn-deleteBtn').style.display = 'none';
 				}
 				console.log(JSON.stringify(postData));
-				document.getElementById('hospitalName').innerHTML = localStorage.community_hospitals_name;
+				document.getElementById('hospitalName').innerHTML = postData.community_hospitals_name;
 				document.getElementById('transTime').innerHTML = postData.user_appointment_date+" "+postData.user_appointment_time;
 				document.getElementById('transDuration').innerHTML = Math.abs(parseInt(postData.user_appointment_time) -  parseInt(postData.predict_finished_time))+"小时";
 
@@ -113,6 +113,7 @@
 							data: postData,
 							url: SERVERURL + "HTransfusionInfo/deleteTransfusionList",
 							dataType: "json",
+							timeout:20000,
 							//成功获取数据赋值
 							success: function(data) {
 								plus.nativeUI.closeWaiting();

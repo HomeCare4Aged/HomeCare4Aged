@@ -173,6 +173,7 @@
 						url: SERVERURL + "HTransfusionInfo/getTransfusionList",
 						dataType: "json",
 						data:postUserData,
+						timeout:20000,
 						//成功获取数据赋值
 						success: function(data) {
 							
@@ -207,7 +208,7 @@
 								
 								h1.innerHTML = Math.abs(parseInt(dataAlready[i].user_appointment_time) -  parseInt(dataAlready[i].predict_finished_time))+"小时";
 								label.setAttribute("class", "gray-text");
-								label.innerHTML = dataAlready[i].user_appointment_date;  
+								label.innerHTML = dataAlready[i].user_appointment_date+' '+dataAlready[i].user_appointment_time;  
 //								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
 
 								li.addEventListener('tap', function() {
@@ -246,7 +247,7 @@
 //								img.setAttribute("src", "../../images/small.png")
 								h1.innerHTML = Math.abs(parseInt(dataFinish[i].user_appointment_time) -  parseInt(dataFinish[i].predict_finished_time))+"小时";
 								label.setAttribute("class", "gray-text");
-								label.innerHTML = dataFinish[i].user_appointment_date;;
+								label.innerHTML = dataFinish[i].user_appointment_date+' '+dataFinish[i].user_appointment_time;
 								li.addEventListener('tap', function() {
 									localStorage.transFuseHistoryDetails = JSON.stringify(dataFinish[i]);
 									mui.openWindow({

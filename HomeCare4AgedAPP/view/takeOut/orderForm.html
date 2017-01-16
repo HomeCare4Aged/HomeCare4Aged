@@ -173,6 +173,7 @@
 						url: SERVERURL + "SStoreListInfo/sendStoreListInfo",
 						data: postData,
 						dataType: "json",
+						timeout:20000,
 						success: function(data) {
 							plus.nativeUI.closeWaiting();
 							localStorage.storeListData = JSON.stringify(data.data);

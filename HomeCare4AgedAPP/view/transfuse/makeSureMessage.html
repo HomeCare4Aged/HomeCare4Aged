@@ -114,6 +114,7 @@
 					url: SERVERURL + "HTransfusionInfo/add",
 					dataType: "json",
 					data: postData,
+					timeout:20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();

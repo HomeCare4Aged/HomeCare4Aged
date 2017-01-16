@@ -431,7 +431,8 @@
 					"css/takeOut/index.css",
 					"css/common/common.css",
 					"js/constants.js",
-					"js/jquery.1.11.1.js"
+					"js/jquery.1.11.1.js",
+					"view/takeOut/takeOutHistoryList.html"
 				],
 				"refer": [
 					"view/takeOut/store.html"
@@ -612,7 +613,8 @@
 					"images/takeOut/box1.png",
 					"images/takeOut/freight.png",
 					"css/takeOut/store.css",
-					"images/takeOut/box3.png"
+					"images/takeOut/box3.png",
+					"images/takeOut/box2.png"
 				],
 				"refer": [
 					"view/takeOut/orderForm.html"
@@ -762,7 +764,12 @@
 					"js/video/zy.media.min.js",
 					"css/video/videoPlay.css",
 					"css/video/zy.media.min.css",
-					"js/jquery.1.11.1.js"
+					"js/jquery.1.11.1.js",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -887,6 +894,40 @@
 			"view/dropIn/myHistory.html": {
 				"resources": [
 					"css/registration/myHistory.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/takeOut/takeOutHistoryList.html": {
+				"resources": [
+					"view/takeOut/index.html",
+					"images/small.png",
+					"css/registration/myHistory.css",
+					"images/transfuse/blackSeat.png",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css",
+					"images/transfuse/blackBed.png"
+				],
+				"refer": [
+					"view/transfuse/transFuseHistoryDetails.html",
+					"view/takeOut/storeListProgress.html"
+				],
+				"priority": 0
+			},
+			"view/takeOut/storeListProgress.html": {
+				"resources": [
+					"images/takeOut/progress1.png",
+					"images/takeOut/location.png",
+					"css/takeOut/progress.css",
+					"images/takeOut/progress4.png",
 					"js/constants.js",
 					"js/mui.min.js",
 					"fonts/mui.ttf",

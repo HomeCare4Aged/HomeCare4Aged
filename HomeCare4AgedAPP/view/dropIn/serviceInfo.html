@@ -73,6 +73,7 @@
 					data: postData,
 					url: SERVERURL + 'SStoreServiceClassify/getServiceInfo',
 					dataType: "json",
+					timeout:20000,
 					//成功获取数据赋值
 					success: function(data) {
 						console.log(JSON.stringify(data.data));

@@ -227,6 +227,7 @@
 								data: postData,
 								url: MESSAGEURL,
 								dataType: "json",
+								timeout:20000,
 								//成功获取数据赋值
 								success: function(data) {
 									plus.nativeUI.closeWaiting();
@@ -269,6 +270,7 @@
 									data: postData,
 									url: SERVERURL + "ACommunityUserInfo/changeUserInfo",
 									dataType: "json",
+									timeout:20000,
 									//成功获取数据赋值
 									success: function(data) {
 										plus.nativeUI.closeWaiting();
@@ -328,6 +330,7 @@
 						data: postData,
 						url: SERVERURL + "ACommunityUserInfo/changeUserInfo",
 						dataType: "json",
+						timeout:20000,
 						//成功获取数据赋值
 						success: function(data) {
 							plus.nativeUI.closeWaiting();
@@ -489,6 +492,7 @@
 									data: postData,
 									url: SERVERURL + 'ACommunityUserInfo/selectHospital',
 									dataType: "json",
+									timeout:20000,
 
 									//成功获取数据赋值
 									success: function(data) {

@@ -49,6 +49,7 @@
 					type: 'GET',
 					url: SERVERURL + "AAnnouncementInfo/selectAnnouncementInfo?announcement_hospital_id=" + announcement_hospital_id,
 					dataType: "json",
+					timeout:20000,
 					//
 					success: function(data) {
 						plus.nativeUI.closeWaiting();

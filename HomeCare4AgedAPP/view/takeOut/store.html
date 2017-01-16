@@ -117,7 +117,7 @@
 			<div class="mui-col-xs-12" style="height: 10%;position: fixed;bottom: 0px; background:red;">
 				<div style="height: 10%;position: fixed;bottom: 0px; background: rgb(51,51,51);" class="mui-col-xs-7">
 					<img src="../../images/takeOut/box1.png" style="width: 53px;margin-left: 15px;margin-top: 3%;" id="zz-img-box" />
-					<span style="color: black;bottom: 6.1%;left: 14.5%; position: fixed;font-size: 10px;font-weight: bold; width: 20px;text-align: center; display: none;" id="zz-span-count">1</span>
+					<span style="color: black;margin-left: -10px; position: fixed; background-color: white; display: none;" class="mui-badge mui-badge-primary" id="zz-span-count">1</span>
 					<span style="color: white;bottom: 3%;left: 22%; position: fixed;font-size: 19px;font-weight: bold;display: none;" id="zz-span-commodityMoneyAll"></span>
 				</div>
 				<div style=" height: 100%; background: rgb(51,51,51); float: right;" class="mui-col-xs-5" id="zz-div-statrtPrice">
@@ -207,6 +207,7 @@
 					url: SERVERURL + "SStoreGoodsInfo/getStoreGoodsInfo",
 					data: postData,
 					dataType: "json",
+					timeout:20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
@@ -364,6 +365,9 @@
 				localStorage.storeFoodData = storeFoodData;
 
 				function reduce(id) {
+					
+					
+					
 					console.log(id);
 					var id = id.replace('reduce', "");
 					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) - 1);
@@ -371,6 +375,9 @@
 					storeCount--;
 					console.log()
 					document.getElementById('zz-span-count').innerHTML = storeCount;
+					if(storeCount<10){
+						document.getElementById('zz-span-count').setAttribute('style','color: black;margin-left: -10px; position: fixed; background-color: white;');
+					}
 					document.getElementById(id + 'span').setAttribute('count', count);
 
 					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) - parseFloat(document.getElementById(id + 'span').getAttribute('price'));
@@ -422,10 +429,13 @@
 					var id = id.replace('add', "");
 					console.log(id);
 					storeCount++;
-					zz_img_box.setAttribute("src", "../../images/takeOut/box3.png");
-					zz_img_box.setAttribute("style", "width: 63px;margin-left: 15px;margin-top: -3px;");
+					zz_img_box.setAttribute("src", "../../images/takeOut/box2.png");
+					zz_img_box.setAttribute("style","width: 53px;margin-left: 15px;margin-top: 3%;");
 					document.getElementById('zz-span-count').style.display = '';
 					document.getElementById('zz-span-count').innerHTML = storeCount;
+					if(storeCount>9){
+						document.getElementById('zz-span-count').setAttribute('style','color: black;margin-left: -15px; position: fixed; background-color: white;');
+					}
 					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) + 1);
 					
 					console.log('===========' + document.getElementById(id + 'span').getAttribute('count'));

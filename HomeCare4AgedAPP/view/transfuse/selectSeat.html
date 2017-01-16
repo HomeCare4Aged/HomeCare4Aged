@@ -88,6 +88,7 @@
 					data:postData,
 					url: SERVERURL+"HHospitalTransfusionInfo/getHospitalSeatCount",
 					dataType: "json",
+					timeout:20000,
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
 						console.log(JSON.stringify(data.data));
