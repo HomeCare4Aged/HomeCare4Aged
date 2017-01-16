@@ -65,7 +65,10 @@
 						var doctName = document.getElementById('doctName');
 						doctName.innerHTML = data.data.hospital_doctor_name;
 						var doctIdentity = document.getElementById('doctIdentity');
-						doctIdentity.innerHTML = data.data.identity_name + ' | ' + '13人预约过';
+						var personCount =  parseInt(localStorage.open_registration_number)-parseInt(localStorage.registration_number_left);
+						console.log(localStorage.open_registration_number);
+						console.log(localStorage.registration_number_left);
+						doctIdentity.innerHTML = data.data.identity_name + ' | ' +personCount +'人预约过';
 						var doctIntroduction = document.getElementById('doctIntroduction');
 						doctIntroduction.innerHTML = data.data.hospital_doctor_introduction;
 						var doctRegistrationPredictMoney = document.getElementById('doctRegistrationPredictMoney');
@@ -74,10 +77,12 @@
 						postData['registration_money'] = sData.registration_money;
 						postData['community_hospitals_id'] = sData.community_hospitals_id;
 						postData['hospital_office_id'] = sData.hospital_office_id;
-						postData['hospital_doctor_id'] = data.data.hospital_doctor_id;
+						postData['hospital_doctor_id'] = sData.hospital_doctor_id;
+						console.log('id ='+postData['hospital_doctor_id']);
 						postData['hospital_doctor_name'] = data.data.hospital_doctor_name;
 						postData['hospital_office_name'] = sData.hospital_office_name;
 						localStorage.doctorLevel = data.data.identity_name;
+						console.log(sData.hospital_doctor_id);
 						console.log(JSON.stringify(postData));
 
 					},

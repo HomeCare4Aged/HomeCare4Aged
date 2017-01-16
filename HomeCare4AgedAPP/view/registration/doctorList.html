@@ -69,9 +69,7 @@
 						fragment = doc.createDocumentFragment();
 						container = doc.getElementById("list_ul");
 						mui.each(data.data, function(i) {
-							if (i == 0) {
-								console.log(JSON.stringify(data.data[0]));
-							}
+								console.log(JSON.stringify(data.data[i]));
 							var doc = document;
 							li = doc.createElement("li");
 							div = doc.createElement("div");
@@ -88,7 +86,7 @@
 							div1.setAttribute("style", "margin-top: 15px;margin-left: -5%;")
 							img.setAttribute("src", data.data[i].hospital_doctor_picture);
 							img.setAttribute("style", 'width: 70px;height: 70px;border-radius: 35px;');
-							console.log(data.data[i].hospital_doctor_picture);
+//							console.log(data.data[i].hospital_doctor_picture);
 							div2.setAttribute("class", "mui-media-body");
 							div2.setAttribute("style", "margin-left: 65px;");
 							h1.setAttribute("class", "black-text listCellText");
@@ -102,10 +100,14 @@
 							li.id = data.data[i].hospital_doctor_id;
 							li.setAttribute('money', data.data[i].registration_money);
 							li.addEventListener('tap', function() {
+								console.log('=='+data.data[i].hospital_doctor_id);
+								console.log('li=='+this.id);
+								localStorage.open_registration_number = data.data[i].open_registration_number,
+								localStorage.registration_number_left = data.data[i].registration_number_left,
 								mui.openWindow({
 									url: '../registration/doctorInfo.html',
 									extras: {
-										hospital_doctor_id: li.id,
+										hospital_doctor_id: this.id,
 										community_hospitals_id: community_hospitals_id,
 										hospital_office_id: hospital_office_id,
 										registration_money: li.getAttribute('money'),
