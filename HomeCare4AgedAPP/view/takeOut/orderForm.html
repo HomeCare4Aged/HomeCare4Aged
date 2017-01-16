@@ -154,16 +154,27 @@
 					postData['store_type_id'] = '0001';
 					postData['store_shop_id'] = shopData.store_shop_id;
 					postData['store_list_money'] = parseFloat(localStorage.commodityMoneyAll) + parseFloat(sData.freight);
-					var storeFoodData = JSON.parse(localStorage.storeFoodData);
 					
+
+					console.log(JSON.stringify(JSON.parse(localStorage.storeFoodData)));
+					var storeFoodData = JSON.parse(localStorage.storeFoodData);
+					for (var key in storeFoodData)
+						{
+							if(storeFoodData[key] == "0"){
+								delete storeFoodData[key];
+							}
+							 
+						}
 					postData['storeList'] = storeFoodData;
 					console.log(JSON.stringify(postData['storeList']));
+					plus.nativeUI.showWaiting();
 					mui.ajax({
 						type: 'POST',
 						url: SERVERURL + "SStoreListInfo/sendStoreListInfo",
 						data: postData,
 						dataType: "json",
 						success: function(data) {
+							plus.nativeUI.closeWaiting();
 							localStorage.storeListData = JSON.stringify(data.data);
 							console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa       "+JSON.stringify(data.data));
 							if(data.status == 1){
@@ -179,8 +190,9 @@
 							console.log(JSON.stringify(data));
 						},
 						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.closeWaiting();
 							console.log(type);
-							mui.toast(type);
+							mui.toast('网络连接失败');
 						}
 
 					});

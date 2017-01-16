@@ -201,6 +201,7 @@
 				var store_carriage;
 				postData = {};
 				postData['store_shop_id'] = sData.store_shop_id;
+				plus.nativeUI.showWaiting();
 				mui.ajax({
 					type: 'POST',
 					url: SERVERURL + "SStoreGoodsInfo/getStoreGoodsInfo",
@@ -208,6 +209,7 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						console.log('aaaaaa'+JSON.stringify(data));
 						console.log(JSON.stringify(data.classify));
 						console.log(JSON.stringify(data.matchData));
@@ -349,8 +351,9 @@
 						container_already.appendChild(fragment);
 					},
 					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
 						console.log(type);
-						mui.toast(type);
+						mui.toast('网络连接失败');
 					}
 
 				});
@@ -358,6 +361,7 @@
 				var storeFoodData = {};
 				var storeFoodALLData = [];
 				localStorage.commodityMoneyAll = 0;
+				localStorage.storeFoodData = storeFoodData;
 
 				function reduce(id) {
 					console.log(id);
@@ -423,7 +427,7 @@
 					document.getElementById('zz-span-count').style.display = '';
 					document.getElementById('zz-span-count').innerHTML = storeCount;
 					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) + 1);
-
+					
 					console.log('===========' + document.getElementById(id + 'span').getAttribute('count'));
 
 					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'));
@@ -474,6 +478,7 @@
 						console.log('---------matchData-------------' + JSON.stringify(matchData));
 						localStorage.storeFoodData = JSON.stringify(storeFoodData);
 						localStorage.matchData = JSON.stringify(matchData);
+						console.log('----------shopData------------' + JSON.stringify(localStorage.shopData))
 						mui.openWindow({
 							url: '../takeOut/orderForm.html',
 							extras: {

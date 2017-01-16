@@ -108,7 +108,7 @@
 				postData['user_transfusion_date'] = getNowFormatDate();   //预约输液操作时间
 				postData['user_transfusion_type'] = localStorage.getItem('selectSeat');					  //输液类型内码
 				postData['transfusion_state'] = '未完成';						  //状态
-				
+				plus.nativeUI.showWaiting();
 				mui.ajax({
 					type: 'POST',
 					url: SERVERURL + "HTransfusionInfo/add",
@@ -116,6 +116,7 @@
 					data: postData,
 					//成功获取数据赋值
 					success: function(data) {
+						plus.nativeUI.closeWaiting();
 						console.log('success');
 						mui.openWindow({
 							url:'../transfuse/finish.html',
@@ -126,6 +127,7 @@
 						});
 					},
 					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
 						mui.alert('网络连接失败')
 						console.log(xhr);
 						console.log(errorThrown);
