@@ -222,19 +222,19 @@
 				});
 
 				document.getElementById('contactMerchant').addEventListener('tap', function() {
-					var phone = JSON.parse(localStorage.shopData);
+					var takeOutHistoryDetails = JSON.parse(localStorage.takeOutHistoryDetails);
 					if(plus.os.name == "Android") {
 						var Intent = plus.android.importClass("android.content.Intent");
 						var Uri = plus.android.importClass("android.net.Uri");
 						var main = plus.android.runtimeMainActivity();
-						var uri = Uri.parse("tel:" + phone.store_contact_user_phone);
+						var uri = Uri.parse("tel:" + takeOutHistoryDetails.order.store_contact_user_phone);
 						var call = new Intent("android.intent.action.CALL", uri);
 						main.startActivity(call);
 					} else {
 						var UIAPP = plus.ios.importClass("UIApplication");
 						var NSURL = plus.ios.importClass("NSURL");
 						var app = UIAPP.sharedApplication();
-						app.openURL(NSURL.URLWithString("tel://" + phone.store_contact_user_phone));
+						app.openURL(NSURL.URLWithString("tel://" + takeOutHistoryDetails.order.store_contact_user_phone));
 					}
 				})
 
