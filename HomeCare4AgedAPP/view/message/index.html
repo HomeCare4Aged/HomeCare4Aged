@@ -44,7 +44,7 @@
 					h5.setAttribute("class", 'zz-h5-readMark zz-style-position');
 					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
 				});
-				var announcement_hospital_id = '0001';
+				var announcement_hospital_id = localStorage.community_hospitals_id;
 				mui.ajax({
 					type: 'GET',
 					url: SERVERURL + "AAnnouncementInfo/selectAnnouncementInfo?announcement_hospital_id=" + announcement_hospital_id,
@@ -112,7 +112,8 @@
 										'announcement_content': data.data[i].announcement_content,
 										'announcement_title': data.data[i].announcement_title,
 										'send_datetime': h3.innerHTML,
-										'announcement_hospital_id': data.data[i].announcement_hospital_id
+										'announcement_hospital_id': data.data[i].announcement_hospital_id,
+										'announcement_picture':data.data[i].announcement_picture
 									},
 								});
 

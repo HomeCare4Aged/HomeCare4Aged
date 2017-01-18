@@ -30,7 +30,7 @@
 		    	<h1 id="zz-h1-content"></h1>
 		    </div>
 		    <!--<div class="mui-row">-->
-		    	<img src="../../images/123.png" class="zz-img-contentPicture"/>
+		    	<img class="zz-img-contentPicture" id="picture"/>
 		    <!--</div>-->
 		    
 		</div>
@@ -61,6 +61,7 @@
 				var	announcement_content = sData.announcement_content;
 				var	send_datetime = sData.send_datetime;
 				var	announcement_hospital_id = sData.announcement_hospital_id;
+				document.getElementById('picture').setAttribute("src",sData.announcement_picture);
 				
 				document.getElementById("zz-h1-title").innerHTML = sData.announcement_title;
 				document.getElementById("zz-h1-content").innerHTML = announcement_content;
@@ -69,7 +70,7 @@
 				if(announcement_hospital_id == '9999'){
 					document.getElementById("zz-h3-hospitalId").innerHTML = '发布：总后台';
 				}else{
-					document.getElementById("zz-h3-hospitalId").innerHTML = '发布：' + announcement_hospital_id;
+					document.getElementById("zz-h3-hospitalId").innerHTML = '发布：' + localStorage.community_hospitals_name;
 				}
 //				console.log(JSON.stringify(announcement_title));
 				$('.zz-img-contentPicture').css('width', document.documentElement.clientWidth-50);

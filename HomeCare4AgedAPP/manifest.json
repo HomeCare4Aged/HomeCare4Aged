@@ -251,7 +251,8 @@
 					"images/home/duoyun.png",
 					"images/home/wumai.png",
 					"images/home/userInfo.png",
-					"images/home/yintian.png"
+					"images/home/yintian.png",
+					"images/home/xiaxue.png"
 				],
 				"refer": [
 					"view/registration/index.html",
@@ -660,7 +661,12 @@
 			"view/dropIn/serviceInfo.html": {
 				"resources": [
 					"images/home/leiyu.png",
-					"css/dropIn/serviceInfo.css"
+					"css/dropIn/serviceInfo.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css"
 				],
 				"refer": [
 					"view/dropIn/submitOrder.html"
@@ -680,7 +686,8 @@
 				"refer": [
 					"view/userInfo/certification.html",
 					"view/userInfo/order.html",
-					"view/loginRegister/index.html"
+					"view/loginRegister/index.html",
+					"view/userInfo/storeListChance.html"
 				],
 				"priority": 0
 			},
@@ -691,7 +698,13 @@
 					"images/dropIn/compositePath.png",
 					"images/dropIn/add.png",
 					"css/mui.poppicker.css",
-					"css/mui.picker.css"
+					"css/mui.picker.css",
+					"css/dropIn/index.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/common/common.css",
+					"fonts/mui.ttf"
 				],
 				"refer": [
 					"view/dropIn/finish.html"
@@ -715,7 +728,10 @@
 					"fonts/mui.ttf",
 					"images/dropIn/compositePath.png",
 					"css/dropIn/serviceInfo.css",
-					"images/dropIn/jindu1.png"
+					"images/dropIn/jindu1.png",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/common/common.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -901,7 +917,10 @@
 					"css/common/common.css",
 					"images/small.png"
 				],
-				"refer": [],
+				"refer": [
+					"view/takeOut/storeListProgress.html",
+					"view/dropIn/serviceHistoryDetail.html"
+				],
 				"priority": 0
 			},
 			"view/takeOut/takeOutHistoryList.html": {
@@ -915,7 +934,8 @@
 					"fonts/mui.ttf",
 					"css/mui.min.css",
 					"css/common/common.css",
-					"images/transfuse/blackBed.png"
+					"images/transfuse/blackBed.png",
+					"css/userInfo/index.css"
 				],
 				"refer": [
 					"view/transfuse/transFuseHistoryDetails.html",
@@ -933,7 +953,74 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
+					"css/common/common.css",
+					"css/userInfo/index.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/dropIn/serviceHistoryDetail.html": {
+				"resources": [
+					"images/dropIn/jindu1.png",
+					"images/dropIn/compositePath.png",
+					"css/dropIn/serviceInfo.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css",
+					"images/dropIn/jindu4.png"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/userInfo/storeListChance.html": {
+				"resources": [
+					"js/constants.js",
+					"js/mui.min.js",
+					"js/jquery.1.11.1.js",
+					"fonts/mui.ttf",
+					"css/loginRegister/certification.css",
+					"css/mui.min.css",
+					"css/userInfo/index.css",
 					"css/common/common.css"
+				],
+				"refer": [
+					"view/transfuse/myHistory.html",
+					"view/registration/myHistory.html",
+					"view/takeOut/takeOutHistoryList.html",
+					"view/dropIn/myHistory.html"
+				],
+				"priority": 0
+			},
+			"view/userInfo/storeListProgress.html": {
+				"resources": [
+					"images/takeOut/progress1.png",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/userInfo/index.css",
+					"css/common/common.css",
+					"images/takeOut/progress4.png",
+					"images/takeOut/location.png",
+					"css/takeOut/progress.css"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/userInfo/serviceHistoryDetail.html": {
+				"resources": [
+					"images/dropIn/jindu1.png",
+					"images/dropIn/compositePath.png",
+					"css/dropIn/serviceInfo.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/common/common.css",
+					"css/userInfo/index.css",
+					"images/dropIn/jindu4.png"
 				],
 				"refer": [],
 				"priority": 0

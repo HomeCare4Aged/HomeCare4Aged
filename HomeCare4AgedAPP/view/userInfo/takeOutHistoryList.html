@@ -8,12 +8,13 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/registration/myHistory.css" />
+		<link rel="stylesheet" href="../../css/userInfo/index.css" />
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav m_orange2 ">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" ></a>
-			<h1 class="mui-title">我的订单</h1>
+		<header class="mui-bar mui-bar-nav g_yellowColor ">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">我的订单</h1>
 
 		</header>
 		<div class="mui-content">
@@ -132,7 +133,7 @@
 									localStorage.transfuseLiId = this.id;
 									localStorage.takeOutHistoryDetails = JSON.stringify(dataAlready[i])
 									mui.openWindow({
-										url: '../takeOut/storeListProgress.html',
+										url: '../userInfo/storeListProgress.html',
 									});
 								});
 								li.appendChild(div);
@@ -175,7 +176,7 @@
 								li.addEventListener('tap', function() {
 									localStorage.takeOutHistoryDetails = JSON.stringify(dataFinish[i]);
 									mui.openWindow({
-										url: '../takeOut/storeListProgress.html',
+										url: '../userInfo/storeListProgress.html',
 										extras: {
 											finished:'finished'
 										}

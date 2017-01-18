@@ -45,6 +45,7 @@
 
 			mui.plusReady(function() {
 				document.getElementById('btn-history').addEventListener('tap',function () {
+					localStorage.fromUserInfo = 'no';
 					mui.openWindow({
 						url: '../dropIn/myHistory.html',
 					});

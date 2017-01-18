@@ -20,7 +20,14 @@ body {
 	margin-top: 10px;
 	font-weight: normal;
 }
-
+.grayTextStoreName {
+	color: rgb(83, 83, 83);
+	font-size: 30px;
+	margin-left: 0px;
+	/*margin-right: 20px;*/
+	margin-top: 10px;
+	font-weight: normal;
+}
 .mui-table-view:after {
 	left: 25px;
 	right: 25px;

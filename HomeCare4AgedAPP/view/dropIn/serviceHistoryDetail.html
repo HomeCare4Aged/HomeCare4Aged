@@ -17,7 +17,7 @@
 
 	<body style="background: white;">
 		<header class="mui-bar mui-bar-nav m_green2DropIn">
-			<a id="backHome" class="mui-action-back mui-icon  mui-pull-left" style="font-size: 30px;margin-left: -3%;margin-top: 15px;">首页</a>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 id="g-title" class="mui-title">订单详情</h1>
 		</header>
 		<div class="mui-content">
@@ -87,38 +87,43 @@
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
-				beforeback: function() {
-					//获得你要前往页面的webview id
-					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
-					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner, 'refreshWeather');
-					mui.openWindow({
-						url: '../home/index.html',
-					});
-				},
+//				beforeback: function() {
+//					//获得你要前往页面的webview id
+//					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
+//					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+//					mui.fire(Scanner, 'refreshWeather');
+//					mui.openWindow({
+//						url: '../home/index.html',
+//					});
+//				},
 			});
 			mui.plusReady(function() {
-				//				var nwaiting = plus.nativeUI.showWaiting();
+				
+				
+				var dropInHistoryDetails = JSON.parse(localStorage.dropInHistoryDetails);
+				console.log('sssssssssssss' + JSON.stringify(dropInHistoryDetails));
+				
+				if(dropInHistoryDetails.order['store_list_state_id'] == '0004'){
+					document.getElementById('g-img-status').src = '../../images/dropIn/jindu4.png';
+					document.getElementById('g-text-status').innerHTML = '服务已完成';
+				}
+				
 				plus.navigator.setStatusBarBackground('#30B69C');
-				var serviceInfo = JSON.parse(localStorage.serviceInfo);
-				var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
-				console.log(localStorage.serviceInfo);
-				console.log(localStorage.serviceDetailData);
-				document.getElementById('g-text-namePhone').innerHTML = localStorage.community_user_name + " " + localStorage.community_user_phone;
-				document.getElementById('g-text-address').innerHTML = localStorage.community_user_address;
-				document.getElementById('g-text-shopName').innerHTML = '商家：' + serviceInfo.store_shop_name;
-				document.getElementById('g-text-service').innerHTML = serviceInfo.store_service_name;
-				document.getElementById('g-text-servicePrice').innerHTML = serviceInfo.store_service_price + '元' + serviceInfo.store_service_length + '小时 × ' + serviceDetailData.detail[0].store_count;
+				document.getElementById('g-text-namePhone').innerHTML = dropInHistoryDetails.order['community_user_name'] + " " + dropInHistoryDetails.order['community_user_phone'];
+				document.getElementById('g-text-address').innerHTML = dropInHistoryDetails.order['community_user_address'];
+				document.getElementById('g-text-shopName').innerHTML = dropInHistoryDetails.order['store_shop_name']+"哈哈哈";
+				document.getElementById('g-text-service').innerHTML = dropInHistoryDetails.detail[0]['store_service_name'];
+				document.getElementById('g-text-servicePrice').innerHTML = dropInHistoryDetails.detail[0]['store_service_price'] + '元' + dropInHistoryDetails.detail[0]['store_service_length'] + '小时 × ' + dropInHistoryDetails.detail[0]['store_count'];
 
-				document.getElementById('g-orderDropInTime').innerHTML = serviceDetailData.order.store_list_require_time;
-				document.getElementById('g-text-orderTime').innerHTML = serviceDetailData.order.store_list_time;
+				document.getElementById('g-orderDropInTime').innerHTML = dropInHistoryDetails.order['store_list_require_time'];
+				document.getElementById('g-text-orderTime').innerHTML = dropInHistoryDetails.order['store_list_time'];
 				document.getElementById('g-btn').addEventListener('tap', function() {
 					if(plus.os.name == "Android") {
 
 						var Intent = plus.android.importClass("android.content.Intent");
 						var Uri = plus.android.importClass("android.net.Uri");
 						var main = plus.android.runtimeMainActivity();
-						var uri = Uri.parse("tel:" + serviceInfo.store_contact_user_phone);
+						var uri = Uri.parse("tel:" + dropInHistoryDetails.order['store_contact_user_phone']);
 
 						var call = new Intent("android.intent.action.CALL", uri);
 						main.startActivity(call);
@@ -126,14 +131,13 @@
 						var UIAPP = plus.ios.importClass("UIApplication");
 						var NSURL = plus.ios.importClass("NSURL");
 						var app = UIAPP.sharedApplication();
-						app.openURL(NSURL.URLWithString("tel://" + serviceInfo.store_contact_user_phone));
+						app.openURL(NSURL.URLWithString("tel://" + dropInHistoryDetails.order['store_contact_user_phone']));
 					}
 				})
 
 				setInterval(function() {
-					var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
 					var postData = {};
-					postData['store_list_id'] = serviceDetailData.order.store_list_id;
+					postData['store_list_id'] = dropInHistoryDetails.order['store_list_id'];
 					mui.ajax({
 						type: 'POST',
 						data: postData,

@@ -8,6 +8,11 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/dropIn/serviceInfo.css" />
+		<style>
+			.mui-table-view-cell.mui-active {
+				background-color: white;
+			}
+		</style>
 	</head>
 
 	<body style="background: white;">
@@ -59,13 +64,13 @@
 				document.getElementById('g-img').style.height = document.documentElement.clientWidth + 'px';
 				document.getElementById('g-img').style.width = document.documentElement.clientWidth + 'px';
 
-//				var leftText = document.getElementsByClassName('LeftTableText');
-//				var rightText = document.getElementsByClassName('RightTableText');
-//				var tableLine = document.getElementsByClassName('tableLine');
-//				mui.each(leftText, function(i) {
-//					leftText[i].style.width = width-0.5+'px';
-//					rightText[i].style.width = width-0.5+'px';
-//				});
+				//				var leftText = document.getElementsByClassName('LeftTableText');
+				//				var rightText = document.getElementsByClassName('RightTableText');
+				//				var tableLine = document.getElementsByClassName('tableLine');
+				//				mui.each(leftText, function(i) {
+				//					leftText[i].style.width = width-0.5+'px';
+				//					rightText[i].style.width = width-0.5+'px';
+				//				});
 				var postData = {};
 				postData['store_service_id'] = localStorage.store_service_id;
 				mui.ajax({
@@ -73,7 +78,7 @@
 					data: postData,
 					url: SERVERURL + 'SStoreServiceClassify/getServiceInfo',
 					dataType: "json",
-					timeout:20000,
+					timeout: 20000,
 					//成功获取数据赋值
 					success: function(data) {
 						console.log(JSON.stringify(data.data));
@@ -81,32 +86,32 @@
 						plus.nativeUI.closeWaiting();
 						document.getElementById('g-img').src = data.data.store_service_picture;
 						document.getElementById('g-nav-title').innerHTML = data.data.store_service_name;
-						document.getElementById('g-title').innerHTML = data.data.store_service_name+'('+data.data.store_shop_name+')';
-						document.getElementById('g-service-time').innerHTML = data.data.store_service_length+'小时';
-						document.getElementById('g-service-price').innerHTML = '￥'+data.data.store_service_price;
+						document.getElementById('g-title').innerHTML = data.data.store_service_name + '(' + data.data.store_shop_name + ')';
+						document.getElementById('g-service-time').innerHTML = data.data.store_service_length + '小时';
+						document.getElementById('g-service-price').innerHTML = '￥' + data.data.store_service_price;
 						document.getElementById('g-intro').innerHTML = data.data.store_service_introduction;
-//						var doc = document;
-//						fragment = doc.createDocumentFragment();
-//						container = doc.getElementById("list_ul");
-//						mui.each(data.data, function(i) {
-//							var doc = document;
-//							li = doc.createElement("li");
-//						
-//							h32.setAttribute("style", "margin-top: 5px;");
-//							h32.innerHTML = data.data[i].store_service_length + '小时' + data.data[i].store_service_price + '元';
-//							li.id = data.data[i].store_service_id;
-//
-//							li.addEventListener('tap', function() {
-//								localStorage.service_classify_name = this.id;
-//								console.log('=====' + this.id);
-//								mui.openWindow({
-//									url: '../dropIn/serviceInfo.html',
-//								});
-//							});
-//							li.appendChild(img);
-//							fragment.appendChild(li);
-//						});
-//						container.appendChild(fragment);
+						//						var doc = document;
+						//						fragment = doc.createDocumentFragment();
+						//						container = doc.getElementById("list_ul");
+						//						mui.each(data.data, function(i) {
+						//							var doc = document;
+						//							li = doc.createElement("li");
+						//						
+						//							h32.setAttribute("style", "margin-top: 5px;");
+						//							h32.innerHTML = data.data[i].store_service_length + '小时' + data.data[i].store_service_price + '元';
+						//							li.id = data.data[i].store_service_id;
+						//
+						//							li.addEventListener('tap', function() {
+						//								localStorage.service_classify_name = this.id;
+						//								console.log('=====' + this.id);
+						//								mui.openWindow({
+						//									url: '../dropIn/serviceInfo.html',
+						//								});
+						//							});
+						//							li.appendChild(img);
+						//							fragment.appendChild(li);
+						//						});
+						//						container.appendChild(fragment);
 					},
 					error: function(xhr, type, errorThrown) {
 						console.log(type);
