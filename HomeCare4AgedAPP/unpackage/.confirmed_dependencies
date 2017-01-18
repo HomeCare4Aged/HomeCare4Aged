@@ -60,7 +60,8 @@
 			"css/home/index.css",
 			"images/home/message.png",
 			"images/home/userInfo.png",
-			"images/home/yintian.png"
+			"images/home/yintian.png",
+			"images/home/xiaxue.png"
 		],
 		"refer": [
 			"view/takeOut/index.html",
@@ -242,7 +243,12 @@
 	"view/dropIn/serviceInfo.html": {
 		"resources": [
 			"images/home/leiyu.png",
-			"css/dropIn/serviceInfo.css"
+			"css/dropIn/serviceInfo.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		],
 		"refer": [
 			"view/dropIn/submitOrder.html"
@@ -342,7 +348,8 @@
 		"refer": [
 			"view/userInfo/certification.html",
 			"view/userInfo/order.html",
-			"view/loginRegister/index.html"
+			"view/loginRegister/index.html",
+			"view/userInfo/storeListChance.html"
 		]
 	},
 	"view/dropIn/submitOrder.html": {
@@ -352,7 +359,13 @@
 			"images/dropIn/compositePath.png",
 			"images/dropIn/add.png",
 			"css/mui.poppicker.css",
-			"css/mui.picker.css"
+			"css/mui.picker.css",
+			"css/dropIn/index.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"fonts/mui.ttf"
 		],
 		"refer": [
 			"view/dropIn/finish.html"
@@ -374,7 +387,10 @@
 			"fonts/mui.ttf",
 			"images/dropIn/compositePath.png",
 			"css/dropIn/serviceInfo.css",
-			"images/dropIn/jindu1.png"
+			"images/dropIn/jindu1.png",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/common/common.css"
 		]
 	},
 	"view/userInfo/certification.html": {
@@ -581,6 +597,10 @@
 			"css/mui.min.css",
 			"css/common/common.css",
 			"images/small.png"
+		],
+		"refer": [
+			"view/takeOut/storeListProgress.html",
+			"view/dropIn/serviceHistoryDetail.html"
 		]
 	},
 	"view/registration/doctorInfo.html": {
@@ -628,7 +648,8 @@
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"css/common/common.css",
-			"images/transfuse/blackBed.png"
+			"images/transfuse/blackBed.png",
+			"css/userInfo/index.css"
 		],
 		"refer": [
 			"view/takeOut/index.html",
@@ -646,7 +667,67 @@
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
+			"css/common/common.css",
+			"css/userInfo/index.css"
+		]
+	},
+	"view/dropIn/serviceHistoryDetail.html": {
+		"resources": [
+			"images/dropIn/jindu1.png",
+			"images/dropIn/compositePath.png",
+			"css/dropIn/serviceInfo.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"images/dropIn/jindu4.png"
+		]
+	},
+	"view/userInfo/storeListChance.html": {
+		"resources": [
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/loginRegister/certification.css",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
 			"css/common/common.css"
+		],
+		"refer": [
+			"view/transfuse/myHistory.html",
+			"view/registration/myHistory.html",
+			"view/takeOut/takeOutHistoryList.html",
+			"view/dropIn/myHistory.html"
+		]
+	},
+	"view/userInfo/storeListProgress.html": {
+		"resources": [
+			"images/takeOut/progress1.png",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
+			"css/common/common.css",
+			"images/takeOut/progress4.png",
+			"images/takeOut/location.png",
+			"css/takeOut/progress.css"
+		]
+	},
+	"view/userInfo/serviceHistoryDetail.html": {
+		"resources": [
+			"images/dropIn/jindu1.png",
+			"images/dropIn/compositePath.png",
+			"css/dropIn/serviceInfo.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"css/userInfo/index.css",
+			"images/dropIn/jindu4.png"
 		]
 	}
 }

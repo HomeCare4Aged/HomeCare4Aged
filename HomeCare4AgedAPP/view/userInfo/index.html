@@ -18,7 +18,7 @@
 		</header>
 		<div class="mui-content" style="margin-top: 60px;">
 			<ul class="mui-table-view" style="margin-top: 20px;">
-				<li class="mui-table-view-cell mui-media">
+				<li class=" mui-media" style="margin-left: 15px;">
 					<div class="mui-pull-left" style="margin-left: 20px;margin-top: 10px;margin-bottom: 10px;">
 						<h1 id="g-name" class="blackText">ss</h1>
 						<h1 id="g-phoneNum" class="blackText">ss</h1>
@@ -133,6 +133,9 @@
 					});
 				});
 				document.getElementById('g-order').addEventListener('tap', function() {
+					mui.openWindow({
+						url: '../userInfo/storeListChance.html',
+					});
 					console.log('我的订单');
 				});
 				document.getElementById('g-loginOut').addEventListener('tap', function() {
