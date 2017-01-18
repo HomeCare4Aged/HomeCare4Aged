@@ -46,6 +46,7 @@
 		<script type="text/javascript">
 			mui.init()
 			mui.plusReady(function() {
+			plus.screen.lockOrientation("portrait-primary");
 				console.log(localStorage.community_user_phone);
 				console.log(localStorage.community_user_psw);
 				if(!isNullStr(localStorage.community_user_phone) &&
@@ -106,6 +107,7 @@
 							mui.alert(data.msg);
 							return;
 						} else {
+							console.log(JSON.stringify(data));
 							plus.nativeUI.closeWaiting();
 							var community_user_id; //社区用户内码
 							var community_user_phone; //用户手机号

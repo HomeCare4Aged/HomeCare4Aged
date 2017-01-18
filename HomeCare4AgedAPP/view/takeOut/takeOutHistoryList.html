@@ -56,16 +56,6 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true ,//启用右滑关闭功能
-				beforeback: function(){
-					//获得你要前往页面的webview id
-					var Scanner = plus.webview.getWebviewById(localStorage.registrationIndexWebId);
-					
-					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner,'refresh');
-					
-					//返回true，继续页面关闭逻辑
-					return true;
-				},
 			});
 			mui.plusReady(function() {
 				localStorage.transHistorylistId = plus.webview.currentWebview().id;
@@ -73,7 +63,6 @@
 					console.log('shanchu');
 					document.getElementById('list_already').removeChild(document.getElementById(localStorage.transfuseLiId));
 				});
-				plus.navigator.setStatusBarBackground('#FEE36D');
 				var postData = {};
 				postData['community_user_id'] = localStorage.community_user_id;
 				postData['store_type_id'] = '0001';

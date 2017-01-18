@@ -126,7 +126,7 @@
 						divFoodName.setAttribute("class", "mui-col-xs-7");
 						h4FoodName = document.createElement('h4');
 						h4FoodName.setAttribute("class", "gray-text");
-						h4FoodName.innerHTML = storeFoodData[i]['store_list_id'];
+						h4FoodName.innerHTML = storeFoodData[i]['store_goods_name'];
 
 						divContent.appendChild(divFoodName);
 						divFoodName.appendChild(h4FoodName);
@@ -144,7 +144,7 @@
 						divUnitPirce.setAttribute("class", "mui-col-xs-2 mui-text-right");
 						h4UnitPirce = document.createElement('h4');
 						h4UnitPirce.setAttribute("style", "color: red;");
-						h4UnitPirce.innerHTML = storeFoodData[p] * matchData[p]['price'];
+						h4UnitPirce.innerHTML = storeFoodData[i]['store_count'] * storeFoodData[i]['store_goods_price'];
 
 						divContent.appendChild(divUnitPirce);
 						divUnitPirce.appendChild(h4UnitPirce);

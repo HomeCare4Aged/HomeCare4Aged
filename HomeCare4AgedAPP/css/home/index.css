@@ -42,7 +42,7 @@ div{
 	color: white;
 	font-size:150%;
 }
-#g-btn{
+.g-home-btn{
 	position:relative;
 	border-color: black;
 	border-width: 2px;
