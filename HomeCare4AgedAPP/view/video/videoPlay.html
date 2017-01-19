@@ -21,8 +21,8 @@
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
 				<div id="videoPlay" class="zy_media">
-					<video poster="test.jpg">
-						<source src="http://172.17.172.52/mp4files/21840000043B6A0F/vjs.zencdn.net/v/oceans.mp4"> </source>
+					<video id="g-video" poster="">
+						<source id="g-videoPlay" src=""> </source>
 					</video>
 				</div>
 				<li class=" mui-table-view-cell mui-media">
@@ -48,7 +48,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
-		<script type="text/javascript" src="../../js/video/zy.media.min.js" ></script>
+		<script type="text/javascript" src="../../js/video/zy.media.min.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
@@ -63,12 +63,12 @@
 			});
 			mui.plusReady(function() {
 				var nwaiting = plus.nativeUI.showWaiting();
-//				var video = document.getElementById("videoPlay");
-//				video.setAttribute("width", document.documentElement.clientWidth);
-//				video.setAttribute("height", document.documentElement.clientWidth * VIDEOSCALE);
-//				var list = document.getElementById("list_ul");
-//				list.style.top = document.documentElement.clientWidth * VIDEOSCALE+'px';
-				zymedia('video');
+				//				var video = document.getElementById("videoPlay");
+				//				video.setAttribute("width", document.documentElement.clientWidth);
+				//				video.setAttribute("height", document.documentElement.clientWidth * VIDEOSCALE);
+				//				var list = document.getElementById("list_ul");
+				//				list.style.top = document.documentElement.clientWidth * VIDEOSCALE+'px';
+				
 				console.log(localStorage.videoId);
 
 				var h5 = document.getElementById('sign');
@@ -76,7 +76,7 @@
 					type: 'GET',
 					url: SERVERURL + "AVideoInfo/getVideoInfo?video_id=" + localStorage.videoId,
 					dataType: "json",
-					timeout:20000,
+					timeout: 20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
@@ -84,7 +84,11 @@
 						var h1 = document.getElementById("title");
 						h1.innerHTML = data.data.video_title;
 						h1 = document.getElementById("author");
-						h1.innerHTML = "发布：";
+						if(isNullStr(data.data.community_hospitals_name)) {
+							h1.innerHTML = "发布：总后台";
+						} else {
+							h1.innerHTML = "发布：" + data.data.community_hospitals_name;
+						}
 
 						h1 = document.getElementById("date");
 						h1.innerHTML = data.data.send_datetime.substring(0, 16);
@@ -94,6 +98,11 @@
 
 						h1 = document.getElementById("introduce");
 						h1.innerHTML = "简介：" + data.data.video_introduction;
+
+						document.getElementById('g-video').poster = data.data.video_picture;
+						document.getElementById('g-videoPlay').src = data.data.video_url;
+						zymedia('video');
+
 					},
 					error: function(xhr, type, errorThrown) {
 						plus.nativeUI.closeWaiting();
