@@ -62,7 +62,7 @@
 						mui.each(data.data, function(i) {
 							var announcementEndDate =parseInt(data.data[i].announcement_end_date.replace("-","").replace("-",""));
 							var nowDate = parseInt(gmtToDate(new Date()).replace("-","").replace("-",""));
-							console.log(nowDate);
+//							console.log(nowDate);
 							if(nowDate==announcementEndDate || nowDate>announcementEndDate){
 								console.log('aaaaa');
 							}else{
@@ -119,9 +119,7 @@
 
 							});
 							var myDate = new Date();
-							//							myDate.toLocaleString( );
-							var result = myDate.getFullYear() + '-' + (myDate.getMonth() + 1) + '-' + myDate.getDate();
-							//							console.log(JSON.stringify(result));
+							var result = gmtToDate(myDate);
 
 							li.appendChild(div);
 							div.appendChild(divTitle);

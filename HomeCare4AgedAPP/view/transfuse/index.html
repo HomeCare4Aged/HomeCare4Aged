@@ -58,7 +58,7 @@
 		</header>
 		<div class="mui-content">
 			<div class="mui-row ">
-				<button id='zz-btn-time' data-options='{}' class="zz-btn-timeClass">选择输液日期</button>
+				<button id='zz-btn-time' data-options='{}' forma class="zz-btn-timeClass">选择输液日期</button>
 			</div>
 			<div class="mui-row zz-div-result">
 				<label id="zz-label-ymd"></label>
@@ -171,16 +171,21 @@
 				btns.each(function(i, btn) {
 					btn.addEventListener('tap', function() {
 
-						var optionsJson = this.getAttribute('data-options') || '{}';
-						var options = JSON.parse(optionsJson);
+//						var optionsJson = this.getAttribute('data-options') || '{}';
+//						delete optionsJson['分'];
+//						var options = JSON.parse(optionsJson);
 						var now = new Date();
-						options.beginYear = now.getFullYear();
-						options.beginMonth = now.getMonth()+1;
-						options.beginDay = now.getDate();
-						options.beginHours = now.getHours();
-						options.beginMinutes = now.getMinutes();
-						var id = this.getAttribute('id');
-						var picker = new $.DtPicker(options);
+//						options.beginYear = now.getFullYear();
+//						options.beginMonth = now.getMonth()+1;
+//						options.beginDay = now.getDate();
+//						options.beginHours = now.getHours();
+//						options.beginMinutes = now.getMinutes();
+//						options.endMinutes = 0;
+//						var id = this.getAttribute('id');
+						var picker = new mui.DtPicker({
+							'type':'datetime',
+ 							"beginDate": new Date(now.getFullYear(), now.getMonth(), now.getDate(),now.getHours(),now.getMinutes()),
+						});
 						picker.show(function(rs) {
 							timeResult = rs.text;
 							ymd.innerHTML = rs.text.substr(0, 10);

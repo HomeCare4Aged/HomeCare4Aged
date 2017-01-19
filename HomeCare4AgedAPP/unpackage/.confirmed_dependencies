@@ -61,7 +61,12 @@
 			"images/home/message.png",
 			"images/home/userInfo.png",
 			"images/home/yintian.png",
-			"images/home/xiaxue.png"
+			"images/home/xiaxue.png",
+			"images/home/registrationCount.png",
+			"images/home/drioInCount.png",
+			"images/home/transfuseCount.png",
+			"images/home/takeOutCount.png",
+			"images/home/messageCount.png"
 		],
 		"refer": [
 			"view/takeOut/index.html",
@@ -304,7 +309,12 @@
 	"view/loginRegister/code.html": {
 		"resources": [
 			"css/loginRegister/certification.css",
-			"js/jquery.1.11.1.js"
+			"js/jquery.1.11.1.js",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		],
 		"refer": [
 			"view/loginRegister/certification.html"
@@ -699,7 +709,8 @@
 			"view/transfuse/myHistory.html",
 			"view/registration/myHistory.html",
 			"view/takeOut/takeOutHistoryList.html",
-			"view/dropIn/myHistory.html"
+			"view/dropIn/myHistory.html",
+			"view/userInfo/takeOutHistoryList.html"
 		]
 	},
 	"view/userInfo/storeListProgress.html": {
@@ -728,6 +739,20 @@
 			"css/common/common.css",
 			"css/userInfo/index.css",
 			"images/dropIn/jindu4.png"
+		]
+	},
+	"view/userInfo/takeOutHistoryList.html": {
+		"resources": [
+			"css/registration/myHistory.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/userInfo/storeListProgress.html"
 		]
 	}
 }

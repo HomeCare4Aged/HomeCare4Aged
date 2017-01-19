@@ -252,7 +252,12 @@
 					"images/home/wumai.png",
 					"images/home/userInfo.png",
 					"images/home/yintian.png",
-					"images/home/xiaxue.png"
+					"images/home/xiaxue.png",
+					"images/home/registrationCount.png",
+					"images/home/drioInCount.png",
+					"images/home/transfuseCount.png",
+					"images/home/takeOutCount.png",
+					"images/home/messageCount.png"
 				],
 				"refer": [
 					"view/registration/index.html",
@@ -499,7 +504,8 @@
 					"fonts/mui.ttf",
 					"images/loginRegister/iPhone.png",
 					"css/mui.min.css",
-					"css/common/common.css"
+					"css/common/common.css",
+					null
 				],
 				"refer": [
 					"view/home/index.html",
@@ -989,7 +995,8 @@
 					"view/transfuse/myHistory.html",
 					"view/registration/myHistory.html",
 					"view/takeOut/takeOutHistoryList.html",
-					"view/dropIn/myHistory.html"
+					"view/dropIn/myHistory.html",
+					"view/userInfo/takeOutHistoryList.html"
 				],
 				"priority": 0
 			},
@@ -1023,6 +1030,21 @@
 					"images/dropIn/jindu4.png"
 				],
 				"refer": [],
+				"priority": 0
+			},
+			"view/userInfo/takeOutHistoryList.html": {
+				"resources": [
+					"css/registration/myHistory.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"fonts/mui.ttf",
+					"css/mui.min.css",
+					"css/userInfo/index.css",
+					"css/common/common.css"
+				],
+				"refer": [
+					"view/userInfo/storeListProgress.html"
+				],
 				"priority": 0
 			}
 		},
