@@ -96,7 +96,6 @@
 
 			function openWindow() {
 				var postData = plus.webview.currentWebview().data;
-				postData['registration_state'] = '未完成';
 				postData['user_registration_date'] = getNowFormatDate();
 				postData['user_appointment_date'] = localStorage.registrationTime.substring(0,10);
 				postData['user_appointment_time'] = localStorage.registrationTime.substring(11,19);

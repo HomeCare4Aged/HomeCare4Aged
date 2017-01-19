@@ -64,6 +64,12 @@
 					dataType: "json",
 					//成功获取数据赋值
 					success: function(data) {
+						if (data.data == 0) {
+							mui.alert('该天没有医生坐班');
+							plus.nativeUI.closeWaiting();
+							return;
+						}
+						console.log(JSON.stringify(data.data))
 						plus.nativeUI.closeWaiting();
 						var doc = document;
 						fragment = doc.createDocumentFragment();
