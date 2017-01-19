@@ -168,9 +168,14 @@
 					var h5 = document.getElementById('videoType');
 					h5.innerHTML = localStorage.videoIndexDataName;
 					console.log('！我的播放记录');
+					var postData ={};
+					postData['video_type_id'] = localStorage.videoIndexDataId;
+					postData['sender_id'] = localStorage.community_hospitals_id;
+					console.log('-----'+localStorage.community_hospitals_id);
 					mui.ajax({
-						type: 'GET',
-						url: SERVERURL + "AVideoInfo/getVideoInfoTypeList?video_type_id=" + localStorage.videoIndexDataId,
+						type: 'POST',
+						data: postData,
+						url: SERVERURL + "AVideoInfo/getVideoInfoTypeList",
 						dataType: "json",
 						timeout:20000,
 						//成功获取数据赋值

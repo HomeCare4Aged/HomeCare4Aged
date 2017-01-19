@@ -58,6 +58,12 @@
 					mui.fire(Scanner, 'refreshWeather');
 
 					//返回true，继续页面关闭逻辑
+
+					
+					if (!isNullStr(localStorage.storeListAgain)) {
+						var Scanner = plus.webview.getWebviewById(localStorage.storeListAgain);
+						mui.fire(Scanner, 'refresh');
+					}
 					return true;
 				},
 			});
