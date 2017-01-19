@@ -59,7 +59,15 @@ div{
 
 #g-span{
 	position:relative;
-    
 	color: white;
 	font-size:350%;
+}
+.spanCount{
+    position:absolute;
+	color: black;
+	float: right;
+	top: 0px;
+	right: 0px;
+	text-align: center;
+	font-size: 150%;
 }

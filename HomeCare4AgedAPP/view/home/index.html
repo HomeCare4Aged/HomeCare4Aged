@@ -19,7 +19,7 @@
 		<div class="mui-row">
 			<div class="mui-col-xs-6">
 				<button id="g-btn-registration" style=" background: url(../../images/home/registration.png);background-size:100% 100%" type="button" class="mui-btn g-home-btn" onclick="openWindow('../registration/index.html');">
-					<span id="registrationCount" style="margin-right: 0px;margin-top: -20px;float: right;" class=""></span>
+					<span id="registrationCount" class="spanCount"></span>
 					<div class="center">
 						<span id="g-span">挂号</span>
 					</div>
@@ -27,7 +27,7 @@
 			</div>
 			<div class="mui-col-xs-6">
 				<button id="g-btn-transfuse" style=" background: url(../../images/home/transfuse.png);background-size:100% 100%" type="button" class="mui-btn g-home-btn" onclick="openWindow('../transfuse/selectSeat.html');">
-					<span id="transfuseCount" style="margin-right: 0px;margin-top: -20px;float: right;" class=""></span>
+					<span id="transfuseCount" class="spanCount"></span>
 					<div class="center">
 						<span id="g-span">输液</span>
 					</div>
@@ -37,7 +37,7 @@
 		<div class="mui-row">
 			<div class="mui-col-xs-6">
 				<button id="g-btn-message" style=" background: url(../../images/home/message.png);background-size:100% 100%" type="button" class="mui-btn g-home-btn" onclick="openWindow('../message/index.html');">
-					<span id="messageCount" style="margin-right: 0px;margin-top: -20px;float: right;" class=""></span>
+					<span id="messageCount" class="spanCount"></span>
 					<div class="center">
 						<span id="g-span">通知</span>
 					</div>
@@ -45,7 +45,7 @@
 			</div>
 			<div class="mui-col-xs-6">
 				<button id="g-btn-video" style=" background: url(../../images/home/video.png);background-size:100% 100%" type="button" class="mui-btn g-home-btn" onclick="openWindow('../video/index.html');">
-					<span id="videoCount" style="margin-right: 0px;margin-top: -20px;float: right;" class=""></span>
+					<span id="videoCount" class="spanCount"></span>
 					<div class="center">
 						<span id="g-span">视频</span>
 					</div>
@@ -55,7 +55,7 @@
 		<div class="mui-row">
 			<div class="mui-col-xs-6">
 				<button id="g-btn-takeOut" style=" background: url(../../images/home/takeOut.png);background-size:100% 100%" type="button" class="mui-btn g-home-btn" onclick="openWindow('../takeOut/index.html');">
-					<span id="takeOutCount" style="margin-right: 0px;margin-top: -20px;float: right;" class=""></span>
+					<span id="takeOutCount" class="spanCount"></span>
 					<div class="center">
 						<span id="g-span">外卖</span>
 					</div>
@@ -63,7 +63,7 @@
 			</div>
 			<div class="mui-col-xs-6">
 				<button id="g-btn-dropIn" style=" background: url(../../images/home/dropIn.png);background-size:100% 100%" type="button" class="mui-btn g-home-btn" onclick="openWindow('../dropIn/index.html');">
-					<span id="dropInCount" style="margin-right: 0px;margin-top: -20px;float: right;" class=""></span>
+					<span id="dropInCount" class="spanCount"></span>
 					<div class="center">
 						<span id="g-span">上门</span>
 					</div>
@@ -258,6 +258,14 @@
 						plus.nativeUI.closeWaiting();
 						console.log(JSON.stringify(data.data));
 						var registration = data.data.registration;
+						
+						var spanList = document.getElementsByClassName('spanCount');
+						mui.each(spanList,function (i) {
+							spanList[i].style.height = (document.documentElement.clientWidth / 2)/497*110-1+'px';
+							spanList[i].style.width = (document.documentElement.clientWidth / 2)/497*110-1+'px';
+							spanList[i].style.lineHeight = (document.documentElement.clientWidth / 2)/497*110-1+'px';
+						});
+						
 						if(registration != 0) {
 							document.getElementById('g-btn-registration').style.background = 'url(../../images/home/registrationCount.png)';
 							document.getElementById('g-btn-registration').style.backgroundSize = '100% 100%';
