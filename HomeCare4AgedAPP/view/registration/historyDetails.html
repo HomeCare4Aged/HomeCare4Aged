@@ -75,7 +75,7 @@
 				var postData = {};
 				postData = JSON.parse(localStorage.resistationHistoryDetail);
 				console.log(JSON.stringify(postData));
-				if(postData.registration_state != '未完成') {
+				if(postData.registration_state != '未就诊') {
 					document.getElementById('g-li-delete').style.display = 'none';
 				}
 				var hospitalText = document.getElementById('hospitalText');

@@ -88,12 +88,14 @@
 				var mydate= new Date();
 				var transTimeHtml = document.getElementById("transTime");
 				var oldTime = (new Date(transTimeHtml.innerHTML)).getTime(); //得到所选择时间 的毫秒数  
+				console.log(oldTime);
 				var nowMillisecond =  Number(oldTime)+  Number(minutes*60*1000);//预计完成时间的毫秒数
 				var newTime = new Date(nowMillisecond); //预计完成的的普通格式时间
+				console.log(newTime.getDay());
 				var newHours = newTime.getHours();
 				var newMinutes = newTime.getMinutes();
 				var resTime = newHours+':'+newMinutes;//时间的上传格式
-//				console.log(newHours+':'+newMinutes);
+				console.log(newHours+':'+newMinutes);
 				
 				
 				var transTime = document.getElementById("transTime").innerHTML;
@@ -101,7 +103,7 @@
 				var postData = {};
 //				postData['user_transfusion_id'] = '0030';				 	  //输液信息内码
 				postData['community_user_id'] = localStorage.community_user_id;						  //输液用户内码
-				postData['community_hospitals_id'] = '0010';				  //医院内码
+				postData['community_hospitals_id'] = localStorage.community_hospitals_id;				  //医院内码
 				postData['user_appointment_date'] = transTime;                //预约时间 yyy/mmm/ddd
 				postData['user_appointment_time'] = userAppointmentTime;    //预约时间  hh/mm
 				postData['predict_finished_time'] = resTime;			  //预计完成时间

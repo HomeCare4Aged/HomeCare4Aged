@@ -107,7 +107,7 @@
 							li.setAttribute('money', data.data[i].registration_money);
 							li.residueCount = data.data[i].registration_number_left;
 							li.addEventListener('tap', function() {
-								if (li.residueCount == 0) {
+								if (li.residueCount <= 0) {
 									mui.alert('该医生挂号预约已满，不能预约');
 									return;
 								}
