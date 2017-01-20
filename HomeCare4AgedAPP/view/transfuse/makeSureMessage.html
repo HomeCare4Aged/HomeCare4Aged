@@ -89,10 +89,17 @@
 				var transTimeHtml = document.getElementById("transTime");
 				var oldTime = (new Date(transTimeHtml.innerHTML)).getTime(); //得到所选择时间 的毫秒数  
 				var nowMillisecond =  Number(oldTime)+  Number(minutes*60*1000);//预计完成时间的毫秒数
-				var newTime = new Date(nowMillisecond); //预计完成的的普通格式时间
-				var newHours = newTime.getHours();
-				var newMinutes = newTime.getMinutes();
-				var resTime = newHours+':'+newMinutes;//时间的上传格式
+//				console.log(transTimeHtml.innerHTML);
+				var timeArray =  transTimeHtml.innerHTML.split(" ");
+//				console.log(timeArray);
+				var hourArray = timeArray[1].split(':');
+				hourArray[0] = parseInt(hourArray[0])+ parseInt(minutes/60);
+				var resTime = timeArray[0] +' ' + hourArray[0]+':'+hourArray[1];
+				console.log(resTime);
+//				var newTime = new Date(nowMillisecond); //预计完成的的普通格式时间
+//				var newHours = newTime.getHours();
+//				var newMinutes = newTime.getMinutes();
+//				var resTime = newHours+':'+newMinutes;//时间的上传格式
 //				console.log(newHours+':'+newMinutes);
 				
 				

@@ -207,6 +207,7 @@
 								}
 								
 								h1.innerHTML = Math.abs(parseInt(dataAlready[i].user_appointment_time) -  parseInt(dataAlready[i].predict_finished_time))+"小时";
+								console.log(JSON.stringify(dataAlready[i]));
 								label.setAttribute("class", "gray-text");
 								label.innerHTML = dataAlready[i].user_appointment_date+' '+dataAlready[i].user_appointment_time;  
 //								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
