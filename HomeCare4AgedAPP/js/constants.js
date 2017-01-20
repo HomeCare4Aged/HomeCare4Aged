@@ -1,5 +1,6 @@
 //域名
 
+
 const SERVERURL = 'http://139.224.44.36/HomeCare4AgedPHP/index.php/Home/';
 const MESSAGEURL = 'http://139.224.44.36/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 

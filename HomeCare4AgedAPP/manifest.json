@@ -257,7 +257,8 @@
 					"images/home/drioInCount.png",
 					"images/home/transfuseCount.png",
 					"images/home/takeOutCount.png",
-					"images/home/messageCount.png"
+					"images/home/messageCount.png",
+					"images/home/videoCount.png"
 				],
 				"refer": [
 					"view/registration/index.html",
@@ -761,7 +762,8 @@
 					"css/userInfo/index.css",
 					"css/common/common.css",
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"images/loginRegister/search.png"
 				],
 				"refer": [],
 				"priority": 0
