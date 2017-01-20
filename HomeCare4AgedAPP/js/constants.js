@@ -3,6 +3,7 @@
 const SERVERURL = 'http://139.224.44.36/HomeCare4AgedPHP/index.php/Home/';
 const MESSAGEURL = 'http://139.224.44.36/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 
+
 //定义比例
 const SCALE = window.screen.width / 320;
 //定义首页图片比例
