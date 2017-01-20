@@ -334,7 +334,7 @@
 				getListCount();
 				
 				window.addEventListener('refreshWeather', function() {
-
+					document.getElementById('span-address').innerHTML = localStorage.community_user_address;
 					plus.navigator.setStatusBarBackground('#FFFFFF');
 					findWeather();
 					getListCount();

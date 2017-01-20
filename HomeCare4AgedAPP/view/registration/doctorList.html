@@ -105,7 +105,12 @@
 							h33.innerHTML = '剩余预约号：' + data.data[i].registration_number_left;
 							li.id = data.data[i].hospital_doctor_id;
 							li.setAttribute('money', data.data[i].registration_money);
+							li.residueCount = data.data[i].registration_number_left;
 							li.addEventListener('tap', function() {
+								if (li.residueCount == 0) {
+									mui.alert('该医生挂号预约已满，不能预约');
+									return;
+								}
 								console.log('=='+data.data[i].hospital_doctor_id);
 								console.log('li=='+this.id);
 								localStorage.open_registration_number = data.data[i].open_registration_number,
