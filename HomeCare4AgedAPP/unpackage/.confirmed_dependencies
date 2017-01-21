@@ -118,10 +118,12 @@
 			"images/takeOut/freight.png",
 			"css/takeOut/store.css",
 			"images/takeOut/box3.png",
-			"images/takeOut/box2.png"
+			"images/takeOut/box2.png",
+			"view/takeOut/progress.html"
 		],
 		"refer": [
-			"view/takeOut/orderForm.html"
+			"view/takeOut/orderForm.html",
+			"view/takeOut/progress.html"
 		]
 	},
 	"view/transfuse/index.html": {
@@ -273,7 +275,8 @@
 			"css/mui.min.css",
 			"css/common/common.css",
 			"images/registration/define.png",
-			"images/registration/waike.png"
+			"images/registration/waike.png",
+			"images/registration/pifuke.png"
 		],
 		"refer": [
 			"view/registration/myHistory.html",
@@ -712,7 +715,8 @@
 			"view/registration/myHistory.html",
 			"view/takeOut/takeOutHistoryList.html",
 			"view/dropIn/myHistory.html",
-			"view/userInfo/takeOutHistoryList.html"
+			"view/userInfo/takeOutHistoryList.html",
+			"view/userInfo/myHistory.html"
 		]
 	},
 	"view/userInfo/storeListProgress.html": {
@@ -755,6 +759,17 @@
 		],
 		"refer": [
 			"view/userInfo/storeListProgress.html"
+		]
+	},
+	"view/userInfo/myHistory.html": {
+		"resources": [
+			"css/registration/myHistory.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
+			"css/common/common.css"
 		]
 	}
 }
