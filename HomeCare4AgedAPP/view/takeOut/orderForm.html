@@ -179,6 +179,7 @@
 							localStorage.storeListData = JSON.stringify(data.data);
 							console.log("aaaaaaaaaaaaaaaaaaaaaaaaaa       "+JSON.stringify(data.data));
 							if(data.status == 1){
+								localStorage.store_list_id=data.store_list_id;
 								mui.openWindow({
 									url: '../takeOut/finish.html',
 									extras: {

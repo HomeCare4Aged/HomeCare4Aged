@@ -162,6 +162,46 @@
 				container_list_food.appendChild(fragment);
 
 				document.getElementById('makeSure').addEventListener('tap', function() {
+					if(document.getElementById('makeSure').innerHTML == '取消订单') {
+						var btnArray = ['否', '是'];
+						mui.confirm('是否删除订单', function(e) {
+							if(e.index == 1) {
+								var postData = {};
+								postData['store_list_id'] = localStorage.store_list_id;
+								postData['store_list_state_id'] = '0005';
+								console.log(postData['store_list_id']);
+								mui.ajax({
+									type: 'POST',
+									url: SERVERURL + "SStoreListInfo/upDataStoreListStatus",
+									data: postData,
+									dataType: "json",
+									timeout: 20000,
+									success: function(data) {
+										if(data.data == 1) {
+											mui.toast('删除成功');
+											var Scanner = plus.webview.getWebviewById(localStorage.takeOutId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refresh');
+						mui.openWindow({
+							url: '../takeOut/index.html',
+						});
+											console.log(JSON.stringify(data))
+										} else {
+											mui.toast('删除失败');
+										}
+									},
+									error: function(xhr, type, errorThrown) {
+										plus.nativeUI.closeWaiting();
+										console.log(type);
+										mui.toast('网络连接失败');
+									}
+								});
+
+							} else {
+								return;
+							}
+						});
+					}
 					if(document.getElementById('makeSure').innerHTML == '确认收货') {
 						var btnArray = ['否', '是'];
 						mui.confirm('您确认收到货物吗？', '提示', btnArray, function(e) {
@@ -214,48 +254,94 @@ console.log('aaaa');
 				
 
 			});
-			
-			setInterval(function() {
-					var storeListData = JSON.parse(localStorage.storeListData);
-					console.log(storeListData);
-//					var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
-					var postData = {};
-					postData['store_list_id'] = storeListData.order.store_list_id;
-					mui.ajax({
-						type: 'POST',
-						data: postData,
-						url: SERVERURL + 'SStoreListInfo/getStoreListState',
-						dataType: "json",
-						timeout:20000,
-						//成功获取数据赋值
-						success: function(data) {
-							console.log(JSON.stringify(data.data.store_list_state_id));
-							if(data.data.store_list_state_id == '0001') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
-								document.getElementById('g-text-status').innerHTML = '等待商家接单';
-								console.log('0001');
-							} else if(data.data.store_list_state_id == '0002') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress2.png';
-								document.getElementById('g-text-status').innerHTML = '商家已接单';
-								console.log('0002')
-							} else if(data.data.store_list_state_id == '0003') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress3.png';
-								document.getElementById('g-text-status').innerHTML = '正在配送...';
-								console.log('0003');
-							} else if(data.data.store_list_state_id == '0004') {
-								document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
-								document.getElementById('g-text-status').innerHTML = '订单已完成';
-								console.log('0004');
-							}
-							 else if(data.data.store_list_state_id == '0005') {
-								document.getElementById('g-img-status').src = '';
-								document.getElementById('g-text-status').innerHTML = '';
-								console.log('0005');
-							}
-						},
-						error: function(xhr, type, errorThrown) {}
-					});
-				}, 60000);
+			var stateInter = setInterval(getState, 60000);
+			getState();
+
+			function getState() {
+				var storeListData = JSON.parse(localStorage.storeListData);
+				console.log(storeListData);
+				var postData = {};
+				postData['store_list_id'] = storeListData.order.store_list_id;
+				mui.ajax({
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + 'SStoreListInfo/getStoreListState',
+					dataType: "json",
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						console.log(JSON.stringify(data.data.store_list_state_id));
+						if(data.data.store_list_state_id == '0001') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
+							document.getElementById('g-text-status').innerHTML = '等待商家接单';
+							console.log('0001');
+							document.getElementById('makeSure').innerHTML = '取消订单';
+						} else if(data.data.store_list_state_id == '0002') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress2.png';
+							document.getElementById('g-text-status').innerHTML = '商家已接单';
+							document.getElementById('makeSure').innerHTML = '确认收货';
+							console.log('0002')
+						} else if(data.data.store_list_state_id == '0003') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress3.png';
+							document.getElementById('g-text-status').innerHTML = '正在配送...';
+							document.getElementById('makeSure').innerHTML = '确认收货';
+							console.log('0003');
+						} else if(data.data.store_list_state_id == '0004') {
+							document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
+							document.getElementById('g-text-status').innerHTML = '订单已完成';
+							document.getElementById('makeSure').innerHTML = '再来一单';
+							console.log('0004');
+							clearInterval(stateInter);
+						} else if(data.data.store_list_state_id == '0005') {
+							document.getElementById('g-img-status').src = '';
+							document.getElementById('g-text-status').innerHTML = '';
+							console.log('0005');
+						}
+					},
+					error: function(xhr, type, errorThrown) {}
+				});
+			}
+//			setInterval(function() {
+//					var storeListData = JSON.parse(localStorage.storeListData);
+//					console.log(storeListData);
+////					var serviceDetailData = JSON.parse(localStorage.serviceDetailData);
+//					var postData = {};
+//					postData['store_list_id'] = storeListData.order.store_list_id;
+//					mui.ajax({
+//						type: 'POST',
+//						data: postData,
+//						url: SERVERURL + 'SStoreListInfo/getStoreListState',
+//						dataType: "json",
+//						timeout:20000,
+//						//成功获取数据赋值
+//						success: function(data) {
+//							console.log(JSON.stringify(data.data.store_list_state_id));
+//							if(data.data.store_list_state_id == '0001') {
+//								document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
+//								document.getElementById('g-text-status').innerHTML = '等待商家接单';
+//								console.log('0001');
+//							} else if(data.data.store_list_state_id == '0002') {
+//								document.getElementById('g-img-status').src = '../../images/takeOut/progress2.png';
+//								document.getElementById('g-text-status').innerHTML = '商家已接单';
+//								console.log('0002')
+//							} else if(data.data.store_list_state_id == '0003') {
+//								document.getElementById('g-img-status').src = '../../images/takeOut/progress3.png';
+//								document.getElementById('g-text-status').innerHTML = '正在配送...';
+//								console.log('0003');
+//							} else if(data.data.store_list_state_id == '0004') {
+//								document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
+//								document.getElementById('g-text-status').innerHTML = '订单已完成';
+//								console.log('0004');
+//							}
+//							 else if(data.data.store_list_state_id == '0005') {
+//								document.getElementById('g-img-status').src = '';
+//								document.getElementById('g-text-status').innerHTML = '';
+//								console.log('0005');
+//							}
+//						},
+//						error: function(xhr, type, errorThrown) {}
+//					});
+//				}, 60000);
 		</script>
 
 	</body>

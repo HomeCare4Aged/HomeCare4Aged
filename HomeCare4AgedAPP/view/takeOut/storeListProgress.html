@@ -168,7 +168,7 @@
 				document.getElementById('makeSure').addEventListener('tap', function() {
 					if(document.getElementById('makeSure').innerHTML == '取消订单') {
 						var btnArray = ['否', '是'];
-						mui.confirm('是否删除订单', btnArray, function(e) {
+						mui.confirm('是否删除订单', function(e) {
 							if(e.index == 1) {
 								var postData = {};
 								postData['store_list_id'] = takeOutHistoryDetails.order['store_list_id'];
