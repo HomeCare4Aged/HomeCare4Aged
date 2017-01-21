@@ -83,7 +83,6 @@
 				
 				var postData = {};
 				postData = JSON.parse(localStorage.transFuseHistoryDetails);
-				console.log(JSON.stringify(postData));
 				if(postData.transfusion_state != '未完成') {
 					document.getElementById('zz-btn-deleteBtn').style.display = 'none';
 				}

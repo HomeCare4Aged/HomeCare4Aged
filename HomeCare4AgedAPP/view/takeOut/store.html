@@ -18,6 +18,13 @@
 				top: 10% !important;
 				left: 10%!important;
 			}
+			
+			#bottomPopover {
+				position: fixed;
+				top: 15% !important;
+				left: 10%!important;
+				height: 70%;
+			}
 		</style>
 	</head>
 
@@ -114,9 +121,28 @@
 					</div>
 				</div>
 			</div>
+			<div id="bottomPopover" class="mui-popover">
+				<h1 style="text-align: center;">购物车</h1>
+				<!--<img id="bottomPopoverImg" style="width: 50px; height: 50px; "/>-->
+				<!--<div class="mui-row marginLeftRight">
+					<div class="mui-col-xs-7">
+						<h4 class="gray-text" id="bottomPopoverStoreName">黄焖鸡</h4>
+					</div>
+
+					<div class="mui-col-xs-3">
+						<h4 id="bottomPopoverCount">x1</h4>
+					</div>
+					<div class="mui-col-xs-2 mui-text-right">
+						<h4 style="color: red;" id="bottomPopoverStorePtice">￥20</h4>
+					</div>
+				</div>-->
+			</div>
 			<div class="mui-col-xs-12" style="height: 10%;position: fixed;bottom: 0px; background:red;">
 				<div style="height: 10%;position: fixed;bottom: 0px; background: rgb(51,51,51);" class="mui-col-xs-7">
-					<img src="../../images/takeOut/box1.png" style="width: 53px;margin-left: 15px;margin-top: 3%;" id="zz-img-box" />
+					<a href="#bottomPopover" id="a-bottomPopover">
+						<img src="../../images/takeOut/box1.png" style="width: 53px;margin-left: 15px;margin-top: 3%;" id="zz-img-box" />
+					</a>
+
 					<span style="color: black;margin-left: -10px; position: fixed; background-color: white; display: none;" class="mui-badge mui-badge-primary" id="zz-span-count">1</span>
 					<span style="color: white;bottom: 3%;left: 22%; position: fixed;font-size: 19px;font-weight: bold;display: none;" id="zz-span-commodityMoneyAll"></span>
 				</div>
@@ -143,7 +169,6 @@
 				//				var is_open = '0';
 				localStorage.is_chanceFood = '0';
 
-				console.log('jinlaile');
 				mui.back = function() {
 					if(localStorage.is_chanceFood == '1') {
 						var btnArray = ['返回', '留下', ];
@@ -199,6 +224,7 @@
 
 				var matchData;
 				var store_carriage;
+				var storeName;
 				postData = {};
 				postData['store_shop_id'] = sData.store_shop_id;
 				plus.nativeUI.showWaiting();
@@ -207,11 +233,11 @@
 					url: SERVERURL + "SStoreGoodsInfo/getStoreGoodsInfo",
 					data: postData,
 					dataType: "json",
-					timeout:20000,
+					timeout: 20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
-						console.log('aaaaaa'+JSON.stringify(data));
+						console.log('aaaaaa' + JSON.stringify(data));
 						console.log(JSON.stringify(data.classify));
 						console.log(JSON.stringify(data.matchData));
 						matchData = data.matchData;
@@ -248,28 +274,40 @@
 
 								ul = doc.createElement("ul");
 								ul.setAttribute("class", "mui-table-view mui-table-view-chevron");
+
+								//								
 								liContent = doc.createElement("li");
 								liContent.setAttribute("class", "mui-table-view-cell");
 								liContent.setAttribute("style", "padding:10px 25px;");
+								liContent.id = data.data[name][i]['store_goods_id'] + 'liContent';
+								liContent.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
+								aLi = doc.createElement("a");
+								aLi.setAttribute("href", "#middlePopover");
+								aLi.setAttribute("style", "color: black; position: absolute;");
+								aLi.id = data.data[name][i]['store_goods_id'] + 'aLi';
+								aLi.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
+								//								aLi.innerHTML = 'aaaaaaa';
 								divContent = doc.createElement("div");
 								divContent.setAttribute("class", "mui-row mui-col-xs-12");
 								divImg = doc.createElement("div");
-								divImg.setAttribute("class", "mui-col-xs-1");
-
+								divImg.setAttribute("class", "mui-col-xs-2");
+								//divImg.setAttribute("style", "background-color: orange;");
 								aImg = doc.createElement("a");
 								aImg.setAttribute("href", "#middlePopover");
 								aImg.id = data.data[name][i]['store_goods_id'] + 'aImg';
+
 								imgShow = doc.createElement("img");
 								imgShow.setAttribute("src", data.data[name][i]['store_goods_picture']);
 								aImg.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
 								imgShow.setAttribute("style", "width: 50px; height: 50px;");
 								divDescribe = doc.createElement("div");
-								divDescribe.setAttribute("class", "mui-col-xs-7");
-								divDescribe.setAttribute("style", "margin-left: 40px;margin-top: -5px;");
+								//								divDescribe.setAttribute("class", "mui-col-xs-9");
+								divDescribe.setAttribute("style", "margin-left: 10px;margin-top: -5px; ");
 
 								h4Name = doc.createElement("h4");
 								h4Name.innerHTML = data.data[name][i]['store_goods_name'];
 								h4Name.id = data.data[name][i]['store_goods_id'] + 'foodName';
+
 								//								h4Name.setAttribute('attr',data.data[name][i]['store_goods_name']);
 								//								console.log(h4Name.innerHTML);
 								h4Sale = doc.createElement("h4");
@@ -283,7 +321,7 @@
 								spanMoney.innerHTML = "￥" + data.data[name][i]['store_goods_price'] + "元";
 
 								divAddOrReduce = doc.createElement("div");
-								divAddOrReduce.setAttribute("class", "mui-col-xs-2");
+								//								divAddOrReduce.setAttribute("class", "mui-col-xs-2");
 								divAddOrReduce.setAttribute("style", "float: right;width: 50px;");
 								spanCopies = doc.createElement("span");
 								spanCopies.setAttribute("style", "float: left;");
@@ -305,8 +343,8 @@
 								imgReduce.id = data.data[name][i]['store_goods_id'] + 'reduce';
 								imgReduce.setAttribute("count", "0");
 
-								aImg.addEventListener("tap", function() {
-									var id = this.id.replace('aImg', "");
+								aLi.addEventListener("tap", function() {
+									var id = this.id.replace('aLi', "");
 									console.log('点击展示图');
 									console.log(aImg.id);
 									zz_h4_popoverName.innerHTML = document.getElementById(id + 'foodName').innerHTML;
@@ -332,11 +370,14 @@
 								//								a.appendChild(imgPull);
 								liHeader.appendChild(ul);
 								ul.appendChild(liContent);
+								//								aLi.appendChild(liContent);
 								liContent.appendChild(divContent);
+
 								divContent.appendChild(divImg);
-								divImg.appendChild(aImg);
-								aImg.appendChild(imgShow);
-								divContent.appendChild(divDescribe);
+								divImg.appendChild(imgShow);
+								//								aImg.appendChild(imgShow);
+								divContent.appendChild(aLi);
+								aLi.appendChild(divDescribe);
 								divDescribe.appendChild(h4Name);
 								divDescribe.appendChild(h4Sale);
 								h4Sale.appendChild(spanMoney);
@@ -364,10 +405,74 @@
 				localStorage.commodityMoneyAll = 0;
 				localStorage.storeFoodData = storeFoodData;
 
+				var divContent;
+				var divBottomStoreName;
+				var h4BottomPopoverStoreName;
+				var divBottomCount;
+				var h4BottomPopoverCount;
+				var divBottomPopoverStorePrice;
+				var h4BottomPopoverStorePrice;
+				
+				document.getElementById('a-bottomPopover').addEventListener('tap', function() {
+					
+					var fragment2 = document.createDocumentFragment();
+					h1ShoppingCart = document.createElement('h1');
+					h1ShoppingCart.innerHTML = '购物车';
+					h1ShoppingCart.setAttribute("style","text-align: center;");
+					fragment2.appendChild(h1ShoppingCart);
+					if(storeCount == 0){
+						h3Tips = document.createElement('h3');
+						h3Tips.innerHTML = '购物车里还没有商品~快去选购吧~';
+						fragment2.appendChild(h3Tips);	
+						}
+					
+					
+					var bottomPopover = document.getElementById("bottomPopover");
+					var childs = bottomPopover.childNodes;
+					for(var i = childs.length - 1; i >= 0; i--) {
+						bottomPopover.removeChild(childs[i]);
+					}
+
+					for(var p in storeFoodData) {
+						if(storeFoodData[p] == '0') {
+							delete storeFoodData[p];
+							continue;
+						} else {
+							
+							divContent = document.createElement('div');
+							divContent.setAttribute('class', "mui-row marginLeftRight");
+							divBottomStoreName = document.createElement('div');
+							divBottomStoreName.setAttribute('class', "mui-col-xs-7");
+							h4BottomPopoverStoreName = document.createElement('h4');
+							h4BottomPopoverStoreName.setAttribute('class', "gray-text");
+							h4BottomPopoverStoreName.innerHTML = matchData[p]['name'];
+							divBottomCount = document.createElement('div');
+							divBottomCount.setAttribute('class', "mui-col-xs-3");
+							h4BottomPopoverCount = document.createElement('h4');
+							h4BottomPopoverCount.innerHTML = '×' + storeFoodData[p];
+							divBottomPopoverStorePrice = document.createElement('div');
+							divBottomPopoverStorePrice.setAttribute('class', "mui-col-xs-2 mui-text-right");
+							h4BottomPopoverStorePrice = document.createElement('h4');
+							h4BottomPopoverStorePrice.setAttribute('style', "color: red;");
+							h4BottomPopoverStorePrice.innerHTML = storeFoodData[p] * matchData[p]['price'];
+
+							divContent.appendChild(divBottomStoreName);
+							divBottomStoreName.appendChild(h4BottomPopoverStoreName);
+							divContent.appendChild(divBottomCount);
+							divBottomCount.appendChild(h4BottomPopoverCount);
+							divContent.appendChild(divBottomPopoverStorePrice);
+							divBottomPopoverStorePrice.appendChild(h4BottomPopoverStorePrice);
+							
+							fragment2.appendChild(divContent);
+							
+
+						}
+					}
+					document.getElementById('bottomPopover').appendChild(fragment2);
+				});
+
 				function reduce(id) {
-					
-					
-					
+
 					console.log(id);
 					var id = id.replace('reduce', "");
 					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) - 1);
@@ -375,8 +480,8 @@
 					storeCount--;
 					console.log()
 					document.getElementById('zz-span-count').innerHTML = storeCount;
-					if(storeCount<10){
-						document.getElementById('zz-span-count').setAttribute('style','color: black;margin-left: -10px; position: fixed; background-color: white;');
+					if(storeCount < 10) {
+						document.getElementById('zz-span-count').setAttribute('style', 'color: black;margin-left: -10px; position: fixed; background-color: white;');
 					}
 					document.getElementById(id + 'span').setAttribute('count', count);
 
@@ -418,6 +523,9 @@
 						document.getElementById(id + 'span').innerHTML = '';
 					}
 
+					console.log('----------------------------' + JSON.stringify(matchData));
+					//					document.getElementById('bottomPopoverStoreName').innerHTML = matchData[storeName].name;
+					//					console.log(storeName);
 				}
 
 				//添加菜品
@@ -430,21 +538,21 @@
 					console.log(id);
 					storeCount++;
 					zz_img_box.setAttribute("src", "../../images/takeOut/box2.png");
-					zz_img_box.setAttribute("style","width: 53px;margin-left: 15px;margin-top: 3%;");
+					zz_img_box.setAttribute("style", "width: 53px;margin-left: 15px;margin-top: 3%;");
 					document.getElementById('zz-span-count').style.display = '';
 					document.getElementById('zz-span-count').innerHTML = storeCount;
-					if(storeCount>9){
-						document.getElementById('zz-span-count').setAttribute('style','color: black;margin-left: -15px; position: fixed; background-color: white;');
+					if(storeCount > 9) {
+						document.getElementById('zz-span-count').setAttribute('style', 'color: black;margin-left: -15px; position: fixed; background-color: white;');
 					}
 					var count = String(parseInt(document.getElementById(id + 'span').getAttribute('count')) + 1);
-					
+
 					console.log('===========' + document.getElementById(id + 'span').getAttribute('count'));
 
 					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'));
 					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
 					console.log(localStorage.commodityMoneyAll);
 
-					console.log('count'+count);
+					console.log('count' + count);
 					localStorage.storeFoodData[id] = count;
 
 					document.getElementById('zz-span-commodityMoneyAll').style.display = '';
@@ -476,6 +584,7 @@
 						document.getElementById(id + '').innerHTML = '';
 					}
 
+					console.log('+++++++++++++++++++++++++' + JSON.stringify(matchData));
 				}
 
 				zz_div_statrtPrice.addEventListener('tap', function() {
