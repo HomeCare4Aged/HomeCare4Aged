@@ -8,6 +8,7 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/transfuse/makeSureMessage.css" />
+		
 	</head>
 
 	<body>
@@ -108,7 +109,7 @@
 				var postData = {};
 //				postData['user_transfusion_id'] = '0030';				 	  //输液信息内码
 				postData['community_user_id'] = localStorage.community_user_id;						  //输液用户内码
-				postData['community_hospitals_id'] = '0010';				  //医院内码
+				postData['community_hospitals_id'] = localStorage.community_hospitals_id;				  //医院内码
 				postData['user_appointment_date'] = transTime;                //预约时间 yyy/mmm/ddd
 				postData['user_appointment_time'] = userAppointmentTime;    //预约时间  hh/mm
 				postData['predict_finished_time'] = resTime;			  //预计完成时间

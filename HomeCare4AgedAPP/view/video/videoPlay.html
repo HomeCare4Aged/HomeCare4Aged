@@ -22,7 +22,7 @@
 			<ul class="mui-table-view" id="list_ul">
 				<div id="videoPlay" class="zy_media">
 					<video id="g-video" poster="">
-						<source id="g-videoPlay" src=""> </source>
+						<source id="g-videoPlay" src="" type="video/mp4"> </source>
 					</video>
 				</div>
 				<li class=" mui-table-view-cell mui-media">
@@ -68,7 +68,7 @@
 				//				video.setAttribute("height", document.documentElement.clientWidth * VIDEOSCALE);
 				//				var list = document.getElementById("list_ul");
 				//				list.style.top = document.documentElement.clientWidth * VIDEOSCALE+'px';
-				
+
 				console.log(localStorage.videoId);
 
 				var h5 = document.getElementById('sign');
@@ -99,9 +99,16 @@
 						h1 = document.getElementById("introduce");
 						h1.innerHTML = "简介：" + data.data.video_introduction;
 
-						document.getElementById('g-video').poster = data.data.video_picture;
 						document.getElementById('g-videoPlay').src = data.data.video_url;
-						zymedia('video');
+						zymedia('video', {
+							success: function() {
+								document.getElementById('g-video').poster = data.data.video_picture;
+								console.log('成功')
+							},
+							error: function() {
+								console.log('失败')
+							}
+						});
 
 					},
 					error: function(xhr, type, errorThrown) {

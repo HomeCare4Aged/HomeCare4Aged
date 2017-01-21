@@ -38,7 +38,7 @@
 		</div>
 		<div class="zz-div-next">
 			<a href="register.html" class="zz-a-register" style="text-decoration: underline;">没有账号？免费注册</a>
-			<button type="button" class="zz-btn-next" onclick="openWindow('../home/index.html');">下一步</button>
+			<button type="button" class="zz-btn-next" onclick="openWindow('../home/index.html');">登录</button>
 		</div>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
@@ -123,8 +123,7 @@
 							var hospitalData = data.hospitalData;
 							localStorage.hospital_business_begintime = hospitalData.hospital_business_begintime;
 							localStorage.hospital_business_endtime = hospitalData.hospital_business_endtime;
-							console.log(localStorage.hospital_business_begintime);
-							console.log(localStorage.hospital_business_endtime);
+							console.log(JSON.stringify(hospitalData));
 							
 							localStorage.community_user_id = data.data.community_user_id;
 							console.log(localStorage.community_user_id);

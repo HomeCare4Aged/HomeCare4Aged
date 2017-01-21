@@ -177,6 +177,11 @@
 					postData['community_user_phone'] = document.getElementById('input-phoneNum').value;
 				}
 				if(document.getElementById('input-home').value != localStorage.community_user_address) {
+					if (isNullStr(document.getElementById('input-home').value)) {
+						mui.alert('请输入地址!');
+						plus.nativeUI.closeWaiting();
+						return;
+					}
 					//					if(localStorage.isOkAddress != '1') {
 					//						var myGeo = new BMap.Geocoder();
 					//						// 将地址解析结果显示在地图上,并调整地图视野
@@ -399,7 +404,7 @@
 
 				document.getElementById("li-sex").addEventListener('tap', function() {
 					document.activeElement.blur();
-					var btnArray = ['男', '女', '取消'];
+					var btnArray = ['男', '女'];
 					mui.confirm('请选择您的性别', '', btnArray, function(e) {
 						if(e.index == 0) {
 							localStorage.userSex = "男";
@@ -409,8 +414,6 @@
 							localStorage.userSex = "女";
 							document.getElementById('div-sex').style.display = '';
 							document.getElementById('input-sex').innerHTML = localStorage.userSex;
-						} else {
-
 						}
 					});
 				});

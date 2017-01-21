@@ -223,4 +223,13 @@ body {
 
     -webkit-font-smoothing: antialiased;
 }
-/*>>>>>>> 1a496143b3138295d58194b5d2bb8ff2f0157bc3*/
+.g-deleteOrder {
+	margin-top: 0px;
+	margin-bottom: 30px;
+	width: 100%;
+	height: 70px;
+	font-size: 40px;
+	color: white;
+	border: 0px;
+	background: red;
+}

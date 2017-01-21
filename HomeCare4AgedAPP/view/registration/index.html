@@ -8,7 +8,12 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/registration/index.css" />
-
+		<style>
+			.marginLeftRight {
+				margin-left: 10px;
+				margin-right: 25px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -18,7 +23,7 @@
 
 			<div id="myHistory" class="mui-bar top60px " style="height: 70px;">
 				<h5 class="black-text" style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-left: 15px;">我的挂号历史</h5>
-				<img src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -30px;margin-right: 10px;"/>
+				<img src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -30px;margin-right: 10px;" />
 			</div>
 			<div class="mui-bar top110px " style="height: 70px;">
 				<h5 class="m_gray_text" style="font-size: 30px; margin-top: 20px; font-weight: normal; margin-left: 15px;">选择科室</h5>
@@ -43,7 +48,7 @@
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 				beforeback: function() {
-		//获得你要前往页面的webview id
+					//获得你要前往页面的webview id
 					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
 
 					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
@@ -55,7 +60,7 @@
 			});
 			//获取科室列表
 			mui.plusReady(function() {
-				
+
 				plus.nativeUI.showWaiting();
 				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refresh', function() {
@@ -67,7 +72,7 @@
 					type: 'GET',
 					url: SERVERURL + "HHospitalOfficeList/selectList?community_hospitals_id=" + community_hospitals_id,
 					dataType: "json",
-					timeout:20000,
+					timeout: 20000,
 					//成功获取数据赋值
 					success: function(data) {
 						plus.nativeUI.closeWaiting();
@@ -84,25 +89,25 @@
 							div = doc.createElement("div");
 							img = doc.createElement("img");
 							h1 = doc.createElement("h1");
-//							h1.setAttribute("style","margin-left: 70px;")
+							//							h1.setAttribute("style","margin-left: 70px;")
 							li.setAttribute("class", "mui-table-view-cell mui-media");
 							div.setAttribute("class", "marginLeftRight");
 							img.setAttribute("class", "mui-media-object mui-pull-left");
-							if(data.data[i].hospital_office_id == '0') {
-								img.setAttribute("src", "../../images/registration/waike.png");
-							} else if(data.data[i].hospital_office_id == '1') {
-								img.setAttribute("src", "../../images/registration/neike.png");
-							} else if(data.data[i].hospital_office_id == '2') {
-								img.setAttribute("src", "../../images/registration/pifuke.png");
-							} else if(data.data[i].hospital_office_id == '3') {
-								img.setAttribute("src", "../../images/registration/wuguanke.png");
-							}
-							//							else if(data.data[i].hospital_office_id =='0004'){
-							//								img.setAttribute("src","../../images/small.png");
+							//							if(data.data[i].hospital_office_id == '0') {
+							//								img.setAttribute("src", "../../images/registration/waike.png");
+							//							} else if(data.data[i].hospital_office_id == '1') {
+							//								img.setAttribute("src", "../../images/registration/neike.png");
+							//							} else if(data.data[i].hospital_office_id == '2') {
+							//								img.setAttribute("src", "../../images/registration/pifuke.png");
+							//							} else if(data.data[i].hospital_office_id == '3') {
+							//								img.setAttribute("src", "../../images/registration/wuguanke.png");
 							//							}
-							else {
-								img.setAttribute("src", "../../images/registration/define.png");
-							}
+							//							//							else if(data.data[i].hospital_office_id =='0004'){
+							//							//								img.setAttribute("src","../../images/small.png");
+							//							//							}
+							//							else {
+							img.setAttribute("src", "../../images/registration/define.png");
+							//							}
 							h1.setAttribute("class", "black-text")
 							h1.innerHTML = data.data[i].hospital_office_name;
 							li.setAttribute("name", data.data[i].hospital_office_name);

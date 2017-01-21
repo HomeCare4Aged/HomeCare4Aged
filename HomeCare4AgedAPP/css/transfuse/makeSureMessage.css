@@ -8,7 +8,7 @@ html body{
 	font-size: 20px;
 	margin-top: 10px; 
 	font-weight: bold; 
-	margin-left: 15px;
+	margin-left: 0px;
 	color: rgb(115,115,115);
 	
 }
@@ -22,7 +22,7 @@ html body{
 .MSM-black-text{
 	font-size: 30px;
 	margin-top: 15px; 
-	margin-left: 15px;
+	margin-left: 0px;
 }
 .marginLeftRight{
 	margin-left:25px;

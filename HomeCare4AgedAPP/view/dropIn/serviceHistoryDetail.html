@@ -83,35 +83,51 @@
 		<div class="mui-row marginLeftRight " style="background: white;">
 			<button id="g-btn" type="button" class="zz-btn-next">联系商家</button>
 		</div>
+		<div class="mui-row marginLeftRight " style="background: white;">
+			<button id="g-btn-deletOrdere" style="display: none;" type="button" class="g-deleteOrder">取消订单</button>
+		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
-//				beforeback: function() {
-//					//获得你要前往页面的webview id
-//					var Scanner = plus.webview.getWebviewById(localStorage.homeWebId);
-//					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-//					mui.fire(Scanner, 'refreshWeather');
-//					mui.openWindow({
-//						url: '../home/index.html',
-//					});
-//				},
+				swipeBack: true,  //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refresh');
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
 			});
 			mui.plusReady(function() {
-				
-				
+
 				var dropInHistoryDetails = JSON.parse(localStorage.dropInHistoryDetails);
 				console.log('sssssssssssss' + JSON.stringify(dropInHistoryDetails));
-				
-				if(dropInHistoryDetails.order['store_list_state_id'] == '0004'){
+
+				if(dropInHistoryDetails.order['store_list_state_id'] == '0001') {
+					document.getElementById('g-btn-deletOrdere').style.display = '';
+					document.getElementById('g-img-status').src = '../../images/dropIn/jindu1.png';
+					document.getElementById('g-text-status').innerHTML = '等待商家接单';
+				}
+				if(dropInHistoryDetails.order['store_list_state_id'] == '0002') {
+					document.getElementById('g-img-status').src = '../../images/dropIn/jindu2.png';
+					document.getElementById('g-text-status').innerHTML = '商家已接单';
+				}
+				if(dropInHistoryDetails.order['store_list_state_id'] == '0003') {
+					document.getElementById('g-img-status').src = '../../images/dropIn/jindu3.png';
+					document.getElementById('g-text-status').innerHTML = '正在赶来';
+				}
+
+				if(dropInHistoryDetails.order['store_list_state_id'] == '0004') {
 					document.getElementById('g-img-status').src = '../../images/dropIn/jindu4.png';
 					document.getElementById('g-text-status').innerHTML = '服务已完成';
 				}
-				
+
 				plus.navigator.setStatusBarBackground('#30B69C');
 				document.getElementById('g-text-namePhone').innerHTML = dropInHistoryDetails.order['community_user_name'] + " " + dropInHistoryDetails.order['community_user_phone'];
 				document.getElementById('g-text-address').innerHTML = dropInHistoryDetails.order['community_user_address'];
-				document.getElementById('g-text-shopName').innerHTML = dropInHistoryDetails.order['store_shop_name']+"哈哈哈";
+				document.getElementById('g-text-shopName').innerHTML = dropInHistoryDetails.order['store_shop_name'] + "哈哈哈";
 				document.getElementById('g-text-service').innerHTML = dropInHistoryDetails.detail[0]['store_service_name'];
 				document.getElementById('g-text-servicePrice').innerHTML = dropInHistoryDetails.detail[0]['store_service_price'] + '元' + dropInHistoryDetails.detail[0]['store_service_length'] + '小时 × ' + dropInHistoryDetails.detail[0]['store_count'];
 
@@ -134,8 +150,47 @@
 						app.openURL(NSURL.URLWithString("tel://" + dropInHistoryDetails.order['store_contact_user_phone']));
 					}
 				})
+				document.getElementById('g-btn-deletOrdere').addEventListener('tap', function() {
+					var btnArray = ['否', '是', ];
+					mui.confirm('是否删除订单', '', btnArray, function(e) {
+						if(e.index == 0) {
+							return;
+						} else if(e.index == 1) {
+							var postData = {};
+							var dropInHistoryDetails = JSON.parse(localStorage.dropInHistoryDetails);
+							postData['store_list_id'] = dropInHistoryDetails.order.store_list_id;
+							postData['store_list_state_id'] = '0005';
+							mui.ajax({
+								type: 'POST',
+								data: postData,
+								url: SERVERURL + 'SStoreListInfo/upDataStoreListStatus',
+								dataType: "json",
+								timeout: 20000,
+								//成功获取数据赋值
+								success: function(data) {
+									if (data.data == 1) {
+										mui.toast('删除成功');
+										var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
+										mui.fire(Scanner, 'refresh');
+										mui.currentWebview.close();
+										console.log(JSON.stringify(data))
+									} else{
+										mui.toast('删除失败');
+									}
+									
+								},
+								error: function(xhr, type, errorThrown) {
+									mui.toast('删除失败');
+								}
+							});
+						}
+					});
 
-				setInterval(function() {
+				})
+				
+				var stateInter = setInterval(getState,60000);
+				getState();
+				function getState() {
 					var postData = {};
 					postData['store_list_id'] = dropInHistoryDetails.order['store_list_id'];
 					mui.ajax({
@@ -143,18 +198,26 @@
 						data: postData,
 						url: SERVERURL + 'SStoreListInfo/getStoreListState',
 						dataType: "json",
-						timeout:20000,
+						timeout: 20000,
 						//成功获取数据赋值
 						success: function(data) {
 							console.log(JSON.stringify(data.data.store_list_state_id));
+							if(data.data.store_list_state_id != '0001') {
+								document.getElementById('g-btn-deletOrdere').style.display = 'none';
+							} else {
+								document.getElementById('g-btn-deletOrdere').style.display = '';
+							}
+
 							if(data.data.store_list_state_id == '0001') {
 								document.getElementById('g-img-status').src = '../../images/dropIn/jindu1.png';
 								document.getElementById('g-text-status').innerHTML = '等待商家接单';
 								console.log('0001');
+
 							} else if(data.data.store_list_state_id == '0002') {
 								document.getElementById('g-img-status').src = '../../images/dropIn/jindu2.png';
 								document.getElementById('g-text-status').innerHTML = '商家已接单';
-								console.log('0002')
+								console.log('0002');
+
 							} else if(data.data.store_list_state_id == '0003') {
 								document.getElementById('g-img-status').src = '../../images/dropIn/jindu3.png';
 								document.getElementById('g-text-status').innerHTML = '正在赶来';
@@ -163,8 +226,8 @@
 								document.getElementById('g-img-status').src = '../../images/dropIn/jindu4.png';
 								document.getElementById('g-text-status').innerHTML = '服务已完成';
 								console.log('0004');
-							}
-							 else if(data.data.store_list_state_id == '0005') {
+								clearInterval(stateInter);
+							} else if(data.data.store_list_state_id == '0005') {
 								document.getElementById('g-img-status').src = '';
 								document.getElementById('g-text-status').innerHTML = '';
 								console.log('0005');
@@ -172,7 +235,7 @@
 						},
 						error: function(xhr, type, errorThrown) {}
 					});
-				}, 5000);
+				}
 			});
 		</script>
 	</body>

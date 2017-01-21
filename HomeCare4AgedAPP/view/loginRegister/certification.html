@@ -207,7 +207,7 @@
 				plus.navigator.setStatusBarBackground('#EEA02F');
 				document.getElementById("li-sex").addEventListener('tap', function() {
 					document.activeElement.blur();
-					var btnArray = ['男', '女', '取消'];
+					var btnArray = ['男', '女'];
 					mui.confirm('请选择您的性别', '', btnArray, function(e) {
 						if(e.index == 0) {
 							localStorage.userSex = "男";
@@ -217,9 +217,7 @@
 							localStorage.userSex = "女";
 							document.getElementById('div-sex').style.display = '';
 							document.getElementById('input-sex').innerHTML = localStorage.userSex;
-						} else {
-
-						}
+						} 
 					});
 				});
 				document.getElementById("input-phoneNum").innerHTML = localStorage.userPhoneNum;
@@ -276,6 +274,7 @@
 					//					document.getElementById('input-phoneNum').focus();
 				});
 				document.getElementById("li-home").addEventListener('tap', function() {
+					
 					document.getElementById('div-home').style.display = '';
 					var inputHome = document.getElementById('input-home');
 					initNativeObjects();

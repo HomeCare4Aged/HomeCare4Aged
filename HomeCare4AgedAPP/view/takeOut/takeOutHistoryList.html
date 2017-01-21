@@ -8,6 +8,12 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/registration/myHistory.css" />
+		<style>
+			.marginLeftRight {
+				margin-left: 10px;
+				margin-right: 25px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -18,7 +24,7 @@
 		</header>
 		<div class="mui-content">
 			<div class="top14px headline" id"already_title">
-				<h1 class="title" >未完成</h1>
+				<h1 class="title" style="margin-left: 20px;">未完成</h1>
 				<!--<label id="g-delete" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 20px;font-size: 30px;">删除预约</label>-->
 				<!--<label id="cancel" class="mui-pull-right " style="color: red; margin-top: -30px; margin-right: 100px;font-size: 30px;"></label>-->
 			</div>
@@ -53,6 +59,7 @@
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true ,//启用右滑关闭功能
@@ -68,6 +75,11 @@
 				},
 			});
 			mui.plusReady(function() {
+				window.addEventListener('refresh', function() {
+					$("#list_already").empty(); 
+					$("#list_finish").empty(); 
+					getHistoryList();
+				});
 				localStorage.transHistorylistId = plus.webview.currentWebview().id;
 //				window.addEventListener('deleteLi', function() {
 //					console.log('shanchu');

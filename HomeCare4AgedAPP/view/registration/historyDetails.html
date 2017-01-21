@@ -8,6 +8,12 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/registration/makeSureMessage.css" />
+		<style>
+			.marginLeftRight {
+				margin-left: 1px;
+				margin-right: 10px;
+			}
+		</style>
 	</head>
 
 	<body style="background-color: white;">
@@ -89,7 +95,7 @@
 				var priceText = document.getElementById('priceText');
 				priceText.innerHTML = '￥' + postData.registration_money;
 				var personText = document.getElementById('personText');
-				personText.innerHTML = postData.community_user_name;
+				personText.innerHTML = localStorage.community_user_name;
 
 			});
 
@@ -115,6 +121,7 @@
 							success: function(data) {
 								plus.nativeUI.closeWaiting();
 								if(data.status == 1) {
+									console.log(JSON.stringify(data.ss));
 									mui.toast('删除成功');
 									//获得你要前往页面的webview id
 									var Scanner = plus.webview.getWebviewById(localStorage.historylistId);

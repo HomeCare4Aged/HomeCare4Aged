@@ -8,29 +8,37 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/video/videoList.css" />
+
 	</head>
 
 	<body style="background: white;">
 		<header class="mui-bar mui-bar-nav m_gray">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">视频</h1>
-			<div class="mui-bar" style="height: 70px;margin-top: 60px;">
-				<h5 id="videoType" class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>
-				<!--<img id="pullUp" src="../../images/video/pullUp.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />-->
-			</div>
+			<h1 id="videoType" class="mui-title">视频</h1>
+			<!--<div class="mui-bar" style="height: 70px;margin-top: 60px;">-->
+			<!--<h5 id="videoType" class="m_gray_text" style="font-size: 25px; margin-top: 20px; font-weight: bold; margin-left: 15px;">选择视频分类</h5>-->
+			<!--<img id="pullUp" src="../../images/video/pullUp.png" style="height: 40%;float: right;margin-top: -30px;margin-right: 10px;" />-->
+			<!--</div>-->
 		</header>
-		<div class="mui-content" style="margin-top: 60px;">
+		<div class="mui-content" style="margin-top: 0px;">
 			<ul class="mui-table-view" id="list_ul">
-				<!--<li class="mui-table-view-cell mui-media">
-					<img style="width: 80px;  margin-top: 30px; margin-left: 10px;" class="mui-pull-left" src="../../images/video/videoPlay.png" />
-					<div style=" margin-top: 10px; margin-left: 110px;">
-						<div class="mui-row">
-							<h1 class="grayText">2012-12-12</h1>
-							<h5 class="zz-h5-newMark">新</h5>
-							<h5 class="zz-h5-unreadMark">未播</h5>
-							<h5 class="zz-h5-readMark">已播</h5>
+				<!--<li class="mui-table-view-cell ">
+					<div class="mui-row" style="margin-top: -10px;">
+						<div style="" class="mui-col-xs-4">
+							<img style="width: 80px;  margin-top: 30px; margin-left: 10px;" src="../../images/video/videoPlay.png" />
 						</div>
-						<h3 id="myVideoCount" class="blackTitle">制作制作制作制作制作制作制作</h3>
+						<div style="" class="mui-col-xs-8">
+							<div class="mui-row">
+								<h1 class="grayText">2012-12-12</h1>
+								<h5 class="zz-h5-newMark">新</h5>
+								<h5 class="zz-h5-unreadMark">未播</h5>
+								<h5 class="zz-h5-readMark">已播</h5>
+							</div>
+							<div class="mui-row" style="margin-top: 60px;">
+								<h3 id="myVideoCount" class="blackTitle ">制作制作制作制作制作制作制作</h3>
+							</div>
+
+						</div>
 					</div>
 				</li>-->
 			</ul>
@@ -40,19 +48,19 @@
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
-				beforeback: function(){
+				beforeback: function() {
 					//获得你要前往页面的webview id
 					var Scanner = plus.webview.getWebviewById(localStorage.VideoIndexWebId);
-					
+
 					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
-					mui.fire(Scanner,'refreshHistory');
-					
+					mui.fire(Scanner, 'refreshHistory');
+
 					//返回true，继续页面关闭逻辑
 					return true;
 				},
 			});
 			mui.plusReady(function() {
-				
+
 				var nwaiting = plus.nativeUI.showWaiting();
 				//点击后改为已读
 				window.addEventListener('refreshRead', function() {
@@ -81,7 +89,7 @@
 					mui.ajax({
 						type: 'POST',
 						url: SERVERURL + "AVideoInfo/getHistoryVideoListInfo",
-						timeout:20000,
+						timeout: 20000,
 						data: {
 							ids: postData
 						},
@@ -96,16 +104,30 @@
 							mui.each(data.data, function(i) {
 								console.log(data.data[i].send_datetime.substring(0, 10));
 								var doc = document;
+							
 								li = doc.createElement("li");
 								li.setAttribute("class", "mui-table-view-cell mui-media");
+								img = doc.createElement('img');	
+								div = doc.createElement('div');
+								div.className = 'mui-row';
+								div.style.marginTop = '-10px';
+								div1 = doc.createElement('div');
+								div1.className = 'mui-col-xs-3';
 								img = doc.createElement('img');
-								img.setAttribute("style", "width: 80px;  margin-top: 30px; margin-left: 10px;")
+								img.setAttribute("style", "width: 70px;  margin-top: 20px; margin-left: 10px;")
 								img.setAttribute("class", "mui-pull-left");
 								img.setAttribute("src", "../../images/video/videoPlay.png");
-								div = doc.createElement("div");
-								div.setAttribute("style", " margin-top: 10px; margin-left: 110px;");
-								div1 = doc.createElement('div');
-								div1.setAttribute("class", "mui-row");
+								div2 = doc.createElement('div');
+								div21 = doc.createElement('div');
+								div22 = doc.createElement('div');
+								div2.className = 'mui-col-xs-9';
+								div21.className = 'mui-row';
+								div21.style.marginLeft = '10px';
+								div22.className = 'mui-row';
+								div22.style.marginTop = '60px';
+								div22.style.marginLeft = '10px';
+								
+							
 								h1 = doc.createElement("h1");
 								h1.setAttribute("class", "grayText")
 								h1.innerHTML = data.data[i].send_datetime.substring(0, 10);
@@ -141,28 +163,32 @@
 										},
 									});
 								});
-								li.appendChild(img);
 								li.appendChild(div);
 								div.appendChild(div1);
-								div1.appendChild(h1);
+								div1.appendChild(img)
+								div.appendChild(div2);
+								div2.appendChild(div21);
+								div21.appendChild(h1);
+								div2.appendChild(div22);
+								div22.appendChild(h3);
 
 								if(data.data[i].send_datetime.substring(0, 10) == getNowFormatDate()) {
 									console.log(data.data[i].send_datetime.substring(0, 10));
-									div1.appendChild(h5new);
+									div21.appendChild(h5new);
 								}
-								div1.appendChild(h5read);
-								div.appendChild(h3);
+								div21.appendChild(h5read);
+
 								fragment.appendChild(li);
 							});
 							container.appendChild(fragment);
 							console.log(JSON.stringify(data.data));
-							
+
 						},
 						error: function(xhr, type, errorThrown) {
 							console.log(type);
 							plus.nativeUI.closeWaiting();
 							mui.alert('网络连接失败');
-							
+
 						}
 					});
 				}
@@ -171,16 +197,16 @@
 					var h5 = document.getElementById('videoType');
 					h5.innerHTML = localStorage.videoIndexDataName;
 					console.log('！我的播放记录');
-					var postData ={};
+					var postData = {};
 					postData['video_type_id'] = localStorage.videoIndexDataId;
 					postData['sender_id'] = localStorage.community_hospitals_id;
-					console.log('-----'+localStorage.community_hospitals_id);
+					console.log('-----' + localStorage.community_hospitals_id);
 					mui.ajax({
 						type: 'POST',
 						data: postData,
 						url: SERVERURL + "AVideoInfo/getVideoInfoTypeList",
 						dataType: "json",
-						timeout:20000,
+						timeout: 20000,
 						//成功获取数据赋值
 						success: function(data) {
 							plus.nativeUI.closeWaiting();
@@ -191,16 +217,30 @@
 							mui.each(data.data, function(i) {
 								console.log(data.data[i].send_datetime.substring(0, 10));
 								var doc = document;
+								
+								
 								li = doc.createElement("li");
 								li.setAttribute("class", "mui-table-view-cell mui-media");
+								img = doc.createElement('img');	
+								div = doc.createElement('div');
+								div.className = 'mui-row';
+								div.style.marginTop = '-10px';
+								div1 = doc.createElement('div');
+								div1.className = 'mui-col-xs-3';
 								img = doc.createElement('img');
-								img.setAttribute("style", "width: 80px;  margin-top: 30px; margin-left: 10px;")
+								img.setAttribute("style", "width: 70px;  margin-top: 20px; margin-left: 10px;")
 								img.setAttribute("class", "mui-pull-left");
 								img.setAttribute("src", "../../images/video/videoPlay.png");
-								div = doc.createElement("div");
-								div.setAttribute("style", " margin-top: 10px; margin-left: 110px;");
-								div1 = doc.createElement('div');
-								div1.setAttribute("class", "mui-row");
+								div2 = doc.createElement('div');
+								div21 = doc.createElement('div');
+								div22 = doc.createElement('div');
+								div2.className = 'mui-col-xs-9';
+								div21.className = 'mui-row';
+								div21.style.marginLeft = '10px';
+								div22.className = 'mui-row';
+								div22.style.marginTop = '60px';
+								div22.style.marginLeft = '10px';
+								
 								h1 = doc.createElement("h1");
 								h1.setAttribute("class", "grayText")
 								h1.innerHTML = data.data[i].send_datetime.substring(0, 10);
@@ -240,21 +280,25 @@
 										},
 									});
 								});
-								li.appendChild(img);
 								li.appendChild(div);
 								div.appendChild(div1);
-								div1.appendChild(h1);
+								div1.appendChild(img)
+								div.appendChild(div2);
+								div2.appendChild(div21);
+								div21.appendChild(h1);
+								div2.appendChild(div22);
+								div22.appendChild(h3);
 
 								if(data.data[i].send_datetime.substring(0, 10) == getNowFormatDate()) {
 									console.log(data.data[i].send_datetime.substring(0, 10));
-									div1.appendChild(h5new);
+									div21.appendChild(h5new);
 								}
 								if(localStorage.getItem('videoRead' + li.id) == 'read') {
-									div1.appendChild(h5read);
+									div21.appendChild(h5read);
 								} else {
-									div1.appendChild(h5un);
+									div21.appendChild(h5un);
 								}
-								div.appendChild(h3);
+								
 								fragment.appendChild(li);
 							});
 							container.appendChild(fragment);
