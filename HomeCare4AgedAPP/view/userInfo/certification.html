@@ -120,13 +120,15 @@
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=VxZwk9aaLVGLGGGogiHIPHzOFEdHNICD"></script>
 		<script type="text/javascript">
 			mui.back = function() {
+
 				if(isNeedChangeData() == 1) {
 					var btnArray = ['否', '是', ];
 					mui.confirm('是否保存', '', btnArray, function(e) {
 						if(e.index == 0) {
 							mui.currentWebview.close();
 						} else if(e.index == 1) {
-							openWindow();
+							openWindow('back');
+
 						}
 					});
 				} else {
@@ -156,7 +158,7 @@
 				return 0;
 			}
 
-			function openWindow() {
+			function openWindow(str) {
 				plus.nativeUI.showWaiting();
 				var postData = {};
 
@@ -177,7 +179,7 @@
 					postData['community_user_phone'] = document.getElementById('input-phoneNum').value;
 				}
 				if(document.getElementById('input-home').value != localStorage.community_user_address) {
-					if (isNullStr(document.getElementById('input-home').value)) {
+					if(isNullStr(document.getElementById('input-home').value)) {
 						mui.alert('请输入地址!');
 						plus.nativeUI.closeWaiting();
 						return;
@@ -232,7 +234,7 @@
 								data: postData,
 								url: MESSAGEURL,
 								dataType: "json",
-								timeout:20000,
+								timeout: 20000,
 								//成功获取数据赋值
 								success: function(data) {
 									plus.nativeUI.closeWaiting();
@@ -275,7 +277,7 @@
 									data: postData,
 									url: SERVERURL + "ACommunityUserInfo/changeUserInfo",
 									dataType: "json",
-									timeout:20000,
+									timeout: 20000,
 									//成功获取数据赋值
 									success: function(data) {
 										plus.nativeUI.closeWaiting();
@@ -307,6 +309,16 @@
 
 											localStorage.isOkCode = '0';
 											mui.toast('修改成功');
+											if(!isNullStr(localStorage.changeAddress)) {
+												var Scanner = plus.webview.getWebviewById(localStorage.changeAddress);
+												mui.fire(Scanner, 'refreshAddress');
+												localStorage.changeAddress = '';
+
+											}
+											if(str == 'back') {
+												mui.back();
+											}
+
 										};
 										if(data.status == 0) {
 											mui.alert(data.msg);
@@ -335,7 +347,7 @@
 						data: postData,
 						url: SERVERURL + "ACommunityUserInfo/changeUserInfo",
 						dataType: "json",
-						timeout:20000,
+						timeout: 20000,
 						//成功获取数据赋值
 						success: function(data) {
 							plus.nativeUI.closeWaiting();
@@ -364,11 +376,22 @@
 								//								localStorage.community_hospitals_name
 								if(postData['community_hospitals_id']) {
 									localStorage.community_hospitals_id = postData['community_hospitals_id'];
-									localStorage.community_hospitals_name = localStorage.userHospitalName; 
-									console.log('name'+localStorage.community_hospitals_name);
+									localStorage.community_hospitals_name = localStorage.userHospitalName;
+									console.log('name' + localStorage.community_hospitals_name);
 								}
 								localStorage.isOkCode = '0';
 								mui.toast('修改成功');
+								console.log('-----' + str);
+
+								if(!isNullStr(localStorage.changeAddress)) {
+									var Scanner = plus.webview.getWebviewById(localStorage.changeAddress);
+									mui.fire(Scanner, 'refreshAddress');
+									localStorage.changeAddress = '';
+
+								}
+								if(str == 'back') {
+									mui.back();
+								}
 							};
 							if(data.status == 0) {
 								mui.alert(data.msg);
@@ -495,7 +518,7 @@
 									data: postData,
 									url: SERVERURL + 'ACommunityUserInfo/selectHospital',
 									dataType: "json",
-									timeout:20000,
+									timeout: 20000,
 
 									//成功获取数据赋值
 									success: function(data) {
@@ -544,7 +567,7 @@
 				});
 			});
 		</script>
-		<script type="text/javascript">
+		<!--<script type="text/javascript">
 			// 百度地图API功能
 			function G(id) {
 				return document.getElementById(id);
@@ -561,7 +584,7 @@
 				var value = "";
 				if(e.fromitem.index > -1) {
 					value = _value.province + _value.city + _value.district + _value.street + _value.business;
-					
+
 				}
 				str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
 
@@ -569,12 +592,12 @@
 				if(e.toitem.index > -1) {
 					_value = e.toitem.value;
 					value = _value.province + _value.city + _value.district + _value.street + _value.business;
-					console.log('province'+_value.province);
-					console.log('city'+_value.city);
-					console.log('district'+_value.district);
-					console.log('street'+_value.street);
-					console.log('business'+_value.business);
-					console.log('value'+value);
+					console.log('province' + _value.province);
+					console.log('city' + _value.city);
+					console.log('district' + _value.district);
+					console.log('street' + _value.street);
+					console.log('business' + _value.business);
+					console.log('value' + value);
 				}
 				str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
 			});
@@ -583,7 +606,7 @@
 			ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
 				var _value = e.item.value;
 				myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
-			});
+			});-->
 		</script>
 
 	</body>

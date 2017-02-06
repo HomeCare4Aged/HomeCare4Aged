@@ -85,6 +85,9 @@
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			mui.back = function() {
+				return;
+			};
 			window.addEventListener('orientationchange', function(event) {
 				location.reload();
 			});
@@ -333,7 +336,32 @@
 					}
 				});
 			}
+			 
 			mui.plusReady(function() {
+				
+				
+				//首页返回键处理
+				//处理逻辑：2秒内，连续两次按返回键，则退出应用 
+				var first = null;
+				plus.key.addEventListener('backbutton', function() {
+					//首次按键，提示‘再按一次退出应用’  
+					if(!first) {
+						first = new Date().getTime();
+						mui.toast('再按一次退出应用');
+						setTimeout(function() {
+							first = null;
+						}, 2000);
+					} else {
+						if(new Date().getTime() - first < 2000) {
+							plus.runtime.quit();
+						}
+					}
+				}, false);
+				
+				if(mui.os.ios) {
+					plus.navigator.setFullscreen(true);
+				}
+				
 				document.getElementById('span-address').innerHTML = localStorage.community_user_address;
 				plus.navigator.setStatusBarBackground('#FFFFFF');
 				findWeather();
@@ -345,15 +373,15 @@
 					findWeather();
 					getListCount();
 					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
-					// 获取所有Webview窗口
-					var curr = plus.webview.currentWebview();
-					var wvs = plus.webview.all();
-					for(var i = 0, len = wvs.length; i < len; i++) {
-						//关闭除setting页面外的其他页面
-						if(wvs[i].getURL() == curr.getURL())
-							continue;
-						plus.webview.close(wvs[i]);
-					}
+//					// 获取所有Webview窗口
+//					var curr = plus.webview.currentWebview();
+//					var wvs = plus.webview.all();
+//					for(var i = 0, len = wvs.length; i < len; i++) {
+//						//关闭除setting页面外的其他页面
+//						if(wvs[i].getURL() == curr.getURL())
+//							continue;
+//						plus.webview.close(wvs[i]);
+//					}
 
 				});
 

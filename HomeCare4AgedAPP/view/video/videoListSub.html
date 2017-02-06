@@ -1,0 +1,412 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/video/videoList.css" />
+		<style>
+			.mui-table-view:after {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view:before {
+				left: 0px;
+				right: 0px;
+			}
+			/*body{
+				background: rgb(239,239,244);
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<!--<header class="mui-bar mui-bar-nav m_gray">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 id="videoType" class="mui-title">视频</h1>
+		</header>-->
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="background: white;">
+			<div class="mui-scroll">
+				<div class="list-wrapper">
+					<!--数据列表-->
+					<ul class="mui-table-view mui-table-view-chevron" id="list_ul">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript">
+			var page = 0;
+			var pageSize = 1;
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(localStorage.VideoIndexWebId);
+
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshHistory');
+
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+				pullRefresh: {
+					container: '#refreshContainer',
+					down: {
+						//						auto: true,
+						callback: pulldownRefresh
+					},
+					up: {
+						auto: true,
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: pullupRefresh
+					}
+				}
+			});
+
+			function pulldownRefresh() {
+				// 加载更多的内容到列表中
+				console.log('下拉刷新');
+				page = 1;
+				$("#list_ul").empty();
+
+				//				if(localStorage.videoIndexDataName == '我的播放记录') {
+				getVideoList(page, pageSize);
+				//				} else {
+				//					getTypeVideoLost(page, pageSize);
+				//				}
+
+				mui('#refreshContainer').pullRefresh().endPulldownToRefresh(true);
+				//重置上拉加载
+				mui('#refreshContainer').pullRefresh().refresh(true);
+			};
+
+			function pullupRefresh() {
+				page += 1;
+				//				if(localStorage.videoIndexDataName == '我的播放记录') {
+				getVideoList(page, pageSize);
+				//				} else {
+				//					getTypeVideoLost(page, pageSize);
+				//				}
+				// 加载更多的内容到列表中
+				console.log('上拉加载');
+
+			};
+			mui.plusReady(function() {
+
+				//				var nwaiting = plus.nativeUI.showWaiting();
+				//点击后改为已读
+				window.addEventListener('refreshRead', function() {
+					var h5 = document.getElementById(localStorage.videoReadIdLabel);
+
+					h5.innerHTML = "已读";
+					h5.setAttribute("class", 'zz-h5-readMark');
+					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+				});
+
+				console.log(localStorage.videoIndexDataId);
+				console.log(localStorage.videoIndexDataName);
+				console.log(getNowFormatDate());
+
+			});
+
+			function getNowFormatDate() {
+				var date = new Date();
+				var seperator1 = "-";
+				var seperator2 = ":";
+				var year = date.getFullYear();
+				var month = date.getMonth() + 1;
+				var strDate = date.getDate();
+				if(month >= 1 && month <= 9) {
+					month = "0" + month;
+				}
+				if(strDate >= 0 && strDate <= 9) {
+					strDate = "0" + strDate;
+				}
+				var currentdate = year + seperator1 + month + seperator1 + strDate;
+				return currentdate;
+			}
+
+			function getVideoList(page, pageSize) {
+				var postData = {};
+
+				console.log('-----' + localStorage.videoIndexDataName);
+				var listUrl = '';
+				if(localStorage.videoIndexDataName == '我的播放记录') {
+					var list = JSON.parse(localStorage.myHistoryVideoList);
+					var ids = new Array();
+					var i = 0;
+					for(var key in list) {
+						ids[i] = list[key];
+						i++;
+					}
+					postData['ids'] = ids;
+					postData['page'] = page;
+					postData['pageSize'] = pageSize;
+					listUrl = 'AVideoInfo/getHistoryVideoListInfo';
+				} else {
+					postData['video_type_id'] = localStorage.videoIndexDataId;
+					postData['sender_id'] = localStorage.community_hospitals_id;
+					postData['page'] = page;
+					postData['pageSize'] = pageSize;
+					listUrl = 'AVideoInfo/getVideoInfoTypeList';
+				}
+
+				mui.ajax({
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + listUrl,
+					dataType: "json",
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						console.log(JSON.stringify(data) + '111');
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							console.log(data.data[i].send_datetime.substring(0, 10));
+							var doc = document;
+
+							li = doc.createElement("li");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							img = doc.createElement('img');
+							div = doc.createElement('div');
+							div.className = 'mui-row';
+							div.style.marginTop = '-10px';
+							div1 = doc.createElement('div');
+							div1.className = 'mui-col-xs-3';
+							img = doc.createElement('img');
+							img.setAttribute("style", "width: 60px;  margin-top: 20px; margin-left: 10px;")
+							img.setAttribute("class", "mui-pull-left");
+							img.setAttribute("src", "../../images/video/videoPlay.png");
+							div2 = doc.createElement('div');
+							div21 = doc.createElement('div');
+							div22 = doc.createElement('div');
+							//							div2.className = 'mui-col-xs-9';
+							div2.style.marginLeft = '70px';
+							div21.className = 'mui-row';
+							div21.style.marginLeft = '10px';
+							div22.className = 'mui-row';
+							div22.style.marginTop = '10%';
+							div22.style.marginLeft = '10px';
+							div21.style.height = '80px';
+
+							h1 = doc.createElement("h1");
+							h1.setAttribute("class", "grayText")
+							h1.innerHTML = data.data[i].send_datetime.substring(0, 10);
+							h5new = doc.createElement("h5");
+							h5new.setAttribute("class", "zz-h5-newMark");
+							h5new.innerHTML = '新';
+							h5un = doc.createElement("h5");
+							h5un.innerHTML = '未播';
+							h5un.setAttribute("class", "zz-h5-unreadMark");
+							h5un.id = data.data[i].video_id + "videoRead";
+							h5read = doc.createElement("h5");
+							h5read.innerHTML = '已播';
+							h5read.setAttribute("class", "zz-h5-readMark");
+							h3 = doc.createElement("h3");
+							h3.setAttribute("class", "blackTitle");
+							h3.innerHTML = data.data[i].video_introduction;
+							h3.style.width = '110%'
+							li.id = data.data[i].video_id;
+							li.addEventListener('tap', function() {
+								localStorage.videoId = this.id;
+								localStorage.videoIndexDataName = this.name;
+								localStorage.setItem('videoRead' + this.id, "read");
+								var list = {}
+								if(localStorage.myHistoryVideoList) {
+									list = JSON.parse(localStorage.myHistoryVideoList);
+								}
+								list[this.id] = this.id;
+								localStorage.myHistoryVideoList = JSON.stringify(list);
+								console.log(JSON.stringify(localStorage.myHistoryVideoList[0]) + "ss");
+
+								localStorage.setItem('myHistoryVideo' + this.id, "read");
+								localStorage.videoReadIdLabel = this.id + "videoRead";
+								localStorage.webId = plus.webview.currentWebview().id;
+								mui.openWindow({
+									url: '../video/videoPlay.html',
+									extras: {
+
+									},
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(div1);
+							div1.appendChild(img)
+							div.appendChild(div2);
+							div2.appendChild(div21);
+							div21.appendChild(h1);
+							div2.appendChild(div22);
+							div22.appendChild(h3);
+
+							if(data.data[i].send_datetime.substring(0, 10) == getNowFormatDate()) {
+								console.log(data.data[i].send_datetime.substring(0, 10));
+								div21.appendChild(h5new);
+							}
+							if(localStorage.getItem('videoRead' + li.id) == 'read') {
+								div21.appendChild(h5read);
+							} else {
+								div21.appendChild(h5un);
+							}
+
+							fragment.appendChild(li);
+						});
+						container.appendChild(fragment);
+						console.log(JSON.stringify(data.data));
+						if(data.data.length > 0) {
+							// 如果有更多数据，则继续
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+						} else {
+							// 如果没有更多数据了，则关闭上拉加载
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						mui.alert('网络连接失败');
+						console.log(type);
+					}
+				});
+			}
+
+			function getHistoryVideoList() {
+				var list = JSON.parse(localStorage.myHistoryVideoList);
+				var ids = new Array();
+				var i = 0;
+				for(var key in list) {
+					ids[i] = list[key];
+					i++;
+				}
+				var postData = {};
+				postData['ids'] = ids;
+				postData['page'] = page;
+				postData['pageSize'] = pageSize;
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "AVideoInfo/getHistoryVideoListInfo",
+					timeout: 20000,
+					data: postData,
+					dataType: "json",
+					//成功获取数据赋值
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						console.log(JSON.stringify(data) + '111');
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							console.log(data.data[i].send_datetime.substring(0, 10));
+							var doc = document;
+
+							li = doc.createElement("li");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							img = doc.createElement('img');
+							div = doc.createElement('div');
+							div.className = 'mui-row';
+							div.style.marginTop = '-10px';
+							div1 = doc.createElement('div');
+							//							div1.className = 'mui-col-xs-3';
+							img = doc.createElement('img');
+							img.setAttribute("style", "width: 60px;  margin-top: 20px; margin-left: 10px;")
+							img.setAttribute("class", "mui-pull-left");
+							img.setAttribute("src", "../../images/video/videoPlay.png");
+							div2 = doc.createElement('div');
+							div21 = doc.createElement('div');
+							div22 = doc.createElement('div');
+							//							div2.className = 'mui-col-xs-9';
+							div2.style.marginLeft = '70px';
+							div21.className = 'mui-row';
+							div21.style.marginLeft = '10px';
+							div22.className = 'mui-row';
+							div22.style.marginTop = '10%';
+							div22.style.marginLeft = '10px';
+							div21.style.height = '80px';
+
+							h1 = doc.createElement("h1");
+							h1.setAttribute("class", "grayText")
+							h1.innerHTML = data.data[i].send_datetime.substring(0, 10);
+							h5read = doc.createElement("h5");
+							h5read.innerHTML = '已播';
+							h5read.setAttribute("class", "zz-h5-readMark");
+							h5new = doc.createElement("h5");
+							h5new.setAttribute("class", "zz-h5-newMark");
+							h5new.innerHTML = '新';
+							h3 = doc.createElement("h3");
+							h3.setAttribute("class", "blackTitle");
+							h3.style.width = '110%'
+							h3.innerHTML = data.data[i].video_introduction;
+							li.id = data.data[i].video_id;
+							li.addEventListener('tap', function() {
+								localStorage.videoId = this.id;
+								localStorage.videoIndexDataName = this.name;
+								localStorage.setItem('videoRead' + this.id, "read");
+								var list = {}
+								if(localStorage.myHistoryVideoList) {
+									list = JSON.parse(localStorage.myHistoryVideoList);
+								}
+								list[this.id] = this.id;
+								localStorage.myHistoryVideoList = JSON.stringify(list);
+								console.log(JSON.stringify(localStorage.myHistoryVideoList[0]) + "ss");
+
+								localStorage.setItem('myHistoryVideo' + this.id, "read");
+								localStorage.videoReadIdLabel = this.id + "videoRead";
+								localStorage.webId = plus.webview.currentWebview().id;
+								mui.openWindow({
+									url: '../video/videoPlay.html',
+									extras: {
+
+									},
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(div1);
+							div1.appendChild(img)
+							div.appendChild(div2);
+							div2.appendChild(div21);
+							div21.appendChild(h1);
+							div2.appendChild(div22);
+							div22.appendChild(h3);
+
+							if(data.data[i].send_datetime.substring(0, 10) == getNowFormatDate()) {
+								console.log(data.data[i].send_datetime.substring(0, 10));
+								div21.appendChild(h5new);
+							}
+							div21.appendChild(h5read);
+
+							fragment.appendChild(li);
+						});
+						container.appendChild(fragment);
+						console.log(JSON.stringify(data.data));
+						if(data.data.length > 0) {
+							// 如果有更多数据，则继续
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+						} else {
+							// 如果没有更多数据了，则关闭上拉加载
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						console.log(type);
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

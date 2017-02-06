@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/loginRegister/certification.css" />
+		<link rel="stylesheet" href="../../css/userInfo/index.css" />
+		<style>
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 60px;
+			}
+			
+			.mui-table-view:after {
+				left: 25px;
+				right: 25px;
+			}
+			
+			.mui-table-view:before {
+				left: 25px;
+				right: 25px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-transparent g_yellowColor" id="zz-header-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">我的预约</h1>
+		</header>
+		<div style="height: 1px;width: 100%;background: rgb(205,205,208);margin-top: 60px;"></div>
+		<div class="mui-content" style="margin-top: 0px;">
+			<div>
+				<div id="segmentedControl" class="mui-segmented-control">
+					<a class="mui-control-item mui-active" href="#item1">
+						挂号
+					</a>
+					<a class="mui-control-item" href="#item2">
+						输液
+					</a>
+				</div>
+			</div>
+			<div>
+				<div style="height: 1px;width: 100%;background: rgb(205,205,208);"></div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="top14px headline" id "already_title">
+								<h1 class="title" style="margin-left: 25px;">未就诊</h1>
+							</div>
+							<ul class="mui-table-view" id="registration_already">
+							</ul>
+							<div class="headline" style="">
+								<h1 class="title" style="margin-left: 25px;">已就诊</h1>
+							</div>
+							<ul class="mui-table-view" id="registration_finish">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="item2" class="mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="top14px headline" id "already_title">
+								<h1 class="title" style="margin-left: 25px;">已预约</h1>
+							</div>
+							<ul class="mui-table-view" id="transfuse_already">
+							</ul>
+							<div class="headline" style="">
+								<h1 class="title" style="margin-left: 25px;">已就诊</h1>
+							</div>
+							<ul class="mui-table-view" id="transfuse_finish">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			(function($) {
+				$('#scroll1').scroll({
+					indicators: true //是否显示滚动条
+				});
+			})(mui);
+			(function($) {
+				$('#scroll2').scroll({
+					indicators: true //是否显示滚动条
+				});
+			})(mui);
+			mui.plusReady(function() {
+				document.getElementById('item1').style.height = (document.documentElement.clientHeight - 111) + 'px';
+				document.getElementById('item2').style.height = (document.documentElement.clientHeight - 111) + 'px';
+
+				getRegistrationData();
+				getTransfusionListData();
+
+				localStorage.historylistId = plus.webview.currentWebview().id;
+				localStorage.transHistorylistId = plus.webview.currentWebview().id;
+				window.addEventListener('deleteLi', function() {
+					
+					if(localStorage.historyWithOrderType == 'registration') {
+						document.getElementById('registration_already').removeChild(document.getElementById(localStorage.historyLiId));
+					}
+					if(localStorage.historyWithOrderType == 'transfuse') {
+						document.getElementById('transfuse_already').removeChild(document.getElementById(localStorage.transfuseLiId));
+					}
+
+				});
+
+			})
+
+			function getRegistrationData() {
+				plus.nativeUI.showWaiting();
+				var postData = {};
+				postData['community_user_id'] = localStorage.community_user_id;
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "HRegistrationInfo/getRegistrationList",
+					data: postData,
+					dataType: "json",
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						var dataAlready = data.data.Unfinished;
+						var dataFinish = data.data.Finish;
+						console.log(JSON.stringify(dataAlready));
+						//							console.log(dataFinish);
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_already = doc.getElementById("registration_already");
+						mui.each(dataAlready, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							g_input = doc.createElement("input");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media deleteList");
+							li.id = dataAlready[i].user_registration_id;
+							div.setAttribute("class", "marginLeftRight");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("style", 'width: 70px;border-radius: 35px;');
+							img.setAttribute("src", dataAlready[i].hospital_doctor_picture);
+							h1.innerHTML = dataAlready[i].hospital_doctor_name;
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataAlready[i].user_appointment_date + ' ' + dataAlready[i].user_appointment_time;
+
+							li.addEventListener('tap', function() {
+								localStorage.historyLiId = this.id;
+								localStorage.resistationHistoryDetail = JSON.stringify(dataAlready[i])
+								mui.openWindow({
+									url: '../registration/historyDetails.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(img);
+							div.appendChild(h1);
+							div.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_already.appendChild(fragment);
+
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_finish = doc.getElementById("registration_finish");
+						mui.each(dataFinish, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("style", 'width: 70px;border-radius: 35px;');
+							img.setAttribute("src", dataFinish[i].hospital_doctor_picture);
+							h1.innerHTML = dataFinish[i].hospital_doctor_name;
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataFinish[i].user_appointment_date + ' ' + dataFinish[i].user_appointment_time;
+							li.addEventListener('tap', function() {
+								localStorage.resistationHistoryDetail = JSON.stringify(dataFinish[i]);
+								mui.openWindow({
+									url: '../registration/historyDetails.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(img);
+							div.appendChild(h1);
+							div.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_finish.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+					}
+				});
+			}
+
+			function getTransfusionListData() {
+				plus.nativeUI.showWaiting();
+				var postUserData = {};
+				postUserData['community_user_id'] = localStorage.community_user_id;
+				console.log(localStorage.community_user_id);
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "HTransfusionInfo/getTransfusionList",
+					dataType: "json",
+					data: postUserData,
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						console.log(JSON.stringify(data));
+
+						var dataAlready = data.data.Unfinished;
+						var dataFinish = data.data.Finish;
+						//							console.log(dataAlready);
+						//							console.log(dataFinish);
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_already = doc.getElementById("transfuse_already");
+						mui.each(dataAlready, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							g_input = doc.createElement("input");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media deleteList");
+							li.id = dataAlready[i].user_transfusion_id;
+							console.log(li.id);
+							div.setAttribute("class", "marginLeftRight");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("style", "margin-left: -10px;");
+							if(dataAlready[i].user_transfusion_type == '座位') {
+								img.setAttribute("src", "../../images/transfuse/blackSeat.png")
+							} else {
+								img.setAttribute("src", "../../images/transfuse/blackBed.png")
+							}
+
+							h1.innerHTML = Math.abs(parseInt(dataAlready[i].user_appointment_time) - parseInt(dataAlready[i].predict_finished_time)) + "小时";
+							console.log(JSON.stringify(dataAlready[i]));
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataAlready[i].user_appointment_date + ' ' + dataAlready[i].user_appointment_time;
+							//								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
+							li.addEventListener('tap', function() {
+								localStorage.transfuseLiId = this.id;
+								localStorage.transFuseHistoryDetails = JSON.stringify(dataAlready[i])
+								mui.openWindow({
+									url: '../transfuse/transFuseHistoryDetails.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(img);
+							div.appendChild(h1);
+							div.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_already.appendChild(fragment);
+
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_finish = doc.getElementById("transfuse_finish");
+						mui.each(dataFinish, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("style", "margin-left: -10px;");
+							if(dataFinish[i].user_transfusion_type == '座位') {
+								img.setAttribute("src", "../../images/transfuse/blackSeat.png")
+							} else {
+								img.setAttribute("src", "../../images/transfuse/blackBed.png")
+							}
+							//								img.setAttribute("src", "../../images/small.png")
+							h1.innerHTML = Math.abs(parseInt(dataFinish[i].user_appointment_time) - parseInt(dataFinish[i].predict_finished_time)) + "小时";
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataFinish[i].user_appointment_date + ' ' + dataFinish[i].user_appointment_time;
+							li.addEventListener('tap', function() {
+								localStorage.transFuseHistoryDetails = JSON.stringify(dataFinish[i]);
+								mui.openWindow({
+									url: '../transfuse/transFuseHistoryDetails.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(img);
+							div.appendChild(h1);
+							div.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_finish.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						console.log(type);
+						mui.toast(type);
+					}
+				});
+			}
+		</script>
+
+	</body>
+
+</html>

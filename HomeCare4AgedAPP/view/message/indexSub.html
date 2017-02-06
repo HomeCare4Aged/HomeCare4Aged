@@ -1,0 +1,333 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/message/index.css" />
+		<style>
+			.mui-table-view:after {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view:before {
+				left: 0px;
+				right: 0px;
+			}
+			/*body{
+				background: rgb(239,239,244);
+			}*/
+		</style>
+	</head>
+
+	<body>
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper">
+			<div class="mui-scroll">
+				<div class="list-wrapper">
+					<!--数据列表-->
+					<ul class="mui-table-view mui-table-view-chevron" id="list_ul">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!--<header class="mui-bar mui-bar-nav m_green">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">通知</h1>
+		</header>-->
+		<!--<div class="mui-content ">-->
+		<!--<div class="list-t-wrap">
+				<div id="refreshContainer" class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<div class="list-wrapper">-->
+		<!--列表一定要放到容器内,因为会有一个div append到mui-scroll中,需要在底部才能起作用-->
+		<!--<ul class="mui-table-view " id="list_ul">
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		<!--</div>-->
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript">
+			var page = 0;
+			var pageSize = 10;
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+					//返回true，继续页面关闭逻辑
+					return true;
+				},
+				pullRefresh: {
+					container: '#refreshContainer',
+					down: {
+//						auto: true,
+						callback: pulldownRefresh
+					},
+					up: {
+						auto: true,
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: pullupRefresh
+					}
+				}
+
+			});
+
+			function pulldownRefresh() {
+				// 加载更多的内容到列表中
+				console.log('下拉刷新');
+				page = 1;
+				$("#list_ul").empty();
+				getList(page, pageSize);
+				mui('#refreshContainer').pullRefresh().endPulldownToRefresh(true);
+				//重置上拉加载
+				mui('#refreshContainer').pullRefresh().refresh(true);
+			};
+
+			function pullupRefresh() {
+				page += 1;
+				getList(page, pageSize);
+				// 加载更多的内容到列表中
+				console.log('上拉加载');
+
+			};
+
+			mui.plusReady(function() {
+//				plus.nativeUI.showWaiting();
+				plus.navigator.setStatusBarBackground('#3DAD27');
+				window.addEventListener('refreshList', function() {
+					var h5 = document.getElementById(localStorage.messageId);
+					console.log(localStorage.messageId);
+					h5.innerHTML = "已读";
+					h5.setAttribute("class", 'zz-h5-readMark zz-style-position');
+					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
+				});
+				//				mui('#refreshContainer').pullRefresh().pulldownLoading();
+
+				//				mui.ajax({
+				//					type: 'POST',
+				//					data: postData,
+				//					url: SERVERURL + "AAnnouncementInfo/selectAnnouncementInfo",
+				//					dataType: "json",
+				//					timeout: 20000,
+				//					//
+				//					success: function(data) {
+				//						plus.nativeUI.closeWaiting();
+				//						console.log(JSON.stringify(data));
+				//						var list = document.getElementsByClassName('listCellText');
+				//						var doc = document;
+				//
+				//						fragment = doc.createDocumentFragment();
+				//						container = doc.getElementById("list_ul");
+				//						mui.each(data.data, function(i) {
+				//							var doc = document;
+				//							li = doc.createElement("li");
+				//							div = doc.createElement("div");
+				//							divTitle = doc.createElement("div");
+				//							divContent = doc.createElement("div");
+				//							h3 = doc.createElement('h3');
+				//							h1 = doc.createElement("h1");
+				//							newMark = doc.createElement("h5");
+				//							readMark = doc.createElement("h5");
+				//							unreadMark = doc.createElement("h5");
+				//
+				//							h1.setAttribute("class", "black-text ")
+				//							li.setAttribute("class", "mui-table-view-cell mui-media");
+				//							div.setAttribute("class", "marginLeftRight");
+				//							h3.setAttribute("class", 'MSM-gray-text zz-style-position');
+				//							newMark.setAttribute("class", 'zz-h5-newMark zz-style-position');
+				//							readMark.setAttribute("class", 'zz-h5-readMark zz-style-position');
+				//							unreadMark.setAttribute("class", 'zz-h5-unreadMark zz-style-position');
+				//							divTitle.setAttribute("class", 'mui-row');
+				//							divContent.setAttribute("class", 'mui-row');
+				//
+				//							h3.innerHTML = data.data[i].send_datetime.substr(0, 10);
+				//							h1.innerHTML = data.data[i].announcement_title;
+				//
+				//							newMark.innerHTML = '新';
+				//							readMark.innerHTML = '已读';
+				//							unreadMark.innerHTML = '未读';
+				//							//							li.setAttribute("name", data.data[i].hospital_office_name);
+				//							li.id = data.data[i].announcement_id.toString();
+				//							unreadMark.id = li.id + "biaoqian";
+				//
+				//							if(localStorage.getItem(li.id) == null) {
+				//								localStorage.setItem(li.id, "unread");
+				//							}
+				//
+				//							li.addEventListener('tap', function() {
+				//								localStorage.messageId = this.id + "biaoqian";
+				//								localStorage.setItem(this.id, 'read');
+				//								//								console.log(localStorage.messageId+"--------------");
+				//								mui.openWindow({
+				//									url: '../message/content.html',
+				//									extras: {
+				//										webId: plus.webview.currentWebview().id,
+				//										'announcement_content': data.data[i].announcement_content,
+				//										'announcement_title': data.data[i].announcement_title,
+				//										'send_datetime': h3.innerHTML,
+				//										'announcement_hospital_id': data.data[i].announcement_hospital_id,
+				//										'announcement_picture': data.data[i].announcement_picture
+				//									},
+				//								});
+				//
+				//							});
+				//							var myDate = new Date();
+				//							var result = gmtToDate(myDate);
+				//
+				//							li.appendChild(div);
+				//							div.appendChild(divTitle);
+				//							divTitle.appendChild(h3);
+				//							if(h3.innerHTML == result) {
+				//								divTitle.appendChild(newMark);
+				//							}
+				//							if(localStorage.getItem(li.id) == 'unread') {
+				//								divTitle.appendChild(unreadMark);
+				//							} else {
+				//								divTitle.appendChild(readMark);
+				//							}
+				//							div.appendChild(divContent);
+				//							divContent.appendChild(h1);
+				//
+				//							fragment.appendChild(li);
+				//							//							}
+				//						});
+				//						container.appendChild(fragment);
+				//					},
+				//					error: function(xhr, type, errorThrown) {
+				//						console.log(type);
+				//						plus.nativeUI.closeWaiting();
+				//						mui.alert('网络连接失败');
+				//					}
+				//				});
+
+			});
+
+			function getList(page, pageSize) {
+				plus.nativeUI.showWaiting();
+				var announcement_hospital_id = localStorage.community_hospitals_id;
+				var postData = {};
+				postData['announcement_hospital_id'] = announcement_hospital_id;
+				postData['page'] = page;
+				postData['pageSize'] = pageSize;
+				mui.ajax({
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + "AAnnouncementInfo/selectAnnouncementInfo",
+					dataType: "json",
+					timeout: 20000,
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						console.log(JSON.stringify(data));
+						var list = document.getElementsByClassName('listCellText');
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							divTitle = doc.createElement("div");
+							divContent = doc.createElement("div");
+							h3 = doc.createElement('h3');
+							h1 = doc.createElement("h1");
+							newMark = doc.createElement("h5");
+							readMark = doc.createElement("h5");
+							unreadMark = doc.createElement("h5");
+
+							h1.setAttribute("class", "black-text ")
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							h3.setAttribute("class", 'MSM-gray-text zz-style-position');
+							newMark.setAttribute("class", 'zz-h5-newMark zz-style-position');
+							readMark.setAttribute("class", 'zz-h5-readMark zz-style-position');
+							unreadMark.setAttribute("class", 'zz-h5-unreadMark zz-style-position');
+							divTitle.setAttribute("class", 'mui-row');
+							divContent.setAttribute("class", 'mui-row');
+
+							h3.innerHTML = data.data[i].send_datetime.substr(0, 10);
+							h1.innerHTML = data.data[i].announcement_title;
+
+							newMark.innerHTML = '新';
+							readMark.innerHTML = '已读';
+							unreadMark.innerHTML = '未读';
+							//							li.setAttribute("name", data.data[i].hospital_office_name);
+							li.id = data.data[i].announcement_id.toString();
+							unreadMark.id = li.id + "biaoqian";
+
+							if(localStorage.getItem(li.id) == null) {
+								localStorage.setItem(li.id, "unread");
+							}
+
+							li.addEventListener('tap', function() {
+								localStorage.messageId = this.id + "biaoqian";
+								localStorage.setItem(this.id, 'read');
+								//								console.log(localStorage.messageId+"--------------");
+								mui.openWindow({
+									url: '../message/content.html',
+									extras: {
+										webId: plus.webview.currentWebview().id,
+										'announcement_content': data.data[i].announcement_content,
+										'announcement_title': data.data[i].announcement_title,
+										'send_datetime': h3.innerHTML,
+										'announcement_hospital_id': data.data[i].announcement_hospital_id,
+										'announcement_picture': data.data[i].announcement_picture
+									},
+								});
+
+							});
+							var myDate = new Date();
+							var result = gmtToDate(myDate);
+
+							li.appendChild(div);
+							div.appendChild(divTitle);
+							divTitle.appendChild(h3);
+							if(h3.innerHTML == result) {
+								divTitle.appendChild(newMark);
+							}
+							if(localStorage.getItem(li.id) == 'unread') {
+								divTitle.appendChild(unreadMark);
+							} else {
+								divTitle.appendChild(readMark);
+							}
+							div.appendChild(divContent);
+							divContent.appendChild(h1);
+
+							fragment.appendChild(li);
+							//							}
+						});
+						container.appendChild(fragment);
+
+						if(data.data.length > 0) {
+							// 如果有更多数据，则继续
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+						} else {
+							// 如果没有更多数据了，则关闭上拉加载
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						// 如果没有更多数据了，则关闭上拉加载
+						mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						console.log(type);
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>
