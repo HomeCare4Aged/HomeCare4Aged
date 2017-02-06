@@ -132,7 +132,6 @@ margin-left: 5px;
     position: relative;
     display: block;
     overflow: hidden;
-    /*margin: -1px 0px;*/
     padding: inherit;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -145,7 +144,6 @@ margin-left: 5px;
 	background-color: white;
 }
  .mui-navigate-right{
- 	/*background: white;*/
  	line-height: 50px;
  	font-size: 30px;
  }

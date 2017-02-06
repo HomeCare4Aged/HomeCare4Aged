@@ -6,7 +6,7 @@ html body{
     background-color: white;
 }
 .marginLeftRight{
-	margin-top: 30%;
+	margin-top: 15px;
 	margin-left:25px ;
 	margin-right:25px ;
 }
@@ -50,10 +50,10 @@ html body{
 	
 }
 .zz-btn-next{
-	position:fixed;
+	/*position:fixed;
 	left: 10%;
-	bottom: 10%;
-	width: 80%;
+	bottom: 10%;*/
+	width: 100%;
 	height: 70px;
 	font-size: 40px;
 	color: white;

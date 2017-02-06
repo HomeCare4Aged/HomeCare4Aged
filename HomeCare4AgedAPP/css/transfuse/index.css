@@ -42,15 +42,17 @@ html body{
 	margin-left: 10%;
 	margin-right: 10%;
 	width: 80%;
-	margin-top: 20%;
+	margin-top: 28%;
 	
 }
 .zz-btn-next{
-	position:fixed;
+	/*position:fixed;
 	left: 10%;
 	bottom: 10%;
 	width: 80%;
-	height: 70px;
+	height: 70px;*/
+	position: relative;
+	width: 100%;
 	font-size: 40px;
 	color: white;
 	background: rgb(76,188,236);

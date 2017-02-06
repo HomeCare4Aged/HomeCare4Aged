@@ -56,17 +56,22 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">输液时间</h1>
 		</header>
-		<div class="mui-content">
+		<div id="myHistory" class="mui-bar top60px " style="height: 70px;">
+				<h5 class="black-text" style="font-weight: bold; font-size: 30px; margin-top: 20px; margin-left: 15px;">我的输液历史</h5>
+				<img src="../../images/right.png" style="height: 25px;width: 30px; float: right;margin-top: -30px;margin-right: 10px;" />
+			</div>
+		<div class="mui-content marginLeftRight">
+			
 			<div class="mui-row ">
 				<button id='zz-btn-time' data-options='{}' forma class="zz-btn-timeClass">选择输液日期</button>
 			</div>
 			<div class="mui-row zz-div-result">
-				<label id="zz-label-ymd"></label>
+				<label id="zz-label-ymd" style="color: white;"></label>
 			</div>
 			<div class="mui-row zz-div-result">
-				<label id="zz-label-timeSlot"></label>
+				<label id="zz-label-timeSlot"style="color: white;"></label>
 			</div>
-			<div class="mui-row marginLeftRight">
+			<div class="mui-row " style="margin-left: 10%;margin-right: 10%;margin-top: 22%;">
 				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/transFuseTime.html');">下一步</button>
 			</div>
 		</div>
@@ -87,14 +92,18 @@
 				},
 
 			});
+			
+			
+			
 			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth / 2);
 			var timeResult;
 			var ymd;
 			var timeSlot;
 			ymd = document.getElementById('zz-label-ymd');
 			timeSlot = document.getElementById('zz-label-timeSlot');
-			ymd.innerHTML = '';
-			timeSlot.innerHTML = '';
+			ymd.innerHTML = 'aa';
+			timeSlot.innerHTML = 'aa';
+			
 			mui.plusReady(function() {
 				plus.navigator.setStatusBarBackground('#4CBCEC');
 				//				console.log(localStorage.getItem('selectSeat'));
@@ -188,8 +197,12 @@
 						});
 						picker.show(function(rs) {
 							timeResult = rs.text;
+							localStorage.transFuseTimeResult = timeResult;
+							console.log(timeResult);
 							ymd.innerHTML = rs.text.substr(0, 10);
+							ymd.style.color = "black";
 							timeSlot.innerHTML = rs.text.substr(10, 6);
+							timeSlot.style.color = "black";
 							picker.dispose();
 						});
 
@@ -261,14 +274,25 @@
 				} else if(time_range == false) {
 					mui.alert('您所选的时间医院尚未营业,该医院营业时间为：每日上午 ' + hospital_business_begintime + ' 至 ' + '每日下午：' + hospital_business_endtime);
 				} else {
+					
 					mui.openWindow({
 						url: $url,
-						extras: {
-							'timeResult': timeResult
-						}
+//						extras: {
+//							'timeResult': timeResult
+//						}
 					});
 				}
 			}
+			var btn = document.getElementById("myHistory");
+			btn.addEventListener("tap", function() {
+				mui.openWindow({
+					url: '../transfuse/myHistory.html',
+					id: 'home',
+					extras: {
+						_id: this.id,
+					},
+				});
+			});
 		</script>
 	</body>
 

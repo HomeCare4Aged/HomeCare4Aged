@@ -15,16 +15,24 @@
 			
 			#middlePopover {
 				position: fixed;
-				top: 10% !important;
+				top: 20% !important;
 				left: 10%!important;
+				height: 60%;
 			}
 			
 			#bottomPopover {
-				position: fixed;
-				top: 15% !important;
-				left: 10%!important;
-				height: 70%;
+				/*position: fixed;
+				top: 15% !important;*/
+				bottom: 10%!important;
+				height: 40%;
 			}
+			/*.aaaaaa:before {
+			  content: '';
+			  display: inline-block;
+			  height: 100%;
+			  vertical-align: middle;
+			  margin-right: -0.25em; /* Adjusts for spacing */
+			/*}*/
 		</style>
 	</head>
 
@@ -33,7 +41,7 @@
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<h1 class="mui-title">店铺详情</h1>
 		</header>
-		<div class="mui-content" style="margin-top: 15px;margin-bottom: 17%;">
+		<div class="mui-content" style="margin-top: 15px;margin-bottom: 18%;">
 
 			<img src="../../images/home/cloudySky.png" class="mui-icon-image blur" id="backgroundImg" style="position: absolute; height: 50%;" />
 			<div class="BG" style="background: rgba(0,0,0,0.4);position: relative;" id="BGBlack">
@@ -57,11 +65,107 @@
 
 			<ul class="mui-table-view mui-table-view-chevron" id="list_already">
 				<!--<li class="mui-table-view-cell mui-collapse">
+					<a class="mui-navigate-right" href="#">产品</a>
+
+					<ul class="mui-table-view mui-table-view-chevron">
+
+						<li class="mui-table-view-cell " style="padding: 0px;">
+							<div>
+
+								<div style="width: 15%;margin-left: 6%;float: left;">
+									<img src="../../images/takeOut/pull.png" class="mui-media-object" />
+								</div>
+								<a href="#middlePopover" style="color: black;">
+									<div style="width: 48%;float: left;margin-left: 5px;">
+										<h4 style="margin-bottom: 1em;">黄焖鸡黄焖鸡小份</h4>
+										<h4 class="gray-text">
+										月售2000份&nbsp;
+										<span style="color: red;">￥25元</span>
+									</h4>
+									</div>
+								</a>
+
+								<div style="height: 300%;  width: 28%;margin-top: 1em;float: right;">
+									<div style="width: 30%;float: left;">
+										<img src="../../images/takeOut/reduce.png" style="width: 100%;position: relative;margin-right: 0.2em;display: none;" />
+									</div>
+									<div style="width: 30%;float: left;text-align: center;margin-top: 0.35em;">
+										<span style="display: none;">x11</span>
+									</div>
+									<div style="width: 30%;float: left;">
+										<img src="../../images/takeOut/add.png" style="width: 100%;position: relative;margin-right: 0.2em;" />
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+						<li class="mui-table-view-cell " style="padding: 0px;">
+							<div style="background-color: red;width: 100%;height: 100%;">
+
+								<div style="width: 15%;margin-left: 6%;float: left;">
+									<img src="../../images/takeOut/pull.png" class="mui-media-object" />
+								</div>
+
+								<a href="#middlePopover" style="color: black;">
+									<div style="width: 48%;float: left;margin-left: 5px;">
+										<h4 style="margin-bottom: 1em;">黄焖鸡黄焖鸡小份</h4>
+										<h4 class="gray-text">
+										月售2000份&nbsp;
+										<span style="color: red;">￥25元</span>
+									</h4>
+									</div>
+								</a>
+
+								<div style="height: 300%;  width: 28%;margin-top: 1em;float: right;">
+									<div style="width: 30%;float: left;">
+										<img src="../../images/takeOut/reduce.png" style="width: 100%;position: relative;margin-right: 0.2em;display: none;" />
+									</div>
+									<div style="width: 30%;float: left;text-align: center;margin-top: 0.35em;">
+										<span style="display: none;">x11</span>
+									</div>
+									<div style="width: 30%;float: left;">
+										<img src="../../images/takeOut/add.png" style="width: 100%;position: relative;margin-right: 0.2em;" />
+									</div>
+								</div>
+
+							</div>
+						</li>
+
+					</ul>
+				</li>-->
+			</ul>
+
+			<!--<ul class="mui-table-view mui-table-view-chevron" id="list_already">
+				<li class="mui-table-view-cell mui-collapse">
 					<a class="mui-navigate-right">
 						黄焖类
 						<img src="../../images/takeOut/pull.png" style=" width: 30px; float: right; margin-right: -40px; margin-top: 10px;" />
 					</a>
 					<ul class="mui-table-view mui-table-view-chevron">
+						<li class="mui-table-view-cell"style="padding:10px 25px;">
+								<!--<div class="mui-row mui-col-xs-12">
+								<div class="mui-col-xs-1">
+									<img src="../../images/takeOut/pull.png" style=" width: 50px;background-color: burlywood;" />
+								</div>
+								<div class="mui-col-xs-7" style="margin-left: 40px; margin-top: -5px; background-color: #E5E5E4;">
+									<h4>黄焖鸡h黄焖鸡小份</h4>
+									<h4 style="margin-top: 15px;" class="gray-text">
+										月售2000份&nbsp;
+										<span style="color: red;">￥25元</span>
+									</h4>
+								</div>
+								<div class="mui-col-xs-2" style="float: right;background-color: #6641E2;">
+									<span style="float: left;">x1</span>
+									<img src="../../images/takeOut/add.png" style="width: 20px;float: right;" />
+									<img src="../../images/takeOut/reduce.png" style="width: 20px;margin-top: 15px; float: right; margin-left: 80px;" />
+								</div>
+							</div>-->
+			<!--ss
+							
+							</li>
+					</ul>-->
+			<!--<ul class="mui-table-view mui-table-view-chevron">
 						<li class="mui-table-view-cell" style="padding:10px 25px;">
 							<div class="mui-row mui-col-xs-12">
 								<div class="mui-col-xs-1">
@@ -81,62 +185,54 @@
 								</div>
 							</div>
 						</li>
-					</ul>
-					<ul class="mui-table-view mui-table-view-chevron">
-						<li class="mui-table-view-cell" style="padding:10px 25px;">
-							<div class="mui-row mui-col-xs-12">
-								<div class="mui-col-xs-1">
-									<img src="../../images/takeOut/pull.png" style=" width: 50px;" />
-								</div>
-								<div class="mui-col-xs-7" style="margin-left: 40px; margin-top: -5px;">
-									<h4>黄焖鸡h黄焖鸡小份</h4>
-									<h4 style="margin-top: 15px;" class="gray-text">
-										月售2000份&nbsp;
-										<span style="color: red;">￥25元</span>
-									</h4>
-								</div>
-								<div class="mui-col-xs-2" style="float: right;width: 50px;">
-									<span style="float: left;">x1</span>
-									<img src="../../images/takeOut/add.png" style="width: 20px;float: right;" />
-									<img src="../../images/takeOut/reduce.png" style="width: 20px;margin-top: 15px; float: right; margin-left: 80px;" />
-								</div>
-							</div>
-						</li>
-					</ul>
-				</li>-->
-			</ul>
+					</ul>-->
+			<!--</li>
+			</ul>-->
 
 			<div id="middlePopover" class="mui-popover">
-				<img src="../../images/123.png" style="width: 100%;height: 85%;" id="zz-img-popoverImgShow" />
-				<div class="mui-row mui-col-xs-12">
-					<div class="mui-col-xs-7" style="margin-left: 15px;">
-						<h4 id="zz-h4-popoverName">超级无敌黄焖鸡小份</h4>
-						<h4 style="margin-top: 15px;" class="gray-text" id="zz-h4-popoverSale">
-						月售2000份&nbsp;
-						<span style="color: red;" id="zz-span-popoverMoney">￥25元</span>
-					</h4>
-					</div>
-					<div class="mui-col-xs-1" style="float: right;margin-right: 20px;margin-top: 33px;">
-						<img src="../../images/takeOut/add.png" style="width: 25px;" id="zz-img-popoverAdd" class="g-btnActive" />
+
+				<div class="mui-scroll-wrapper" id="wrapper" style="margin-top: -0.1px;">
+					<div class="mui-scroll">
+						<img src="../../images/123.png" style="width: 100%;height: 300px;" id="zz-img-popoverImgShow" class="middlePopoverImg" />
+						<h4 id="zz-h4-popoverName" style="margin-left: 15px;margin-right: 15px;">超级无敌黄焖鸡小份</h4>
+						<div class="mui-row mui-col-xs-12">
+							<div class="mui-col-xs-7" style="margin-left: 15px;margin-right: 15px;">
+								<h4 style="" class="gray-text" id="zz-h4-popoverSale">
+									月售2000份&nbsp;
+									<span style="color: red;" id="zz-span-popoverMoney">￥25元</span>
+								</h4>
+							</div>
+							<div class="mui-col-xs-1" style="float: right;margin-right: 20px;">
+								<img src="../../images/takeOut/add.png" style="width: 25px;" id="zz-img-popoverAdd" class="g-btnActive" />
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
-			<div id="bottomPopover" class="mui-popover">
-				<h1 style="text-align: center;">购物车</h1>
-				<!--<img id="bottomPopoverImg" style="width: 50px; height: 50px; "/>-->
-				<!--<div class="mui-row marginLeftRight">
-					<div class="mui-col-xs-7">
-						<h4 class="gray-text" id="bottomPopoverStoreName">黄焖鸡</h4>
+
+			<div id="bottomPopover" class=" mui-popover mui-popover-action mui-popover-bottom" style="background-color: white;">
+				<!--<img src="../../images/small.png" style="width: 100%;height: 100%;no-repeat" id="imgTips" />-->
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" id="bottomPopoverScroll">
+						<!--<div class="mui-row">
+							<div class="mui-col-xs-7" style="">
+								<div class="" style="margin-left: 4%;">
+									<h4>黄焖鸡小份</h4>
+									<h4 style="color: red;margin-top: 5%;">￥20</h4>
+								</div>
+							</div>
+							<div class="mui-col-xs-5" style="margin-top: 3%;">
+								<img src="../../images/takeOut/reduce.png" style="width: 20%;margin-right:4%;margin-left: 20%;margin-bottom: 0px;" />
+								<span style="font-size: 130%;line-height: 20px;position: absolute;margin-top: 4%;">x10</span>
+								<img src="../../images/takeOut/add.png" style="width: 20%;float: right;margin-right: 8%;" />
+							</div>
+						</div>
+						<div  style="background-color: #E7E7E7;height: 1px;width: 94%;margin-left: 3%;margin-right: 30px;"></div> -->
 					</div>
 
-					<div class="mui-col-xs-3">
-						<h4 id="bottomPopoverCount">x1</h4>
-					</div>
-					<div class="mui-col-xs-2 mui-text-right">
-						<h4 style="color: red;" id="bottomPopoverStorePtice">￥20</h4>
-					</div>
-				</div>-->
+				</div>
 			</div>
+
 			<div class="mui-col-xs-12" style="height: 10%;position: fixed;bottom: 0px; background:red;">
 				<div style="height: 10%;position: fixed;bottom: 0px; background: rgb(51,51,51);" class="mui-col-xs-7">
 					<a href="#bottomPopover" id="a-bottomPopover">
@@ -158,10 +254,11 @@
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init();
-
+			mui('.mui-scroll-wrapper').scroll();
 			$('.BG').css('width', document.documentElement.clientWidth);
 			//			$('.BG').css('height', document.documentElement.clientHeight / 1.8);
 			$('.mui-icon-image').css('width', document.documentElement.clientWidth);
+			//			document.getElementById('wrapper').style.marginTop = document.getElementById('zz-img-popoverImgShow').offsetHeight+'px';
 			//			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 1.8);
 			mui.plusReady(function() {
 
@@ -253,6 +350,7 @@
 
 							a = doc.createElement("a");
 							a.setAttribute("class", "mui-navigate-right");
+							//							a.setAttribute('style','font-size: 20px;')
 							a.innerHTML = data.classify[i]['type'];
 							imgPull = doc.createElement("img");
 							imgPull.setAttribute("src", "../../images/takeOut/pull.png");
@@ -275,44 +373,48 @@
 								ul = doc.createElement("ul");
 								ul.setAttribute("class", "mui-table-view mui-table-view-chevron");
 
-								//								
 								liContent = doc.createElement("li");
 								liContent.setAttribute("class", "mui-table-view-cell");
-								liContent.setAttribute("style", "padding:10px 25px;");
+								liContent.setAttribute("style", "padding:0px;line-height: 100%;");
 								liContent.id = data.data[name][i]['store_goods_id'] + 'liContent';
 								liContent.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
-								aLi = doc.createElement("a");
-								aLi.setAttribute("href", "#middlePopover");
-								aLi.setAttribute("style", "color: black; position: absolute;");
-								aLi.id = data.data[name][i]['store_goods_id'] + 'aLi';
-								aLi.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
-								//								aLi.innerHTML = 'aaaaaaa';
+
 								divContent = doc.createElement("div");
-								divContent.setAttribute("class", "mui-row mui-col-xs-12");
+								//																divContent.setAttribute("style", "border:1px solid red;");
+								divLine = document.createElement('div');
+								divLine.setAttribute("style", "background-color: #E7E7E7;height: 1px;margin-left: 25px;margin-right: 25px;");
+
 								divImg = doc.createElement("div");
-								divImg.setAttribute("class", "mui-col-xs-2");
-								//divImg.setAttribute("style", "background-color: orange;");
+								//								divImg.setAttribute("class", "mui-col-xs-2");
+								divImg.setAttribute("style", "width: 15%;margin-left: 6%;float: left;margin-top: 0.2em;");
+
 								aImg = doc.createElement("a");
 								aImg.setAttribute("href", "#middlePopover");
 								aImg.id = data.data[name][i]['store_goods_id'] + 'aImg';
+								aImg.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
 
 								imgShow = doc.createElement("img");
 								imgShow.setAttribute("src", data.data[name][i]['store_goods_picture']);
-								aImg.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
-								imgShow.setAttribute("style", "width: 50px; height: 50px;");
+								imgShow.setAttribute("class", "mui-media-object");
+
+								aLi = doc.createElement("a");
+								aLi.setAttribute("href", "#middlePopover");
+								aLi.setAttribute("style", "color: black;");
+								aLi.id = data.data[name][i]['store_goods_id'] + 'aLi';
+								aLi.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
 								divDescribe = doc.createElement("div");
 								//								divDescribe.setAttribute("class", "mui-col-xs-9");
-								divDescribe.setAttribute("style", "margin-left: 10px;margin-top: -5px; ");
+								divDescribe.setAttribute("style", "width: 48%;float: left;margin-left: 5px;");
 
 								h4Name = doc.createElement("h4");
 								h4Name.innerHTML = data.data[name][i]['store_goods_name'];
 								h4Name.id = data.data[name][i]['store_goods_id'] + 'foodName';
-
+								h4Name.setAttribute("style", "margin-bottom: 0.5em;");
 								//								h4Name.setAttribute('attr',data.data[name][i]['store_goods_name']);
 								//								console.log(h4Name.innerHTML);
 								h4Sale = doc.createElement("h4");
 								h4Sale.setAttribute("class", "gray-text");
-								h4Sale.setAttribute("style", "margin-top: 15px;");
+								//								h4Sale.setAttribute("style", "margin-top: 15px;");
 								h4Sale.id = data.data[name][i]['store_goods_id'] + 'foodSale';
 								h4Sale.innerHTML = "月售" + data.data[name][i]['store_monthly_sales'] + "份  ";
 								spanMoney = doc.createElement("span");
@@ -322,23 +424,29 @@
 
 								divAddOrReduce = doc.createElement("div");
 								//								divAddOrReduce.setAttribute("class", "mui-col-xs-2");
-								divAddOrReduce.setAttribute("style", "float: right;width: 50px;");
+								divAddOrReduce.setAttribute("style", "width: 28%;margin-top: 0.5em;float: right;");
+								divSpanCount = doc.createElement("div");
+								divSpanCount.setAttribute("style", "width: 30%;float: left;text-align: center;margin-top: 0.35em;");
 								spanCopies = doc.createElement("span");
-								spanCopies.setAttribute("style", "float: left;");
+								//								spanCopies.setAttribute("style", "float: left;");
 								//								spanCopies.innerHTML = 'x1';
+
 								spanCopies.id = data.data[name][i]['store_goods_id'] + 'span';
 								spanCopies.setAttribute("count", "0");
 								spanCopies.setAttribute("price", data.data[name][i]['store_goods_price']);
+								divImgAdd = doc.createElement("div");
+								divImgAdd.setAttribute("style", "width: 30%;float: left;");
 								imgAdd = doc.createElement("img");
 								imgAdd.setAttribute("src", "../../images/takeOut/add.png");
-								imgAdd.setAttribute("style", "width: 20px;float: right; ");
+								imgAdd.setAttribute("style", "width: 100%;position: relative;margin-right: 0.2em; ");
 								imgAdd.setAttribute("class", "g-btnActive");
 								imgAdd.setAttribute("attr", data.data[name][i]['store_goods_id']);
 								imgAdd.id = data.data[name][i]['store_goods_id'] + 'add';
-
+								divImgReduce = doc.createElement("div");
+								divImgReduce.setAttribute("style", "width: 30%;float: left;");
 								imgReduce = doc.createElement("img");
 								imgReduce.setAttribute("src", "../../images/takeOut/reduce.png");
-								imgReduce.setAttribute("style", "width: 20px;margin-top: 15px; float: right; margin-left: 80px;display: none;");
+								imgReduce.setAttribute("style", "width: 100%;position: relative;margin-right: 0.2em;display: none;");
 								imgReduce.setAttribute("class", "g-btnActive");
 								imgReduce.id = data.data[name][i]['store_goods_id'] + 'reduce';
 								imgReduce.setAttribute("count", "0");
@@ -354,6 +462,7 @@
 									zz_img_popoverImgShow.src = this.getAttribute("selfSrc");
 									zz_img_popoverAdd.id = id + 'add';
 									console.log(zz_img_popoverAdd.id);
+									console.log("nnnnnnnnnnnnnnnnnnn" + document.getElementById('middlePopover').offsetHeight);
 								});
 
 								imgAdd.addEventListener("tap", function() {
@@ -372,19 +481,25 @@
 								ul.appendChild(liContent);
 								//								aLi.appendChild(liContent);
 								liContent.appendChild(divContent);
-
+								//								liContent.appendChild(divLine);
 								divContent.appendChild(divImg);
 								divImg.appendChild(imgShow);
 								//								aImg.appendChild(imgShow);
 								divContent.appendChild(aLi);
 								aLi.appendChild(divDescribe);
 								divDescribe.appendChild(h4Name);
+
 								divDescribe.appendChild(h4Sale);
 								h4Sale.appendChild(spanMoney);
+
 								divContent.appendChild(divAddOrReduce);
-								divAddOrReduce.appendChild(spanCopies);
-								divAddOrReduce.appendChild(imgAdd);
-								divAddOrReduce.appendChild(imgReduce);
+								divAddOrReduce.appendChild(divImgReduce);
+								divImgReduce.appendChild(imgReduce);
+								divAddOrReduce.appendChild(divSpanCount);
+								divSpanCount.appendChild(spanCopies);
+								divAddOrReduce.appendChild(divImgAdd);
+								divImgAdd.appendChild(imgAdd);
+
 								//								fragment.appendChild(liHeader);
 
 							});
@@ -405,70 +520,104 @@
 				localStorage.commodityMoneyAll = 0;
 				localStorage.storeFoodData = storeFoodData;
 
-				var divContent;
-				var divBottomStoreName;
-				var h4BottomPopoverStoreName;
-				var divBottomCount;
-				var h4BottomPopoverCount;
-				var divBottomPopoverStorePrice;
-				var h4BottomPopoverStorePrice;
-				
 				document.getElementById('a-bottomPopover').addEventListener('tap', function() {
-					
+
+					if(storeCount == 0) {
+//						document.getElementById('imgTips').style.display = 'none';
+						mui.toast('您的购物车为空~');
+					}
+//					else {
+////						document.getElementById('imgTips').style.display = '';
+//					}
 					var fragment2 = document.createDocumentFragment();
-					h1ShoppingCart = document.createElement('h1');
-					h1ShoppingCart.innerHTML = '购物车';
-					h1ShoppingCart.setAttribute("style","text-align: center;");
-					fragment2.appendChild(h1ShoppingCart);
-					if(storeCount == 0){
-						h3Tips = document.createElement('h3');
-						h3Tips.innerHTML = '购物车里还没有商品~快去选购吧~';
-						fragment2.appendChild(h3Tips);	
-						}
-					
-					
-					var bottomPopover = document.getElementById("bottomPopover");
+					//					var fragment3 = document.createDocumentFragment();
+
+					var bottomPopover = document.getElementById("bottomPopoverScroll");
 					var childs = bottomPopover.childNodes;
 					for(var i = childs.length - 1; i >= 0; i--) {
 						bottomPopover.removeChild(childs[i]);
 					}
-
+					console.log(JSON.stringify(matchData));
+					console.log(JSON.stringify(storeFoodData))
 					for(var p in storeFoodData) {
 						if(storeFoodData[p] == '0') {
 							delete storeFoodData[p];
 							continue;
 						} else {
-							
 							divContent = document.createElement('div');
-							divContent.setAttribute('class', "mui-row marginLeftRight");
-							divBottomStoreName = document.createElement('div');
-							divBottomStoreName.setAttribute('class', "mui-col-xs-7");
+							divContent.setAttribute('class', "mui-row");
+							divContent.id = matchData[p]['id'] + 'divContent';
+							divCOL7 = document.createElement('div');
+							divCOL7.setAttribute('class', "mui-col-xs-7");
+							divText = document.createElement('div');
+							divText.setAttribute('style', "margin-left: 4%;");
 							h4BottomPopoverStoreName = document.createElement('h4');
-							h4BottomPopoverStoreName.setAttribute('class', "gray-text");
 							h4BottomPopoverStoreName.innerHTML = matchData[p]['name'];
-							divBottomCount = document.createElement('div');
-							divBottomCount.setAttribute('class', "mui-col-xs-3");
-							h4BottomPopoverCount = document.createElement('h4');
-							h4BottomPopoverCount.innerHTML = '×' + storeFoodData[p];
-							divBottomPopoverStorePrice = document.createElement('div');
-							divBottomPopoverStorePrice.setAttribute('class', "mui-col-xs-2 mui-text-right");
 							h4BottomPopoverStorePrice = document.createElement('h4');
-							h4BottomPopoverStorePrice.setAttribute('style', "color: red;");
-							h4BottomPopoverStorePrice.innerHTML = storeFoodData[p] * matchData[p]['price'];
+							h4BottomPopoverStorePrice.setAttribute('style', "color: red;margin-top: 5%;");
+							h4BottomPopoverStorePrice.innerHTML = "￥" + matchData[p]['price'];
+							divCOL5 = document.createElement('div');
+							divCOL5.setAttribute('class', "mui-col-xs-5");
+							divCOL5.setAttribute('style', "margin-top: 4%;");
+							imgBottomPopoverReduce = document.createElement('img');
+							imgBottomPopoverReduce.setAttribute("src", "../../images/takeOut/reduce.png");
+							imgBottomPopoverReduce.setAttribute("style", "width: 20%;float: right;margin-right: 8%;");
+							imgBottomPopoverReduce.id = matchData[p]['id'] + 'reduce';
+							imgBottomPopoverAdd = document.createElement('img');
+							imgBottomPopoverAdd.setAttribute("src", "../../images/takeOut/add.png");
+							imgBottomPopoverAdd.setAttribute("style", "width: 20%;float: right;margin-right: 7%;");
+							imgBottomPopoverAdd.id = matchData[p]['id'] + 'add';
+							spanBottomPopoverCount = document.createElement('span');
+							spanBottomPopoverCount.setAttribute("style", "font-size: 130%;margin-top: 4%;float: right;margin-right: 7%;");
+							spanBottomPopoverCount.id = matchData[p]['id'] + 'spanBottomPopoverCount';
+							spanBottomPopoverCount.innerHTML = '×' + storeFoodData[p];
 
-							divContent.appendChild(divBottomStoreName);
-							divBottomStoreName.appendChild(h4BottomPopoverStoreName);
-							divContent.appendChild(divBottomCount);
-							divBottomCount.appendChild(h4BottomPopoverCount);
-							divContent.appendChild(divBottomPopoverStorePrice);
-							divBottomPopoverStorePrice.appendChild(h4BottomPopoverStorePrice);
-							
+							divLine = document.createElement('div');
+							divLine.setAttribute("style", "background-color: #E7E7E7;height: 1px;width: 94%;margin-left: 3%;margin-right: 30px;");
+							divLine.id = matchData[p]['id'] + 'divLine';
+
+							divContent.appendChild(divCOL7);
+							divCOL7.appendChild(divText);
+							divText.appendChild(h4BottomPopoverStoreName);
+							divText.appendChild(h4BottomPopoverStorePrice);
+							divContent.appendChild(divCOL5);
+							divCOL5.appendChild(imgBottomPopoverAdd);
+							divCOL5.appendChild(spanBottomPopoverCount);
+							divCOL5.appendChild(imgBottomPopoverReduce);
+
+							imgBottomPopoverAdd.addEventListener("tap", function() {
+								//								console.log(localStorage.commodityMoneyAll);
+								var id = this.id.replace('add', '');
+								//									spanBottomPopoverCount.id ="×" + (parseInt(spanBottomPopoverCount.innerHTML.replace("×",'')) + 1);
+								document.getElementById(id + 'spanBottomPopoverCount').innerHTML = "×" + (parseInt(document.getElementById(id + 'spanBottomPopoverCount').innerHTML.replace("×", '')) + 1);
+								add(this.id);
+							});
+
+							imgBottomPopoverReduce.addEventListener("tap", function() {
+								//console.log(localStorage.commodityMoneyAll);
+								var id = this.id.replace('reduce', '');
+								console.log(document.getElementById(id + 'divLine').id);
+								document.getElementById(id + 'spanBottomPopoverCount').innerHTML = "×" + (parseInt(document.getElementById(id + 'spanBottomPopoverCount').innerHTML.replace("×", '')) - 1);
+								if(document.getElementById(id + 'spanBottomPopoverCount').innerHTML == "×0") {
+									document.getElementById(id + 'divContent').innerHTML = '';
+									document.getElementById(id + 'divLine').setAttribute('style', 'background-color: white;');
+								}
+
+								reduce(this.id);
+								if(localStorage.commodityMoneyAll == '0') {
+									console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+									document.getElementById('imgTips').style.display = '';
+								}
+							});
 							fragment2.appendChild(divContent);
-							
+							fragment2.appendChild(divLine);
 
 						}
 					}
-					document.getElementById('bottomPopover').appendChild(fragment2);
+					//					fragment3.appendChild(divTips);
+
+					document.getElementById('bottomPopoverScroll').appendChild(fragment2);
+					//					document.getElementById('bottomPopover').appendChild(fragment3);
 				});
 
 				function reduce(id) {
@@ -490,11 +639,11 @@
 
 					storeFoodData[id] = count;
 					storeFoodALLData.push(storeFoodData);
-					console.log('----------------------' + JSON.stringify(storeFoodData));
+					//					console.log('----------------------' + JSON.stringify(storeFoodData));
 					if(localStorage.commodityMoneyAll == 0) {
 						document.getElementById('zz-span-commodityMoneyAll').style.display = 'none';
 					}
-					console.log(localStorage.commodityMoneyAll);
+					console.log(localStorage.commodityMoneyAll + 'nnnnnnnnnnnnnnnnnnnn');
 					if(parseFloat(localStorage.commodityMoneyAll) < parseFloat(localStorage.statrtPrice) && parseFloat(localStorage.commodityMoneyAll) != 0) {
 
 						priceDifferences = localStorage.statrtPrice - localStorage.commodityMoneyAll;

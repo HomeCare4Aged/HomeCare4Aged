@@ -76,7 +76,8 @@
 			"view/registration/index.html",
 			"view/message/index.html",
 			"view/userInfo/index.html",
-			"view/video/index.html"
+			"view/video/index.html",
+			"view/transfuse/index.html"
 		]
 	},
 	"view/takeOut/index.html": {
@@ -119,7 +120,9 @@
 			"css/takeOut/store.css",
 			"images/takeOut/box3.png",
 			"images/takeOut/box2.png",
-			"view/takeOut/progress.html"
+			"view/takeOut/progress.html",
+			"images/dropIn/add.png",
+			"images/dropIn/compositePath.png"
 		],
 		"refer": [
 			"view/takeOut/orderForm.html",
@@ -136,10 +139,13 @@
 			"js/jquery.1.11.1.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"css/common/common.css"
+			"css/common/common.css",
+			"images/right.png"
 		],
 		"refer": [
-			"view/transfuse/transFuseTime.html"
+			"view/transfuse/transFuseTime.html",
+			"view/transfuse/selectSeat.html",
+			"view/transfuse/myHistory.html"
 		]
 	},
 	"view/transfuse/selectSeat.html": {
@@ -159,7 +165,9 @@
 		],
 		"refer": [
 			"view/transfuse/index.html",
-			"view/transfuse/myHistory.html"
+			"view/transfuse/myHistory.html",
+			"view/transfuse/transFuseTime.html",
+			"view/transfuse/makeSureMessage.html"
 		]
 	},
 	"view/transfuse/transFuseTime.html": {
@@ -176,10 +184,12 @@
 			"js/jquery.1.11.1.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"css/common/common.css"
+			"css/common/common.css",
+			"js/constants.js"
 		],
 		"refer": [
-			"view/transfuse/makeSureMessage.html"
+			"view/transfuse/makeSureMessage.html",
+			"view/transfuse/selectSeat.html"
 		]
 	},
 	"view/loginRegister/index.html": {
@@ -664,7 +674,8 @@
 			"css/mui.min.css",
 			"css/common/common.css",
 			"images/transfuse/blackBed.png",
-			"css/userInfo/index.css"
+			"css/userInfo/index.css",
+			"js/jquery.1.11.1.js"
 		],
 		"refer": [
 			"view/takeOut/index.html",

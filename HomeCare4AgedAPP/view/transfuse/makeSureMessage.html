@@ -66,12 +66,12 @@
 			mui.plusReady(function(){
 				var sData = plus.webview.currentWebview();
 				
-				var transTime = sData.transtime;
+				var transTime = localStorage.transFuseTimeResult;
 				var transTimeHtml = document.getElementById("transTime");
 				transTimeHtml.innerHTML = transTime;
 //				console.log(sData);
 				
-				var transDuration = sData.userResult;
+				var transDuration = localStorage.timeLong+'小时';
 				var transDurationHtml = document.getElementById("transDuration");
 				transDurationHtml.innerHTML = transDuration;
 //				console.log(transDurationHtml.innerHTML);
@@ -92,7 +92,7 @@
 				var nowMillisecond =  Number(oldTime)+  Number(minutes*60*1000);//预计完成时间的毫秒数
 //				console.log(transTimeHtml.innerHTML);
 				var timeArray =  transTimeHtml.innerHTML.split(" ");
-//				console.log(timeArray);
+				console.log(timeArray);
 				var hourArray = timeArray[1].split(':');
 				hourArray[0] = parseInt(hourArray[0])+ parseInt(minutes/60);
 				var resTime = timeArray[0] +' ' + hourArray[0]+':'+hourArray[1];

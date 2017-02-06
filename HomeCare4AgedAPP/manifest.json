@@ -313,10 +313,13 @@
 					"css/common/common.css",
 					"css/mui.picker.min.css",
 					"js/jquery.1.11.1.js",
-					"js/constants.js"
+					"js/constants.js",
+					"images/right.png"
 				],
 				"refer": [
-					"view/transfuse/transFuseTime.html"
+					"view/transfuse/transFuseTime.html",
+					"view/transfuse/selectSeat.html",
+					"view/transfuse/myHistory.html"
 				],
 				"priority": 0
 			},
@@ -377,10 +380,12 @@
 					"fonts/mui.ttf",
 					"css/mui.min.css",
 					"css/common/common.css",
-					"js/jquery.1.11.1.js"
+					"js/jquery.1.11.1.js",
+					"js/constants.js"
 				],
 				"refer": [
-					"view/transfuse/makeSureMessage.html"
+					"view/transfuse/makeSureMessage.html",
+					"view/transfuse/selectSeat.html"
 				],
 				"priority": 0
 			},
@@ -624,7 +629,9 @@
 					"css/takeOut/store.css",
 					"images/takeOut/box3.png",
 					"images/takeOut/box2.png",
-					"view/takeOut/progress.html"
+					"view/takeOut/progress.html",
+					"images/dropIn/add.png",
+					"images/dropIn/compositePath.png"
 				],
 				"refer": [
 					"view/takeOut/orderForm.html"
@@ -648,7 +655,9 @@
 				],
 				"refer": [
 					"view/transfuse/index.html",
-					"view/transfuse/myHistory.html"
+					"view/transfuse/myHistory.html",
+					"view/transfuse/transFuseTime.html",
+					"view/transfuse/makeSureMessage.html"
 				],
 				"priority": 0
 			},
@@ -945,7 +954,8 @@
 					"css/mui.min.css",
 					"css/common/common.css",
 					"images/transfuse/blackBed.png",
-					"css/userInfo/index.css"
+					"css/userInfo/index.css",
+					"js/jquery.1.11.1.js"
 				],
 				"refer": [
 					"view/transfuse/transFuseHistoryDetails.html",

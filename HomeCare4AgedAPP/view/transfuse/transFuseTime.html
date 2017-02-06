@@ -8,134 +8,221 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/transfuse/transFuseTime.css" />
-		
+
 		<!--<link rel="stylesheet" href="../../css/app.css" />-->
 		<link rel="stylesheet" href="../../css/mui.picker.css" />
 		<link rel="stylesheet" href="../../css/mui.poppicker.css" />
-		
+
 		<style>
 			.mui-btn {
 				font-size: 16px;
 				padding: 8px;
 				margin: 3px;
 			}
+			
 			h5.mui-content-padded {
 				margin-left: 3px;
 				margin-top: 20px !important;
 			}
+			
 			h5.mui-content-padded:first-child {
 				margin-top: 12px !important;
 			}
+			
 			.ui-alert {
 				text-align: center;
 				padding: 20px 10px;
 				font-size: 16px;
 			}
 		</style>
-		
+
 	</head>
-		
+
 	<body>
 		<header class="mui-bar mui-bar-nav m_blue">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<h1 class="mui-title">输液时长</h1>
+			<h1 class="mui-title">选择输液时长</h1>
 		</header>
-		<div class="mui-content">
-			<div class="mui-row ">
-				<button id='showUserPicker' class="zz-btn-timeClass" type='button' >选择输液时长</button>
+		<div class="mui-content marginLeftRight">
+			<!--<div class="mui-row ">
+				<button id='showUserPicker' class="zz-btn-timeClass" type='button'>选择输液时长</button>
 			</div>
-			<div  class="mui-row zz-div-result">
+			<div class="mui-row zz-div-result">
 				<label id="zz-label-ymd" style="color: gray;"></label>
 			</div>
-			<div  class="mui-row zz-div-result">
+			<div class="mui-row zz-div-result">
 				<label id="zz-label-timeSlot" style="color: gray;"></label>
 			</div>
-			<div  class="mui-row zz-div-result">
+			<div class="mui-row zz-div-result">
 				<label id="zz-label-time"></label>
+			</div>-->
+			<div style="width: 48.5%;float: left;margin-top: 3%;border: 1px solid #AEAEAE;"class="time"onclick="chanceTime('btn1','text1','text11');"id="btn1">
+				<h1 style="text-align: center;font-size: 300%;margin-top: 20%;color: #AEAEAE;"class="textTips" id="text1">1</h1>
+				<h1 style="text-align: center;font-size: 200%;color: #AEAEAE;"class="textTips"id="text11">小时</h1>
 			</div>
-			<div class="mui-row marginLeftRight">
-				<button type="button" class="zz-btn-next" onclick="openWindow('../transfuse/makeSureMessage.html');">
+			
+			<div style="width: 48.5%;float: right;margin-top: 3%;border: 1px solid #AEAEAE;"class="time"onclick="chanceTime('btn2','text2','text22');"id="btn2">
+				<h1 style="text-align: center;font-size: 300%;margin-top: 20%;color: #AEAEAE;"class="textTips"id="text2">2</h1>
+				<h1 style="text-align: center;font-size: 200%;color: #AEAEAE;"class="textTips"id="text22">小时</h1>
+			</div>
+			
+			<div style="width: 48.5%;float: left;margin-top: 3%;border: 1px solid #AEAEAE;"class="time"onclick="chanceTime('btn3','text3','text33');"id="btn3">
+				<h1 style="text-align: center;font-size: 300%;margin-top: 20%;color: #AEAEAE;"class="textTips"id="text3">3</h1>
+				<h1 style="text-align: center;font-size: 200%;color: #AEAEAE;"class="textTips"id="text33">小时</h1>
+			</div>
+			
+			<div style="width: 48.5%;float: right;margin-top: 3%;border: 1px solid #AEAEAE;"class="time"onclick="chanceTime('btn4','text4','text44');"id="btn4">
+				<h1 style="text-align: center;font-size: 300%;margin-top: 20%;color: #AEAEAE;"class="textTips"id="text4">4</h1>
+				<h1 style="text-align: center;font-size: 200%;color: #AEAEAE;"class="textTips"id="text44">小时</h1>
+			</div>
+			
+			<div style="width: 48.5%;float: left;margin-top: 3%;border: 1px solid #AEAEAE;"class="time"onclick="chanceTime('btn5','text5','text55');"id="btn5">
+				<h1 style="text-align: center;font-size: 300%;margin-top: 20%;color: #AEAEAE;"class="textTips"id="text5">5</h1>
+				<h1 style="text-align: center;font-size: 200%;color: #AEAEAE;"class="textTips"id="text55">小时</h1>
+			</div>
+			
+			<div style="width: 48.5%;float: right;margin-top: 3%;border: 1px solid #AEAEAE;"class="time"onclick="chanceTime('btn6','text6','text66');"id="btn6">
+				<h1 style="text-align: center;font-size: 300%;margin-top: 20%;color: #AEAEAE;"class="textTips"id="text6">6</h1>
+				<h1 style="text-align: center;font-size: 200%;color: #AEAEAE;"class="textTips"id="text66">小时</h1>
+			</div>
+			
+			<div class="mui-row" >
+				<button type="button" class="zz-btn-next"style="margin-top: 3%;" onclick="openWindow('../transfuse/selectSeat.html');">
 					下一步
 				</button>
 			</div>
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
-		<script type="text/javascript" src="../../js/mui.picker.min.js" ></script>
-		<script type="text/javascript" src="../../js/mui.picker.js" ></script>
-		<script type="text/javascript" src="../../js/mui.poppicker.js" ></script>
-		<script type="text/javascript" src="../../js/city.data.js" ></script>
-		<script type="text/javascript" src="../../js/city.data-3.js" ></script>
+		<script type="text/javascript" src="../../js/mui.picker.min.js"></script>
+		<script type="text/javascript" src="../../js/mui.picker.js"></script>
+		<script type="text/javascript" src="../../js/mui.poppicker.js"></script>
+		<script type="text/javascript" src="../../js/city.data.js"></script>
+		<script type="text/javascript" src="../../js/city.data-3.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
-		mui.init({
+			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
-		mui.plusReady(function() {
-			var sData = plus.webview.currentWebview();
-			var timeResult = sData.timeResult;
-			var transtime = document.getElementById('zz-label-ymd');
-			transtime.innerHTML = timeResult.substr(0, 10);
-			var timeSlot = document.getElementById('zz-label-timeSlot');
-			timeSlot.innerHTML = timeResult.substr(10, 6);
+			mui.plusReady(function() {
+				localStorage.timeLong = '';
+				$('.time').css('height', (document.documentElement.clientWidth / 3) * HOMEIMGSCALE);
+				//			var sData = plus.webview.currentWebview();
+				//			var timeResult = sData.timeResult;
+//				var transtime = document.getElementById('zz-label-ymd');
+//				transtime.innerHTML = localStorage.transFuseTimeResult.substr(0, 10);
+//				var timeSlot = document.getElementById('zz-label-timeSlot');
+//				timeSlot.innerHTML = localStorage.transFuseTimeResult.substr(10, 6);
+
+//document.getElementById('btn1').style.color = "white";
 
 
-		});
-		
-		$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth/2);
-			(function($, doc) {
-				$.init();
-				$.ready(function() {
-					
-					//普通示例
-					var userPicker = new $.PopPicker();
-					userPicker.setData([{
-						value: '1',
-						text: '1小时'
-					},{
-						value: '2',
-						text: '2小时'
-					}, {
-						value: '3',
-						text: '3小时'
-					}, {
-						value: '4',
-						text: '4小时'
-					},
-					]);
-					var showUserPickerButton = doc.getElementById('showUserPicker');
-					var userResult = doc.getElementById('zz-label-time');
-					showUserPickerButton.addEventListener('tap', function(event) {
-						userPicker.show(function(items) {
-								userResult.innerHTML = JSON.stringify(items[0]['text']).substr(1, 3);
-						});
-					}, false);
-				});
-			})(mui, document);
-//			console.log(timeResult);
+
+				
+			});
+			function chanceTime($id,$id1,$id11) {
+								
+				console.log($id.replace('btn',''));
+				
+				$('.time').css('background-color','white');
+				$('.time').css('border-color','#AEAEAE');
+				$('.textTips').css('color','#AEAEAE');
+				document.getElementById($id).style.backgroundColor = "#52BDEB";
+				document.getElementById($id).style.borderColor = "#52BDEB";
+				document.getElementById($id1).style.color = "white";
+				document.getElementById($id11).style.color = "white";
+				localStorage.timeLong = $id.replace('btn','');
+			}
+			
+			$('.zz-btn-timeClass').css('height', document.documentElement.clientWidth / 2);
+//			(function($, doc) {
+//				$.init();
+//				$.ready(function() {
+//
+//					//普通示例
+//					var userPicker = new $.PopPicker();
+//					userPicker.setData([{
+//						value: '1',
+//						text: '1小时'
+//					}, {
+//						value: '2',
+//						text: '2小时'
+//					}, {
+//						value: '3',
+//						text: '3小时'
+//					}, {
+//						value: '4',
+//						text: '4小时'
+//					}, ]);
+//					var showUserPickerButton = doc.getElementById('showUserPicker');
+//					var userResult = doc.getElementById('zz-label-time');
+//					showUserPickerButton.addEventListener('tap', function(event) {
+//						userPicker.show(function(items) {
+//							userResult.innerHTML = JSON.stringify(items[0]['text']).substr(1, 3);
+//							localStorage.timeLong = userResult.innerHTML;
+//						});
+//					}, false);
+//				});
+//			})(mui, document);
+			//			console.log(timeResult);
 			function openWindow($url) {
 				var userResult = document.getElementById('zz-label-time');
-				var transtime =	document.getElementById('zz-label-ymd');
+				var transtime = document.getElementById('zz-label-ymd');
 				var timeSlot = document.getElementById('zz-label-timeSlot');
 				var userResult = document.getElementById('zz-label-time');
-//				console.log(localStorage.getItem('hospital_business_endtime'));
-				var userResultNum1 = parseInt(timeSlot.innerHTML.replace(":",""));
-				var userResultNum2 = parseInt(userResult.innerHTML.substr(0,1))*100;
+				//				console.log(localStorage.getItem('hospital_business_endtime'));
+				var userResultNum1 = parseInt(localStorage.transFuseTimeResult.substr(10, 6).replace(":", ""));
+				var userResultNum2 = parseInt(localStorage.timeLong) * 100;
 				var userResultNum = userResultNum1 + userResultNum2;
-				var endTimeNum = parseInt(localStorage.getItem('hospital_business_endtime').replace(":",""));
-//				console.log(userResultNum);
-//				console.log(endTimeNum);
-				if(userResult.innerHTML == ''){
+				var endTimeNum = parseInt(localStorage.getItem('hospital_business_endtime').replace(":", ""));
+				console.log(userResultNum);
+				//				console.log(endTimeNum);
+				if(localStorage.timeLong == '') {
 					mui.alert('您还没有选择输液时长');
-				}else if(userResultNum>endTimeNum){
-					mui.alert('您的预计完成输液时间已经超过了该医院的营业时间，'+'该医院停止营业的是时间为：'+localStorage.getItem('hospital_business_endtime')+'，请您选择较为合适的输液时长');
-				}else{
+				} else if(userResultNum > endTimeNum) {
+					mui.alert('您的预计完成输液时间已经超过了该医院的营业时间，' + '该医院停止营业的是时间为：' + localStorage.getItem('hospital_business_endtime') + '，请您选择较为合适的输液时长');
+				} else {
+
+					var postData = {};
+					postData['community_hospital_id'] = localStorage.community_hospitals_id;
+					postData['user_appointment_date'] = localStorage.transFuseTimeResult.substr(0, 10);
+					postData['user_appointment_time'] = (localStorage.transFuseTimeResult + ':00').substr(11, 9);
+					postData['predict_finished_time'] = getNowFormatDateHMS(new Date(new Date(localStorage.transFuseTimeResult + ':00').getTime() + localStorage.timeLong.replace('小时', '') * 60 * 60 * 1000));
+					console.log(postData['user_appointment_date']);
+					console.log(postData['predict_finished_time']);
+
+					plus.nativeUI.showWaiting();
+					mui.ajax({
+						type: 'POST',
+						data: postData,
+						url: SERVERURL + "HHospitalTransfusionInfo/getHospitalSeatCount",
+						dataType: "json",
+						timeout: 20000,
+						success: function(data) {
+							plus.nativeUI.closeWaiting();
+							console.log(JSON.stringify(data.unsetArray));
+							localStorage.seatCount = data.data.open_seat_num;
+							localStorage.bedCount = data.data.open_bed_num;
+							//						document.getElementById('seatCount').innerHTML = data.data.open_seat_num+"个";
+							//						document.getElementById('bedCount').innerHTML = data.data.open_bed_num+"个";
+							localStorage.seatAllCount = parseInt(data.data.open_seat_num) + parseInt(data.data.open_bed_num);
+
+						},
+						error: function(xhr, type, errorThrown) {
+							plus.nativeUI.closeWaiting();
+							console.log(type);
+							mui.alert('网络连接失败');
+						}
+
+					});
+
 					mui.openWindow({
 						url: $url,
-						extras: {
-									'transtime' : transtime.innerHTML+timeSlot.innerHTML,
-									'userResult' : userResult.innerHTML
-								}
-						
+//						extras: {
+//							'transtime': transtime.innerHTML + timeSlot.innerHTML,
+//							'userResult': userResult.innerHTML
+//						}
+
 					});
 				}
 			}
