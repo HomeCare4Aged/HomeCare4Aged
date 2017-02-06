@@ -21,7 +21,7 @@
 		<div class="mui-content">
 			<ul class="mui-table-view" id="list_ul">
 				<div id="videoPlay" class="zy_media">
-					<video id="g-video" poster="">
+					<video id="g-video">
 						<source id="g-videoPlay" src="" type="video/mp4"> </source>
 					</video>
 				</div>
@@ -99,16 +99,8 @@
 						h1 = document.getElementById("introduce");
 						h1.innerHTML = "简介：" + data.data.video_introduction;
 
-						document.getElementById('g-videoPlay').src = data.data.video_url;
-						zymedia('video', {
-							success: function() {
-								document.getElementById('g-video').poster = data.data.video_picture;
-								console.log('成功')
-							},
-							error: function() {
-								console.log('失败')
-							}
-						});
+//						document.getElementById('g-videoPlay').src = data.data.video_url;
+//						document.getElementById('g-video').poster = data.data.video_picture;
 
 					},
 					error: function(xhr, type, errorThrown) {
@@ -119,6 +111,9 @@
 					}
 				});
 			});
+		</script>
+		<script>
+			zymedia('video');
 		</script>
 	</body>
 

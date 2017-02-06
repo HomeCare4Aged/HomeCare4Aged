@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="../../css/mui.min.css">
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/loginRegister/certification.css" />
+		<link rel="stylesheet" href="../../css/userInfo/index.css" />
+		<style>
+			.mui-card .mui-control-content {
+				padding: 10px;
+			}
+			
+			.mui-control-content {
+				height: 60px;
+			}
+			
+			.mui-table-view:after {
+				left: 25px;
+				right: 25px;
+			}
+			
+			.mui-table-view:before {
+				left: 25px;
+				right: 25px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-transparent g_yellowColor" id="zz-header-header">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">我的订单</h1>
+		</header>
+		<div style="height: 1px;width: 100%;background: rgb(205,205,208);margin-top: 60px;"></div>
+		<div class="mui-content" style="margin-top: 0px;">
+			<div>
+				<div id="segmentedControl" class="mui-segmented-control">
+					<a class="mui-control-item mui-active" href="#item1">
+						外卖
+					</a>
+					<a class="mui-control-item" href="#item2">
+						上门
+					</a>
+				</div>
+			</div>
+			<div>
+				<div style="height: 1px;width: 100%;background: rgb(205,205,208);"></div>
+				<div id="item1" class="mui-control-content mui-active">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="top14px headline" id "already_title">
+
+								<h1 class="title" style="margin-left: 25px;">未完成</h1>
+							</div>
+							<ul class="mui-table-view" id="takeOut_already">
+							</ul>
+							<div class="headline" style="">
+								<h1 class="title" style="margin-left: 25px;">已完成</h1>
+							</div>
+							<ul class="mui-table-view" id="takeOut_finish">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="item2" class="mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll">
+							<div class="top14px headline" id "already_title">
+								<h1 class="title" style="margin-left: 25px;">未完成</h1>
+							</div>
+							<ul class="mui-table-view" id="DropIn_already">
+							</ul>
+							<div class="headline" style="">
+								<h1 class="title" style="margin-left: 25px;">已完成</h1>
+							</div>
+							<ul class="mui-table-view" id="DropIn_finish">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script>
+			mui.init({
+				swipeBack: true //启用右滑关闭功能
+			});
+			(function($) {
+				$('#scroll1').scroll({
+					indicators: true //是否显示滚动条
+				});
+			})(mui);
+			(function($) {
+				$('#scroll2').scroll({
+					indicators: true //是否显示滚动条
+				});
+			})(mui);
+			mui.plusReady(function() {
+				document.getElementById('item1').style.height = (document.documentElement.clientHeight - 111) + 'px';
+				document.getElementById('item2').style.height = (document.documentElement.clientHeight - 111) + 'px';
+				console.log(document.getElementById('zz-header-header').offsetHeight);
+
+				getShopList();
+				getServiceData();
+
+				window.addEventListener('refresh', function() {
+					if(localStorage.historyWithShopType = 'takeOut') {
+						$("#takeOut_already").empty();
+						$("#takeOut_finish").empty();
+						getShopList();
+					}
+
+					if(localStorage.historyWithShopType = 'DropIn') {
+						$("#DropIn_already").empty();
+						$("#DropIn_finish").empty();
+						getServiceData();
+					}
+
+				});
+				localStorage.transHistorylistId = plus.webview.currentWebview().id;
+				localStorage.transHistorylistId = plus.webview.currentWebview().id;
+
+			})
+
+			function getShopList() {
+				plus.nativeUI.showWaiting();
+				var postData = {};
+				postData['community_user_id'] = localStorage.community_user_id;
+				postData['store_type_id'] = '0001';
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "SStoreListInfo/getStoreListInfo",
+					data: postData,
+					dataType: "json",
+					timeout: 20000,
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						console.log(JSON.stringify(data));
+
+						var dataAlready = data.data.Unfinished;
+						var dataFinish = data.data.Finished;
+						console.log(JSON.stringify(dataAlready));
+						console.log(JSON.stringify(dataFinish));
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_already = doc.getElementById("takeOut_already");
+						mui.each(dataAlready, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							g_input = doc.createElement("input");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							h1.innerHTML = dataAlready[i].order['store_shop_name'];
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media deleteList");
+							li.id = dataAlready[i].order['store_list_id'];
+							console.log(li.id);
+							div.setAttribute("class", "marginLeftRight");
+							divCol_12 = doc.createElement("div");
+							divCol_12.setAttribute("class", "mui-row mui-col-xs-12");
+							divCol_2 = doc.createElement("div");
+							divCol_2.setAttribute("class", "mui-row mui-col-xs-2");
+							divCol_10 = doc.createElement("div");
+							divCol_10.setAttribute("class", "mui-row mui-col-xs-10");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("src", dataAlready[i].order['store_shop_picture']);
+							//								img.setAttribute("style", "width: 50px; height: 50px;");
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataAlready[i].order['store_list_time'];
+							//								console.log(label.innerHTML+'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
+
+							li.addEventListener('tap', function() {
+								localStorage.transfuseLiId = this.id;
+								localStorage.takeOutHistoryDetails = JSON.stringify(dataAlready[i])
+								mui.openWindow({
+									url: '../takeOut/storeListProgress.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(divCol_12);
+							divCol_12.appendChild(divCol_2);
+							divCol_12.appendChild(divCol_10);
+							divCol_2.appendChild(img);
+							divCol_10.appendChild(h1);
+							divCol_10.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_already.appendChild(fragment);
+
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_finish = doc.getElementById("takeOut_finish");
+						mui.each(dataFinish, function(i) {
+
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							divCol_12 = doc.createElement("div");
+							divCol_12.setAttribute("class", "mui-row mui-col-xs-12");
+							divCol_2 = doc.createElement("div");
+							divCol_2.setAttribute("class", "mui-row mui-col-xs-2");
+							divCol_10 = doc.createElement("div");
+							divCol_10.setAttribute("class", "mui-row mui-col-xs-10");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("src", dataFinish[i].order['store_shop_picture']);
+							h1.innerHTML = dataFinish[i].order['store_shop_name'];
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataFinish[i].order['store_list_time'];
+							li.id = dataFinish[i].order['store_list_id'];
+							li.addEventListener('tap', function() {
+								localStorage.takeOutHistoryDetails = JSON.stringify(dataFinish[i]);
+								mui.openWindow({
+									url: '../takeOut/storeListProgress.html',
+									extras: {
+										finished: 'finished'
+									}
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(divCol_12);
+							divCol_12.appendChild(divCol_2);
+							divCol_12.appendChild(divCol_10);
+							divCol_2.appendChild(img);
+							divCol_10.appendChild(h1);
+							divCol_10.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_finish.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						console.log(type);
+						mui.toast('网络连接失败');
+					}
+				});
+			}
+
+			function getServiceData() {
+				plus.nativeUI.showWaiting();
+				var postData = {};
+				postData['community_user_id'] = localStorage.community_user_id;
+				postData['store_type_id'] = '0002';
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "SStoreListInfo/getStoreListInfo",
+					data: postData,
+					dataType: "json",
+					timeout: 20000,
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						console.log('=======' + JSON.stringify(data.post));
+
+						var dataAlready = data.data.Unfinished;
+						var dataFinish = data.data.Finished;
+						//							console.log(dataAlready);
+						//							console.log(dataFinish);
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_already = doc.getElementById("DropIn_already");
+						mui.each(dataAlready, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							g_input = doc.createElement("input");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							h1.innerHTML = dataAlready[i].order['store_shop_name'];
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media deleteList");
+							li.id = dataAlready[i].order['store_list_id'];
+							console.log(li.id);
+							div.setAttribute("class", "marginLeftRight");
+							divCol_12 = doc.createElement("div");
+							divCol_12.setAttribute("class", "mui-row mui-col-xs-12");
+							divCol_2 = doc.createElement("div");
+							divCol_2.setAttribute("class", "mui-row mui-col-xs-2");
+							divCol_10 = doc.createElement("div");
+							divCol_10.setAttribute("class", "mui-row mui-col-xs-10");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("src", dataAlready[i].order['store_shop_picture']);
+							//								img.setAttribute("style", "width: 50px;height: 50px; margin-left: -10px;");
+
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataAlready[i].order['store_list_time'];
+
+							li.addEventListener('tap', function() {
+								localStorage.transfuseLiId = this.id;
+								localStorage.dropInHistoryDetails = JSON.stringify(dataAlready[i])
+								mui.openWindow({
+									url: '../dropIn/serviceHistoryDetail.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(divCol_12);
+							divCol_12.appendChild(divCol_2);
+							divCol_12.appendChild(divCol_10);
+							divCol_2.appendChild(img);
+							divCol_10.appendChild(h1);
+							divCol_10.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_already.appendChild(fragment);
+
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_finish = doc.getElementById("DropIn_finish");
+						mui.each(dataFinish, function(i) {
+
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							img = doc.createElement("img");
+							h1 = doc.createElement("h1");
+							label = doc.createElement("label");
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight");
+							divCol_12 = doc.createElement("div");
+							divCol_12.setAttribute("class", "mui-row mui-col-xs-12");
+							divCol_2 = doc.createElement("div");
+							divCol_2.setAttribute("class", "mui-row mui-col-xs-2");
+							divCol_10 = doc.createElement("div");
+							divCol_10.setAttribute("class", "mui-row mui-col-xs-10");
+							img.setAttribute("class", "mui-media-object mui-pull-left");
+							img.setAttribute("src", dataFinish[i].order['store_shop_picture']);
+							h1.innerHTML = dataFinish[i].order['store_shop_name'];
+							label.setAttribute("class", "gray-text");
+							label.innerHTML = dataFinish[i].order['store_list_time'];
+							li.id = dataFinish[i].order['store_list_id'];
+							li.addEventListener('tap', function() {
+								localStorage.dropInHistoryDetails = JSON.stringify(dataFinish[i]);
+								mui.openWindow({
+									url: '../dropIn/serviceHistoryDetail.html',
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(divCol_12);
+							divCol_12.appendChild(divCol_2);
+							divCol_12.appendChild(divCol_10);
+							divCol_2.appendChild(img);
+							divCol_10.appendChild(h1);
+							divCol_10.appendChild(label);
+							fragment.appendChild(li);
+						});
+						container_finish.appendChild(fragment);
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						console.log(type);
+						mui.toast('网络连接失败');
+					}
+				});
+			}
+		</script>
+
+	</body>
+
+</html>

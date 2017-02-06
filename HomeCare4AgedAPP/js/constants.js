@@ -1,13 +1,10 @@
 //域名
 
-
-
-const SERVERURL = 'http://192.168.72.1/HomeCare4AgedPHP/index.php/Home/';
-const MESSAGEURL = 'http://192.168.72.1/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
+const SERVERURL = 'http://10.96.123.61/HomeCare4AgedPHP/index.php/Home/';
+const MESSAGEURL = 'http://10.96.123.61/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
 
 //const SERVERURL = 'http://192.168.72.1/HomeCare4AgedPHP/index.php/Home/';
 //const MESSAGEURL = 'http://192.168.72.1/HomeCare4AgedPHP/SendTemplateSMS.php/sendTemplateSMS';
-
 
 //定义比例
 const SCALE = window.screen.width / 320;
@@ -32,20 +29,20 @@ function getDays(dayNum) {
 }
 //获取当前的日期时间 格式“yyyy-MM-dd HH:MM:SS”
 function getNowFormatDate() {
-    var date = new Date();
-    var seperator1 = "-";
-    var seperator2 = ":";
-    var year = date.getFullYear();
-    var month = date.getMonth() + 1;
-    var strDate = date.getDate();
-    var strSeconds = date.getSeconds();
-    if (month >= 1 && month <= 9) {
-        month = "0" + month;
-    }
-    if (strDate >= 0 && strDate <= 9) {
-        strDate = "0" + strDate;
-    }
-    var hours = date.getHours();
+	var date = new Date();
+	var seperator1 = "-";
+	var seperator2 = ":";
+	var year = date.getFullYear();
+	var month = date.getMonth() + 1;
+	var strDate = date.getDate();
+	var strSeconds = date.getSeconds();
+	if(month >= 1 && month <= 9) {
+		month = "0" + month;
+	}
+	if(strDate >= 0 && strDate <= 9) {
+		strDate = "0" + strDate;
+	}
+	var hours = date.getHours();
 	var minutes = date.getMinutes();
 	var seconds = date.getSeconds();
 	if(hours >= 0 && hours <= 9) {
@@ -197,4 +194,20 @@ function isTimeDifference(oneTime, anotherTime) {
 	} else {
 		return false;
 	}
+}
+
+function backToHomeIndex() {
+	var wvs = plus.webview.all(); //所有窗口对象
+	var launch = plus.webview.getLaunchWebview(); //首页窗口对象
+	var self = plus.webview.currentWebview(); //当前窗口对象
+	for(var i = 0, len = wvs.length; i < len; i++) {
+		// 首页以及当前窗口对象，不关闭；
+		if(wvs[i].id === launch.id || wvs[i].id === self.id || wvs[i].id === localStorage.homeWebId) {
+			continue;
+		} else {
+			wvs[i].close('none'); //关闭中间的窗口对象，为防止闪屏，不使用动画效果；
+		}
+	}
+	// 此时，窗口对象只剩下首页以及当前窗口，直接关闭当前窗口即可；
+	self.close('slide-out-right');
 }

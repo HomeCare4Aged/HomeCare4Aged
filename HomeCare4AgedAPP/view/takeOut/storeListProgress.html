@@ -183,10 +183,12 @@
 									success: function(data) {
 										if(data.data == 1) {
 											mui.toast('删除成功');
+											localStorage.historyWithShopType = 'takeOut';
 											var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
 											mui.fire(Scanner, 'refresh');
-											mui.currentWebview.close();
-											console.log(JSON.stringify(data))
+											mui.back();
+//											mui.currentWebview.close();
+											console.log('121212'+JSON.stringify(data))
 										} else {
 											mui.toast('删除失败');
 										}
@@ -218,7 +220,7 @@
 									dataType: "json",
 									timeout: 20000,
 									success: function(data) {
-										console.log(JSON.stringify(data));
+										console.log('qqq'+JSON.stringify(data));
 									},
 									error: function(xhr, type, errorThrown) {
 										plus.nativeUI.closeWaiting();
@@ -242,6 +244,8 @@
 					}
 
 					if(document.getElementById('makeSure').innerHTML == '再来一单') {
+						console.log('zailai')
+						localStorage.storeListAgain = plus.webview.currentWebview().id;
 						var Scanner = plus.webview.getWebviewById(localStorage.takeOutId);
 						//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
 						mui.fire(Scanner, 'refresh');
@@ -273,12 +277,12 @@
 
 			});
 
-			var stateInter = setInterval(getState, 60000);
+			var stateInter = setInterval(getState, 5000);
 			getState();
 
 			function getState() {
-				var storeListData = JSON.parse(localStorage.storeListData);
-				console.log(storeListData);
+				var storeListData = JSON.parse(localStorage.takeOutHistoryDetails);
+				console.log(localStorage.storeListData);
 				var postData = {};
 				postData['store_list_id'] = storeListData.order.store_list_id;
 				mui.ajax({
@@ -289,7 +293,7 @@
 					timeout: 20000,
 					//成功获取数据赋值
 					success: function(data) {
-						console.log(JSON.stringify(data.data.store_list_state_id));
+						console.log('---'+JSON.stringify(data.data.store_list_state_id));
 						if(data.data.store_list_state_id == '0001') {
 							document.getElementById('g-img-status').src = '../../images/takeOut/progress1.png';
 							document.getElementById('g-text-status').innerHTML = '等待商家接单';

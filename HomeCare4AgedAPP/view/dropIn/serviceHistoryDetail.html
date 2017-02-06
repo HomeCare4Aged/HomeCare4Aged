@@ -170,9 +170,11 @@
 								success: function(data) {
 									if (data.data == 1) {
 										mui.toast('删除成功');
+										localStorage.historyWithShopType = 'DropIn';
 										var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
 										mui.fire(Scanner, 'refresh');
-										mui.currentWebview.close();
+										mui.back();
+//										mui.currentWebview.close();
 										console.log(JSON.stringify(data))
 									} else{
 										mui.toast('删除失败');

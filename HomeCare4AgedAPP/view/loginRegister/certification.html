@@ -163,24 +163,27 @@
 						data: postData,
 						url: SERVERURL + "ACommunityUserInfo/postUserInfo",
 						dataType: "json",
-						timeout:20000,
+						timeout: 20000,
 						//成功获取数据赋值
 						success: function(data) {
 							if(data.status == 1) {
 
-								// 获取所有Webview窗口
-								var curr = plus.webview.currentWebview();
-								var wvs = plus.webview.all();
-								for(var i = 0, len = wvs.length; i < len; i++) {
-									//关闭除setting页面外的其他页面
-									if(wvs[i].getURL() == curr.getURL())
-										continue;
-									plus.webview.close(wvs[i]);
-								}
-								//打开login页面后再关闭setting页面
-								mui.toast('注册成功');
-								plus.webview.open('../loginRegister/index.html');
-								curr.close();
+								//								// 获取所有Webview窗口
+								//								var curr = plus.webview.currentWebview();
+								//								var wvs = plus.webview.all();
+								//								for(var i = 0, len = wvs.length; i < len; i++) {
+								//									//关闭除setting页面外的其他页面
+								//									if(wvs[i].getURL() == curr.getURL())
+								//										continue;
+								//									plus.webview.close(wvs[i]);
+								//								}
+								//								//打开login页面后再关闭setting页面
+								//								mui.toast('注册成功');
+								//								plus.webview.open('../loginRegister/index.html');
+								//								curr.close();
+								mui.openWindow({
+									url: '../loginRegister/index.html',
+								});
 							};
 							if(data.status == 0) {
 								mui.alert(data.msg);
@@ -217,15 +220,15 @@
 							localStorage.userSex = "女";
 							document.getElementById('div-sex').style.display = '';
 							document.getElementById('input-sex').innerHTML = localStorage.userSex;
-						} 
+						}
 					});
 				});
 				document.getElementById("input-phoneNum").innerHTML = localStorage.userPhoneNum;
 
 				document.getElementById("li-name").addEventListener('tap', function() {
 					document.getElementById('div-name').style.display = '';
-				    var inputName = document.getElementById('input-name');
-				    initNativeObjects();
+					var inputName = document.getElementById('input-name');
+					initNativeObjects();
 					showSoftInput(inputName);
 				});
 				document.getElementById("li-age").addEventListener('tap', function() {
@@ -274,7 +277,7 @@
 					//					document.getElementById('input-phoneNum').focus();
 				});
 				document.getElementById("li-home").addEventListener('tap', function() {
-					
+
 					document.getElementById('div-home').style.display = '';
 					var inputHome = document.getElementById('input-home');
 					initNativeObjects();
@@ -298,7 +301,7 @@
 								plus.nativeUI.closeWaiting();
 								if(localStorage.lng == point['lng'] &&
 									localStorage.lat == point['lat']) {
-										
+
 									var userPicker = new mui.PopPicker();
 									var setData = JSON.parse(localStorage.hospitalPickerData);
 									userPicker.setData(setData);
@@ -325,7 +328,7 @@
 									data: postData,
 									url: SERVERURL + 'ACommunityUserInfo/selectHospital',
 									dataType: "json",
-									timeout:20000,
+									timeout: 20000,
 
 									//成功获取数据赋值
 									success: function(data) {
@@ -345,7 +348,7 @@
 											}
 											userPicker.setData(setData);
 											console.log('ssssssxxx');
-											localStorage.hospitalPickerData = JSON.stringify(setData); 
+											localStorage.hospitalPickerData = JSON.stringify(setData);
 											userPicker.show(function(items) {
 												var str = items[0]['text'];
 												console.log(JSON.stringify(items[0]['value']));
@@ -376,40 +379,39 @@
 			});
 		</script>
 		<script type="text/javascript">
-			// 百度地图API功能
-			function G(id) {
-				return document.getElementById(id);
-			}
-			var ac = new BMap.Autocomplete( //建立一个自动完成的对象
-				{
-					"input": "input-home",
-					"location": localStorage.GetCity,
-				});
+//			// 百度地图API功能
+//			function G(id) {
+//				return document.getElementById(id);
+//			}
+//			var ac = new BMap.Autocomplete( //建立一个自动完成的对象
+//				{
+//					"input": "input-home",
+//					"location": localStorage.GetCity,
+//				});
+//
+//			ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
+//				var str = "";
+//				var _value = e.fromitem.value;
+//				var value = "";
+//				if(e.fromitem.index > -1) {
+//					value = _value.province + _value.city + _value.district + _value.street + _value.business;
+//				}
+//				str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
+//
+//				value = "";
+//				if(e.toitem.index > -1) {
+//					_value = e.toitem.value;
+//					value = _value.province + _value.city + _value.district + _value.street + _value.business;
+//				}
+//				str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
+//			});
+//
+//			var myValue;
+//			ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
+//				var _value = e.item.value;
+//				myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
+//			});
 
-			ac.addEventListener("onhighlight", function(e) { //鼠标放在下拉列表上的事件
-				var str = "";
-				var _value = e.fromitem.value;
-				var value = "";
-				if(e.fromitem.index > -1) {
-					value = _value.province + _value.city + _value.district + _value.street + _value.business;
-				}
-				str = "FromItem<br />index = " + e.fromitem.index + "<br />value = " + value;
-
-				value = "";
-				if(e.toitem.index > -1) {
-					_value = e.toitem.value;
-					value = _value.province + _value.city + _value.district + _value.street + _value.business;
-				}
-				str += "<br />ToItem<br />index = " + e.toitem.index + "<br />value = " + value;
-			});
-
-			var myValue;
-			ac.addEventListener("onconfirm", function(e) { //鼠标点击下拉列表后的事件
-				var _value = e.item.value;
-				myValue = _value.province + _value.city + _value.district + _value.street + _value.business;
-			});
-			
-			
 			var nativeWebview, imm, InputMethodManager;
 			var initNativeObjects = function() {
 				if(mui.os.android) {
@@ -436,8 +438,6 @@
 					gInput.focus();
 				}, 200);
 			};
-			
-			
 		</script>
 
 	</body>

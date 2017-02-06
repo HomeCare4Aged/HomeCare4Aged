@@ -45,8 +45,30 @@
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init()
+			mui.back = function() {
+				return;
+			};
 			mui.plusReady(function() {
-			plus.screen.lockOrientation("portrait-primary");
+
+				//首页返回键处理  
+				//处理逻辑：2秒内，连续两次按返回键，则退出应用  
+				var first = null;
+				plus.key.addEventListener('backbutton', function() {
+					//首次按键，提示‘再按一次退出应用’  
+					if(!first) {
+						first = new Date().getTime();
+						mui.toast('再按一次退出应用');
+						setTimeout(function() {
+							first = null;
+						}, 2000);
+					} else {
+						if(new Date().getTime() - first < 2000) {
+							plus.runtime.quit();
+						}
+					}
+				}, false);
+
+				plus.screen.lockOrientation("portrait-primary");
 				console.log(localStorage.community_user_phone);
 				console.log(localStorage.community_user_psw);
 				if(!isNullStr(localStorage.community_user_phone) &&
@@ -61,12 +83,15 @@
 				}
 
 				//获取所在城市
-				plus.geolocation.getCurrentPosition(function(p) {
-					localStorage.GetCity = p.address['city'];
-					console.log(JSON.stringify(p.address));
-				}, function(e) {
-					alert("Geolocation error: " + e.message);
-				});
+//				plus.geolocation.getCurrentPosition(function(p) {
+//					if (isNullStr(p.address['city'])) {
+//						localStorage.GetCity = p.address['city'];
+//						console.log(JSON.stringify(p.address));
+//					}
+//					
+//				}, function(e) {
+//					alert("Geolocation error: " + e.message);
+//				});
 
 				plus.navigator.setStatusBarBackground('#EEA02F');
 
@@ -92,14 +117,14 @@
 
 			//查询用户信息
 			function findUserInfo(postData) {
-			console.log(JSON.stringify(postData));
+				console.log(JSON.stringify(postData));
 				plus.nativeUI.showWaiting();
 				mui.ajax({
 					type: 'POST',
 					url: SERVERURL + "ACommunityUserInfo/logIn",
 					dataType: "json",
 					data: postData,
-					timeout:20000,
+					timeout: 20000,
 					success: function(data) {
 						console.log('11');
 						if(data.status == 0) {
@@ -119,12 +144,12 @@
 							var community_id; //社区内码
 							var community_hospitals_id; //社区医院内码
 							var state; //状态
-							
+
 							var hospitalData = data.hospitalData;
 							localStorage.hospital_business_begintime = hospitalData.hospital_business_begintime;
 							localStorage.hospital_business_endtime = hospitalData.hospital_business_endtime;
 							console.log(JSON.stringify(hospitalData));
-							
+
 							localStorage.community_user_id = data.data.community_user_id;
 							console.log(localStorage.community_user_id);
 							localStorage.community_user_phone = data.data.community_user_phone;
@@ -134,11 +159,11 @@
 							console.log(localStorage.community_user_name);
 							localStorage.community_user_sex = data.data.community_user_sex;
 							console.log(localStorage.community_user_sex);
-							localStorage.community_user_picture =data.data.community_user_picture;
+							localStorage.community_user_picture = data.data.community_user_picture;
 							console.log(localStorage.community_user_picture);
 							localStorage.community_user_address = data.data.community_user_address;
 							console.log(localStorage.community_user_address);
-							localStorage.community_id = data.data.community_id ;
+							localStorage.community_id = data.data.community_id;
 							console.log(localStorage.community_id);
 							localStorage.community_hospitals_id = data.data.community_hospitals_id;
 							localStorage.community_hospitals_name = data.data.community_hospitals_name;
@@ -146,32 +171,37 @@
 							console.log(localStorage.community_hospitals_id);
 							console.log(localStorage.community_hospitals_name);
 							console.log('---------');
-							localStorage.community_user_lat = data.data.community_user_lat//经度
-							localStorage.community_user_lng = data.data.community_user_lng//纬度
+							localStorage.community_user_lat = data.data.community_user_lat //经度
+							localStorage.community_user_lng = data.data.community_user_lng //纬度
 							localStorage.community_user_birthday = data.data.community_user_birthday
 							localStorage.lat = localStorage.community_user_lat;
 							localStorage.lng = localStorage.community_user_lng;
-					
-							
+
 							localStorage.autoLoginIn = 'true';
-							if (isNullStr(localStorage.community_user_psw)) {
+							if(isNullStr(localStorage.community_user_psw)) {
 								var psw = document.getElementById('zz-input-psw').value;
 								localStorage.community_user_psw = psw;
 							}
+
+							//							// 获取所有Webview窗口
+							//							var curr = plus.webview.currentWebview();
+							//							var wvs = plus.webview.all();
+							//							for(var i = 0, len = wvs.length; i < len; i++) {
+							//								//关闭除setting页面外的其他页面
+							//								if(wvs[i].getURL() == curr.getURL())
+							//									continue;
+							//								plus.webview.close(wvs[i]);
+							//							}
+							//							//打开login页面后再关闭setting页面
+							//							mui.toast('登录成功');
+							//							plus.webview.open('../home/index.html');
+							//							curr.close();
+
 							
-							// 获取所有Webview窗口
-							var curr = plus.webview.currentWebview();
-							var wvs = plus.webview.all();
-							for(var i = 0, len = wvs.length; i < len; i++) {
-								//关闭除setting页面外的其他页面
-								if(wvs[i].getURL() == curr.getURL())
-									continue;
-								plus.webview.close(wvs[i]);
-							}
-							//打开login页面后再关闭setting页面
+							mui.openWindow({
+								url: '../home/index.html',
+							});
 							mui.toast('登录成功');
-							plus.webview.open('../home/index.html');
-							curr.close();
 						}
 					},
 					error: function(xhr, type, errorThrown) {

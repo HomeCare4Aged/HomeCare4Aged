@@ -69,3 +69,41 @@
 	margin-top: 10%;
 	
 }
+.mui-segmented-control .mui-control-item{
+    background-color: white;
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+.mui-segmented-control .mui-control-item.mui-active {
+    background-color: rgb(254, 226, 109);
+    color: black;
+    font-size: 30px;
+    font-weight: bold;
+}
+.mui-segmented-control {
+    font-weight: 400;
+    position: relative;
+    display: table;
+    overflow: hidden;
+    width: 100%;
+    table-layout: fixed;
+    border: 0px solid #007aff;
+    background-color: transparent;
+    -webkit-touch-callout: none;
+    height: 50px;
+}
+.mui-segmented-control .mui-control-item {
+    line-height: 50px;
+    display: table-cell;
+    overflow: hidden;
+    width: 0%;
+    -webkit-transition: background-color .1s linear;
+    transition: background-color .1s linear;
+    text-align: center;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: black;
+    border-color: white;
+    border-left: 0px solid #007aff;
+}

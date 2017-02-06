@@ -17,15 +17,20 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav m_green2DropIn">
+		<header id="g-header" class="mui-bar mui-bar-nav m_green2DropIn" style="height: 300px;">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
-			<a id="btn-history" class=" mui-icon  mui-pull-right" style="font-size: 30px;margin-left: -3%;margin-top: 15px;">订单</a>
+			<!--<a id="btn-history" class=" mui-icon  mui-pull-right" style="font-size: 30px;margin-left: -3%;margin-top: 15px;">订单</a>-->
 			<h1 class="mui-title">上门</h1>
-			<ul id="zz-div-address" class="mui-bar top60px " style="height: 90px;">
-				<h5 class="grayText mui-navigate-right" id="zz-h5-address" style="font-weight: bold; font-size: 30px; float: left; margin-left: 15px; padding-top: 1%;padding-bottom: 6%;width: 85%; line-height: 30px; margin-right: 0px;"></h5>
+			<ul id="g-ul" class="mui-bar top60px " style="padding-left: 0px;padding-right: 0px;">
+				<li id="g-li-myHistory" class="mui-table-view-cell mui-media g-btnActive" style="background: rgb(254,227,109);">
+					<h5 id="g-myHistory" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;">我的历史订单</h5>
+				</li>
+				<li id="g-li-myAddress" class="mui-table-view-cell mui-media" style="">
+					<h5 id="g-myAddress" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;margin-right: 40px;">zhisongzhisongzhisongzhisongzhi</h5>
+				</li>
 			</ul>
 		</header>
-		<ul class="mui-table-view" id="list_ul">
+		<ul class="mui-table-view" id="list_ul" style="margin-top: 200px;">
 			<!--<li id="g-li" class="mui-table-view-cell mui-media">
 				<div class="marginLeftRight">
 					<h1 class="blackTitle">家政清洁</h1>
@@ -50,7 +55,35 @@
 			});
 
 			mui.plusReady(function() {
-				document.getElementById('btn-history').addEventListener('tap',function () {
+				window.addEventListener('refreshAddress', function() {
+					console.log('刷新');
+					var nwaiting = plus.nativeUI.showWaiting();
+					plus.navigator.setStatusBarBackground('#30B69C');
+
+					document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
+					var ulHeight = document.getElementById("zz-ul-address");
+					console.log(document.getElementById("g-myHistory").offsetHeight);
+					console.log(document.getElementById("g-li-myHistory").offsetHeight);
+					console.log(document.getElementById("g-myAddress").offsetHeight);
+					console.log(document.getElementById("g-li-myAddress").offsetHeight);
+					document.getElementById("g-ul").style.height =
+						(document.getElementById("g-li-myHistory").offsetHeight +
+							document.getElementById("g-li-myAddress").offsetHeight) + 'px';
+					document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
+					document.getElementById("list_ul").style.marginTop = (document.getElementById("g-header").offsetHeight + 60) + 'px';
+					$('#list_ul').empty();
+					getListData();
+					
+				});
+
+				document.getElementById('g-li-myAddress').addEventListener('tap', function() {
+					localStorage.changeAddress = plus.webview.currentWebview().id;
+					mui.openWindow({
+						url: '../userInfo/certification.html',
+					});
+				});
+
+				document.getElementById('g-li-myHistory').addEventListener('tap', function() {
 					localStorage.fromUserInfo = 'no';
 					mui.openWindow({
 						url: '../dropIn/myHistory.html',
@@ -59,65 +92,74 @@
 				var nwaiting = plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#30B69C');
 
-				document.getElementById('zz-h5-address').innerHTML = '送至：' + localStorage.community_user_address;
-				var ulHeight = document.getElementById("zz-h5-address");
-				document.getElementById("zz-div-address").setAttribute("style", "height:" + ulHeight.offsetHeight + "px;")
-					//				document.getElementById("zz-h5-go").style.marginTop = "-"+document.getElementById("zz-div-address").offsetHeight/1.5+"px";
-				console.log(document.getElementById("zz-div-address").offsetHeight);
-				var ulMarginTop = document.getElementById("zz-div-address").offsetHeight + 60;
-				document.getElementById("list_ul").setAttribute("style", "margin-top:" + ulMarginTop + "px;");
-				var postData = {};
-				postData['lat'] = localStorage.community_user_lat;
-				postData['lng'] = localStorage.community_user_lng;
-				console.log(JSON.stringify(postData));
-				mui.ajax({
-					type: 'POST',
-					data: postData,
-					url: SERVERURL + 'SStoreServiceClassify/getServiceClassifyList',
-					dataType: "json",
-					timeout:20000,
-					//成功获取数据赋值
-					success: function(data) {
-						console.log(JSON.stringify(data));
-						plus.nativeUI.closeWaiting();
-						var doc = document;
-						fragment = doc.createDocumentFragment();
-						container = doc.getElementById("list_ul");
-						mui.each(data.data, function(i) {
+				document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
+				var ulHeight = document.getElementById("zz-ul-address");
+				console.log(document.getElementById("g-myHistory").offsetHeight);
+				console.log(document.getElementById("g-li-myHistory").offsetHeight);
+
+				console.log(document.getElementById("g-myAddress").offsetHeight);
+				console.log(document.getElementById("g-li-myAddress").offsetHeight);
+				document.getElementById("g-ul").style.height =
+					(document.getElementById("g-li-myHistory").offsetHeight +
+						document.getElementById("g-li-myAddress").offsetHeight) + 'px';
+				document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
+				document.getElementById("list_ul").style.marginTop = (document.getElementById("g-header").offsetHeight + 60) + 'px';
+
+				getListData();
+
+				function getListData() {
+					var postData = {};
+					postData['lat'] = localStorage.community_user_lat;
+					postData['lng'] = localStorage.community_user_lng;
+					console.log(JSON.stringify(postData));
+					mui.ajax({
+						type: 'POST',
+						data: postData,
+						url: SERVERURL + 'SStoreServiceClassify/getServiceClassifyList',
+						dataType: "json",
+						timeout: 20000,
+						//成功获取数据赋值
+						success: function(data) {
+							console.log(JSON.stringify(data));
+							plus.nativeUI.closeWaiting();
 							var doc = document;
-							li = doc.createElement("li");
-							div = doc.createElement('div');
-							h1 = doc.createElement('h1');
-							h3 = doc.createElement('h3');
-							li.setAttribute("class", "mui-table-view-cell mui-media");
-							div.setAttribute("class","marginLeftRight");
-							h1.setAttribute("class","blackTitle");
-							h1.innerHTML = data.data[i].type;
-							h3.setAttribute("class","grayText");
-							h3.innerHTML = data.data[i].count+'个服务';
-							li.id = data.data[i].type;
-							
-							
-							li.addEventListener('tap', function() {
-								localStorage.service_classify_name = this.id;
-								console.log('====='+this.id);
-								mui.openWindow({
-									url: '../dropIn/serviceList.html',
+							fragment = doc.createDocumentFragment();
+							container = doc.getElementById("list_ul");
+							mui.each(data.data, function(i) {
+								var doc = document;
+								li = doc.createElement("li");
+								div = doc.createElement('div');
+								h1 = doc.createElement('h1');
+								h3 = doc.createElement('h3');
+								li.setAttribute("class", "mui-table-view-cell mui-media");
+								div.setAttribute("class", "marginLeftRight");
+								h1.setAttribute("class", "blackTitle");
+								h1.innerHTML = data.data[i].type;
+								h3.setAttribute("class", "grayText");
+								h3.innerHTML = data.data[i].count + '个服务';
+								li.id = data.data[i].type;
+
+								li.addEventListener('tap', function() {
+									localStorage.service_classify_name = this.id;
+									console.log('=====' + this.id);
+									mui.openWindow({
+										url: '../dropIn/serviceList.html',
+									});
 								});
+								li.appendChild(div);
+								div.appendChild(h1);
+								div.appendChild(h3);
+								fragment.appendChild(li);
 							});
-							li.appendChild(div);
-							div.appendChild(h1);
-							div.appendChild(h3);
-							fragment.appendChild(li);
-						});
-						container.appendChild(fragment);
-					},
-					error: function(xhr, type, errorThrown) {
-						console.log(type);
-						plus.nativeUI.closeWaiting();
-						mui.alert('网络连接失败');
-					}
-				});
+							container.appendChild(fragment);
+						},
+						error: function(xhr, type, errorThrown) {
+							console.log(type);
+							plus.nativeUI.closeWaiting();
+							mui.alert('网络连接失败');
+						}
+					});
+				}
 			});
 		</script>
 	</body>
