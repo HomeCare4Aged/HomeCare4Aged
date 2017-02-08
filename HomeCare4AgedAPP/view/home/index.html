@@ -120,19 +120,19 @@
 			function openWindow($url) {
 				localStorage.isFirst = '1';
 				localStorage.homeWebId = plus.webview.currentWebview().id;
-				var nwaiting = plus.nativeUI.showWaiting(); //显示原生等待框
-				webviewContent = plus.webview.create($url); //后台创建webview并打开show.html
-				webviewContent.addEventListener("loaded", function() { //注册新webview的载入完成事件
-					nwaiting.close(); //新webview的载入完毕后关闭等待框
-					webviewContent.show("pop-in", 200); //把新webview窗体显示出来，显示动画效果为速度200毫秒的右侧移入动画
-				}, false);
-//				mui.openWindow({
-//					url: $url,
-//					extras: {
-//						webId: plus.webview.currentWebview().id,
-//					},
-//
-//				});
+//				var nwaiting = plus.nativeUI.showWaiting(); //显示原生等待框
+//				webviewContent = plus.webview.create($url); //后台创建webview并打开show.html
+//				webviewContent.addEventListener("loaded", function() { //注册新webview的载入完成事件
+//					nwaiting.close(); //新webview的载入完毕后关闭等待框
+//					webviewContent.show("pop-in", 200); //把新webview窗体显示出来，显示动画效果为速度200毫秒的右侧移入动画
+//				}, false);
+				mui.openWindow({
+					url: $url,
+					extras: {
+						webId: plus.webview.currentWebview().id,
+					},
+
+				});
 			}
 
 			function findWeather() {
