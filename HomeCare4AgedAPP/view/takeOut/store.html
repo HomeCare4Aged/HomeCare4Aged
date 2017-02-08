@@ -8,6 +8,7 @@
 		<link href="../../css/mui.min.css" rel="stylesheet" />
 		<link rel="stylesheet" href="../../css/common/common.css" />
 		<link rel="stylesheet" href="../../css/takeOut/store.css" />
+		<link rel="stylesheet" href="../../css/layer.css" />
 		<style>
 			.mui-popover-arrow {
 				display: none;
@@ -212,9 +213,9 @@
 
 			<div id="bottomPopover" class=" mui-popover mui-popover-action mui-popover-bottom" style="background-color: white;">
 				<!--<img src="../../images/small.png" style="width: 100%;height: 100%;no-repeat" id="imgTips" />-->
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll" id="bottomPopoverScroll">
-						<!--<div class="mui-row">
+				<!--<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" id="bottomPopoverScroll">-->
+				<!--<div class="mui-row">
 							<div class="mui-col-xs-7" style="">
 								<div class="" style="margin-left: 4%;">
 									<h4>黄焖鸡小份</h4>
@@ -228,14 +229,14 @@
 							</div>
 						</div>
 						<div  style="background-color: #E7E7E7;height: 1px;width: 94%;margin-left: 3%;margin-right: 30px;"></div> -->
-					</div>
+				<!--</div>
 
-				</div>
+				</div>-->
 			</div>
 
 			<div class="mui-col-xs-12" style="height: 10%;position: fixed;bottom: 0px; background:red;">
 				<div style="height: 10%;position: fixed;bottom: 0px; background: rgb(51,51,51);" class="mui-col-xs-7">
-					<a href="#bottomPopover" id="a-bottomPopover">
+					<a  id="a-bottomPopover">
 						<img src="../../images/takeOut/box1.png" style="width: 53px;margin-left: 15px;margin-top: 3%;" id="zz-img-box" />
 					</a>
 
@@ -246,12 +247,19 @@
 					<h4 style="color: white;text-align: center;margin-top: 16%;" id="zz-h4-statrtPrice"></h4>
 				</div>
 			</div>
+			<div style="width: 100%;height: 0px;bottom: 10%;position: fixed;z-index: 9999;background-color: white;" id="dddddd">
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll" id="bottomPopoverScroll">
+					</div>
 
+				</div>
+			</div>
 		</div>
 
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/layer.js"></script>
 		<script type="text/javascript">
 			mui.init();
 			mui('.mui-scroll-wrapper').scroll();
@@ -261,7 +269,12 @@
 			//			document.getElementById('wrapper').style.marginTop = document.getElementById('zz-img-popoverImgShow').offsetHeight+'px';
 			//			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 1.8);
 			mui.plusReady(function() {
-
+				// layer.open({
+				//  type: 1
+				//  ,content: '可传入任何内容，支持html。一般用于手机页面中'
+				//  ,anim: 'up'
+				//  ,style: 'position:fixed; bottom:10%; left:0; width: 100%; height: 200px; padding:10px 0; border:none;' 
+				// }); 
 				localStorage.commodityMoneyAll = 0;
 				//				var is_open = '0';
 				localStorage.is_chanceFood = '0';
@@ -404,7 +417,7 @@
 								aLi.setAttribute("selfSrc", data.data[name][i]['store_goods_picture']);
 								divDescribe = doc.createElement("div");
 								//								divDescribe.setAttribute("class", "mui-col-xs-9");
-								divDescribe.setAttribute("style", "width: 48%;float: left;margin-left: 5px;");
+								divDescribe.setAttribute("style", "width: 40%;float: left;margin-left: 5px;");
 
 								h4Name = doc.createElement("h4");
 								h4Name.innerHTML = data.data[name][i]['store_goods_name'];
@@ -414,28 +427,28 @@
 								//								console.log(h4Name.innerHTML);
 								h4Sale = doc.createElement("h4");
 								h4Sale.setAttribute("class", "gray-text");
-								//								h4Sale.setAttribute("style", "margin-top: 15px;");
+																h4Sale.setAttribute("style", "margin-bottom: 0.5em;");
 								h4Sale.id = data.data[name][i]['store_goods_id'] + 'foodSale';
 								h4Sale.innerHTML = "月售" + data.data[name][i]['store_monthly_sales'] + "份  ";
 								spanMoney = doc.createElement("span");
-								spanMoney.setAttribute("style", "color: red;");
+								spanMoney.setAttribute("style", "color: red;font-weight: bold;");
 								spanMoney.setAttribute("attr", data.data[name][i]['store_goods_price']);
 								spanMoney.innerHTML = "￥" + data.data[name][i]['store_goods_price'] + "元";
 
 								divAddOrReduce = doc.createElement("div");
 								//								divAddOrReduce.setAttribute("class", "mui-col-xs-2");
-								divAddOrReduce.setAttribute("style", "width: 28%;margin-top: 0.5em;float: right;");
+								divAddOrReduce.setAttribute("style", "width: 35%;margin-top: 1.5em;float: right;");
 								divSpanCount = doc.createElement("div");
-								divSpanCount.setAttribute("style", "width: 30%;float: left;text-align: center;margin-top: 0.35em;");
+								divSpanCount.setAttribute("style", "width: 35%;float: left;text-align: center;margin-top: 0.35em;");
 								spanCopies = doc.createElement("span");
-								//								spanCopies.setAttribute("style", "float: left;");
-								//								spanCopies.innerHTML = 'x1';
+																spanCopies.setAttribute("style", "font-size: 110%;");
+//																spanCopies.innerHTML = 'x100';
 
 								spanCopies.id = data.data[name][i]['store_goods_id'] + 'span';
 								spanCopies.setAttribute("count", "0");
 								spanCopies.setAttribute("price", data.data[name][i]['store_goods_price']);
 								divImgAdd = doc.createElement("div");
-								divImgAdd.setAttribute("style", "width: 30%;float: left;");
+								divImgAdd.setAttribute("style", "width: 25%;float: left;");
 								imgAdd = doc.createElement("img");
 								imgAdd.setAttribute("src", "../../images/takeOut/add.png");
 								imgAdd.setAttribute("style", "width: 100%;position: relative;margin-right: 0.2em; ");
@@ -443,7 +456,7 @@
 								imgAdd.setAttribute("attr", data.data[name][i]['store_goods_id']);
 								imgAdd.id = data.data[name][i]['store_goods_id'] + 'add';
 								divImgReduce = doc.createElement("div");
-								divImgReduce.setAttribute("style", "width: 30%;float: left;");
+								divImgReduce.setAttribute("style", "width: 25%;float: left;");
 								imgReduce = doc.createElement("img");
 								imgReduce.setAttribute("src", "../../images/takeOut/reduce.png");
 								imgReduce.setAttribute("style", "width: 100%;position: relative;margin-right: 0.2em;display: none;");
@@ -490,8 +503,10 @@
 								divDescribe.appendChild(h4Name);
 
 								divDescribe.appendChild(h4Sale);
-								h4Sale.appendChild(spanMoney);
-
+//								h4Sale.appendChild(spanMoney);
+								divDescribe.appendChild(spanMoney);
+								
+								
 								divContent.appendChild(divAddOrReduce);
 								divAddOrReduce.appendChild(divImgReduce);
 								divImgReduce.appendChild(imgReduce);
@@ -523,20 +538,38 @@
 				document.getElementById('a-bottomPopover').addEventListener('tap', function() {
 
 					if(storeCount == 0) {
-//						document.getElementById('imgTips').style.display = 'none';
+
 						mui.toast('您的购物车为空~');
+						return;
 					}
-//					else {
-////						document.getElementById('imgTips').style.display = '';
-//					}
+					$("#dddddd").animate({
+						height: "40%"
+					});
+					var mask = mui.createMask(function() {
+						$("#dddddd").animate({
+							height: "0px"
+						});
+						var bottomPopover = document.getElementById("bottomPopoverScroll");
+						var childs = bottomPopover.childNodes;
+						
+						
+						for(var i = childs.length - 1; i >= 0; i--) {
+							bottomPopover.removeChild(childs[i]);
+						}
+					});
+
+					mask.show();
+					//					else {
+					////						document.getElementById('imgTips').style.display = '';
+					//					}
 					var fragment2 = document.createDocumentFragment();
 					//					var fragment3 = document.createDocumentFragment();
 
-					var bottomPopover = document.getElementById("bottomPopoverScroll");
-					var childs = bottomPopover.childNodes;
-					for(var i = childs.length - 1; i >= 0; i--) {
-						bottomPopover.removeChild(childs[i]);
-					}
+//					var bottomPopover = document.getElementById("bottomPopoverScroll");
+//					var childs = bottomPopover.childNodes;
+//					for(var i = childs.length - 1; i >= 0; i--) {
+//						bottomPopover.removeChild(childs[i]);
+//					}
 					console.log(JSON.stringify(matchData));
 					console.log(JSON.stringify(storeFoodData))
 					for(var p in storeFoodData) {
@@ -545,6 +578,7 @@
 							continue;
 						} else {
 							divContent = document.createElement('div');
+							divLine = document.createElement('div');
 							divContent.setAttribute('class', "mui-row");
 							divContent.id = matchData[p]['id'] + 'divContent';
 							divCOL7 = document.createElement('div');
@@ -572,7 +606,6 @@
 							spanBottomPopoverCount.id = matchData[p]['id'] + 'spanBottomPopoverCount';
 							spanBottomPopoverCount.innerHTML = '×' + storeFoodData[p];
 
-							divLine = document.createElement('div');
 							divLine.setAttribute("style", "background-color: #E7E7E7;height: 1px;width: 94%;margin-left: 3%;margin-right: 30px;");
 							divLine.id = matchData[p]['id'] + 'divLine';
 
@@ -604,19 +637,21 @@
 								}
 
 								reduce(this.id);
-								if(localStorage.commodityMoneyAll == '0') {
+								if(localStorage.commodityMoneyAll == '0.0') {
 									console.log('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa');
-									document.getElementById('imgTips').style.display = '';
+									//									document.getElementById('imgTips').style.display = '';
+									mask.close();
 								}
 							});
 							fragment2.appendChild(divContent);
 							fragment2.appendChild(divLine);
-
+//							mask.show();
 						}
 					}
 					//					fragment3.appendChild(divTips);
 
 					document.getElementById('bottomPopoverScroll').appendChild(fragment2);
+
 					//					document.getElementById('bottomPopover').appendChild(fragment3);
 				});
 
@@ -634,7 +669,7 @@
 					}
 					document.getElementById(id + 'span').setAttribute('count', count);
 
-					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) - parseFloat(document.getElementById(id + 'span').getAttribute('price'));
+					localStorage.commodityMoneyAll = (parseFloat(localStorage.commodityMoneyAll) - parseFloat(document.getElementById(id + 'span').getAttribute('price'))).toFixed(1);
 					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
 
 					storeFoodData[id] = count;
@@ -697,10 +732,12 @@
 
 					console.log('===========' + document.getElementById(id + 'span').getAttribute('count'));
 
-					localStorage.commodityMoneyAll = parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'));
+					localStorage.commodityMoneyAll = (parseFloat(localStorage.commodityMoneyAll) + parseFloat(document.getElementById(id + 'span').getAttribute('price'))).toFixed(1);
 					document.getElementById('zz-span-commodityMoneyAll').innerHTML = localStorage.commodityMoneyAll + '元';
+					
 					console.log(localStorage.commodityMoneyAll);
-
+					console.log(parseFloat(document.getElementById(id + 'span').getAttribute('price')));
+					
 					console.log('count' + count);
 					localStorage.storeFoodData[id] = count;
 

@@ -123,7 +123,9 @@
       "images/takeOut/box2.png",
       "view/takeOut/progress.html",
       "images/dropIn/add.png",
-      "images/dropIn/compositePath.png"
+      "images/dropIn/compositePath.png",
+      "css/layer.css",
+      "js/layer.js"
     ],
     "refer": [
       "view/takeOut/orderForm.html",
@@ -870,5 +872,17 @@
     "refer": [
       "view/video/videoPlay.html"
     ]
+  },
+  "view/loginRegister/userAgreement.html": {
+    "resources": [
+      "images/123.png",
+      "js/mui.min.js",
+      "fonts/mui.ttf",
+      "css/mui.min.css",
+      "images/dropIn/lessen.png",
+      "images/home/dropIn.png",
+      "images/home/qingtian.png"
+    ],
+    "refer": []
   }
 }
