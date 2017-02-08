@@ -84,7 +84,7 @@
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
 			mui.back = function() {
 				return;
 			};
@@ -118,14 +118,21 @@
 			$('.mui-btn').css('height', (document.documentElement.clientWidth / 2) * HOMEIMGSCALE);
 
 			function openWindow($url) {
+				localStorage.isFirst = '1';
 				localStorage.homeWebId = plus.webview.currentWebview().id;
-				mui.openWindow({
-					url: $url,
-					extras: {
-						webId: plus.webview.currentWebview().id,
-					},
-
-				});
+				var nwaiting = plus.nativeUI.showWaiting(); //显示原生等待框
+				webviewContent = plus.webview.create($url); //后台创建webview并打开show.html
+				webviewContent.addEventListener("loaded", function() { //注册新webview的载入完成事件
+					nwaiting.close(); //新webview的载入完毕后关闭等待框
+					webviewContent.show("pop-in", 200); //把新webview窗体显示出来，显示动画效果为速度200毫秒的右侧移入动画
+				}, false);
+//				mui.openWindow({
+//					url: $url,
+//					extras: {
+//						webId: plus.webview.currentWebview().id,
+//					},
+//
+//				});
 			}
 
 			function findWeather() {
@@ -261,14 +268,14 @@
 						plus.nativeUI.closeWaiting();
 						console.log(JSON.stringify(data.data));
 						var registration = data.data.registration;
-						
+
 						var spanList = document.getElementsByClassName('spanCount');
-						mui.each(spanList,function (i) {
-							spanList[i].style.height = (document.documentElement.clientWidth / 2)/497*110-1+'px';
-							spanList[i].style.width = (document.documentElement.clientWidth / 2)/497*110-1+'px';
-							spanList[i].style.lineHeight = (document.documentElement.clientWidth / 2)/497*110-1+'px';
+						mui.each(spanList, function(i) {
+							spanList[i].style.height = (document.documentElement.clientWidth / 2) / 497 * 110 - 1 + 'px';
+							spanList[i].style.width = (document.documentElement.clientWidth / 2) / 497 * 110 - 1 + 'px';
+							spanList[i].style.lineHeight = (document.documentElement.clientWidth / 2) / 497 * 110 - 1 + 'px';
 						});
-						
+
 						if(registration != 0) {
 							document.getElementById('g-btn-registration').style.background = 'url(../../images/home/registrationCount.png)';
 							document.getElementById('g-btn-registration').style.backgroundSize = '100% 100%';
@@ -336,10 +343,18 @@
 					}
 				});
 			}
-			 
+
 			mui.plusReady(function() {
-				
-				
+
+				setTimeout(function() {
+					var array = plus.webview.all();
+					if(array) {
+						for(var i = 0, len = array.length; i < len; i++) {
+							console.log(array[i].getURL());
+						}
+					}
+				}, 5000)
+
 				//首页返回键处理
 				//处理逻辑：2秒内，连续两次按返回键，则退出应用 
 				var first = null;
@@ -357,31 +372,31 @@
 						}
 					}
 				}, false);
-				
+
 				if(mui.os.ios) {
 					plus.navigator.setFullscreen(true);
 				}
-				
+
 				document.getElementById('span-address').innerHTML = localStorage.community_user_address;
 				plus.navigator.setStatusBarBackground('#FFFFFF');
 				findWeather();
 				getListCount();
-				
+
 				window.addEventListener('refreshWeather', function() {
 					document.getElementById('span-address').innerHTML = localStorage.community_user_address;
 					plus.navigator.setStatusBarBackground('#FFFFFF');
 					findWeather();
 					getListCount();
 					//					plus.webview.getWebviewById(plus.webview.currentWebview().id).reload();
-//					// 获取所有Webview窗口
-//					var curr = plus.webview.currentWebview();
-//					var wvs = plus.webview.all();
-//					for(var i = 0, len = wvs.length; i < len; i++) {
-//						//关闭除setting页面外的其他页面
-//						if(wvs[i].getURL() == curr.getURL())
-//							continue;
-//						plus.webview.close(wvs[i]);
-//					}
+					//					// 获取所有Webview窗口
+					//					var curr = plus.webview.currentWebview();
+					//					var wvs = plus.webview.all();
+					//					for(var i = 0, len = wvs.length; i < len; i++) {
+					//						//关闭除setting页面外的其他页面
+					//						if(wvs[i].getURL() == curr.getURL())
+					//							continue;
+					//						plus.webview.close(wvs[i]);
+					//					}
 
 				});
 

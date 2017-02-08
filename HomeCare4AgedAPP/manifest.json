@@ -106,7 +106,7 @@
 	"plus": {
 		"splashscreen": {
 			"autoclose": true,/*是否自动关闭程序启动界面，true表示应用加载应用入口页面后自动关闭；false则需调plus.navigator.closeSplashscreen()关闭*/
-			"waiting": true,"delay":"0"
+			"waiting": false,"delay":"0"
 		},
 		"runmode": "liberate",/*应用的首次启动运行模式，可取liberate或normal，liberate模式在第一次启动时将解压应用资源（Android平台File API才可正常访问_www目录）*/
 		"signature": "Sk9JTiBVUyBtYWlsdG86aHIyMDEzQGRjbG91ZC5pbw==",/*可选，保留给应用签名，暂不使用*/
@@ -134,34 +134,34 @@
 					"prerendered": true, /*应用图标是否已经高亮处理，在iOS6及以下设备上有效*/
 					"auto": "", /*应用图标，分辨率：512x512，用于自动生成各种尺寸程序图标*/
 					"iphone": {
-						"normal": "",/*iPhone普通屏幕程序图标，分辨率：57x57*/
-						"retina": "",/*iPhone高分屏程序图标，分辨率：114x114*/
-						"retina7": "",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
-						"spotlight-normal": "", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
-						"spotlight-retina": "", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
-						"spotlight-retina7": "",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "", /*iPhone设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
+						"normal": "unpackage/res/icons/57x57.png",/*iPhone普通屏幕程序图标，分辨率：57x57*/
+						"retina": "unpackage/res/icons/114x114.png",/*iPhone高分屏程序图标，分辨率：114x114*/
+						"retina7": "unpackage/res/icons/120x120.png",/*iPhone iOS7高分屏程序图标，分辨率：120x120*/
+						"spotlight-normal": "unpackage/res/icons/29x29.png", /*iPhone Spotlight搜索程序图标，分辨率：29x29*/
+						"spotlight-retina": "unpackage/res/icons/58x58.png", /*iPhone高分屏Spotlight搜索程序图标，分辨率：58x58*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPhone iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png", /*iPhone设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png","retina8":"unpackage/res/icons/180x180.png","settings-retina8":"unpackage/res/icons/87x87.png"
 					},
 					"ipad": {
-						"normal": "", /*iPad普通屏幕程序图标，分辨率：72x72*/
-						"retina": "", /*iPad高分屏程序图标，分辨率：144x144*/
-						"normal7": "", /*iPad iOS7程序图标，分辨率：76x76*/
-						"retina7": "", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
-						"spotlight-normal": "", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
-						"spotlight-retina": "", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
-						"spotlight-normal7": "",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
-						"spotlight-retina7": "",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
-						"settings-normal": "",/*iPad设置页面程序图标，分辨率：29x29*/
-						"settings-retina": ""
+						"normal": "unpackage/res/icons/72x72.png", /*iPad普通屏幕程序图标，分辨率：72x72*/
+						"retina": "unpackage/res/icons/144x144.png", /*iPad高分屏程序图标，分辨率：144x144*/
+						"normal7": "unpackage/res/icons/76x76.png", /*iPad iOS7程序图标，分辨率：76x76*/
+						"retina7": "unpackage/res/icons/152x152.png", /*iPad iOS7高分屏程序图标，分辨率：152x152*/
+						"spotlight-normal": "unpackage/res/icons/50x50.png", /*iPad Spotlight搜索程序图标，分辨率：50x50*/
+						"spotlight-retina": "unpackage/res/icons/100x100.png", /*iPad高分屏Spotlight搜索程序图标，分辨率：100x100*/
+						"spotlight-normal7": "unpackage/res/icons/40x40.png",/*iPad iOS7 Spotlight搜索程序图标，分辨率：40x40*/
+						"spotlight-retina7": "unpackage/res/icons/80x80.png",/*iPad iOS7高分屏Spotlight搜索程序图标，分辨率：80x80*/
+						"settings-normal": "unpackage/res/icons/29x29.png",/*iPad设置页面程序图标，分辨率：29x29*/
+						"settings-retina": "unpackage/res/icons/58x58.png"
 					}
 				},
 				"android": {
-					"mdpi": "", /*普通屏程序图标，分辨率：48x48*/
-					"ldpi": "", /*大屏程序图标，分辨率：48x48*/
-					"hdpi": "", /*高分屏程序图标，分辨率：72x72*/
-					"xhdpi": "",/*720P高分屏程序图标，分辨率：96x96*/
-					"xxhdpi": ""
+					"mdpi": "unpackage/res/icons/48x48.png", /*普通屏程序图标，分辨率：48x48*/
+					"ldpi": "unpackage/res/icons/48x48.png", /*大屏程序图标，分辨率：48x48*/
+					"hdpi": "unpackage/res/icons/72x72.png", /*高分屏程序图标，分辨率：72x72*/
+					"xhdpi": "unpackage/res/icons/96x96.png",/*720P高分屏程序图标，分辨率：96x96*/
+					"xxhdpi": "unpackage/res/icons/144x144.png"
 				}
 			},
 			"splashscreen": {
@@ -448,7 +448,9 @@
 					"js/constants.js",
 					"js/jquery.1.11.1.js",
 					"view/takeOut/takeOutHistoryList.html",
-					null
+					null,
+					"view/dropIn/serviceListSub.html",
+					"view/takeOut/indexSub.html"
 				],
 				"refer": [
 					"view/takeOut/store.html",
@@ -465,7 +467,8 @@
 					"images/right.png",
 					"css/common/common.css",
 					"js/constants.js",
-					"js/jquery.1.11.1.js"
+					"js/jquery.1.11.1.js",
+					null
 				],
 				"refer": [
 					"view/dropIn/serviceList.html",
@@ -676,7 +679,8 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"css/common/common.css"
+					"css/common/common.css",
+					"view/dropIn/serviceListSub.html"
 				],
 				"refer": [
 					"view/dropIn/serviceInfo.html"
@@ -1103,7 +1107,8 @@
 					"css/userInfo/index.css",
 					"css/common/common.css",
 					"fonts/mui.ttf",
-					"images/transfuse/blackBed.png"
+					"images/transfuse/blackBed.png",
+					"images/transfuse/blackSeat.png"
 				],
 				"refer": [],
 				"priority": 0
@@ -1153,6 +1158,35 @@
 				],
 				"refer": [
 					"view/video/videoPlay.html"
+				],
+				"priority": 0
+			},
+			"view/dropIn/serviceListSub.html": {
+				"resources": [
+					"js/jquery.1.11.1.js",
+					"css/dropIn/index.css",
+					"js/constants.js",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"css/common/common.css",
+					null
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"view/takeOut/indexSub.html": {
+				"resources": [
+					"js/mui.min.js",
+					"js/constants.js",
+					"js/jquery.1.11.1.js",
+					"css/takeOut/index.css",
+					"css/mui.min.css",
+					"css/common/common.css",
+					null,
+					"fonts/mui.ttf"
+				],
+				"refer": [
+					"view/takeOut/store.html"
 				],
 				"priority": 0
 			}

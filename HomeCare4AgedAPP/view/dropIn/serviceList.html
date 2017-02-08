@@ -16,8 +16,8 @@
 			<h1 id="g-title" class="mui-title">家政清洁</h1>
 		</header>
 		<div class="mui-content">
-			<ul class="mui-table-view" id="list_ul">
-				<!--<li class="mui-table-view-cell mui-media" id="g-li">
+			<!--<ul class="mui-table-view" id="list_ul">
+				<li class="mui-table-view-cell mui-media" id="g-li">
 					<div class="marginLeftRight">
 						<div class="mui-media-object mui-pull-left"style="margin-left: -5%;margin-top: 15px;">
 							<img style="width: 80px; height: 80px;"  src="../../images/small.png">
@@ -28,82 +28,101 @@
 							<h3 class="redPrice"style="margin-top: 5px;">￥15/小时</h3>
 						</div>
 					</div>
-				</li>-->
-			</ul>
+				</li>
+			</ul>-->
 		</div>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
+				gestureConfig: {
+					doubletap: true
+				},
+				subpages: [{
+					url: '../dropIn/serviceListSub.html',
+					id: 'indexSub.html',
+					styles: {
+						top: '60px',
+						bottom: '0px',
+					}
+				}],
 
 			});
+			var contentWebview = null;
+			document.querySelector('header').addEventListener('doubletap', function() {
+				if(contentWebview == null) {
+					contentWebview = plus.webview.currentWebview().children()[0];
+				}
+				contentWebview.evalJS("mui('#refreshContainer').pullRefresh().scrollTo(0,0,100)");
+			});
 			mui.plusReady(function() {
-				var nwaiting = plus.nativeUI.showWaiting();
-				plus.navigator.setStatusBarBackground('#30B69C');
 				document.getElementById('g-title').innerHTML = localStorage.service_classify_name;
-				var postData = {};
-				postData['service_classify_name'] = localStorage.service_classify_name;
-				console.log(JSON.stringify(postData));
-				mui.ajax({
-					type: 'POST',
-					data: postData,
-					url: SERVERURL + 'SStoreServiceClassify/getServiceList',
-					dataType: "json",
-					timeout:20000,
-					//成功获取数据赋值
-					success: function(data) {
-						plus.nativeUI.closeWaiting();
-						var doc = document;
-						fragment = doc.createDocumentFragment();
-						container = doc.getElementById("list_ul");
-						mui.each(data.data, function(i) {
-							var doc = document;
-							li = doc.createElement("li");
-							div = doc.createElement('div');
-							img = doc.createElement('img');
-							h1 = doc.createElement('h1');
-							h31 = doc.createElement('h3');
-							h32 = doc.createElement('h3');
-							li.setAttribute("class", "mui-table-view-cell mui-media");
-							img.setAttribute("style", "margin-left: 10px; width: 80px; height: 80px;");
-							img.setAttribute("class", " mui-pull-left");
-							img.setAttribute("src", data.data[i].store_shop_picture);
-							div.setAttribute("class", "mui-media-body");
-							div.setAttribute("style", "margin-left: 105px;");
-							h1.setAttribute("class", "blackTitleNormal");
-							h1.innerHTML = data.data[i].store_service_name;
-							h31.setAttribute("class", "grayText");
-							h31.setAttribute("style", "margin-top: 5px;");
-							h31.innerHTML = data.data[i].store_shop_name;
-							h32.setAttribute("class", "redPrice");
-							h32.setAttribute("style", "margin-top: 5px;");
-							h32.innerHTML = data.data[i].store_service_length+'小时'+data.data[i].store_service_price+'元';
-							li.id = data.data[i].store_service_id;
-
-							li.addEventListener('tap', function() {
-								localStorage.store_service_id = this.id;
-								console.log('=====' + this.id);
-								mui.openWindow({
-									url: '../dropIn/serviceInfo.html',
-								});
-							});
-							li.appendChild(img);
-							li.appendChild(div);
-							div.appendChild(h1);
-							div.appendChild(h31);
-							div.appendChild(h32);
-							fragment.appendChild(li);
-						});
-						container.appendChild(fragment);
-					},
-					error: function(xhr, type, errorThrown) {
-						console.log(type);
-						plus.nativeUI.closeWaiting();
-						mui.alert('网络连接失败');
-					}
-				});
-
+//				var nwaiting = plus.nativeUI.showWaiting();
+//				plus.navigator.setStatusBarBackground('#30B69C');
+//				document.getElementById('g-title').innerHTML = localStorage.service_classify_name;
+//				var postData = {};
+//				postData['service_classify_name'] = localStorage.service_classify_name;
+//				console.log(JSON.stringify(postData));
+//				mui.ajax({
+//					type: 'POST',
+//					data: postData,
+//					url: SERVERURL + 'SStoreServiceClassify/getServiceList',
+//					dataType: "json",
+//					timeout:20000,
+//					//成功获取数据赋值
+//					success: function(data) {
+//						plus.nativeUI.closeWaiting();
+//						var doc = document;
+//						fragment = doc.createDocumentFragment();
+//						container = doc.getElementById("list_ul");
+//						mui.each(data.data, function(i) {
+//							var doc = document;
+//							li = doc.createElement("li");
+//							div = doc.createElement('div');
+//							img = doc.createElement('img');
+//							h1 = doc.createElement('h1');
+//							h31 = doc.createElement('h3');
+//							h32 = doc.createElement('h3');
+//							li.setAttribute("class", "mui-table-view-cell mui-media");
+//							img.setAttribute("style", "margin-left: 10px; width: 80px; height: 80px;");
+//							img.setAttribute("class", " mui-pull-left");
+//							img.setAttribute("src", data.data[i].store_shop_picture);
+//							div.setAttribute("class", "mui-media-body");
+//							div.setAttribute("style", "margin-left: 105px;");
+//							h1.setAttribute("class", "blackTitleNormal");
+//							h1.innerHTML = data.data[i].store_service_name;
+//							h31.setAttribute("class", "grayText");
+//							h31.setAttribute("style", "margin-top: 5px;");
+//							h31.innerHTML = data.data[i].store_shop_name;
+//							h32.setAttribute("class", "redPrice");
+//							h32.setAttribute("style", "margin-top: 5px;");
+//							h32.innerHTML = data.data[i].store_service_length+'小时'+data.data[i].store_service_price+'元';
+//							li.id = data.data[i].store_service_id;
+//
+//							li.addEventListener('tap', function() {
+//								localStorage.store_service_id = this.id;
+//								console.log('=====' + this.id);
+//								mui.openWindow({
+//									url: '../dropIn/serviceInfo.html',
+//								});
+//							});
+//							li.appendChild(img);
+//							li.appendChild(div);
+//							div.appendChild(h1);
+//							div.appendChild(h31);
+//							div.appendChild(h32);
+//							fragment.appendChild(li);
+//						});
+//						container.appendChild(fragment);
+//					},
+//					error: function(xhr, type, errorThrown) {
+//						console.log(type);
+//						plus.nativeUI.closeWaiting();
+//						mui.alert('网络连接失败');
+//					}
+//				});
+//
 			});
 		</script>
 	</body>

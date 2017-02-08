@@ -1,0 +1,268 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/takeOut/index.css" />
+		<style>
+			.mui-table-view:after {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view:before {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view-cell:after {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view-cell:before {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.marginLeftRight {
+				margin-left: 15px;
+				margin-right: -30px;
+			}
+			/*body{ background: rgb(239,239,244); }*/
+		</style>
+	</head>
+
+	<body>
+
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="background: white;">
+
+			<div class="mui-scroll">
+				<div class="list-wrapper">
+					<!--数据列表-->
+
+					<ul class="mui-table-view mui-table-view-chevron" id="list_ul">
+						<li id="g-li-myAddress" class="mui-table-view-cell ">
+							<h5 id="g-myAddress" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px;margin-left: 15px;"></h5>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript">
+			var page = 0;
+			var pageSize = 1;
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				beforeback: function() {
+					//获得你要前往页面的webview id
+					var Scanner = plus.webview.getWebviewById(plus.webview.currentWebview().webId);
+
+					//触发前往页面的自定义事件（例：AddNew）,从而进行数据刷新
+					mui.fire(Scanner, 'refreshWeather');
+
+					//返回true，继续页面关闭逻辑
+
+					backToHomeIndex();
+					return true;
+				},
+				pullRefresh: {
+					container: '#refreshContainer',
+					down: {
+						//						auto: true,
+						callback: pulldownRefresh
+					},
+					up: {
+						auto: true,
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: pullupRefresh
+					}
+				}
+			});
+
+			function pulldownRefresh() {
+				// 加载更多的内容到列表中
+				console.log('下拉刷新');
+				page = 1;
+				$("#list_ul").empty();
+
+				var doc = document;
+				fragment = doc.createDocumentFragment();
+				container_already = doc.getElementById("list_ul");
+				var doc = document;
+				li = doc.createElement("li");
+				h5 = doc.createElement("h5");
+				li.id = 'g-li-myAddress';
+				li.className = 'mui-table-view-cell';
+				h5.id = 'g-myAddress';
+				h5.className = 'mui-navigate-right';
+				h5.setAttribute('style','color: black; font-weight: bold; font-size: 30px;margin-left: 15px;');
+				h5.innerHTML = '送至：' + localStorage.community_user_address;
+				li.appendChild(h5);
+				fragment.appendChild(li);
+				container_already.appendChild(fragment);
+				li.addEventListener('tap', function() {
+					localStorage.changeAddress = plus.webview.currentWebview().id;
+					mui.openWindow({
+						url: '../userInfo/certification.html',
+					});
+				});
+
+				getListData(page, pageSize);
+				mui('#refreshContainer').pullRefresh().endPulldownToRefresh(true);
+				//重置上拉加载
+				mui('#refreshContainer').pullRefresh().refresh(true);
+			};
+
+			function pullupRefresh() {
+				page += 1;
+				getListData(page, pageSize);
+				// 加载更多的内容到列表中
+				console.log('上拉加载');
+
+			};
+
+			mui.plusReady(function() {
+				window.addEventListener('refreshAddress', function() {
+					document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
+					pulldownRefresh();
+				});
+				document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
+				plus.key.addEventListener('backbutton', function() {
+					backToHomeIndex();
+				}, false);
+
+				var Scanner = plus.webview.getWebviewById("takeOut/indexSub.html");
+
+				window.addEventListener('refreshList', function() {
+					console.log('shuaxin-------')
+					var Scanner = plus.webview.getWebviewById("takeOut/indexSub.html");
+
+					pulldownRefresh();
+				});
+				document.getElementById('g-li-myAddress').addEventListener('tap', function() {
+					localStorage.changeAddress = plus.webview.currentWebview().id;
+					mui.openWindow({
+						url: '../userInfo/certification.html',
+					});
+				});
+
+			});
+
+			function getListData() {
+				postData = {};
+				postData['lng'] = localStorage.lng;
+				postData['lat'] = localStorage.lat;
+				postData['page'] = page;
+				postData['pageSize'] = pageSize;
+				console.log('纬度.lat:    ' + localStorage.lat); //纬度
+				console.log('经度.lng:    ' + localStorage.lng); //经度
+				plus.nativeUI.showWaiting();
+				mui.ajax({
+					type: 'POST',
+					url: SERVERURL + "SStoreShopInfo/getStoreShopInfo",
+					data: postData,
+					dataType: "json",
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container_already = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							//								console.log('11111111111111');
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement("div");
+							g_input = doc.createElement("input");
+							img = doc.createElement("img");
+							h3 = doc.createElement("h1");
+							h3.setAttribute("style", "margin-left: 60px;");
+							h3_status = doc.createElement("h3");
+							h3_status.setAttribute("style", "margin-left: 60px; color: red; display: none;");
+							h3Distance = doc.createElement("h3");
+							h3Distance.setAttribute("style", "margin-left: 60px;");
+							li.setAttribute("class", "mui-table-view-cell mui-media ");
+							li.id = data.data[i].store_shop_id;
+							console.log(li.id);
+							div.setAttribute("class", "marginLeftRight ");
+							img.setAttribute("class", "mui-pull-left");
+							img.setAttribute("style", "width: 50px; height: 50px;");
+							img.setAttribute("src", data.data[i].store_shop_picture);
+							//								console.log(data.data[i].store_shop_picture);
+							h3.innerHTML = data.data[i].store_shop_name;
+							if(data.data[i].store_business_state == '停止营业') {
+								h3_status.innerHTML = '停止营业';
+								h3_status.style.display = '';
+							}
+
+							h3Distance.setAttribute("class", "gray-text");
+							console.log(data.data[i].distance);
+							//								localStorage.store_carriage = data.data[i].store_carriage;
+							if(parseInt(data.data[i].distance) < 1) {
+								h3Distance.innerHTML = "距离" + data.data[i].distance * 1000 + "米，" + data.data[i].store_up_to_send_price + "元起送";
+								console.log('6666666666');
+							} else {
+								h3Distance.innerHTML = "距离" + data.data[i].distance.toFixed(1) + "千米，" + data.data[i].store_up_to_send_price + "元起送";
+							}
+
+							li.addEventListener('tap', function() {
+								localStorage.shopData = JSON.stringify(data.data[i]);
+								console.log("pppppppppppppppppppppppppp" + JSON.stringify(localStorage.shopData));
+								var sssss = JSON.parse(localStorage.shopData);
+								console.log("rrrrrrrrrrrrrrrrrrrrrrrrrr" + sssss.store_contact_user_phone);
+								//									console.log(localStorage.store_up_to_send_price);
+								//									console.log("aaaaaaaaaaa");
+								mui.openWindow({
+									url: '../takeOut/store.html',
+									extras: {
+										'store_shop_name': data.data[i].store_shop_name,
+										'distance': data.data[i].distance,
+										'store_carriage': data.data[i].store_carriage,
+										'store_shop_picture': data.data[i].store_shop_picture,
+										'store_shop_address': data.data[i].store_shop_address,
+										'store_shop_id': data.data[i].store_shop_id,
+										'store_up_to_send_price': data.data[i].store_up_to_send_price,
+										'store_business_state': data.data[i].store_business_state,
+									}
+
+								});
+							});
+							li.appendChild(div);
+							div.appendChild(img);
+							div.appendChild(h3);
+							div.appendChild(h3_status);
+							div.appendChild(h3Distance);
+							fragment.appendChild(li);
+						});
+						container_already.appendChild(fragment);
+						if(data.data.length > 0) {
+							// 如果有更多数据，则继续
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+						} else {
+							// 如果没有更多数据了，则关闭上拉加载
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						plus.nativeUI.closeWaiting();
+						console.log(type);
+						mui.toast('网络连接失败');
+						mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>
