@@ -46,10 +46,10 @@
 			});
 			mui.plusReady(function() {
 				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
-				if(localStorage.videoIndexDataName == '我的播放记录') {
-					console.log('我的播放记录');
+				if(localStorage.videoIndexDataName == '我的浏览记录') {
+					console.log('我的浏览记录');
 					var h5 = document.getElementById('videoType');
-					h5.innerHTML = '我的播放记录';
+					h5.innerHTML = '我的浏览记录';
 				} else {
 					var h5 = document.getElementById('videoType');
 					h5.innerHTML = localStorage.videoIndexDataName;
