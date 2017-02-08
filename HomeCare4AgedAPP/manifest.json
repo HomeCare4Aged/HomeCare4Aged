@@ -537,7 +537,9 @@
 					"images/loginRegister/iPhone.png",
 					"css/mui.min.css",
 					"css/common/common.css",
-					"js/constants.js"
+					"js/constants.js",
+					"js/jquery.1.11.1.js",
+					"images/loginRegister/code.png"
 				],
 				"refer": [
 					"view/loginRegister/code.html"
