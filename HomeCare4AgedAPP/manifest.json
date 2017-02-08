@@ -1032,7 +1032,8 @@
 					"css/mui.min.css",
 					"css/common/common.css",
 					"css/userInfo/index.css",
-					"images/takeOut/progress2.png"
+					"images/takeOut/progress2.png",
+					"images/takeOut/progress3.png"
 				],
 				"refer": [
 					"view/takeOut/index.html"
@@ -1144,9 +1145,12 @@
 					"css/common/common.css",
 					"fonts/mui.ttf",
 					"images/transfuse/blackBed.png",
-					"images/transfuse/blackSeat.png"
+					"images/transfuse/blackSeat.png",
+					"js/constants.js"
 				],
-				"refer": [],
+				"refer": [
+					"view/registration/historyDetails.html"
+				],
 				"priority": 0
 			},
 			"view/userInfo/historyWithShop.html": {
@@ -1237,7 +1241,8 @@
 					"fonts/mui.ttf"
 				],
 				"refer": [
-					"view/takeOut/store.html"
+					"view/takeOut/store.html",
+					"view/userInfo/certification.html"
 				],
 				"priority": 0
 			}

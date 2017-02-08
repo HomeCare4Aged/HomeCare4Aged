@@ -66,6 +66,7 @@
 			});
 
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				window.addEventListener('refreshAddress', function() {
 					console.log('刷新');
 					var nwaiting = plus.nativeUI.showWaiting();

@@ -95,6 +95,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				console.log(localStorage.community_user_sex);
 				var sData = plus.webview.currentWebview();
 				var userSex = '男';

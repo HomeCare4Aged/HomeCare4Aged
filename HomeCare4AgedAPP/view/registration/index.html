@@ -60,7 +60,7 @@
 			});
 			//获取科室列表
 			mui.plusReady(function() {
-
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				plus.nativeUI.showWaiting();
 				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refresh', function() {

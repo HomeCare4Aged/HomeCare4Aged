@@ -105,6 +105,7 @@
 			timeSlot.innerHTML = 'aa';
 			
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				plus.navigator.setStatusBarBackground('#4CBCEC');
 				//				console.log(localStorage.getItem('selectSeat'));
 				//获取医院信息

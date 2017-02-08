@@ -37,6 +37,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var sData = plus.webview.currentWebview();
 
 				var details = document.getElementById('btn-details');

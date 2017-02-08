@@ -111,6 +111,7 @@
 //				pullRefresh.endPullupToRefresh(false);
 //			};
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var nwaiting = plus.nativeUI.showWaiting();
 				localStorage.VideoIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refreshHistory', function() {

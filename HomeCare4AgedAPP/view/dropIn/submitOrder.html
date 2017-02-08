@@ -112,6 +112,7 @@
 				swipeBack: true, //启用右滑关闭功能
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var serviceInfo = JSON.parse(localStorage.serviceInfo);
 				document.getElementById('userInfo').innerHTML = localStorage.community_user_name + ' ' + localStorage.community_user_phone;
 				document.getElementById('userAddress').innerHTML = localStorage.community_user_address;

@@ -57,6 +57,7 @@
 				contentWebview.evalJS("mui('#refreshContainer').pullRefresh().scrollTo(0,0,100)");
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				document.getElementById('g-title').innerHTML = localStorage.service_classify_name;
 //				var nwaiting = plus.nativeUI.showWaiting();
 //				plus.navigator.setStatusBarBackground('#30B69C');

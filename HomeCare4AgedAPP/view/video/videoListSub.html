@@ -101,7 +101,7 @@
 
 			};
 			mui.plusReady(function() {
-
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				//				var nwaiting = plus.nativeUI.showWaiting();
 				//点击后改为已读
 				window.addEventListener('refreshRead', function() {

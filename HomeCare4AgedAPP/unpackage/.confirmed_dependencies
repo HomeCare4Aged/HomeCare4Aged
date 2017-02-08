@@ -14,7 +14,11 @@
 			"css/home/index.css",
 			"images/home/message.png",
 			"images/home/userInfo.png",
-			"images/home/drioInCount.png"
+			"images/home/drioInCount.png",
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"css/mui.min.css"
 		],
 		"refer": [
 			"view/takeOut/index.html",
@@ -59,7 +63,8 @@
 	},
 	"view/takeOut/indexSub.html": {
 		"refer": [
-			"view/takeOut/store.html"
+			"view/takeOut/store.html",
+			"view/userInfo/certification.html"
 		],
 		"resources": []
 	},
@@ -93,7 +98,12 @@
 		"resources": [
 			"css/takeOut/orderForm.css",
 			"css/mui.css",
-			"images/takeOut/location.png"
+			"images/takeOut/location.png",
+			"js/mui.min.js",
+			"js/constants.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/common/common.css"
 		],
 		"refer": [
 			"view/takeOut/finish.html"
@@ -109,7 +119,9 @@
 			"css/common/common.css"
 		],
 		"refer": [
-			"view/userInfo/certification.html"
+			"view/userInfo/certification.html",
+			"view/userInfo/historyWithOrder.html",
+			"view/userInfo/historyWithShop.html"
 		]
 	},
 	"view/takeOut/finish.html": {
@@ -121,9 +133,17 @@
 	},
 	"view/takeOut/takeOutHistoryList.html": {
 		"resources": [
-			"css/registration/myHistory.css"
+			"css/registration/myHistory.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		],
-		"refer": []
+		"refer": [
+			"view/takeOut/storeListProgress.html"
+		]
 	},
 	"view/dropIn/index.html": {
 		"resources": [
@@ -238,7 +258,8 @@
 			"images/registration/define.png"
 		],
 		"refer": [
-			"view/registration/registrationTime.html"
+			"view/registration/registrationTime.html",
+			"view/registration/myHistory.html"
 		]
 	},
 	"view/registration/registrationTime.html": {
@@ -344,7 +365,94 @@
 			"images/loginRegister/Person.png",
 			"css/mui.picker.min.css",
 			"js/mui.dtpicker.js",
-			"images/loginRegister/Address_Book2.png"
+			"images/loginRegister/Address_Book2.png",
+			"css/userInfo/index.css"
+		]
+	},
+	"view/message/indexSub.html": {
+		"refer": [
+			"view/message/content.html"
+		],
+		"resources": [
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"css/message/index.css"
+		]
+	},
+	"view/message/content.html": {
+		"resources": [
+			"css/message/content.css"
+		]
+	},
+	"view/registration/myHistory.html": {
+		"resources": [
+			"css/registration/myHistory.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/userInfo/historyWithShop.html": {
+		"resources": [
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/loginRegister/certification.css",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/takeOut/storeListProgress.html"
+		]
+	},
+	"view/takeOut/storeListProgress.html": {
+		"resources": [
+			"images/takeOut/progress1.png",
+			"images/takeOut/progress3.png",
+			"images/takeOut/progress4.png",
+			"images/takeOut/location.png",
+			"css/takeOut/progress.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		],
+		"refer": [
+			"view/takeOut/index.html"
+		]
+	},
+	"view/userInfo/historyWithOrder.html": {
+		"resources": [
+			"js/constants.js",
+			"js/mui.min.js",
+			"images/transfuse/blackBed.png",
+			"fonts/mui.ttf",
+			"css/loginRegister/certification.css",
+			"css/mui.min.css",
+			"css/userInfo/index.css",
+			"css/common/common.css",
+			"images/transfuse/blackSeat.png"
+		],
+		"refer": [
+			"view/registration/historyDetails.html"
+		]
+	},
+	"view/registration/historyDetails.html": {
+		"resources": [
+			"css/registration/makeSureMessage.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		]
 	}
 }

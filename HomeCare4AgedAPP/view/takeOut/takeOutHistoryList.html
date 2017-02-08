@@ -75,6 +75,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				window.addEventListener('refresh', function() {
 					$("#list_already").empty(); 
 					$("#list_finish").empty(); 
