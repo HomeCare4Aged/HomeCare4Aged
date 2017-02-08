@@ -309,11 +309,12 @@
 
 											localStorage.isOkCode = '0';
 											mui.toast('修改成功');
+											var Scanner = plus.webview.getWebviewById(localStorage.userInfoIndex);
+											mui.fire(Scanner, 'refreshUserInfo');
 											if(!isNullStr(localStorage.changeAddress)) {
 												var Scanner = plus.webview.getWebviewById(localStorage.changeAddress);
 												mui.fire(Scanner, 'refreshAddress');
 												localStorage.changeAddress = '';
-
 											}
 											if(str == 'back') {
 												mui.back();
@@ -381,12 +382,16 @@
 								}
 								localStorage.isOkCode = '0';
 								mui.toast('修改成功');
+								var Scanner = plus.webview.getWebviewById(localStorage.userInfoIndex);
+								mui.fire(Scanner, 'refreshUserInfo');
+								
 								console.log('-----' + str);
 
 								if(!isNullStr(localStorage.changeAddress)) {
 									var Scanner = plus.webview.getWebviewById(localStorage.changeAddress);
 									mui.fire(Scanner, 'refreshAddress');
 									localStorage.changeAddress = '';
+									localStorage.isFirst = '1';
 
 								}
 								if(str == 'back') {

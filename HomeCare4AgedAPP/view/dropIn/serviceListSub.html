@@ -1,0 +1,170 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="../../css/common/common.css" />
+		<link rel="stylesheet" href="../../css/dropIn/index.css" />
+		<style>
+			.mui-table-view:after {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view:before {
+				left: 0px;
+				right: 0px;
+			}
+			.marginLeftRight {
+				margin-left: 15px;
+				margin-right: -30px;
+			}
+			/*body{
+				background: rgb(239,239,244);
+			}*/
+		</style>
+	</head>
+
+	<body style="background: white;">
+		<div id="refreshContainer" class="mui-content mui-scroll-wrapper" style="background: white;">
+			<div class="mui-scroll">
+				<div class="list-wrapper">
+					<!--数据列表-->
+					<ul class="mui-table-view mui-table-view-chevron" id="list_ul">
+
+					</ul>
+				</div>
+			</div>
+		</div>
+
+		<script src="../../js/mui.min.js"></script>
+		<script type="text/javascript" src="../../js/constants.js"></script>
+		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
+		<script type="text/javascript">
+			var page = 0;
+			var pageSize = 10;
+			mui.init({
+				swipeBack: true, //启用右滑关闭功能
+				pullRefresh: {
+					container: '#refreshContainer',
+					down: {
+						//						auto: true,
+						callback: pulldownRefresh
+					},
+					up: {
+						auto: true,
+						contentrefresh: "正在加载...", //可选，正在加载状态时，上拉加载控件上显示的标题内容
+						contentnomore: '没有更多数据了', //可选，请求完毕若没有更多数据时显示的提醒内容；
+						callback: pullupRefresh
+					}
+				}
+
+			});
+
+			function pulldownRefresh() {
+				// 加载更多的内容到列表中
+				console.log('下拉刷新');
+				page = 1;
+				$("#list_ul").empty();
+				getList(page, pageSize);
+				mui('#refreshContainer').pullRefresh().endPulldownToRefresh(true);
+				//重置上拉加载
+				mui('#refreshContainer').pullRefresh().refresh(true);
+			};
+
+			function pullupRefresh() {
+				page += 1;
+				getList(page, pageSize);
+				// 加载更多的内容到列表中
+				console.log('上拉加载');
+
+			};
+
+			function getList(page,pageSize) {
+				var postData = {};
+				postData['service_classify_name'] = localStorage.service_classify_name;
+				postData['page'] = page;
+				postData['pageSize'] = pageSize;
+				console.log(JSON.stringify(postData));
+				mui.ajax({
+					type: 'POST',
+					data: postData,
+					url: SERVERURL + 'SStoreServiceClassify/getServiceList',
+					dataType: "json",
+					timeout: 20000,
+					//成功获取数据赋值
+					success: function(data) {
+						plus.nativeUI.closeWaiting();
+						var doc = document;
+						fragment = doc.createDocumentFragment();
+						container = doc.getElementById("list_ul");
+						mui.each(data.data, function(i) {
+							var doc = document;
+							li = doc.createElement("li");
+							div = doc.createElement('div');
+							div1 = doc.createElement('div');
+							div2 = doc.createElement('div');
+							img = doc.createElement('img');
+							h1 = doc.createElement('h1');
+							h31 = doc.createElement('h3');
+							h32 = doc.createElement('h3');
+							li.setAttribute("class", "mui-table-view-cell mui-media");
+							div.setAttribute("class", "marginLeftRight mui-row mui-col-xs-12");
+							img.setAttribute("style", "margin-left: 10px; width: 80px; height: 80px;");
+							img.setAttribute("class", " mui-pull-left");
+							img.setAttribute("src", data.data[i].store_shop_picture);
+							div1.setAttribute("class", "");
+							div1.setAttribute("style", "margin-left: -5%;margin-top: 0px;");
+							div2.setAttribute("class", "marginLeftRight");
+							div2.setAttribute("style", "margin-left: 90px;");
+							h1.setAttribute("class", "blackTitleNormal");
+							h1.innerHTML = data.data[i].store_service_name;
+							h31.setAttribute("class", "grayText");
+							h31.setAttribute("style", "margin-top: 5px;");
+							h31.innerHTML = data.data[i].store_shop_name;
+							h32.setAttribute("class", "redPrice");
+							h32.setAttribute("style", "margin-top: 5px;");
+							h32.innerHTML = data.data[i].store_service_length + '小时' + data.data[i].store_service_price + '元';
+							li.id = data.data[i].store_service_id;
+
+							li.addEventListener('tap', function() {
+								localStorage.store_service_id = this.id;
+								console.log('=====' + this.id);
+								mui.openWindow({
+									url: '../dropIn/serviceInfo.html',
+								});
+							});
+//							li.appendChild(img);
+							li.appendChild(div);
+							div.appendChild(div1);
+							div1.appendChild(img);
+							div.appendChild(div2);
+							div2.appendChild(h1);
+							div2.appendChild(h31);
+							div2.appendChild(h32);
+							fragment.appendChild(li);
+						});
+						container.appendChild(fragment);
+						if(data.data.length > 0) {
+							// 如果有更多数据，则继续
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(false);
+						} else {
+							// 如果没有更多数据了，则关闭上拉加载
+							mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+						}
+					},
+					error: function(xhr, type, errorThrown) {
+						console.log(type);
+						plus.nativeUI.closeWaiting();
+						mui.alert('网络连接失败');
+						mui('#refreshContainer').pullRefresh().endPullupToRefresh(true);
+					}
+				});
+			}
+		</script>
+	</body>
+
+</html>

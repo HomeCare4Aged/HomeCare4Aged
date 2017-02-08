@@ -18,34 +18,38 @@
 				<li id="g-li-myHistory" class="mui-table-view-cell mui-media g-btnActive" style="background: rgb(254,227,109);">
 					<h5 id="g-myHistory" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;">我的历史订单</h5>
 				</li>
-				<li id="g-li-myAddress" class="mui-table-view-cell mui-media" style="">
+				<!--<li id="g-li-myAddress" class="mui-table-view-cell mui-media" style="">
 					<h5 id="g-myAddress" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;margin-right: 40px;"></h5>
-				</li>
+				</li>-->
 			</ul>
 		</header>
-		<!--<div class="mui-content">-->
-		<ul class="mui-table-view " id="list_already" style="margin-top: 105px;">
-			<!--<li class="mui-table-view-cell mui-media" id="list">
+		<div id="g-div-content" class="mui-content"></div>
+		<!--<ul class="mui-table-view " id="list_ul" style="margin-top: 105px;">-->
+		<!--<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight">
 						<img class="mui-media-object mui-pull-left" src="../../images/small.png">
 						<h3>李</h3>
 						<label class="gray-text">2016-12-12 下午</label>
 					</div>
-				</li>
-			<li class="mui-table-view-cell mui-media" id="list">
+				</li>-->
+		<!--<li class="mui-table-view-cell mui-media" id="list">
 					<div class="marginLeftRight">
 						<img class="mui-media-object mui-pull-left" src="../../images/small.png">
 						<h1>李</h1>
 						<label class="gray-text">2016-12-12 下午</label>
 					</div>
 				</li>-->
-		</ul>
+		<!--</ul>-->
 		<!--</div>-->
 
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script src="../../js/mui.min.js"></script>
 		<script type="text/javascript">
+//		if (localStorage.isFirst == '0') {
+//			document.getElementById('g-header').style.height = header+'px';
+//		}
+		
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 				beforeback: function() {
@@ -60,169 +64,31 @@
 					backToHomeIndex();
 					return true;
 				},
+				subpages: [{
+					url: '../takeOut/indexSub.html',
+					id: 'takeOut/indexSub.html',
+					styles: {
+						top: '115px',
+						bottom: '0px',
+					}
+				}],
 			});
 
 			mui.plusReady(function() {
-				plus.key.addEventListener('backbutton', function() {
-					backToHomeIndex();
-				}, false);
+				//				plus.key.addEventListener('backbutton', function() {
+				//					backToHomeIndex();
+				//				}, false);
+				//				
+				console.log('11111'+document.getElementById('g-ul').offsetHeight)
 				
-				window.addEventListener('refreshAddress', function() {
-					console.log('刷新');
-					document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
-					var ulHeight = document.getElementById("zz-ul-address");
-					console.log(document.getElementById("g-myHistory").offsetHeight);
-					console.log(document.getElementById("g-li-myHistory").offsetHeight);
-					console.log(document.getElementById("g-myAddress").offsetHeight);
-					console.log(document.getElementById("g-li-myAddress").offsetHeight);
-					document.getElementById("g-ul").style.height =
-						(document.getElementById("g-li-myHistory").offsetHeight +
-							document.getElementById("g-li-myAddress").offsetHeight) + 'px';
-					document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
-					document.getElementById("list_already").style.marginTop = (document.getElementById("g-header").offsetHeight + 60) + 'px';
-					$('#list_already').empty();
-					getListData();
-				});
+				//
+				
 
-				document.getElementById('g-li-myAddress').addEventListener('tap', function() {
-					localStorage.changeAddress = plus.webview.currentWebview().id;
+				
+				document.getElementById("g-li-myHistory").addEventListener("tap", function() {
 					mui.openWindow({
-						url: '../userInfo/certification.html',
+						url: '../takeOut/takeOutHistoryList.html',
 					});
-				});
-				//				localStorage.takeOutId = plus.webview.currentWebview().id;
-				//			    plus.nativeUI.showWaiting();
-				//				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
-
-				window.addEventListener('refresh', function() {
-					console.log('sss')
-					plus.navigator.setStatusBarBackground('#FF692C');
-
-					// 获取所有Webview窗口
-					var curr = plus.webview.currentWebview();
-					var curr2 = plus.webview.getWebviewById(localStorage.homeWebId);
-					var wvs = plus.webview.all();
-					for(var i = 0, len = wvs.length; i < len; i++) {
-						//关闭除setting页面外的其他页面
-						if(wvs[i].getURL() == curr.getURL() || wvs[i].getURL() == curr2.getURL())
-							continue;
-						plus.webview.close(wvs[i]);
-					}
-
-				});
-				plus.navigator.setStatusBarBackground('#FF692C');
-
-				document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
-				var ulHeight = document.getElementById("zz-ul-address");
-				console.log(document.getElementById("g-myHistory").offsetHeight);
-				console.log(document.getElementById("g-li-myHistory").offsetHeight);
-				console.log(document.getElementById("g-myAddress").offsetHeight);
-				console.log(document.getElementById("g-li-myAddress").offsetHeight);
-				document.getElementById("g-ul").style.height =
-					(document.getElementById("g-li-myHistory").offsetHeight +
-						document.getElementById("g-li-myAddress").offsetHeight) + 'px';
-				document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
-				document.getElementById("list_already").style.marginTop = (document.getElementById("g-header").offsetHeight + 60) + 'px';
-				getListData();
-			});
-
-			function getListData() {
-				postData = {};
-				postData['lng'] = localStorage.lng;
-				postData['lat'] = localStorage.lat;
-				console.log('纬度.lat:    ' + localStorage.lat); //纬度
-				console.log('经度.lng:    ' + localStorage.lng); //经度
-				plus.nativeUI.showWaiting();
-				mui.ajax({
-					type: 'POST',
-					url: SERVERURL + "SStoreShopInfo/getStoreShopInfo",
-					data: postData,
-					dataType: "json",
-					timeout: 20000,
-					//成功获取数据赋值
-					success: function(data) {
-						plus.nativeUI.closeWaiting();
-						var doc = document;
-						fragment = doc.createDocumentFragment();
-						container_already = doc.getElementById("list_already");
-						mui.each(data.data, function(i) {
-							//								console.log('11111111111111');
-							var doc = document;
-							li = doc.createElement("li");
-							div = doc.createElement("div");
-							g_input = doc.createElement("input");
-							img = doc.createElement("img");
-							h3 = doc.createElement("h3");
-							h3.setAttribute("style", "margin-left: 60px;");
-							h3_status = doc.createElement("h3");
-							h3_status.setAttribute("style", "margin-left: 60px; color: red; display: none;");
-							h3Distance = doc.createElement("h3");
-							h3Distance.setAttribute("style", "margin-left: 60px;");
-							li.setAttribute("class", "mui-table-view-cell mui-media ");
-							li.id = data.data[i].store_shop_id;
-							console.log(li.id);
-							div.setAttribute("class", "marginLeftRight ");
-							img.setAttribute("class", "mui-pull-left");
-							img.setAttribute("style", "width: 50px; height: 50px;");
-							img.setAttribute("src", data.data[i].store_shop_picture);
-							//								console.log(data.data[i].store_shop_picture);
-							h3.innerHTML = data.data[i].store_shop_name;
-							if(data.data[i].store_business_state == '停止营业') {
-								h3_status.innerHTML = '停止营业';
-								h3_status.style.display = '';
-							}
-
-							h3Distance.setAttribute("class", "gray-text");
-							console.log(data.data[i].distance);
-							//								localStorage.store_carriage = data.data[i].store_carriage;
-							if(parseInt(data.data[i].distance) < 1) {
-								h3Distance.innerHTML = "距离" + data.data[i].distance * 1000 + "米，" + data.data[i].store_up_to_send_price + "元起送";
-								console.log('6666666666');
-							} else {
-								h3Distance.innerHTML = "距离" + data.data[i].distance.toFixed(1) + "千米，" + data.data[i].store_up_to_send_price + "元起送";
-							}
-
-							li.addEventListener('tap', function() {
-								localStorage.shopData = JSON.stringify(data.data[i]);
-								console.log("pppppppppppppppppppppppppp" + JSON.stringify(localStorage.shopData));
-								var sssss = JSON.parse(localStorage.shopData);
-								console.log("rrrrrrrrrrrrrrrrrrrrrrrrrr" + sssss.store_contact_user_phone);
-								//									console.log(localStorage.store_up_to_send_price);
-								//									console.log("aaaaaaaaaaa");
-								mui.openWindow({
-									url: '../takeOut/store.html',
-									extras: {
-										'store_shop_name': data.data[i].store_shop_name,
-										'distance': data.data[i].distance,
-										'store_carriage': data.data[i].store_carriage,
-										'store_shop_picture': data.data[i].store_shop_picture,
-										'store_shop_address': data.data[i].store_shop_address,
-										'store_shop_id': data.data[i].store_shop_id,
-										'store_up_to_send_price': data.data[i].store_up_to_send_price,
-										'store_business_state': data.data[i].store_business_state,
-									}
-
-								});
-							});
-							li.appendChild(div);
-							div.appendChild(img);
-							div.appendChild(h3);
-							div.appendChild(h3_status);
-							div.appendChild(h3Distance);
-							fragment.appendChild(li);
-						});
-						container_already.appendChild(fragment);
-					},
-					error: function(xhr, type, errorThrown) {
-						plus.nativeUI.closeWaiting();
-						console.log(type);
-						mui.toast('网络连接失败');
-					}
-				});
-			}
-			document.getElementById("g-li-myHistory").addEventListener("tap", function() {
-				mui.openWindow({
-					url: '../takeOut/takeOutHistoryList.html',
 				});
 			});
 		</script>

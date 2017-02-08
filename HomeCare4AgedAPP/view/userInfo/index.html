@@ -12,8 +12,8 @@
 
 	<body style="background-color: rgb(239,239,244);">
 		<header class="mui-bar mui-bar-transparent">
-			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"style="color: black;"></a>
-			<h1 class="mui-title"style="color: black;">我的</h1>
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left" style="color: black;"></a>
+			<h1 class="mui-title" style="color: black;">我的</h1>
 		</header>
 		<div class="mui-content" style="margin-top: 60px;">
 			<ul class="mui-table-view" style="margin-top: 20px;">
@@ -84,6 +84,12 @@
 
 			mui.plusReady(function() {
 				//				plus.nativeUI.showWaiting();
+				localStorage.userInfoIndex = plus.webview.currentWebview().id;
+				window.addEventListener('refreshUserInfo', function() {
+					console.log('sssssssssss');
+					document.getElementById('g-name').innerHTML = localStorage.community_user_name;
+					document.getElementById('g-phoneNum').innerHTML = localStorage.community_user_phone;
+				});
 				plus.navigator.setStatusBarBackground('#FEE26D');
 				//				var width = document.documentElement.clientWidth / 2
 				//				document.getElementById('g-div-headImg').style.height = (width + 80 + 70) + 'px';
@@ -141,34 +147,34 @@
 					var btnArray = ['取消', '确定'];
 					mui.confirm('是否退出账号', '', btnArray, function(e) {
 						if(e.index == 0) {} else if(e.index == 1) {
-//							//							 获取所有Webview窗口
-//							var curr = plus.webview.currentWebview();
-//							var wvs = plus.webview.all();
-//							for(var i = 0, len = wvs.length; i < len; i++) {
-//								//关闭除setting页面外的其他页面
-//								if(wvs[i].getURL() == curr.getURL())
-//									continue;
-//								plus.webview.close(wvs[i]);
-//							}
-//							//打开login页面后再关闭setting页面
-////							localStorage.autoLoginIn = "no";
-//							plus.webview.open('../loginRegister/index.html');
-//							curr.close();
+							//							//							 获取所有Webview窗口
+							//							var curr = plus.webview.currentWebview();
+							//							var wvs = plus.webview.all();
+							//							for(var i = 0, len = wvs.length; i < len; i++) {
+							//								//关闭除setting页面外的其他页面
+							//								if(wvs[i].getURL() == curr.getURL())
+							//									continue;
+							//								plus.webview.close(wvs[i]);
+							//							}
+							//							//打开login页面后再关闭setting页面
+							////							localStorage.autoLoginIn = "no";
+							//							plus.webview.open('../loginRegister/index.html');
+							//							curr.close();
 							localStorage.clear();
 							var wvs = plus.webview.all(); //所有窗口对象
-						var launch = plus.webview.getLaunchWebview(); //首页窗口对象
-						var self = plus.webview.currentWebview(); //当前窗口对象
-						for(var i = 0, len = wvs.length; i < len; i++) {
-							// 首页以及当前窗口对象，不关闭；
-							if(wvs[i].id === launch.id || wvs[i].id === self.id) {
-								continue;
-							} else {
-								wvs[i].close('none'); //关闭中间的窗口对象，为防止闪屏，不使用动画效果；
+							var launch = plus.webview.getLaunchWebview(); //首页窗口对象
+							var self = plus.webview.currentWebview(); //当前窗口对象
+							for(var i = 0, len = wvs.length; i < len; i++) {
+								// 首页以及当前窗口对象，不关闭；
+								if(wvs[i].id === launch.id || wvs[i].id === self.id) {
+									continue;
+								} else {
+									wvs[i].close('none'); //关闭中间的窗口对象，为防止闪屏，不使用动画效果；
+								}
 							}
-						}
-						// 此时，窗口对象只剩下首页以及当前窗口，直接关闭当前窗口即可；
-						self.close('slide-out-right');
-							
+							// 此时，窗口对象只剩下首页以及当前窗口，直接关闭当前窗口即可；
+							self.close('slide-out-right');
+
 						}
 					});
 

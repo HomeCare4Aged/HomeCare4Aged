@@ -10,14 +10,24 @@
 		<link rel="stylesheet" href="../../css/dropIn/index.css" />
 		<style>
 			.marginLeftRight {
-				margin-left: 10px;
+				margin-left: 15px;
 				margin-right: 25px;
 			}
+			.mui-table-view:after {
+				left: 0px;
+				right: 0px;
+			}
+			
+			.mui-table-view:before {
+				left: 0px;
+				right: 0px;
+			}
+			
 		</style>
 	</head>
 
 	<body>
-		<header id="g-header" class="mui-bar mui-bar-nav m_green2DropIn" style="height: 300px;">
+		<header id="g-header" class="mui-bar mui-bar-nav m_green2DropIn" style="">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<!--<a id="btn-history" class=" mui-icon  mui-pull-right" style="font-size: 30px;margin-left: -3%;margin-top: 15px;">订单</a>-->
 			<h1 class="mui-title">上门</h1>
@@ -25,12 +35,13 @@
 				<li id="g-li-myHistory" class="mui-table-view-cell mui-media g-btnActive" style="background: rgb(254,227,109);">
 					<h5 id="g-myHistory" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;">我的历史订单</h5>
 				</li>
-				<li id="g-li-myAddress" class="mui-table-view-cell mui-media" style="">
-					<h5 id="g-myAddress" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;margin-right: 40px;">zhisongzhisongzhisongzhisongzhi</h5>
-				</li>
 			</ul>
 		</header>
-		<ul class="mui-table-view" id="list_ul" style="margin-top: 200px;">
+		<ul class="mui-table-view" id="list_ul" style="">
+			<li id="g-li-myAddress" class="mui-table-view-cell mui-media" style="padding-bottom: 0px;">
+				<h5 id="g-myAddress" class="mui-navigate-right" style="color: black; font-weight: bold; font-size: 30px; margin-left: 15px;margin-right: 40px;"></h5>
+				<div style="width: 150%;height: 1px;background: rgb(217,217,220);margin-top: 15px;margin-left: -20px;"></div>
+			</li>
 			<!--<li id="g-li" class="mui-table-view-cell mui-media">
 				<div class="marginLeftRight">
 					<h1 class="blackTitle">家政清洁</h1>
@@ -61,19 +72,19 @@
 					plus.navigator.setStatusBarBackground('#30B69C');
 
 					document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
-					var ulHeight = document.getElementById("zz-ul-address");
-					console.log(document.getElementById("g-myHistory").offsetHeight);
-					console.log(document.getElementById("g-li-myHistory").offsetHeight);
-					console.log(document.getElementById("g-myAddress").offsetHeight);
-					console.log(document.getElementById("g-li-myAddress").offsetHeight);
-					document.getElementById("g-ul").style.height =
-						(document.getElementById("g-li-myHistory").offsetHeight +
-							document.getElementById("g-li-myAddress").offsetHeight) + 'px';
-					document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
+					//					var ulHeight = document.getElementById("zz-ul-address");
+					//					console.log(document.getElementById("g-myHistory").offsetHeight);
+					//					console.log(document.getElementById("g-li-myHistory").offsetHeight);
+					//					console.log(document.getElementById("g-myAddress").offsetHeight);
+					//					console.log(document.getElementById("g-li-myAddress").offsetHeight);
+					//					document.getElementById("g-ul").style.height =
+					//						(document.getElementById("g-li-myHistory").offsetHeight +
+					//							document.getElementById("g-li-myAddress").offsetHeight) + 'px';
+					//					document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
 					document.getElementById("list_ul").style.marginTop = (document.getElementById("g-header").offsetHeight + 60) + 'px';
 					$('#list_ul').empty();
 					getListData();
-					
+
 				});
 
 				document.getElementById('g-li-myAddress').addEventListener('tap', function() {
@@ -93,16 +104,16 @@
 				plus.navigator.setStatusBarBackground('#30B69C');
 
 				document.getElementById('g-myAddress').innerHTML = '送至：' + localStorage.community_user_address;
-				var ulHeight = document.getElementById("zz-ul-address");
-				console.log(document.getElementById("g-myHistory").offsetHeight);
-				console.log(document.getElementById("g-li-myHistory").offsetHeight);
-
-				console.log(document.getElementById("g-myAddress").offsetHeight);
-				console.log(document.getElementById("g-li-myAddress").offsetHeight);
-				document.getElementById("g-ul").style.height =
-					(document.getElementById("g-li-myHistory").offsetHeight +
-						document.getElementById("g-li-myAddress").offsetHeight) + 'px';
-				document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
+				//				var ulHeight = document.getElementById("zz-ul-address");
+				//				console.log(document.getElementById("g-myHistory").offsetHeight);
+				//				console.log(document.getElementById("g-li-myHistory").offsetHeight);
+				//
+				//				console.log(document.getElementById("g-myAddress").offsetHeight);
+				//				console.log(document.getElementById("g-li-myAddress").offsetHeight);
+				//				document.getElementById("g-ul").style.height =
+				//					(document.getElementById("g-li-myHistory").offsetHeight +
+				//						document.getElementById("g-li-myAddress").offsetHeight) + 'px';
+				//				document.getElementById("g-header").style.height = document.getElementById("g-ul").offsetHeight + 'px';
 				document.getElementById("list_ul").style.marginTop = (document.getElementById("g-header").offsetHeight + 60) + 'px';
 
 				getListData();
