@@ -229,6 +229,9 @@
 	"view/video/videoListSub.html": {
 		"resources": [
 			"images/video/videoPlay.png"
+		],
+		"refer": [
+			"view/video/videoPlay.html"
 		]
 	},
 	"view/video/index.html": {
@@ -366,7 +369,12 @@
 			"css/mui.picker.min.css",
 			"js/mui.dtpicker.js",
 			"images/loginRegister/Address_Book2.png",
-			"css/userInfo/index.css"
+			"css/userInfo/index.css",
+			"js/constants.js",
+			"fonts/mui.ttf",
+			"css/common/common.css",
+			"js/mui.min.js",
+			"css/mui.min.css"
 		]
 	},
 	"view/message/indexSub.html": {
@@ -384,7 +392,13 @@
 	},
 	"view/message/content.html": {
 		"resources": [
-			"css/message/content.css"
+			"css/message/content.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		]
 	},
 	"view/registration/myHistory.html": {
@@ -450,6 +464,19 @@
 			"css/registration/makeSureMessage.css",
 			"js/constants.js",
 			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
+	},
+	"view/video/videoPlay.html": {
+		"resources": [
+			"js/video/zy.media.min.js",
+			"css/video/videoPlay.css",
+			"css/video/zy.media.min.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"js/jquery.1.11.1.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"css/common/common.css"
