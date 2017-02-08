@@ -49,8 +49,9 @@ body{
 	font-style: italic;
 }
 .zz-div-next{
-	margin-top: 30%;
+	margin-top: 10%;
 	margin-left: 10%;
+	margin-bottom: 10%;
 }
 .zz-btn-next{
 	margin-top: 5px;
@@ -84,4 +85,13 @@ body{
 	color: #999;
 	padding-top: 5px;
 	text-align: left;
+}
+.codeOk{
+	border-color: rgb(238,160,47);
+	color: rgb(238,160,47);
+}
+.codeNO{
+	border-color: rgb(181,181,181);
+	background: rgb(181,181,181);
+	color: white;
 }
