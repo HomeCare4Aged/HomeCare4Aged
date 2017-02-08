@@ -79,6 +79,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				console.log(JSON.stringify(postData));
 				var postData = plus.webview.currentWebview().data;
 				var hospitalText = document.getElementById('hospitalText');

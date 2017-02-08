@@ -40,6 +40,7 @@
 			});
 
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				plus.nativeUI.showWaiting();
 				console.log('sadasd' + localStorage.registrationTime);
 				var timeArray = localStorage.registrationTime.split(' ');

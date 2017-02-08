@@ -62,6 +62,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var nwaiting = plus.nativeUI.showWaiting();
 				//				var video = document.getElementById("videoPlay");
 				//				video.setAttribute("width", document.documentElement.clientWidth);

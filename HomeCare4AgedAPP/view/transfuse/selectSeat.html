@@ -80,6 +80,7 @@
 
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				localStorage.registrationIndexWebId = plus.webview.currentWebview().id;
 				window.addEventListener('refresh', function() {
 					plus.navigator.setStatusBarBackground('#4CBCEC');

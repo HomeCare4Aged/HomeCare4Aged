@@ -83,6 +83,7 @@
 			});
 
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				//				plus.nativeUI.showWaiting();
 				localStorage.userInfoIndex = plus.webview.currentWebview().id;
 				window.addEventListener('refreshUserInfo', function() {

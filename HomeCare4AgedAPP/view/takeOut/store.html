@@ -248,7 +248,7 @@
 				</div>
 			</div>
 			<div style="width: 100%;height: 0px;bottom: 10%;position: fixed;z-index: 9999;background-color: white;" id="dddddd">
-				<div class="mui-scroll-wrapper">
+				<div class="mui-scroll-wrapper"id="bottomPopoverScrollWrapper">
 					<div class="mui-scroll" id="bottomPopoverScroll">
 					</div>
 
@@ -269,6 +269,8 @@
 			//			document.getElementById('wrapper').style.marginTop = document.getElementById('zz-img-popoverImgShow').offsetHeight+'px';
 			//			$('.mui-icon-image').css('height', document.documentElement.clientHeight / 1.8);
 			mui.plusReady(function() {
+//				$('#bottomPopoverScrollWrapper').scroll({indicators: false});
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				// layer.open({
 				//  type: 1
 				//  ,content: '可传入任何内容，支持html。一般用于手机页面中'

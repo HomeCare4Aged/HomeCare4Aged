@@ -101,7 +101,7 @@
 				},
 			});
 			mui.plusReady(function() {
-
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var dropInHistoryDetails = JSON.parse(localStorage.dropInHistoryDetails);
 				console.log('sssssssssssss' + JSON.stringify(dropInHistoryDetails));
 

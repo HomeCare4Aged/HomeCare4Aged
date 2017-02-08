@@ -63,7 +63,9 @@
 				}
 
 			});
-
+			mui.plusReady(function () {
+			   plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条 
+			});
 			function pulldownRefresh() {
 				// 加载更多的内容到列表中
 				console.log('下拉刷新');

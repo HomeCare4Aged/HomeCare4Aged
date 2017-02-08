@@ -80,6 +80,7 @@
 		<script type="text/javascript" charset="utf-8">
 			mui.init();
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var sData = plus.webview.currentWebview();
 				var userSex = '男';
 				if(localStorage.community_user_sex == '男') {

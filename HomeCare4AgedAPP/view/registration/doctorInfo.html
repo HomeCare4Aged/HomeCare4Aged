@@ -50,6 +50,7 @@
 			var hospital_doctor_id;
 			var postData = {};
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				plus.nativeUI.showWaiting();
 				var sData = plus.webview.currentWebview();
 				hospital_doctor_id = sData.hospital_doctor_id;

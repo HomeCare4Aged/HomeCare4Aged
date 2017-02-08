@@ -105,6 +105,7 @@
 			};
 
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 //				plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#3DAD27');
 				window.addEventListener('refreshList', function() {

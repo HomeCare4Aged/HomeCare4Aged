@@ -105,6 +105,7 @@
 				});
 			})(mui);
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				document.getElementById('item1').style.height = (document.documentElement.clientHeight - 111) + 'px';
 				document.getElementById('item2').style.height = (document.documentElement.clientHeight - 111) + 'px';
 

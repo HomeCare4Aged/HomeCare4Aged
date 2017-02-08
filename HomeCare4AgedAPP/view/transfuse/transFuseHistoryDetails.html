@@ -72,7 +72,7 @@
 				swipeBack: true ,//启用右滑关闭功能
 			});
 			mui.plusReady(function(){
-				
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var postData = {};
 				postData = JSON.parse(localStorage.transFuseHistoryDetails);
 				if(postData.transfusion_state != '未完成') {

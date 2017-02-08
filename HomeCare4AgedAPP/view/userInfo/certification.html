@@ -413,6 +413,7 @@
 				}
 			};
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				localStorage.isOkCode = '0';
 				localStorage.isOkAddress = '0';
 				document.getElementById('input-name').value = localStorage.community_user_name;

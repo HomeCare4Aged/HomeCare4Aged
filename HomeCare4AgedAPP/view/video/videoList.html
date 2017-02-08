@@ -45,6 +45,7 @@
 				}],
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				if(localStorage.videoIndexDataName == '我的播放记录') {
 					console.log('我的播放记录');
 					var h5 = document.getElementById('videoType');

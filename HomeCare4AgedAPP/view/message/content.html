@@ -56,6 +56,7 @@
 			});
 			
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var sData = plus.webview.currentWebview();
 				var	announcement_title = sData.announcement_title;
 				var	announcement_content = sData.announcement_content;

@@ -97,6 +97,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				//				var nwaiting = plus.nativeUI.showWaiting();
 				plus.navigator.setStatusBarBackground('#30B69C');
 				var serviceInfo = JSON.parse(localStorage.serviceInfo);

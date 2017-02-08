@@ -345,7 +345,7 @@
 			}
 
 			mui.plusReady(function() {
-
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				setTimeout(function() {
 					var array = plus.webview.all();
 					if(array) {

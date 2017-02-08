@@ -43,6 +43,7 @@
 				swipeBack: true, //启用右滑关闭功能
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 
 				var gInput = document.getElementById('g-id-input');
 				plus.navigator.setStatusBarBackground('#FEE26D');

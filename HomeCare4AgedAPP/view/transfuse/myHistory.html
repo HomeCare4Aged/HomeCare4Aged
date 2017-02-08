@@ -69,6 +69,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				localStorage.transHistorylistId = plus.webview.currentWebview().id;
 				window.addEventListener('deleteLi', function() {
 					console.log('shanchu');

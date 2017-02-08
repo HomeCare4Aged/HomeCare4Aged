@@ -62,11 +62,12 @@
 					//返回true，继续页面关闭逻辑
 
 					backToHomeIndex();
+
 					return true;
 				},
 				subpages: [{
 					url: '../takeOut/indexSub.html',
-					id: 'takeOut/indexSub.html',
+//					id: 'takeOut/indexSub.html',
 					styles: {
 						top: '115px',
 						bottom: '0px',
@@ -75,14 +76,16 @@
 			});
 
 			mui.plusReady(function() {
-				//				plus.key.addEventListener('backbutton', function() {
-				//					backToHomeIndex();
-				//				}, false);
+				console.log('++++'+plus.webview.currentWebview().id)
+//								plus.key.addEventListener('backbutton', function() {
+//									
+//									backToHomeIndex();
+//								}, false);
 				//				
 				console.log('11111'+document.getElementById('g-ul').offsetHeight)
 				
 				//
-				
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 
 				
 				document.getElementById("g-li-myHistory").addEventListener("tap", function() {

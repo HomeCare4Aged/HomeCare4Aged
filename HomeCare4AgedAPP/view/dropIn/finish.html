@@ -37,6 +37,7 @@
 				},
 			});
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
 				var serviceInfo = JSON.parse(localStorage.serviceInfo);
 				document.getElementById('g-serviceTitle').innerHTML = '您已成功预约'+serviceInfo.service_classify_name;
 				var details = document.getElementById('btn-details');
