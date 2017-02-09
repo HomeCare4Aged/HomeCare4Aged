@@ -35,7 +35,7 @@
 							<ul class="mui-table-view">
 								<li class="mui-table-view-cell mui-media" id="myHistoryVideo">
 									<div class="marginLeftRight">
-										<h1 class="blackTitle">我的播放记录</h1>
+										<h1 class="blackTitle">我的浏览记录</h1>
 										<h3 id="myVideoCount" class="grayText">0个视频</h3>
 									</div>
 								</li>
@@ -43,7 +43,7 @@
 							<ul class="mui-table-view" id="list_ul">
 								<!--<li class="mui-table-view-cell mui-media">
 									<div class="marginLeftRight">
-										<h1 class="blackTitle" >我的播放记录</h1>
+										<h1 class="blackTitle" >我的浏览记录</h1>
 										<h3 class="grayText">主任</h3>
 									</div>
 								</li>-->
@@ -138,10 +138,10 @@
 
 				li.addEventListener('tap', function() {
 					if (isNullStr(localStorage.myHistoryVideoList)) {
-						mui.alert('没有播放记录');
+						mui.alert('没有浏览记录');
 						return;
 					}
-					localStorage.videoIndexDataName = '我的播放记录';
+					localStorage.videoIndexDataName = '我的浏览记录';
 					mui.openWindow({
 						url: '../video/videoList.html',
 						extras: {
