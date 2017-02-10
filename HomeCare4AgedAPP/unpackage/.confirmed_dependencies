@@ -341,7 +341,13 @@
 			"images/transfuse/selectSeat.png",
 			"images/transfuse/unselectBed.png",
 			"images/transfuse/selectBed.png",
-			"images/transfuse/unselectSeat.png"
+			"images/transfuse/unselectSeat.png",
+			"js/mui.min.js",
+			"js/constants.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		],
 		"refer": [
 			"view/transfuse/makeSureMessage.html"
