@@ -121,7 +121,10 @@
 						userPicker.show(function(items) {
 							var str = items[0]['text'];
 							registrationTime = str;
-							userResult.innerHTML = str;
+							console.log(str.substr(0,10));
+							console.log(str.substr(11,13));
+							
+							userResult.innerHTML = str.substr(0,10)+'<br />'+str.substr(11,13);
 						});
 					}, false);
 				});
