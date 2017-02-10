@@ -184,9 +184,9 @@
 									success: function(data) {
 										if(data.data == 1) {
 											mui.toast('删除成功');
-											localStorage.historyWithShopType = 'takeOut';
-											var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
-											mui.fire(Scanner, 'refresh');
+//											localStorage.historyWithShopType = 'takeOut';
+//											var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
+//											mui.fire(Scanner, 'refresh');
 											mui.back();
 //											mui.currentWebview.close();
 											console.log('121212'+JSON.stringify(data))
