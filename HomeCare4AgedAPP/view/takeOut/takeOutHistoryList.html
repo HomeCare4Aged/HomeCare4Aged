@@ -102,7 +102,7 @@
 						timeout:20000,
 						success:function(data){
 							plus.nativeUI.closeWaiting();
-							console.log(JSON.stringify(data));
+							console.log(JSON.stringify(data.data.Unfinished));
 							
 							var dataAlready = data.data.Unfinished;
 							var dataFinish = data.data.Finished;

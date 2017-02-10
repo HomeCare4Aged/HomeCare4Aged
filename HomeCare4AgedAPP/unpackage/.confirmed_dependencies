@@ -40,11 +40,14 @@
 			"images/loginRegister/iPhone.png",
 			"css/mui.min.css",
 			"css/common/common.css",
-			"view/loginRegister/register.html"
+			"view/loginRegister/register.html",
+			"fonts/mui.ttf"
 		],
 		"refer": [
 			"view/home/index.html",
-			"view/loginRegister/register.html"
+			"view/loginRegister/register.html",
+			"view/loginRegister/certification.html",
+			"view/loginRegister/userAgreement.html"
 		]
 	},
 	"view/takeOut/index.html": {
@@ -68,7 +71,15 @@
 			"view/takeOut/store.html",
 			"view/userInfo/certification.html"
 		],
-		"resources": []
+		"resources": [
+			"js/mui.min.js",
+			"js/constants.js",
+			"js/jquery.1.11.1.js",
+			"fonts/mui.ttf",
+			"css/takeOut/index.css",
+			"css/mui.min.css",
+			"css/common/common.css"
+		]
 	},
 	"view/takeOut/store.html": {
 		"resources": [
@@ -129,9 +140,12 @@
 	"view/takeOut/finish.html": {
 		"resources": [
 			"css/registration/finish.css",
-			"images/takeOut/Check3.png"
+			"images/takeOut/Check3.png",
+			"css/mui.min.css"
 		],
-		"refer": []
+		"refer": [
+			"view/takeOut/progress.html"
+		]
 	},
 	"view/takeOut/takeOutHistoryList.html": {
 		"resources": [
@@ -183,7 +197,13 @@
 			"images/dropIn/compositePath.png",
 			"images/dropIn/add.png",
 			"css/mui.poppicker.css",
-			"css/mui.picker.css"
+			"css/mui.picker.css",
+			"css/dropIn/index.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css",
+			"css/common/common.css"
 		],
 		"refer": [
 			"view/dropIn/finish.html"
@@ -352,6 +372,9 @@
 		"resources": [
 			"images/transfuse/success.png",
 			"css/transfuse/finish.css"
+		],
+		"refer": [
+			"view/transfuse/details.html"
 		]
 	},
 	"view/transfuse/makeSureMessage.html": {
@@ -365,6 +388,9 @@
 	"view/registration/doctorList.html": {
 		"resources": [
 			"css/registration/index.css"
+		],
+		"refer": [
+			"view/registration/doctorInfo.html"
 		]
 	},
 	"view/userInfo/certification.html": {
@@ -421,6 +447,9 @@
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"css/common/common.css"
+		],
+		"refer": [
+			"view/registration/historyDetails.html"
 		]
 	},
 	"view/userInfo/historyWithShop.html": {
@@ -435,7 +464,8 @@
 			"css/common/common.css"
 		],
 		"refer": [
-			"view/takeOut/storeListProgress.html"
+			"view/takeOut/storeListProgress.html",
+			"view/dropIn/serviceHistoryDetail.html"
 		]
 	},
 	"view/takeOut/storeListProgress.html": {
@@ -449,7 +479,8 @@
 			"js/mui.min.js",
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"css/common/common.css"
+			"css/common/common.css",
+			"images/takeOut/progress2.png"
 		],
 		"refer": [
 			"view/takeOut/index.html"
@@ -518,6 +549,9 @@
 			"fonts/mui.ttf",
 			"css/mui.min.css",
 			"css/common/common.css"
+		],
+		"refer": [
+			"view/dropIn/serviceHistoryDetail.html"
 		]
 	},
 	"view/loginRegister/register.html": {
@@ -532,7 +566,83 @@
 			"images/loginRegister/iPhone.png",
 			"css/mui.min.css",
 			"css/common/common.css",
-			"images/loginRegister/code.png"
+			"images/loginRegister/code.png",
+			"view/loginRegister/index.html",
+			"view/loginRegister/userAgreement.html"
+		],
+		"refer": [
+			"view/loginRegister/index.html",
+			"view/loginRegister/userAgreement.html"
+		]
+	},
+	"view/loginRegister/certification.html": {
+		"resources": [
+			"js/mui.picker.min.js",
+			"images/loginRegister/Home.png",
+			"images/loginRegister/Female.png",
+			"images/loginRegister/City1.png",
+			"css/mui.dtpicker.css",
+			"css/loginRegister/certification.css",
+			"images/loginRegister/Person.png",
+			"css/mui.picker.min.css",
+			"js/mui.dtpicker.js",
+			"images/loginRegister/Address_Book2.png"
+		],
+		"refer": [
+			"view/loginRegister/index.html"
+		]
+	},
+	"view/registration/doctorInfo.html": {
+		"resources": [
+			"images/small.png",
+			"css/registration/doctorInfo.css"
+		],
+		"refer": [
+			"view/registration/makeSureMessage.html"
+		]
+	},
+	"view/registration/finish.html": {
+		"resources": [
+			"css/registration/finish.css",
+			"images/registration/success.png"
+		]
+	},
+	"view/registration/makeSureMessage.html": {
+		"resources": [
+			"css/registration/makeSureMessage.css"
+		],
+		"refer": [
+			"view/registration/finish.html"
+		]
+	},
+	"view/dropIn/serviceHistoryDetail.html": {
+		"resources": [
+			"images/dropIn/jindu1.png",
+			"images/dropIn/compositePath.png",
+			"css/dropIn/serviceInfo.css"
+		]
+	},
+	"view/takeOut/progress.html": {
+		"resources": [
+			"images/takeOut/progress1.png",
+			"css/takeOut/progress.css",
+			"js/constants.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"css/common/common.css",
+			"images/takeOut/location.png"
+		]
+	},
+	"view/loginRegister/userAgreement.html": {
+		"resources": [
+			"view/loginRegister/register.html",
+			"images/home/qingtian.png",
+			"js/mui.min.js",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
+		],
+		"refer": [
+			"view/loginRegister/register.html"
 		]
 	}
 }

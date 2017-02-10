@@ -201,6 +201,7 @@
 
 			};
 			mui.plusReady(function() {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); 
 				plus.geolocation.getCurrentPosition(function(p) {
 					console.log(JSON.stringify(p));
 				}, function(e) {

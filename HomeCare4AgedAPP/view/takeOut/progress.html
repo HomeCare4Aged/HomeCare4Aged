@@ -12,7 +12,7 @@
 
 	<body>
 		<header class="mui-bar mui-bar-nav m_orangeTakeOut">
-			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页 </a>
+			<a id="backHome" class="mui-action-back  mui-pull-left" style="font-size: 30px; margin-top: 23px; color: white;font-weight: bold;">首页</a>
 			<h1 class="mui-title">订单详情</h1>
 		</header>
 		<div class="mui-content">
@@ -96,7 +96,7 @@
 			});
 			mui.plusReady(function() {
 				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); //去掉滚动条
-				console.log(localStorage.community_user_sex);
+				console.log('aaaaaaaaaaaaaaaaaaaa'+localStorage.storeListData);
 				var sData = plus.webview.currentWebview();
 				var userSex = '男';
 				if(localStorage.community_user_sex == '男') {
@@ -157,7 +157,10 @@
 
 					}
 				}
-
+				
+									
+				
+				
 				container_list_food.appendChild(fragment);
 
 				document.getElementById('makeSure').addEventListener('tap', function() {
@@ -205,13 +208,37 @@
 						var btnArray = ['否', '是'];
 						mui.confirm('您确认收到货物吗？', '提示', btnArray, function(e) {
 								if(e.index == 1) {
-									console.log('22222222222');
+									console.log('asdasdasdasdasdasd');
 									document.getElementById('g-img-status').src = '../../images/takeOut/progress4.png';
 								document.getElementById('g-text-status').innerHTML = '订单已完成';
 									document.getElementById('makeSure').setAttribute("class", "mui-btn mui-btn-block");
 									document.getElementById('makeSure').setAttribute("style", "background-color:#777777; color: white; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;");
 									document.getElementById('makeSure').innerHTML = '再来一单';
 console.log('aaaa');
+									
+									
+								var postData = JSON.parse(localStorage.storeListData);
+									mui.ajax({
+										type: 'POST',
+										data: postData,
+										url: SERVERURL + 'SStoreListInfo/addSales',
+										dataType: "json",
+										timeout: 20000,
+										//成功获取数据赋值
+										success: function(data) {
+											console.log(JSON.stringify(data));
+											
+										},
+										error: function(xhr, type, errorThrown) {
+											
+										}
+										
+										
+									});	
+									
+
+
+
 								} else {
 									console.log('llllllllllll');
 								}
