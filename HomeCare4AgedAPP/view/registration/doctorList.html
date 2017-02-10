@@ -90,7 +90,7 @@
 							li.setAttribute("class", "mui-table-view-cell mui-media");
 							div.setAttribute("class", "marginLeftRight");
 							img.setAttribute("class", " mui-pull-left");
-							div1.setAttribute("style", "margin-top: 15px;margin-left: -5%;")
+							div1.setAttribute("style", "margin-top: 10px;margin-left: -5%;")
 							img.setAttribute("src", data.data[i].hospital_doctor_picture);
 							img.setAttribute("style", 'width: 70px;height: 70px;border-radius: 35px;');
 //							console.log(data.data[i].hospital_doctor_picture);
@@ -98,8 +98,11 @@
 							div2.setAttribute("style", "margin-left: 65px;");
 							h1.setAttribute("class", "black-text listCellText");
 							h31.setAttribute("class", "m_gray_text");
+							h31.style.marginTop = '10px';
 							h32.setAttribute("class", "m_gray_text");
+							h32.style.marginTop = '10px';
 							h33.setAttribute("class", "m_gray_text");
+							h33.style.marginTop = '10px';
 							h1.innerHTML = data.data[i].hospital_doctor_name;
 							h31.innerHTML = data.data[i].identity_name;
 							h32.innerHTML = '挂号费：' + data.data[i].registration_money + '元';
