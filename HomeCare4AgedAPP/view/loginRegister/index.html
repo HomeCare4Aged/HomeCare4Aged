@@ -37,7 +37,7 @@
 			</ul>
 		</div>
 		<div class="zz-div-next">
-			<a href="register.html" class="zz-a-register" style="text-decoration: underline;">没有账号？免费注册</a>
+			<label id="goRegister" class="zz-a-register" style="text-decoration: underline;">没有账号？免费注册</label>
 			<button type="button" class="zz-btn-next" onclick="openWindow('../home/index.html');">登录</button>
 		</div>
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js"></script>
@@ -49,7 +49,11 @@
 				return;
 			};
 			mui.plusReady(function() {
-
+				document.getElementById('goRegister').addEventListener('tap',function(){
+				mui.openWindow({
+					url:'register.html',
+				})
+			});
 				//首页返回键处理  
 				//处理逻辑：2秒内，连续两次按返回键，则退出应用  
 				var first = null;

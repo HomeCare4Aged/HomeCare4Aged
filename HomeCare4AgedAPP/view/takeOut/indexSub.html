@@ -179,7 +179,7 @@
 						fragment = doc.createDocumentFragment();
 						container_already = doc.getElementById("list_ul");
 						mui.each(data.data, function(i) {
-							//								console.log('11111111111111');
+															console.log('pppppppppp'+JSON.stringify(data.data));
 							var doc = document;
 							li = doc.createElement("li");
 							div = doc.createElement("div");
@@ -214,7 +214,7 @@
 							} else {
 								h3Distance.innerHTML = "距离" + data.data[i].distance.toFixed(1) + "千米，" + data.data[i].store_up_to_send_price + "元起送";
 							}
-
+							
 							li.addEventListener('tap', function() {
 								localStorage.shopData = JSON.stringify(data.data[i]);
 								console.log("pppppppppppppppppppppppppp" + JSON.stringify(localStorage.shopData));
@@ -237,12 +237,17 @@
 
 								});
 							});
-							li.appendChild(div);
+							if(data.data[i]['store_business_state'] == '停止营业'){
+								console.log(data.data[i]['store_shop_name']+'停止营业'); 
+							}else{
+								li.appendChild(div);
 							div.appendChild(img);
 							div.appendChild(h3);
 							div.appendChild(h3_status);
 							div.appendChild(h3Distance);
 							fragment.appendChild(li);
+							}
+							
 						});
 						container_already.appendChild(fragment);
 						if(data.data.length > 0) {

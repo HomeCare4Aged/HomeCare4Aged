@@ -184,8 +184,7 @@
 									success: function(data) {
 										if(data.data == 1) {
 											mui.toast('删除成功');
-//											localStorage.historyWithShopType = 'takeOut';
-//											var Scanner = plus.webview.getWebviewById(localStorage.transHistorylistId);
+
 //											mui.fire(Scanner, 'refresh');
 											mui.back();
 //											mui.currentWebview.close();
@@ -237,6 +236,31 @@
 								document.getElementById('makeSure').setAttribute("style", "background-color:#777777; color: white; font-size: 30px;  text-align: center; border: none;border-radius: 0px;margin-bottom: 0px;margin-top: 10px;");
 								document.getElementById('makeSure').innerHTML = '再来一单';
 								console.log('aaaa');
+								
+									var postData = takeOutHistoryDetails;
+									mui.ajax({
+										type: 'POST',
+										data: postData,
+										url: SERVERURL + 'SStoreListInfo/addSales',
+										dataType: "json",
+										timeout: 20000,
+										//成功获取数据赋值
+										success: function(data) {
+											console.log('oooooooooooooo'+JSON.stringify(data));
+											
+										},
+										error: function(xhr, type, errorThrown) {
+											
+										}
+										
+										
+									});
+								
+								
+								
+								
+								
+								
 							} else {
 								console.log('llllllllllll');
 							}

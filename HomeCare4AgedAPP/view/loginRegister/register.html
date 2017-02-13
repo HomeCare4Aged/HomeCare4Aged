@@ -54,12 +54,16 @@
 					<div class="marginLeftRight" style="margin-top: 5%;">
 						<div class="mui-input-row">
 							<img src="../../images/loginRegister/code.png" class="zz-img-icon">
-							<input type="number" id="zz-input-messageCode" class="mui-input-clear" style="float: left; width: 82%;  font-size: 140%; border: none;" placeholder="请输入验证码" />
+							<input type="tel" id="zz-input-messageCode" class="mui-input-clear" style="float: left; width: 82%;  font-size: 140%; border: none;" placeholder="请输入验证码" />
 						</div>
 					</div>
 				</li>
 			</ul>
 		</div>
+		
+		<input type="checkbox" id="yes" style="margin-left: 35%;margin-top: 10%;"checked="checked"/>
+		<label style="text-decoration: underline;font-size: 20px;color: #474747;font-weight: bold;font-style: italic;"id="userAgreement">用户协议</label>
+		
 		<div class="zz-div-next">
 			<button type="button" class="zz-btn-next" onclick="openNextWindow();">下一步</button>
 		</div>
@@ -69,7 +73,14 @@
 		<script type="text/javascript" src="../../js/jquery.1.11.1.js" ></script>
 		<script type="text/javascript">
 			mui.init()
-
+			document.getElementById('userAgreement').addEventListener('tap',function(){
+				mui.openWindow({
+					url:'userAgreement.html',
+				})
+			});
+			mui.plusReady(function () {
+				plus.webview.currentWebview().setStyle({scrollIndicator:'none'}); 
+			});
 			function openWindow($url) {
 				if(document.getElementById('g-code').className == 'codeNO') {
 					return;
@@ -95,6 +106,7 @@
 								mui.alert(data.msg);
 								return;
 							} else {
+								
 								console.log('可以注册');
 								var postData = {};
 								postData['community_user_phone'] = localStorage.userPhoneNum;
@@ -161,6 +173,10 @@
 						//保存账号密码
 						localStorage.community_user_phone = localStorage.userPhoneNum;
 						localStorage.community_user_psw = localStorage.userPsw;
+						if(document.getElementById('yes').checked == false){
+							mui.alert('如需注册，请您同意用户协议');
+							return;
+						}
 						mui.openWindow({
 							url: '../loginRegister/certification.html',
 						});

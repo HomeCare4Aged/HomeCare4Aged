@@ -353,7 +353,6 @@
 						console.log(JSON.stringify(data.classify));
 						console.log(JSON.stringify(data.matchData));
 						matchData = data.matchData;
-						store_carriage =
 							console.log("+++++++++++++++++++++++" + JSON.stringify(matchData));
 						dataInfo = data.idPrice;
 						mui.each(data.classify, function(i) {
@@ -429,7 +428,7 @@
 								//								console.log(h4Name.innerHTML);
 								h4Sale = doc.createElement("h4");
 								h4Sale.setAttribute("class", "gray-text");
-																h4Sale.setAttribute("style", "margin-bottom: 0.5em;");
+								h4Sale.setAttribute("style", "margin-bottom: 0.5em;");
 								h4Sale.id = data.data[name][i]['store_goods_id'] + 'foodSale';
 								h4Sale.innerHTML = "月售" + data.data[name][i]['store_monthly_sales'] + "份  ";
 								spanMoney = doc.createElement("span");

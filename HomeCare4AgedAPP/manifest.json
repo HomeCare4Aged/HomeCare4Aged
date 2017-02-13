@@ -537,7 +537,10 @@
 					"images/loginRegister/iPhone.png",
 					"css/mui.min.css",
 					"css/common/common.css",
-					"js/constants.js"
+					"js/constants.js",
+					"js/jquery.1.11.1.js",
+					"images/loginRegister/code.png",
+					"view/loginRegister/userAgreement.html"
 				],
 				"refer": [
 					"view/loginRegister/code.html"
@@ -560,7 +563,9 @@
 				],
 				"refer": [
 					"view/home/index.html",
-					"view/loginRegister/code.html"
+					"view/loginRegister/code.html",
+					"view/loginRegister/certification.html",
+					"view/loginRegister/userAgreement.html"
 				],
 				"priority": 0
 			},
@@ -1209,7 +1214,8 @@
 					"css/mui.min.css",
 					"images/dropIn/lessen.png",
 					"images/home/dropIn.png",
-					"images/home/qingtian.png"
+					"images/home/qingtian.png",
+					"view/loginRegister/register.html"
 				],
 				"refer": [],
 				"priority": 0

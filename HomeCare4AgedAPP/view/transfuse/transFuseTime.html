@@ -101,6 +101,7 @@
 		<script type="text/javascript" src="../../js/city.data-3.js"></script>
 		<script type="text/javascript" src="../../js/constants.js"></script>
 		<script type="text/javascript">
+		var isFirst = 0;
 			mui.init({
 				swipeBack: true, //启用右滑关闭功能
 			});
@@ -122,14 +123,34 @@
 			function chanceTime($id, $id1, $id11) {
 
 				console.log($id.replace('btn', ''));
-
-				$('.time').css('background-color', 'white');
-				$('.time').css('border-color', '#AEAEAE');
-				$('.textTips').css('color', '#AEAEAE');
-				document.getElementById($id).style.backgroundColor = "#52BDEB";
-				document.getElementById($id).style.borderColor = "#52BDEB";
-				document.getElementById($id1).style.color = "white";
-				document.getElementById($id11).style.color = "white";
+//				localStorage.selectBtnId = $id.replace('btn', '');
+				if (isFirst !=0) {
+					document.getElementById(localStorage.selectBtnId).style.backgroundColor = "white";
+					document.getElementById(localStorage.selectBtnId).style.borderColor = "#AEAEAE";
+					document.getElementById(localStorage.selectBtnId1).style.color = "#AEAEAE";
+					document.getElementById(localStorage.selectBtnId11).style.color = "#AEAEAE";
+					localStorage.selectBtnId = $id;
+					localStorage.selectBtnId1 = $id1;
+					localStorage.selectBtnId11 = $id11;
+				} 
+					isFirst = 1;
+					document.getElementById($id).style.backgroundColor = "#52BDEB";
+					document.getElementById($id).style.borderColor = "#52BDEB";
+					document.getElementById($id1).style.color = "white";
+					document.getElementById($id11).style.color = "white";
+					localStorage.selectBtnId = $id;
+					localStorage.selectBtnId1 = $id1;
+					localStorage.selectBtnId11 = $id11;
+				
+				
+//				$('.time').css('background-color', 'white');
+//				$('.time').css('border-color', '#AEAEAE');
+//				$('.textTips').css('color', '#AEAEAE');
+//				document.getElementById($id).style.backgroundColor = "#52BDEB";
+//				document.getElementById($id).style.borderColor = "#52BDEB";
+//				document.getElementById($id1).style.color = "white";
+//				document.getElementById($id11).style.color = "white";
+				
 				localStorage.timeLong = $id.replace('btn', '');
 			}
 
