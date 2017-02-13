@@ -84,13 +84,15 @@
 
 				//获取所在城市
 				plus.geolocation.getCurrentPosition(function(p) {
-					if (isNullStr(p.address['city'])) {
-						localStorage.GetCity = p.address['city'];
+					if (!isNullStr(p.address.city)) {
+//						mui.alert(p.address.city);
+						localStorage.GetCity = p.address.city;
 						console.log(JSON.stringify(p.address));
+						
 					}
 					
 				}, function(e) {
-					alert("Geolocation error: " + e.message);
+					mui.alert("" + e.message);
 				});
 
 				plus.navigator.setStatusBarBackground('#EEA02F');
